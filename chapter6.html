@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 6: Введение в JavaScript – оживляем сайт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .demo-box {
+            background: #f3e8ff;
+            border: 1px solid #c084fc;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    
+    <h1>Глава 6: Введение в JavaScript – оживляем сайт</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~20 минут | 🎯 Цель: научиться добавлять интерактивность: кнопки, события, динамическое изменение содержимого</div>
+    
+    <p>До сих пор ваш сайт был статичным – как страница в книге. JavaScript позволяет сделать его живым: реагировать на клики, ввод данных, таймеры, анимации. В этой главе мы напишем первые скрипты и внедрим их в ваш сайт.</p>
+    
+    <div class="info-box">
+        <strong>💡 Что такое JavaScript?</strong><br>
+        JavaScript – это язык программирования, который работает в браузере. Он может:<br>
+        – изменять содержимое страницы (текст, картинки, стили) без перезагрузки;<br>
+        – обрабатывать события (клики, движение мыши, нажатия клавиш);<br>
+        – отправлять запросы на сервер (получать данные без перезагрузки);<br>
+        – создавать игры, калькуляторы, чаты и многое другое.
+    </div>
+    
+    <h2>6.1 Подключение JavaScript к странице</h2>
+    <p>Есть два основных способа:</p>
+    <ol>
+        <li><strong>Встроенный скрипт</strong> – код пишется внутри тега <code>&lt;script&gt;</code> в HTML-файле.</li>
+        <li><strong>Внешний файл</strong> – код выносится в файл <code>script.js</code> и подключается через <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> (рекомендуется для больших проектов).</li>
+    </ol>
+    <p>Пример встроенного скрипта, который выводит приветствие в консоль браузера (нажмите F12 → Console):</p>
+    <pre>&lt;script&gt;
+    console.log("Сайт загружен!");
+&lt;/script&gt;</pre>
+    
+    <h2>6.2 Переменные, типы данных и функции</h2>
+    <p>Базовые понятия, без которых не обойтись:</p>
+    <ul>
+        <li><strong>Переменная</strong> – «коробка» для хранения данных. Объявляется через <code>let</code> или <code>const</code> (константа).</li>
+        <li><strong>Типы данных</strong>: числа (<code>42</code>), строки (<code>"Привет"</code>), булевы (<code>true/false</code>), массивы (<code>[1,2,3]</code>), объекты (<code>{name:"Иван"}</code>).</li>
+        <li><strong>Функция</strong> – блок кода, который можно выполнить по имени. Объявляется через <code>function имя() { ... }</code>.</li>
+    </ul>
+    <pre>// Пример переменной и функции
+let userName = "Анна";
+function showMessage() {
+    alert("Привет, " + userName);
+}
+showMessage(); // вызовет всплывающее окно</pre>
+    
+    <h2>6.3 События: реакция на действия пользователя</h2>
+    <p>Самый частый сценарий – выполнить код при клике на кнопку. Для этого используется атрибут <code>onclick</code> или метод <code>addEventListener</code>.</p>
+    <p>Простейший пример (вставьте на любую страницу):</p>
+    <pre>&lt;button onclick="alert('Вы кликнули!')"&gt;Нажми меня&lt;/button&gt;</pre>
+    <div class="demo-box">
+        <button class="button" onclick="alert('Привет из демо!')">Попробуйте кликнуть (демо)</button>
+        <p><small>Этот код работает прямо в этой главе. Нажмите – увидите всплывающее окно.</small></p>
+    </div>
+    
+    <h2>6.4 Изменение содержимого страницы</h2>
+    <p>JavaScript может находить элементы на странице по <code>id</code>, классу или тегу и менять их содержимое.</p>
+    <p>Допустим, у вас есть абзац:</p>
+    <pre>&lt;p id="demo"&gt;Старый текст&lt;/p&gt;
+&lt;button onclick="document.getElementById('demo').innerHTML = 'Новый текст!'"&gt;Изменить&lt;/button&gt;</pre>
+    <p>При клике текст внутри абзаца заменится. Попробуйте сами (код ниже работает прямо здесь):</p>
+    <div class="demo-box">
+        <p id="demoParagraph">Этот текст изменится при клике.</p>
+        <button class="button" onclick="document.getElementById('demoParagraph').innerHTML = 'Текст изменён с помощью JavaScript!'">Изменить текст</button>
+        <script>
+            // Этот скрипт работает только для демо в этой главе, не влияет на ваш сайт
+        </script>
+    </div>
+    
+    <h2>6.5 Условные операторы и циклы</h2>
+    <p><strong>if</strong> – выполняет код, если условие истинно:</p>
+    <pre>let age = 18;
+if (age >= 18) {
+    alert("Вы совершеннолетний");
+} else {
+    alert("Вы ещё ребёнок");
+}</pre>
+    <p><strong>for</strong> – повторяет код несколько раз:</p>
+    <pre>for (let i = 1; i <= 5; i++) {
+    console.log("Шаг номер " + i);
+}</pre>
+    
+    <h2>6.6 Практический пример: простой калькулятор</h2>
+    <p>Создадим два поля ввода и кнопку, которая складывает числа и выводит результат.</p>
+    <pre>&lt;input type="number" id="num1" placeholder="Первое число"&gt;
+&lt;input type="number" id="num2" placeholder="Второе число"&gt;
+&lt;button onclick="sum()"&gt;Сложить&lt;/button&gt;
+&lt;p id="result"&gt;Результат:&lt;/p&gt;
+
+&lt;script&gt;
+function sum() {
+    let a = parseFloat(document.getElementById('num1').value);
+    let b = parseFloat(document.getElementById('num2').value);
+    let s = a + b;
+    document.getElementById('result').innerHTML = "Результат: " + s;
+}
+&lt;/script&gt;</pre>
+    <div class="demo-box">
+        <input type="number" id="num1" placeholder="Число 1" style="margin:5px; padding:5px;">
+        <input type="number" id="num2" placeholder="Число 2" style="margin:5px; padding:5px;">
+        <button class="button" onclick="sumDemo()">Сложить</button>
+        <p id="resultDemo">Результат:</p>
+        <script>
+            function sumDemo() {
+                let a = parseFloat(document.getElementById('num1').value) || 0;
+                let b = parseFloat(document.getElementById('num2').value) || 0;
+                let s = a + b;
+                document.getElementById('resultDemo').innerHTML = "Результат: " + s;
+            }
+        </script>
+    </div>
+    
+    <h2>6.7 Где размещать JavaScript на странице?</h2>
+    <p>Рекомендуется размещать тег <code>&lt;script&gt;</code> перед закрывающим тегом <code>&lt;/body&gt;</code>, чтобы браузер сначала отобразил HTML и CSS, а затем загрузил скрипты. Это ускоряет загрузку страницы.</p>
+    <pre>&lt;body&gt;
+    ... весь контент ...
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</pre>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Добавьте на одну из страниц вашего сайта кнопку, которая при клике выводит текущую дату и время (используйте объект <code>new Date()</code>).<br>
+        2. Создайте простую форму с полем ввода имени и кнопкой. При нажатии должно выводиться приветствие «Привет, [имя]!».<br>
+        3. Напишите функцию, которая меняет цвет фона страницы при клике на кнопку (например, с белого на голубой).<br>
+        4. Поместите код в отдельный файл <code>script.js</code> и подключите его к странице.
+    </div>
+    
+    <h2>6.8 Отладка: как искать ошибки</h2>
+    <p>Никто не пишет код без ошибок. В браузере есть отличный инструмент – <strong>консоль разработчика</strong> (F12 → вкладка Console). Ошибки JavaScript отображаются красным цветом. Также можно выводить отладочные сообщения командой <code>console.log()</code>.</p>
+    
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        JavaScript – это огромная тема. На основе этих основ вы можете изучать современные фреймворки (React, Vue), создавать игры, анимации, обрабатывать данные с сервера (AJAX, fetch). В следующей главе мы рассмотрим, как добавить на сайт карту Google Maps и форму обратной связи с отправкой данных через EmailJS (более гибкую альтернативу Formspree).
+    </div>
+    
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="chapter5.html" class="button">← К пятой главе</a>
+        <a href="chapter7.html" class="button">Перейти к седьмой главе →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
