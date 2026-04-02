@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 3: Основы Git и командной строки. Добавление изображений и CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    
+    <h1>Глава 3: Основы Git и командной строки. Добавление изображений и CSS</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~20 минут | 🎯 Цель: освоить Git через командную строку, добавить изображения и подключить внешний CSS</div>
+    
+    <p>В предыдущих главах мы загружали файлы через веб-интерфейс GitHub. Но что делать, если нужно загрузить много файлов или файл больше 25 МБ (как в нашем эксперименте с эмулятором)? Тогда пригодится <strong>Git</strong> – система контроля версий, которая работает через командную строку. В этой главе мы освоим базовые команды Git, а также научимся добавлять на сайт изображения и выносить стили в отдельный файл.</p>
+    
+    <div class="info-box">
+        <strong>💡 Зачем нужна командная строка?</strong><br>
+        Командная строка (терминал, Git Bash) позволяет выполнять действия, которые недоступны через веб-интерфейс: загружать файлы любого размера, автоматизировать процессы, работать с ветками и историей изменений.
+    </div>
+    
+    <h2>3.1 Установка Git (если ещё не установлен)</h2>
+    <p>Для Windows 7 нужно установить последнюю поддерживаемую версию – <strong>Git 2.46.2</strong>. Скачайте 64-битную версию с официального сайта или напрямую:</p>
+    <pre>https://github.com/git-for-windows/git/releases/download/v2.46.2.windows.1/Git-2.46.2-64-bit.exe</pre>
+    <p>При установке оставляйте параметры по умолчанию, но убедитесь, что отмечена опция <strong>Git from the command line and also from 3rd-party software</strong> (это позволит использовать Git из обычной командной строки). После установки перезагрузите компьютер.</p>
+    
+    <h2>3.2 Первоначальная настройка Git</h2>
+    <p>Откройте <strong>Git Bash</strong> (или командную строку) и выполните две команды, чтобы Git знал, кто вы:</p>
+    <pre>git config --global user.name "Ваше Имя"
+git config --global user.email "ваш_email@example.com"</pre>
+    <p>Имя и email могут быть любыми, но лучше использовать те же, что и в аккаунте GitHub – для удобства.</p>
+    
+    <h2>3.3 Клонирование репозитория</h2>
+    <p><strong>Клонировать</strong> – значит скачать копию репозитория с GitHub на ваш компьютер. Это нужно, чтобы работать с файлами локально.</p>
+    <ol>
+        <li>На странице вашего репозитория нажмите зелёную кнопку <strong>Code</strong>, скопируйте HTTPS-ссылку (например, <code>https://github.com/ваше_имя/my-first-site.git</code>).</li>
+        <li>В Git Bash перейдите в папку, где хотите хранить проекты (например, <code>cd Desktop</code>).</li>
+        <li>Выполните:
+            <pre>git clone https://github.com/ваше_имя/my-first-site.git</pre>
+        </li>
+        <li>Перейдите в созданную папку: <code>cd my-first-site</code>.</li>
+    </ol>
+    <p>Теперь у вас есть локальная копия репозитория. Вы можете открыть её в Проводнике – там лежат все файлы, включая <code>index.html</code>.</p>
+    
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Если вы уже загружали файлы через веб-интерфейс, при клонировании они скачаются автоматически. Если репозиторий пуст – вы получите пустую папку (кроме скрытой папки <code>.git</code>).
+    </div>
+    
+    <h2>3.4 Основные команды Git: add, commit, push, pull</h2>
+    <p>Рассмотрим самый частый сценарий: вы добавили или изменили файлы локально и хотите отправить изменения на GitHub.</p>
+    <ul>
+        <li><strong>git add .</strong> – добавить все изменённые файлы в «зону подготовки» (staging area). Можно указать конкретный файл: <code>git add index.html</code>.</li>
+        <li><strong>git commit -m "сообщение"</strong> – зафиксировать изменения с комментарием (например, <code>git commit -m "Добавил картинку"</code>).</li>
+        <li><strong>git push origin main</strong> – отправить коммиты на GitHub (в ветку main).</li>
+        <li><strong>git pull origin main</strong> – забрать свежие изменения с GitHub (если кто-то работал удалённо).</li>
+    </ul>
+    <p>Попробуем на практике. Создайте в локальной папке репозитория новый файл, например <code>style.css</code>, и напишите в нём несколько CSS-правил. Затем выполните:</p>
+    <pre>git add .
+git commit -m "Добавлен файл стилей"
+git push origin main</pre>
+    <p>После этого файл появится на GitHub.</p>
+    
+    <div class="info-box">
+        <strong>📌 Важное замечание:</strong> Перед первым push на GitHub может потребоваться авторизация. Если Git запрашивает пароль, нужно ввести <strong>личный токен доступа (PAT)</strong> вместо пароля. Как создать токен, описано в предыдущих главах (Settings → Developer settings → Personal access tokens).
+    </div>
+    
+    <h2>3.5 Добавление изображений на сайт</h2>
+    <p>Чтобы украсить страницу, добавим картинку. Скачайте любое изображение (например, логотип GitHub) и положите его в папку репозитория. Назовём файл <code>github-logo.png</code>.</p>
+    <p>Теперь отредактируйте <code>index.html</code>, добавив тег <code>&lt;img&gt;</code>:</p>
+    <pre>&lt;img src="github-logo.png" alt="Логотип GitHub" width="150"&gt;</pre>
+    <p>Атрибут <code>src</code> – путь к файлу (если изображение лежит в той же папке, что и HTML, достаточно имени). <code>alt</code> – текст, который отображается, если картинка не загрузилась.</p>
+    <p>После добавления картинки выполните:</p>
+    <pre>git add .
+git commit -m "Добавлено изображение"
+git push origin main</pre>
+    <p>Через минуту картинка появится на вашем сайте.</p>
+    
+    <h2>3.6 Подключение внешнего CSS-файла</h2>
+    <p>До сих пор мы писали стили прямо в HTML (в теге <code>&lt;style&gt;</code>). Для больших проектов лучше выносить CSS в отдельный файл – это упрощает поддержку.</p>
+    <ol>
+        <li>Создайте файл <code>style.css</code> в той же папке, что и <code>index.html</code>.</li>
+        <li>Перенесите все стили из <code>&lt;style&gt;</code> в <code>style.css</code> (без тегов, просто CSS-правила).</li>
+        <li>В <code>index.html</code> в блоке <code>&lt;head&gt;</code> удалите блок <code>&lt;style&gt;</code> и добавьте ссылку на внешний файл:
+            <pre>&lt;link rel="stylesheet" href="style.css"&gt;</pre>
+        </li>
+    </ol>
+    <p>Пример содержимого <code>style.css</code>:</p>
+    <pre>body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5;
+    color: #333;
+}
+h1 {
+    color: #0366d6;
+    border-bottom: 2px solid #0366d6;
+    padding-bottom: 10px;
+}
+img {
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}</pre>
+    <p>После этого сохраните изменения, сделайте коммит и push. Сайт должен остаться таким же красивым, но теперь код организован лучше.</p>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Установите Git (если ещё не установлен) и настройте имя/email.<br>
+        2. Клонируйте ваш репозиторий <code>my-first-site</code> на компьютер.<br>
+        3. Добавьте в папку любое изображение (например, ваше фото или картинку из интернета).<br>
+        4. Измените <code>index.html</code> – добавьте картинку и, возможно, подпись.<br>
+        5. Создайте внешний файл <code>style.css</code> и перенесите в него все стили.<br>
+        6. Выполните <code>git add .</code>, <code>git commit -m "Обновление: картинка и внешний CSS"</code>, <code>git push origin main</code>.<br>
+        7. Проверьте, что сайт обновился и всё работает.
+    </div>
+    
+    <h2>3.7 Что делать, если Git не видит файлы или выходит ошибка?</h2>
+    <ul>
+        <li><strong>fatal: not a git repository</strong> – вы находитесь не в той папке. Убедитесь, что выполнили <code>cd my-first-site</code>.</li>
+        <li><strong>rejected (non-fast-forward)</strong> – удалённый репозиторий содержит изменения, которых нет у вас. Сделайте <code>git pull origin main</code>, затем снова <code>git push</code>.</li>
+        <li><strong>error: src refspec main does not match any</strong> – возможно, ваша ветка называется <code>master</code>, а не <code>main</code>. Проверьте командой <code>git branch</code> и замените в push <code>main</code> на <code>master</code>.</li>
+        <li><strong>LF will be replaced by CRLF</strong> – предупреждение о переносах строк, его можно игнорировать.</li>
+    </ul>
+    
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы углубимся в возможности GitHub Pages: узнаем о пользовательских доменах, темах Jekyll и автоматической сборке через GitHub Actions. А также научимся добавлять на сайт видео и интерактивные элементы.
+    </div>
+    
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="chapter2.html" class="button">← Ко второй главе</a>
+        <a href="chapter4.html" class="button">Перейти к четвёртой главе →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
