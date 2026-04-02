@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 5: Итоги, продвижение, формы обратной связи и ресурсы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .resource-list {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    
+    <h1>Глава 5: Итоги, продвижение, формы обратной связи и ресурсы</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~15 минут | 🎯 Цель: закрепить знания, добавить форму обратной связи, узнать, как продвигать сайт и где учиться дальше</div>
+    
+    <p>Поздравляю! Вы прошли путь от регистрации на GitHub до публикации собственного сайта, освоили Git, Jekyll и даже GitHub Actions. В этой заключительной главе мы подведём итоги, научимся добавлять на сайт форму обратной связи (без сервера, с помощью Formspree), поговорим о продвижении (SEO) и дадим список ресурсов для дальнейшего роста.</p>
+    
+    <div class="info-box">
+        <strong>🎉 Вы создали свой сайт!</strong><br>
+        Теперь вы умеете:<br>
+        – регистрироваться на GitHub и создавать репозитории;<br>
+        – писать HTML и CSS;<br>
+        – работать с Git через командную строку;<br>
+        – загружать файлы любого размера;<br>
+        – настраивать GitHub Pages и собственный домен;<br>
+        – использовать Jekyll для блога;<br>
+        – автоматизировать сборку с помощью Actions.
+    </div>
+    
+    <h2>5.1 Добавление формы обратной связи (без бэкенда)</h2>
+    <p>Статические сайты не могут обрабатывать формы самостоятельно, но существуют сторонние сервисы, которые принимают данные и пересылают их на email. Один из самых простых – <strong>Formspree</strong>.</p>
+    <h3>Как подключить Formspree</h3>
+    <ol>
+        <li>Зарегистрируйтесь на <a href="https://formspree.io/" target="_blank">formspree.io</a> (бесплатный тариф – 50 отправок в месяц).</li>
+        <li>Создайте новую форму – получите endpoint типа <code>https://formspree.io/f/ваш_токен</code>.</li>
+        <li>Добавьте на страницу HTML-форму:</li>
+    </ol>
+    <pre>&lt;form action="https://formspree.io/f/ваш_токен" method="POST"&gt;
+    &lt;label&gt;Ваше имя:&lt;/label&gt;
+    &lt;input type="text" name="name" required&gt;
+    &lt;label&gt;Email:&lt;/label&gt;
+    &lt;input type="email" name="_replyto" required&gt;
+    &lt;label&gt;Сообщение:&lt;/label&gt;
+    &lt;textarea name="message" rows="5" required&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Отправить&lt;/button&gt;
+&lt;/form&gt;</pre>
+    <p>После отправки данные появятся в панели Formspree, а также могут дублироваться на ваш email. Это полностью бесплатно для небольших проектов.</p>
+    
+    <div class="warning-box">
+        <strong>⚠️ Примечание:</strong> Formspree ограничивает количество бесплатных отправок. Если ожидаете много писем, рассмотрите альтернативы: Netlify Forms, Getform, или напишите простой сервер на JavaScript (но тогда нужен будет хостинг с бэкендом).
+    </div>
+    
+    <h2>5.2 Основы SEO (поисковой оптимизации)</h2>
+    <p>Чтобы ваш сайт находили в Google, следуйте простым правилам:</p>
+    <ul>
+        <li><strong>Заголовок страницы</strong> – тег <code>&lt;title&gt;</code> должен быть уникальным и описывать содержание.</li>
+        <li><strong>Мета-описание</strong> – добавьте <code>&lt;meta name="description" content="Краткое описание"&gt;</code> в <code>&lt;head&gt;</code>.</li>
+        <li><strong>ЧПУ-ссылки</strong> – используйте понятные URL (например, <code>/about</code> вместо <code>/page?id=123</code>). В статике это просто имена файлов.</li>
+        <li><strong>Альтернативный текст для изображений</strong> – атрибут <code>alt</code> помогает поисковым роботам понять, что на картинке.</li>
+        <li><strong>Адаптивный дизайн</strong> – сайт должен хорошо выглядеть на мобильных устройствах (используйте метатег <code>viewport</code> и медиазапросы).</li>
+        <li><strong>Скорость загрузки</strong> – оптимизируйте изображения (сжимайте через <a href="https://tinypng.com/" target="_blank">TinyPNG</a>), не подключайте тяжёлые скрипты.</li>
+    </ul>
+    <p>Для проверки индексации добавьте свой сайт в <a href="https://search.google.com/search-console" target="_blank">Google Search Console</a> и отправьте sitemap.xml (Jekyll может генерировать его автоматически с плагином).</p>
+    
+    <h2>5.3 Как продвигать сайт: социальные сети, обмен ссылками</h2>
+    <ul>
+        <li>Разместите ссылку на сайт в профилях соцсетей (Twitter, LinkedIn, GitHub).</li>
+        <li>Участвуйте в тематических сообществах (Reddit, Telegram, форумы) – делитесь полезными материалами, не спамьте.</li>
+        <li>Попросите друзей или коллег разместить ссылку на ваш сайт на их ресурсах.</li>
+        <li>Создайте качественный контент – статьи, видеоуроки, инфографику – чтобы ссылались сами.</li>
+    </ul>
+    
+    <h2>5.4 Частые ошибки и их решение</h2>
+    <div class="resource-list">
+        <ul>
+            <li><strong>Сайт не обновляется после push:</strong> подождите 2 минуты, очистите кэш браузера (Ctrl+Shift+Delete).</li>
+            <li><strong>404 Not Found:</strong> проверьте, что файл называется <code>index.html</code> и лежит в корне выбранной ветки.</li>
+            <li><strong>CSS не применяется:</strong> убедитесь, что путь к файлу указан верно (например, <code>href="style.css"</code>), и файл загружен в репозиторий.</li>
+            <li><strong>Jekyll игнорирует файлы:</strong> если вы не используете Jekyll, создайте пустой файл <code>.nojekyll</code> в корне.</li>
+            <li><strong>Картинки не отображаются:</strong> проверьте регистр символов в имени файла (на Linux-серверах GitHub различается регистр).</li>
+            <li><strong>Git push rejected:</strong> сделайте <code>git pull origin main</code> перед push, разрешите конфликты.</li>
+        </ul>
+    </div>
+    
+    <h2>5.5 Полезные ресурсы для дальнейшего изучения</h2>
+    <div class="resource-list">
+        <ul>
+            <li><strong><a href="https://developer.mozilla.org/ru/" target="_blank">MDN Web Docs</a></strong> – полный справочник по HTML, CSS, JavaScript.</li>
+            <li><strong><a href="https://pages.github.com/" target="_blank">Официальная документация GitHub Pages</a></strong> – все возможности платформы.</li>
+            <li><strong><a href="https://git-scm.com/book/ru/v2" target="_blank">Pro Git (книга)</a></strong> – углублённое изучение Git.</li>
+            <li><strong><a href="https://jekyllrb.com/docs/" target="_blank">Jekyll Documentation</a></strong> – создание блогов и сайтов на Markdown.</li>
+            <li><strong><a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions Documentation</a></strong> – автоматизация сборки, тестирования, деплоя.</li>
+            <li><strong><a href="https://htmlacademy.ru/" target="_blank">HTML Academy</a></strong> – интерактивные курсы по вёрстке (русский язык).</li>
+            <li><strong><a href="https://www.figma.com/" target="_blank">Figma</a></strong> – бесплатный инструмент для дизайна сайтов.</li>
+        </ul>
+    </div>
+    
+    <div class="task-box">
+        <strong>📝 Финальное задание</strong><br>
+        1. Добавьте на ваш сайт форму обратной связи через Formspree (или другой сервис).<br>
+        2. Проверьте мета-теги и заголовки на всех страницах.<br>
+        3. Создайте карту сайта (sitemap.xml) – в Jekyll это делается плагином <code>jekyll-sitemap</code>, добавьте его в <code>_config.yml</code>: <code>plugins: [jekyll-sitemap]</code>.<br>
+        4. Отправьте sitemap в Google Search Console.<br>
+        5. Опубликуйте ссылку на ваш сайт в соцсетях с хештегом #мойпервыйсайт.
+    </div>
+    
+    <h2>5.6 Что дальше? Идеи для развития</h2>
+    <ul>
+        <li>Добавьте блог и пишите статьи о том, что вы изучаете.</li>
+        <li>Интегрируйте комментарии через Disqus или GitHub Issues.</li>
+        <li>Подключите аналитику – Google Analytics или Yandex.Metrica (просто вставьте код в HTML).</li>
+        <li>Изучите JavaScript и сделайте сайт интерактивным.</li>
+        <li>Переведите сайт на несколько языков.</li>
+        <li>Оптимизируйте скорость загрузки с помощью Lighthouse в Chrome DevTools.</li>
+    </ul>
+    
+    <div class="info-box">
+        <strong>🎓 Поздравляю с завершением курса!</strong><br>
+        Вы проделали огромную работу. Теперь у вас есть не только сайт, но и фундаментальные навыки, которые позволят вам создавать любые веб-проекты. Помните: главное – практика. Продолжайте экспериментировать, и у вас всё получится.
+    </div>
+    
+    <p style="margin-top: 30px; text-align: center;">
+        <a href="index.html" class="button">Вернуться на главную страницу курса</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
