@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 1: Регистрация на GitHub и создание репозитория</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    
+    <h1>Глава 1: Регистрация на GitHub и создание репозитория</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~10 минут | 🎯 Цель: получить аккаунт GitHub и создать первый репозиторий</div>
+    
+    <p>Добро пожаловать в первую главу нашего экспресс-курса! Здесь вы научитесь основам работы с GitHub – платформой, которая будет хранить код вашего сайта и бесплатно его публиковать. Не пугайтесь, всё очень просто.</p>
+    
+    <div class="info-box">
+        <strong>💡 Что такое GitHub?</strong><br>
+        GitHub – это веб-сервис для хранения и совместной работы над кодом. Он работает с системой контроля версий Git. Для нас важно, что GitHub предоставляет <strong>бесплатный хостинг статических сайтов</strong> через функцию GitHub Pages.
+    </div>
+    
+    <h2>1.1 Регистрация учётной записи</h2>
+    <ol>
+        <li>Откройте сайт <a href="https://github.com" target="_blank">github.com</a>.</li>
+        <li>Нажмите на кнопку <strong>Sign up</strong> (регистрация).</li>
+        <li>Введите:
+            <ul>
+                <li><strong>Email</strong> (рабочий, на него придёт подтверждение).</li>
+                <li><strong>Password</strong> (придумайте надёжный пароль).</li>
+                <li><strong>Username</strong> (ваше уникальное имя – оно будет частью адреса вашего сайта, например <code>ваше_имя.github.io</code>).</li>
+            </ul>
+        </li>
+        <li>Пройдите проверку (капчу).</li>
+        <li>Нажмите <strong>Create account</strong>.</li>
+        <li>Подтвердите email – перейдите по ссылке из письма.</li>
+    </ol>
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Запомните или запишите ваш username и пароль. Имя пользователя изменить потом сложно, поэтому выбирайте что-то удобное и профессиональное (например, <code>ivan-petrov</code>, а не <code>crazyCat2025</code>).
+    </div>
+    
+    <h2>1.2 Вход в аккаунт и знакомство с интерфейсом</h2>
+    <p>После регистрации вы попадёте на главную страницу (Dashboard). Обратите внимание на верхнее меню:</p>
+    <ul>
+        <li><strong>Repositories</strong> – список ваших репозиториев (пока пусто).</li>
+        <li><strong>New</strong> – зелёная кнопка для создания нового репозитория.</li>
+        <li><strong>Profile</strong> – ваша публичная страница (по адресу <code>github.com/ваше_имя</code>).</li>
+    </ul>
+    <p>Не бойтесь нажимать на разные вкладки – вы ничего не сломаете. GitHub очень дружелюбен к новичкам.</p>
+    
+    <h2>1.3 Создание первого репозитория</h2>
+    <p>Репозиторий – это папка, в которой хранятся все файлы вашего сайта (HTML, CSS, картинки). Для нашего курса мы создадим репозиторий, который станет основой сайта.</p>
+    <ol>
+        <li>Нажмите на зелёную кнопку <strong>New</strong> или перейдите по ссылке <a href="https://github.com/new" target="_blank">github.com/new</a>.</li>
+        <li>В поле <strong>Repository name</strong> введите имя, например <code>my-first-site</code>. 
+            <br><small>(Можно любое, но без пробелов и специальных символов, только латиница, цифры, дефис или подчёркивание).</small>
+        </li>
+        <li>Оставьте переключатель <strong>Public</strong> – это бесплатно и необходимо для GitHub Pages (приватные репозитории с Pages требуют платной подписки).</li>
+        <li>В разделе <strong>Initialize this repository with</strong> отметьте <strong>Add a README file</strong> – это создаст файл README.md, который будет отображаться на главной странице репозитория.</li>
+        <li>Нажмите <strong>Create repository</strong>.</li>
+    </ol>
+    <div class="info-box">
+        <strong>🎉 Поздравляю!</strong> Вы только что создали свой первый репозиторий. Теперь у вас есть место, куда мы будем загружать файлы сайта.
+    </div>
+    
+    <h2>1.4 Что такое README и как его редактировать</h2>
+    <p>Файл <code>README.md</code> – это описание вашего проекта. Он пишется в формате Markdown (лёгкий язык разметки). Прямо сейчас вы можете его изменить:</p>
+    <ol>
+        <li>В вашем репозитории нажмите на файл <code>README.md</code>.</li>
+        <li>Нажмите на значок карандаша (Edit).</li>
+        <li>Напишите, например:
+            <pre># Мой первый сайт
+Это тестовый проект для изучения GitHub Pages.</pre>
+        </li>
+        <li>Прокрутите вниз до кнопки <strong>Commit changes</strong> – это сохранит изменения. Оставляйте комментарий, например «Обновил README».</li>
+    </ol>
+    <p>Позже мы научимся загружать настоящие HTML-файлы, а пока важно понять: репозиторий готов.</p>
+    
+    <h2>1.5 Включение GitHub Pages (простым способом)</h2>
+    <p>Хотя полноценную настройку Pages мы пройдём во второй главе, уже сейчас можно убедиться, что ваш репозиторий умеет публиковать сайты.</p>
+    <ol>
+        <li>В вашем репозитории перейдите во вкладку <strong>Settings</strong> (шестерёнка в правом верхнем углу).</li>
+        <li>В левом меню выберите <strong>Pages</strong> (раздел «Code and automation»).</li>
+        <li>В разделе <strong>Branch</strong> выберите <code>main</code> (или <code>master</code>), оставьте папку <code>/ (root)</code>.</li>
+        <li>Нажмите <strong>Save</strong>.</li>
+        <li>Через минуту вы увидите зелёное сообщение: <em>Your site is published at https://ваше_имя.github.io/my-first-site/</em>.</li>
+    </ol>
+    <p>Если вы перейдёте по этой ссылке, то пока увидите страницу 404 – это нормально, ведь у нас нет файла <code>index.html</code>. Во второй главе мы создадим его и загрузим.</p>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Зарегистрируйтесь на GitHub (если ещё не сделали).<br>
+        2. Создайте публичный репозиторий с именем <code>my-first-site</code> и файлом README.<br>
+        3. Отредактируйте README, добавьте пару строк о себе.<br>
+        4. Включите GitHub Pages (выберите ветку main, корневую папку).<br>
+        5. Запишите адрес вашего будущего сайта: <code>https://ваше_имя.github.io/my-first-site/</code>.
+    </div>
+    
+    <h2>1.6 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Можно ли изменить имя репозитория позже?</strong> Да, в настройках репозитория (Settings → General → Repository name). Но тогда изменится и адрес сайта.</li>
+        <li><strong>Что делать, если я забыл пароль?</strong> Используйте ссылку «Forgot password» на странице входа.</li>
+        <li><strong>Почему мой сайт не открывается после включения Pages?</strong> Подождите 1-2 минуты и проверьте, есть ли в репозитории файл <code>index.html</code>. Пока его нет, будет 404 – это не страшно.</li>
+    </ul>
+    
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы создадим настоящий HTML-документ, добавим стили и загрузим его в репозиторий. Вы увидите, как ваш сайт оживёт. А пока закрепите пройденное – выполните задание выше.
+    </div>
+    
+    <p style="margin-top: 30px;">
+        <a href="chapter2.html" class="button">📖 Перейти ко второй главе →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
