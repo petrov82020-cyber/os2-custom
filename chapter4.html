@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 4: Пользовательский домен, темы Jekyll и автоматическая сборка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    
+    <h1>Глава 4: Пользовательский домен, темы Jekyll и автоматическая сборка</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~20 минут | 🎯 Цель: привязать свой домен, использовать готовые темы Jekyll и настроить автоматическую сборку через GitHub Actions</div>
+    
+    <p>Мы уже научились создавать статические сайты на GitHub Pages. Но что, если вы хотите использовать собственный домен (например, <code>my-site.com</code> вместо <code>ваше_имя.github.io</code>)? Или вам нужен удобный способ ведения блога без ручного создания каждой страницы? Тогда пригодятся <strong>пользовательские домены</strong>, <strong>Jekyll</strong> (генератор статических сайтов) и <strong>GitHub Actions</strong> для автоматизации сборки.</p>
+    
+    <div class="info-box">
+        <strong>💡 Зачем это нужно?</strong><br>
+        - Профессиональный вид сайта с собственным доменом.<br>
+        - Возможность вести блог с постами в формате Markdown (Jekyll).<br>
+        - Автоматическая сборка и тестирование при каждом push (GitHub Actions).
+    </div>
+    
+    <h2>4.1 Подключение пользовательского домена</h2>
+    <p>У вас уже есть адрес <code>ваше_имя.github.io/название_репозитория</code>. Чтобы привязать свой домен (например, <code>my-site.com</code>), нужно выполнить два действия: настройку DNS и настройку в репозитории.</p>
+    <h3>Шаг 1: Настройка DNS у регистратора домена</h3>
+    <p>Зайдите в панель управления вашего домена (где вы его купили). Добавьте следующие записи:</p>
+    <ul>
+        <li><strong>A-запись</strong> для корневого домена (например, <code>@</code>) со значением <code>185.199.108.153</code> (а также <code>185.199.109.153</code>, <code>185.199.110.153</code>, <code>185.199.111.153</code>) – все четыре IP-адреса GitHub Pages.</li>
+        <li><strong>CNAME-запись</strong> для поддомена <code>www</code> на <code>ваше_имя.github.io</code>.</li>
+    </ul>
+    <p>Подождите от нескольких минут до нескольких часов – DNS распространяется не мгновенно.</p>
+    
+    <h3>Шаг 2: Настройка в репозитории</h3>
+    <ol>
+        <li>В репозитории перейдите в <strong>Settings</strong> → <strong>Pages</strong>.</li>
+        <li>В поле <strong>Custom domain</strong> введите ваш домен (например, <code>my-site.com</code>) и нажмите <strong>Save</strong>.</li>
+        <li>GitHub автоматически создаст файл <code>CNAME</code> в корне вашего репозитория (содержит ваш домен). Не удаляйте его.</li>
+    </ol>
+    <p>После этого сайт будет доступен по вашему домену.</p>
+    
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Если вы используете проект GitHub Pages (не пользовательский), то адрес будет <code>ваше_имя.github.io/репозиторий</code>, и собственный домен также можно привязать. Но имейте в виду, что после настройки домена старый адрес (github.io) будет перенаправлять на новый.
+    </div>
+    
+    <h2>4.2 Введение в Jekyll: генератор статических сайтов</h2>
+    <p><strong>Jekyll</strong> – это инструмент, который превращает простые текстовые файлы (например, в формате Markdown) в готовый HTML-сайт. GitHub Pages поддерживает Jekyll «из коробки»: если вы положите в репозиторий файлы с расширением <code>.md</code> и специальную структуру, GitHub автоматически соберёт из них сайт.</p>
+    
+    <h3>Базовая структура Jekyll-сайта</h3>
+    <pre>my-site/
+├── _config.yml          # главный файл настроек
+├── index.md             # главная страница (можно Markdown)
+├── about.md             # другая страница
+├── _layouts/            # папка с шаблонами
+│   └── default.html
+└── _posts/              # папка для записей блога
+    └── 2025-01-01-hello-world.md</pre>
+    
+    <h3>Пример <code>_config.yml</code> (минимальный)</h3>
+    <pre>title: Мой блог
+description: Интересные заметки
+theme: minima   # встроенная тема GitHub Pages
+</pre>
+    <p>Jekyll автоматически подставит заголовок и описание в HTML-страницы.</p>
+    
+    <h3>Создание первого поста</h3>
+    <p>Создайте файл <code>_posts/2025-04-01-first-post.md</code> с содержимым:</p>
+    <pre>---
+layout: post
+title: "Мой первый пост"
+date: 2025-04-01
+---
+Привет! Это мой первый пост на Jekyll. GitHub Pages сам превратит его в красивую HTML-страницу.</pre>
+    <p>Закоммитьте и запушите – сайт обновится, и пост появится в блоге (если тема поддерживает отображение постов).</p>
+    
+    <div class="info-box">
+        <strong>📌 Важно:</strong> GitHub Pages автоматически запускает сборщик Jekyll, если в корне есть файл <code>_config.yml</code>. Если вы не хотите использовать Jekyll, просто не создавайте этот файл – GitHub будет отдавать файлы как есть.
+    </div>
+    
+    <h2>4.3 Выбор и установка темы</h2>
+    <p>Темы Jekyll – это готовые наборы стилей и макетов. GitHub Pages предлагает несколько встроенных тем (minima, cayman, hacker и др.). Чтобы выбрать тему, достаточно указать её в <code>_config.yml</code>:</p>
+    <pre>theme: jekyll-theme-cayman</pre>
+    <p>Полный список тем: <a href="https://pages.github.com/themes/" target="_blank">https://pages.github.com/themes/</a></p>
+    <p>Вы также можете использовать сторонние темы, скачав их файлы в репозиторий (но это сложнее). Для начала используйте встроенные.</p>
+    
+    <h2>4.4 Автоматическая сборка с помощью GitHub Actions (продвинутый уровень)</h2>
+    <p><strong>GitHub Actions</strong> – это система CI/CD (непрерывная интеграция и доставка). Она позволяет автоматически выполнять скрипты при каждом push, например, собирать проект с помощью npm, запускать тесты или минифицировать CSS.</p>
+    <p>Для статического сайта на HTML/CSS/JS Actions не обязательны, но они полезны, если вы используете фреймворки (React, Vue) и хотите автоматически собирать приложение перед публикацией.</p>
+    
+    <h3>Пример простого workflow для сборки React-приложения</h3>
+    <p>Создайте в репозитории папку <code>.github/workflows/deploy.yml</code> с содержимым:</p>
+    <pre>name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build</pre>
+    <p>Этот workflow при каждом push в ветку main установит зависимости, соберёт проект и выложит результат в ветку gh-pages (которую затем можно использовать как источник Pages).</p>
+    <div class="warning-box">
+        <strong>⚠️ Для начинающих:</strong> GitHub Actions – мощный, но сложный инструмент. Не торопитесь его осваивать, пока не уверенно чувствуете себя с Git и основами веб-разработки.
+    </div>
+    
+    <h2>4.5 Продвинутые настройки: файл .gitignore и секреты</h2>
+    <p>Файл <code>.gitignore</code> указывает Git, какие файлы не нужно отслеживать (например, папку <code>node_modules</code>, временные файлы). Пример для Node.js проекта:</p>
+    <pre>node_modules/
+.DS_Store
+.env</pre>
+    <p>Секреты (<strong>secrets</strong>) – это переменные окружения, которые можно использовать в GitHub Actions. Они настраиваются в Settings → Secrets and variables → Actions. Например, токен для деплоя на внешний хостинг.</p>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Если у вас есть домен, попробуйте привязать его к вашему GitHub Pages сайту (следуя инструкции DNS).<br>
+        2. Создайте в репозитории файл <code>_config.yml</code> с любой темой (например, <code>theme: jekyll-theme-cayman</code>). Посмотрите, как изменится дизайн сайта.<br>
+        3. Напишите один пост в формате Markdown в папке <code>_posts</code> и проверьте, как он отображается.<br>
+        4. (Для продвинутых) Настройте простой GitHub Actions workflow для автоматической проверки HTML-кода (например, с помощью html-proofer).<br>
+        5. Если не используете Jekyll, убедитесь, что файл <code>.nojekyll</code> (пустой) лежит в корне – он отключает обработку Jekyll.
+    </div>
+    
+    <h2>4.6 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Можно ли использовать свой домен без HTTPS?</strong> GitHub Pages автоматически выдаёт бесплатный HTTPS-сертификат через Let's Encrypt, если домен правильно настроен. Это безопасно и не требует дополнительных действий.</li>
+        <li><strong>Как скрыть <code>.github.io</code> из адреса?</strong> Только через собственный домен. Пользовательский сайт (<code>ваше_имя.github.io</code>) не может быть «скрыт».</li>
+        <li><strong>Почему после добавления <code>_config.yml</code> мои CSS и JS перестали работать?</strong> Jekyll обрабатывает файлы и может игнорировать некоторые папки. Убедитесь, что ваши статические файлы лежат в корне или настройте <code>_config.yml</code> соответствующим образом.</li>
+        <li><strong>Что такое <code>.nojekyll</code>?</strong> Пустой файл <code>.nojekyll</code> в корне репозитория говорит GitHub не обрабатывать сайт через Jekyll. Это полезно, если вы хотите использовать собственные инструменты сборки.</li>
+    </ul>
+    
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей, заключительной главе мы подведём итоги курса, разберём типичные ошибки и дадим ресурсы для дальнейшего изучения. А также научимся добавлять на сайт формы обратной связи и карты.
+    </div>
+    
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="chapter3.html" class="button">← К третьей главе</a>
+        <a href="chapter5.html" class="button">Перейти к пятой главе →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
