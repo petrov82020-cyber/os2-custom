@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 7: Карты, формы, письма без сервера – и обзор курса</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .demo-box {
+            background: #f3e8ff;
+            border: 1px solid #c084fc;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .summary-card {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+        }
+        .summary-card h4 {
+            color: #0366d6;
+            margin-bottom: 12px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    
+    <h1>Глава 7: Карты, формы, отправка писем без сервера – и обзор курса</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~15 минут | 🎯 Цель: встроить карту, настроить форму обратной связи с отправкой на email и повторить всё пройденное</div>
+    
+    <p>В этой финальной главе мы добавим на сайт два очень востребованных элемента: <strong>интерактивную карту</strong> (например, с адресом офиса или местоположения) и <strong>форму обратной связи</strong>, которая будет отправлять письма без сервера. А затем кратко вспомним все темы курса – от создания HTML до публикации на GitHub Pages.</p>
+    
+    <!-- ======================== ЧАСТЬ 1: КАРТЫ ======================== -->
+    <h2>7.1 Встраивание карт (Google Maps, Яндекс.Карты)</h2>
+    <p>Карты можно добавить на сайт с помощью готового кода встраивания (iframe). Это не требует API-ключей и сложных настроек.</p>
+    
+    <h3>Google Maps</h3>
+    <ol>
+        <li>Откройте <a href="https://www.google.com/maps" target="_blank">Google Maps</a> и найдите нужное место (например, ваш город, офис или достопримечательность).</li>
+        <li>Нажмите на значок «Поделиться» → вкладка «Встроить карту» → скопируйте HTML-код.</li>
+        <li>Вставьте этот код в любую страницу вашего сайта (например, в <code>contacts.html</code>).</li>
+    </ol>
+    <p>Пример кода (будет отображаться карта с координатами Москвы):</p>
+    <pre>&lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.148203983647!2d37.617634!3d55.755826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a2c9c5b9d%3A0x5c7b0f2f0c5e2b0!2z0JzQvtGB0LrQstCw!5e0!3m2!1sru!2sru!4v1234567890123!5m2!1sru!2sru" 
+    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"&gt;&lt;/iframe&gt;</pre>
+    
+    <h3>Яндекс.Карты</h3>
+    <ol>
+        <li>Перейдите на <a href="https://yandex.ru/maps/" target="_blank">Яндекс.Карты</a>.</li>
+        <li>Найдите место → нажмите «Поделиться» → «Встроить карту».</li>
+        <li>Скопируйте код iframe и вставьте на страницу.</li>
+    </ol>
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Чтобы карта адаптировалась под мобильные устройства, задайте ширину <code>width="100%"</code> вместо фиксированной.
+    </div>
+    
+    <!-- ======================== ЧАСТЬ 2: ФОРМЫ И ОТПРАВКА ПИСЕМ ======================== -->
+    <h2>7.2 Форма обратной связи с отправкой писем без сервера</h2>
+    <p>Статические сайты не могут сами обрабатывать формы и отправлять письма. Но существуют бесплатные сервисы, которые делают это за вас. Рассмотрим два популярных: <strong>Formspree</strong> (уже упоминался в главе 5) и <strong>EmailJS</strong> (позволяет отправлять письма с вашего собственного email).</p>
+    
+    <h3>Вариант 1: Formspree (проще, без JavaScript)</h3>
+    <p>Вы уже видели его в главе 5. Просто создайте HTML-форму с <code>action</code> на Formspree:</p>
+    <pre>&lt;form action="https://formspree.io/f/ваш_токен" method="POST"&gt;
+    &lt;label&gt;Имя: &lt;input type="text" name="name"&gt;&lt;/label&gt;
+    &lt;label&gt;Email: &lt;input type="email" name="_replyto"&gt;&lt;/label&gt;
+    &lt;label&gt;Сообщение: &lt;textarea name="message"&gt;&lt;/textarea&gt;&lt;/label&gt;
+    &lt;button type="submit"&gt;Отправить&lt;/button&gt;
+&lt;/form&gt;</pre>
+    <p>После отправки данные придут на email, указанный при регистрации в Formspree. Бесплатно – до 50 сообщений в месяц.</p>
+    
+    <h3>Вариант 2: EmailJS (прямая отправка с вашего email)</h3>
+    <p>EmailJS позволяет отправлять письма через ваш собственный почтовый сервис (Gmail, Яндекс и др.) без сервера. Требуется небольшая регистрация и немного JavaScript.</p>
+    <ol>
+        <li>Зарегистрируйтесь на <a href="https://www.emailjs.com/" target="_blank">emailjs.com</a>.</li>
+        <li>Подключите свой email (например, Gmail) – создайте сервис (service) и шаблон письма (template).</li>
+        <li>Получите <code>user ID</code> и <code>service ID</code>.</li>
+        <li>Добавьте на страницу форму и скрипт, который при отправке вызовет EmailJS.</li>
+    </ol>
+    <p>Пример минимального кода:</p>
+    <pre>&lt;form id="contactForm"&gt;
+    &lt;input type="text" name="name" placeholder="Ваше имя" required&gt;
+    &lt;input type="email" name="email" placeholder="Ваш email" required&gt;
+    &lt;textarea name="message" placeholder="Сообщение" required&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Отправить&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    (function() {
+        emailjs.init("ВАШ_USER_ID");
+    })();
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        emailjs.sendForm('ВАШ_SERVICE_ID', 'ВАШ_TEMPLATE_ID', this)
+            .then(function() {
+                alert('Письмо отправлено!');
+            }, function(error) {
+                alert('Ошибка: ' + JSON.stringify(error));
+            });
+    });
+&lt;/script&gt;</pre>
+    <p>Этот метод требует чуть больше усилий, но даёт полный контроль над отправкой и не имеет ограничений на количество писем (кроме лимитов вашей почты).</p>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Вставьте карту Google Maps на страницу «Контакты» вашего сайта.<br>
+        2. Создайте форму обратной связи с помощью Formspree или EmailJS.<br>
+        3. Проверьте, что письма приходят (можно использовать тестовый email).<br>
+        4. Убедитесь, что форма не перезагружает страницу (при EmailJS это уже реализовано).
+    </div>
+    
+    <!-- ======================== ОБЗОР ВСЕГО КУРСА ======================== -->
+    <h2>7.3 Краткий обзор пройденного</h2>
+    <p>За время курса вы изучили все этапы создания и публикации сайта. Давайте вспомним ключевые моменты.</p>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h4>📄 Создание главной страницы (index.html)</h4>
+            <p>Вы узнали базовые теги HTML: <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;a&gt;</code>. Создали свою первую веб-страницу.</p>
+        </div>
+        <div class="summary-card">
+            <h4>🎨 Добавление стилей (CSS)</h4>
+            <p>Научились делать страницу красивой: задавать цвета, шрифты, отступы, рамки. Познакомились с селекторами, внутренними и внешними стилями, медиазапросами.</p>
+        </div>
+        <div class="summary-card">
+            <h4>☁️ Загрузка файлов на GitHub (без командной строки)</h4>
+            <p>Освоили веб-интерфейс GitHub: создание репозитория, загрузку файлов через "Upload files", редактирование README, включение GitHub Pages.</p>
+        </div>
+        <div class="summary-card">
+            <h4>🖥️ Работа с Git через командную строку (для больших файлов)</h4>
+            <p>Установили Git, клонировали репозиторий, выполняли <code>git add</code>, <code>git commit</code>, <code>git push</code>. Теперь вы можете загружать файлы любого размера и управлять версиями.</p>
+        </div>
+        <div class="summary-card">
+            <h4>✨ Создание простого, но красивого сайта</h4>
+            <p>Использовали примеры и шаблоны, научились добавлять изображения, создавать навигацию, адаптировать под мобильные устройства. Ваш сайт стал профессиональным.</p>
+        </div>
+        <div class="summary-card">
+            <h4>🚀 Публикация и поддержка</h4>
+            <p>Настроили GitHub Pages, узнали, как обновлять сайт (через push или веб-интерфейс), разобрали типичные ошибки (404, неправильное имя index.html, проблемы с ветками).</p>
+        </div>
+        <div class="summary-card">
+            <h4>🧩 Дополнительные темы</h4>
+            <p>Освоили Jekyll для блогов, GitHub Actions для автоматизации, JavaScript для интерактива, встраивание карт и форм обратной связи. Теперь вы можете создавать полноценные проекты.</p>
+        </div>
+    </div>
+    
+    <h2>7.4 Что дальше? Путь к мастерству</h2>
+    <p>Вы прошли путь от полного новичка до человека, который может самостоятельно создать и опубликовать сайт. Дальнейшее развитие может включать:</p>
+    <ul>
+        <li><strong>Изучение JavaScript вглубь</strong> – современный JS (ES6+), асинхронность, работа с API.</li>
+        <li><strong>Фреймворки</strong> – React, Vue, Svelte (для сложных приложений).</li>
+        <li><strong>Бэкенд</strong> – Node.js, Python, PHP (если захотите добавить базу данных, регистрацию пользователей).</li>
+        <li><strong>Дизайн</strong> – Figma, UX/UI, анимация.</li>
+    </ul>
+    <div class="info-box">
+        <strong>🎓 Поздравляем с завершением полного курса!</strong><br>
+        Вы не только узнали теорию, но и создали реальный сайт, который доступен в интернете. Это огромный шаг. Продолжайте практиковаться, экспериментируйте и не бойтесь ошибаться – ошибки делают нас опытнее.
+    </div>
+    
+    <h2>7.5 Полезные ресурсы на будущее (ещё раз)</h2>
+    <ul>
+        <li><a href="https://developer.mozilla.org/ru/" target="_blank">MDN Web Docs</a> – лучший справочник по HTML, CSS, JS.</li>
+        <li><a href="https://pages.github.com/" target="_blank">GitHub Pages Documentation</a> – все возможности платформы.</li>
+        <li><a href="https://www.figma.com/" target="_blank">Figma</a> – бесплатный дизайн-инструмент.</li>
+        <li><a href="https://htmlacademy.ru/" target="_blank">HTML Academy</a> – интерактивные курсы на русском.</li>
+        <li><a href="https://www.emailjs.com/" target="_blank">EmailJS</a> – отправка писем без сервера.</li>
+        <li><a href="https://formspree.io/" target="_blank">Formspree</a> – ещё один сервис для форм.</li>
+    </ul>
+    
+    <p style="margin-top: 30px; text-align: center;">
+        <a href="index.html" class="button">Вернуться на главную страницу курса</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Спасибо, что были с нами!<br>
+        Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues этого репозитория</a>.</p>
+    </footer>
+</div>
+</body>
+</html>
