@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс: Создание виртуальной машины в браузере (PCx86)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .subhead {
+            color: #4a5568;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: normal;
+            font-weight: 400;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin: 30px 0 25px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .announce {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .module-list {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 5px 20px 20px 20px;
+            margin: 20px 0;
+        }
+        .module-list ol, .module-list ul {
+            margin: 10px 0 10px 25px;
+        }
+        .module-list li {
+            margin: 12px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0 10px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .button:hover {
+            background: #0550ae;
+            transform: translateY(-2px);
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        .emulator-placeholder {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    
+    <h1>Создание виртуальной машины в браузере с нуля</h1>
+    <div class="subhead">Курс по архитектуре эмуляторов и практической сборке на примере PCx86 v2.25</div>
+    
+    <!-- Вводное видео (реальное с YouTube по теме эмуляции 8086) -->
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/H0krdpHauWI" 
+                title="Let's Build an 8086 Emulator - Part 1 (David Callanan)" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+        </iframe>
+    </div>
+    <p style="text-align: center; margin-top: -15px;"><em>🎬 Видео: «Let's Build an 8086 Emulator» (David Callanan) – отличное введение в тему эмуляции x86.</em></p>
+    
+    <div class="announce">
+        <strong>📌 Аннотация курса</strong><br>
+        Вы научитесь создавать виртуальные машины в браузере, используя открытый проект PCx86 v2.25. Мы разберём архитектуру эмулятора, изучим XML-конфигурации, подключим устройства ввода-вывода и дисковые накопители. В результате вы сможете самостоятельно собирать и модифицировать эмуляторы для любых ретро-систем.
+    </div>
+    
+    <h2>📚 План курса</h2>
+    <div class="module-list">
+        <ol>
+            <li><strong>Введение в эмуляцию и обзор PCx86</strong> – <a href="intro_emu.html">страница «intro_emu.html»</a> (уже подготовлена)</li>
+            <li><strong>Модуль 1: Архитектура PCx86</strong> – компоненты: CPU, RAM, ROM, видео, чипсет.</li>
+            <li><strong>Модуль 2: Среда разработки и первый запуск</strong> – необходимые файлы, HTML-шаблон, вызов embedPCx86.</li>
+            <li><strong>Модуль 3: Создание минимальной конфигурации</strong> – написание XML с нуля.</li>
+            <li><strong>Модуль 4: Подключение устройств</strong> – клавиатура, мышь, дисководы, жёсткий диск.</li>
+            <li><strong>Модуль 5: Работа с BIOS и образами</strong> – пути к ПЗУ, загрузка ОС.</li>
+            <li><strong>Модуль 6: Модификация эмулятора</strong> – добавление новых кнопок и функционала.</li>
+            <li><strong>Модуль 7: Интеграция с веб-сайтом</strong> – встраивание эмулятора в ваш проект.</li>
+            <li><strong>Заключение и ресурсы</strong> – альтернативные движки, литература.</li>
+        </ol>
+    </div>
+    
+    <h2>🎯 Что вы получите</h2>
+    <ul>
+        <li>Полное понимание, как работают эмуляторы на JavaScript.</li>
+        <li>Готовый шаблон для создания своих виртуальных машин.</li>
+        <li>Умение отлаживать конфигурации и решать типичные ошибки.</li>
+        <li>Базовые навыки модификации чужого кода.</li>
+    </ul>
+    
+    <!-- Кнопка вызова эмулятора, воссозданного из исходников -->
+    <div style="text-align: center; margin: 40px 0 20px;">
+        <a href="os2.html" class="button">🖥️ Запустить эмулятор (текущая версия)</a>
+        <p style="font-size: 0.85rem; margin-top: 10px;">* Эмулятор будет дорабатываться по ходу курса. Сейчас доступна рабочая версия на основе ваших файлов.</p>
+    </div>
+    
+    <!-- Блок для будущего собственного эмулятора (заглушка) -->
+    <div class="emulator-placeholder">
+        <strong>⚙️ Здесь появится ваш собственный эмулятор</strong><br>
+        После изучения модулей 3–5 вы сможете встроить в это место свою конфигурацию PCx86.
+    </div>
+    
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Курс «Создание виртуальной машины в браузере»</p>
+    </footer>
+</div>
+</body>
+</html>
