@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введение: Эмуляция и PCx86</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+    
+    <h1>Введение: Эмуляция и PCx86</h1>
+    <div class="chapter-meta">Время чтения: ~5 минут | Цель: понять, что такое эмуляция и как устроен PCx86</div>
+    
+    <p>Вы когда-нибудь задумывались, как можно запустить старую операционную систему или поиграть в классическую игру прямо в окне браузера, без установки дополнительных программ? Ответ — <strong>эмуляция</strong>. Технология, позволяющая одной компьютерной системе имитировать работу другой, открывает огромные возможности: от сохранения цифрового наследия до тестирования и обучения.</p>
+    
+    <div class="info-box">
+        <strong>💡 Эмуляция vs Виртуализация</strong><br>
+        Эмуляция воспроизводит поведение оборудования на уровне инструкций, позволяя запускать ПО, написанное для совершенно другой архитектуры (например, игры для ZX Spectrum на современном ПК). Виртуализация же использует аппаратную поддержку для изоляции, но требует совместимости процессора.
+    </div>
+    
+    <h2>Что такое PCx86 v2.25?</h2>
+    <p><strong>PCx86</strong> — это мощный эмулятор IBM PC-совместимых компьютеров, написанный на чистом JavaScript. Он может работать в любом современном браузере без плагинов. Проект поддерживает:</p>
+    <ul>
+        <li>Процессоры Intel 8088, 80186, 80286, 80386.</li>
+        <li>Видеоадаптеры MDA, CGA, EGA, VGA.</li>
+        <li>Контроллеры гибких и жёстких дисков.</li>
+        <li>Клавиатуру, мышь, последовательные порты.</li>
+    </ul>
+    <p>Всё это настраивается через XML-файлы конфигурации, что делает PCx86 отличной базой для создания собственных виртуальных машин.</p>
+    
+    <h2>Зачем создавать эмулятор в браузере?</h2>
+    <ul>
+        <li><strong>Сохранение истории:</strong> Запускать старые ОС (MS-DOS, OS/2, ранние Windows) без установки.</li>
+        <li><strong>Образование:</strong> Изучать, как работают компьютеры на низком уровне.</li>
+        <li><strong>Развлечение:</strong> Играть в классические игры прямо на сайте.</li>
+        <li><strong>Технический вызов:</strong> Понимание архитектуры эмулятора улучшает навыки программирования.</li>
+    </ul>
+    
+    <h2>Что вы узнаете в этом курсе</h2>
+    <p>Мы не просто запустим готовую конфигурацию, а разберём эмулятор по косточкам. Вы научитесь:</p>
+    <ul>
+        <li>Читать и модифицировать XML-сценарии виртуальных машин.</li>
+        <li>Подключать ПЗУ (BIOS), образы дисков.</li>
+        <li>Настраивать память, видео, чипсет.</li>
+        <li>Встраивать эмулятор в ваш веб-сайт.</li>
+        <li>Отлаживать типичные ошибки.</li>
+    </ul>
+    
+    <div class="info-box">
+        <strong>📌 Необходимые файлы</strong><br>
+        Для работы вам понадобятся: <code>pcx86.js</code>, <code>components.xsl</code>, образы BIOS (ROM), а также ваш собственный образ диска. Все эти файлы мы научимся добывать и настраивать.
+    </div>
+    
+    <p style="margin-top: 30px; text-align: center;">
+        <a href="emu_pcx86.html" class="button">← Вернуться к плану курса</a>
+        <a href="module1.html" class="button" style="margin-left: 15px;">Перейти к Модулю 1 →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере»</p>
+    </footer>
+</div>
+</body>
+</html>
