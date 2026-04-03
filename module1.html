@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модуль 1: Архитектура PCx86 – компоненты</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .component-card {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+        }
+        .component-card h4 {
+            color: #0366d6;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+    
+    <h1>Модуль 1: Архитектура PCx86 – компоненты виртуальной машины</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~15 минут | 🎯 Цель: понять, из каких частей состоит эмулятор и как они взаимодействуют</div>
+    
+    <p>Прежде чем создавать свою виртуальную машину, нужно разобраться, из каких «кирпичиков» она строится. В этом модуле мы рассмотрим основные компоненты PCx86, их роль в эмуляции и то, как они описываются в XML-конфигурации.</p>
+    
+    <div class="info-box">
+        <strong>🏗️ Общая идея</strong><br>
+        Эмулятор PCx86 представляет собой набор JavaScript-классов, каждый из которых отвечает за определённое устройство реального компьютера: процессор, память, видеокарту, дисководы и т.д. Конфигурационный XML-файл связывает эти классы в единую работающую систему, задавая параметры (тактовую частоту, объём памяти, адреса ПЗУ и т.п.).
+    </div>
+    
+    <h2>1. Центральный процессор (CPU)</h2>
+    <p>Сердце любой эмулируемой машины. PCx86 поддерживает процессоры Intel 8088, 80186, 80286 и 80386. В XML процессор описывается тегом <code>&lt;cpu&gt;</code>:</p>
+    <pre>&lt;cpu id="cpu286" model="80286" cycles="8000000" autostart="true" /&gt;</pre>
+    <ul>
+        <li><strong>model</strong> – тип процессора (определяет набор инструкций).</li>
+        <li><strong>cycles</strong> – тактовая частота в герцах (влияет на скорость эмуляции).</li>
+        <li><strong>autostart</strong> – запускать ли выполнение кода сразу после загрузки страницы.</li>
+    </ul>
+    <p>Процессор эмулирует выполнение машинных инструкций, прерывания, защищённый режим (для 286/386).</p>
+    
+    <h2>2. Память (RAM и ROM)</h2>
+    <p>Оперативная память задаётся тегом <code>&lt;ram&gt;</code>, ПЗУ (BIOS) – тегом <code>&lt;rom&gt;</code>. Адресное пространство 8086/80286 – 1 МБ (20 бит), но может быть расширено.</p>
+    <pre>&lt;ram id="ramLow" addr="0x00000" size="0xa0000" test="false" /&gt;
+&lt;ram id="ramExt" addr="0x100000" size="0x160000" /&gt;
+&lt;rom id="romBIOS" addr="0xf0000" size="0x10000" alias="0xff0000" file="ATBIOS-REV3.json5" /&gt;</pre>
+    <ul>
+        <li><strong>addr</strong> – начальный физический адрес.</li>
+        <li><strong>size</strong> – размер в байтах (шестнадцатеричный).</li>
+        <li><strong>file</strong> – путь к JSON-файлу с образом ПЗУ.</li>
+    </ul>
+    
+    <h2>3. Видеосистема (Video)</h2>
+    <p>PCx86 эмулирует видеоадаптеры MDA, CGA, EGA, VGA. Видео описывается тегом <code>&lt;video&gt;</code>, который может включать вложенное ПЗУ видеокарты.</p>
+    <pre>&lt;video id="videoEGA" model="ega" memory="0x20000" screenWidth="1280" screenHeight="700"&gt;
+    &lt;rom id="romEGA" addr="0xc0000" size="0x4000" file="IBM-EGA.json5" notify="videoEGA" /&gt;
+&lt;/video&gt;</pre>
+    <ul>
+        <li><strong>model</strong> – тип адаптера (mda, cga, ega, vga).</li>
+        <li><strong>memory</strong> – объём видеопамяти.</li>
+        <li><strong>screenWidth/Height</strong> – размер canvas в пикселях.</li>
+        <li>ВидеоПЗУ обычно отображается по адресу 0xC0000.</li>
+    </ul>
+    
+    <h2>4. Контроллеры дисков (FDC и HDC)</h2>
+    <p>Floppy Disk Controller (FDC) и Hard Disk Controller (HDC) управляют образами дискет и жёстких дисков. В XML они выглядят так:</p>
+    <pre>&lt;fdc ref="library.xml" autoMount="{A:{name:'Disk1'}, B:{name:'Disk2'}}" /&gt;
+&lt;hdc id="hdcAT" type="AT" drives="[{name:'20Mb HDD', type:2, path:'my-hd.img'}]" /&gt;</pre>
+    <ul>
+        <li><strong>autoMount</strong> – какие образы автоматически вставлять в дисководы.</li>
+        <li><strong>drives</strong> – массив подключённых жёстких дисков.</li>
+        <li><strong>path</strong> – путь к JSON-образу (или .img).</li>
+    </ul>
+    
+    <h2>5. Клавиатура и мышь</h2>
+    <p>Ввод данных эмулируется через компоненты <code>&lt;keyboard&gt;</code> и <code>&lt;mouse&gt;</code>. Для клавиатуры можно указать раскладку, для мыши – последовательный порт (обычно COM1).</p>
+    <pre>&lt;keyboard ref="us84-softkeys.xml" model="us84" /&gt;
+&lt;mouse serial="com1" /&gt;</pre>
+    
+    <h2>6. Чипсет и прочие компоненты</h2>
+    <p>Чипсет (<code>&lt;chipset&gt;</code>) определяет системную логику (например, модель 5170 для IBM PC AT). Также можно добавить последовательные порты (<code>&lt;serial&gt;</code>), панель управления (<code>&lt;panel&gt;</code>) и отладчик (<code>&lt;debugger&gt;</code>).</p>
+    
+    <div class="component-list">
+        <div class="component-card">
+            <h4>CPU</h4>
+            <p>Эмулирует инструкции, регистры, прерывания. Отвечает за скорость работы.</p>
+        </div>
+        <div class="component-card">
+            <h4>RAM / ROM</h4>
+            <p>Хранит код и данные. ROM содержит BIOS, который инициализирует систему.</p>
+        </div>
+        <div class="component-card">
+            <h4>Video</h4>
+            <p>Формирует изображение, обрабатывает видеорежимы, текстовые буферы.</p>
+        </div>
+        <div class="component-card">
+            <h4>FDC / HDC</h4>
+            <p>Обеспечивают чтение и запись образов дискет и жёстких дисков.</p>
+        </div>
+        <div class="component-card">
+            <h4>Keyboard / Mouse</h4>
+            <p>Перехватывают события браузера и передают их эмулируемой системе.</p>
+        </div>
+        <div class="component-card">
+            <h4>Chipset</h4>
+            <p>Связывает все компоненты, управляет шинами и таймерами.</p>
+        </div>
+    </div>
+    
+    <h2>Как компоненты общаются между собой?</h2>
+    <p>В эмуляторе используется событийно-ориентированная модель. Например, CPU при обращении к порту ввода-вывода генерирует событие, которое перехватывается соответствующим устройством (видео, FDC). Адреса памяти распределяются между RAM, ROM и видеопамятью. XML-конфигурация задаёт эти диапазоны адресов.</p>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Откройте файл <code>my-machine.xml</code>, который вы использовали ранее. Найдите в нём описание CPU, RAM, ROM, видео.<br>
+        2. Выпишите атрибуты для каждого компонента и попробуйте объяснить, что они означают.<br>
+        3. Как вы думаете, почему у <code>&lt;ram&gt;</code> указан <code>test="false"</code>? (Подсказка: это отключает тест памяти в BIOS, ускоряя загрузку.)<br>
+        4. Какой адрес у видеопамяти EGA? (Обычно 0xB8000 для текстового режима или 0xA0000 для графического.)
+    </div>
+    
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        Во втором модуле мы подготовим среду разработки: скачаем необходимые файлы, создадим HTML-шаблон и сделаем первый запуск минимальной конфигурации.
+    </div>
+    
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="intro_emu.html" class="button">← Введение</a>
+        <a href="module2.html" class="button">Модуль 2: Среда и первый запуск →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере»</p>
+    </footer>
+</div>
+</body>
+</html>
