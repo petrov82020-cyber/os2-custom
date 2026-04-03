@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модуль 2: Среда разработки и первый запуск</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+    
+    <h1>Модуль 2: Среда разработки и первый запуск</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~15 минут | 🎯 Цель: собрать все необходимые файлы, создать HTML-шаблон и запустить эмулятор</div>
+    
+    <p>В первом модуле мы разобрали архитектуру PCx86. Теперь перейдём к практике. Чтобы эмулятор заработал на вашем сайте, нужно подготовить несколько файлов и правильно их связать. К счастью, разработчик PCx86 (Jeff Parsons) предусмотрел удобный механизм – <strong>«Save Machine»</strong>. Он позволяет одним кликом скачать всё необходимое для любой машины, представленной на сайте pcjs.org.</p>
+    
+    <div class="info-box">
+        <strong>💡 Что такое Save Machine?</strong><br>
+        Это функция, впервые появившаяся в PCx86 v1.20.9 (февраль 2016). При её использовании браузер скачивает один JavaScript-файл (обычно <code>pcx86.js</code>), который содержит упакованную конфигурацию машины: XML, XSL, CSS, состояние, образы дисков и сам эмулятор. Вам остаётся только вставить небольшой фрагмент кода в HTML-страницу.
+    </div>
+    
+    <h2>2.1. Получение файлов через Save Machine</h2>
+    <p>В качестве примера мы используем машину с IBM PC AT и OS/2 1.0, которую вы уже видели ранее. Но для чистоты эксперимента лучше взять любую рабочую машину с сайта PCjs.</p>
+    <ol>
+        <li>Перейдите на страницу любой машины, например, <a href="https://www.pcjs.org/software/pcx86/sys/os2/ibm/1.0/" target="_blank">IBM OS/2 1.0</a>.</li>
+        <li>В левом нижнем углу найдите ссылку <strong>[Save Machine]</strong> и нажмите её.</li>
+        <li>После нажатия произойдут два события:
+            <ul>
+                <li>Начнётся скачивание файла (обычно <code>pcx86.js</code> или <code>pcx86.json</code>).</li>
+                <li>Появится диалоговое окно с HTML-кодом, который нужно вставить на вашу веб-страницу.</li>
+            </ul>
+        </li>
+        <li>Скопируйте предложенный фрагмент. Он будет выглядеть примерно так:
+            <pre>&lt;div id="ibm5170"&gt;&lt;/div&gt;
+&lt;script src="pcx86.js"&gt;&lt;/script&gt;
+&lt;script&gt;embedPCx86("ibm5170", "machine.xml", "components.xsl");&lt;/script&gt;</pre>
+        </li>
+        <li>Сохраните скачанный файл как <code>pcx86.js</code> в корне вашего будущего сайта.</li>
+    </ol>
+    
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Некоторые браузеры (особенно Safari) не поддерживают «именованные загрузки». В этом случае файл может скачаться с именем «Unknown» или «download». Переименуйте его вручную в <code>pcx86.js</code>. Также браузеры могут блокировать скачивание больших файлов – попробуйте использовать Firefox или Chrome, а если файл слишком велик (десятки мегабайт), выберите более простую машину (например, PC DOS 2.00).
+    </div>
+    
+    <h2>2.2. Что входит в скачанный файл?</h2>
+    <p>Файл <code>pcx86.js</code>, полученный через Save Machine, содержит внутри себя:</p>
+    <ul>
+        <li><strong>Конфигурацию XML</strong> – описание компонентов машины (CPU, память, видео, диски).</li>
+        <li><strong>XSL-трансформацию</strong> – используется для отображения элементов управления.</li>
+        <li><strong>CSS-стили</strong> – внешний вид панелей и кнопок.</li>
+        <li><strong>Состояние машины</strong> – текущее содержимое памяти, видеопамяти, регистров, а также все изменения на дисках, сделанные до момента сохранения.</li>
+        <li><strong>Код эмулятора</strong> – сам движок PCx86.</li>
+        <li><strong>Образы всех подключённых дисков</strong> (дискет и жёстких дисков) – в упакованном виде.</li>
+    </ul>
+    <p>Таким образом, после скачивания вам <strong>не нужно</strong> отдельно искать ROM BIOS, образы дискет и т.п. – всё уже внутри. Единственное, что требуется от вас – правильно разместить файл на сервере и вставить HTML-код.</p>
+    
+    <h2>2.3. Создание HTML-шаблона</h2>
+    <p>Создайте новый файл с именем <code>index.html</code> (или <code>my-machine.html</code>) и вставьте в него базовую структуру. Обязательно включите:</p>
+    <ul>
+        <li>Контейнер (обычно <code>&lt;div&gt;</code>) с уникальным ID, который будет использован в вызове <code>embedPCx86</code>.</li>
+        <li>Подключение скачанного скрипта <code>pcx86.js</code>.</li>
+        <li>Вызов функции <code>embedPCx86</code> с правильными параметрами.</li>
+    </ul>
+    <p>Минимальный рабочий пример:</p>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Моя виртуальная машина&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="myMachine"&gt;&lt;/div&gt;
+    &lt;script src="pcx86.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        embedPCx86("myMachine", "machine.xml", "components.xsl");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <p>Обратите внимание: имена <code>machine.xml</code> и <code>components.xsl</code> – это фиктивные ссылки. На самом деле внутри <code>pcx86.js</code> уже есть эти файлы, и эмулятор их извлекает. Вы можете оставить их как есть, но если вы хотите переопределить какие-то параметры, можно передать четвёртый аргумент (объект с настройками).</p>
+    
+    <h2>2.4. Настройка путей и размещение на сервере</h2>
+    <p>Скопируйте файл <code>pcx86.js</code> и HTML-страницу в одну папку на вашем веб-сервере (или в репозиторий GitHub Pages). Если вы хотите, чтобы скрипт лежал в подпапке, измените атрибут <code>src</code> соответственно.</p>
+    <p>Затем откройте страницу в браузере. Если всё сделано правильно, вы увидите эмулятор в том самом состоянии, в котором он был сохранён на сайте PCjs. Если вы сохранили машину с уже загруженной OS/2, то она и запустится с этим же диском и состоянием памяти.</p>
+    
+    <div class="info-box">
+        <strong>📌 Важное замечание о состоянии (state)</strong><br>
+        По умолчанию сохранённая машина восстанавливает не только диски, но и точное состояние процессора, видеопамяти и т.д. То есть она продолжит работу с того момента, когда вы нажали «Save Machine». Если вы хотите, чтобы машина каждый раз запускалась «с чистого листа» (как при включении питания), передайте четвёртым параметром <code>{state: null}</code>:
+        <pre>embedPCx86("myMachine", "machine.xml", "components.xsl", "{state:null}");</pre>
+    </div>
+    
+    <h2>2.5. Решение типичных проблем</h2>
+    <ul>
+        <li><strong>Файл не скачивается или скачивается пустой</strong> – попробуйте другой браузер (Firefox или Chrome), обновите страницу и повторите попытку. Некоторые браузеры ограничивают размер загружаемых данных.</li>
+        <li><strong>После вставки кода эмулятор не появляется</strong> – проверьте консоль браузера (F12). Возможно, путь к <code>pcx86.js</code> указан неверно, или файл повреждён. Убедитесь, что файл лежит в той же папке, что и HTML.</li>
+        <li><strong>Ошибка «embedPCx86 is not defined»</strong> – скрипт не загрузился. Проверьте имя файла и его содержимое (он должен начинаться с <code>var embedPCx86</code> или подобного).</li>
+        <li><strong>Браузер блокирует скачивание из-за расширения .js</strong> – PCx86 иногда сохраняет файл как <code>.json</code>. Переименуйте его в <code>.js</code> и убедитесь, что в HTML ссылка указывает на правильное имя.</li>
+        <li><strong>Сайт на GitHub Pages не показывает эмулятор</strong> – возможно, проблема в CORS или в размере файла. GitHub Pages позволяет файлы до 100 МБ, но если ваш <code>pcx86.js</code> весит больше, разделите его или используйте другой метод (например, загрузку по частям).</li>
+    </ul>
+    
+    <h2>2.6. Альтернативный путь: ручная сборка</h2>
+    <p>Если по какой-то причине функция Save Machine недоступна или вы хотите самостоятельно контролировать каждый компонент, вы можете вручную скачать:</p>
+    <ul>
+        <li>Скрипт эмулятора: <code>https://www.pcjs.org/machines/pcx86/releases/2.25/pcx86.js</code></li>
+        <li>Файлы конфигурации: <code>machine.xml</code> и <code>components.xsl</code> (для конкретной машины)</li>
+        <li>Образы BIOS и дисков (по путям из XML)</li>
+    </ul>
+    <p>Этот способ требует больше усилий, но даёт полный контроль. Однако для первого запуска мы настоятельно рекомендуем использовать Save Machine – он создан именно для упрощения этой задачи.</p>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Откройте любую машину на сайте PCjs (например, <a href="https://www.pcjs.org/software/pcx86/sys/dos/ibm/1.00/" target="_blank">IBM PC DOS 1.00</a>).<br>
+        2. Нажмите «Save Machine» и сохраните полученный файл.<br>
+        3. Создайте HTML-страницу по шаблону выше и разместите её вместе с файлом в одной папке.<br>
+        4. Откройте страницу локально или загрузите на GitHub Pages. Убедитесь, что эмулятор запускается.<br>
+        5. Попробуйте передать четвёртый параметр <code>{state:null}</code> и посмотрите, как изменится поведение.
+    </div>
+    
+    <h2>2.7. Ссылки на дополнительные ресурсы</h2>
+    <ul>
+        <li><a href="https://www.pcjs.org/blog/2016/02/17/" target="_blank">Оригинальный пост в блоге PCjs о сохранении машин</a></li>
+        <li><a href="https://github.com/jeffpar/pcjs" target="_blank">Репозиторий PCjs на GitHub</a></li>
+        <li><a href="https://pages.github.com/" target="_blank">GitHub Pages – бесплатный хостинг для статических сайтов</a></li>
+    </ul>
+    
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующем модуле мы разберём, как создать минимальную конфигурацию XML с нуля, без использования Save Machine. Вы узнаете, как прописать процессор, память, видеокарту и подключить образ диска. Это даст вам полную свободу в создании собственных виртуальных машин.
+    </div>
+    
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="module1.html" class="button">← Модуль 1: Архитектура</a>
+        <a href="module3.html" class="button">Модуль 3: Создание XML →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере» | Материал основан на документации PCjs и блоге Jeff Parsons</p>
+    </footer>
+</div>
+</body>
+</html>
