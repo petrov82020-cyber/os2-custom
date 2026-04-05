@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модуль 7: Интеграция с веб-сайтом и решение проблем</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        .error-detail {
+            background: #fff0f0;
+            border-left: 5px solid #dc2626;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        .solution-detail {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+
+    <h1>Модуль 7: Интеграция с веб-сайтом и решение проблем</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~25 минут | 🎯 Цель: освоить интеграцию эмулятора в веб-сайт, научиться диагностировать и устранять типичные ошибки</div>
+
+    <p>Поздравляю! Мы дошли до финального, самого важного модуля. На этом этапе мы соберём всё, что изучили, и сосредоточимся на практической интеграции эмулятора в веб-сайт. Но самое главное — мы проанализируем те ошибки, которые возникали на протяжении всего курса, выясним их истинные причины и найдём конструктивные решения. Вы перестанете гадать, почему что-то не работает, и сможете самостоятельно диагностировать и исправлять любые проблемы.</p>
+
+    <div class="info-box">
+        <strong>💡 Ключевая идея</strong><br>
+        Большинство проблем при работе с PCx86 связаны не с ошибками в коде эмулятора, а с неправильной настройкой окружения: отсутствием файлов, неверными путями, политиками безопасности браузера или несовместимостью форматов образов. Поняв эти причины, вы сможете легко их устранить.
+    </div>
+
+    <h2>7.1. Интеграция эмулятора в веб-сайт</h2>
+    <p>Прежде чем погрузиться в анализ ошибок, давайте соберём полный рабочий пример интеграции эмулятора в ваш сайт. Вот минимальная структура, которая гарантированно работает (при условии, что все файлы размещены правильно).</p>
+
+    <h3>7.1.1. Структура файлов</h3>
+    <pre>your-website/
+├── index.html
+├── pcx86.js
+├── components.xsl
+├── components.css
+├── machine.xml
+├── bios/
+│   └── atbios.json5
+├── hdd/
+│   └── os2hdd.json
+└── floppy/
+    └── msdos.img</pre>
+
+    <h3>7.1.2. HTML-шаблон (index.html)</h3>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Мой эмулятор PCx86&lt;/title&gt;
+    &lt;link rel="stylesheet" href="components.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="machineContainer"&gt;&lt;/div&gt;
+    &lt;script src="pcx86.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        let machine = embedPCx86(
+            "machineContainer",
+            "machine.xml",
+            "components.xsl"
+        );
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    <h3>7.1.3. Конфигурация XML (machine.xml)</h3>
+    <pre>&lt;machine id="myMachine" type="pcx86" border="1" pos="center"&gt;
+    &lt;name&gt;IBM PC AT with OS/2 1.0&lt;/name&gt;
+    &lt;computer id="at" name="IBM PC AT" buswidth="24"/&gt;
+    &lt;cpu model="80286" cycles="8000000" autostart="true"/&gt;
+    &lt;ram addr="0x00000" size="0xa0000"/&gt;
+    &lt;ram addr="0x100000" size="0x160000"/&gt;
+    &lt;rom addr="0xf0000" size="0x10000" alias="0xff0000" file="bios/atbios.json5"/&gt;
+    &lt;video model="ega" memory="0x20000" screenWidth="1280" screenHeight="700"&gt;
+        &lt;rom addr="0xc0000" size="0x4000" file="bios/egabios.json5" notify="videoEGA"/&gt;
+    &lt;/video&gt;
+    &lt;hdc type="AT" drives="[{name:'OS/2 1.0', type:2, path:'hdd/os2hdd.json'}]"/&gt;
+    &lt;keyboard model="us84"/&gt;
+    &lt;mouse type="serial" binding="com1"/&gt;
+    &lt;serial id="com1" adapter="1"/&gt;
+&lt;/machine&gt;</pre>
+
+    <h2>7.2. Диагностика проблем: инструменты разработчика</h2>
+    <p>Прежде чем анализировать конкретные ошибки, важно освоить главный инструмент отладки — консоль разработчика в браузере (F12). Вкладки, которые вам понадобятся:</p>
+    <ul>
+        <li><strong>Console</strong> — здесь отображаются все ошибки JavaScript, предупреждения и сообщения от эмулятора.</li>
+        <li><strong>Network</strong> — показывает, какие файлы загружаются и какие из них возвращают ошибку 404 (не найдено).</li>
+        <li><strong>Sources</strong> — позволяет просматривать исходный код и устанавливать точки останова.</li>
+    </ul>
+    <p>Большинство проблем можно выявить, просто посмотрев на красные сообщения в консоли.</p>
+
+    <h2>7.3. Анализ и решение конкретных ошибок</h2>
+
+    <div class="error-detail">
+        <h3>❌ Ошибка 1: f.slice is not a function</h3>
+        <p><strong>Проявление:</strong> <code>Uncaught TypeError: f.slice is not a function</code> в консоли.</p>
+        <p><strong>Причина:</strong> Эта ошибка возникает, когда PCx86 пытается обработать образ диска (JSON), но файл либо отсутствует, либо имеет неверный формат, либо путь к нему указан неправильно. Функция <code>.slice()</code> ожидает строку или массив, а получает другой тип данных (например, <code>undefined</code>).</p>
+        <p><strong>Конкретные случаи:</strong></p>
+        <ul>
+            <li>Файл образа жёсткого диска (например, <code>IBMOS210-EGA.json</code>) отсутствует в указанном месте.</li>
+            <li>Файл присутствует, но имеет расширение <code>.img</code>, а не <code>.json</code>. PCx86 ожидает JSON-формат.</li>
+            <li>Файл повреждён или содержит невалидный JSON.</li>
+            <li>В XML-конфигурации указан путь к файлу, который не соответствует фактическому расположению.</li>
+        </ul>
+    </div>
+    <div class="solution-detail">
+        <p><strong>✅ Решение:</strong></p>
+        <ol>
+            <li>Проверьте вкладку Network в инструментах разработчика — найдите запрос к файлу образа диска. Если статус 404, файл не найден.</li>
+            <li>Убедитесь, что файл имеет расширение <code>.json</code> и содержит валидные данные (откройте его в текстовом редакторе, он должен начинаться с <code>{</code>).</li>
+            <li>Проверьте путь в XML: он может быть абсолютным (начинаться с <code>/</code>) или относительным. Для локального размещения используйте относительные пути, например <code>path="hdd/os2hdd.json"</code>.</li>
+            <li>Если вы используете образ, сохранённый через кнопку «Save HD» на сайте PCjs, убедитесь, что вы сохранили его как <code>.json</code>, а не переименовали в <code>.img</code>.</li>
+        </ol>
+    </div>
+
+    <div class="error-detail">
+        <h3>❌ Ошибка 2: Fault 0x0D (General Protection Fault)</h3>
+        <p><strong>Проявление:</strong> <code>Fault 0x0D (0x0000) on opcode 0x26 at #0040:16EE</code> в консоли.</p>
+        <p><strong>Причина:</strong> В архитектуре x86 исключение 0x0D — это <strong>General Protection Fault (GPF)</strong>. Оно возникает, когда программа пытается выполнить привилегированную инструкцию или обратиться к защищённой области памяти без соответствующих прав. В контексте эмуляции это часто означает:</p>
+        <ul>
+            <li>Попытка выполнения кода из области памяти, которая не должна содержать исполняемый код (например, из видеопамяти).</li>
+            <li>Неверная настройка сегментных регистров или дескрипторов в защищённом режиме.</li>
+            <li>Ошибка в загрузчике операционной системы или в самом BIOS.</li>
+            <li>Использование несовместимого или повреждённого образа BIOS.</li>
+        </ul>
+        <p>В вашем случае ошибка возникала при загрузке OS/2 1.0, что может указывать на проблемы совместимости эмулятора с защищённым режимом 80286.</p>
+    </div>
+    <div class="solution-detail">
+        <p><strong>✅ Решение:</strong></p>
+        <ol>
+            <li>Убедитесь, что вы используете правильный образ BIOS для вашей модели машины (для IBM PC AT — BIOS AT).</li>
+            <li>Проверьте, что в XML указан правильный процессор (<code>model="80286"</code>) и чипсет (<code>model="5170"</code>).</li>
+            <li>Иногда эти ошибки не критичны и могут быть проигнорированы, если система в целом загружается. Однако если загрузка прерывается, попробуйте отключить отладчик (<code>&lt;debugger messages="none"/&gt;</code>) или загрузить эмулятор с параметром <code>{state: null}</code>, чтобы начать с чистого состояния.</li>
+            <li>Попробуйте использовать другую версию эмулятора (например, <code>pcx86.js</code> вместо <code>pcx86-uncompiled.js</code>).</li>
+        </ol>
+    </div>
+
+    <div class="error-detail">
+        <h3>❌ Ошибка 3: Fault 0x0B (Segment Not Present)</h3>
+        <p><strong>Проявление:</strong> <code>Fault 0x0B (0x00D4) on opcode 0xCF at #133B:003F</code> в консоли.</p>
+        <p><strong>Причина:</strong> Исключение 0x0B в защищённом режиме означает, что сегмент, на который ссылается программа, отсутствует в памяти (не загружен). В эмуляции это часто связано с:</p>
+        <ul>
+            <li>Попыткой доступа к сегменту, который ещё не был загружен из-за нехватки памяти или ошибки в таблице дескрипторов.</li>
+            <li>Ошибкой в загрузчике операционной системы, который не смог правильно настроить сегментацию.</li>
+            <li>Проблемами с совместимостью между версией эмулятора и загружаемой ОС.</li>
+        </ul>
+        <p>Эта ошибка также часто возникает при загрузке OS/2 и может быть связана с тем, что OS/2 1.0 требовала строгого соответствия аппаратному обеспечению IBM PC AT.</p>
+    </div>
+    <div class="solution-detail">
+        <p><strong>✅ Решение:</strong></p>
+        <ol>
+            <li>Увеличьте объём памяти в конфигурации (добавьте второй блок <code>&lt;ram&gt;</code> для расширенной памяти). OS/2 1.0 требует не менее 2 МБ.</li>
+            <li>Проверьте настройки чипсета — для IBM PC AT требуется <code>&lt;chipset model="5170"&gt;</code>.</li>
+            <li>Если ошибка возникает не всегда, попробуйте использовать отладчик (<code>&lt;debugger&gt;</code>) для пошагового выполнения и определения точного места сбоя.</li>
+            <li>Рассмотрите возможность использования другого образа OS/2 (например, с сайта PCjs).</li>
+        </ol>
+    </div>
+
+    <div class="error-detail">
+        <h3>❌ Ошибка 4: AudioContext was not allowed to start</h3>
+        <p><strong>Проявление:</strong> <code>The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page.</code> в консоли.</p>
+        <p><strong>Причина:</strong> Это не ошибка эмулятора, а политика безопасности современных браузеров (особенно Chrome). Браузер блокирует автоматическое воспроизведение звука до тех пор, пока пользователь не взаимодействует со страницей (клик, нажатие клавиши и т.д.)[reference:0].</p>
+    </div>
+    <div class="solution-detail">
+        <p><strong>✅ Решение:</strong></p>
+        <ol>
+            <li><strong>Простое:</strong> Игнорируйте сообщение, если звук не критичен. Эмулятор будет работать, но звук может не воспроизводиться до первого клика по странице.</li>
+            <li><strong>Временное (для разработки):</strong> Откройте <code>chrome://flags</code>, найдите «Autoplay policy» и установите значение «No user gesture is required». <strong>Не рекомендуется для обычных пользователей.</strong></li>
+            <li><strong>Программное:</strong> Добавьте на страницу кнопку «Активировать звук», которая вызывает <code>audioContext.resume()</code>. PCx86 должен сам обрабатывать эту ситуацию, но можно принудительно разблокировать аудиоконтекст после клика.</li>
+            <li><strong>Рекомендованное:</strong> Используйте Firefox — в нём эта политика менее строгая, и звук часто работает без дополнительных действий[reference:1].</li>
+        </ol>
+        <pre>document.body.addEventListener('click', function() {
+    if (window.audioContext && window.audioContext.state === 'suspended') {
+        window.audioContext.resume();
+    }
+});</pre>
+    </div>
+
+    <div class="error-detail">
+        <h3>❌ Ошибка 5: RangeError: Offset is outside the bounds of the DataView</h3>
+        <p><strong>Проявление:</strong> <code>Uncaught RangeError: Offset is outside the bounds of the DataView</code> в консоли.</p>
+        <p><strong>Причина:</strong> Эта ошибка возникает, когда эмулятор пытается прочитать данные за пределами выделенного буфера. Чаще всего это происходит из-за:</p>
+        <ul>
+            <li>Повреждённого или неполного образа диска или ПЗУ (файл JSON может быть обрезан).</li>
+            <li>Несоответствия размера образа тому, что указано в конфигурации (например, в XML указан размер <code>0x10000</code>, а фактический файл меньше).</li>
+            <li>Ошибки при конвертации бинарного образа в JSON.</li>
+        </ul>
+    </div>
+    <div class="solution-detail">
+        <p><strong>✅ Решение:</strong></p>
+        <ol>
+            <li>Проверьте целостность файлов образов: откройте JSON-файл в текстовом редакторе и убедитесь, что он не обрывается на полпути.</li>
+            <li>Сравните размер файла с ожидаемым: для 64-килобайтного ПЗУ размер JSON-файла должен быть не менее 64 КБ (в развёрнутом виде).</li>
+            <li>Если образ был сконвертирован вручную, повторите конвертацию с помощью утилиты DiskDump.</li>
+            <li>Убедитесь, что в XML атрибуты <code>size</code> соответствуют реальному размеру образа.</li>
+        </ol>
+    </div>
+
+    <div class="error-detail">
+        <h3>❌ Ошибка 6: Проблемы с CORS (Cross-Origin Resource Sharing)</h3>
+        <p><strong>Проявление:</strong> В консоли сообщения вида <code>Access to XMLHttpRequest at '...' from origin '...' has been blocked by CORS policy</code>.</p>
+        <p><strong>Причина:</strong> Браузер блокирует запросы к ресурсам на другом домене, если сервер не разрешает это явно. Это происходит, когда вы пытаетесь загрузить файлы (ROM, образы дисков) с сайта pcjs.org, а ваш сайт расположен на другом домене (например, на GitHub Pages)[reference:2].</p>
+    </div>
+    <div class="solution-detail">
+        <p><strong>✅ Решение:</strong></p>
+        <ol>
+            <li><strong>Лучшее решение:</strong> Разместите все файлы (ROM, образы) на своём сервере. Используйте относительные пути в XML.</li>
+            <li><strong>Обходное:</strong> Используйте прокси-сервер с поддержкой CORS (например, <code>https://cors-anywhere.herokuapp.com/</code>), но это может быть нестабильно и не подходит для production.</li>
+            <li><strong>Временное (для разработки):</strong> Запустите браузер с отключённой проверкой CORS (не рекомендуется для обычного использования).</li>
+        </ol>
+    </div>
+
+    <div class="error-detail">
+        <h3>❌ Ошибка 7: Missing &lt;canvas&gt; support</h3>
+        <p><strong>Проявление:</strong> Эмулятор не отображается, в консоли сообщение о том, что браузер не поддерживает canvas.</p>
+        <p><strong>Причина:</strong> Это сообщение вводит в заблуждение. Оно появляется не из-за отсутствия поддержки canvas (она есть во всех современных браузерах), а из-за того, что не загрузились CSS/XSL файлы, и JS не смог инициализировать отображение[reference:3].</p>
+    </div>
+    <div class="solution-detail">
+        <p><strong>✅ Решение:</strong></p>
+        <ol>
+            <li>Проверьте, что файл <code>components.css</code> и <code>components.xsl</code> присутствуют в нужной папке и доступны по указанным путям.</li>
+            <li>Убедитесь, что в HTML-шаблоне есть ссылка на <code>components.css</code> (<code>&lt;link rel="stylesheet" href="components.css"&gt;</code>).</li>
+            <li>Проверьте консоль на наличие ошибок 404 для этих файлов.</li>
+        </ol>
+    </div>
+
+    <h2>7.4. Пошаговый план развёртывания на GitHub Pages</h2>
+    <p>Вот финальный план действий, который гарантированно приведёт к успеху (если следовать ему точно):</p>
+    <ol>
+        <li><strong>Создайте структуру папок</strong> на локальном компьютере, как показано в разделе 7.1.1.</li>
+        <li><strong>Скопируйте все файлы</strong>: <code>pcx86.js</code>, <code>components.xsl</code>, <code>components.css</code> (скачайте их с сайта PCjs или из репозитория).</li>
+        <li><strong>Скачайте образы BIOS</strong> и образы дисков (JSON) с сайта PCjs и поместите их в соответствующие папки.</li>
+        <li><strong>Напишите XML-конфигурацию</strong>, используя относительные пути (без ведущего слеша).</li>
+        <li><strong>Создайте index.html</strong> по шаблону из раздела 7.1.2.</li>
+        <li><strong>Протестируйте локально</strong>: запустите локальный веб-сервер (<code>python -m http.server</code>) и откройте страницу в браузере.</li>
+        <li><strong>Загрузите всё в репозиторий GitHub</strong>.</li>
+        <li><strong>Включите GitHub Pages</strong> в настройках репозитория (ветка main, папка /root).</li>
+        <li><strong>Проверьте сайт</strong> по адресу <code>https://ваше_имя.github.io/имя_репозитория/</code>.</li>
+    </ol>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Разверните эмулятор на GitHub Pages, используя полную структуру файлов (с локальными копиями ROM и образов дисков).<br>
+        2. Намеренно создайте ошибку (например, удалите файл образа жёсткого диска) и посмотрите, какая ошибка появится в консоли.<br>
+        3. Исправьте ошибку, восстановив файл, и убедитесь, что эмулятор снова работает.<br>
+        4. Добавьте на страницу кнопку для разблокировки аудиоконтекста по клику.<br>
+        5. Попробуйте загрузить машину с отключённым отладчиком (<code>&lt;debugger messages="none"/&gt;</code>) и сравните вывод консоли.
+    </div>
+
+    <div class="info-box">
+        <strong>🔑 Ключевые выводы</strong><br>
+        - Большинство ошибок PCx86 связаны с отсутствием файлов, неверными путями или неправильными форматами образов.<br>
+        - Инструменты разработчика (консоль, Network) — ваши главные помощники в диагностике.<br>
+        - CORS-ошибки решаются размещением всех файлов на своём сервере.<br>
+        - Проблемы с аудио — это не ошибка эмулятора, а политика безопасности браузера.<br>
+        - Fault 0x0D и 0x0B — это внутренние исключения x86, которые могут возникать при загрузке сложных ОС, но часто не являются критичными.
+    </div>
+
+    <h2>7.5. Заключение и дальнейшие шаги</h2>
+    <p>Поздравляю! Вы прошли весь курс. Теперь вы не просто умеете запускать эмулятор, а понимаете его архитектуру, умеете создавать конфигурации с нуля, подключать устройства и, самое главное, диагностировать и исправлять любые ошибки. Это ценный навык, который пригодится вам не только при работе с PCx86, но и в целом при разработке веб-приложений.</p>
+    <p>Что можно сделать дальше:</p>
+    <ul>
+        <li>Создайте свой собственный образ диска с коллекцией ретро-игр и поделитесь им с друзьями.</li>
+        <li>Изучите исходный код PCx86 на GitHub и попробуйте добавить новое устройство.</li>
+        <li>Используйте полученные знания для эмуляции других систем (например, Apple II или ZX Spectrum).</li>
+        <li>Напишите статью или сделайте видео о процессе создания эмулятора — ваши знания могут помочь другим.</li>
+    </ul>
+
+    <p style="margin-top: 30px; text-align: center;">
+        <a href="index.html" class="button">Вернуться на главную страницу курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере» | Финальный модуль: Интеграция и решение проблем</p>
+    </footer>
+</div>
+</body>
+</html>
