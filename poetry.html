@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="В мире поэзии — уникальные поэтические произведения на русском языке: восстановленные тексты, редкие переводы, аудиоспектакли, литературные композиции. От средневекового эпоса до авторских моноспектаклей.">
+    <title>В мире поэзии — уникальные тексты и аудиопоэзия</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefcf8;
+            color: #2c2418;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* шапка раздела */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #e2d6c8;
+            padding-bottom: 1.5rem;
+        }
+        .section-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #2b5a3a;
+            margin-bottom: 0.5rem;
+        }
+        .section-subhead {
+            font-size: 1.2rem;
+            color: #6a5e4c;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* аннотация раздела */
+        .annotation {
+            background: #f3efe8;
+            border-radius: 32px;
+            padding: 2rem 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .annotation p {
+            font-size: 1.1rem;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        .annotation .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            color: #8b5a2b;
+        }
+
+        /* фильтр/теги (опционально) */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
+        }
+        .tag {
+            background: #e8dfd3;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4a3a28;
+        }
+
+        /* сетка карточек публикаций */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+        .pub-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #ece2d6;
+        }
+        .pub-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b87c4f;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #2c5a3b;
+            line-height: 1.2;
+        }
+        .card-desc {
+            color: #5e5544;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        .card-meta {
+            font-size: 0.8rem;
+            color: #948b78;
+            border-top: 1px solid #eee6dc;
+            padding-top: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .read-link {
+            text-decoration: none;
+            font-weight: 500;
+            color: #b87c4f;
+            transition: color 0.2s;
+        }
+        .read-link:hover {
+            color: #8b5a2b;
+            text-decoration: underline;
+        }
+
+        /* пагинация/архив */
+        .archive-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .button {
+            display: inline-block;
+            background: #e2d6c8;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #2c2418;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .button:hover {
+            background: #cfc1af;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2d6c8;
+            color: #8a7e6b;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 1rem; }
+            .section-header h1 { font-size: 2.5rem; }
+            .publications-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- ШАПКА РАЗДЕЛА -->
+    <div class="section-header">
+        <h1>В мире поэзии</h1>
+        <div class="section-subhead">
+            Архив уникальных поэтических текстов, редких переводов и звучащего слова
+        </div>
+    </div>
+
+    <!-- АННОТАЦИЯ К РАЗДЕЛУ (краткое описание) -->
+    <div class="annotation">
+        <p>«В мире поэзии» — это собрание поэтических произведений, которые невозможно найти в обычных антологиях. Здесь публикуются <strong>восстановленные по архивным аудиозаписям тексты</strong>, <strong>авторские сценарии моноспектаклей</strong>, <strong>редкие переводы</strong> классических поэм, а также <strong>литературные композиции</strong> в исполнении мастеров художественного слова. Мы возвращаем к жизни то, что сохранилось только в звуке и памяти.</p>
+        <div class="quote">«Поэзия не терпит суеты — она требует тишины и вдумчивого чтения. Здесь вы найдёте и то, и другое».</div>
+    </div>
+
+    <!-- Доп. навигация по рубрикам (теги) -->
+    <div class="tags">
+        <span class="tag">#восстановленные_тексты</span>
+        <span class="tag">#аудиоспектакли</span>
+        <span class="tag">#редкие_переводы</span>
+        <span class="tag">#моноспектакли</span>
+        <span class="tag">#средневековый_эпос</span>
+    </div>
+
+    <!-- СЕТКА ПУБЛИКАЦИЙ (подразделы) -->
+    <h2 style="font-family: 'Cormorant Garamond'; font-size: 1.8rem; margin-bottom: 1rem;">Новые материалы</h2>
+    <div class="publications-grid">
+        
+        <!-- ПОДРАЗДЕЛ 1: Витязь в тигровой шкуре (как одна из статей) -->
+        <div class="pub-card">
+            <div class="card-content">
+                <div class="card-category">Моноспектакль / Эпос</div>
+                <div class="card-title">«Витязь в тигровой шкуре»</div>
+                <div class="card-desc">
+                    Поэма Шота Руставели в переводе Пантелеймона Петренко. 
+                    Восстановленный сценарий легендарного моноспектакля Сурена Кочаряна (запись 1966 года). 
+                    Философские монологи, притча о розе и шипах, диалог Автандила и Тариэля — в точной стихотворной реконструкции.
+                </div>
+                <div class="card-meta">
+                    <span>1966 / 2025 реконструкция</span>
+                    <a href="vityaz.html" class="read-link">Читать →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПОДРАЗДЕЛ 2: образец другого будущего материала -->
+        <div class="pub-card">
+            <div class="card-content">
+                <div class="card-category">Редкий перевод</div>
+                <div class="card-title">«Слово о полку Игореве»</div>
+                <div class="card-desc">
+                    Поэтическая реконструкция ритмики древнерусского подлинника 
+                    и сценическая версия Владимира Яхонтова (1940-е гг.). 
+                    Восстановленный текст по грамзаписи.
+                </div>
+                <div class="card-meta">
+                    <span>готовится к публикации</span>
+                    <a href="#" class="read-link">Скоро →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПОДРАЗДЕЛ 3: ещё один пример -->
+        <div class="pub-card">
+            <div class="card-content">
+                <div class="card-category">Авторская композиция</div>
+                <div class="card-title">«Фауст» в ритмике Лозинского</div>
+                <div class="card-desc">
+                    Сцены из трагедии Гёте в переводе Михаила Лозинского, 
+                    адаптированные для монотеатра. Фрагменты, не вошедшие в канонические издания.
+                </div>
+                <div class="card-meta">
+                    <span>апрель 2025</span>
+                    <a href="#" class="read-link">Читать →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ссылка на полный архив (если будет) -->
+    <div class="archive-link">
+        <a href="#" class="button">Все публикации раздела →</a>
+    </div>
+
+    <footer>
+        © В мире поэзии — восстановление поэтического наследия. Тексты подготовлены на основе аудиоархивов, грампластинок и редких изданий.
+    </footer>
+</div>
+</body>
+</html>
