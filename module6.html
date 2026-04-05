@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модуль 6: Модификация эмулятора — добавление кнопок, управление через JavaScript, отладчик</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+
+    <h1>Модуль 6: Модификация эмулятора — добавление кнопок, управление через JavaScript, отладчик</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~25 минут | 🎯 Цель: научиться модифицировать эмулятор: добавлять новые элементы управления, управлять эмуляцией через JavaScript-код и использовать встроенный отладчик</div>
+
+    <p>На предыдущих этапах мы создали полноценную виртуальную машину, научились настраивать устройства и загружать операционные системы. Однако готовая конфигурация не всегда покрывает все нужды. В этом модуле мы рассмотрим, как модифицировать эмулятор, чтобы он лучше соответствовал вашим задачам: добавлять кнопки управления, управлять эмуляцией программно и отлаживать работу виртуальной машины.</p>
+
+    <div class="info-box">
+        <strong>💡 Ключевая идея</strong><br>
+        PCx86 предоставляет API для управления эмуляцией через JavaScript, позволяет расширять интерфейс с помощью XML-тегов `<control>` и содержит мощный встроенный отладчик. Модификация эмулятора не требует изменения его исходного кода — всё делается через конфигурацию и вызовы функций.
+    </div>
+
+    <h2>6.1. Программное управление эмулятором</h2>
+    <p>Функция <code>embedPCx86()</code> не только создаёт эмулятор, но и возвращает объект, с помощью которого можно управлять его работой. Этот объект содержит методы для запуска, остановки, сброса и доступа к компонентам.</p>
+
+    <h3>6.1.1. Получение ссылки на объект эмулятора</h3>
+    <pre>let machine = embedPCx86("myMachine", "my-machine.xml", "components.xsl");</pre>
+    <p>После этого вы можете вызывать методы:</p>
+    <pre>machine.stop();      // остановить эмуляцию
+machine.start();     // запустить/продолжить
+machine.reset();     // аппаратный сброс
+machine.powerDown(); // выключить питание</pre>
+
+    <h3>6.1.2. Управление состоянием (сохранение и загрузка)</h3>
+    <p>PCx86 позволяет сохранять и загружать состояние эмулятора. Это полезно для создания «сейвов» или для возобновления работы с определённой точки. Состояние сохраняется в объекте, который можно сериализовать в JSON и восстановить позже.</p>
+    <pre>let state = machine.saveState();
+// ... сохранить state в localStorage или отправить на сервер ...
+machine.loadState(state);</pre>
+
+    <h3>6.1.3. Доступ к компонентам (CPU, RAM, Video)</h3>
+    <p>Через объект эмулятора можно получить доступ к отдельным компонентам, например, к процессору или видеопамяти:</p>
+    <pre>let cpu = machine.getCPU();
+console.log("Регистры CPU:", cpu.getRegisters());
+
+let video = machine.getVideo();
+video.screenshot(); // сделать скриншот экрана эмулятора</pre>
+
+    <h3>6.1.4. Пример: Кнопка «Сделать скриншот»</h3>
+    <p>Вот как можно добавить на HTML-страницу кнопку, которая делает скриншот текущего экрана эмулятора:</p>
+    <pre>&lt;button id="screenshotBtn"&gt;Скриншот&lt;/button&gt;
+&lt;script&gt;
+    let machine = embedPCx86("myMachine", "my-machine.xml", "components.xsl");
+    document.getElementById("screenshotBtn").addEventListener("click", function() {
+        let screenshot = machine.getVideo().screenshot();
+        // screenshot — это DataURL изображения PNG
+        let link = document.createElement("a");
+        link.download = "screenshot.png";
+        link.href = screenshot;
+        link.click();
+    });
+&lt;/script&gt;</pre>
+
+    <h2>6.2. Модификация XML-конфигурации: добавление кнопок и панелей управления</h2>
+    <p>PCx86 позволяет добавлять кнопки управления прямо в XML-файл с помощью тега <code>&lt;control&gt;</code>. Эти кнопки автоматически появятся в интерфейсе эмулятора и будут выполнять предопределённые действия (запуск, остановка, сброс и т.д.).</p>
+
+    <h3>6.2.1. Базовые типы элементов управления</h3>
+    <ul>
+        <li><strong>&lt;control type="button" binding="run"&gt;</strong> — кнопка запуска эмуляции.</li>
+        <li><strong>&lt;control type="button" binding="stop"&gt;</strong> — кнопка остановки.</li>
+        <li><strong>&lt;control type="button" binding="reset"&gt;</strong> — кнопка аппаратного сброса.</li>
+        <li><strong>&lt;control type="button" binding="step"&gt;</strong> — кнопка пошагового выполнения (работает только при включённом отладчике).</li>
+        <li><strong>&lt;control type="button" binding="ctrl-alt-del"&gt;</strong> — отправка комбинации Ctrl+Alt+Del в эмулятор.</li>
+    </ul>
+    <p>Пример панели с кнопками управления:</p>
+    <pre>&lt;panel&gt;
+    &lt;control type="button" binding="run"&gt;Запустить&lt;/control&gt;
+    &lt;control type="button" binding="stop"&gt;Остановить&lt;/control&gt;
+    &lt;control type="button" binding="reset"&gt;Сброс&lt;/control&gt;
+    &lt;control type="button" binding="step"&gt;Шаг&lt;/control&gt;
+    &lt;control type="button" binding="ctrl-alt-del"&gt;Ctrl+Alt+Del&lt;/control&gt;
+&lt;/panel&gt;</pre>
+
+    <h3>6.2.2. Добавление пользовательских кнопок</h3>
+    <p>Вы можете создавать кнопки, которые вызывают произвольный JavaScript-код, используя атрибут <code>onclick</code>:</p>
+    <pre>&lt;panel&gt;
+    &lt;control type="button" onclick="alert('Привет от эмулятора!')"&gt;Пользовательская кнопка&lt;/control&gt;
+&lt;/panel&gt;</pre>
+    <p>Этот код будет выполняться в контексте страницы, поэтому вы можете взаимодействовать с эмулятором через JavaScript, как было показано выше.</p>
+
+    <h3>6.2.3. Создание собственной панели управления (пример)</h3>
+    <p>Вот как можно добавить панель с кнопками для управления дисководами:</p>
+    <pre>&lt;panel&gt;
+    &lt;control type="button" onclick="machine.getFDC().ejectDisk(0)"&gt;Извлечь дискету A&lt;/control&gt;
+    &lt;control type="button" onclick="machine.getFDC().insertDisk(0, 'my-disk.json')"&gt;Вставить дискету A&lt;/control&gt;
+    &lt;control type="button" onclick="machine.getHDC().saveDrive(0)"&gt;Сохранить жёсткий диск&lt;/control&gt;
+&lt;/panel&gt;</pre>
+
+    <h2>6.3. Параметры функции embedPCx86()</h2>
+    <p>Функция <code>embedPCx86()</code> принимает четыре параметра, три из которых обязательны, а четвёртый — опциональный объект с настройками. Полный список параметров и их значений описан в документации PCjs и в исходных кодах.</p>
+
+    <h3>6.3.1. Обязательные параметры</h3>
+    <ul>
+        <li><strong>id</strong> — идентификатор элемента <code>&lt;div&gt;</code>, в котором будет размещён эмулятор.</li>
+        <li><strong>xml</strong> — путь к XML-файлу с конфигурацией машины.</li>
+        <li><strong>xsl</strong> — путь к XSL-файлу (обычно <code>components.xsl</code>).</li>
+    </ul>
+    <p>Пример вызова с обязательными параметрами:</p>
+    <pre>embedPCx86("machineDiv", "config.xml", "components.xsl");</pre>
+
+    <h3>6.3.2. Четвёртый параметр (parms) — настройка эмулятора</h3>
+    <p>Четвёртый параметр позволяет переопределить свойства машины, заданные в XML, а также управлять поведением эмулятора. Например, можно указать другой образ жёсткого диска или отключить автоматический запуск.</p>
+    <p>Структура объекта <code>parms</code>:</p>
+    <ul>
+        <li><strong>drives</strong> — массив объектов, описывающих жёсткие диски (переопределяет диски из XML).</li>
+        <li><strong>autoMount</strong> — объект для автоматической загрузки дискет (переопределяет <code>autoMount</code> из FDC).</li>
+        <li><strong>state</strong> — объект состояния эмулятора (если указан, эмулятор восстановит это состояние).</li>
+        <li><strong>resume</strong> — имя файла для сохранения/восстановления состояния.</li>
+    </ul>
+    <p>Пример вызова с переопределением жёсткого диска и дискеты:</p>
+    <pre>embedPCx86("machineDiv", "config.xml", "components.xsl", {
+    drives: [{ name: "20Mb HDD", type: 2, path: "my-hdd.json" }],
+    autoMount: { A: { name: "MS-DOS 6.22", path: "msdos622.json" } }
+});</pre>
+    <p>Если нужно, чтобы эмулятор всегда запускался с чистого состояния (не восстанавливал предыдущее), можно передать <code>{state: null}</code>.</p>
+    <pre>embedPCx86("machineDiv", "config.xml", "components.xsl", { state: null });</pre>
+
+    <h2>6.4. Использование встроенного отладчика PCx86</h2>
+    <p>Отладчик — мощный инструмент для разработчиков. Он позволяет останавливать выполнение, просматривать содержимое памяти, регистров и устанавливать точки останова. Отладчик может быть полезен не только для отладки эмулятора, но и для анализа работы программ внутри эмулятора.</p>
+
+    <h3>6.4.1. Включение отладчика</h3>
+    <p>Чтобы включить отладчик, необходимо:</p>
+    <ol>
+        <li>Добавить в XML-файл компонент <code>&lt;debugger&gt;</code> (можно указать уровень сообщений: <code>messages="fault"</code> для вывода только ошибок).</li>
+        <li>Добавить в панель управления элементы управления отладчиком: поле ввода команд, кнопки Run, Step, Reset.</li>
+        <li>В HTML-странице загружать отладочную версию скрипта: <code>pcx86-dbg.js</code> вместо <code>pcx86.js</code>.</li>
+    </ol>
+    <p>Пример XML-фрагмента с отладчиком:</p>
+    <pre>&lt;debugger id="debugger" messages="fault"&gt;&lt;/debugger&gt;
+&lt;panel&gt;
+    &lt;control type="text" binding="debugInput" width="400px"/&gt;
+    &lt;control type="button" binding="debugEnter"&gt;Ввести команду&lt;/control&gt;
+    &lt;control type="button" binding="run"&gt;Run&lt;/control&gt;
+    &lt;control type="button" binding="step"&gt;Step&lt;/control&gt;
+    &lt;control type="button" binding="reset"&gt;Reset&lt;/control&gt;
+&lt;/panel&gt;</pre>
+
+    <h3>6.4.2. Команды отладчика</h3>
+    <p>Отладчик PCx86 поддерживает команды, аналогичные классическому отладчику DEBUG из MS-DOS. Вот некоторые из них:</p>
+    <ul>
+        <li><code>d [address]</code> — дамп памяти (отобразить содержимое).</li>
+        <li><code>u [address]</code> — дизассемблировать код.</li>
+        <li><code>r</code> — отобразить регистры процессора.</li>
+        <li><code>g [address]</code> — продолжить выполнение (возможно, до указанного адреса).</li>
+        <li><code>bp [address]</code> — установить точку останова.</li>
+        <li><code>t</code> — выполнить одну инструкцию (трассировка).</li>
+    </ul>
+    <p>Команды вводятся в поле ввода (<code>debugInput</code>), и после нажатия кнопки <code>debugEnter</code> они отправляются отладчику. Отладчик может также выводить сообщения в консоль браузера, если включён соответствующий уровень логирования.</p>
+
+    <h3>6.4.3. Пример отладки загрузчика MS-DOS</h3>
+    <p>Допустим, мы хотим остановить выполнение эмулятора, когда управление передаётся на загрузочный сектор дискеты (адрес 0x7C00).</p>
+    <ol>
+        <li>Запустите эмулятор.</li>
+        <li>В поле ввода отладчика введите <code>bp 0x7c00</code> и нажмите Enter.</li>
+        <li>Нажмите кнопку <code>Run</code>. Эмулятор начнёт выполнение, но остановится, как только достигнет адреса 0x7C00.</li>
+        <li>Введите <code>u 0x7c00</code>, чтобы увидеть дизассемблированный код загрузчика.</li>
+        <li>Используйте <code>t</code> для пошагового выполнения и <code>d 0x7c00</code> для просмотра данных загрузчика.</li>
+    </ol>
+    <p>Такой подход позволяет анализировать работу программ на низком уровне и отлаживать собственные загрузчики или операционные системы.</p>
+
+    <h2>6.5. Работа с LocalStorage для сохранения пользовательских настроек</h2>
+    <p>PCx86 может сохранять изменения пользователя (например, модифицированные образы дискет) в localStorage браузера. Это позволяет сохранять настройки между сеансами.</p>
+    <p>Пример сохранения состояния эмулятора в localStorage:</p>
+    <pre>function saveMachineState() {
+    let state = machine.saveState();
+    localStorage.setItem("myMachineState", JSON.stringify(state));
+}
+
+function loadMachineState() {
+    let state = localStorage.getItem("myMachineState");
+    if (state) {
+        machine.loadState(JSON.parse(state));
+    }
+}</pre>
+    <p>Эти функции можно привязать к кнопкам в интерфейсе, добавив в XML соответствующие элементы управления с атрибутом <code>onclick</code>.</p>
+
+    <h2>6.6. Практические примеры модификации</h2>
+
+    <h3>Пример 1: Добавление кнопки «Сброс» в панель управления</h3>
+    <pre>&lt;panel&gt;
+    &lt;control type="button" binding="reset"&gt;Сброс&lt;/control&gt;
+&lt;/panel&gt;</pre>
+
+    <h3>Пример 2: Создание кнопки для быстрой загрузки тестовой дискеты</h3>
+    <pre>&lt;panel&gt;
+    &lt;control type="button" onclick="machine.getFDC().insertDisk(0, 'test-disk.json')"&gt;Загрузить тестовую дискету&lt;/control&gt;
+&lt;/panel&gt;</pre>
+
+    <h3>Пример 3: Отладка программы на ассемблере в OS/2</h3>
+    <p>Предположим, вы пишете программу на ассемблере под OS/2 и хотите отладить её прямо в эмуляторе. Вы можете загрузить отладочную версию эмулятора (<code>pcx86-dbg.js</code>), установить точку останова на нужном адресе и просмотреть содержимое регистров после каждого шага. Это значительно упрощает отладку низкоуровневого кода.</p>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Добавьте на свою страницу с эмулятором кнопку, которая при нажатии останавливает эмуляцию.<br>
+        2. Создайте панель управления с кнопками «Запустить», «Остановить» и «Сброс».<br>
+        3. Реализуйте функцию сохранения состояния эмулятора в localStorage и кнопку для её вызова.<br>
+        4. Включите отладчик в своей конфигурации и попробуйте установить точку останова на адресе 0x7C00 (загрузочный сектор).<br>
+        5. Используя отладчик, проследите за выполнением первых инструкций загрузчика DOS.
+    </div>
+
+    <h2>6.7. Устранение неполадок</h2>
+    <ul>
+        <li><strong>Кнопки не появляются</strong> — убедитесь, что вы добавили тег <code>&lt;panel&gt;</code> в XML-конфигурацию и он находится внутри <code>&lt;machine&gt;</code>.</li>
+        <li><strong>Отладчик не отвечает</strong> — проверьте, что вы загружаете <code>pcx86-dbg.js</code> вместо <code>pcx86.js</code>, и что в XML присутствует компонент <code>&lt;debugger&gt;</code>.</li>
+        <li><strong>Ошибка "embedPCx86 is not defined"</strong> — убедитесь, что скрипт загружен и переменная доступна. Если вы используете отладочную версию, имя функции может отличаться (обычно <code>embedPCx86</code> сохраняется).</li>
+        <li><strong>Состояние не сохраняется</strong> — проверьте, что объект состояния не содержит циклических ссылок (JSON.stringify может их не обрабатывать). Используйте метод <code>saveState()</code>, который возвращает сериализуемый объект.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В седьмом, заключительном модуле мы рассмотрим интеграцию эмулятора с современными веб-технологиями: подключение к базам данных через API, создание многопользовательских приложений на основе эмулятора и развёртывание проекта в продакшене.
+    </div>
+
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="module5.html" class="button">← Модуль 5: BIOS и образы дисков</a>
+        <a href="module7.html" class="button">Модуль 7: Интеграция с веб-сайтом →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере» | Модуль 6: Модификация эмулятора</p>
+    </footer>
+</div>
+</body>
+</html>
