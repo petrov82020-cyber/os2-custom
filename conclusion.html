@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заключение и ресурсы. Анонс курса по Emupedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .tips-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .resource-list {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .resource-list ul {
+            margin-left: 20px;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .announce-card {
+            background: linear-gradient(135deg, #1e466e 0%, #0a2540 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .announce-card h3 {
+            color: #ffd966;
+            margin-top: 0;
+        }
+        .announce-card .button {
+            background: #ffd966;
+            color: #1e466e;
+            font-weight: bold;
+        }
+        .announce-card .button:hover {
+            background: #ffc107;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+
+    <h1>🎓 Заключение и ресурсы. Анонс нового курса</h1>
+    <div class="chapter-meta">Финальный раздел: подведение итогов, советы новичкам, альтернативные движки, литература и приглашение в мир Emupedia</div>
+
+    <p>Мы с вами прошли долгий путь — от первых экспериментов с готовой конфигурацией OS/2 1.0 до глубокого погружения в архитектуру PCx86 и создания собственных виртуальных машин. Вы научились разбирать XML-конфигурации, подключать устройства, работать с образами дисков и BIOS, а главное — диагностировать и исправлять ошибки, которые возникали на каждом этапе. Теперь вы не просто пользователь эмулятора, а человек, понимающий его внутреннее устройство.</p>
+
+    <h2>📌 Что мы изучили</h2>
+    <ul>
+        <li><strong>Архитектура PCx86</strong> — разобрали все ключевые компоненты: CPU, RAM, ROM, видео, чипсет, контроллеры дисков, клавиатуру, мышь и последовательные порты.</li>
+        <li><strong>XML-конфигурация</strong> — научились писать файлы с нуля, правильно указывать адреса памяти, пути к образам и атрибуты устройств.</li>
+        <li><strong>Среда разработки</strong> — освоили запуск эмулятора на локальном сервере и развёртывание на GitHub Pages.</li>
+        <li><strong>Работа с образами</strong> — поняли разницу между JSON и IMG-форматами, научились подключать BIOS, дискеты и жёсткие диски.</li>
+        <li><strong>Отладка</strong> — освоили инструменты разработчика и научились анализировать ошибки: <code>f.slice is not a function</code>, <code>Fault 0x0D/0x0B</code>, <code>AudioContext</code> и CORS.</li>
+        <li><strong>Модификация</strong> — добавили собственные кнопки управления, научились управлять эмулятором через JavaScript.</li>
+    </ul>
+
+    <div class="tips-box">
+        <h3>💡 Практические советы новичку</h3>
+        <ol style="margin-left: 20px;">
+            <li><strong>Всегда проверяйте пути к файлам.</strong> Большинство проблем с PCx86 связано с тем, что эмулятор не может найти BIOS, образ диска или файл компонентов. Используйте относительные пути и проверяйте вкладку Network в инструментах разработчика.</li>
+            <li><strong>Начинайте с малого.</strong> Не пытайтесь сразу запустить OS/2 или Windows 95. Сначала соберите минимальную конфигурацию (CPU, RAM, BIOS, видео) и убедитесь, что она работает. Постепенно добавляйте устройства.</li>
+            <li><strong>Используйте готовые образы с сайта PCjs.</strong> Они проверены и точно работают. Когда освоитесь, можете создавать свои образы с помощью DiskDump.</li>
+            <li><strong>Не игнорируйте консоль браузера.</strong> Ошибки в консоли — это не страшно, это подсказки. Читайте их внимательно, они почти всегда указывают на конкретную проблему.</li>
+            <li><strong>Делитесь результатами.</strong> Покажите свой эмулятор друзьям, выложите на GitHub Pages, напишите пост в соцсетях. Обратная связь помогает расти.</li>
+            <li><strong>Не бойтесь экспериментировать.</strong> Вы ничего не сломаете. Самое страшное, что может случиться — эмулятор не запустится, и вы будете искать ошибку. А это лучший способ научиться.</li>
+        </ol>
+    </div>
+
+    <h2>📚 Альтернативные движки и ресурсы для дальнейшего изучения</h2>
+    <div class="resource-list">
+        <ul>
+            <li><strong>v86</strong> — эмулятор x86-архитектуры на JavaScript и WebAssembly. Поддерживает CPU уровня Pentium 4, эмулирует VGA, IDE, SoundBlaster 16 и десятки операционных систем — от Windows 1.01 до 2000, Linux, FreeDOS и даже Android. Проект активно развивается. Попробовать можно на <a href="https://copy.sh/v86/" target="_blank">copy.sh/v86</a>.</li>
+            <li><strong>JSMESS</strong> — JavaScript-порт MESS (Multi Emulator Super System) от Jason Scott для Internet Archive. Поддерживает около 250 различных систем — от домашних компьютеров до игровых консолей. Доступен на <a href="https://archive.org" target="_blank">archive.org</a> с огромной коллекцией игр и ПО.</li>
+            <li><strong>PCE.js</strong> — эмулирует не только x86, но и Mac Plus, и Atari ST. Особого внимания заслуживает демо с Mac OS System 7, которое работает даже быстрее оригинального железа.</li>
+            <li><strong>Javatari</strong> — лучший браузерный эмулятор Atari 2600. Используется на <a href="http://www.virtualatari.org" target="_blank">Virtual Atari</a> с коллекцией более 550 игр.</li>
+            <li><strong>QEMU</strong> — быстрый и популярный эмулятор x86-платформы и процессоров. Широко используется для виртуализации и эмуляции различных систем.</li>
+            <li><strong>Bochs</strong> — более зрелый, хотя и более медленный эмулятор x86, который считается более точным в воспроизведении реального оборудования, чем QEMU.</li>
+        </ul>
+        <p><strong>Литература и документация:</strong> <a href="https://www.pcjs.org/" target="_blank">Официальный сайт PCjs</a>, <a href="https://github.com/jeffpar/pcjs" target="_blank">GitHub-репозиторий PCjs</a>, книга «自作エミュレータで学ぶx86アーキテクチャ» (Учим архитектуру x86, создавая собственный эмулятор), а также статьи на Habr и MDN Web Docs.</p>
+    </div>
+
+    <div class="announce-card">
+        <h3>🚀 Анонс следующего курса: Emupedia — эмулятор, в котором всё работает</h3>
+        <p>На протяжении всего курса мы сталкивались с проблемами, которые возникали не по нашей вине, а из-за особенностей PCx86: устаревший код, нестабильная работа с защищённым режимом, трудности с загрузкой OS/2, непонятные ошибки <code>Fault 0x0D</code> и <code>0x0B</code>. Эти неполадки забирали время и нервы.</p>
+        <p>Но есть и другой путь. Познакомьтесь с <strong>Emupedia</strong> — проектом, который ставит во главу угла <strong>порядок, стабильность и удобство пользователя</strong>.</p>
+        <p><em>«Отсутствие неупорядоченного хлама, которым не знаешь, как пользоваться»</em> — именно так можно охарактеризовать этот проект.</p>
+        <p><strong>EmuOS</strong> — фронтенд Emupedia, эмулирующий старые операционные системы прямо в браузере. При заходе на сайт пользователь может выбрать интерфейс Windows 95, 98 или ME, а также дополнительные окружения, включая стиль Windows 3.1. Это не просто статичные изображения — это полноценные рабочие среды с реальным программным обеспечением: WinAmp, Notepad, Paint, Solitaire и сотнями игр, включая Doom, Quake, Wolfenstein 3D, Tomb Raider.</p>
+        <p><strong>Почему Emupedia лучше?</strong> Полная готовность к работе, стабильная эмуляция на базе WebAssembly, интуитивно понятный интерфейс, огромная встроенная библиотека программ и игр, образовательная ценность.</p>
+        <p><strong>В новом курсе мы:</strong> разберём архитектуру EmuOS, научимся добавлять свои игры и программы, изучим возможности кастомизации, развернём Emupedia локально на GitHub Pages, сравним с PCx86 и v86, создадим свой портал ретро-компьютеров.</p>
+        <p><strong>Ссылки для старта:</strong> <a href="https://emupedia.net/beta/emuos/" target="_blank" style="color: #ffd966;">emupedia.net/beta/emuos</a> — живая демонстрация, <a href="https://github.com/zumwaltboi/-EmuOS-" target="_blank" style="color: #ffd966;">GitHub-репозиторий</a>.</p>
+        <a href="https://emupedia.net/beta/emuos/" class="button" target="_blank">🌐 Перейти на Emupedia</a>
+        <p style="margin-top: 15px; font-size: 0.9rem;">Следите за обновлениями — старт нового курса скоро!</p>
+    </div>
+
+    <div class="info-box">
+        <strong>🔑 Ключевые выводы</strong><br>
+        - Эмуляция — это не просто запуск старых программ, а глубокое понимание работы компьютера на низком уровне.<br>
+        - PCx86 — мощный, но капризный инструмент. Освоив его, вы будете готовы к любым другим эмуляторам.<br>
+        - Ошибки — это нормально. Главное — уметь их читать и исправлять.<br>
+        - Существуют более современные и стабильные альтернативы, такие как v86 и Emupedia.<br>
+        - Ваш личный ретро-музей может быть создан за несколько часов и размещён на GitHub Pages бесплатно.
+    </div>
+
+    <p style="margin-top: 30px; text-align: center;">
+        <a href="module7.html" class="button">← Вернуться к модулю 7</a>
+        <a href="index.html" class="button">На главную страницу курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере» | Заключение и ресурсы | Следующий курс: Emupedia — стабильная эмуляция без хлама</p>
+    </footer>
+</div>
+</body>
+</html>
