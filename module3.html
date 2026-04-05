@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модуль 3: Создание минимальной конфигурации XML с нуля</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+    
+    <h1>Модуль 3: Создание минимальной конфигурации XML с нуля</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~20 минут | 🎯 Цель: научиться писать собственные XML-файлы для эмулятора PCx86</div>
+    
+    <p>В предыдущем модуле мы использовали готовую конфигурацию, полученную через Save Machine. Теперь пришло время создать свою собственную виртуальную машину «с нуля» – написать XML-файл, в котором вручную опишем процессор, память, видеокарту, диски и другие компоненты. Это даст нам полный контроль и понимание того, как работает эмулятор.</p>
+    
+    <div class="info-box">
+        <strong>💡 Что такое XML-конфигурация?</strong><br>
+        XML-файл – это текстовый документ, в котором теги описывают все устройства виртуальной машины. Эмулятор PCx86 читает этот файл и создаёт соответствующие JavaScript-объекты. Вы можете редактировать XML в любом текстовом редакторе (Блокнот, VS Code).
+    </div>
+    
+    <h2>3.1. Структура минимального XML</h2>
+    <p>Любая конфигурация начинается с корневого тега <code>&lt;machine&gt;</code> и содержит дочерние теги для каждого компонента. Вот минимальный набор, достаточный для загрузки IBM PC 5150:</p>
+    <pre>&lt;machine id="my-pc" type="pcx86"&gt;
+    &lt;name&gt;Мой первый эмулятор&lt;/name&gt;
+    &lt;computer id="my-computer" name="IBM PC" buswidth="20" /&gt;
+    &lt;cpu model="8088" cycles="4770000" autostart="true" /&gt;
+    &lt;ram addr="0x00000" size="0xa0000" /&gt;
+    &lt;rom addr="0xf0000" size="0x10000" alias="0xff0000" file="bios.json5" /&gt;
+    &lt;video model="cga" memory="0x4000" screenWidth="640" screenHeight="400" /&gt;
+    &lt;fdc /&gt;
+    &lt;keyboard /&gt;
+&lt;/machine&gt;</pre>
+    <p>Этот файл описывает компьютер с процессором 8088 (4.77 МГц), 640 КБ ОЗУ, CGA-видеокартой и подключённым ПЗУ BIOS. Эмулятор запустится, но без образов дисков вы увидите только экран BASIC или сообщение об ошибке.</p>
+    
+    <h2>3.2. Подробный разбор тегов</h2>
+    
+    <h3>&lt;machine&gt;</h3>
+    <p>Корневой элемент. Обязательные атрибуты: <code>id</code> (уникальный идентификатор) и <code>type</code> (всегда <code>"pcx86"</code>). Также можно задать внешний вид: <code>border</code>, <code>pos</code>, <code>background</code>.</p>
+    
+    <h3>&lt;name&gt;</h3>
+    <p>Отображаемое название машины (появляется в интерфейсе). Необязательно, но полезно.</p>
+    
+    <h3>&lt;computer&gt;</h3>
+    <p>Определяет модель системной платы. Атрибуты: <code>id</code>, <code>name</code> (любое имя), <code>buswidth</code> (20 для XT, 24 для AT).</p>
+    
+    <h3>&lt;cpu&gt;</h3>
+    <p>Процессор. Основные атрибуты:
+        <ul>
+            <li><code>model</code> – тип: <code>"8088"</code>, <code>"80186"</code>, <code>"80286"</code>, <code>"80386"</code>.</li>
+            <li><code>cycles</code> – тактовая частота в герцах (например, <code>4770000</code> для 4.77 МГц).</li>
+            <li><code>autostart</code> – <code>"true"</code> или <code>"false"</code> (запускать ли выполнение кода сразу).</li>
+        </ul>
+    </p>
+    
+    <h3>&lt;ram&gt;</h3>
+    <p>Оперативная память. Атрибуты:
+        <ul>
+            <li><code>addr</code> – начальный физический адрес (обычно <code>0x00000</code>).</li>
+            <li><code>size</code> – размер в байтах (шестнадцатеричный). Для 640 КБ: <code>0xa0000</code>.</li>
+            <li><code>test</code> – <code>"false"</code> отключает тест памяти в BIOS (ускоряет загрузку).</li>
+        </ul>
+        Можно добавить несколько блоков RAM, например для расширенной памяти (адрес <code>0x100000</code>).
+    </p>
+    
+    <h3>&lt;rom&gt;</h3>
+    <p>ПЗУ (обычно BIOS). Атрибуты:
+        <ul>
+            <li><code>addr</code> – адрес отображения (обычно <code>0xf0000</code> для BIOS).</li>
+            <li><code>size</code> – размер ПЗУ (обычно <code>0x10000</code> = 64 КБ).</li>
+            <li><code>alias</code> – альтернативный адрес (например, <code>0xff0000</code> для совместимости).</li>
+            <li><code>file</code> – путь к JSON-файлу с образом ПЗУ.</li>
+        </ul>
+    </p>
+    
+    <h3>&lt;video&gt;</h3>
+    <p>Видеоадаптер. Атрибуты:
+        <ul>
+            <li><code>model</code> – <code>"mda"</code>, <code>"cga"</code>, <code>"ega"</code>, <code>"vga"</code>.</li>
+            <li><code>memory</code> – объём видеопамяти (для CGA достаточно <code>0x4000</code> = 16 КБ).</li>
+            <li><code>screenWidth</code>, <code>screenHeight</code> – размер canvas в пикселях (рекомендуется пропорционально исходному разрешению).</li>
+        </ul>
+        Для EGA/VGA также нужно добавить вложенный тег <code>&lt;rom&gt;</code> для ПЗУ видеокарты (адрес <code>0xc0000</code>).
+    </p>
+    
+    <h3>&lt;fdc&gt; и &lt;hdc&gt;</h3>
+    <p>Контроллеры дисков. Для FDC можно указать <code>autoMount</code> с образами дискет. Для HDC – атрибут <code>drives</code> с массивом жёстких дисков. Пример подключения образа дискеты:</p>
+    <pre>&lt;fdc autoMount="{A:{name:'MS-DOS 6.22', path:'msdos622.img'}}" /&gt;</pre>
+    <p>Для жёсткого диска:</p>
+    <pre>&lt;hdc drives="[{name:'20Mb HDD', type:2, path:'myhdd.img'}]" /&gt;</pre>
+    
+    <h3>&lt;keyboard&gt;, &lt;mouse&gt;, &lt;panel&gt;, &lt;chipset&gt;</h3>
+    <p>Эти теги необязательны, но добавляют удобство. <code>&lt;keyboard&gt;</code> можно указать раскладку (<code>model="us84"</code>). <code>&lt;mouse serial="com1" /&gt;</code> подключает мышь. <code>&lt;chipset model="5170" /&gt;</code> задаёт чипсет для AT-совместимых машин.</p>
+    
+    <h2>3.3. Создание работающей конфигурации (пример)</h2>
+    <p>Давайте создадим XML для эмуляции IBM PC 5150 с 640 КБ RAM, CGA-видео и возможностью загружать MS-DOS с дискеты. Предположим, у нас есть файлы: <code>ibm5150-bios.json5</code> (ПЗУ), <code>msdos622.img</code> (образ дискеты).</p>
+    <pre>&lt;machine id="my-ibm5150" type="pcx86" border="1" pos="center"&gt;
+    &lt;name&gt;IBM PC 5150 (MS-DOS 6.22)&lt;/name&gt;
+    &lt;computer id="pc5150" name="IBM PC" buswidth="20" /&gt;
+    &lt;cpu model="8088" cycles="4770000" autostart="true" /&gt;
+    &lt;ram addr="0x00000" size="0xa0000" /&gt;
+    &lt;rom addr="0xf0000" size="0x10000" alias="0xff0000" file="ibm5150-bios.json5" /&gt;
+    &lt;video model="cga" memory="0x4000" screenWidth="640" screenHeight="400" /&gt;
+    &lt;fdc autoMount="{A:{name:'MS-DOS 6.22', path:'msdos622.img'}}" /&gt;
+    &lt;keyboard model="us84" /&gt;
+&lt;/machine&gt;</pre>
+    <p>Сохраните этот XML как <code>my-machine.xml</code>. Затем создайте HTML-страницу, как в модуле 2, и загрузите её на сервер вместе с <code>pcx86.js</code> (скачанным с сайта PCjs). Убедитесь, что файлы BIOS и образ диска лежат по указанным путям.</p>
+    
+    <div class="warning-box">
+        <strong>⚠️ Где взять образы BIOS и дисков?</strong><br>
+        BIOS-файлы (в формате JSON5) можно скачать с сайта PCjs по прямым ссылкам (например, <code>/machines/pcx86/ibm/5150/rom/bios/1982-04-24/BIOS.json5</code>). Образы дискет – также с PCjs или создать самостоятельно с помощью утилит вроде WinImage. Но для учебных целей проще использовать готовые образы с сайта.
+    </div>
+    
+    <h2>3.4. Тестирование и отладка</h2>
+    <p>После того как XML готов, поместите его в одну папку с <code>pcx86.js</code> и HTML-файлом. Откройте HTML в браузере. Если эмулятор не запускается, откройте консоль разработчика (F12) и посмотрите на ошибки. Частые проблемы:</p>
+    <ul>
+        <li><strong>404 Not Found</strong> – отсутствует файл, указанный в <code>file</code> или <code>path</code>. Проверьте пути.</li>
+        <li><strong>Invalid XML</strong> – синтаксическая ошибка (не закрыт тег, пропущены кавычки). Валидируйте XML через онлайн-сервисы.</li>
+        <li><strong>Нет изображения</strong> – возможно, неправильно указан <code>screenWidth/Height</code> или модель видео.</li>
+    </ul>
+    
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Напишите XML-конфигурацию для IBM PC AT (80286) с 1 МБ RAM, EGA-видео и жёстким диском 20 МБ (используйте образ <code>ibm5170-bios.json5</code> и <code>hd20mb.img</code>).<br>
+        2. Подключите в качестве дисковода A образ дискеты с MS-DOS 3.30.<br>
+        3. Загрузите эту конфигурацию в эмулятор и убедитесь, что система загружается.<br>
+        4. Попробуйте изменить частоту процессора на 8 МГц и посмотреть, как изменится скорость эмуляции.
+    </div>
+    
+    <h2>3.5. Ссылки на дополнительные ресурсы</h2>
+    <ul>
+        <li><a href="https://www.pcjs.org/machines/pcx86/" target="_blank">Каталог машин PCx86</a> – множество готовых XML-конфигураций, которые можно изучать.</li>
+        <li><a href="https://github.com/jeffpar/pcjs/tree/master/machines/pcx86" target="_blank">Исходные XML-файлы на GitHub</a> – примеры для всех поддерживаемых машин.</li>
+        <li><a href="https://www.pcjs.org/disks/" target="_blank">Архив образов дискет и жёстких дисков</a>.</li>
+    </ul>
+    
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В четвёртом модуле мы научимся подключать дополнительные устройства: клавиатуру с нестандартной раскладкой, мышь, последовательные порты, а также настраивать несколько дисководов и жёстких дисков. Вы сможете создавать эмуляторы с полноценной периферией.
+    </div>
+    
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="module2.html" class="button">← Модуль 2: Среда и первый запуск</a>
+        <a href="module4.html" class="button">Модуль 4: Подключение устройств →</a>
+    </p>
+    
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере» | Модуль 3: XML-конфигурация</p>
+    </footer>
+</div>
+</body>
+</html>
