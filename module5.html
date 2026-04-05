@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модуль 5: Работа с BIOS и образами — пути к ПЗУ, загрузка ОС</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="emu_pcx86.html" class="back-link">← На главную курса</a>
+
+    <h1>Модуль 5: Работа с BIOS и образами — пути к ПЗУ, загрузка ОС</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~20 минут | 🎯 Цель: научиться правильно указывать пути к ПЗУ, монтировать образы дисков и понимать процесс загрузки операционной системы в PCx86</div>
+
+    <p>В предыдущих модулях мы собрали виртуальную машину и подключили все устройства. Однако без программного обеспечения — BIOS и операционной системы — наш эмулятор остаётся просто «железом». В этом модуле мы разберёмся, как работают образы ПЗУ (ROM) и дисков (FDD/HDD), какие форматы поддерживает PCx86, и как правильно настроить загрузку операционной системы.</p>
+
+    <div class="info-box">
+        <strong>💡 Ключевая идея</strong><br>
+        Эмулятор PCx86 не работает с обычными бинарными файлами (BIN/IMG) напрямую — ему требуются специальные JSON-образы, которые содержат не только данные, но и служебную информацию (геометрию диска, CRC и т.д.). Однако вы можете использовать как готовые JSON-образы с сайта PCjs, так и конвертировать собственные IMG-образы с помощью утилиты <strong>DiskDump</strong>.
+    </div>
+
+    <h2>5.1. Образы ПЗУ (ROM) — BIOS и видеоПЗУ</h2>
+    <p>Компонент <code>&lt;rom&gt;</code> в PCx86 отвечает за загрузку образов постоянного запоминающего устройства. Чаще всего это системный BIOS (адрес 0xF0000) и видеоПЗУ (адрес 0xC0000).</p>
+
+    <h3>5.1.1. Атрибуты тега <code>&lt;rom&gt;</code></h3>
+    <ul>
+        <li><strong>addr</strong> — физический адрес, по которому ПЗУ отображается в памяти (обязательный).</li>
+        <li><strong>size</strong> — размер ПЗУ в байтах (обычно 0x10000 = 64 КБ для системного BIOS).</li>
+        <li><strong>alias</strong> — альтернативный адрес (например, 0xFF0000 для совместимости с сегментацией).</li>
+        <li><strong>file</strong> — путь к JSON-файлу с образом ПЗУ (обязательный).</li>
+        <li><strong>notify</strong> — идентификатор компонента, который должен быть уведомлён о загрузке ПЗУ (используется для видеокарт).</li>
+    </ul>
+    <p>Пример подключения системного BIOS для IBM PC AT:</p>
+    <pre>&lt;rom id="romBIOS" addr="0xf0000" size="0x10000" alias="0xff0000" file="/machines/pcx86/ibm/5170/rom/bios/1985-11-15/ATBIOS-REV3.json5" /&gt;</pre>
+
+    <h3>5.1.2. Формат JSON5 для образов ПЗУ</h3>
+    <p>PCjs использует формат <strong>JSON5</strong> (расширение <code>.json5</code>) для хранения образов ПЗУ. JSON5 — это надмножество JSON, позволяющее использовать комментарии, необязательные кавычки и другие удобства для ручного редактирования[reference:0]. Структура файла представляет собой массив 32-битных значений (обычно в шестнадцатеричном формате), которые соответствуют байтам ПЗУ. Например:</p>
+    <pre>[
+    0xEA, 0x5B, 0xE0, 0x00, 0xF0,  // JMP &F000:E05B
+    0x31, 0xC0, 0x8E, 0xD0, 0xBC,  // XOR AX,AX; MOV SS,AX; MOV SP,...
+    ...
+]</pre>
+    <p>Вы можете скачать готовые образы BIOS с сайта PCjs или создать свои с помощью утилиты <strong>FileImage.js</strong>, которая конвертирует бинарные файлы в JSON5[reference:1].</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Без правильно подключённого образа BIOS машина не запустится. Убедитесь, что путь к файлу указан верно и сам файл не повреждён. Если BIOS отсутствует, в консоли браузера появится ошибка 404.
+    </div>
+
+    <h2>5.2. Загрузка операционной системы (boot process)</h2>
+    <p>Процесс загрузки в IBM PC-совместимых компьютерах стандартизирован:</p>
+    <ol>
+        <li>После включения питания процессор начинает выполнение кода по адресу 0xFFFF0 (в ПЗУ BIOS).</li>
+        <li>BIOS выполняет POST (Power-On Self Test), инициализирует оборудование и ищет загрузочное устройство (дискету, жёсткий диск).</li>
+        <li>Загрузчик BIOS считывает первый сектор (boot sector) с устройства и передаёт ему управление.</li>
+        <li>Boot sector загружает в память основную часть операционной системы (например, MS-DOS или OS/2).</li>
+    </ol>
+    <p>В PCx86 этот процесс полностью эмулируется. Всё, что нужно сделать разработчику — подключить образ диска с правильной загрузочной записью.</p>
+
+    <h2>5.3. Образы гибких дисков (FDD)</h2>
+    <p>PCx86 поддерживает образы дискет в двух форматах: <strong>JSON</strong> (рекомендуемый) и <strong>IMG</strong> (бинарный). Однако для работы с IMG-образами требуется дополнительная настройка, поэтому мы сосредоточимся на JSON.</p>
+
+    <h3>5.3.1. Формат JSON для образов дискет</h3>
+    <p>Согласно документации PCjs, каждый JSON-образ дискеты представляет собой массив объектов Cylinder, где каждый Cylinder — это массив Track (по одному на каждую головку), а каждый Track — массив Sector. Каждый сектор содержит минимальный набор свойств[reference:2]:</p>
+    <pre>{
+    "sector": 1,        // идентификатор сектора (1-18 для 1.44 МБ)
+    "length": 512,      // размер сектора в байтах (обычно 512)
+    "data": [0xEB, ...] // массив байтов данных (или 32-битных значений)
+}</pre>
+    <p>Такой формат позволяет эмулировать нестандартные дискеты (например, с секторами не по 512 байт или с ошибками CRC), что необходимо для работы с защищённым от копирования ПО[reference:3].</p>
+
+    <h3>5.3.2. Подключение образа дискеты в XML</h3>
+    <p>Для автоматической загрузки дискеты при старте используйте атрибут <code>autoMount</code> компонента <code>&lt;fdc&gt;</code>:</p>
+    <pre>&lt;fdc autoMount="{A:{name:'MS-DOS 6.22', path:'msdos622.json'}}" /&gt;</pre>
+    <p>Если нужно предоставить пользователю выбор из нескольких образов, используйте тег <code>&lt;disk&gt;</code> внутри <code>&lt;listDisks&gt;</code>:</p>
+    <pre>&lt;fdc&gt;
+    &lt;control type="list" binding="listDisks"&gt;
+        &lt;disk id="MSDOS622" name="MS-DOS 6.22" /&gt;
+        &lt;disk id="UTILS" name="Утилиты" /&gt;
+    &lt;/control&gt;
+&lt;/fdc&gt;</pre>
+
+    <h2>5.4. Образы жёстких дисков (HDD)</h2>
+    <p>Жёсткие диски в PCx86 также используют JSON-формат, но с более сложной структурой. Образ содержит не только секторы, но и параметры геометрии (цилиндры, головки, секторы на дорожку).</p>
+
+    <h3>5.4.1. Формат JSON для жёстких дисков</h3>
+    <p>Типичный JSON-образ жёсткого диска включает поле <code>"disk"</code> с описанием геометрии и поле <code>"tracks"</code> с массивом дорожек. Пример из репозитория PCjs:</p>
+    <pre>{
+    "disk": {
+        "cylinders": 306,
+        "heads": 4,
+        "sectors": 17,
+        "model": "ST-225"
+    },
+    "tracks": [ ... ] // массив данных секторов
+}</pre>
+    <p>Вы можете создавать такие образы с помощью утилиты <strong>DiskDump</strong>, которая конвертирует бинарные IMG-образы в JSON[reference:4].</p>
+
+    <h3>5.4.2. Подключение жёсткого диска в XML</h3>
+    <p>Используйте компонент <code>&lt;hdc&gt;</code> с атрибутом <code>drives</code>:</p>
+    <pre>&lt;hdc id="hdcAT" type="AT" drives="[{name:'20Mb Hard Disk', type:2, path:'hdd20mb.json'}]" /&gt;</pre>
+    <p>Параметр <code>type</code> определяет геометрию диска согласно таблице типов в PCjs. Для PC AT тип 2 соответствует 20-мегабайтному диску (615 цилиндров, 4 головки, 17 секторов).</p>
+
+    <h2>5.5. Конвертация бинарных образов в JSON</h2>
+    <p>Если у вас есть собственный IMG-образ дискеты или жёсткого диска, его можно конвертировать в JSON с помощью утилиты <strong>DiskDump</strong> (входит в состав PCjs)[reference:5].</p>
+    <p>Пример команды для конвертации IMG-образа дискеты:</p>
+    <pre>node modules/diskdump/bin/diskdump --disk=myimage.img --format=json --output=myimage.json</pre>
+    <p>Для жёсткого диска:</p>
+    <pre>node modules/diskdump/bin/diskdump --disk=hdd.img --format=json --output=hdd.json</pre>
+    <p>Также DiskDump может создавать образы из папок с файлами, что удобно для сборки собственных загрузочных дискет[reference:6].</p>
+
+    <div class="info-box">
+        <strong>📌 Примечание:</strong> Утилита DiskDump требует установленной платформы Node.js. Если вы не хотите устанавливать Node.js, вы можете использовать онлайн-версию PCjs для конвертации: загрузите IMG-образ в эмулятор и нажмите кнопку Save — файл сохранится в JSON-формате.
+    </div>
+
+    <h2>5.6. Практические примеры</h2>
+
+    <h3>Пример 1: Загрузка MS-DOS 6.22 с дискеты</h3>
+    <pre>&lt;machine id="my-pc" type="pcx86"&gt;
+    &lt;name&gt;IBM PC with MS-DOS 6.22&lt;/name&gt;
+    &lt;computer id="pc" name="IBM PC" buswidth="20" /&gt;
+    &lt;cpu model="8088" cycles="4770000" autostart="true" /&gt;
+    &lt;ram addr="0x00000" size="0xa0000" /&gt;
+    &lt;rom addr="0xf0000" size="0x10000" alias="0xff0000" file="pcbios.json5" /&gt;
+    &lt;video model="cga" memory="0x4000" screenWidth="640" screenHeight="400" /&gt;
+    &lt;fdc autoMount="{A:{name:'MS-DOS 6.22', path:'msdos622.json'}}" /&gt;
+    &lt;keyboard model="us84" /&gt;
+&lt;/machine&gt;</pre>
+    <p>При запуске эмулятор загрузится с дискеты A: и вы увидите приглашение MS-DOS.</p>
+
+    <h3>Пример 2: Загрузка OS/2 1.0 с жёсткого диска</h3>
+    <pre>&lt;machine id="os2-machine" type="pcx86"&gt;
+    &lt;name&gt;IBM PC AT with OS/2 1.0&lt;/name&gt;
+    &lt;computer id="at" name="IBM PC AT" buswidth="24" /&gt;
+    &lt;cpu model="80286" cycles="8000000" autostart="true" /&gt;
+    &lt;ram addr="0x00000" size="0xa0000" /&gt;
+    &lt;ram addr="0x100000" size="0x160000" /&gt;
+    &lt;rom addr="0xf0000" size="0x10000" alias="0xff0000" file="atbios.json5" /&gt;
+    &lt;video model="ega" memory="0x20000" screenWidth="1280" screenHeight="700"&gt;
+        &lt;rom addr="0xc0000" size="0x4000" file="egabios.json5" notify="videoEGA" /&gt;
+    &lt;/video&gt;
+    &lt;hdc type="AT" drives="[{name:'OS/2 1.0', type:2, path:'os2hdd.json'}]" /&gt;
+    &lt;keyboard model="us84" /&gt;
+&lt;/machine&gt;</pre>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Скачайте образ системного BIOS для IBM PC 5150 (например, <code>PCBIOS-REV1.json5</code>) с сайта PCjs и подключите его в своей конфигурации.<br>
+        2. Создайте образ дискеты с программой на BASIC с помощью DiskDump (или используйте готовый образ) и настройте автозагрузку.<br>
+        3. Настройте эмулятор PC AT так, чтобы он загружался с жёсткого диска (используйте образ OS/2 1.0 с сайта PCjs).<br>
+        4. Попробуйте сконвертировать свой IMG-образ в JSON с помощью DiskDump и загрузить его в эмулятор.
+    </div>
+
+    <h2>5.7. Устранение неполадок</h2>
+    <ul>
+        <li><strong>Ошибка 404 при загрузке BIOS</strong> — проверьте путь к файлу. Если файл лежит в подпапке, укажите полный относительный путь (например, <code>file="rom/atbios.json5"</code>).</li>
+        <li><strong>Non-system disk or disk error</strong> — образ дискеты не загрузочный. Убедитесь, что дискета содержит загрузочный сектор (например, образ MS-DOS).</li>
+        <li><strong>Ошибка "Invalid JSON"</strong> — файл образа повреждён или имеет неверную структуру. Попробуйте переконвертировать его с помощью DiskDump.</li>
+        <li><strong>Эмулятор не видит жёсткий диск</strong> — проверьте атрибуты <code>type</code> и <code>path</code>. Для PC AT обязательно укажите <code>type="AT"</code> в теге <code>&lt;hdc&gt;</code>.</li>
+    </ul>
+
+    <h2>5.8. Ссылки на ресурсы</h2>
+    <ul>
+        <li><a href="https://www.pcjs.org/tools/" target="_blank">PCjs Tools</a> — страница с утилитами DiskDump и FileImage.</li>
+        <li><a href="https://github.com/jeffpar/pcjs/tree/master/modules/diskdump" target="_blank">DiskDump на GitHub</a> — исходный код и документация.</li>
+        <li><a href="https://www.pcjs.org/software/pcx86/sys/" target="_blank">Каталог образов операционных систем</a> — готовые JSON-образы для PCx86.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В шестом модуле мы научимся модифицировать эмулятор: добавлять новые кнопки, менять поведение устройств и даже писать собственные компоненты на JavaScript. Вы сможете адаптировать PCx86 под любые, даже самые нестандартные задачи.
+    </div>
+
+    <p style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="module4.html" class="button">← Модуль 4: Подключение устройств</a>
+        <a href="module6.html" class="button">Модуль 6: Модификация эмулятора →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс «Создание виртуальной машины в браузере» | Модуль 5: BIOS и образы дисков</p>
+    </footer>
+</div>
+</body>
+</html>
