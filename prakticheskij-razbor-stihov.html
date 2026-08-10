@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практический разбор библейских стихов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif', 'Times New Roman', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #ffffff;
+            max-width: 820px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin: 0 0 0.2rem 0; }
+        .subtitle { font-size: 1.3rem; font-weight: 400; color: #444; margin-bottom: 0.8rem; border-bottom: 1px solid #eee; padding-bottom: 0.7rem; }
+        .nav-links { font-size: 0.95rem; margin: 1rem 0 2rem 0; padding: 0.5rem 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .nav-links a { color: #1a5b8c; text-decoration: none; border-bottom: 1px dotted #1a5b8c; }
+        .nav-links a:hover { border-bottom: 1px solid #1a5b8c; }
+        .nav-links .sep { margin: 0 0.5rem; color: #aaa; }
+        h2 { font-size: 1.8rem; font-weight: 600; margin: 1.8rem 0 0.8rem 0; }
+        h3 { font-size: 1.4rem; font-weight: 600; margin: 1.5rem 0 0.6rem 0; }
+        h4 { font-size: 1.2rem; font-weight: 600; margin: 1.2rem 0 0.4rem 0; }
+        p { margin: 0 0 1.2rem 0; }
+        ul, ol { margin: 0.8rem 0 1.2rem 1.8rem; }
+        li { margin-bottom: 0.3rem; }
+        .verse-block { margin: 2.5rem 0; padding-top: 0.5rem; border-top: 2px solid #eaeaea; }
+        .verse-block:first-of-type { border-top: none; padding-top: 0; }
+        .lang-hebrew {
+            font-family: 'SBL Hebrew', 'Cardo', 'Noto Serif Hebrew', 'Arial Unicode MS', serif;
+            font-size: 1.15em;
+            line-height: 1.9;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+        .lang-hebrew-inline {
+            font-family: 'SBL Hebrew', 'Cardo', 'Noto Serif Hebrew', 'Arial Unicode MS', serif;
+            font-size: 1.05em;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+        .translit { font-style: italic; color: #444; }
+        .translation { font-style: italic; color: #222; margin-top: 0.2rem; }
+        .word-list { margin: 0.5rem 0 1rem 1.5rem; }
+        .word-list li { margin-bottom: 0.2rem; }
+        .analysis { background: #f8f9fa; padding: 0.8rem 1.2rem; margin: 0.8rem 0; border-radius: 4px; }
+        .analysis strong { font-weight: 600; }
+        a { color: #1a5b8c; text-decoration: none; border-bottom: 1px dotted #1a5b8c; }
+        a:hover { border-bottom: 1px solid #1a5b8c; }
+        hr { border: 0; border-top: 1px solid #ddd; margin: 2rem 0; }
+        @media (max-width: 640px) {
+            body { font-size: 16px; padding: 0 1rem; }
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.1rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            .lang-hebrew { font-size: 1.1em; }
+            .lang-hebrew-inline { font-size: 1.0em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- НАВИГАЦИЯ ВВЕРХУ -->
+    <div class="nav-links">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="alfavitnyj-slovar-ukazatel.html">Предыдущая статья: Алфавитный словарь-указатель</a>
+    </div>
+
+    <h1>Практический разбор библейских стихов</h1>
+    <p class="subtitle">Применение структурного метода к текстам Танаха</p>
+
+    <p>В предыдущих статьях был изложен теоретический фундамент структурного анализа и представлен алфавитный словарь-указатель. Теперь мы переходим к непосредственному применению метода на конкретных библейских стихах. Каждый разбор включает:</p>
+    <ul>
+        <li>оригинальный еврейский текст с огласовками;</li>
+        <li>транслитерацию и перевод;</li>
+        <li>перечень уже известных слов (со ссылками на номера из словаря);</li>
+        <li>анализ новых слов с разбором корня, ячейки и этимологией.</li>
+    </ul>
+    <p>Это демонстрирует, как системный подход позволяет понимать даже те лексемы, которые не были заранее изучены.</p>
+
+    <!-- ===== СТИХ 1 ===== -->
+    <div class="verse-block">
+        <h3>1. Исайя 1:18</h3>
+        <p class="lang-hebrew">לְכוּ־נָ֛א וְנִוָּֽכְחָ֖ה יֹאמַ֣ר יְהוָ֑ה</p>
+        <p class="translit">Леху-на ве-ниввахá йомáр Адонáй.</p>
+        <p class="translation">«Придите — и рассудим, — говорит Господь.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">לְכוּ</span> (леху́) — №39. <span class="lang-hebrew-inline">הלך</span> (hалах) – идти</li>
+            <li><span class="lang-hebrew-inline">נָא</span> (на) — №82. <span class="lang-hebrew-inline">נא</span> (на) – побудительная частица</li>
+            <li><span class="lang-hebrew-inline">יֹאמַר</span> (йома́р) — №8. <span class="lang-hebrew-inline">אמר</span> (амар) – говорить</li>
+            <li><span class="lang-hebrew-inline">יְהוָה</span> (Адона́й) — №3. <span class="lang-hebrew-inline">אדני</span> (Адонай) – Господь</li>
+        </ul>
+
+        <h4>Незнакомое слово</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">וְנִוָּֽכְחָה</span> (ве-ниввахá)</strong> — Корень <em>w-k-ḥ</em> (Вав-Каф-Хет). Вав – связь, Хет – жизненная энергия, ограда. Ячейка W-Ḥ (связь + энергия) с внедрённым Каф (сила, инструмент) – «энергия связи, направленная на выяснение». Возможное значение – «рассудим, докажем». Стержень Хет.</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 2 ===== -->
+    <div class="verse-block">
+        <h3>2. Псалом 145:1 (алфавитный)</h3>
+        <p class="lang-hebrew">אֲרוֹמִמְךָ֣ אֱלוֹהַ֣י הַמֶּ֑לֶךְ וַאֲבָֽרְכָ֖ה שִׁמְךָ֣ לְעוֹלָ֥ם וָעֶֽד׃</p>
+        <p class="translit">Аромимхá Элоhай hа-мéлех ва-авархá шимхá ле-олáм ва-эд.</p>
+        <p class="translation">«Превознесу Тебя, Боже мой, Царь, и благословлю имя Твоё во веки веков.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">וַאֲבָֽרְכָה</span> (ва-авархá) — №23. <span class="lang-hebrew-inline">ברך</span> (барах) – благословлять</li>
+            <li><span class="lang-hebrew-inline">שִׁמְךָ</span> (шимхá) — №135. <span class="lang-hebrew-inline">שם</span> (шем) – имя</li>
+            <li><span class="lang-hebrew-inline">לְעוֹלָם</span> (ле-олáм) — №95. <span class="lang-hebrew-inline">עולם</span> (олам) – вечность</li>
+            <li><span class="lang-hebrew-inline">וָעֶד</span> (ва-эд) — №93. <span class="lang-hebrew-inline">עד</span> (ад) – вечность, до</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">אֲרוֹמִמְךָ</span> (аромимхá)</strong> — Корень <em>r-w-m</em> (Реш-Вав-Мем). Реш – пространственный стержень (высота), Вав – связь, Мем – материя. Ячейка R-M (высокий) с внедрённым Вав – «поднимать, превозносить». См. <span class="lang-hebrew-inline">רום</span> (рам) – высокий.</p>
+            <p><strong><span class="lang-hebrew-inline">אֱלוֹהַ</span> (Элоhа)</strong> — Корень <em>’-l-h</em> (Алеф-Ламед-Хей). Алеф – воля, Ламед – направление, Хей – бытие. Ячейка ’-L (воля + направление) с модификатором Хей – «Тот, к Кому направлена воля, Сущий».</p>
+            <p><strong><span class="lang-hebrew-inline">הַמֶּלֶךְ</span> (hа-мéлех)</strong> — Корень <em>m-l-k</em> (Мем-Ламед-Каф). Мем – материя/власть, Ламед – направление, Каф – сила/инструмент. Ячейка M-L (власть + направление) с модификатором Каф – «власть, осуществляемая через силу», «царствовать».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 3 ===== -->
+    <div class="verse-block">
+        <h3>3. Притчи 4:10</h3>
+        <p class="lang-hebrew">שְׁמַ֣ע בְּ֭נִי וְקַ֣ח אֲמָרָ֑י וְיִרְבּ֥וּ לְ֝ךָ֗ שְׁנ֣וֹת חַיִּֽים׃</p>
+        <p class="translit">Шма бэни́ ве-ках амара́й ве-йирбу́ леха́ шно́т хайи́м.</p>
+        <p class="translation">«Слушай, сын мой, и прими слова мои, и умножатся тебе лета жизни.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">שְׁמַע</span> (шма) — №138. <span class="lang-hebrew-inline">שמע</span> (шема) – слушай</li>
+            <li><span class="lang-hebrew-inline">בְּנִי</span> (бэни́) — №15. <span class="lang-hebrew-inline">בן</span> (бэн) – сын</li>
+            <li><span class="lang-hebrew-inline">אֲמָרָי</span> (амара́й) — №8. <span class="lang-hebrew-inline">אמר</span> (амар) – слова</li>
+            <li><span class="lang-hebrew-inline">וְיִרְבּוּ</span> (ве-йирбу́) — №121. <span class="lang-hebrew-inline">רב</span> (рав) – множество, умножение</li>
+            <li><span class="lang-hebrew-inline">לְךָ</span> (леха́) — №67. <span class="lang-hebrew-inline">לְ־</span> (ле-) – к, для</li>
+            <li><span class="lang-hebrew-inline">שְׁנוֹת</span> (шно́т) — №139. <span class="lang-hebrew-inline">שנה</span> (шана) – годы</li>
+            <li><span class="lang-hebrew-inline">חַיִּים</span> (хайи́м) — №45. <span class="lang-hebrew-inline">חי</span> (хай) – жизнь</li>
+        </ul>
+
+        <h4>Незнакомое слово</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">וְקַח</span> (ве-ках)</strong> — Корень <em>l-q-ḥ</em> (Ламед-Коф-Хет). Ламед – направление, Коф – поток, Хет – энергия. Ячейка L-Q (направление + поток) с модификатором Хет – «брать, принимать» (направление потока энергии к себе).</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 4 ===== -->
+    <div class="verse-block">
+        <h3>4. Псалом 146:1</h3>
+        <p class="lang-hebrew">הַלְלִ֣י נַ֭פְשִׁי אֶת־יְהוָֽה׃</p>
+        <p class="translit">hалели́ нафши́ эт-Адона́й.</p>
+        <p class="translation">«Хвали, душа моя, Господа.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">הַלְלִי</span> (hалели́) — №40. <span class="lang-hebrew-inline">הלל</span> (hалель) – хвалить</li>
+            <li><span class="lang-hebrew-inline">נַפְשִׁי</span> (нафши́) — №88. <span class="lang-hebrew-inline">נפש</span> (нефеш) – душа</li>
+            <li><span class="lang-hebrew-inline">אֶת</span> (эт) — №13. <span class="lang-hebrew-inline">את</span> – частица дополнения</li>
+            <li><span class="lang-hebrew-inline">יְהוָה</span> (Адона́й) — №3</li>
+        </ul>
+        <p><em>Все слова знакомы (100%). Это идеальный стих для начала.</em></p>
+    </div>
+
+    <!-- ===== СТИХ 5 ===== -->
+    <div class="verse-block">
+        <h3>5. Притчи 1:8</h3>
+        <p class="lang-hebrew">שְׁמַ֣ע בְּ֭נִי מוּסַ֣ר אָבִ֑יךָ וְאַל־תִּ֝טֹּ֗שׁ תּוֹרַ֥ת אִמֶּֽךָ׃</p>
+        <p class="translit">Шма бэни́ мусáр ави́ха ве-аль тито́ш торáт имéха.</p>
+        <p class="translation">«Слушай, сын мой, наставление отца твоего, и не оставляй учения матери твоей.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">שְׁמַע</span> (шма) — №138</li>
+            <li><span class="lang-hebrew-inline">בְּנִי</span> (бэни́) — №15</li>
+            <li><span class="lang-hebrew-inline">אָבִיךָ</span> (ави́ха) — №1. <span class="lang-hebrew-inline">אב</span> (ав) – отец</li>
+            <li><span class="lang-hebrew-inline">תּוֹרַת</span> (торáт) — №141. <span class="lang-hebrew-inline">תורה</span> (тора) – учение</li>
+            <li><span class="lang-hebrew-inline">אִמֶּךָ</span> (имéха) — <span class="lang-hebrew-inline">אֵם</span> (эм) – мать (упомянута в статье «Дыхание жизни»; пока не имеет номера в словаре, но известна)</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">מוּסַר</span> (мусáр)</strong> — Корень <em>y-s-r</em> (Йод-Самех-Реш). Йод – импульс, Самех – опора, Реш – стержень (распространение). Ячейка S-R (опора + распространение) с инициирующим Йод – «направленная опора», «наставление». См. <span class="lang-hebrew-inline">יסר</span> (ясар) – наставлять.</p>
+            <p><strong><span class="lang-hebrew-inline">אַל</span> (аль)</strong> — Частица отрицания <em>’-l</em> (Алеф-Ламед). Алеф – воля, Ламед – направление. Ячейка ’-L – «воля, направленная на запрет».</p>
+            <p><strong><span class="lang-hebrew-inline">תִּטֹּשׁ</span> (тито́ш)</strong> — Корень <em>n-ṭ-sh</em> (Нун-Тет-Шин). Нун – связь/продолжение, Тет – скрытая циркуляция, Шин – огонь. Ячейка N-Ṭ (связь + скрытое) с модификатором Шин – «прерывать связь», «оставлять».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 6 ===== -->
+    <div class="verse-block">
+        <h3>6. Исайя 1:2</h3>
+        <p class="lang-hebrew">שִׁמְע֤וּ שָׁמַ֨יִם֙ וְהַֽאֲזִ֣ינִי אֶ֔רֶץ כִּ֥י יְהוָ֖ה דִּבֵּ֑ר</p>
+        <p class="translit">Шимъу́ шама́йим ве-hаази́ни э́рец ки Адона́й диббе́р.</p>
+        <p class="translation">«Слушайте, небеса, и внимай, земля, потому что Господь говорит.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">שִׁמְעוּ</span> (шимъу́) — №138</li>
+            <li><span class="lang-hebrew-inline">שָׁמַיִם</span> (шама́йим) — №137. <span class="lang-hebrew-inline">שמים</span> – небеса</li>
+            <li><span class="lang-hebrew-inline">יְהוָה</span> (Адона́й) — №3</li>
+            <li><span class="lang-hebrew-inline">דִּבֵּר</span> (диббе́р) — №29. <span class="lang-hebrew-inline">דבר</span> (давар) – говорить</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">וְהַאֲזִינִי</span> (ве-hаази́ни)</strong> — Корень <em>’-z-n</em> (Алеф-Зайн-Нун). Алеф – воля, Зайн – различение, Нун – связь/постоянство. Ячейка ’-Z (воля + различение) с модификатором Нун – «внимать, приклонять ухо». От <span class="lang-hebrew-inline">אוזן</span> (озен) – ухо.</p>
+            <p><strong><span class="lang-hebrew-inline">אֶרֶץ</span> (э́рец)</strong> — Корень <em>’-r-ṣ</em> (Алеф-Реш-Цади). Алеф – воля, Реш – пространственный стержень, Цади – форма/цель. Ячейка ’-R (инициированное распространение) с модификатором Цади – «оформленная земля, твердь».</p>
+            <p><strong><span class="lang-hebrew-inline">כִּי</span> (ки)</strong> — Союз <em>k-y</em> (Каф-Йод). Каф – подобие/сила, Йод – импульс. Причинный союз «потому что, ибо».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 7 ===== -->
+    <div class="verse-block">
+        <h3>7. Бытие 1:3</h3>
+        <p class="lang-hebrew">וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃</p>
+        <p class="translit">Ва-йо́мер Элоhи́м йеhи́ ор ва-йеhи́-ор.</p>
+        <p class="translation">«И сказал Бог: да будет свет. И стал свет.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">וַיֹּאמֶר</span> (ва-йо́мер) — №8. <span class="lang-hebrew-inline">אמר</span> + <span class="lang-hebrew-inline">ו</span></li>
+            <li><span class="lang-hebrew-inline">יְהִי</span> (йеhи́) — №38. <span class="lang-hebrew-inline">היה</span> (hайа) – быть</li>
+            <li><span class="lang-hebrew-inline">אוֹר</span> (ор) — №5. <span class="lang-hebrew-inline">אור</span> – свет</li>
+            <li><span class="lang-hebrew-inline">וַיְהִי</span> (ва-йеhи́) — №38</li>
+        </ul>
+
+        <h4>Незнакомое слово</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">אֱלֹהִים</span> (Элоhи́м)</strong> — Корень <em>’-l-h</em> (см. Элоhа). Множественное число от <span class="lang-hebrew-inline">אלוה</span> (Элоhа) – «Бог, Всесильный».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 8 ===== -->
+    <div class="verse-block">
+        <h3>8. Псалом 26:8</h3>
+        <p class="lang-hebrew">יְֽהוָ֗ה אָהַ֭בְתִּי מְע֣וֹן בֵּיתֶ֑ךָ וּ֝מָק֗וֹם מִשְׁכַּ֥ן כְּבוֹדֶֽךָ׃</p>
+        <p class="translit">Адона́й аhа́вти ме’о́н бэйте́ха у-мако́м мишка́н кеводе́ха.</p>
+        <p class="translation">«Господи! возлюбил я обитель дома Твоего и место жилища славы Твоей.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">יְהוָה</span> (Адона́й) — №3</li>
+            <li><span class="lang-hebrew-inline">אָהַבְתִּי</span> (аhа́вти) — №4. <span class="lang-hebrew-inline">אהב</span> (аhав) – любить</li>
+            <li><span class="lang-hebrew-inline">בֵּיתֶךָ</span> (бэйте́ха) — <span class="lang-hebrew-inline">בית</span> (байт) – дом (от ячейки B-Y-T; в списке отсутствует, но <span class="lang-hebrew-inline">בְּ־</span> есть как №14)</li>
+            <li><span class="lang-hebrew-inline">כְּבוֹדֶךָ</span> (кеводе́ха) — №62. <span class="lang-hebrew-inline">כבוד</span> (кавод) – слава</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">מְעוֹן</span> (ме’о́н)</strong> — Корень <em>‘-w-n</em> (Айн-Вав-Нун). Айн – интенсивность/время, Вав – связь, Нун – постоянство. Ячейка ‘-W (интенсивность + связь) с модификатором Нун – «обитель, пристанище» (место постоянного пребывания).</p>
+            <p><strong><span class="lang-hebrew-inline">מָקוֹם</span> (мако́м)</strong> — Корень <em>q-w-m</em> (Коф-Вав-Мем). Коф – поток, Вав – связь, Мем – материя/место. Ячейка Q-M (поток + материя) – «место» (от <span class="lang-hebrew-inline">קום</span> – вставать, стоять).</p>
+            <p><strong><span class="lang-hebrew-inline">מִשְׁכָּן</span> (мишка́н)</strong> — Корень <em>sh-k-n</em> (Шин-Каф-Нун). Шин – огонь/дифференциация, Каф – сила/инструмент, Нун – связь. Ячейка Sh-K (огонь + сила) с модификатором Нун – «жилище, скиния» (место пребывания Шехины).</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 9 ===== -->
+    <div class="verse-block">
+        <h3>9. Исайя 55:3</h3>
+        <p class="lang-hebrew">הַטּ֤וּ אָזְנְכֶם֙ וּלְכ֣וּ אֵלַ֔י שִׁמְע֖וּ וּתְחִ֣י נַפְשְׁכֶ֑ם</p>
+        <p class="translit">hату́ ознехе́м у-леху́ эла́й шимъу́ у-тхи́ нафшехе́м.</p>
+        <p class="translation">«Приклоните ухо ваше и придите ко Мне; послушайте — и жива будет душа ваша.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">וּלְכוּ</span> (у-леху́) — №39 + <span class="lang-hebrew-inline">ו</span></li>
+            <li><span class="lang-hebrew-inline">שִׁמְעוּ</span> (шимъу́) — №138</li>
+            <li><span class="lang-hebrew-inline">וּתְחִי</span> (у-тхи́) — №45. <span class="lang-hebrew-inline">חי</span> – жить</li>
+            <li><span class="lang-hebrew-inline">נַפְשְׁכֶם</span> (нафшехе́м) — №88</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">הַטּוּ</span> (hату́)</strong> — Корень <em>n-ṭ-h</em> (Нун-Тет-Хей). Нун – связь, Тет – скрытая циркуляция, Хей – дыхание/явленность. Ячейка N-Ṭ с модификатором Хей – «протягивать, склонять».</p>
+            <p><strong><span class="lang-hebrew-inline">אָזְנְכֶם</span> (ознехе́м)</strong> — От <span class="lang-hebrew-inline">אוזן</span> (озен) – ухо. Корень <em>’-z-n</em> (см. выше).</p>
+            <p><strong><span class="lang-hebrew-inline">אֵלַי</span> (эла́й)</strong> — Предлог <span class="lang-hebrew-inline">אֶל</span> (эль) – «к» + суффикс 1 л. Корень <em>’-l</em>. Ячейка ’-L – «направление».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 10 ===== -->
+    <div class="verse-block">
+        <h3>10. Псалом 121:2</h3>
+        <p class="lang-hebrew">עֶ֭זְרִי מֵעִ֣ם יְהוָ֑ה עֹ֝שֵׂ֗ה שָׁמַ֥יִם וָאָֽרֶץ׃</p>
+        <p class="translit">Эзри́ ме-и́м Адона́й осэ́ шама́йим ва-а́рец.</p>
+        <p class="translation">«Помощь моя от Господа, сотворившего небо и землю.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">מֵעִם</span> (ме-и́м) — №74 (<span class="lang-hebrew-inline">מִ־</span>) + №97 (<span class="lang-hebrew-inline">עם</span> – народ, в значении «от»)</li>
+            <li><span class="lang-hebrew-inline">יְהוָה</span> (Адона́й) — №3</li>
+            <li><span class="lang-hebrew-inline">שָׁמַיִם</span> (шама́йим) — №137</li>
+            <li><span class="lang-hebrew-inline">וָאָרֶץ</span> (ва-а́рец) — <span class="lang-hebrew-inline">ארץ</span> (эрец) – земля (незнакомо, но <span class="lang-hebrew-inline">ו</span> знакомо)</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">עֶזְרִי</span> (эзри́)</strong> — Корень <em>‘-z-r</em> (Айн-Зайн-Реш). Айн – интенсивность, Зайн – различение/оружие, Реш – распространение. Ячейка ‘-Z (интенсивность + различение) с модификатором Реш – «помощь, поддержка».</p>
+            <p><strong><span class="lang-hebrew-inline">עֹשֵׂה</span> (осэ́)</strong> — Корень <em>‘-ś-h</em> (Айн-Син-Хей). Айн – интенсивность, Син (Самех? свистящий) – опора, Хей – бытие. Ячейка ‘-Ś (интенсивность + опора) – «делать, творить».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 11 ===== -->
+    <div class="verse-block">
+        <h3>11. Псалом 34:2</h3>
+        <p class="lang-hebrew">אֲבָֽרְכָ֣ה אֶת־יְהוָ֣ה בְּכָל־עֵ֑ת תָּ֝מִ֗יד תְּהִלָּת֥וֹ בְּפִֽי׃</p>
+        <p class="translit">Авархá эт-Адона́й бе-холь-э́т тами́д теhилато́ бе-фи́.</p>
+        <p class="translation">«Благословлю Господа во всякое время; хвала Ему непрестанно в устах моих.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">אֲבָרְכָה</span> (авархá) — №23</li>
+            <li><span class="lang-hebrew-inline">אֶת</span> — №13</li>
+            <li><span class="lang-hebrew-inline">יְהוָה</span> — №3</li>
+            <li><span class="lang-hebrew-inline">בְּכָל</span> (бе-холь) — №14 + <span class="lang-hebrew-inline">כל</span> (коль) – весь (добавляется)</li>
+            <li><span class="lang-hebrew-inline">עֵת</span> (эт) — №100. <span class="lang-hebrew-inline">עת</span> – время</li>
+            <li><span class="lang-hebrew-inline">תְּהִלָּתוֹ</span> (теhилато́) — от №40 (<span class="lang-hebrew-inline">הלל</span>)</li>
+            <li><span class="lang-hebrew-inline">בְּפִי</span> (бе-фи́) — №14 + №103 (<span class="lang-hebrew-inline">פה</span> – рот)</li>
+        </ul>
+
+        <h4>Незнакомое слово</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">תָּמִיד</span> (тами́д)</strong> — Корень <em>t-m-d</em> (Тав-Мем-Далет). Тав – знак/завершение, Мем – материя/среда, Далет – дверь/опыт. Ячейка T-M (завершение + материя) с модификатором Далет – «постоянство, непрерывность».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 12 ===== -->
+    <div class="verse-block">
+        <h3>12. Исайя 12:2</h3>
+        <p class="lang-hebrew">הִנֵּ֨ה אֵ֧ל יְשׁוּעָתִ֛י אֶבְטַ֖ח וְלֹ֣א אֶפְחָ֑ד</p>
+        <p class="translit">hинэ́ Эль йешуати́ эвта́х ве-ло́ эфха́д.</p>
+        <p class="translation">«Вот, Бог — спасение моё: уповаю на Него и не боюсь.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">הִנֵּה</span> (hинэ́) — частица от HN (не входила, но будет разобрана)</li>
+            <li><span class="lang-hebrew-inline">אֵל</span> (Эль) — имя Бога (упомянуто в статьях, см. «Бесконечный Огненный Глагол»)</li>
+            <li><span class="lang-hebrew-inline">יְשׁוּעָתִי</span> (йешуати́) — от корня <em>y-sh-‘</em> (Йод-Шин-Айн) – спасение</li>
+            <li><span class="lang-hebrew-inline">אֶבְטַח</span> (эвта́х) — <em>b-ṭ-ḥ</em> (Бет-Тет-Хет) – уповать</li>
+            <li><span class="lang-hebrew-inline">אֶפְחָד</span> (эфха́д) — <em>p-ḥ-d</em> (Пэй-Хет-Далет) – бояться</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">הִנֵּה</span> (hинэ́)</strong> — Частица указания, корень <em>h-n</em> (Хей-Нун). Хей – дыхание/бытие, Нун – связь. «Вот, смотри».</p>
+            <p><strong><span class="lang-hebrew-inline">אֵל</span> (Эль)</strong> — Корень <em>’-l</em> (Алеф-Ламед) – «сильный, Бог». Ячейка воли и направления.</p>
+            <p><strong><span class="lang-hebrew-inline">יְשׁוּעָתִי</span> (йешуати́)</strong> — Корень <em>y-sh-‘</em> (Йод-Шин-Айн). Йод – импульс, Шин – огонь, Айн – интенсивность. Ячейка Y-Sh (импульс + огонь) с модификатором Айн – «спасение».</p>
+            <p><strong><span class="lang-hebrew-inline">אֶבְטַח</span> (эвта́х)</strong> — Корень <em>b-ṭ-ḥ</em> (Бет-Тет-Хет). Бет – вместилище, Тет – скрытое, Хет – энергия. Ячейка B-Ṭ (вместилище + скрытое) с модификатором Хет – «уповать, быть в безопасности».</p>
+            <p><strong><span class="lang-hebrew-inline">אֶפְחָד</span> (эфха́д)</strong> — Корень <em>p-ḥ-d</em> (Пэй-Хет-Далет). Пэй – раскрытие, Хет – энергия, Далет – дверь/опыт. Ячейка P-Ḥ (раскрытие + энергия) с модификатором Далет – «бояться, страшиться».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 13 ===== -->
+    <div class="verse-block">
+        <h3>13. Псалом 23:6</h3>
+        <p class="lang-hebrew">אַ֤ךְ ט֣וֹב וָחֶ֣סֶד יִ֭רְדְּפוּנִי כָּל־יְמֵ֣י חַיָּ֑י</p>
+        <p class="translit">Ах тов ва-хе́сед йирдефу́ни коль-еме́й хайа́й.</p>
+        <p class="translation">«Так, благость и милость да сопровождают меня во все дни жизни моей.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">טוֹב</span> (тов) — №50. <span class="lang-hebrew-inline">טוב</span> – хороший</li>
+            <li><span class="lang-hebrew-inline">יִרְדְּפוּנִי</span> (йирдефу́ни) — корень <em>r-d-p</em> (Реш-Далет-Пэй) – преследовать</li>
+            <li><span class="lang-hebrew-inline">יְמֵי</span> (еме́й) — <span class="lang-hebrew-inline">יוֹם</span> (йом) – день (отсутствует в списке, но известно)</li>
+            <li><span class="lang-hebrew-inline">חַיָּי</span> (хайа́й) — №45. <span class="lang-hebrew-inline">חי</span> – жизнь</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">אַךְ</span> (ах)</strong> — Корень <em>’-k</em> (Алеф-Каф). Алеф – воля, Каф – сила/подобие. Частица «только, так».</p>
+            <p><strong><span class="lang-hebrew-inline">וָחֶסֶד</span> (ва-хе́сед)</strong> — Корень <em>ḥ-s-d</em> (Хет-Самех-Далет). Хет – энергия, Самех – опора, Далет – дверь. Ячейка Ḥ-S (энергия + опора) с модификатором Далет – «милость, преданность».</p>
+            <p><strong><span class="lang-hebrew-inline">כָּל</span> (коль)</strong> — «весь» (тот же корень, что и в Пс.34:2).</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 14 ===== -->
+    <div class="verse-block">
+        <h3>14. Исайя 40:8</h3>
+        <p class="lang-hebrew">יָבֵ֥שׁ חָצִ֖יר נָ֣בֵֽל צִ֑יץ וּדְבַר־אֱלֹהֵ֖ינוּ יָק֥וּם לְעוֹלָֽם׃</p>
+        <p class="translit">Яве́ш хаци́р наве́ль циц у-двар-Элоhе́йну яку́м ле-олáм.</p>
+        <p class="translation">«Трава засыхает, цвет увядает, а слово Бога нашего пребудет вечно.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">וּדְבַר</span> (у-двар) — №29. <span class="lang-hebrew-inline">דבר</span></li>
+            <li><span class="lang-hebrew-inline">יָקוּם</span> (яку́м) — №116. <span class="lang-hebrew-inline">קום</span> – вставать</li>
+            <li><span class="lang-hebrew-inline">לְעוֹלָם</span> (ле-олáм) — №95</li>
+        </ul>
+
+        <h4>Незнакомые слова</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">יָבֵשׁ</span> (яве́ш)</strong> — Корень <em>y-b-sh</em> (Йод-Бет-Шин). Йод – импульс, Бет – вместилище, Шин – огонь. Ячейка Y-B (импульс + вместилище) с модификатором Шин – «сохнуть» (иссушение).</p>
+            <p><strong><span class="lang-hebrew-inline">חָצִיר</span> (хаци́р)</strong> — Корень <em>ḥ-ṣ-r</em> (Хет-Цади-Реш). Хет – энергия, Цади – форма, Реш – распространение. «Трава, зелень».</p>
+            <p><strong><span class="lang-hebrew-inline">נָבֵל</span> (наве́ль)</strong> — Корень <em>n-b-l</em> (Нун-Бет-Ламед). Нун – связь/жизнь, Бет – вместилище, Ламед – направление/улетучивание. Ячейка N-B (жизнь + вместилище) с модификатором Ламед – «увядать, вянуть» (как <span class="lang-hebrew-inline">הֶבֶל</span>).</p>
+            <p><strong><span class="lang-hebrew-inline">צִיץ</span> (циц)</strong> — Корень <em>ṣ-y-ṣ</em> (Цади-Йод-Цади). «Цветок».</p>
+        </div>
+    </div>
+
+    <!-- ===== СТИХ 15 ===== -->
+    <div class="verse-block">
+        <h3>15. Псалом 33:6</h3>
+        <p class="lang-hebrew">בִּדְבַ֣ר יְ֭הוָה שָׁמַ֣יִם נַעֲשׂ֑וּ וּבְר֥וּחַ פִּ֝֗יו כָּל־צְבָאָֽם׃</p>
+        <p class="translit">Би-двар Адона́й шама́йим наасу́ у-вру́ах пи́в коль-цеваа́м.</p>
+        <p class="translation">«Словом Господа сотворены небеса, и духом уст Его — всё воинство их.»</p>
+
+        <h4>Знакомые слова</h4>
+        <ul class="word-list">
+            <li><span class="lang-hebrew-inline">בִּדְבַר</span> (би-двар) — №14 + №29</li>
+            <li><span class="lang-hebrew-inline">יְהוָה</span> — №3</li>
+            <li><span class="lang-hebrew-inline">שָׁמַיִם</span> — №137</li>
+            <li><span class="lang-hebrew-inline">וּבְרוּחַ</span> (у-вру́ах) — <span class="lang-hebrew-inline">ו</span> + №14 + №122 (<span class="lang-hebrew-inline">רוח</span>)</li>
+            <li><span class="lang-hebrew-inline">פִּיו</span> (пи́в) — №103 (<span class="lang-hebrew-inline">פה</span>) + суффикс</li>
+            <li><span class="lang-hebrew-inline">כָּל</span> (коль) — весь</li>
+            <li><span class="lang-hebrew-inline">צְבָאָם</span> (цеваа́м) — от <span class="lang-hebrew-inline">צבא</span> (цава) – воинство (есть в №111 «Саваоф»)</li>
+        </ul>
+
+        <h4>Незнакомое слово</h4>
+        <div class="analysis">
+            <p><strong><span class="lang-hebrew-inline">נַעֲשׂוּ</span> (наасу́)</strong> — Корень <em>‘-ś-h</em> (делать), см. выше (стих 10).</p>
+        </div>
+    </div>
+
+    <!-- НАВИГАЦИЯ ВНИЗУ -->
+    <div class="nav-links" style="margin-top: 2rem;">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="alfavitnyj-slovar-ukazatel.html">Предыдущая статья: Алфавитный словарь-указатель</a>
+    </div>
+
+</body>
+</html>
