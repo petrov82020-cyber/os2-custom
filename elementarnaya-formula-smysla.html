@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Элементарная формула смысла: принцип компоновки семитского корня</title>
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ----- Общие стили (минимализм) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', 'Times New Roman', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #ffffff;
+            max-width: 820px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ----- Навигационные панели ----- */
+        .nav-links {
+            font-size: 0.95rem;
+            margin: 1rem 0 2rem 0;
+            padding: 0.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .nav-links a {
+            color: #1a5b8c;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a5b8c;
+        }
+        .nav-links a:hover {
+            border-bottom: 1px solid #1a5b8c;
+        }
+        .nav-links .sep {
+            margin: 0 0.5rem;
+            color: #aaa;
+        }
+        .nav-links-bottom {
+            margin-top: 2rem;
+        }
+
+        /* ----- Заголовки ----- */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0 0 0.2rem 0;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #444;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.7rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.6rem 0;
+        }
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        /* ----- Мета-информация (дата, автор) ----- */
+        .entry-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        .entry-meta time {
+            font-style: italic;
+        }
+
+        /* ----- Аннотация ----- */
+        .abstract {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 0.8rem 1.5rem;
+            margin: 1.5rem 0 2rem 0;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .abstract strong {
+            font-weight: 600;
+        }
+
+        /* ----- Абзацы ----- */
+        p {
+            margin: 0 0 1.2rem 0;
+        }
+
+        /* ----- Списки ----- */
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+        .cell-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .cell-list li {
+            padding-left: 1.2rem;
+            text-indent: -1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        .cell-list .hebrew-term {
+            font-weight: 600;
+        }
+
+        /* ----- Ивритский текст (RTL, увеличенный шрифт) ----- */
+        .lang-hebrew-inline {
+            font-family: 'SBL Hebrew', 'Cardo', 'Noto Serif Hebrew', 'Arial Unicode MS', serif;
+            font-size: 1.05em;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+        .lang-hebrew-list {
+            font-family: 'SBL Hebrew', 'Cardo', 'Noto Serif Hebrew', 'Arial Unicode MS', serif;
+            font-size: 1.05em;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+
+        /* ----- Ссылки ----- */
+        a {
+            color: #1a5b8c;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a5b8c;
+        }
+        a:hover {
+            border-bottom: 1px solid #1a5b8c;
+        }
+
+        /* ----- Адаптивность ----- */
+        @media (max-width: 640px) {
+            body {
+                font-size: 16px;
+                padding: 0 1rem;
+            }
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.1rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ВЕРХНЯЯ НАВИГАЦИЯ ===== -->
+    <div class="nav-links">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="statika-i-dinamika-kornevoj-yachejki.html">Предыдущая статья: Статика и динамика корневой ячейки</a>
+    </div>
+
+    <!-- ===== НАЧАЛО СТАТЬИ ===== -->
+
+    <article>
+        <header>
+            <h1>Элементарная формула смысла</h1>
+            <p class="subtitle">Принцип компоновки семитского корня</p>
+            <div class="entry-meta">
+                <time datetime="2026-08-27">27 августа 2026</time>
+            </div>
+        </header>
+
+        <div class="abstract">
+            <strong>Аннотация.</strong> В статье рассматривается проблема внутренней организации семитского корня. Традиционная семитология описывает трёхсогласный корень как неразложимую лексическую единицу, не объясняя, каким образом из комбинации согласных возникает значение. Предлагаемый подход исходит из того, что минимальной смысловой единицей является не отдельная буква и не трёхбуквенный корень, а двухбуквенная корневая ячейка. Значение корня выводится через анализ ячеек, их метатез и рядов производных, образуемых присоединением модификаторов. Метод демонстрируется на материале корней <span class="lang-hebrew-inline">כמר</span>/<span class="lang-hebrew-inline">כמל</span> и <span class="lang-hebrew-inline">גמר</span>/<span class="lang-hebrew-inline">גמל</span>, а также на концепции буквы гимель. Показывается, что пересечение ячеек <span class="lang-hebrew-inline">גמ</span> и <span class="lang-hebrew-inline">מל</span> даёт точку <span class="lang-hebrew-inline">גמל</span>, в которой сходятся значения полноты и совершенства. Статья обосновывает тезис о том, что смысл в семитском языке порождается не суммой значений отдельных букв, а взаимодействием двухбуквенных ячеек и их производных.
+        </div>
+
+        <h2>1. Постановка проблемы</h2>
+
+        <p>Современная семитология рассматривает трёхсогласный корень как основную лексическую единицу. При этом обычно не объясняется, почему корень имеет именно такое значение, а не иное. Словари фиксируют переводы, грамматики описывают формы, но внутренняя мотивация корня остаётся нераскрытой. В результате интерпретация лексики Еврейской Библии во многом зависит от субъективных предпочтений исследователя.</p>
+
+        <p>Между тем сравнительно-исторические данные показывают, что трёхсогласный корень развился из более древних двухсогласных основ. Эти основы, называемые в настоящей работе <strong>двухбуквенными корневыми ячейками</strong>, несли базовое смысловое ядро. Присоединение третьего согласного — модификатора — уточняло характер действия или состояния. Таким образом, трёхбуквенный корень может быть представлен как результат взаимодействия ячейки и модификатора, а его значение — как результирующая смыслов, заключённых в ячейках и их производных.</p>
+
+        <p>Настоящая статья ставит целью сформулировать элементарную формулу смысла, позволяющую анализировать семитские корни без привлечения произвольных толкований.</p>
+
+        <h2>2. Основные понятия</h2>
+
+        <h3>2.1. Двухбуквенная ячейка</h3>
+
+        <p><strong>Двухбуквенная ячейка</strong> — это устойчивое сочетание двух согласных, обладающее собственным смысловым ядром. Ячейка не является абстракцией: она подтверждается множеством слов, в которых это сочетание сохраняет общий семантический признак.</p>
+
+        <p>Примеры ячеек:</p>
+
+        <ul class="cell-list">
+            <li><span class="lang-hebrew-inline">מ-ל</span> (маль) — полнота;</li>
+            <li><span class="lang-hebrew-inline">ג-מ</span> (гам) — добавочность, накопление;</li>
+            <li><span class="lang-hebrew-inline">ר-א</span> (ра) — видение;</li>
+            <li><span class="lang-hebrew-inline">א-ר</span> (ор) — свет;</li>
+            <li><span class="lang-hebrew-inline">א-ש</span> (эш) — огонь;</li>
+            <li><span class="lang-hebrew-inline">ש-א</span> (ша) — вопрос, проблема;</li>
+            <li><span class="lang-hebrew-inline">ר-ש</span> (реш) — начало, источник;</li>
+            <li><span class="lang-hebrew-inline">ש-ר</span> (шар) — последовательность, мелодия.</li>
+        </ul>
+
+        <p>Каждая ячейка существует в языке не изолированно, а в виде ряда производных, образуемых присоединением модификаторов спереди или сзади.</p>
+
+        <h3>2.2. Модификатор</h3>
+
+        <p><strong>Модификатор</strong> — это согласный, который присоединяется к двухбуквенной ячейке и уточняет её значение. Модификатор может занимать позицию перед ячейкой, после неё или внедряться внутрь, разрывая ячейку.</p>
+
+        <p>Для ячейки <span class="lang-hebrew-inline">מ-ל</span> (маль) ряд производных включает:</p>
+
+        <ul class="cell-list">
+            <li><span class="lang-hebrew-inline">א-מ-ל</span> (амаль)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ל</span> (гамаль)</li>
+            <li><span class="lang-hebrew-inline">ח-מ-ל</span> (хамаль)</li>
+            <li><span class="lang-hebrew-inline">ל-מ-ל</span> (ламлам)</li>
+            <li><span class="lang-hebrew-inline">נ-מ-ל</span> (намаль)</li>
+            <li><span class="lang-hebrew-inline">ש-מ-ל</span> (симла)</li>
+            <li><span class="lang-hebrew-inline">צ-מ-ל</span> (цэмель)</li>
+            <li><span class="lang-hebrew-inline">כ-מ-ל</span> (камаль)</li>
+            <li><span class="lang-hebrew-inline">ת-מ-ל</span> (тэмоль)</li>
+        </ul>
+
+        <p>Для ячейки <span class="lang-hebrew-inline">ג-מ</span> (гам) ряд производных включает:</p>
+
+        <ul class="cell-list">
+            <li><span class="lang-hebrew-inline">ג-מ</span> (гам)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ה</span> (гама)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ר</span> (гамар)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ד</span> (гамад)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-מ</span> (гумма)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ז</span> (гамаз)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-י</span> (гэми)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ל</span> (гамаль)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ם</span> (гамам)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ע</span> (гама с айн)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ש</span> (гамаш)</li>
+        </ul>
+
+        <h3>2.3. Метатеза</h3>
+
+        <p><strong>Метатеза</strong> — это перестановка согласных внутри ячейки. Метатеза не изменяет смыслового ядра, но даёт его вариант, который также порождает собственный ряд производных.</p>
+
+        <p>Например:</p>
+
+        <ul class="cell-list">
+            <li><span class="lang-hebrew-inline">ר-א</span> (ра) ↔ <span class="lang-hebrew-inline">א-ר</span> (ор)</li>
+            <li><span class="lang-hebrew-inline">א-ש</span> (эш) ↔ <span class="lang-hebrew-inline">ש-א</span> (ша)</li>
+            <li><span class="lang-hebrew-inline">ר-ש</span> (реш) ↔ <span class="lang-hebrew-inline">ש-ר</span> (шар)</li>
+        </ul>
+
+        <h3>2.4. Каркасная ячейка</h3>
+
+        <p>В трёхбуквенном корне, помимо соседних ячеек (первая-вторая и вторая-третья согласные), выделяется также <strong>каркасная ячейка</strong>, образованная первой и третьей согласными. Эта ячейка может быть разорвана внедрённым модификатором.</p>
+
+        <p>Например, в корне <span class="lang-hebrew-inline">כ-מ-ל</span> (камаль) соседние ячейки — <span class="lang-hebrew-inline">כ-מ</span> (кам) и <span class="lang-hebrew-inline">מ-ל</span> (маль). Каркасная ячейка — <span class="lang-hebrew-inline">כ-ל</span> (каль). В корне <span class="lang-hebrew-inline">ג-מ-ר</span> (гамар) соседние ячейки — <span class="lang-hebrew-inline">ג-מ</span> (гам) и <span class="lang-hebrew-inline">מ-ר</span> (мар). Каркасная ячейка — <span class="lang-hebrew-inline">ג-ר</span> (гар).</p>
+
+        <h2>3. Элементарная формула смысла</h2>
+
+        <p>Для трёхбуквенного корня X-Y-Z формула смысла строится следующим образом:</p>
+
+        <ol>
+            <li>Определяются соседние ячейки: X-Y и Y-Z.</li>
+            <li>Определяется каркасная ячейка: X-Z.</li>
+            <li>Каждая ячейка проверяется на метатезу: X-Y → Y-X, Y-Z → Z-Y.</li>
+            <li>Для каждой ячейки и её метатезы составляется ряд производных: модификатор перед ячейкой, после ячейки, внутри ячейки.</li>
+            <li>Смысл корня — это результирующая всех смысловых узлов, всплывающих в производных от всех ячеек, входящих в корень.</li>
+        </ol>
+
+        <p>Отдельные буквы при этом не интерпретируются напрямую. Они работают только в составе ячеек. Значение буквы выводится из её функции в ячейке и из пересечения рядов производных.</p>
+
+        <h2>4. Пример анализа: <span class="lang-hebrew-inline">כמל</span> и <span class="lang-hebrew-inline">גמר</span></h2>
+
+        <h3>4.1. <span class="lang-hebrew-inline">כ-מ-ל</span> (камаль)</h3>
+
+        <p>Корень камаль означает «быть полным, совершенным» (араб. <span class="lang-arabic-inline" dir="ltr">كمل</span>). В данном корне выделяются:</p>
+
+        <ul>
+            <li>соседняя ячейка <span class="lang-hebrew-inline">כ-מ</span> (кам);</li>
+            <li>соседняя ячейка <span class="lang-hebrew-inline">מ-ל</span> (маль);</li>
+            <li>каркасная ячейка <span class="lang-hebrew-inline">כ-ל</span> (каль).</li>
+        </ul>
+
+        <p>Ряд производных от <span class="lang-hebrew-inline">מ-ל</span> (маль):</p>
+
+        <ul>
+            <li><span class="lang-hebrew-inline">א-מ-ל</span> (амаль)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ל</span> (гамаль)</li>
+            <li><span class="lang-hebrew-inline">ח-מ-ל</span> (хамаль)</li>
+            <li><span class="lang-hebrew-inline">ל-מ-ל</span> (ламлам)</li>
+            <li><span class="lang-hebrew-inline">נ-מ-ל</span> (намаль)</li>
+            <li><span class="lang-hebrew-inline">ש-מ-ל</span> (симла)</li>
+            <li><span class="lang-hebrew-inline">צ-מ-ל</span> (цэмель)</li>
+            <li><span class="lang-hebrew-inline">כ-מ-ל</span> (камаль)</li>
+            <li><span class="lang-hebrew-inline">ת-מ-ל</span> (тэмоль)</li>
+        </ul>
+
+        <p>Смысловые грани, выводимые из ряда:</p>
+
+        <ul>
+            <li><span class="lang-hebrew-inline">כ-ל</span> (коль) — целостность;</li>
+            <li><span class="lang-hebrew-inline">כ-מ</span> (кам) — количество;</li>
+            <li><span class="lang-hebrew-inline">מ-ל</span> (маль) — полнота;</li>
+            <li><span class="lang-hebrew-inline">ל-מ</span> (лам) — качество.</li>
+        </ul>
+
+        <p><strong>Итог:</strong> камаль выражает совершенство как переход количества в новое, более совершенное качество. Внешний модификатор <span class="lang-hebrew-inline">כ</span> (каф) придаёт оттенок оформляющего, инструментального действия: полнота достигается через активное созидание.</p>
+
+        <h3>4.2. <span class="lang-hebrew-inline">ג-מ-ר</span> (гамар)</h3>
+
+        <p>Корень гамар означает «завершать, доводить до конца». В нём выделяются:</p>
+
+        <ul>
+            <li>соседняя ячейка <span class="lang-hebrew-inline">ג-מ</span> (гам);</li>
+            <li>соседняя ячейка <span class="lang-hebrew-inline">מ-ר</span> (мар);</li>
+            <li>каркасная ячейка <span class="lang-hebrew-inline">ג-ר</span> (гар).</li>
+        </ul>
+
+        <p>Ряд производных от <span class="lang-hebrew-inline">ג-מ</span> (гам):</p>
+
+        <ul>
+            <li><span class="lang-hebrew-inline">ג-מ</span> (гам)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ה</span> (гама)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ר</span> (гамар)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ד</span> (гамад)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-מ</span> (гумма)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ז</span> (гамаз)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-י</span> (гэми)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ל</span> (гамаль)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ם</span> (гамам)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ע</span> (гама с айн)</li>
+            <li><span class="lang-hebrew-inline">ג-מ-ש</span> (гамаш)</li>
+        </ul>
+
+        <p>Смысловые грани:</p>
+
+        <ul>
+            <li><span class="lang-hebrew-inline">ג-ר</span> (гар) — непостоянно;</li>
+            <li><span class="lang-hebrew-inline">ג-מ</span> (гам) — добавочно;</li>
+            <li><span class="lang-hebrew-inline">מ-ר</span> (мар) — власть;</li>
+            <li><span class="lang-hebrew-inline">ר-מ</span> (рам) — высота.</li>
+        </ul>
+
+        <p><strong>Итог:</strong> гамар выражает совершенство как достижение верхнего предела. Модификатор <span class="lang-hebrew-inline">ר</span> (реш) придаёт оттенок распространения, доведения до границы.</p>
+
+        <h3>4.3. Точка пересечения</h3>
+
+        <p>В рядах производных от <span class="lang-hebrew-inline">מ-ל</span> (маль) и от <span class="lang-hebrew-inline">ג-מ</span> (гам) обнаруживается общий элемент — <span class="lang-hebrew-inline">ג-מ-ל</span> (гамаль). Это слово означает «воздавать, доводить до зрелости, отлучать от груди». Именно здесь пересекаются смыслы:</p>
+
+        <ul>
+            <li>от <span class="lang-hebrew-inline">מ-ל</span> (маль) — полнота, качество;</li>
+            <li>от <span class="lang-hebrew-inline">ג-מ</span> (гам) — накопление, добавление, рост.</li>
+        </ul>
+
+        <p>Пересечение даёт концепцию <strong>зрелого совершенства</strong>: процесс роста, развития, укрепления, доведения до полноты. Отсюда выводится значение буквы <strong>гимель</strong> — воздаяние совершенным / процесс роста, развития, укрепления и совершенствования.</p>
+
+        <h2>5. Принцип компоновки языка</h2>
+
+        <p>Проведённый анализ показывает, что значение корня не складывается из значений отдельных букв. Оно порождается взаимодействием двухбуквенных ячеек и их производных. Это и есть <strong>элементарная формула смысла</strong>.</p>
+
+        <p><strong>Принцип компоновки языка</strong> может быть сформулирован так:</p>
+
+        <blockquote>
+            <p>Любой трёхбуквенный корень представляет собой комбинацию двухбуквенных ячеек, одна из которых может быть каркасной, другая — соседней. Модификатор уточняет характер смысла. Метатезы дают варианты ячеек. Полный перебор производных от каждой ячейки выявляет общий смысловой узел, который и является значением корня.</p>
+        </blockquote>
+
+        <p>Такой подход позволяет анализировать лексику Еврейской Библии системно, не прибегая к произвольным толкованиям. Он объясняет, почему один и тот же корень может иметь несколько значений: каждое значение соответствует определённой ячейке или её производному.</p>
+
+        <h2>6. Заключение</h2>
+
+        <p>В статье предложена элементарная формула смысла для семитского корня. Показано, что минимальной смысловой единицей является двухбуквенная ячейка. На примере корней <span class="lang-hebrew-inline">כמל</span> и <span class="lang-hebrew-inline">גמר</span> продемонстрировано, как через ряды производных и метатезы выявляется общий смысловой узел. Пересечение ячеек <span class="lang-hebrew-inline">גמ</span> и <span class="lang-hebrew-inline">מל</span> даёт точку <span class="lang-hebrew-inline">גמל</span>, в которой сходятся значения полноты и совершенства. Отсюда выводится концепция буквы гимель.</p>
+
+    </article>
+
+    <!-- ===== НИЖНЯЯ НАВИГАЦИЯ ===== -->
+    <div class="nav-links nav-links-bottom">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="statika-i-dinamika-kornevoj-yachejki.html">Предыдущая статья: Статика и динамика корневой ячейки</a>
+    </div>
+
+    <!-- ===== КОНЕЦ СТАТЬИ ===== -->
+
+</body>
+</html>
