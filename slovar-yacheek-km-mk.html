@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь ячеек [כ-מ] (каф-мем) и [מ-כ] (мем-каф)</title>
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ----- Общие стили (минимализм) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', 'Times New Roman', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #ffffff;
+            max-width: 820px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ----- Навигационные панели ----- */
+        .nav-links {
+            font-size: 0.95rem;
+            margin: 1rem 0 2rem 0;
+            padding: 0.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .nav-links a {
+            color: #1a5b8c;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a5b8c;
+        }
+        .nav-links a:hover {
+            border-bottom: 1px solid #1a5b8c;
+        }
+        .nav-links .sep {
+            margin: 0 0.5rem;
+            color: #aaa;
+        }
+        .nav-links-bottom {
+            margin-top: 2rem;
+        }
+
+        /* ----- Заголовки ----- */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0 0 0.2rem 0;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #444;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.7rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.6rem 0;
+        }
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        /* ----- Мета-информация (дата, автор) ----- */
+        .entry-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        .entry-meta time {
+            font-style: italic;
+        }
+
+        /* ----- Аннотация ----- */
+        .abstract {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 0.8rem 1.5rem;
+            margin: 1.5rem 0 2rem 0;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .abstract strong {
+            font-weight: 600;
+        }
+
+        /* ----- Абзацы ----- */
+        p {
+            margin: 0 0 1.2rem 0;
+        }
+
+        /* ----- Списки ----- */
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ----- Таблицы ----- */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        th, td {
+            padding: 0.5rem 0.7rem;
+            border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0f0f0;
+            font-weight: 600;
+        }
+        td .lang-hebrew-inline, td .lang-arabic-inline {
+            font-size: 1em;
+        }
+        td ul, td ol {
+            margin: 0 0 0 1.2rem;
+            padding: 0;
+        }
+        td ul li, td ol li {
+            margin-bottom: 0.1rem;
+        }
+
+        /* ----- Ивритский и арабский текст (RTL) ----- */
+        .lang-hebrew-inline {
+            font-family: 'SBL Hebrew', 'Cardo', 'Noto Serif Hebrew', 'Arial Unicode MS', serif;
+            font-size: 1.05em;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+        .lang-arabic-inline {
+            font-family: 'Noto Serif', 'Arial Unicode MS', serif;
+            font-size: 1em;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+
+        /* ----- Ссылки ----- */
+        a {
+            color: #1a5b8c;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a5b8c;
+        }
+        a:hover {
+            border-bottom: 1px solid #1a5b8c;
+        }
+
+        /* ----- Адаптивность ----- */
+        @media (max-width: 640px) {
+            body {
+                font-size: 16px;
+                padding: 0 1rem;
+            }
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.1rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            th, td {
+                padding: 0.3rem 0.4rem;
+                font-size: 0.82rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ВЕРХНЯЯ НАВИГАЦИЯ ===== -->
+    <div class="nav-links">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="slovar-karkasnoj-yachejki-kl.html">Предыдущая статья: Словарь каркасной ячейки [כ-ל]</a>
+    </div>
+
+    <!-- ===== НАЧАЛО СТАТЬИ ===== -->
+
+    <article>
+        <header>
+            <h1>Словарь ячеек <span class="lang-hebrew-inline">[כ-מ]</span> (каф-мем) и <span class="lang-hebrew-inline">[מ-כ]</span> (мем-каф)</h1>
+            <p class="subtitle">Систематизация производных корней по элементарной формуле смысла</p>
+            <div class="entry-meta">
+                <time datetime="2026-08-30">30 августа 2026</time>
+            </div>
+        </header>
+
+        <div class="abstract">
+            <strong>Аннотация.</strong> Статья представляет собой систематическое описание производных корней, восходящих к двухбуквенным ячейкам <span class="lang-hebrew-inline">[כ-מ]</span> (каф-мем) и её метатезе <span class="lang-hebrew-inline">[מ-כ]</span> (мем-каф) в семитских языках. На основе метода элементарной формулы смысла рассматриваются три позиции модификатора X относительно ячейки: препозиция, интропозиция и постпозиция. Для каждой позиции приводятся ряды засвидетельствованных корней в библейском иврите, арамейском и арабском языках, с указанием основных, вторичных и производных значений. Особое внимание уделяется фонетическим соответствиям между графемами иврита и арабского, а также случаям, когда одна графема скрывает разные исходные фонемы. Показано, что ячейка <span class="lang-hebrew-inline">[כ-מ]</span> несёт устойчивое семантическое ядро «мера, количество, полнота, скрытость», а её метатеза <span class="lang-hebrew-inline">[מ-כ]</span> — «владение, низость, хитрость». Настоящий словарь служит инструментом для дальнейшего анализа корней, содержащих указанные ячейки.
+        </div>
+
+        <h2>1. Введение</h2>
+
+        <p>Двухбуквенные корневые ячейки <span class="lang-hebrew-inline">[כ-מ]</span> (каф-мем) и <span class="lang-hebrew-inline">[מ-כ]</span> (мем-каф) относятся к числу базовых смысловых единиц семитского корнеслова. Их семантические ядра проявляются в обширных гнёздах производных корней, образованных присоединением модификатора — третьей согласной, уточняющей характер действия или состояния. В соответствии с элементарной формулой смысла модификатор может занимать три позиции: перед ячейкой (X-Y-Z), внутри неё (Y-X-Z) и после неё (Y-Z-X). В настоящей статье рассматриваются все три позиции для обеих ячеек на материале библейского иврита, арамейского и арабского языков. Приводятся только корни, засвидетельствованные в стандартных лексикографических источниках (HALOT, BDB, Lisān al-ʿArab, CAD и др.).</p>
+
+        <h2>2. Фонетические соответствия</h2>
+
+        <p>При анализе корней необходимо учитывать следующие регулярные соответствия:</p>
+
+        <ul>
+            <li>Ивритская буква <span class="lang-hebrew-inline">[כ]</span> с дагешем (/k/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ك]</span> (/k/);</li>
+            <li><span class="lang-hebrew-inline">[כ]</span> без дагеша (/χ/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[خ]</span> (/χ/);</li>
+            <li>Арабская <span class="lang-arabic-inline" dir="ltr">[ق]</span> (/q/) соответствует ивритской <span class="lang-hebrew-inline">[ק]</span> (коф), а не <span class="lang-hebrew-inline">[כ]</span>.</li>
+        </ul>
+
+        <p>Буква <span class="lang-hebrew-inline">[מ]</span> (мем) в обоих языках сохраняет произношение /m/ без вариаций. В арамейском языке <span class="lang-hebrew-inline">[כ]</span> и <span class="lang-hebrew-inline">[מ]</span> ведут себя аналогично ивриту, однако оглушение и спирантизация могут различаться по диалектам.</p>
+
+        <h2>3. Словарь ячейки <span class="lang-hebrew-inline">[כ-מ]</span> (каф-мем)</h2>
+
+        <p>Семантическое ядро ячейки <span class="lang-hebrew-inline">[כ-מ]</span> — «мера, количество, полнота», а также «скрытость, темнота» (в производных, содержащих <span class="lang-hebrew-inline">רשׁע</span> и т.п.). Данное ядро прослеживается в корнях со значением «сколько» (<span class="lang-hebrew-inline">כַּמָּה</span>), «мудрость» (<span class="lang-hebrew-inline">חָכְמָה</span>), «скрывать» (<span class="lang-hebrew-inline">כָּמַס, כָּתַם</span>) и др.</p>
+
+        <h3>3.1. Ряд 1: X-<span class="lang-hebrew-inline">[כ-מ]</span> (модификатор перед ячейкой)</h3>
+
+        <p>В библейском иврите этот ряд представлен единственным корнем <span class="lang-hebrew-inline">חָכַם</span> (ḥāḵam) — «быть мудрым». В арабском языке модель более продуктивна.</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Язык</th>
+                        <th>Корень (оригинал)</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">חָכַם (חכם)</span></td>
+                        <td>ḥāḵam</td>
+                        <td>1) быть мудрым; 2) уметь, искусно действовать; 3) судить (в перен. смысле)</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> без дагеша /χ/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">أَكَمَ (أكم)</span></td>
+                        <td>ʾakama</td>
+                        <td>1) быть холмистым; 2) холм, бугор (сущ. <span class="lang-arabic-inline" dir="ltr">[أَكَمَة]</span>); 3) возвышенность</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">بَكِمَ (بكم)</span></td>
+                        <td>bakima</td>
+                        <td>1) быть немым; 2) молчать; 3) быть бессловесным</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">حَكَمَ (حكم)</span></td>
+                        <td>ḥakama</td>
+                        <td>1) судить, управлять; 2) выносить решение; 3) быть мудрым</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/, соответствует ивр. <span class="lang-hebrew-inline">[ח-כ-ם]</span></td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">عَكَمَ (عكم)</span></td>
+                        <td>ʿakama</td>
+                        <td>1) сгибать, скручивать; 2) свивать; 3) заворачивать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> В иврите арабский корень <span class="lang-arabic-inline" dir="rtl">[ح-ك-م]</span> представлен как <span class="lang-hebrew-inline">[ח-כ-ם]</span>, где <span class="lang-hebrew-inline">[כ]</span> сохраняет смычный /k/ из-за дагеша. Остальные корни не имеют прямых соответствий в библейском иврите.</p>
+
+        <h3>3.2. Ряд 2: <span class="lang-hebrew-inline">[כ]</span>-X-<span class="lang-hebrew-inline">[מ]</span> (модификатор внутри ячейки)</h3>
+
+        <p>В этой позиции модификатор X разрывает каркас <span class="lang-hebrew-inline">[כ-מ]</span>. В иврите и арабском засвидетельствованы следующие корни:</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Язык</th>
+                        <th>Корень (оригинал)</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּסַם (כסם)</span></td>
+                        <td>kāsam</td>
+                        <td>1) стричь, обрезать (волосы, виноград); 2) подрезать; 3) ровнять</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּרַם (כרם)</span></td>
+                        <td>kāram</td>
+                        <td>1) виноградник (сущ. <span class="lang-hebrew-inline">כֶּרֶם</span>); 2) сад; 3) насаждение</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּתַם (כתם)</span></td>
+                        <td>kātam</td>
+                        <td>1) скрывать, прятать; 2) закрывать; 3) покрывать</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּלַם (כלם)</span></td>
+                        <td>kālam</td>
+                        <td>1) стыдить, позорить; 2) унижать; 3) срамить</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَتَمَ (كتم)</span></td>
+                        <td>katama</td>
+                        <td>1) скрывать, утаивать; 2) замалчивать; 3) хранить тайну</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَرَمَ (كرم)</span></td>
+                        <td>karama</td>
+                        <td>1) быть щедрым, благородным; 2) почитать; 3) одаривать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَلَمَ (كلم)</span></td>
+                        <td>kalama</td>
+                        <td>1) ранить; 2) говорить (II порода <span class="lang-arabic-inline" dir="ltr">[كَلَّمَ]</span>); 3) слово (сущ. <span class="lang-arabic-inline" dir="ltr">[كَلِمَة]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَسَمَ (كسم)</span></td>
+                        <td>kasama</td>
+                        <td>1) разбивать, раскалывать; 2) делить; 3) разрубать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Ивритскому <span class="lang-hebrew-inline">כָּתַם</span> соответствует арабский <span class="lang-arabic-inline" dir="rtl">كَتَمَ</span>. Ивритскому <span class="lang-hebrew-inline">כָּרַם</span> (виноградник) арабский <span class="lang-arabic-inline" dir="rtl">كَرَمَ</span> (щедрость) этимологически родственен, но семантика разошлась.</p>
+
+        <h3>3.3. Ряд 3: <span class="lang-hebrew-inline">[כ-מ]</span>-X (модификатор после ячейки)</h3>
+
+        <p>Наиболее продуктивный ряд. В библейском иврите засвидетельствованы следующие корни:</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Язык</th>
+                        <th>Корень (оригинал)</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּמַר (כמר)</span></td>
+                        <td>kāmar</td>
+                        <td>1) быть тёмным, мрачным; 2) гореть (о внутреннем жаре); 3) томиться любовью</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּמַהּ (כמה)</span></td>
+                        <td>kāmah</td>
+                        <td>1) жаждать, страстно желать; 2) томиться; 3) изнемогать</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּמַס (כמס)</span></td>
+                        <td>kāmas</td>
+                        <td>1) прятать, хранить; 2) сберегать; 3) скрывать</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כָּמַשׁ (כמשׁ)</span></td>
+                        <td>kāmaš</td>
+                        <td>1) увядать, сморщиваться; 2) засыхать; 3) блёкнуть</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">כמל</span></td>
+                        <td>kāmal</td>
+                        <td>В библейском не засвидетельствован; в современном — «вянуть». Родственен араб. <span class="lang-arabic-inline" dir="rtl">كَمَلَ</span>.</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَمَلَ (كمل)</span></td>
+                        <td>kamala</td>
+                        <td>1) быть полным, совершенным; 2) завершаться; 3) достигать зрелости</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَمَرَ (كمر)</span></td>
+                        <td>kamara</td>
+                        <td>1) покрывать, заволакивать (облаками); 2) затемнять; 3) закутывать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَمَشَ (كمش)</span></td>
+                        <td>kamaša</td>
+                        <td>1) собирать, сжимать; 2) сморщивать; 3) стягивать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَمَدَ (كمد)</span></td>
+                        <td>kamada</td>
+                        <td>1) скорбеть, печалиться; 2) горевать; 3) томиться</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">كَمَتَ (كمت)</span></td>
+                        <td>kamata</td>
+                        <td>1) скрывать, прятать; 2) утаивать; 3) затаивать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Арабский <span class="lang-arabic-inline" dir="rtl">كَمَلَ</span> (быть полным) является ключевым корнем, от которого в иврите через чередование произошло значение «вянуть» (совр. <span class="lang-hebrew-inline">כָּמַל</span>). В библейском иврите соответствующий корень не зафиксирован, что говорит о лакуне в письменных памятниках.</p>
+
+        <h2>4. Словарь ячейки <span class="lang-hebrew-inline">[מ-כ]</span> (мем-каф)</h2>
+
+        <p>Метатеза ячейки <span class="lang-hebrew-inline">[כ-מ]</span> — <span class="lang-hebrew-inline">[מ-כ]</span> — имеет семантическое ядро «владение, низость, хитрость, протяжённость». Это ядро проявляется в корнях со значением «царствовать» (<span class="lang-hebrew-inline">מָלַךְ</span>), «продавать» (<span class="lang-hebrew-inline">מָכַר</span>), «тянуть» (<span class="lang-hebrew-inline">מָשַׁךְ</span>) и др.</p>
+
+        <h3>4.1. Ряд 1: X-<span class="lang-hebrew-inline">[מ-כ]</span> (модификатор перед ячейкой)</h3>
+
+        <p>В библейском иврите этот ряд не представлен. В арабском языке есть один продуктивный корень <span class="lang-arabic-inline" dir="rtl">سَمَكَ</span> (samaka).</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Язык</th>
+                        <th>Корень (оригинал)</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">سَمَكَ (سمك)</span></td>
+                        <td>samaka</td>
+                        <td>1) быть высоким, возвышаться; 2) толщина, высота (сущ. <span class="lang-arabic-inline" dir="ltr">[سَمْك]</span>); 3) подниматься</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[س]</span> = /s/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> В иврите соответствий нет.</p>
+
+        <h3>4.2. Ряд 2: <span class="lang-hebrew-inline">[מ]</span>-X-<span class="lang-hebrew-inline">[כ]</span> (модификатор внутри ячейки)</h3>
+
+        <p>В этой позиции модификатор X разрывает ячейку <span class="lang-hebrew-inline">[מ-כ]</span>. В иврите и арабском представлены следующие корни:</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Язык</th>
+                        <th>Корень (оригинал)</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">מָשַׁךְ (משׁך)</span></td>
+                        <td>māšak</td>
+                        <td>1) тянуть, влечь; 2) продолжать; 3) затягивать</td>
+                        <td><span class="lang-hebrew-inline">[שׁ]</span> /ʃ/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">מָסַךְ (מסך)</span></td>
+                        <td>māsak</td>
+                        <td>1) смешивать, разбавлять (вино); 2) прятать; 3) заслонять</td>
+                        <td><span class="lang-hebrew-inline">[ס]</span> /s/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">מָלַךְ (מלך)</span></td>
+                        <td>mālaḵ</td>
+                        <td>1) царствовать, править; 2) владеть; 3) становиться царём</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> без дагеша /χ/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">مَسَكَ (مسك)</span></td>
+                        <td>masaka</td>
+                        <td>1) держать, хватать; 2) удерживать; 3) прилипать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[س]</span> = /s/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">مَشَكَ (مشك)</span></td>
+                        <td>mašaka</td>
+                        <td>1) сжимать, связывать; 2) застёгивать; 3) закреплять</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ش]</span> = /ʃ/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">مَلَكَ (ملك)</span></td>
+                        <td>malaka</td>
+                        <td>1) владеть, править; 2) царствовать; 3) обладать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ل]</span> = /l/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Ивритский <span class="lang-hebrew-inline">מָלַךְ</span> и арабский <span class="lang-arabic-inline" dir="rtl">مَلَكَ</span> являются прямыми когнатами, что подтверждает родство ячеек.</p>
+
+        <h3>4.3. Ряд 3: <span class="lang-hebrew-inline">[מ-כ]</span>-X (модификатор после ячейки)</h3>
+
+        <p>В библейском иврите этот ряд представлен корнем <span class="lang-hebrew-inline">מָכַר</span> (продавать) и удвоенным <span class="lang-hebrew-inline">מָכַךְ</span> (быть низким). Арабский язык даёт несколько продуктивных корней.</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Язык</th>
+                        <th>Корень (оригинал)</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">מָכַר (מכר)</span></td>
+                        <td>mākar</td>
+                        <td>1) продавать; 2) сбывать; 3) предавать</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Иврит</td>
+                        <td><span class="lang-hebrew-inline">מָכַךְ (מכך)</span></td>
+                        <td>mākak</td>
+                        <td>1) быть низким, слабым; 2) опускаться; 3) унижаться</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">مَكَرَ (مكر)</span></td>
+                        <td>makara</td>
+                        <td>1) хитрить, обманывать; 2) замышлять; 3) коварство</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">مَكَنَ (مكن)</span></td>
+                        <td>makana</td>
+                        <td>1) укреплять, делать прочным; 2) быть сильным; 3) место (<span class="lang-arabic-inline" dir="ltr">[مَكَان]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">مَكَثَ (مكث)</span></td>
+                        <td>makaṯa</td>
+                        <td>1) оставаться, пребывать; 2) медлить; 3) задерживаться</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td>Арабский</td>
+                        <td><span class="lang-arabic-inline" dir="rtl">مَكَسَ (مكس)</span></td>
+                        <td>makasa</td>
+                        <td>1) собирать налоги, пошлины; 2) взимать; 3) налог (<span class="lang-arabic-inline" dir="ltr">[مَكْس]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Арабский <span class="lang-arabic-inline" dir="rtl">مَكَرَ</span> (хитрить) и ивритский <span class="lang-hebrew-inline">מָכַר</span> (продавать) имеют общее семантическое поле «обменивать, извлекать выгоду», что подтверждает единое происхождение ячейки <span class="lang-hebrew-inline">[מ-כ]</span>.</p>
+
+        <h2>5. Итоговые замечания</h2>
+
+        <p>Проведённый анализ показывает, что ячейка <span class="lang-hebrew-inline">[כ-מ]</span> (каф-мем) и её метатеза <span class="lang-hebrew-inline">[מ-כ]</span> (мем-каф) продуктивны во всех трёх позициях модификатора, хотя распределение корней неравномерно: для <span class="lang-hebrew-inline">[כ-מ]</span> наиболее представлен постпозитивный ряд, а для <span class="lang-hebrew-inline">[מ-כ]</span> — интропозитивный и постпозитивный. Семантические ядра обеих ячеек взаимосвязаны: мера и полнота (<span class="lang-hebrew-inline">[כ-מ]</span>) переходят во владение и протяжённость (<span class="lang-hebrew-inline">[מ-כ]</span>), что отражает общий принцип развёртывания смысла через метатезу.</p>
+
+        <p>Фонетические соответствия между ивритом и арабским (<span class="lang-hebrew-inline">[כ]</span> с дагешем = <span class="lang-arabic-inline" dir="ltr">[ك]</span>, <span class="lang-hebrew-inline">[כ]</span> без дагеша = <span class="lang-arabic-inline" dir="ltr">[خ]</span>) позволяют проследить историческую динамику внутри гнёзд. В ряде случаев наблюдается смещение значений, как, например, в паре ивр. <span class="lang-hebrew-inline">כָּרַם</span> «виноградник» — араб. <span class="lang-arabic-inline" dir="rtl">كَرَمَ</span> «щедрость», что объясняется метафорическим переносом от «обильного плода» к «обилию даров».</p>
+
+        <p>Настоящий словарь служит инструментом для дальнейшего анализа корней, содержащих ячейки <span class="lang-hebrew-inline">[כ-מ]</span> и <span class="lang-hebrew-inline">[מ-כ]</span>, включая ключевые слова <strong>камаль</strong> (<span class="lang-hebrew-inline">כמל</span>) и <strong>гамаль</strong> (<span class="lang-hebrew-inline">גמל</span>), в которых пересекаются смыслы полноты, меры и воздаяния.</p>
+
+    </article>
+
+    <!-- ===== НИЖНЯЯ НАВИГАЦИЯ ===== -->
+    <div class="nav-links nav-links-bottom">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="slovar-karkasnoj-yachejki-kl.html">Предыдущая статья: Словарь каркасной ячейки [כ-ל]</a>
+    </div>
+
+    <!-- ===== КОНЕЦ СТАТЬИ ===== -->
+
+</body>
+</html>
