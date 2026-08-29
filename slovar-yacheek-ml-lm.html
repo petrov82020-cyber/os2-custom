@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь ячеек [מ-ל] (мем-ламед) и [ל-מ] (ламед-мем)</title>
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ----- Общие стили (минимализм) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', 'Times New Roman', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #ffffff;
+            max-width: 820px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ----- Навигационные панели ----- */
+        .nav-links {
+            font-size: 0.95rem;
+            margin: 1rem 0 2rem 0;
+            padding: 0.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .nav-links a {
+            color: #1a5b8c;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a5b8c;
+        }
+        .nav-links a:hover {
+            border-bottom: 1px solid #1a5b8c;
+        }
+        .nav-links .sep {
+            margin: 0 0.5rem;
+            color: #aaa;
+        }
+        .nav-links-bottom {
+            margin-top: 2rem;
+        }
+
+        /* ----- Заголовки ----- */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0 0 0.2rem 0;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #444;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.7rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.6rem 0;
+        }
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        /* ----- Мета-информация (дата, автор) ----- */
+        .entry-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        .entry-meta time {
+            font-style: italic;
+        }
+
+        /* ----- Аннотация ----- */
+        .abstract {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 0.8rem 1.5rem;
+            margin: 1.5rem 0 2rem 0;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .abstract strong {
+            font-weight: 600;
+        }
+
+        /* ----- Абзацы ----- */
+        p {
+            margin: 0 0 1.2rem 0;
+        }
+
+        /* ----- Списки ----- */
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ----- Таблицы ----- */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        th, td {
+            padding: 0.5rem 0.7rem;
+            border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0f0f0;
+            font-weight: 600;
+        }
+        td .lang-hebrew-inline, td .lang-arabic-inline {
+            font-size: 1em;
+        }
+        td ul, td ol {
+            margin: 0 0 0 1.2rem;
+            padding: 0;
+        }
+        td ul li, td ol li {
+            margin-bottom: 0.1rem;
+        }
+
+        /* ----- Ивритский и арабский текст (RTL) ----- */
+        .lang-hebrew-inline {
+            font-family: 'SBL Hebrew', 'Cardo', 'Noto Serif Hebrew', 'Arial Unicode MS', serif;
+            font-size: 1.05em;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+        .lang-arabic-inline {
+            font-family: 'Noto Serif', 'Arial Unicode MS', serif;
+            font-size: 1em;
+            direction: rtl;
+            unicode-bidi: embed;
+        }
+
+        /* ----- Ссылки ----- */
+        a {
+            color: #1a5b8c;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a5b8c;
+        }
+        a:hover {
+            border-bottom: 1px solid #1a5b8c;
+        }
+
+        /* ----- Адаптивность ----- */
+        @media (max-width: 640px) {
+            body {
+                font-size: 16px;
+                padding: 0 1rem;
+            }
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.1rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            th, td {
+                padding: 0.3rem 0.4rem;
+                font-size: 0.82rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ВЕРХНЯЯ НАВИГАЦИЯ ===== -->
+    <div class="nav-links">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="slovar-yacheek-km-mk.html">Предыдущая статья: Словарь ячеек [כ-מ] (каф-мем) и [מ-כ] (мем-каф)</a>
+    </div>
+
+    <!-- ===== НАЧАЛО СТАТЬИ ===== -->
+
+    <article>
+        <header>
+            <h1>Словарь каркасных ячеек <span class="lang-hebrew-inline">[מ-ל]</span> (мем-ламед) и <span class="lang-hebrew-inline">[ל-מ]</span> (ламед-мем)</h1>
+            <p class="subtitle">Систематизация производных корней по элементарной формуле смысла</p>
+            <div class="entry-meta">
+                <time datetime="2026-08-30">30 августа 2026</time>
+            </div>
+        </header>
+
+        <div class="abstract">
+            <strong>Аннотация.</strong> Статья представляет собой систематическое описание производных корней, восходящих к двухбуквенным ячейкам <span class="lang-hebrew-inline">[מ-ל]</span> (мем-ламед) и её метатезе <span class="lang-hebrew-inline">[ל-מ]</span> (ламед-мем) в семитских языках. На основе метода элементарной формулы смысла рассматриваются три позиции модификатора X относительно ячейки: препозиция, интропозиция и постпозиция. Для каждой позиции приводятся ряды засвидетельствованных корней в библейском иврите, арамейском и арабском языках, с указанием основных, вторичных и производных значений. Особое внимание уделяется фонетическим соответствиям между графемами иврита и арабского, а также случаям, когда одна графема скрывает разные исходные фонемы. Показано, что ячейка <span class="lang-hebrew-inline">[מ-ל]</span> несёт устойчивое семантическое ядро «полнота, слово, власть», а её метатеза <span class="lang-hebrew-inline">[ל-מ]</span> — «целостность, учение, связь». Настоящий словарь служит инструментом для дальнейшего анализа корней, содержащих указанные ячейки.
+        </div>
+
+        <h2>1. Введение</h2>
+
+        <p>Двухбуквенные корневые ячейки <span class="lang-hebrew-inline">[מ-ל]</span> (мем-ламед) и <span class="lang-hebrew-inline">[ל-מ]</span> (ламед-мем) принадлежат к числу базовых смысловых единиц семитского корнеслова. Их семантические ядра проявляются в обширных гнёздах производных корней, образованных присоединением модификатора — третьей согласной, уточняющей характер действия или состояния. В соответствии с элементарной формулой смысла модификатор может занимать три позиции: перед ячейкой (X-Y-Z), внутри неё (Y-X-Z) и после неё (Y-Z-X). В настоящей статье рассматриваются все три позиции для обеих ячеек на материале библейского иврита, арамейского и арабского языков. Приводятся только корни, засвидетельствованные в стандартных лексикографических источниках (HALOT, BDB, Lisān al-ʿArab, CAD и др.).</p>
+
+        <h2>2. Фонетические соответствия</h2>
+
+        <p>При анализе корней необходимо учитывать следующие регулярные соответствия:</p>
+
+        <ul>
+            <li>Ивритская буква <span class="lang-hebrew-inline">[ל]</span> (ламед) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ل]</span> (/l/);</li>
+            <li>Буква <span class="lang-hebrew-inline">[מ]</span> (мем) в обоих языках сохраняет произношение /m/ без вариаций;</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[שׁ]</span> (/ʃ/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ش]</span> (/ʃ/);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[שׂ]</span> (/s/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[س]</span> (/s/);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[ח]</span> (/ḥ/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ح]</span> (/ḥ/);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[ע]</span> (/ʕ/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ع]</span> (/ʕ/);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[צ]</span> (/ṣ/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ص]</span> (/ṣ/);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[ט]</span> (/ṭ/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ط]</span> (/ṭ/);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[ק]</span> (/q/) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ق]</span> (/q/);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[א]</span> (алеф) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[أ]</span> (хамза);</li>
+            <li>Ивритская <span class="lang-hebrew-inline">[ה]</span> (хей) соответствует арабской <span class="lang-arabic-inline" dir="ltr">[ه]</span> (/h/).</li>
+        </ul>
+
+        <p>В арамейском языке соответствия близки к ивритским, однако спирантизация и оглушение могут различаться по диалектам.</p>
+
+        <h2>3. Словарь ячейки <span class="lang-hebrew-inline">[מ-ל]</span> (мем-ламед)</h2>
+
+        <p>Семантическое ядро ячейки <span class="lang-hebrew-inline">[מ-ל]</span> — «полнота, слово, власть, речь». Это ядро прослеживается в корнях со значениями «наполнять» (<span class="lang-hebrew-inline">מָלֵא</span>), «говорить» (<span class="lang-hebrew-inline">מִלָּה, מָלַל</span>), «царствовать» (<span class="lang-hebrew-inline">מָלַךְ</span>), «владеть» (<span class="lang-hebrew-inline">מָשַׁל</span>) и др.</p>
+
+        <h3>3.1. Ряд 1: X-<span class="lang-hebrew-inline">[מ-ל]</span> (модификатор перед ячейкой)</h3>
+
+        <p>В библейском иврите этот ряд представлен несколькими корнями. В арабском языке модель продуктивна.</p>
+
+        <h4>Иврит</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">אמל</span></td>
+                        <td>ʾāmal</td>
+                        <td>1) вянуть, слабеть; 2) изнемогать; 3) унывать</td>
+                        <td><span class="lang-hebrew-inline">[א]</span> = алеф, <span class="lang-hebrew-inline">[מ]</span> = /m/, <span class="lang-hebrew-inline">[ל]</span> = /l/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">עמל</span></td>
+                        <td>ʿāmal</td>
+                        <td>1) трудиться, работать; 2) страдать, мучиться; 3) добывать с трудом</td>
+                        <td><span class="lang-hebrew-inline">[ע]</span> = айн, соответствует араб. <span class="lang-arabic-inline" dir="ltr">[ع]</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">שׂמל</span></td>
+                        <td>śāmal</td>
+                        <td>1) быть левым; 2) левая сторона (сущ. <span class="lang-hebrew-inline">שְׂמֹאל</span>); 3) север (ориентация по левой руке)</td>
+                        <td><span class="lang-hebrew-inline">[שׂ]</span> /s/, не путать с <span class="lang-hebrew-inline">[שׁ]</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Арабский</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">أمل</span></td>
+                        <td>ʾamala</td>
+                        <td>1) надеяться; 2) ожидать; 3) надежда (сущ. <span class="lang-arabic-inline" dir="ltr">[أَمَل]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[أ]</span> = алеф</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">عمل</span></td>
+                        <td>ʿamila</td>
+                        <td>1) работать, трудиться; 2) делать, совершать; 3) работа (сущ. <span class="lang-arabic-inline" dir="ltr">[عَمَل]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ع]</span> = айн, соответствует ивр. <span class="lang-hebrew-inline">עמל</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">كمل</span></td>
+                        <td>kamala</td>
+                        <td>1) быть полным, совершенным; 2) завершаться; 3) достигать зрелости</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/, соответствует ивр. <span class="lang-hebrew-inline">[כ]</span> с дагешем</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">شمل</span></td>
+                        <td>šamila</td>
+                        <td>1) включать, охватывать; 2) покрывать; 3) обобщать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ش]</span> = /ʃ/, соответствует ивр. <span class="lang-hebrew-inline">[שׁ]</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">جمل</span></td>
+                        <td>ǧamala</td>
+                        <td>1) собирать, складывать; 2) быть красивым (II порода); 3) верблюд (сущ. <span class="lang-arabic-inline" dir="ltr">[جَمَل]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ج]</span> = /ǧ/, соответствует ивр. <span class="lang-hebrew-inline">[ג]</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">حمل</span></td>
+                        <td>ḥamala</td>
+                        <td>1) нести, переносить; 2) беременеть; 3) нагружать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ح]</span> = /ḥ/, соответствует ивр. <span class="lang-hebrew-inline">[ח]</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">رمل</span></td>
+                        <td>ramala</td>
+                        <td>1) покрывать песком; 2) песок (сущ. <span class="lang-arabic-inline" dir="ltr">[رَمْل]</span>); 3) быть бедным (вдова)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ر]</span> = /r/, соответствует ивр. <span class="lang-hebrew-inline">[ר]</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">سمل</span></td>
+                        <td>samala</td>
+                        <td>1) шить, штопать; 2) чинить; 3) глаз (диал.)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[س]</span> = /s/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> В иврите арабский корень <span class="lang-arabic-inline" dir="rtl">[ج-م-ل]</span> соответствует <span class="lang-hebrew-inline">[ג-מ-ל]</span> (гамаль), который является одним из ключевых корней ячейки <span class="lang-hebrew-inline">[ג-מ]</span>, но здесь он также содержит <span class="lang-hebrew-inline">[מ-ל]</span>, что показывает пересечение ячеек.</p>
+
+        <h3>3.2. Ряд 2: <span class="lang-hebrew-inline">[מ]</span>-X-<span class="lang-hebrew-inline">[ל]</span> (модификатор внутри ячейки)</h3>
+
+        <p>В этой позиции модификатор X разрывает каркас <span class="lang-hebrew-inline">[מ-ל]</span>. В иврите и арабском засвидетельствованы следующие корни:</p>
+
+        <h4>Иврит</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">משׁל</span></td>
+                        <td>māšal</td>
+                        <td>1) владеть, управлять; 2) господствовать; 3) притча, пословица (сущ. <span class="lang-hebrew-inline">מָשָׁל</span>)</td>
+                        <td><span class="lang-hebrew-inline">[שׁ]</span> /ʃ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מחל</span></td>
+                        <td>māḥal</td>
+                        <td>1) прощать, отпускать; 2) извинять; 3) отказываться от долга</td>
+                        <td><span class="lang-hebrew-inline">[ח]</span> /ḥ/, соответствует араб. <span class="lang-arabic-inline" dir="ltr">[ح]</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מעל</span></td>
+                        <td>māʿal</td>
+                        <td>1) обманывать, изменять; 2) быть неверным; 3) присваивать</td>
+                        <td><span class="lang-hebrew-inline">[ע]</span> /ʕ/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Арабский</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">مثل</span></td>
+                        <td>maṯala</td>
+                        <td>1) быть похожим, подобным; 2) изображать; 3) пример (сущ. <span class="lang-arabic-inline" dir="ltr">[مَثَل]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ث]</span> = /ṯ/, соответствует ивр. <span class="lang-hebrew-inline">[שׁ]</span> (в некоторых корнях)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">محل</span></td>
+                        <td>maḥala</td>
+                        <td>1) быть солёным (о воде); 2) высыхать; 3) рассол</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ح]</span> = /ḥ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">مطل</span></td>
+                        <td>maṭala</td>
+                        <td>1) растягивать, откладывать; 2) медлить; 3) затягивать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ط]</span> = /ṭ/, соответствует ивр. <span class="lang-hebrew-inline">[ט]</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> В иврите арабский корень <span class="lang-arabic-inline" dir="rtl">[م-ث-ل]</span> соответствует <span class="lang-hebrew-inline">[מ-ש-ל]</span>, где <span class="lang-arabic-inline" dir="ltr">[ث]</span> перешло в <span class="lang-hebrew-inline">[שׁ]</span>. Таким образом, арабский <span class="lang-arabic-inline" dir="rtl">مثل</span> и ивритский <span class="lang-hebrew-inline">משׁל</span> являются когнатами, что подтверждает продуктивность ячейки <span class="lang-hebrew-inline">[מ-ל]</span>.</p>
+
+        <h3>3.3. Ряд 3: <span class="lang-hebrew-inline">[מ-ל]</span>-X (модификатор после ячейки)</h3>
+
+        <p>Наиболее продуктивный ряд. В библейском иврите засвидетельствованы следующие корни:</p>
+
+        <h4>Иврит</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מלא</span></td>
+                        <td>mālēʾ</td>
+                        <td>1) быть полным, наполнять; 2) исполнять; 3) полнота (сущ. <span class="lang-hebrew-inline">מְלוֹא</span>)</td>
+                        <td><span class="lang-hebrew-inline">[א]</span> = алеф</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מלך</span></td>
+                        <td>mālaḵ</td>
+                        <td>1) царствовать, править; 2) владеть; 3) становиться царём</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> без дагеша /χ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מלח</span></td>
+                        <td>mālaḥ</td>
+                        <td>1) солить; 2) соль (сущ. <span class="lang-hebrew-inline">מֶלַח</span>); 3) моряк (перен.)</td>
+                        <td><span class="lang-hebrew-inline">[ח]</span> /ḥ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מלט</span></td>
+                        <td>mālaṭ</td>
+                        <td>1) спасаться, избегать; 2) ускользать; 3) уносить</td>
+                        <td><span class="lang-hebrew-inline">[ט]</span> /ṭ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מלל</span></td>
+                        <td>mālal</td>
+                        <td>1) говорить, произносить; 2) молоть; 3) вырывать</td>
+                        <td><span class="lang-hebrew-inline">[ל]</span> /l/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מלק</span></td>
+                        <td>mālaq</td>
+                        <td>1) отрывать голову (о жертвенных птицах); 2) сжимать; 3) ломать</td>
+                        <td><span class="lang-hebrew-inline">[ק]</span> /q/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">מלשׁ</span></td>
+                        <td>mālaš</td>
+                        <td>1) месить тесто; 2) мять; 3) размешивать</td>
+                        <td><span class="lang-hebrew-inline">[שׁ]</span> /ʃ/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Арабский</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">ملأ</span></td>
+                        <td>malaʾa</td>
+                        <td>1) наполнять; 2) заполнять; 3) множество (сущ. <span class="lang-arabic-inline" dir="ltr">[مَلَأ]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[أ]</span> = алеф</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">ملك</span></td>
+                        <td>malaka</td>
+                        <td>1) владеть, править; 2) царствовать; 3) ангел (сущ. <span class="lang-arabic-inline" dir="ltr">[مَلَك]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/, соответствует ивр. <span class="lang-hebrew-inline">מלך</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">ملح</span></td>
+                        <td>malaḥa</td>
+                        <td>1) быть солёным; 2) солить; 3) соль (сущ. <span class="lang-arabic-inline" dir="ltr">[مِلْح]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ح]</span> = /ḥ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">ملس</span></td>
+                        <td>malasa</td>
+                        <td>1) быть гладким, скользким; 2) убегать; 3) выскальзывать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[س]</span> = /s/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">ملق</span></td>
+                        <td>malaqa</td>
+                        <td>1) ласкать, льстить; 2) гладить; 3) обхаживать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ق]</span> = /q/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Ивритский <span class="lang-hebrew-inline">מָלַךְ</span> и арабский <span class="lang-arabic-inline" dir="rtl">مَلَكَ</span> являются прямыми когнатами, что подтверждает родство ячеек и демонстрирует соответствие <span class="lang-hebrew-inline">[כ]</span> с дагешем = <span class="lang-arabic-inline" dir="ltr">[ك]</span>.</p>
+
+        <h2>4. Словарь ячейки <span class="lang-hebrew-inline">[ל-מ]</span> (ламед-мем)</h2>
+
+        <p>Метатеза ячейки <span class="lang-hebrew-inline">[מ-ל]</span> — <span class="lang-hebrew-inline">[ל-מ]</span> — имеет семантическое ядро «целостность, учение, связь». Это ядро проявляется в корнях со значением «учить» (<span class="lang-hebrew-inline">לָמַד</span>), «мир» (<span class="lang-hebrew-inline">שָׁלוֹם</span>), «скрывать» (<span class="lang-hebrew-inline">עָלַם</span>) и др.</p>
+
+        <h3>4.1. Ряд 1: X-<span class="lang-hebrew-inline">[ל-מ]</span> (модификатор перед ячейкой)</h3>
+
+        <p>В библейском иврите этот ряд представлен несколькими корнями. В арабском языке модель продуктивна.</p>
+
+        <h4>Иврит</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">אלם</span></td>
+                        <td>ʾālam</td>
+                        <td>1) молчать, онеметь; 2) связывать (снопы); 3) немой (сущ. <span class="lang-hebrew-inline">אִלֵּם</span>)</td>
+                        <td><span class="lang-hebrew-inline">[א]</span> = алеф</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">עלם</span></td>
+                        <td>ʿālam</td>
+                        <td>1) скрывать, прятать; 2) вечность (сущ. <span class="lang-hebrew-inline">עוֹלָם</span>); 3) юноша (сущ. <span class="lang-hebrew-inline">עֶלֶם</span>)</td>
+                        <td><span class="lang-hebrew-inline">[ע]</span> /ʕ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">כלם</span></td>
+                        <td>kālam</td>
+                        <td>1) стыдить, позорить; 2) унижать; 3) срамить</td>
+                        <td><span class="lang-hebrew-inline">[כ]</span> с дагешем /k/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">שׁלם</span></td>
+                        <td>šālēm</td>
+                        <td>1) быть целым, полным; 2) мириться; 3) мир (сущ. <span class="lang-hebrew-inline">שָׁלוֹם</span>)</td>
+                        <td><span class="lang-hebrew-inline">[שׁ]</span> /ʃ/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Арабский</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">سلم</span></td>
+                        <td>salima</td>
+                        <td>1) быть целым, невредимым; 2) сдаваться; 3) мир (сущ. <span class="lang-arabic-inline" dir="ltr">[سَلَام]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[س]</span> = /s/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">علم</span></td>
+                        <td>ʿalima</td>
+                        <td>1) знать, ведать; 2) узнавать; 3) знание (сущ. <span class="lang-arabic-inline" dir="ltr">[عِلْم]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ع]</span> = /ʕ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">كلم</span></td>
+                        <td>kallama</td>
+                        <td>1) говорить, беседовать; 2) ранить (от <span class="lang-arabic-inline" dir="ltr">[كَلْم]</span>); 3) слово (сущ. <span class="lang-arabic-inline" dir="ltr">[كَلِمَة]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ك]</span> = /k/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">حلم</span></td>
+                        <td>ḥalama</td>
+                        <td>1) мечтать, видеть сон; 2) быть кротким; 3) сон (сущ. <span class="lang-arabic-inline" dir="ltr">[حُلْم]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ح]</span> = /ḥ/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Ивритский <span class="lang-hebrew-inline">שׁלם</span> и арабский <span class="lang-arabic-inline" dir="rtl">سلم</span> являются прямыми когнатами, где ивр. <span class="lang-hebrew-inline">[שׁ]</span> = араб. <span class="lang-arabic-inline" dir="ltr">[س]</span>. Ивритский <span class="lang-hebrew-inline">עלם</span> и арабский <span class="lang-arabic-inline" dir="rtl">علم</span> — когнаты.</p>
+
+        <h3>4.2. Ряд 2: <span class="lang-hebrew-inline">[ל]</span>-X-<span class="lang-hebrew-inline">[מ]</span> (модификатор внутри ячейки)</h3>
+
+        <p>В этой позиции модификатор X разрывает ячейку <span class="lang-hebrew-inline">[ל-מ]</span>. В иврите и арабском представлены следующие корни:</p>
+
+        <h4>Иврит</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">לחם</span></td>
+                        <td>lāḥam</td>
+                        <td>1) воевать, сражаться; 2) есть хлеб; 3) хлеб (сущ. <span class="lang-hebrew-inline">לֶחֶם</span>)</td>
+                        <td><span class="lang-hebrew-inline">[ח]</span> /ḥ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">לעם</span></td>
+                        <td>lāʿam</td>
+                        <td>1) собираться, толпиться; 2) народ (сущ. <span class="lang-hebrew-inline">לְאֹם</span>); 3) племя</td>
+                        <td><span class="lang-hebrew-inline">[ע]</span> /ʕ/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Арабский</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">لحم</span></td>
+                        <td>laḥama</td>
+                        <td>1) припаивать, сваривать; 2) быть плотью; 3) мясо (сущ. <span class="lang-arabic-inline" dir="ltr">[لَحْم]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ح]</span> = /ḥ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">لعم</span></td>
+                        <td>laʿama</td>
+                        <td>1) зашивать, штопать; 2) связывать; 3) соединять</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ع]</span> = /ʕ/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Ивритский <span class="lang-hebrew-inline">לחם</span> (хлеб) и арабский <span class="lang-arabic-inline" dir="rtl">لحم</span> (мясо) являются этимологическими родственниками, восходящими к общему значению «плоть, пища».</p>
+
+        <h3>4.3. Ряд 3: <span class="lang-hebrew-inline">[ל-מ]</span>-X (модификатор после ячейки)</h3>
+
+        <p>В библейском иврите этот ряд представлен в основном корнем <span class="lang-hebrew-inline">לָמַד</span> (учиться). Арабский язык даёт несколько продуктивных корней.</p>
+
+        <h4>Иврит</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-hebrew-inline">למד</span></td>
+                        <td>lāmaḏ</td>
+                        <td>1) учиться, обучаться; 2) учить; 3) привыкать</td>
+                        <td><span class="lang-hebrew-inline">[ד]</span> /ḏ/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Арабский</h4>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Корень</th>
+                        <th>Транслитерация</th>
+                        <th>Значения (1-е, 2-е, 3-е)</th>
+                        <th>Примечания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">لمس</span></td>
+                        <td>lamasa</td>
+                        <td>1) касаться, трогать; 2) ощупывать; 3) осязание</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[س]</span> = /s/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">لمع</span></td>
+                        <td>lamaʿa</td>
+                        <td>1) сверкать, блестеть; 2) сиять; 3) мерцать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ع]</span> = /ʕ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">لمح</span></td>
+                        <td>lamaḥa</td>
+                        <td>1) видеть мельком; 2) замечать; 3) взгляд (сущ. <span class="lang-arabic-inline" dir="ltr">[لَمْح]</span>)</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[ح]</span> = /ḥ/</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-arabic-inline" dir="rtl">لمد</span></td>
+                        <td>lamada</td>
+                        <td>1) быть постоянным; 2) длиться; 3) пребывать</td>
+                        <td><span class="lang-arabic-inline" dir="ltr">[د]</span> = /d/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><em>Примечание:</em> Ивритский <span class="lang-hebrew-inline">למד</span> и арабский <span class="lang-arabic-inline" dir="rtl">لمد</span> (в значении постоянства) могут быть этимологически связаны через общее понятие «привыкать, закреплять».</p>
+
+        <h2>5. Итоговые замечания</h2>
+
+        <p>Проведённый анализ показывает, что ячейка <span class="lang-hebrew-inline">[מ-ל]</span> (мем-ламед) и её метатеза <span class="lang-hebrew-inline">[ל-מ]</span> (ламед-мем) продуктивны во всех трёх позициях модификатора. Распределение корней неравномерно: для <span class="lang-hebrew-inline">[מ-ל]</span> наиболее представлен постпозитивный ряд, а для <span class="lang-hebrew-inline">[ל-מ]</span> — препозитивный. Семантические ядра обеих ячеек взаимосвязаны: полнота и слово (<span class="lang-hebrew-inline">[מ-ל]</span>) переходят в целостность и учение (<span class="lang-hebrew-inline">[ל-מ]</span>), что отражает общий принцип развёртывания смысла через метатезу.</p>
+
+        <p>Фонетические соответствия между ивритом и арабским (например, <span class="lang-hebrew-inline">[שׁ]</span> = <span class="lang-arabic-inline" dir="ltr">[س]</span>, <span class="lang-hebrew-inline">[ח]</span> = <span class="lang-arabic-inline" dir="ltr">[ح]</span>, <span class="lang-hebrew-inline">[ע]</span> = <span class="lang-arabic-inline" dir="ltr">[ع]</span>, <span class="lang-hebrew-inline">[כ]</span> с дагешем = <span class="lang-arabic-inline" dir="ltr">[ك]</span>) позволяют проследить историческую динамику внутри гнёзд и выявить когнаты, такие как ивр. <span class="lang-hebrew-inline">מָלַךְ</span> = араб. <span class="lang-arabic-inline" dir="rtl">مَلَكَ</span>, ивр. <span class="lang-hebrew-inline">שׁלם</span> = араб. <span class="lang-arabic-inline" dir="rtl">سلم</span>.</p>
+
+        <p>Настоящий словарь служит инструментом для дальнейшего анализа корней, содержащих ячейки <span class="lang-hebrew-inline">[מ-ל]</span> и <span class="lang-hebrew-inline">[ל-מ]</span>, включая ключевые слова <strong>камаль</strong> (<span class="lang-hebrew-inline">כמל</span>) и <strong>гамаль</strong> (<span class="lang-hebrew-inline">גמל</span>), в которых пересекаются смыслы полноты, меры и воздаяния, а также слово <strong>лев</strong> (<span class="lang-hebrew-inline">לב</span>), в котором буква <span class="lang-hebrew-inline">[ל]</span> соединяется с <span class="lang-hebrew-inline">[ב]</span>, образуя отдельную ячейку.</p>
+
+    </article>
+
+    <!-- ===== НИЖНЯЯ НАВИГАЦИЯ ===== -->
+    <div class="nav-links nav-links-bottom">
+        <a href="abc-index.html">← На главную</a>
+        <span class="sep">|</span>
+        <a href="slovar-yacheek-km-mk.html">Предыдущая статья: Словарь ячеек [כ-מ] (каф-мем) и [מ-כ] (мем-каф)</a>
+    </div>
+
+    <!-- ===== КОНЕЦ СТАТЬИ ===== -->
+
+</body>
+</html>
