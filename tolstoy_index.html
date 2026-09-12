@@ -13,7 +13,7 @@
             --link-hover: #3d290f;
             --nav-bg: #f0ebe0;
             --border-color: #d9d0c0;
-            --max-width: 800px;
+            --max-width: 820px;
         }
 
         * {
@@ -69,13 +69,6 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        h3 {
-            font-size: 19px;
-            color: var(--text-color);
-            margin-top: 22px;
-            margin-bottom: 10px;
-        }
-
         p {
             margin-bottom: 14px;
             text-align: justify;
@@ -126,18 +119,36 @@
             color: var(--accent-color);
         }
 
+        .section-title {
+            font-size: 19px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-top: 28px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .section-description {
+            font-size: 15px;
+            color: #7a7060;
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+
         .toc {
             list-style: none;
             padding: 0;
         }
 
         .toc li {
-            margin-bottom: 8px;
-            padding: 8px 12px;
+            margin-bottom: 6px;
+            padding: 6px 12px;
             background-color: #faf8f2;
             border-radius: 4px;
             border-left: 3px solid transparent;
             transition: border-color 0.2s;
+            font-size: 17px;
         }
 
         .toc li:hover {
@@ -147,7 +158,6 @@
         .toc a {
             color: var(--link-color);
             text-decoration: none;
-            font-size: 17px;
         }
 
         .toc a:hover {
@@ -155,17 +165,11 @@
             text-decoration: underline;
         }
 
-        .toc .section-label {
-            font-weight: bold;
-            color: #7a7060;
+        .toc .num {
+            display: inline-block;
+            min-width: 32px;
+            color: #9a9080;
             font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 18px;
-            margin-bottom: 8px;
-            padding-left: 0;
-            background: none;
-            border-left: none;
         }
 
         footer {
@@ -197,6 +201,9 @@
                 align-items: stretch;
                 text-align: center;
             }
+            .toc li {
+                font-size: 15px;
+            }
         }
     </style>
 </head>
@@ -216,40 +223,108 @@
 
     <main>
         <h2>Об авторе</h2>
-        <p>Лев Николаевич Толстой родился 28 августа (9 сентября) 1828 года в родовом имении Ясная Поляна Тульской губернии, в знатной графской семье[reference:8]. Рано осиротел, его воспитанием занимались родственники. Получил домашнее образование, а в 1843 году поступил в Императорский Казанский университет, однако в учебе не преуспел и в 1847 году покинул его без степени[reference:9].</p>
-        <p>Осенью 1851 года Толстой поступил на военную службу. Он был юнкером в артиллерийской бригаде на Кавказе, где написал свое первое произведение — автобиографическую повесть «Детство». Позже участвовал в Крымской войне 1853–1856 годов и в обороне Севастополя[reference:10]. После окончания войны оставил службу и вернулся в Россию.</p>
-        <p>В 1862 году Толстой женился на Софье Андреевне Берс и поселился в Ясной Поляне, где создал свои великие романы «Война и мир» и «Анна Каренина»[reference:11]. В конце 1870-х годов писатель пережил глубокий духовный кризис. Он разочаровался в церкви, и его взгляды стали основой нового религиозно-нравственного течения — толстовства. Его идеи о ненасильственном сопротивлении злу оказались близки многим мыслителям, в том числе Махатме Ганди[reference:12].</p>
-        <p>В конце октября 1910 года Толстой тайно покинул Ясную Поляну. В пути он заболел воспалением легких и 7 (20) ноября умер. Похоронен писатель в Ясной Поляне[reference:13].</p>
+        <p>Лев Николаевич Толстой родился 28 августа (9 сентября) 1828 года в родовом имении Ясная Поляна Тульской губернии, в знатной графской семье. Рано осиротел, его воспитанием занимались родственники. Получил домашнее образование, а в 1843 году поступил в Императорский Казанский университет, однако в учебе не преуспел и в 1847 году покинул его без степени.</p>
+        <p>Осенью 1851 года Толстой поступил на военную службу. Он был юнкером в артиллерийской бригаде на Кавказе, где написал свое первое произведение — автобиографическую повесть «Детство». Позже участвовал в Крымской войне 1853–1856 годов и в обороне Севастополя. После окончания войны оставил службу и вернулся в Россию.</p>
+        <p>В 1862 году Толстой женился на Софье Андреевне Берс и поселился в Ясной Поляне, где создал свои великие романы «Война и мир» и «Анна Каренина». В конце 1870-х годов писатель пережил глубокий духовный кризис. Он разочаровался в церкви, и его взгляды стали основой нового религиозно-нравственного течения — толстовства. Его идеи о ненасильственном сопротивлении злу оказались близки многим мыслителям, в том числе Махатме Ганди.</p>
+        <p>В конце октября 1910 года Толстой тайно покинул Ясную Поляну. В пути он заболел воспалением легких и 7 (20) ноября умер. Похоронен писатель в Ясной Поляне.</p>
 
         <h2>Произведения для детей</h2>
-        <p>Лев Николаевич Толстой уделял большое внимание воспитанию и обучению детей. Он создал специальные произведения для детей, которые вошли в его «Азбуку» и «Новую азбуку». Эти рассказы, сказки и басни написаны простым и понятным языком, они учат честности, доброте, трудолюбию и любви к природе[reference:14].</p>
-        <p>В этом аудиосборнике собраны лучшие произведения Толстого для детей. Тексты переведены в современную орфографию, все примечания расположены сразу после абзацев, к которым они относятся. Чтение вслух осуществляется с помощью встроенного в браузер голосового помощника.</p>
+        <p>Лев Николаевич Толстой уделял большое внимание воспитанию и обучению детей. Он создал специальные произведения для детей, которые вошли в его «Азбуку» и «Новую азбуку». Эти рассказы, сказки и басни написаны простым и понятным языком, они учат честности, доброте, трудолюбию и любви к природе.</p>
+        <p>В этом сборнике произведения расположены от наиболее развёрнутых и композиционно сложных к кратким притчам и басням-миниатюрам. Такое построение помогает постепенно переходить от длинного повествования к короткой нравственной мысли, что удобно для прослушивания.</p>
 
         <h2>Содержание</h2>
+
+        <div class="section-title">Крупные рассказы и повести</div>
+        <p class="section-description">Развёрнутые произведения с несколькими эпизодами, диалогами и подробными описаниями.</p>
         <ul class="toc">
-            <li class="section-label">Проза</li>
-            <li><a href="tolstoy_pref.html">Предисловие издателя</a></li>
-            <li><a href="tolstoy_intro.html">Введение</a></li>
-            <li><a href="tolstoy_ch1_filipok.html">Филипок (Быль)</a></li>
-            <li><a href="tolstoy_ch2_kostochka.html">Косточка (Быль)</a></li>
-            <li><a href="tolstoy_ch3_lev_i_sobachka.html">Лев и собачка (Быль)</a></li>
-            <li><a href="tolstoy_ch4_akula.html">Акула (Рассказ)</a></li>
+            <li><span class="num">1.</span> <a href="tolstoy_kavkazskiy_plennik.html">Кавказский пленник</a></li>
+            <li><span class="num">2.</span> <a href="tolstoy_filipok.html">Филипок</a></li>
+            <li><span class="num">3.</span> <a href="tolstoy_pryzhok.html">Прыжок</a></li>
+            <li><span class="num">4.</span> <a href="tolstoy_akula.html">Акула</a></li>
+            <li><span class="num">5.</span> <a href="tolstoy_lev_i_sobachka.html">Лев и собачка</a></li>
+            <li><span class="num">6.</span> <a href="tolstoy_kotyonok.html">Котёнок</a></li>
+            <li><span class="num">7.</span> <a href="tolstoy_korova.html">Корова</a></li>
+            <li><span class="num">8.</span> <a href="tolstoy_ptichka.html">Птичка</a></li>
+            <li><span class="num">9.</span> <a href="tolstoy_orjol.html">Орёл</a></li>
+            <li><span class="num">10.</span> <a href="tolstoy_lozina.html">Лозина</a></li>
+            <li><span class="num">11.</span> <a href="tolstoy_slepoy_i_gluhoy.html">Слепой и глухой</a></li>
+            <li><span class="num">12.</span> <a href="tolstoy_tri_vora.html">Три вора</a></li>
+            <li><span class="num">13.</span> <a href="tolstoy_petr_i_muzhik.html">Пётр Первый и мужик</a></li>
+            <li><span class="num">14.</span> <a href="tolstoy_kak_muzhik_ubral_kamen.html">Как мужик убрал камень</a></li>
+            <li><span class="num">15.</span> <a href="tolstoy_devochka_i_griby.html">Девочка и грибы</a></li>
+            <li><span class="num">16.</span> <a href="tolstoy_kostochka.html">Косточка</a></li>
+        </ul>
 
-            <li class="section-label">Сказки</li>
-            <li><a href="tolstoy_skazka_tri_medvedya.html">Три медведя</a></li>
-            <li><a href="tolstoy_skazka_lipunyushka.html">Липунюшка</a></li>
-            <li><a href="tolstoy_skazka_ezh_i_zayats.html">Еж и заяц</a></li>
+        <div class="section-title">Средние рассказы и сказки</div>
+        <p class="section-description">Один законченный эпизод с ясной завязкой и развязкой, часто с элементом чуда или неожиданного поворота.</p>
+        <ul class="toc">
+            <li><span class="num">17.</span> <a href="tolstoy_tri_medvedya.html">Три медведя</a></li>
+            <li><span class="num">18.</span> <a href="tolstoy_lipunyushka.html">Липунюшка</a></li>
+            <li><span class="num">19.</span> <a href="tolstoy_volk_i_koza.html">Волк и коза</a></li>
+            <li><span class="num">20.</span> <a href="tolstoy_sokol_i_petuh.html">Сокол и петух</a></li>
+            <li><span class="num">21.</span> <a href="tolstoy_tsar_i_sokol.html">Царь и сокол</a></li>
+            <li><span class="num">22.</span> <a href="tolstoy_vodyanoy_i_zhemchuzhina.html">Водяной и жемчужина</a></li>
+            <li><span class="num">23.</span> <a href="tolstoy_muzhik_i_vodyanoy.html">Мужик и водяной</a></li>
+            <li><span class="num">24.</span> <a href="tolstoy_kot_i_myshi.html">Кот и мыши</a></li>
+            <li><span class="num">25.</span> <a href="tolstoy_tsar_i_slony.html">Царь и слоны</a></li>
+            <li><span class="num">26.</span> <a href="tolstoy_tsar_i_izbushka.html">Царь и избушка</a></li>
+            <li><span class="num">27.</span> <a href="tolstoy_dva_kuptsa.html">Два купца</a></li>
+            <li><span class="num">28.</span> <a href="tolstoy_samye_luchshie_grushi.html">Самые лучшие груши</a></li>
+            <li><span class="num">29.</span> <a href="tolstoy_uchyony_syn.html">Учёный сын</a></li>
+            <li><span class="num">30.</span> <a href="tolstoy_lenivaya_doch.html">Ленивая дочь</a></li>
+            <li><span class="num">31.</span> <a href="tolstoy_ravnoe_nasledstvo.html">Ровное наследство</a></li>
+            <li><span class="num">32.</span> <a href="tolstoy_delezh_nasledstva.html">Делёж наследства</a></li>
+            <li><span class="num">33.</span> <a href="tolstoy_staryj_ded_i_vnuchek.html">Старый дед и внучек</a></li>
+            <li><span class="num">34.</span> <a href="tolstoy_tsaplja_ryby_i_rak.html">Цапля, рыбы и рак</a></li>
+            <li><span class="num">35.</span> <a href="tolstoy_shakaly_i_slon.html">Шакалы и слон</a></li>
+            <li><span class="num">36.</span> <a href="tolstoy_rabotnitsy_i_petuh.html">Работницы и петух</a></li>
+            <li><span class="num">37.</span> <a href="tolstoy_mysh_pod_ambarom.html">Мышь под амбаром</a></li>
+        </ul>
 
-            <li class="section-label">Басни</li>
-            <li><a href="tolstoy_basnya_strekoza_i_muravi.html">Стрекоза и муравьи</a></li>
-            <li><a href="tolstoy_basnya_dva_tovarishcha.html">Два товарища</a></li>
-            <li><a href="tolstoy_basnya_lev_i_mysh.html">Лев и мышь</a></li>
-            <li><a href="tolstoy_basnya_lgun.html">Лгун</a></li>
-            <li><a href="tolstoy_basnya_otets_i_synovya.html">Отец и сыновья</a></li>
+        <div class="section-title">Короткие басни и притчи</div>
+        <p class="section-description">Миниатюры в несколько абзацев с прямой нравственной мыслью. Читаются быстро, легко запоминаются.</p>
+        <ul class="toc">
+            <li><span class="num">38.</span> <a href="tolstoy_lisitsa_i_vinograd.html">Лисица и виноград</a></li>
+            <li><span class="num">39.</span> <a href="tolstoy_muravey_i_golubka.html">Муравей и голубка</a></li>
+            <li><span class="num">40.</span> <a href="tolstoy_cherepaha_i_orjol.html">Черепаха и орёл</a></li>
+            <li><span class="num">41.</span> <a href="tolstoy_telyonok_na_ldu.html">Телёнок на льду</a></li>
+            <li><span class="num">42.</span> <a href="tolstoy_komar_i_lev.html">Комар и лев</a></li>
+            <li><span class="num">43.</span> <a href="tolstoy_lisitsa.html">Лисица</a></li>
+            <li><span class="num">44.</span> <a href="tolstoy_olen.html">Олень</a></li>
+            <li><span class="num">45.</span> <a href="tolstoy_belka_i_volk.html">Белка и волк</a></li>
+            <li><span class="num">46.</span> <a href="tolstoy_dva_tovarishcha.html">Два товарища</a></li>
+            <li><span class="num">47.</span> <a href="tolstoy_dub_i_oreshnik.html">Дуб и орешник</a></li>
+            <li><span class="num">48.</span> <a href="tolstoy_sobaka_i_volk.html">Собака и волк</a></li>
+            <li><span class="num">49.</span> <a href="tolstoy_kamysh_i_maslina.html">Камыш и маслина</a></li>
+            <li><span class="num">50.</span> <a href="tolstoy_ezh_i_zayats.html">Ёж и заяц</a></li>
+            <li><span class="num">51.</span> <a href="tolstoy_pravda_vsego_dorozhe.html">Правда всего дороже</a></li>
+            <li><span class="num">52.</span> <a href="tolstoy_otets_i_synovya.html">Отец и сыновья</a></li>
+            <li><span class="num">53.</span> <a href="tolstoy_sadovnik_i_synovya.html">Садовник и сыновья</a></li>
+            <li><span class="num">54.</span> <a href="tolstoy_volk_i_zhuravl.html">Волк и журавль</a></li>
+            <li><span class="num">55.</span> <a href="tolstoy_golova_i_hvost_zmei.html">Голова и хвост змеи</a></li>
+            <li><span class="num">56.</span> <a href="tolstoy_sobaka_i_eyo_ten.html">Собака и её тень</a></li>
+            <li><span class="num">57.</span> <a href="tolstoy_galka_i_kuvshin.html">Галка и кувшин</a></li>
+            <li><span class="num">58.</span> <a href="tolstoy_lev_i_mysh.html">Лев и мышь</a></li>
+            <li><span class="num">59.</span> <a href="tolstoy_dve_loshadi.html">Две лошади</a></li>
+            <li><span class="num">60.</span> <a href="tolstoy_osjol_i_loshad.html">Осёл и лошадь</a></li>
+            <li><span class="num">61.</span> <a href="tolstoy_zaytsy_i_lyagushki.html">Зайцы и лягушки</a></li>
+            <li><span class="num">62.</span> <a href="tolstoy_rybak_i_rybka.html">Рыбак и рыбка</a></li>
+            <li><span class="num">63.</span> <a href="tolstoy_lgun.html">Лгун</a></li>
+            <li><span class="num">64.</span> <a href="tolstoy_volk_i_staruha.html">Волк и старуха</a></li>
+            <li><span class="num">65.</span> <a href="tolstoy_ptitsy_i_seti.html">Птицы и сети</a></li>
+            <li><span class="num">66.</span> <a href="tolstoy_lyagushka_i_lev.html">Лягушка и лев</a></li>
+            <li><span class="num">67.</span> <a href="tolstoy_lev_volk_i_lisitsa.html">Лев, волк и лисица</a></li>
+            <li><span class="num">68.</span> <a href="tolstoy_muzhik_i_loshad.html">Мужик и лошадь</a></li>
+            <li><span class="num">69.</span> <a href="tolstoy_muzhik_i_ogurtsy.html">Мужик и огурцы</a></li>
+            <li><span class="num">70.</span> <a href="tolstoy_lev_i_lisitsa.html">Лев и лисица</a></li>
+            <li><span class="num">71.</span> <a href="tolstoy_strekoza_i_muravi.html">Стрекоза и муравьи</a></li>
+            <li><span class="num">72.</span> <a href="tolstoy_obezyana_i_goroh.html">Обезьяна и горох</a></li>
+            <li><span class="num">73.</span> <a href="tolstoy_lev_medved_i_lisitsa.html">Лев, медведь и лисица</a></li>
+            <li><span class="num">74.</span> <a href="tolstoy_sobaka_petuh_i_lisitsa.html">Собака, петух и лисица</a></li>
         </ul>
 
         <div class="note">
-            <strong>Примечание:</strong> Ссылки на произведения будут активированы по мере публикации соответствующих страниц. Тексты произведений будут представлены в современной орфографии, без сокращений и с примечаниями после соответствующих абзацев.
+            <strong>Примечание:</strong> Ссылки на произведения будут активированы по мере публикации соответствующих страниц. Тексты произведений будут представлены в современной орфографии, без сокращений и с примечаниями после соответствующих абзацев. Нумерация сквозная, чтобы удобно было ориентироваться в аудиосборнике.
         </div>
     </main>
 
