@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Антология юмора и сатиры</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #faf6f0;
+    color: #3a3028;
+    line-height: 1.7;
+  }
+
+  /* Шапка */
+  header {
+    background: linear-gradient(135deg, #f5ebe0, #ede0cc);
+    padding: 40px 20px 30px;
+    text-align: center;
+    border-bottom: 2px solid #d4c4a8;
+  }
+  header h1 {
+    font-size: 2em;
+    color: #5a4a3a;
+    margin-bottom: 8px;
+  }
+  header p {
+    color: #7a6a5a;
+    font-size: 1.1em;
+    font-style: italic;
+  }
+
+  /* Навигация */
+  nav {
+    background: #f0e6d6;
+    border-bottom: 2px solid #d4c4a8;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(180, 160, 130, 0.3);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+  nav a {
+    display: inline-block;
+    padding: 6px 14px;
+    color: #6a5a4a;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav a:hover {
+    background: #e8dcc8;
+    color: #4a3a2a;
+  }
+
+  /* Контент */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  section {
+    margin-bottom: 50px;
+  }
+
+  h2 {
+    color: #5a4a3a;
+    font-size: 1.6em;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0d4c0;
+  }
+
+  h3 {
+    color: #6a5a4a;
+    font-size: 1.2em;
+    margin: 20px 0 10px;
+  }
+
+  p { margin-bottom: 12px; }
+
+  /* Карточки */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .card {
+    background: #faf2e6;
+    border: 1px solid #e8dcc8;
+    border-radius: 8px;
+    padding: 16px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(180, 160, 130, 0.25);
+    transform: translateY(-2px);
+  }
+  .card h4 {
+    color: #5a4a3a;
+    margin-bottom: 6px;
+  }
+  .card p {
+    font-size: 0.95em;
+    color: #6a5a4a;
+  }
+
+  /* Принципы / приёмы */
+  .principles {
+    counter-reset: princ;
+  }
+  .principle {
+    background: #faf2e6;
+    border-left: 4px solid #d4c4a8;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .principle h4 {
+    color: #5a4a3a;
+    margin-bottom: 4px;
+    font-size: 1.05em;
+  }
+  .principle p {
+    color: #6a5a4a;
+    font-size: 0.95em;
+  }
+
+  /* Пословицы / цитаты */
+  .proverb {
+    background: #faf2e6;
+    border: 1px solid #e8dcc8;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .proverb .text {
+    font-style: italic;
+    color: #4a3a2a;
+    font-size: 1.05em;
+    margin-bottom: 6px;
+  }
+  .proverb .comment {
+    color: #7a6a5a;
+    font-size: 0.92em;
+  }
+
+  /* Анекдоты и байки (раскрывающиеся блоки) */
+  .riddle {
+    background: #faf2e6;
+    border: 1px solid #e8dcc8;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .riddle:hover {
+    background: #f5ede0;
+  }
+  .riddle .question {
+    font-style: italic;
+    color: #4a3a2a;
+    font-size: 1.05em;
+  }
+  .riddle .answer {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #d4c4a8;
+    color: #6a5a4a;
+    font-size: 0.95em;
+  }
+  .riddle .answer strong {
+    color: #5a4a3a;
+  }
+
+  /* Навигация по подразделам */
+  .riddle-nav {
+    background: #f5ede0;
+    border: 1px solid #e0d4c0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .riddle-nav h3 {
+    margin-top: 0;
+  }
+  .riddle-nav ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .riddle-nav li a {
+    display: block;
+    padding: 8px 12px;
+    background: #faf6f0;
+    border: 1px solid #e8dcc8;
+    border-radius: 6px;
+    color: #6a5a4a;
+    text-decoration: none;
+    font-size: 0.92em;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .riddle-nav li a:hover {
+    background: #f0e6d6;
+    border-color: #d4c4a8;
+    color: #4a3a2a;
+  }
+  .riddle-nav li a .num {
+    display: inline-block;
+    background: #e8dcc8;
+    color: #5a4a3a;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-right: 6px;
+    font-size: 0.88em;
+  }
+
+  /* Таблицы */
+  .games-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+  .games-table th {
+    background: #f0e6d6;
+    color: #5a4a3a;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #e0d4c0;
+  }
+  .games-table td {
+    background: #faf6f0;
+    color: #6a5a4a;
+    padding: 10px;
+    border: 1px solid #e8dcc8;
+    font-size: 0.95em;
+  }
+
+  /* Хронология */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #d4c4a8;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: #d4c4a8;
+    border-radius: 50%;
+  }
+  .timeline-item h4 {
+    color: #5a4a3a;
+    margin-bottom: 4px;
+  }
+  .timeline-item p {
+    color: #7a6a5a;
+    font-size: 0.95em;
+  }
+
+  /* Генератор */
+  .generator {
+    text-align: center;
+    padding: 24px;
+    background: #f5ede0;
+    border: 1px solid #e0d4c0;
+    border-radius: 10px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .chip {
+    background: #faf6f0;
+    border: 1px solid #e0d4c0;
+    color: #6a5a4a;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.9em;
+    font-family: Georgia, "Times New Roman", serif;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .chip:hover {
+    background: #f0e6d6;
+    border-color: #d4c4a8;
+  }
+  .chip.active {
+    background: #e8dcc8;
+    border-color: #c8b498;
+    color: #4a3a2a;
+    font-weight: bold;
+  }
+  .generator-btn {
+    background: #f0e6d6;
+    color: #5a4a3a;
+    border: 1px solid #d4c4a8;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 1.05em;
+    font-family: Georgia, serif;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .generator-btn:hover {
+    background: #e8dcc8;
+  }
+  .generator-btn-main {
+    padding: 14px 36px;
+    font-size: 1.1em;
+  }
+  .generator-output {
+    margin-top: 20px;
+    padding: 18px;
+    background: #faf6f0;
+    border: 1px solid #e8dcc8;
+    border-radius: 8px;
+    min-height: 80px;
+    text-align: left;
+  }
+  .generator-output .story-text {
+    font-style: italic;
+    color: #4a3a2a;
+    font-size: 1.08em;
+    margin-bottom: 10px;
+  }
+  .generator-output .story-note {
+    color: #7a6a5a;
+    font-size: 0.93em;
+    border-top: 1px dashed #d4c4a8;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  .badge {
+    display: inline-block;
+    background: #e8dcc8;
+    color: #5a4a3a;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 0.75em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .generator-counter {
+    margin-top: 14px;
+    color: #9a8a7a;
+    font-size: 0.85em;
+  }
+
+  /* Библиография */
+  .biblio-section {
+    margin-bottom: 24px;
+  }
+  .biblio-section h3 {
+    margin-bottom: 10px;
+  }
+  .biblio-entry {
+    background: #faf2e6;
+    border: 1px solid #e8dcc8;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+  }
+  .biblio-entry .title {
+    font-weight: bold;
+    color: #5a4a3a;
+  }
+  .biblio-entry .meta {
+    color: #7a6a5a;
+    font-size: 0.92em;
+    margin-top: 2px;
+  }
+  .biblio-entry .annot {
+    color: #6a5a4a;
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+
+  /* Подвал */
+  footer {
+    background: #f0e6d6;
+    border-top: 2px solid #d4c4a8;
+    padding: 24px 20px;
+    text-align: center;
+    color: #7a6a5a;
+    font-size: 0.9em;
+  }
+  footer a {
+    color: #6a5a4a;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5em; }
+    .cards { grid-template-columns: 1fr; }
+    .generator-btn-main { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Антология юмора и сатиры</h1>
+  <p>Анекдоты, байки, курьёзы и генератор смешных историй</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">О проекте</a></li>
+    <li><a href="#laws">Приёмы комического</a></li>
+    <li><a href="#jokes">Анекдоты</a></li>
+    <li><a href="#tales">Байки</a></li>
+    <li><a href="#genres">Жанры</a></li>
+    <li><a href="#history">История</a></li>
+    <li><a href="#generator">Генератор</a></li>
+    <li><a href="#biblio">Библиография</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2>О проекте</h2>
+    <p>Юмор — это не только способ развлечься, но и особая форма мышления. Он умеет то, чего не умеет прямая речь: говорить правду, не обижая, снижать страх, разряжать напряжение и запоминаться надолго. Сатира идёт дальше — она делает смех инструментом оценки, обнажая глупость, жадность, чванство и лень.</p>
+    <p>Эта антология собирает короткие смешные тексты разных жанров: анекдоты, устные байки, городские курьёзы и афористичные наблюдения. Здесь можно прочитать подборку с разбором приёмов, раскрыть развязку у анекдота, изучить жанровую таблицу, проследить историю сатиры — и запустить генератор, который в случайном порядке достаёт истории из общей базы.</p>
+    <div class="cards">
+      <div class="card">
+        <h4>Анекдот</h4>
+        <p>Короткий диалог или сценка с мгновенной развязкой, обманывающей ожидание</p>
+      </div>
+      <div class="card">
+        <h4>Байка</h4>
+        <p>Устный рассказ от первого лица, где правда слегка преувеличена — в пользу смеха</p>
+      </div>
+      <div class="card">
+        <h4>Курьёз</h4>
+        <p>Смешной случай из быта: объявления, очереди, ремонт и прочая повседневность</p>
+      </div>
+      <div class="card">
+        <h4>Наблюдение</h4>
+        <p>Афоризм с улыбкой: одна фраза, в которой узнаётся целая жизненная закономерность</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="laws">
+    <h2>Приёмы комического</h2>
+    <p>Смех редко возникает сам по себе — его «собирают» из простых и повторяемых приёмов. Вот главные из них.</p>
+    <div class="principles">
+      <div class="principle">
+        <h4>Неожиданность</h4>
+        <p>Слушатель уже достроил в голове конец — а конец оказался другим. Чем короче путь до поворота и чем он резче, тем сильнее смех.</p>
+      </div>
+      <div class="principle">
+        <h4>Гипербола</h4>
+        <p>Преувеличение до предела. Обычное явление раздувается до размеров вселенной — и становится смешным именно из-за масштаба.</p>
+      </div>
+      <div class="principle">
+        <h4>Абсурд</h4>
+        <p>Логика сохраняется, но посылки берутся невозможные. Абсурд страшен в жизни и неотразим в шутке: он показывает, что правил больше, чем нам казалось.</p>
+      </div>
+      <div class="principle">
+        <h4>Ирония и самоирония</h4>
+        <p>Сказано одно, подразумевается обратное. Самоирония — высшая форма: тот, кто смеётся над собой, неуязвим для чужой насмешки.</p>
+      </div>
+      <div class="principle">
+        <h4>Контраст</h4>
+        <p>Столкновение высокого и низкого, торжественного и бытового. Пафос, споткнувшийся о тапок, всегда смешон.</p>
+      </div>
+      <div class="principle">
+        <h4>Точность слова</h4>
+        <p>Каламбур, двусмысленность, неожиданный синоним. В юморе слово работает как инструмент: одно неточное — и шутка рассыпалась.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="jokes">
+    <h2>Анекдоты</h2>
+    <p>Анекдот устроен как ловушка: он ведёт мысль по привычной дороге и сворачивает в последний момент. Нажмите на начало, чтобы увидеть развязку и разбор.</p>
+
+    <div class="riddle-nav">
+      <h3>Разделы антологии</h3>
+      <ul>
+        <li><a href="#jokes"><span class="num">01</span>Анекдоты</a></li>
+        <li><a href="#tales"><span class="num">02</span>Байки и курьёзы</a></li>
+        <li><a href="#laws"><span class="num">03</span>Приёмы комического</a></li>
+        <li><a href="#genres"><span class="num">04</span>Жанры юмора</a></li>
+        <li><a href="#history"><span class="num">05</span>История сатиры</a></li>
+        <li><a href="#generator"><span class="num">06</span>Генератор историй</a></li>
+        <li><a href="#biblio"><span class="num">07</span>Библиография</a></li>
+        <li><a href="#about"><span class="num">08</span>О проекте</a></li>
+      </ul>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">— Доктор, у меня провалы в памяти.</div>
+      <div class="answer"><strong>Развязка:</strong> — Давно? — Что давно?<br><em>Приём:</em> диагноз подтверждается сам собой, ещё до начала осмотра. Смех рождается из мгновенного совпадения формы и содержания.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">— Ваша фамилия? — Иванов. — Три. — Но я ещё ничего не ответил! — А я ещё ничего и не спросил.</div>
+      <div class="answer"><strong>Развязка:</strong> оценка вынесена до экзамена.<br><em>Приём:</em> комическая экономия — действие пропущено, а результат уже есть. Абсурд доведён до логического предела.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">— Пап, а что такое чувство юмора? — Это когда ты смеёшься над шуткой. — А если шутка про меня? — Тогда это чувство такта у того, кто шутит.</div>
+      <div class="answer"><strong>Развязка:</strong> определение незаметно переехало с одного человека на другого.<br><em>Приём:</em> подмена предмета разговора. Ребёнок задаёт невинный вопрос, а ответ оказывается этическим правилом.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">— У вас есть книга «Как перестать откладывать дела на потом»? — Есть, но я всё никак не могу её вам принести.</div>
+      <div class="answer"><strong>Развязка:</strong> продавец иллюстрирует содержание книги собственным поведением.<br><em>Приём:</em> шутка, которая сама себя доказывает. Ирония без единого оценочного слова.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">— Мама, почему у рыбы нет ног? — Потому что она плавает. — А почему у утки есть ноги? Она ведь тоже плавает. — ...Ешь, сынок.</div>
+      <div class="answer"><strong>Развязка:</strong> взрослое объяснение рушится, и на помощь приходит единственный оставшийся аргумент — обед.<br><em>Приём:</em> детская логика вскрывает нестрогость взрослой. Финальная пауза делает половину работы.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">— Как дела? — Как в сказке. — Это как? — Чем дальше, тем страшнее.</div>
+      <div class="answer"><strong>Развязка:</strong> ожидаемое «хорошо» подменено на честное «страшно».<br><em>Приём:</em> обманутое ожидание в чистом виде. Всего четыре реплики — и целая философия.</div>
+    </div>
+  </section>
+
+  <section id="tales">
+    <h2>Байки и курьёзы</h2>
+    <p>Байка — жанр устный и потому вольный: рассказчик имеет право слегка преувеличить, лишь бы вышло смешнее. Нажмите на начало, чтобы узнать, чем всё кончилось.</p>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">Решил я научить кота приносить тапки. Три недели тренировок, и кот всё освоил.</div>
+      <div class="answer"><strong>Чем кончилось:</strong> теперь каждое утро кот приносит мне тапки и требует завтрак. Я-то думал, что дрессирую я, а вышло, что дрессировал он.<br><em>Приём:</em> перевёрнутая иерархия — самый надёжный источник бытового смеха.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">Задумали мы с братом повесить полку. В инструкции было написано: «Приложите, отметьте, просверлите».</div>
+      <div class="answer"><strong>Чем кончилось:</strong> мы приложили, отметили, просверлили. Теперь у нас есть полка и три дополнительных отверстия в стене — для вентиляции.<br><em>Приём:</em> точное следование инструкции как источник катастрофы. Гипербола спрятана в самом факте.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">Купил умные часы. Они считают шаги, пульс и сон.</div>
+      <div class="answer"><strong>Чем кончилось:</strong> теперь я точно знаю: я мало хожу, много нервничаю и плохо сплю. Спасибо, часы, за ясность.<br><em>Приём:</em> ирония — благодарность за то, что лучше было не знать.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">Приехал я к бабушке в деревню. Она спрашивает: «Ты уже поел?» — «Нет». — «Тогда садись».</div>
+      <div class="answer"><strong>Чем кончилось:</strong> первая тарелка, вторая, «ещё немножко», потом ещё немножко. Когда я сказал, что больше не могу, бабушка вздохнула: «Совсем ничего не ешь».<br><em>Приём:</em> гипербола гостеприимства, доведённая до абсурда с абсолютно серьёзным лицом.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">Приготовил я однажды ужин строго по рецепту из интернета: «Готовьте двадцать минут, помешивая».</div>
+      <div class="answer"><strong>Чем кончилось:</strong> я честно помешивал двадцать минут. Получилось блюдо, которое семья единогласно назвала «интересным». Я тоже считаю, что это комплимент.<br><em>Приём:</em> эвфемизм как способ сохранить лицо — и вызвать смех.</div>
+    </div>
+
+    <div class="riddle" onclick="toggleRiddle(this)">
+      <div class="question">В нашем подъезде появилось объявление: «Кто выбросил диван на лестницу — уберите, пожалуйста».</div>
+      <div class="answer"><strong>Чем кончилось:</strong> через день ниже появилась приписка: «Диван убрали. Спасибо. Теперь уберите, пожалуйста, объявление — оно мешает проходу».<br><em>Приём:</em> абсурд бытовой коммуникации. Проблема решена, но появилась новая — и так до бесконечности.</div>
+    </div>
+  </section>
+
+  <section id="genres">
+    <h2>Жанры юмора и сатиры</h2>
+    <p>Смешное живёт в разных формах: от четырёх строк до многосерийного романа. Вот основные жанры антологии.</p>
+    <table class="games-table">
+      <tr><th>Жанр</th><th>Форма</th><th>Что делает</th></tr>
+      <tr><td>Анекдот</td><td>Короткий диалог, 3–8 строк</td><td>Мгновенная развязка, обманывающая ожидание</td></tr>
+      <tr><td>Байка</td><td>Устный рассказ от первого лица</td><td>Преувеличивает собственные приключения до невероятного</td></tr>
+      <tr><td>Каламбур</td><td>Одна фраза</td><td>Играет на двусмысленности слов и звуков</td></tr>
+      <tr><td>Пародия</td><td>Текст-передразнивание</td><td>Узнаваемый стиль + снижение, срыв пафоса</td></tr>
+      <tr><td>Эпиграмма</td><td>Короткое стихотворение</td><td>Колкость, уложенная в четыре строки</td></tr>
+      <tr><td>Фельетон</td><td>Газетный жанр</td><td>Осмеивает пороки через конкретный бытовой случай</td></tr>
+      <tr><td>Частушка</td><td>Короткая песня</td><td>Сатира с ритмом — легко запоминается и передаётся дальше</td></tr>
+      <tr><td>Стендап-монолог</td><td>Сцена, устная речь</td><td>Личный опыт вслух, самоирония как основа</td></tr>
+    </table>
+  </section>
+
+  <section id="history">
+    <h2>История смеха и сатиры</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Античность</h4>
+        <p>Комедия Аристофана и римская сатира. Смех выходит на площадь и становится общественным действием — над философами, политиками и богами.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Средневековье</h4>
+        <p>Скоморохи, шуты, карнавалы. Смеховая культура живёт «наизнанку»: на время праздника мир переворачивается, и низкое торжествует над высоким.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>XVI–XVII века</h4>
+        <p>«Похвала глупости» Эразма Роттердамского, комедии Мольера. Сатира становится литературной и адресной — она называет конкретные пороки.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>XVIII век</h4>
+        <p>Сатирические журналы Новикова, басни и комедии. Смех превращается в инструмент просвещения и общественной критики.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>XIX век</h4>
+        <p>Гоголь, Салтыков-Щедрин, Чехов. Сатира поднимается до большой литературы, а юмор становится способом говорить о человеке всерьёз.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>XX век</h4>
+        <p>Тэффи, Аверченко, Зощенко, Ильф и Петров. Анекдот уходит в фольклор и становится устной энциклопедией эпохи.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>XXI век</h4>
+        <p>Интернет-мемы, стендап, короткие видео. Смешное сжимается до секунды и расходится быстрее, чем любая новость.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="generator">
+    <h2>Генератор смешных историй</h2>
+    <div class="generator">
+      <div class="chips">
+        <button class="chip active" onclick="setCat('all', this)">Все истории</button>
+        <button class="chip" onclick="setCat('Анекдот', this)">Анекдоты</button>
+        <button class="chip" onclick="setCat('Байка', this)">Байки</button>
+        <button class="chip" onclick="setCat('Курьёз', this)">Курьёзы</button>
+        <button class="chip" onclick="setCat('Наблюдение', this)">Наблюдения</button>
+      </div>
+      <button class="generator-btn generator-btn-main" onclick="generateStory()">Рассказать историю</button>
+      <div class="generator-output" id="storyOutput">
+        <p style="color:#9a8a7a;">Выберите раздел и нажмите кнопку — генератор достанет из базы случайную историю с пояснением.</p>
+      </div>
+      <div class="generator-counter" id="storyCounter">Показано историй: 0</div>
+    </div>
+  </section>
+
+  <section id="biblio">
+    <h2>Библиография</h2>
+
+    <div class="biblio-section">
+      <h3>Классические исследования смеха</h3>
+      <div class="biblio-entry">
+        <div class="title">Бахтин М. М. Творчество Франсуа Рабле и народная культура средневековья и Ренессанса.</div>
+        <div class="meta">Москва: Художественная литература, 1965.</div>
+        <div class="annot">Учение о смеховой культуре и карнавале: смех как способ перевернуть официальный порядок и посмотреть на мир снизу вверх.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Пропп В. Я. Проблемы комизма и смеха.</div>
+        <div class="meta">Москва: Искусство, 1976.</div>
+        <div class="annot">Систематический разбор природы комического: виды смеха, приёмы создания шутки, отличие юмора от сатиры.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Лихачёв Д. С., Панченко А. М. «Смеховой мир» Древней Руси.</div>
+        <div class="meta">Ленинград: Наука, 1976.</div>
+        <div class="annot">Исследование древнерусской смеховой традиции: юродство, пародия на церковные тексты, «кромешный» мир.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Белкин А. А. Русские скоморохи.</div>
+        <div class="meta">Москва: Наука, 1975.</div>
+        <div class="annot">История бродячих артистов-насмешников: репертуар, социальная роль, гонения со стороны власти и церкви.</div>
+      </div>
+    </div>
+
+    <div class="biblio-section">
+      <h3>Об анекдоте и устном юморе</h3>
+      <div class="biblio-entry">
+        <div class="title">Курганов Е. Я. Анекдот как жанр.</div>
+        <div class="meta">Санкт-Петербург: Академический проект, 1997.</div>
+        <div class="annot">Анекдот рассматривается как самостоятельный литературный жанр со своей структурой, героями и историей.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Шмелёва Е. Я., Шмелёв А. Д. Русский анекдот: Текст и речевой жанр.</div>
+        <div class="meta">Москва: Языки славянской культуры, 2002.</div>
+        <div class="annot">Лингвистический анализ анекдота: как строится диалог, откуда берётся эффект неожиданности, как работает языковая игра.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Санников В. З. Русский язык в зеркале языковой игры.</div>
+        <div class="meta">Москва: Языки славянской культуры, 2002.</div>
+        <div class="annot">Каламбуры, двусмысленности и шутки как материал для изучения языка — и наоборот.</div>
+      </div>
+    </div>
+
+    <div class="biblio-section">
+      <h3>Сборники и антологии</h3>
+      <div class="biblio-entry">
+        <div class="title">Тэффи Н. А. Юмористические рассказы.</div>
+        <div class="meta">Санкт-Петербург, 1910.</div>
+        <div class="annot">Классика русской юмористики: мягкая ирония, точная деталь, сострадание к герою.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Аверченко А. Т. Весёлые устрицы.</div>
+        <div class="meta">Санкт-Петербург, 1910.</div>
+        <div class="annot">Сборник рассказов, определивший облик русской журнальной сатиры начала XX века.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Зощенко М. М. Рассказы.</div>
+        <div class="meta">Москва — Ленинград, 1920–1930-е.</div>
+        <div class="annot">Сказ как приём: смех вырастает из самой речи рассказчика, а не из описываемых событий.</div>
+      </div>
+      <div class="biblio-entry">
+        <div class="title">Ильф И., Петров Е. Двенадцать стульев.</div>
+        <div class="meta">Москва, 1928.</div>
+        <div class="annot">Сатирический роман, разошедшийся на цитаты: галерея типов и точная картина эпохи.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Антология юмора и сатиры &middot; Сайт создан для образовательных целей</p>
+  <p>Сайт: <a href="https://petrov82020-cyber.github.io/os2-custom/smile.html">petrov82020-cyber.github.io/os2-custom/smile.html</a></p>
+</footer>
+
+<script>
+/* Раскрытие развязки */
+function toggleRiddle(el) {
+  var answer = el.querySelector('.answer');
+  if (answer.style.display === 'block') {
+    answer.style.display = 'none';
+  } else {
+    answer.style.display = 'block';
+  }
+}
+
+/* ===== База смешных историй ===== */
+var stories = [
+  { cat: 'Анекдот',
+    text: '— Доктор, у меня провалы в памяти.\n— Давно?\n— Что давно?',
+    note: 'Комизм в том, что диагноз подтверждается сам собой, ещё до начала осмотра.' },
+
+  { cat: 'Анекдот',
+    text: '— Почему ты опоздал?\n— Я проснулся, посмотрел на часы и решил, что ещё рано. Поспал ещё. Проснулся, посмотрел — уже поздно.',
+    note: 'Логика безупречна от начала до конца. Именно поэтому она и абсурдна.' },
+
+  { cat: 'Анекдот',
+    text: '— Как ты решаешь кроссворды?\n— Беру ручку и вписываю слова.\n— Но ведь нужны правильные!\n— Зачем? Мне важен процесс.',
+    note: 'Ирония по поводу цели и средства: результат подменён удовольствием от действия.' },
+
+  { cat: 'Анекдот',
+    text: '— У вас есть книга «Как перестать откладывать дела на потом»?\n— Есть, но я всё никак не могу её вам принести.',
+    note: 'Шутка сама себя доказывает: продавец иллюстрирует содержание книги собственным поведением.' },
+
+  { cat: 'Анекдот',
+    text: '— Ты почему не на работе?\n— У меня отпуск.\n— А почему в костюме?\n— Так я в отпуске от работы, а не от себя.',
+    note: 'Комический педантизм: герой доводит логику до предела, где она становится смешной.' },
+
+  { cat: 'Анекдот',
+    text: '— Как дела?\n— Как в сказке.\n— Это как?\n— Чем дальше, тем страшнее.',
+    note: 'Обманутое ожидание в чистом виде: вместо «хорошо» — честное «страшно».' },
+
+  { cat: 'Анекдот',
+    text: '— Мама, почему у рыбы нет ног?\n— Потому что она плавает.\n— А почему у утки есть ноги? Она ведь тоже плавает.\n— ...Ешь, сынок.',
+    note: 'Детская логика разрушает взрослое объяснение, и на помощь приходит единственный оставшийся аргумент — обед.' },
+
+  { cat: 'Анекдот',
+    text: '— Почему ты такой грустный?\n— Мне сказали, что я пессимист.\n— И что?\n— А вдруг это правда?',
+    note: 'Самоирония, доведённая до абсурда: герой умудряется усомниться даже в собственной грусти.' },
+
+  { cat: 'Анекдот',
+    text: 'На экзамене:\n— Ваша фамилия?\n— Иванов.\n— Три.\n— Но я ещё ничего не ответил!\n— А я ещё ничего и не спросил.',
+    note: 'Комическая экономия: действие пропущено, а результат уже объявлен.' },
+
+  { cat: 'Байка',
+    text: 'Решил я научить кота приносить тапки. Три недели тренировок — кот всё освоил.\nТеперь каждое утро кот приносит мне тапки и требует завтрак. Я-то думал, что дрессирую я.',
+    note: 'Перевёрнутая иерархия — самый надёжный источник бытового смеха.' },
+
+  { cat: 'Байка',
+    text: 'Задумали мы с братом повесить полку. В инструкции было написано: «Приложите, отметьте, просверлите».\nМы приложили, отметили, просверлили. Теперь у нас есть полка и три дополнительных отверстия в стене.',
+    note: 'Точное следование инструкции как источник катастрофы. Отверстия объявлены вентиляцией — и это спасает положение.' },
+
+  { cat: 'Байка',
+    text: 'Купил умные часы. Они считают шаги, пульс и сон.\nТеперь я точно знаю: я мало хожу, много нервничаю и плохо сплю. Спасибо, часы, за ясность.',
+    note: 'Ирония — благодарность за знание, которое лучше было бы не получать.' },
+
+  { cat: 'Байка',
+    text: 'Приехал я к бабушке в деревню. Она спрашивает: «Ты уже поел?» — «Нет». — «Тогда садись».\nПервая тарелка, вторая, «ещё немножко», потом ещё немножко. Когда я сказал, что больше не могу, бабушка вздохнула: «Совсем ничего не ешь».',
+    note: 'Гипербола гостеприимства с абсолютно серьёзным лицом.' },
+
+  { cat: 'Байка',
+    text: 'Приготовил я однажды ужин строго по рецепту из интернета: «Готовьте двадцать минут, помешивая».\nЯ честно помешивал двадцать минут. Получилось блюдо, которое семья единогласно назвала «интересным».',
+    note: 'Эвфемизм как способ сохранить лицо — и одновременно вызвать смех.' },
+
+  { cat: 'Байка',
+    text: 'Пришёл я в поликлинику к восьми утра, взял талончик на половину девятого.\nВ половине девятого мне сказали, что врач ушёл на совещание. В одиннадцать выяснилось, что я сижу не у того кабинета. Но у того врача тоже было совещание — так что я ничего не потерял.',
+    note: 'Философское спокойствие как защитная реакция: герой умудряется выйти победителем из пустого дня.' },
+
+  { cat: 'Байка',
+    text: 'Решил заняться спортом. Купил абонемент в зал на год.\nТеперь у меня есть абонемент и твёрдая уверенность, что я человек, который способен купить абонемент.',
+    note: 'Самоирония: цель незаметно подменяется её символическим достижением.' },
+
+  { cat: 'Курьёз',
+    text: 'На двери подъезда появилось объявление: «Кто выбросил диван на лестницу — уберите, пожалуйста».\nЧерез день ниже появилась приписка: «Диван убрали. Спасибо. Теперь уберите объявление — оно мешает проходу».',
+    note: 'Абсурд бытовой коммуникации: проблема решена, но немедленно породила новую.' },
+
+  { cat: 'Курьёз',
+    text: 'В лифте кто-то написал: «Кнопка седьмого этажа не работает».\nНиже другой рукой было добавлено: «А я и не знал, что она когда-то работала».',
+    note: 'Столкновение двух картин мира — жалобы и философского смирения.' },
+
+  { cat: 'Курьёз',
+    text: 'Объявление в магазине: «Уважаемые покупатели! Примерочная занята человеком, который не может решить, брать ли ему эту вещь. Он думает с прошлого вторника».',
+    note: 'Гипербола, выросшая из наблюдения за реальной очередью.' },
+
+  { cat: 'Наблюдение',
+    text: 'Оптимист — это человек, который, упав лицом в грязь, первым делом проверяет, не лечебная ли она.',
+    note: 'Афоризм построен на гиперболе: качество характера доведено до предела.' },
+
+  { cat: 'Наблюдение',
+    text: 'Чувство юмора — единственная вещь, которую невозможно потерять: чем больше отдаёшь, тем больше остаётся.',
+    note: 'Финальный комплимент смеху: он не тратится, а накапливается.' }
+];
+
+/* ===== Логика генератора ===== */
+var currentCat = 'all';
+var bag = [];
+var shownCount = 0;
+
+function refillBag() {
+  var pool = [];
+  for (var i = 0; i < stories.length; i++) {
+    if (currentCat === 'all' || stories[i].cat === currentCat) {
+      pool.push(i);
+    }
+  }
+  /* перемешиваем — истории не повторяются, пока не будут показаны все */
+  for (var k = pool.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var t = pool[k];
+    pool[k] = pool[j];
+    pool[j] = t;
+  }
+  bag = pool;
+}
+
+function setCat(cat, btn) {
+  currentCat = cat;
+  bag = [];
+  var chips = document.querySelectorAll('.chip');
+  for (var i = 0; i < chips.length; i++) {
+    chips[i].classList.remove('active');
+  }
+  btn.classList.add('active');
+  document.getElementById('storyOutput').innerHTML =
+    '<p style="color:#9a8a7a;">Раздел выбран. Нажмите «Рассказать историю».</p>';
+}
+
+function generateStory() {
+  if (!bag.length) { refillBag(); }
+  if (!bag.length) { return; }
+
+  var idx = bag.pop();
+  var s = stories[idx];
+  shownCount++;
+
+  var out = document.getElementById('storyOutput');
+  out.innerHTML =
+    '<div class="badge">' + s.cat + '</div>' +
+    '<div class="story-text">' + s.text.replace(/\n/g, '<br>') + '</div>' +
+    '<div class="story-note">' + s.note + '</div>';
+
+  document.getElementById('storyCounter').textContent = 'Показано историй: ' + shownCount;
+}
+</script>
+
+</body>
+</html>
