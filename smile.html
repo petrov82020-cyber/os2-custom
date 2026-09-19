@@ -117,7 +117,7 @@
     color: #6a5a4a;
   }
 
-  /* Принципы / приёмы */
+  /* Принципы */
   .principles {
     counter-reset: princ;
   }
@@ -138,7 +138,7 @@
     font-size: 0.95em;
   }
 
-  /* Пословицы / цитаты */
+  /* Пословицы */
   .proverb {
     background: #faf2e6;
     border: 1px solid #e8dcc8;
@@ -157,7 +157,7 @@
     font-size: 0.92em;
   }
 
-  /* Анекдоты и байки (раскрывающиеся блоки) */
+  /* Загадки / анекдоты */
   .riddle {
     background: #faf2e6;
     border: 1px solid #e8dcc8;
@@ -289,6 +289,93 @@
     font-size: 0.95em;
   }
 
+  /* ===== Группы историй ===== */
+  .groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 16px;
+    margin: 22px 0 10px;
+  }
+  .group {
+    background: #faf2e6;
+    border: 1px solid #e8dcc8;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .group:hover {
+    box-shadow: 0 4px 14px rgba(180, 160, 130, 0.25);
+    transform: translateY(-2px);
+    border-color: #d4c4a8;
+  }
+  .group-head {
+    padding: 14px 16px 10px;
+    background: #f5ede0;
+    border-bottom: 1px solid #e8dcc8;
+  }
+  .group-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a5a2b;
+    font-weight: bold;
+  }
+  .group-head h3 {
+    margin: 4px 0 0;
+    font-size: 0.98rem;
+    color: #5a4a3a;
+    line-height: 1.35;
+  }
+  .works {
+    list-style: none;
+    padding: 8px 8px;
+    flex: 1 1 auto;
+  }
+  .works li { margin: 0; }
+  .works a {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: #5a4a3a;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .works a:hover {
+    background: #f0e6d6;
+    color: #4a3a2a;
+    text-decoration: none;
+  }
+  .works .idx {
+    font-size: 0.72rem;
+    color: #a99d8c;
+    min-width: 2em;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+  .group-foot {
+    padding: 10px 16px 12px;
+    border-top: 1px solid #e8dcc8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .group-foot .count { color: #7a6a5a; }
+  .group-foot a.open {
+    color: #8a5a2b;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .group-foot a.open:hover {
+    text-decoration: underline;
+  }
+
   /* Генератор */
   .generator {
     text-align: center;
@@ -296,34 +383,6 @@
     background: #f5ede0;
     border: 1px solid #e0d4c0;
     border-radius: 10px;
-  }
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 18px;
-  }
-  .chip {
-    background: #faf6f0;
-    border: 1px solid #e0d4c0;
-    color: #6a5a4a;
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 0.9em;
-    font-family: Georgia, "Times New Roman", serif;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-  }
-  .chip:hover {
-    background: #f0e6d6;
-    border-color: #d4c4a8;
-  }
-  .chip.active {
-    background: #e8dcc8;
-    border-color: #c8b498;
-    color: #4a3a2a;
-    font-weight: bold;
   }
   .generator-btn {
     background: #f0e6d6;
@@ -339,47 +398,23 @@
   .generator-btn:hover {
     background: #e8dcc8;
   }
-  .generator-btn-main {
-    padding: 14px 36px;
-    font-size: 1.1em;
-  }
   .generator-output {
     margin-top: 20px;
-    padding: 18px;
+    padding: 16px;
     background: #faf6f0;
     border: 1px solid #e8dcc8;
     border-radius: 8px;
-    min-height: 80px;
-    text-align: left;
+    min-height: 60px;
   }
-  .generator-output .story-text {
+  .generator-output .proverb-text {
     font-style: italic;
     color: #4a3a2a;
-    font-size: 1.08em;
-    margin-bottom: 10px;
+    font-size: 1.1em;
+    margin-bottom: 8px;
   }
-  .generator-output .story-note {
+  .generator-output .proverb-gloss {
     color: #7a6a5a;
-    font-size: 0.93em;
-    border-top: 1px dashed #d4c4a8;
-    padding-top: 10px;
-    margin-top: 10px;
-  }
-  .badge {
-    display: inline-block;
-    background: #e8dcc8;
-    color: #5a4a3a;
-    border-radius: 4px;
-    padding: 2px 10px;
-    font-size: 0.75em;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .generator-counter {
-    margin-top: 14px;
-    color: #9a8a7a;
-    font-size: 0.85em;
+    font-size: 0.95em;
   }
 
   /* Библиография */
@@ -427,7 +462,7 @@
   @media (max-width: 600px) {
     header h1 { font-size: 1.5em; }
     .cards { grid-template-columns: 1fr; }
-    .generator-btn-main { width: 100%; }
+    .groups { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -435,12 +470,13 @@
 
 <header>
   <h1>Антология юмора и сатиры</h1>
-  <p>Анекдоты, байки, курьёзы и генератор смешных историй</p>
+  <p>500 историй, анекдотов, баек и курьёзов · 50 групп</p>
 </header>
 
 <nav>
   <ul>
     <li><a href="#about">О проекте</a></li>
+    <li><a href="#groups">Группы историй</a></li>
     <li><a href="#laws">Приёмы комического</a></li>
     <li><a href="#jokes">Анекдоты</a></li>
     <li><a href="#tales">Байки</a></li>
@@ -453,10 +489,11 @@
 
 <main>
 
+  <!-- ================= О ПРОЕКТЕ ================= -->
   <section id="about">
     <h2>О проекте</h2>
     <p>Юмор — это не только способ развлечься, но и особая форма мышления. Он умеет то, чего не умеет прямая речь: говорить правду, не обижая, снижать страх, разряжать напряжение и запоминаться надолго. Сатира идёт дальше — она делает смех инструментом оценки, обнажая глупость, жадность, чванство и лень.</p>
-    <p>Эта антология собирает короткие смешные тексты разных жанров: анекдоты, устные байки, городские курьёзы и афористичные наблюдения. Здесь можно прочитать подборку с разбором приёмов, раскрыть развязку у анекдота, изучить жанровую таблицу, проследить историю сатиры — и запустить генератор, который в случайном порядке достаёт истории из общей базы.</p>
+    <p>Эта антология собирает короткие смешные тексты разных жанров: анекдоты, устные байки, городские курьёзы и афористичные наблюдения. Всего в собрании — <strong>500 историй</strong>, разбитых на <strong>50 групп по 10 историй</strong> в каждой. Каждая группа получает отдельную страницу с полным текстом, разбором приёмов и комментарием.</p>
     <div class="cards">
       <div class="card">
         <h4>Анекдот</h4>
@@ -477,6 +514,20 @@
     </div>
   </section>
 
+  <!-- ================= ГРУППЫ ИСТОРИЙ ================= -->
+  <section id="groups">
+    <h2>Группы историй</h2>
+    <p>Все 500 историй антологии распределены на 50 групп по 10 историй в каждой. Внутри группы истории связаны по порядку следования. Выберите любую историю — откроется страница группы с её полным текстом и разбором.</p>
+
+    <div class="groups" id="groups-grid">
+      <!-- Группы генерируются скриптом ниже -->
+      <noscript>
+        <p style="color:#7a6a5a;grid-column:1/-1;">Для отображения списка групп необходимо включить JavaScript. Или перейдите сразу к нужной группе: <a href="smile-01.html">smile-01.html</a>, <a href="smile-02.html">smile-02.html</a>, … <a href="smile-50.html">smile-50.html</a>.</p>
+      </noscript>
+    </div>
+  </section>
+
+  <!-- ================= ПРИЁМЫ КОМИЧЕСКОГО ================= -->
   <section id="laws">
     <h2>Приёмы комического</h2>
     <p>Смех редко возникает сам по себе — его «собирают» из простых и повторяемых приёмов. Вот главные из них.</p>
@@ -508,6 +559,7 @@
     </div>
   </section>
 
+  <!-- ================= АНЕКДОТЫ (примеры) ================= -->
   <section id="jokes">
     <h2>Анекдоты</h2>
     <p>Анекдот устроен как ловушка: он ведёт мысль по привычной дороге и сворачивает в последний момент. Нажмите на начало, чтобы увидеть развязку и разбор.</p>
@@ -515,14 +567,14 @@
     <div class="riddle-nav">
       <h3>Разделы антологии</h3>
       <ul>
-        <li><a href="#jokes"><span class="num">01</span>Анекдоты</a></li>
-        <li><a href="#tales"><span class="num">02</span>Байки и курьёзы</a></li>
-        <li><a href="#laws"><span class="num">03</span>Приёмы комического</a></li>
-        <li><a href="#genres"><span class="num">04</span>Жанры юмора</a></li>
-        <li><a href="#history"><span class="num">05</span>История сатиры</a></li>
-        <li><a href="#generator"><span class="num">06</span>Генератор историй</a></li>
-        <li><a href="#biblio"><span class="num">07</span>Библиография</a></li>
-        <li><a href="#about"><span class="num">08</span>О проекте</a></li>
+        <li><a href="#groups"><span class="num">01</span>Все 50 групп</a></li>
+        <li><a href="#jokes"><span class="num">02</span>Анекдоты</a></li>
+        <li><a href="#tales"><span class="num">03</span>Байки и курьёзы</a></li>
+        <li><a href="#laws"><span class="num">04</span>Приёмы комического</a></li>
+        <li><a href="#genres"><span class="num">05</span>Жанры юмора</a></li>
+        <li><a href="#history"><span class="num">06</span>История сатиры</a></li>
+        <li><a href="#generator"><span class="num">07</span>Генератор историй</a></li>
+        <li><a href="#biblio"><span class="num">08</span>Библиография</a></li>
       </ul>
     </div>
 
@@ -557,6 +609,7 @@
     </div>
   </section>
 
+  <!-- ================= БАЙКИ (примеры) ================= -->
   <section id="tales">
     <h2>Байки и курьёзы</h2>
     <p>Байка — жанр устный и потому вольный: рассказчик имеет право слегка преувеличить, лишь бы вышло смешнее. Нажмите на начало, чтобы узнать, чем всё кончилось.</p>
@@ -582,16 +635,12 @@
     </div>
 
     <div class="riddle" onclick="toggleRiddle(this)">
-      <div class="question">Приготовил я однажды ужин строго по рецепту из интернета: «Готовьте двадцать минут, помешивая».</div>
-      <div class="answer"><strong>Чем кончилось:</strong> я честно помешивал двадцать минут. Получилось блюдо, которое семья единогласно назвала «интересным». Я тоже считаю, что это комплимент.<br><em>Приём:</em> эвфемизм как способ сохранить лицо — и вызвать смех.</div>
-    </div>
-
-    <div class="riddle" onclick="toggleRiddle(this)">
       <div class="question">В нашем подъезде появилось объявление: «Кто выбросил диван на лестницу — уберите, пожалуйста».</div>
       <div class="answer"><strong>Чем кончилось:</strong> через день ниже появилась приписка: «Диван убрали. Спасибо. Теперь уберите, пожалуйста, объявление — оно мешает проходу».<br><em>Приём:</em> абсурд бытовой коммуникации. Проблема решена, но появилась новая — и так до бесконечности.</div>
     </div>
   </section>
 
+  <!-- ================= ЖАНРЫ ================= -->
   <section id="genres">
     <h2>Жанры юмора и сатиры</h2>
     <p>Смешное живёт в разных формах: от четырёх строк до многосерийного романа. Вот основные жанры антологии.</p>
@@ -608,6 +657,7 @@
     </table>
   </section>
 
+  <!-- ================= ИСТОРИЯ ================= -->
   <section id="history">
     <h2>История смеха и сатиры</h2>
     <div class="timeline">
@@ -642,24 +692,18 @@
     </div>
   </section>
 
+  <!-- ================= ГЕНЕРАТОР ================= -->
   <section id="generator">
-    <h2>Генератор смешных историй</h2>
+    <h2>Генератор мудрости</h2>
     <div class="generator">
-      <div class="chips">
-        <button class="chip active" onclick="setCat('all', this)">Все истории</button>
-        <button class="chip" onclick="setCat('Анекдот', this)">Анекдоты</button>
-        <button class="chip" onclick="setCat('Байка', this)">Байки</button>
-        <button class="chip" onclick="setCat('Курьёз', this)">Курьёзы</button>
-        <button class="chip" onclick="setCat('Наблюдение', this)">Наблюдения</button>
+      <button class="generator-btn" onclick="generateWisdom()">Получить пословицу</button>
+      <div class="generator-output" id="wisdomOutput">
+        <p style="color:#9a8a7a;">Нажмите на кнопку, чтобы получить пословицу с толкованием.</p>
       </div>
-      <button class="generator-btn generator-btn-main" onclick="generateStory()">Рассказать историю</button>
-      <div class="generator-output" id="storyOutput">
-        <p style="color:#9a8a7a;">Выберите раздел и нажмите кнопку — генератор достанет из базы случайную историю с пояснением.</p>
-      </div>
-      <div class="generator-counter" id="storyCounter">Показано историй: 0</div>
     </div>
   </section>
 
+  <!-- ================= БИБЛИОГРАФИЯ ================= -->
   <section id="biblio">
     <h2>Библиография</h2>
 
@@ -734,12 +778,12 @@
 </main>
 
 <footer>
-  <p>Антология юмора и сатиры &middot; Сайт создан для образовательных целей</p>
+  <p>Антология юмора и сатиры &middot; 500 историй · 50 групп &middot; Сайт создан для образовательных целей</p>
   <p>Сайт: <a href="https://petrov82020-cyber.github.io/os2-custom/smile.html">petrov82020-cyber.github.io/os2-custom/smile.html</a></p>
 </footer>
 
 <script>
-/* Раскрытие развязки */
+/* ================= Раскрытие анекдотов и баек ================= */
 function toggleRiddle(el) {
   var answer = el.querySelector('.answer');
   if (answer.style.display === 'block') {
@@ -749,143 +793,75 @@ function toggleRiddle(el) {
   }
 }
 
-/* ===== База смешных историй ===== */
-var stories = [
-  { cat: 'Анекдот',
-    text: '— Доктор, у меня провалы в памяти.\n— Давно?\n— Что давно?',
-    note: 'Комизм в том, что диагноз подтверждается сам собой, ещё до начала осмотра.' },
-
-  { cat: 'Анекдот',
-    text: '— Почему ты опоздал?\n— Я проснулся, посмотрел на часы и решил, что ещё рано. Поспал ещё. Проснулся, посмотрел — уже поздно.',
-    note: 'Логика безупречна от начала до конца. Именно поэтому она и абсурдна.' },
-
-  { cat: 'Анекдот',
-    text: '— Как ты решаешь кроссворды?\n— Беру ручку и вписываю слова.\n— Но ведь нужны правильные!\n— Зачем? Мне важен процесс.',
-    note: 'Ирония по поводу цели и средства: результат подменён удовольствием от действия.' },
-
-  { cat: 'Анекдот',
-    text: '— У вас есть книга «Как перестать откладывать дела на потом»?\n— Есть, но я всё никак не могу её вам принести.',
-    note: 'Шутка сама себя доказывает: продавец иллюстрирует содержание книги собственным поведением.' },
-
-  { cat: 'Анекдот',
-    text: '— Ты почему не на работе?\n— У меня отпуск.\n— А почему в костюме?\n— Так я в отпуске от работы, а не от себя.',
-    note: 'Комический педантизм: герой доводит логику до предела, где она становится смешной.' },
-
-  { cat: 'Анекдот',
-    text: '— Как дела?\n— Как в сказке.\n— Это как?\n— Чем дальше, тем страшнее.',
-    note: 'Обманутое ожидание в чистом виде: вместо «хорошо» — честное «страшно».' },
-
-  { cat: 'Анекдот',
-    text: '— Мама, почему у рыбы нет ног?\n— Потому что она плавает.\n— А почему у утки есть ноги? Она ведь тоже плавает.\n— ...Ешь, сынок.',
-    note: 'Детская логика разрушает взрослое объяснение, и на помощь приходит единственный оставшийся аргумент — обед.' },
-
-  { cat: 'Анекдот',
-    text: '— Почему ты такой грустный?\n— Мне сказали, что я пессимист.\n— И что?\n— А вдруг это правда?',
-    note: 'Самоирония, доведённая до абсурда: герой умудряется усомниться даже в собственной грусти.' },
-
-  { cat: 'Анекдот',
-    text: 'На экзамене:\n— Ваша фамилия?\n— Иванов.\n— Три.\n— Но я ещё ничего не ответил!\n— А я ещё ничего и не спросил.',
-    note: 'Комическая экономия: действие пропущено, а результат уже объявлен.' },
-
-  { cat: 'Байка',
-    text: 'Решил я научить кота приносить тапки. Три недели тренировок — кот всё освоил.\nТеперь каждое утро кот приносит мне тапки и требует завтрак. Я-то думал, что дрессирую я.',
-    note: 'Перевёрнутая иерархия — самый надёжный источник бытового смеха.' },
-
-  { cat: 'Байка',
-    text: 'Задумали мы с братом повесить полку. В инструкции было написано: «Приложите, отметьте, просверлите».\nМы приложили, отметили, просверлили. Теперь у нас есть полка и три дополнительных отверстия в стене.',
-    note: 'Точное следование инструкции как источник катастрофы. Отверстия объявлены вентиляцией — и это спасает положение.' },
-
-  { cat: 'Байка',
-    text: 'Купил умные часы. Они считают шаги, пульс и сон.\nТеперь я точно знаю: я мало хожу, много нервничаю и плохо сплю. Спасибо, часы, за ясность.',
-    note: 'Ирония — благодарность за знание, которое лучше было бы не получать.' },
-
-  { cat: 'Байка',
-    text: 'Приехал я к бабушке в деревню. Она спрашивает: «Ты уже поел?» — «Нет». — «Тогда садись».\nПервая тарелка, вторая, «ещё немножко», потом ещё немножко. Когда я сказал, что больше не могу, бабушка вздохнула: «Совсем ничего не ешь».',
-    note: 'Гипербола гостеприимства с абсолютно серьёзным лицом.' },
-
-  { cat: 'Байка',
-    text: 'Приготовил я однажды ужин строго по рецепту из интернета: «Готовьте двадцать минут, помешивая».\nЯ честно помешивал двадцать минут. Получилось блюдо, которое семья единогласно назвала «интересным».',
-    note: 'Эвфемизм как способ сохранить лицо — и одновременно вызвать смех.' },
-
-  { cat: 'Байка',
-    text: 'Пришёл я в поликлинику к восьми утра, взял талончик на половину девятого.\nВ половине девятого мне сказали, что врач ушёл на совещание. В одиннадцать выяснилось, что я сижу не у того кабинета. Но у того врача тоже было совещание — так что я ничего не потерял.',
-    note: 'Философское спокойствие как защитная реакция: герой умудряется выйти победителем из пустого дня.' },
-
-  { cat: 'Байка',
-    text: 'Решил заняться спортом. Купил абонемент в зал на год.\nТеперь у меня есть абонемент и твёрдая уверенность, что я человек, который способен купить абонемент.',
-    note: 'Самоирония: цель незаметно подменяется её символическим достижением.' },
-
-  { cat: 'Курьёз',
-    text: 'На двери подъезда появилось объявление: «Кто выбросил диван на лестницу — уберите, пожалуйста».\nЧерез день ниже появилась приписка: «Диван убрали. Спасибо. Теперь уберите объявление — оно мешает проходу».',
-    note: 'Абсурд бытовой коммуникации: проблема решена, но немедленно породила новую.' },
-
-  { cat: 'Курьёз',
-    text: 'В лифте кто-то написал: «Кнопка седьмого этажа не работает».\nНиже другой рукой было добавлено: «А я и не знал, что она когда-то работала».',
-    note: 'Столкновение двух картин мира — жалобы и философского смирения.' },
-
-  { cat: 'Курьёз',
-    text: 'Объявление в магазине: «Уважаемые покупатели! Примерочная занята человеком, который не может решить, брать ли ему эту вещь. Он думает с прошлого вторника».',
-    note: 'Гипербола, выросшая из наблюдения за реальной очередью.' },
-
-  { cat: 'Наблюдение',
-    text: 'Оптимист — это человек, который, упав лицом в грязь, первым делом проверяет, не лечебная ли она.',
-    note: 'Афоризм построен на гиперболе: качество характера доведено до предела.' },
-
-  { cat: 'Наблюдение',
-    text: 'Чувство юмора — единственная вещь, которую невозможно потерять: чем больше отдаёшь, тем больше остаётся.',
-    note: 'Финальный комплимент смеху: он не тратится, а накапливается.' }
+/* ================= Генератор пословиц ================= */
+var proverbs = [
+  {text: "Грамоте учиться — всегда пригодится", gloss: "Знание — неоспоримая ценность. Учение никогда не бывает лишним."},
+  {text: "Ученье — свет, а неученье — тьма", gloss: "Образование ассоциируется со светом; невежество — с тьмой."},
+  {text: "Повторение — мать учения", gloss: "Усвоение знаний требует упорства и многократного повторения."},
+  {text: "Привычка — вторая натура", gloss: "Воспитание — это формирование добрых привычек."},
+  {text: "Семь раз отмерь, один раз отрежь", gloss: "Учит осторожности и продуманности поступков."},
+  {text: "Терпение и труд всё перетрут", gloss: "Настойчивость преодолевает любые препятствия."},
+  {text: "Без труда не вытащишь и рыбку из пруда", gloss: "Любой результат требует усилий."},
+  {text: "Дело мастера боится", gloss: "Умелый работник справляется с любым делом."},
+  {text: "Маленькое дело лучше большого безделья", gloss: "Даже скромный труд ценнее праздности."},
+  {text: "С кем поведёшься, от того и наберёшься", gloss: "Окружение формирует характер человека."},
+  {text: "Что посеешь, то и пожнёшь", gloss: "Поступки имеют последствия — добрые и дурные."},
+  {text: "За добро добром платят", gloss: "Благодарность — основа нравственных отношений."},
+  {text: "Слово — не воробей, вылетит — не поймаешь", gloss: "Учит обдумывать сказанное. Слово имеет вес."},
+  {text: "Не в свои сани не садись", gloss: "Делай то, что тебе по силам и по положению."},
+  {text: "Век живи — век учись", gloss: "Обучение — процесс длиною в жизнь."}
 ];
 
-/* ===== Логика генератора ===== */
-var currentCat = 'all';
-var bag = [];
-var shownCount = 0;
+function generateWisdom() {
+  var i = Math.floor(Math.random() * proverbs.length);
+  var out = document.getElementById('wisdomOutput');
+  out.innerHTML = '<div class="proverb-text">' + proverbs[i].text + '</div><div class="proverb-gloss">' + proverbs[i].gloss + '</div>';
+}
 
-function refillBag() {
-  var pool = [];
-  for (var i = 0; i < stories.length; i++) {
-    if (currentCat === 'all' || stories[i].cat === currentCat) {
-      pool.push(i);
+/* ================= Генерация 50 групп по 10 историй ================= */
+(function buildGroups() {
+  var TOTAL_GROUPS = 50;
+  var PER_GROUP = 10;
+  var grid = document.getElementById('groups-grid');
+  if (!grid) return;
+
+  function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+  function pad3(n) { return n < 10 ? '00' + n : (n < 100 ? '0' + n : '' + n); }
+
+  var html = '';
+
+  for (var g = 1; g <= TOTAL_GROUPS; g++) {
+    var start = (g - 1) * PER_GROUP + 1;
+    var end   = g * PER_GROUP;
+    var groupNum = pad2(g);
+    var fileName = 'smile-' + groupNum + '.html';
+
+    html += '<article class="group" data-group="' + groupNum + '">';
+    html += '<div class="group-head">';
+    html += '<div class="group-num">Группа ' + groupNum + ' · Истории ' + start + '–' + end + '</div>';
+    html += '<h3>Смешные истории № ' + start + '–' + end + '</h3>';
+    html += '</div>';
+    html += '<ul class="works">';
+
+    for (var i = 0; i < PER_GROUP; i++) {
+      var n = start + i;
+      var anchor = 's' + pad2(i + 1);
+      html += '<li><a href="' + fileName + '#' + anchor + '">' +
+              '<span class="idx">' + pad3(n) + '</span>' +
+              '<span>История № ' + n + '</span>' +
+              '</a></li>';
     }
+
+    html += '</ul>';
+    html += '<div class="group-foot">';
+    html += '<span class="count">' + PER_GROUP + ' историй</span>';
+    html += '<a class="open" href="' + fileName + '">Читать группу</a>';
+    html += '</div>';
+    html += '</article>';
   }
-  /* перемешиваем — истории не повторяются, пока не будут показаны все */
-  for (var k = pool.length - 1; k > 0; k--) {
-    var j = Math.floor(Math.random() * (k + 1));
-    var t = pool[k];
-    pool[k] = pool[j];
-    pool[j] = t;
-  }
-  bag = pool;
-}
 
-function setCat(cat, btn) {
-  currentCat = cat;
-  bag = [];
-  var chips = document.querySelectorAll('.chip');
-  for (var i = 0; i < chips.length; i++) {
-    chips[i].classList.remove('active');
-  }
-  btn.classList.add('active');
-  document.getElementById('storyOutput').innerHTML =
-    '<p style="color:#9a8a7a;">Раздел выбран. Нажмите «Рассказать историю».</p>';
-}
-
-function generateStory() {
-  if (!bag.length) { refillBag(); }
-  if (!bag.length) { return; }
-
-  var idx = bag.pop();
-  var s = stories[idx];
-  shownCount++;
-
-  var out = document.getElementById('storyOutput');
-  out.innerHTML =
-    '<div class="badge">' + s.cat + '</div>' +
-    '<div class="story-text">' + s.text.replace(/\n/g, '<br>') + '</div>' +
-    '<div class="story-note">' + s.note + '</div>';
-
-  document.getElementById('storyCounter').textContent = 'Показано историй: ' + shownCount;
-}
+  grid.innerHTML = html;
+})();
 </script>
 
 </body>
