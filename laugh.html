@@ -1,461 +1,149 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Детские юмористические истории — Счастливое детство</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #e67e22;
-            --bg: #f9f9f9;
-            --card-bg: #ffffff;
-            --text: #333;
-            --muted: #777;
-            --border: #e0e0e0;
-            --radius: 12px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            padding: 0 1rem;
-        }
-        .container { max-width: 960px; margin: 0 auto; padding: 2rem 0; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Группа 01 — Детские юмористические истории</title>
+<style>
+:root {
+  --bg: #f7f3ea;
+  --text: #2a2419;
+  --accent: #8a5a2b;
+  --accent-light: #b58a5a;
+  --border: #d8cdb8;
+  --card: #fdfbf6;
+  --muted: #6b5d48;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 17px;
+  padding: 0 1.25rem;
+}
+.container { max-width: 820px; margin: 0 auto; padding: 2.5rem 0 4rem; }
+h1 {
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+.group-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+p { margin-bottom: 1rem; text-align: justify; }
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-light);
+}
+a:hover { border-bottom-style: solid; }
 
-        /* Шапка */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
-        .top-nav a { font-family: sans-serif; }
+.story {
+  background: var(--card);
+  border-left: 3px solid var(--accent-light);
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1rem;
+}
+.story-num {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.story-title {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.story-placeholder {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
 
-        /* Заголовок */
-        h1 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--muted);
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Вводный текст */
-        .intro {
-            background: var(--card-bg);
-            border-left: 4px solid var(--accent);
-            padding: 1.2rem 1.5rem;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            margin-bottom: 2rem;
-            font-size: 1rem;
-        }
-        .intro p { margin-bottom: 0.6rem; }
-        .intro p:last-child { margin-bottom: 0; }
-
-        /* Счётчики */
-        .stats {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            font-family: sans-serif;
-        }
-        .stat-item {
-            background: var(--card-bg);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-            text-align: center;
-            flex: 1;
-            min-width: 140px;
-        }
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            display: block;
-        }
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-
-        /* Как устроен разбор */
-        .how-it-works {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-        }
-        .how-it-works h2 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        .how-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        .how-card {
-            padding: 1rem;
-            background: #f4f6f8;
-            border-radius: 8px;
-        }
-        .how-card h3 {
-            font-size: 1rem;
-            color: var(--accent);
-            margin-bottom: 0.4rem;
-            font-family: sans-serif;
-        }
-        .how-card p {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        /* Группы */
-        .groups-section h2 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        .groups-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-        }
-        .group-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 1.2rem 1.5rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-            transition: transform 0.15s, box-shadow 0.15s;
-            border: 1px solid transparent;
-        }
-        .group-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-color: var(--accent);
-        }
-        .group-card .group-number {
-            font-family: sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .group-card .group-title {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin: 0.3rem 0 0.5rem;
-            font-weight: 700;
-        }
-        .group-card .group-desc {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
-        }
-        .group-card .group-status {
-            display: inline-block;
-            margin-top: 0.7rem;
-            font-family: sans-serif;
-            font-size: 0.75rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            background: #fdebd0;
-            color: #b35c00;
-        }
-        .group-card .group-status.done {
-            background: #d5f5e3;
-            color: #1e8449;
-        }
-
-        /* Философия */
-        .philosophy {
-            background: var(--primary);
-            color: #fff;
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
-            margin-bottom: 2.5rem;
-            text-align: center;
-        }
-        .philosophy p {
-            font-size: 1.05rem;
-            font-style: italic;
-            max-width: 700px;
-            margin: 0 auto 0.8rem;
-        }
-        .philosophy .author {
-            font-style: normal;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Подвал */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding-top: 1.5rem;
-            margin-top: 1rem;
-            font-family: sans-serif;
-            font-size: 0.85rem;
-            color: var(--muted);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 1.6rem; }
-            .stats { gap: 0.8rem; }
-            .stat-item { padding: 0.8rem; min-width: 100px; }
-            .stat-number { font-size: 1.5rem; }
-            .groups-grid { grid-template-columns: 1fr; }
-            .how-it-works { padding: 1.2rem; }
-        }
-    </style>
+.back {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+</style>
 </head>
 <body>
 <div class="container">
 
-    <nav class="top-nav">
-        <a href="index.html">← На главную</a>
-        <a href="poetry.html">Поэтический архив</a>
-    </nav>
+<h1>Группа 01</h1>
+<div class="group-sub">Истории 001–010. Первые улыбки: детская логика и наивность.</div>
 
-    <h1>Детские юмористические истории</h1>
-    <p class="subtitle">Живой смех как входная дверь в нравственное воспитание</p>
+<div class="story" id="001">
+<div class="story-num">001</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
 
-    <div class="intro">
-        <p><strong>Проблема.</strong> Басни Эзопа, переложения Толстого, басни Крылова — материал благодатный, но сухой. Схема «текст → мораль → вопросы» убивает живую интонацию первоисточника. Эзоп рассказывал анекдоты, Толстой вкладывал в сюжет живую сцену — а мы превратили их в музейные экспонаты.</p>
-        <p><strong>Решение.</strong> База детских юмористических историй — адаптированных, безопасных, развивающих. Живая сцена, диалог, неожиданная развязка. Ребёнок смеётся — значит, открыт. А открытый ребёнок воспринимает урок без морали «в лоб».</p>
-        <p><strong>Ориентир.</strong> Принцип Ильи Франка («Английский шутя»): короткий текст, живой диалог, неожиданная развязка — но не копия взрослого сборника, а самостоятельный корпус для детей 6–10 лет.</p>
-    </div>
+<div class="story" id="002">
+<div class="story-num">002</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
 
-    <div class="stats">
-        <div class="stat-item">
-            <span class="stat-number">250</span>
-            <span class="stat-label">историй (план)</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">25</span>
-            <span class="stat-label">аналитических групп</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">10</span>
-            <span class="stat-label">историй в группе</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">4</span>
-            <span class="stat-label">линии разбора</span>
-        </div>
-    </div>
+<div class="story" id="003">
+<div class="story-num">003</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
 
-    <div class="how-it-works">
-        <h2>Как устроен анализ</h2>
-        <div class="how-grid">
-            <div class="how-card">
-                <h3>Источники и контекст</h3>
-                <p>Происхождение сюжета: фольклор, классика (Носов, Зощенко, Драгунский), адаптированный анекдот, авторская история. Указывается тип юмора и возрастная адресация.</p>
-            </div>
-            <div class="how-card">
-                <h3>Психологическая проблематика</h3>
-                <p>Возрастные особенности восприятия юмора: что смешно в 6–7 лет, что — в 9–10. Механизмы идентификации, эмпатия, «теория сознания» через неожиданную развязку.</p>
-            </div>
-            <div class="how-card">
-                <h3>Педагогический замысел</h3>
-                <p>Нравственный вектор без морали «в лоб». Урок выводится из поступка и его последствий. Возможность игры: разыграть, пересказать, продолжить.</p>
-            </div>
-            <div class="how-card">
-                <h3>Дидактическая ценность</h3>
-                <p>Применимость в практике: темы для беседы, вопросы к тексту, межпредметные связи, этические дилеммы для обсуждения в классе и семье.</p>
-            </div>
-        </div>
-    </div>
+<div class="story" id="004">
+<div class="story-num">004</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
 
-    <div class="groups-section">
-        <h2>Группы историй</h2>
-        <div class="groups-grid">
-            <!-- 25 групп-заглушек -->
-            <a href="laugh_group-01.html" class="group-card">
-                <div class="group-number">Группа 01 · истории 1–10</div>
-                <div class="group-title">Первые улыбки: детская логика и наивность</div>
-                <div class="group-desc">Короткие сценки, где ребёнок рассуждает «по-своему» и приходит к неожиданному выводу.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-02.html" class="group-card">
-                <div class="group-number">Группа 02 · истории 11–20</div>
-                <div class="group-title">Школьные истории: тетрадки, уроки, перемены</div>
-                <div class="group-desc">Живые сценки из школьной жизни — без обидных стереотипов, с узнаваемыми ситуациями.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-03.html" class="group-card">
-                <div class="group-number">Группа 03 · истории 21–30</div>
-                <div class="group-title">Животные и их повадки: кто хитрее</div>
-                <div class="group-desc">Юмор, построенный на наблюдательности: животные ведут себя «почти как люди».</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-04.html" class="group-card">
-                <div class="group-number">Группа 04 · истории 31–40</div>
-                <div class="group-title">Семейные ситуации: бабушки, дедушки, родители</div>
-                <div class="group-desc">Тёплый юмор о поколениях — без насмешек над возрастом и без обидных стереотипов.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-05.html" class="group-card">
-                <div class="group-number">Группа 05 · истории 41–50</div>
-                <div class="group-title">Игра слов: каламбуры и неожиданные повороты</div>
-                <div class="group-desc">Языковой юмор, доступный детям 8–10 лет: многозначность, звуковые совпадения.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-06.html" class="group-card">
-                <div class="group-number">Группа 06 · истории 51–60</div>
-                <div class="group-title">Бытовые истории: магазин, транспорт, двор</div>
-                <div class="group-desc">Узнаваемые ситуации повседневности, где ребёнок наблюдает и делает вывод.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-07.html" class="group-card">
-                <div class="group-number">Группа 07 · истории 61–70</div>
-                <div class="group-title">Философские миниатюры с улыбкой</div>
-                <div class="group-desc">Короткие истории, где за смешной ситуацией — простой, но важный вопрос о жизни.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-08.html" class="group-card">
-                <div class="group-number">Группа 08 · истории 71–80</div>
-                <div class="group-title">Исторические анекдоты (без политики)</div>
-                <div class="group-desc">Забавные случаи из прошлого: учёные, изобретатели, путешественники.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-09.html" class="group-card">
-                <div class="group-number">Группа 09 · истории 81–90</div>
-                <div class="group-title">Природа и времена года: наблюдения с юмором</div>
-                <div class="group-desc">Бережное отношение к природе через смешные и трогательные сценки.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-10.html" class="group-card">
-                <div class="group-number">Группа 10 · истории 91–100</div>
-                <div class="group-title">Труд и мастерство: кто что умеет</div>
-                <div class="group-desc">Уважение к труду через юмор: неудачи и находки маленьких мастеров.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-11.html" class="group-card">
-                <div class="group-number">Группа 11 · истории 101–110</div>
-                <div class="group-title">Дружба и взаимовыручка</div>
-                <div class="group-desc">Смешные истории о том, как друзья выручают друг друга — и попадают в курьёзы.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-12.html" class="group-card">
-                <div class="group-number">Группа 12 · истории 111–120</div>
-                <div class="group-title">Смекалка и находчивость</div>
-                <div class="group-desc">Герои находят неожиданный выход из затруднительного положения.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-13.html" class="group-card">
-                <div class="group-number">Группа 13 · истории 121–130</div>
-                <div class="group-title">Честность и правда: как это бывает</div>
-                <div class="group-desc">Юмор о том, к чему приводит маленькая ложь и как хорошо говорить правду.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-14.html" class="group-card">
-                <div class="group-number">Группа 14 · истории 131–140</div>
-                <div class="group-title">Щедрость и жадность</div>
-                <div class="group-desc">Смешные сценки о том, как жадность выглядит со стороны — и почему щедрость веселее.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-15.html" class="group-card">
-                <div class="group-number">Группа 15 · истории 141–150</div>
-                <div class="group-title">Смелость и страх</div>
-                <div class="group-desc">Добрый юмор о детских страхах и о том, как они рассеиваются.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-16.html" class="group-card">
-                <div class="group-number">Группа 16 · истории 151–160</div>
-                <div class="group-title">Вежливость и внимание к другим</div>
-                <div class="group-desc">Истории о том, как вежливость (или её отсутствие) меняет ситуацию.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-17.html" class="group-card">
-                <div class="group-number">Группа 17 · истории 161–170</div>
-                <div class="group-title">Терпение и настойчивость</div>
-                <div class="group-desc">Смешные истории о том, что получается, если не сдаваться.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-18.html" class="group-card">
-                <div class="group-number">Группа 18 · истории 171–180</div>
-                <div class="group-title">Уважение к старшим</div>
-                <div class="group-desc">Тёплый юмор о бабушках, дедушках и о том, чему они учат.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-19.html" class="group-card">
-                <div class="group-number">Группа 19 · истории 181–190</div>
-                <div class="group-title">Коллективизм: вместе веселее</div>
-                <div class="group-desc">Истории о том, как общее дело объединяет и даёт повод для смеха.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-20.html" class="group-card">
-                <div class="group-number">Группа 20 · истории 191–200</div>
-                <div class="group-title">Ответственность за поступки</div>
-                <div class="group-desc">Смешные сценки о последствиях необдуманных решений — без назидания.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-21.html" class="group-card">
-                <div class="group-number">Группа 21 · истории 201–210</div>
-                <div class="group-title">Преемственность поколений</div>
-                <div class="group-desc">Юмор о том, как дети повторяют родителей — и что из этого выходит.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-22.html" class="group-card">
-                <div class="group-number">Группа 22 · истории 211–220</div>
-                <div class="group-title">Бережное отношение к природе</div>
-                <div class="group-desc">Истории о том, как человек и природа находят общий язык с улыбкой.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-23.html" class="group-card">
-                <div class="group-number">Группа 23 · истории 221–230</div>
-                <div class="group-title">Юмор в профессиях</div>
-                <div class="group-desc">Забавные случаи из жизни людей разных профессий — без насмешек.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-24.html" class="group-card">
-                <div class="group-number">Группа 24 · истории 231–240</div>
-                <div class="group-title">Смешные диалоги: отец и сын, мама и дочь</div>
-                <div class="group-desc">Короткие разговоры, где дети ставят взрослых в тупик своими вопросами.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-            <a href="laugh_group-25.html" class="group-card">
-                <div class="group-number">Группа 25 · истории 241–250</div>
-                <div class="group-title">Мудрость с улыбкой: итоговые миниатюры</div>
-                <div class="group-desc">Финальная группа: истории, где юмор и нравственный урок слиты воедино.</div>
-                <span class="group-status">В подготовке</span>
-            </a>
-        </div>
-    </div>
+<div class="story" id="005">
+<div class="story-num">005</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
 
-    <div class="philosophy">
-        <p>«Чувства, чувства и ещё раз чувства — вот девиз данного проекта. Юмор — это входная дверь в нравственное воспитание. Ребёнок смеётся — значит, он открыт. А открытый ребёнок воспринимает урок.»</p>
-        <p class="author">Юрий Никулин: «Даже после небольшой улыбки в организме обязательно дохнет один маленький микроб».</p>
-        <p class="author" style="margin-top:0.5rem;">Мы хотим, чтобы после каждой истории у ребёнка умирал микроб равнодушия — и рождалось живое чувство.</p>
-    </div>
+<div class="story" id="006">
+<div class="story-num">006</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
 
-    <footer class="footer">
-        <span>Проект «Счастливое детство» · Программа «В мире прекрасного»</span>
-        <span><a href="poetry.html">← Поэтический архив</a> · <a href="index.html">На главную</a></span>
-    </footer>
+<div class="story" id="007">
+<div class="story-num">007</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
+
+<div class="story" id="008">
+<div class="story-num">008</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
+
+<div class="story" id="009">
+<div class="story-num">009</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
+
+<div class="story" id="010">
+<div class="story-num">010</div>
+<div class="story-title">История в подготовке</div>
+<div class="story-placeholder">Текст, комментарий и вопросы для беседы будут добавлены после отбора.</div>
+</div>
+
+<div class="back">
+<a href="laugh.html">← К списку групп</a>
+</div>
 
 </div>
 </body>
