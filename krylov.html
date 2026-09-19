@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Басни Крылова — психолого-педагогический анализ произведений И. А. Крылова</title>
+  <meta name="description" content="Информационно-аналитический проект: психолого-педагогическая проблематика 232 басен И. А. Крылова по академическому изданию 1956 г. Анализ по группам из десяти произведений с указанием источников и дидактической ценности.">
+  <meta name="author" content="Аналитический проект «Басни Крылова»">
+  <link rel="canonical" href="https://petrov82020-cyber.github.io/os2-custom/krylov.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Басни Крылова — психолого-педагогический анализ произведений И. А. Крылова">
+  <meta property="og:description" content="232 басни И. А. Крылова: источники, психолого-педагогическая проблематика, дидактическая ценность.">
+  <meta property="og:url" content="https://petrov82020-cyber.github.io/os2-custom/krylov.html">
+  <style>
+    :root {
+      --paper: #f7f3ea;
+      --paper-2: #fffdf8;
+      --ink: #2b2620;
+      --ink-soft: #5c5348;
+      --line: #ddd3c2;
+      --line-soft: #ece4d6;
+      --accent: #8a5a2b;
+      --accent-2: #b8863f;
+      --accent-soft: #f0e4d0;
+      --green: #4f6b4a;
+      --shadow: 0 1px 2px rgba(43, 38, 32, .06), 0 8px 24px rgba(43, 38, 32, .07);
+      --radius: 14px;
+      --maxw: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 600px at 50% -200px, #fffdf7 0%, transparent 70%),
+        var(--paper);
+      color: var(--ink);
+      font-family: "Georgia", "Iowan Old Style", "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #fff;
+      padding: .7em 1.2em;
+      z-index: 100;
+      border-radius: 0 0 8px 0;
+    }
+
+    .skip:focus {
+      left: 0;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ---------- Header ---------- */
+    header.site {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffdf8 0%, rgba(255, 253, 248, .6) 100%);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      font-size: .86rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      letter-spacing: .02em;
+      color: var(--ink-soft);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .brand .mark {
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: .9rem;
+      font-weight: 700;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    .topbar nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .topbar nav a {
+      color: var(--ink-soft);
+    }
+
+    .topbar nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 52px 0 42px;
+      text-align: center;
+    }
+
+    .hero .eyebrow {
+      display: inline-block;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: .74rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid #e6d7bf;
+      border-radius: 999px;
+      padding: .4em 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p.lead {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--ink-soft);
+      font-size: 1.06rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin: 38px auto 0;
+      max-width: 860px;
+    }
+
+    .stat {
+      background: var(--paper-2);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      padding: 18px 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1.1;
+      color: var(--accent);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-weight: 700;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      font-size: .8rem;
+      color: var(--ink-soft);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      letter-spacing: .02em;
+    }
+
+    /* ---------- Sections ---------- */
+    main {
+      padding: 8px 0 70px;
+    }
+
+    section {
+      padding: 44px 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--line-soft);
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+      margin: 0 0 8px;
+      letter-spacing: -.01em;
+    }
+
+    .sub {
+      color: var(--ink-soft);
+      margin: 0 0 28px;
+      max-width: 820px;
+    }
+
+    .criteria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .criterion {
+      background: var(--paper-2);
+      border: 1px solid var(--line-soft);
+      border-left: 3px solid var(--accent-2);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .criterion h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: .01em;
+      color: var(--ink);
+    }
+
+    .criterion p {
+      margin: 0;
+      font-size: .92rem;
+      color: var(--ink-soft);
+    }
+
+    /* ---------- Search ---------- */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .search {
+      position: relative;
+      flex: 1 1 320px;
+      min-width: 240px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 13px 44px 13px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper-2);
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: .95rem;
+      box-shadow: var(--shadow);
+    }
+
+    .search input::placeholder {
+      color: #a99d8c;
+    }
+
+    .search .clear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .search .clear:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .hits {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: .85rem;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    /* ---------- Groups grid ---------- */
+    .groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 20px;
+    }
+
+    .group {
+      background: var(--paper-2);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+
+    .group:hover {
+      transform: translateY(-3px);
+      border-color: #e2d5bf;
+      box-shadow: 0 2px 4px rgba(43, 38, 32, .06), 0 14px 34px rgba(43, 38, 32, .10);
+    }
+
+    .group-head {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      background: linear-gradient(180deg, #fffdf8, #fdf9f1);
+    }
+
+    .group-num {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .group-head h3 {
+      margin: 6px 0 0;
+      font-size: 1.03rem;
+      line-height: 1.35;
+    }
+
+    .works {
+      list-style: none;
+      margin: 0;
+      padding: 10px 12px;
+      flex: 1 1 auto;
+    }
+
+    .works li {
+      margin: 0;
+    }
+
+    .works a {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      padding: 6px 9px;
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: .94rem;
+      line-height: 1.45;
+    }
+
+    .works a:hover {
+      background: var(--accent-soft);
+      text-decoration: none;
+      color: #6d441c;
+    }
+
+    .works .idx {
+      flex: 0 0 auto;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: .72rem;
+      color: #a99d8c;
+      min-width: 1.9em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .group-foot {
+      border-top: 1px solid var(--line-soft);
+      padding: 12px 20px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: .85rem;
+    }
+
+    .group-foot .count {
+      color: var(--ink-soft);
+    }
+
+    .group-foot a.open {
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .group-foot a.open::after {
+      content: " →";
+    }
+
+    .empty {
+      display: none;
+      padding: 48px 20px;
+      text-align: center;
+      color: var(--ink-soft);
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    /* ---------- Sources ---------- */
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .source {
+      background: var(--paper-2);
+      border: 1px solid var(--line-soft);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .source h3 {
+      margin: 0 0 8px;
+      font-size: .98rem;
+    }
+
+    .source p {
+      margin: 0 0 6px;
+      font-size: .9rem;
+      color: var(--ink-soft);
+    }
+
+    .source p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- Footer ---------- */
+    footer.site {
+      border-top: 1px solid var(--line);
+      background: #fbf7ef;
+      padding: 34px 0 40px;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: .86rem;
+      color: var(--ink-soft);
+    }
+
+    footer.site .cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    footer.site h4 {
+      margin: 0 0 10px;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    footer.site ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    footer.site li {
+      margin-bottom: 6px;
+    }
+
+    footer.site a {
+      color: var(--ink-soft);
+    }
+
+    footer.site a:hover {
+      color: var(--accent);
+    }
+
+    .copy {
+      border-top: 1px solid var(--line-soft);
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        font-size: 16px;
+      }
+
+      .hero {
+        padding: 36px 0 30px;
+      }
+
+      .topbar nav {
+        display: none;
+      }
+
+      .groups {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      .toolbar,
+      .topbar nav,
+      .skip {
+        display: none;
+      }
+
+      .group {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip" href="#main">Перейти к содержанию</a>
+
+  <header class="site">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">ИК</span>
+          <span>Басни Крылова</span>
+        </div>
+        <nav aria-label="Основная навигация">
+          <a href="#method">Методология</a>
+          <a href="#groups">Группы анализа</a>
+          <a href="#sources">Источники</a>
+          <a href="#about">О проекте</a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <span class="eyebrow">Информационно-аналитический проект</span>
+        <h1>Психолого-педагогическая проблематика басен <em>И.&nbsp;А.&nbsp;Крылова</em></h1>
+        <p class="lead">
+          232 произведения — от басен первого сборника 1809 года до набросков, шуточных басен
+          и приписываемых текстов, вошедших в академическое издание 1956 года, — проанализированы
+          по единой схеме: источники и прототипы, психологическое содержание, педагогический
+          замысел и дидактическая ценность. Материалы публикуются группами по десять произведений.
+        </p>
+
+        <div class="stats">
+          <div class="stat"><b>232</b><span>произведения</span></div>
+          <div class="stat"><b>24</b><span>аналитические группы</span></div>
+          <div class="stat"><b>4</b><span>критерия разбора</span></div>
+          <div class="stat"><b>1788–1843</b><span>годы создания корпуса</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <!-- ================= МЕТОДОЛОГИЯ ================= -->
+      <section id="method" aria-labelledby="method-h">
+        <h2 id="method-h">Как устроен анализ</h2>
+        <p class="sub">
+          Каждое произведение рассматривается по четырём взаимосвязанным линиям. Такой формат
+          позволяет увидеть, как басенный текст Крылова одновременно решает задачи нравственного
+          воспитания, развития мышления, формирования читательской самостоятельности и освоения
+          культурного опыта человечества.
+        </p>
+
+        <div class="criteria">
+          <div class="criterion">
+            <h3>Источники и контекст</h3>
+            <p>
+              Происхождение сюжета: античная басня (Эзоп, Федр, Бабрий), басни Лафонтена,
+              восточная притча, русская пословица, исторический анекдот, личное наблюдение
+              или злободневный отклик. Указываются годы создания, место в девяти книгах
+              и связь с общественной жизнью России первой половины XIX века.
+            </p>
+          </div>
+
+          <div class="criterion">
+            <h3>Психологическая проблематика</h3>
+            <p>
+              Возрастные особенности восприятия басни, механизмы узнавания и обобщения,
+              «эффект зеркала» (читатель видит себя в персонаже), эмоциональная регуляция,
+              формирование эмпатии и рефлексии, переход от конкретно-образного мышления
+              к абстрактно-нравственному суждению.
+            </p>
+          </div>
+
+          <div class="criterion">
+            <h3>Педагогический замысел</h3>
+            <p>
+              Дидактическая задача текста: обучение чтению и родному языку через афористичность
+              и диалог, нравственное назидание без прямого морализаторства, развитие
+              наблюдательности, знакомство с историей и культурой, постановка социального
+              и этического мышления.
+            </p>
+          </div>
+
+          <div class="criterion">
+            <h3>Дидактическая ценность</h3>
+            <p>
+              Применимость в современной практике: возрастная адресация, темы для беседы,
+              вопросы к тексту, межпредметные связи (литературное чтение, окружающий мир,
+              история, обществознание, ОРКСЭ), этические дилеммы для обсуждения в классе
+              и семье.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ГРУППЫ ================= -->
+      <section id="groups" aria-labelledby="groups-h">
+        <h2 id="groups-h">Группы анализа</h2>
+        <p class="sub">
+          Произведения сгруппированы по десять в порядке следования академического издания
+          1956 года. Внутри каждой группы они связаны тематически, жанрово или хронологически.
+          Выберите произведение — откроется страница группы с полным разбором.
+        </p>
+
+        <div class="toolbar">
+          <div class="search">
+            <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Поиск произведения</label>
+            <input id="q" type="search" placeholder="Поиск произведения по названию…" autocomplete="off">
+            <button class="clear" id="clear" type="button" aria-label="Очистить поиск" hidden>×</button>
+          </div>
+          <div class="hits" id="hits" aria-live="polite"></div>
+        </div>
+
+        <div class="groups" id="groups-grid">
+
+          <!-- ===== Группа 01 ===== -->
+          <article class="group" data-group="01">
+            <div class="group-head">
+              <div class="group-num">Группа 01 · произведения 1–10</div>
+              <h3>Открытие первого сборника: лесть, гордыня и первые уроки</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-01.html#p01"><span class="idx">01</span><span>Ворона и Лисица</span></a></li>
+              <li><a href="krylov_group-01.html#p02"><span class="idx">02</span><span>Дуб и Трость</span></a></li>
+              <li><a href="krylov_group-01.html#p03"><span class="idx">03</span><span>Музыканты</span></a></li>
+              <li><a href="krylov_group-01.html#p04"><span class="idx">04</span><span>Ворона и Курица</span></a></li>
+              <li><a href="krylov_group-01.html#p05"><span class="idx">05</span><span>Ларчик</span></a></li>
+              <li><a href="krylov_group-01.html#p06"><span class="idx">06</span><span>Лягушка и Вол</span></a></li>
+              <li><a href="krylov_group-01.html#p07"><span class="idx">07</span><span>Разборчивая Невеста</span></a></li>
+              <li><a href="krylov_group-01.html#p08"><span class="idx">08</span><span>Парнас</span></a></li>
+              <li><a href="krylov_group-01.html#p09"><span class="idx">09</span><span>Оракул</span></a></li>
+              <li><a href="krylov_group-01.html#p10"><span class="idx">10</span><span>Василёк</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-01.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 02 ===== -->
+          <article class="group" data-group="02">
+            <div class="group-head">
+              <div class="group-num">Группа 02 · произведения 11–20</div>
+              <h3>Тщеславие, хитрость и нравственный выбор</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-02.html#p11"><span class="idx">11</span><span>Роща и Огонь</span></a></li>
+              <li><a href="krylov_group-02.html#p12"><span class="idx">12</span><span>Чиж и Ёж</span></a></li>
+              <li><a href="krylov_group-02.html#p13"><span class="idx">13</span><span>Волк и Ягнёнок</span></a></li>
+              <li><a href="krylov_group-02.html#p14"><span class="idx">14</span><span>Обезьяны</span></a></li>
+              <li><a href="krylov_group-02.html#p15"><span class="idx">15</span><span>Синица</span></a></li>
+              <li><a href="krylov_group-02.html#p16"><span class="idx">16</span><span>Осёл</span></a></li>
+              <li><a href="krylov_group-02.html#p17"><span class="idx">17</span><span>Мартышка и Очки</span></a></li>
+              <li><a href="krylov_group-02.html#p18"><span class="idx">18</span><span>Два Голубя</span></a></li>
+              <li><a href="krylov_group-02.html#p19"><span class="idx">19</span><span>Червонец</span></a></li>
+              <li><a href="krylov_group-02.html#p20"><span class="idx">20</span><span>Троеженец</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-02.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 03 ===== -->
+          <article class="group" data-group="03">
+            <div class="group-head">
+              <div class="group-num">Группа 03 · произведения 21–30</div>
+              <h3>Власть, суд и народная мудрость</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-03.html#p21"><span class="idx">21</span><span>Безбожники</span></a></li>
+              <li><a href="krylov_group-03.html#p22"><span class="idx">22</span><span>Орёл и Куры</span></a></li>
+              <li><a href="krylov_group-03.html#p23"><span class="idx">23</span><span>Лягушки, просящие Царя</span></a></li>
+              <li><a href="krylov_group-03.html#p24"><span class="idx">24</span><span>Лев и Барс</span></a></li>
+              <li><a href="krylov_group-03.html#p25"><span class="idx">25</span><span>Вельможа и Философ</span></a></li>
+              <li><a href="krylov_group-03.html#p26"><span class="idx">26</span><span>Мор Зверей</span></a></li>
+              <li><a href="krylov_group-03.html#p27"><span class="idx">27</span><span>Собачья дружба</span></a></li>
+              <li><a href="krylov_group-03.html#p28"><span class="idx">28</span><span>Раздел</span></a></li>
+              <li><a href="krylov_group-03.html#p29"><span class="idx">29</span><span>Бочка</span></a></li>
+              <li><a href="krylov_group-03.html#p30"><span class="idx">30</span><span>Волк на псарне</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-03.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 04 ===== -->
+          <article class="group" data-group="04">
+            <div class="group-head">
+              <div class="group-num">Группа 04 · произведения 31–40</div>
+              <h3>Труд, ложь и уроки животного мира</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-04.html#p31"><span class="idx">31</span><span>Ручей</span></a></li>
+              <li><a href="krylov_group-04.html#p32"><span class="idx">32</span><span>Лисица и Сурок</span></a></li>
+              <li><a href="krylov_group-04.html#p33"><span class="idx">33</span><span>Прохожие и Собаки</span></a></li>
+              <li><a href="krylov_group-04.html#p34"><span class="idx">34</span><span>Стрекоза и Муравей</span></a></li>
+              <li><a href="krylov_group-04.html#p35"><span class="idx">35</span><span>Лжец</span></a></li>
+              <li><a href="krylov_group-04.html#p36"><span class="idx">36</span><span>Орёл и Пчела</span></a></li>
+              <li><a href="krylov_group-04.html#p37"><span class="idx">37</span><span>Заяц на ловле</span></a></li>
+              <li><a href="krylov_group-04.html#p38"><span class="idx">38</span><span>Щука и Кот</span></a></li>
+              <li><a href="krylov_group-04.html#p39"><span class="idx">39</span><span>Волк и Кукушка</span></a></li>
+              <li><a href="krylov_group-04.html#p40"><span class="idx">40</span><span>Петух и Жемчужное Зерно</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-04.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 05 ===== -->
+          <article class="group" data-group="05">
+            <div class="group-head">
+              <div class="group-num">Группа 05 · произведения 41–50</div>
+              <h3>Служба, честность и человеческие слабости</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-05.html#p41"><span class="idx">41</span><span>Крестьянин и Работник</span></a></li>
+              <li><a href="krylov_group-05.html#p42"><span class="idx">42</span><span>Обоз</span></a></li>
+              <li><a href="krylov_group-05.html#p43"><span class="idx">43</span><span>Воронёнок</span></a></li>
+              <li><a href="krylov_group-05.html#p44"><span class="idx">44</span><span>Слон на воеводстве</span></a></li>
+              <li><a href="krylov_group-05.html#p45"><span class="idx">45</span><span>Осёл и Соловей</span></a></li>
+              <li><a href="krylov_group-05.html#p46"><span class="idx">46</span><span>Откупщик и Сапожник</span></a></li>
+              <li><a href="krylov_group-05.html#p47"><span class="idx">47</span><span>Крестьянин в беде</span></a></li>
+              <li><a href="krylov_group-05.html#p48"><span class="idx">48</span><span>Хозяин и Мыши</span></a></li>
+              <li><a href="krylov_group-05.html#p49"><span class="idx">49</span><span>Слон и Моська</span></a></li>
+              <li><a href="krylov_group-05.html#p50"><span class="idx">50</span><span>Волк и Волчонок</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-05.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 06 ===== -->
+          <article class="group" data-group="06">
+            <div class="group-head">
+              <div class="group-num">Группа 06 · произведения 51–60</div>
+              <h3>Воспитание, хитрость и исторические предания</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-06.html#p51"><span class="idx">51</span><span>Обезьяна</span></a></li>
+              <li><a href="krylov_group-06.html#p52"><span class="idx">52</span><span>Мешок</span></a></li>
+              <li><a href="krylov_group-06.html#p53"><span class="idx">53</span><span>Кот и Повар</span></a></li>
+              <li><a href="krylov_group-06.html#p54"><span class="idx">54</span><span>Лев и Комар</span></a></li>
+              <li><a href="krylov_group-06.html#p55"><span class="idx">55</span><span>Огородник и Философ</span></a></li>
+              <li><a href="krylov_group-06.html#p56"><span class="idx">56</span><span>Крестьянин и Лисица</span></a></li>
+              <li><a href="krylov_group-06.html#p57"><span class="idx">57</span><span>Воспитание Льва</span></a></li>
+              <li><a href="krylov_group-06.html#p58"><span class="idx">58</span><span>Старик и трое Молодых</span></a></li>
+              <li><a href="krylov_group-06.html#p59"><span class="idx">59</span><span>Дерево</span></a></li>
+              <li><a href="krylov_group-06.html#p60"><span class="idx">60</span><span>Гуси</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-06.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 07 ===== -->
+          <article class="group" data-group="07">
+            <div class="group-head">
+              <div class="group-num">Группа 07 · произведения 61–70</div>
+              <h3>Согласие, корни и общественные устои</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-07.html#p61"><span class="idx">61</span><span>Свинья</span></a></li>
+              <li><a href="krylov_group-07.html#p62"><span class="idx">62</span><span>Муха и Дорожные</span></a></li>
+              <li><a href="krylov_group-07.html#p63"><span class="idx">63</span><span>Орёл и Паук</span></a></li>
+              <li><a href="krylov_group-07.html#p64"><span class="idx">64</span><span>Лань и Дервиш</span></a></li>
+              <li><a href="krylov_group-07.html#p65"><span class="idx">65</span><span>Собака</span></a></li>
+              <li><a href="krylov_group-07.html#p66"><span class="idx">66</span><span>Орёл и Крот</span></a></li>
+              <li><a href="krylov_group-07.html#p67"><span class="idx">67</span><span>Квартет</span></a></li>
+              <li><a href="krylov_group-07.html#p68"><span class="idx">68</span><span>Листы и Корни</span></a></li>
+              <li><a href="krylov_group-07.html#p69"><span class="idx">69</span><span>Волк и Лисица</span></a></li>
+              <li><a href="krylov_group-07.html#p70"><span class="idx">70</span><span>Бумажный Змей</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-07.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 08 ===== -->
+          <article class="group" data-group="08">
+            <div class="group-head">
+              <div class="group-num">Группа 08 · произведения 71–80</div>
+              <h3>Разлад, беспечность и дружба</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-08.html#p71"><span class="idx">71</span><span>Лебедь, Щука и Рак</span></a></li>
+              <li><a href="krylov_group-08.html#p72"><span class="idx">72</span><span>Скворец</span></a></li>
+              <li><a href="krylov_group-08.html#p73"><span class="idx">73</span><span>Пруд и Река</span></a></li>
+              <li><a href="krylov_group-08.html#p74"><span class="idx">74</span><span>Тришкин кафтан</span></a></li>
+              <li><a href="krylov_group-08.html#p75"><span class="idx">75</span><span>Механик</span></a></li>
+              <li><a href="krylov_group-08.html#p76"><span class="idx">76</span><span>Пожар и Алмаз</span></a></li>
+              <li><a href="krylov_group-08.html#p77"><span class="idx">77</span><span>Пустынник и Медведь</span></a></li>
+              <li><a href="krylov_group-08.html#p78"><span class="idx">78</span><span>Цветы</span></a></li>
+              <li><a href="krylov_group-08.html#p79"><span class="idx">79</span><span>Крестьянин и Змея</span></a></li>
+              <li><a href="krylov_group-08.html#p80"><span class="idx">80</span><span>Крестьянин и Разбойник</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-08.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 09 ===== -->
+          <article class="group" data-group="09">
+            <div class="group-head">
+              <div class="group-num">Группа 09 · произведения 81–90</div>
+              <h3>Любопытство, справедливость и людские пороки</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-09.html#p81"><span class="idx">81</span><span>Любопытный</span></a></li>
+              <li><a href="krylov_group-09.html#p82"><span class="idx">82</span><span>Лев на ловле</span></a></li>
+              <li><a href="krylov_group-09.html#p83"><span class="idx">83</span><span>Конь и Всадник</span></a></li>
+              <li><a href="krylov_group-09.html#p84"><span class="idx">84</span><span>Крестьяне и Река</span></a></li>
+              <li><a href="krylov_group-09.html#p85"><span class="idx">85</span><span>Добрая Лисица</span></a></li>
+              <li><a href="krylov_group-09.html#p86"><span class="idx">86</span><span>Мирская сходка</span></a></li>
+              <li><a href="krylov_group-09.html#p87"><span class="idx">87</span><span>Демьянова уха</span></a></li>
+              <li><a href="krylov_group-09.html#p88"><span class="idx">88</span><span>Мышь и Крыса</span></a></li>
+              <li><a href="krylov_group-09.html#p89"><span class="idx">89</span><span>Чиж и Голубь</span></a></li>
+              <li><a href="krylov_group-09.html#p90"><span class="idx">90</span><span>Водолазы</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-09.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 10 ===== -->
+          <article class="group" data-group="10">
+            <div class="group-head">
+              <div class="group-num">Группа 10 · произведения 91–100</div>
+              <h3>Труд, самопознание и крестьянская судьба</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-10.html#p91"><span class="idx">91</span><span>Госпожа и две Служанки</span></a></li>
+              <li><a href="krylov_group-10.html#p92"><span class="idx">92</span><span>Камень и Червяк</span></a></li>
+              <li><a href="krylov_group-10.html#p93"><span class="idx">93</span><span>Медведь у Пчёл</span></a></li>
+              <li><a href="krylov_group-10.html#p94"><span class="idx">94</span><span>Зеркало и Обезьяна</span></a></li>
+              <li><a href="krylov_group-10.html#p95"><span class="idx">95</span><span>Комар и Пастух</span></a></li>
+              <li><a href="krylov_group-10.html#p96"><span class="idx">96</span><span>Крестьянин и Смерть</span></a></li>
+              <li><a href="krylov_group-10.html#p97"><span class="idx">97</span><span>Рыцарь</span></a></li>
+              <li><a href="krylov_group-10.html#p98"><span class="idx">98</span><span>Тень и Человек</span></a></li>
+              <li><a href="krylov_group-10.html#p99"><span class="idx">99</span><span>Крестьянин и Топор</span></a></li>
+              <li><a href="krylov_group-10.html#p100"><span class="idx">100</span><span>Лев и Волк</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-10.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 11 ===== -->
+          <article class="group" data-group="11">
+            <div class="group-head">
+              <div class="group-num">Группа 11 · произведения 101–110</div>
+              <h3>Судьба, клевета и превратности случая</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-11.html#p101"><span class="idx">101</span><span>Собака, Человек, Кошка и Сокол</span></a></li>
+              <li><a href="krylov_group-11.html#p102"><span class="idx">102</span><span>Подагра и Паук</span></a></li>
+              <li><a href="krylov_group-11.html#p103"><span class="idx">103</span><span>Лев и Лисица</span></a></li>
+              <li><a href="krylov_group-11.html#p104"><span class="idx">104</span><span>Хмель</span></a></li>
+              <li><a href="krylov_group-11.html#p105"><span class="idx">105</span><span>Слон в случае</span></a></li>
+              <li><a href="krylov_group-11.html#p106"><span class="idx">106</span><span>Туча</span></a></li>
+              <li><a href="krylov_group-11.html#p107"><span class="idx">107</span><span>Клеветник и Змея</span></a></li>
+              <li><a href="krylov_group-11.html#p108"><span class="idx">108</span><span>Фортуна и Нищий</span></a></li>
+              <li><a href="krylov_group-11.html#p109"><span class="idx">109</span><span>Лягушка и Юпитер</span></a></li>
+              <li><a href="krylov_group-11.html#p110"><span class="idx">110</span><span>Лиса-Строитель</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-11.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 12 ===== -->
+          <article class="group" data-group="12">
+            <div class="group-head">
+              <div class="group-num">Группа 12 · произведения 111–120</div>
+              <h3>Клевета, судьба и труд художника</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-12.html#p111"><span class="idx">111</span><span>Напраслина</span></a></li>
+              <li><a href="krylov_group-12.html#p112"><span class="idx">112</span><span>Фортуна в гостях</span></a></li>
+              <li><a href="krylov_group-12.html#p113"><span class="idx">113</span><span>Волк и Пастухи</span></a></li>
+              <li><a href="krylov_group-12.html#p114"><span class="idx">114</span><span>Кукушка и Горлинка</span></a></li>
+              <li><a href="krylov_group-12.html#p115"><span class="idx">115</span><span>Гребень</span></a></li>
+              <li><a href="krylov_group-12.html#p116"><span class="idx">116</span><span>Скупой и Курица</span></a></li>
+              <li><a href="krylov_group-12.html#p117"><span class="idx">117</span><span>Две Бочки</span></a></li>
+              <li><a href="krylov_group-12.html#p118"><span class="idx">118</span><span>Алкид</span></a></li>
+              <li><a href="krylov_group-12.html#p119"><span class="idx">119</span><span>Апеллес и Ослёнок</span></a></li>
+              <li><a href="krylov_group-12.html#p120"><span class="idx">120</span><span>Охотник</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-12.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 13 ===== -->
+          <article class="group" data-group="13">
+            <div class="group-head">
+              <div class="group-num">Группа 13 · произведения 121–130</div>
+              <h3>Опыт, труд и разочарование</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-13.html#p121"><span class="idx">121</span><span>Мальчик и Змея</span></a></li>
+              <li><a href="krylov_group-13.html#p122"><span class="idx">122</span><span>Пловец и Море</span></a></li>
+              <li><a href="krylov_group-13.html#p123"><span class="idx">123</span><span>Осёл и Мужик</span></a></li>
+              <li><a href="krylov_group-13.html#p124"><span class="idx">124</span><span>Волк и Журавль</span></a></li>
+              <li><a href="krylov_group-13.html#p125"><span class="idx">125</span><span>Пчела и Мухи</span></a></li>
+              <li><a href="krylov_group-13.html#p126"><span class="idx">126</span><span>Муравей</span></a></li>
+              <li><a href="krylov_group-13.html#p127"><span class="idx">127</span><span>Пастух и Море</span></a></li>
+              <li><a href="krylov_group-13.html#p128"><span class="idx">128</span><span>Крестьянин и Змея</span></a></li>
+              <li><a href="krylov_group-13.html#p129"><span class="idx">129</span><span>Лисица и Виноград</span></a></li>
+              <li><a href="krylov_group-13.html#p130"><span class="idx">130</span><span>Овцы и Собаки</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-13.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 14 ===== -->
+          <article class="group" data-group="14">
+            <div class="group-head">
+              <div class="group-num">Группа 14 · произведения 131–140</div>
+              <h3>Совесть, труд и ремесло писателя</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-14.html#p131"><span class="idx">131</span><span>Медведь в сетях</span></a></li>
+              <li><a href="krylov_group-14.html#p132"><span class="idx">132</span><span>Колос</span></a></li>
+              <li><a href="krylov_group-14.html#p133"><span class="idx">133</span><span>Мальчик и Червяк</span></a></li>
+              <li><a href="krylov_group-14.html#p134"><span class="idx">134</span><span>Похороны</span></a></li>
+              <li><a href="krylov_group-14.html#p135"><span class="idx">135</span><span>Трудолюбивый Медведь</span></a></li>
+              <li><a href="krylov_group-14.html#p136"><span class="idx">136</span><span>Сочинитель и Разбойник</span></a></li>
+              <li><a href="krylov_group-14.html#p137"><span class="idx">137</span><span>Ягнёнок</span></a></li>
+              <li><a href="krylov_group-14.html#p138"><span class="idx">138</span><span>Совет Мышей</span></a></li>
+              <li><a href="krylov_group-14.html#p139"><span class="idx">139</span><span>Мельник</span></a></li>
+              <li><a href="krylov_group-14.html#p140"><span class="idx">140</span><span>Булыжник и Алмаз</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-14.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 15 ===== -->
+          <article class="group" data-group="15">
+            <div class="group-head">
+              <div class="group-num">Группа 15 · произведения 141–150</div>
+              <h3>Невежество, неблагодарность и мир насекомых</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-15.html#p141"><span class="idx">141</span><span>Мот и Ласточка</span></a></li>
+              <li><a href="krylov_group-15.html#p142"><span class="idx">142</span><span>Плотичка</span></a></li>
+              <li><a href="krylov_group-15.html#p143"><span class="idx">143</span><span>Крестьянин и Змея</span></a></li>
+              <li><a href="krylov_group-15.html#p144"><span class="idx">144</span><span>Свинья под Дубом</span></a></li>
+              <li><a href="krylov_group-15.html#p145"><span class="idx">145</span><span>Паук и Пчела</span></a></li>
+              <li><a href="krylov_group-15.html#p146"><span class="idx">146</span><span>Лисица и Осёл</span></a></li>
+              <li><a href="krylov_group-15.html#p147"><span class="idx">147</span><span>Муха и Пчела</span></a></li>
+              <li><a href="krylov_group-15.html#p148"><span class="idx">148</span><span>Змея и Овца</span></a></li>
+              <li><a href="krylov_group-15.html#p149"><span class="idx">149</span><span>Котел и Горшок</span></a></li>
+              <li><a href="krylov_group-15.html#p150"><span class="idx">150</span><span>Дикие Козы</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-15.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 16 ===== -->
+          <article class="group" data-group="16">
+            <div class="group-head">
+              <div class="group-num">Группа 16 · произведения 151–160</div>
+              <h3>Искусство, скупость и дружба</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-16.html#p151"><span class="idx">151</span><span>Соловьи</span></a></li>
+              <li><a href="krylov_group-16.html#p152"><span class="idx">152</span><span>Голик</span></a></li>
+              <li><a href="krylov_group-16.html#p153"><span class="idx">153</span><span>Крестьянин и Овца</span></a></li>
+              <li><a href="krylov_group-16.html#p154"><span class="idx">154</span><span>Скупой</span></a></li>
+              <li><a href="krylov_group-16.html#p155"><span class="idx">155</span><span>Богач и Поэт</span></a></li>
+              <li><a href="krylov_group-16.html#p156"><span class="idx">156</span><span>Волк и Мышонок</span></a></li>
+              <li><a href="krylov_group-16.html#p157"><span class="idx">157</span><span>Два Мужика</span></a></li>
+              <li><a href="krylov_group-16.html#p158"><span class="idx">158</span><span>Котёнок и Скворец</span></a></li>
+              <li><a href="krylov_group-16.html#p159"><span class="idx">159</span><span>Две Собаки</span></a></li>
+              <li><a href="krylov_group-16.html#p160"><span class="idx">160</span><span>Кошка и Соловей</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-16.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 17 ===== -->
+          <article class="group" data-group="17">
+            <div class="group-head">
+              <div class="group-num">Группа 17 · произведения 161–170</div>
+              <h3>Лицемерие, власть и старость</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-17.html#p161"><span class="idx">161</span><span>Рыбья пляска</span></a></li>
+              <li><a href="krylov_group-17.html#p162"><span class="idx">162</span><span>Прихожанин</span></a></li>
+              <li><a href="krylov_group-17.html#p163"><span class="idx">163</span><span>Ворона</span></a></li>
+              <li><a href="krylov_group-17.html#p164"><span class="idx">164</span><span>Пестрые Овцы</span></a></li>
+              <li><a href="krylov_group-17.html#p165"><span class="idx">165</span><span>Лев состаревшийся</span></a></li>
+              <li><a href="krylov_group-17.html#p166"><span class="idx">166</span><span>Лев, Серна и Лиса</span></a></li>
+              <li><a href="krylov_group-17.html#p167"><span class="idx">167</span><span>Крестьянин и Лошадь</span></a></li>
+              <li><a href="krylov_group-17.html#p168"><span class="idx">168</span><span>Белка</span></a></li>
+              <li><a href="krylov_group-17.html#p169"><span class="idx">169</span><span>Щука</span></a></li>
+              <li><a href="krylov_group-17.html#p170"><span class="idx">170</span><span>Кукушка и Орёл</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-17.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 18 ===== -->
+          <article class="group" data-group="18">
+            <div class="group-head">
+              <div class="group-num">Группа 18 · произведения 171–180</div>
+              <h3>Богатство, талант и судьба государства</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-18.html#p171"><span class="idx">171</span><span>Бритвы</span></a></li>
+              <li><a href="krylov_group-18.html#p172"><span class="idx">172</span><span>Сокол и Червяк</span></a></li>
+              <li><a href="krylov_group-18.html#p173"><span class="idx">173</span><span>Бедный Богач</span></a></li>
+              <li><a href="krylov_group-18.html#p174"><span class="idx">174</span><span>Булат</span></a></li>
+              <li><a href="krylov_group-18.html#p175"><span class="idx">175</span><span>Купец</span></a></li>
+              <li><a href="krylov_group-18.html#p176"><span class="idx">176</span><span>Пушки и Паруса</span></a></li>
+              <li><a href="krylov_group-18.html#p177"><span class="idx">177</span><span>Осёл</span></a></li>
+              <li><a href="krylov_group-18.html#p178"><span class="idx">178</span><span>Мирон</span></a></li>
+              <li><a href="krylov_group-18.html#p179"><span class="idx">179</span><span>Крестьянин и Лисица</span></a></li>
+              <li><a href="krylov_group-18.html#p180"><span class="idx">180</span><span>Собака и Лошадь</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-18.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 19 ===== -->
+          <article class="group" data-group="19">
+            <div class="group-head">
+              <div class="group-num">Группа 19 · произведения 181–190</div>
+              <h3>Слава, зависть и людская молва</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-19.html#p181"><span class="idx">181</span><span>Филин и Осёл</span></a></li>
+              <li><a href="krylov_group-19.html#p182"><span class="idx">182</span><span>Змея</span></a></li>
+              <li><a href="krylov_group-19.html#p183"><span class="idx">183</span><span>Волк и Кот</span></a></li>
+              <li><a href="krylov_group-19.html#p184"><span class="idx">184</span><span>Лещи</span></a></li>
+              <li><a href="krylov_group-19.html#p185"><span class="idx">185</span><span>Водопад и Ручей</span></a></li>
+              <li><a href="krylov_group-19.html#p186"><span class="idx">186</span><span>Лев</span></a></li>
+              <li><a href="krylov_group-19.html#p187"><span class="idx">187</span><span>Три Мужика</span></a></li>
+              <li><a href="krylov_group-19.html#p188"><span class="idx">188</span><span>Пастух</span></a></li>
+              <li><a href="krylov_group-19.html#p189"><span class="idx">189</span><span>Белка</span></a></li>
+              <li><a href="krylov_group-19.html#p190"><span class="idx">190</span><span>Мыши</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-19.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 20 ===== -->
+          <article class="group" data-group="20">
+            <div class="group-head">
+              <div class="group-num">Группа 20 · произведения 191–200</div>
+              <h3>Суд, милосердие и начало пути</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-20.html#p191"><span class="idx">191</span><span>Лиса</span></a></li>
+              <li><a href="krylov_group-20.html#p192"><span class="idx">192</span><span>Волки и Овцы</span></a></li>
+              <li><a href="krylov_group-20.html#p193"><span class="idx">193</span><span>Крестьянин и Собака</span></a></li>
+              <li><a href="krylov_group-20.html#p194"><span class="idx">194</span><span>Два Мальчика</span></a></li>
+              <li><a href="krylov_group-20.html#p195"><span class="idx">195</span><span>Разбойник и Извозчик</span></a></li>
+              <li><a href="krylov_group-20.html#p196"><span class="idx">196</span><span>Лев и Мышь</span></a></li>
+              <li><a href="krylov_group-20.html#p197"><span class="idx">197</span><span>Кукушка и Петух</span></a></li>
+              <li><a href="krylov_group-20.html#p198"><span class="idx">198</span><span>Вельможа</span></a></li>
+              <li><a href="krylov_group-20.html#p199"><span class="idx">199</span><span>Стыдливый Игрок</span></a></li>
+              <li><a href="krylov_group-20.html#p200"><span class="idx">200</span><span>Судьба Игроков</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-20.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 21 ===== -->
+          <article class="group" data-group="21">
+            <div class="group-head">
+              <div class="group-num">Группа 21 · произведения 201–210</div>
+              <h3>Ранние опыты и незавершённые замыслы</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-21.html#p201"><span class="idx">201</span><span>Павлин и Соловей</span></a></li>
+              <li><a href="krylov_group-21.html#p202"><span class="idx">202</span><span>Недовольный гостьми стихотворец</span></a></li>
+              <li><a href="krylov_group-21.html#p203"><span class="idx">203</span><span>Лев и Человек</span></a></li>
+              <li><a href="krylov_group-21.html#p204"><span class="idx">204</span><span>Пир</span></a></li>
+              <li><a href="krylov_group-21.html#p205"><span class="idx">205</span><span>Купец и Воры</span></a></li>
+              <li><a href="krylov_group-21.html#p206"><span class="idx">206</span><span>Огарок и Подсвечник</span></a></li>
+              <li><a href="krylov_group-21.html#p207"><span class="idx">207</span><span>Два Извозчика</span></a></li>
+              <li><a href="krylov_group-21.html#p208"><span class="idx">208</span><span>Самонадеянный Осёл</span></a></li>
+              <li><a href="krylov_group-21.html#p209"><span class="idx">209</span><span>Орёл и Охотник</span></a></li>
+              <li><a href="krylov_group-21.html#p210"><span class="idx">210</span><span>Вить — время не птица</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-21.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 22 ===== -->
+          <article class="group" data-group="22">
+            <div class="group-head">
+              <div class="group-num">Группа 22 · произведения 211–220</div>
+              <h3>Наброски, замыслы и народные сюжеты</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-22.html#p211"><span class="idx">211</span><span>Федюшин кафтанчик</span></a></li>
+              <li><a href="krylov_group-22.html#p212"><span class="idx">212</span><span>Животные-строители</span></a></li>
+              <li><a href="krylov_group-22.html#p213"><span class="idx">213</span><span>Человек и Змея</span></a></li>
+              <li><a href="krylov_group-22.html#p214"><span class="idx">214</span><span>Сын</span></a></li>
+              <li><a href="krylov_group-22.html#p215"><span class="idx">215</span><span>Сестрица</span></a></li>
+              <li><a href="krylov_group-22.html#p216"><span class="idx">216</span><span>Заяц</span></a></li>
+              <li><a href="krylov_group-22.html#p217"><span class="idx">217</span><span>Крестьянин и Змея (вариант)</span></a></li>
+              <li><a href="krylov_group-22.html#p218"><span class="idx">218</span><span>Мужик и Лиса</span></a></li>
+              <li><a href="krylov_group-22.html#p219"><span class="idx">219</span><span>Лисига и Куры</span></a></li>
+              <li><a href="krylov_group-22.html#p220"><span class="idx">220</span><span>Ну, сват</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-22.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 23 ===== -->
+          <article class="group" data-group="23">
+            <div class="group-head">
+              <div class="group-num">Группа 23 · произведения 221–230</div>
+              <h3>Шуточные басни и приписываемое</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-23.html#p221"><span class="idx">221</span><span>Цыплята</span></a></li>
+              <li><a href="krylov_group-23.html#p222"><span class="idx">222</span><span>Храмостроитель</span></a></li>
+              <li><a href="krylov_group-23.html#p223"><span class="idx">223</span><span>Слепой нищий и Мальчик</span></a></li>
+              <li><a href="krylov_group-23.html#p224"><span class="idx">224</span><span>Паук и Гром</span></a></li>
+              <li><a href="krylov_group-23.html#p225"><span class="idx">225</span><span>Осёл и Заяц</span></a></li>
+              <li><a href="krylov_group-23.html#p226"><span class="idx">226</span><span>Комар и Волк</span></a></li>
+              <li><a href="krylov_group-23.html#p227"><span class="idx">227</span><span>Олень и Заяц</span></a></li>
+              <li><a href="krylov_group-23.html#p228"><span class="idx">228</span><span>Родины</span></a></li>
+              <li><a href="krylov_group-23.html#p229"><span class="idx">229</span><span>Сонливый</span></a></li>
+              <li><a href="krylov_group-23.html#p230"><span class="idx">230</span><span>Новопожалованный Осёл</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">10 произведений</span>
+              <a class="open" href="krylov_group-23.html">Разбор группы</a>
+            </div>
+          </article>
+
+          <!-- ===== Группа 24 ===== -->
+          <article class="group" data-group="24">
+            <div class="group-head">
+              <div class="group-num">Группа 24 · произведения 231–232</div>
+              <h3>Приписываемые басни (атрибуция сомнительна)</h3>
+            </div>
+            <ul class="works">
+              <li><a href="krylov_group-24.html#p231"><span class="idx">231</span><span>Картина</span></a></li>
+              <li><a href="krylov_group-24.html#p232"><span class="idx">232</span><span>Обед у Медведя</span></a></li>
+            </ul>
+            <div class="group-foot">
+              <span class="count">2 произведения</span>
+              <a class="open" href="krylov_group-24.html">Разбор группы</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="empty" id="empty">По вашему запросу ничего не найдено. Попробуйте изменить формулировку.</p>
+      </section>
+
+      <!-- ================= ИСТОЧНИКИ ================= -->
+      <section id="sources" aria-labelledby="sources-h">
+        <h2 id="sources-h">Источники анализа</h2>
+        <p class="sub">
+          Разбор каждой группы опирается на первоисточники и на корпус исследований творчества
+          Крылова. Ниже — основные линии, по которым выстраивается комментарий.
+        </p>
+
+        <div class="sources">
+          <div class="source">
+            <h3>Первоисточники текстов</h3>
+            <p>И. А. Крылов. Полное собрание сочинений: В 3 т. — М.: Гослитиздат, 1945–1946. — Т. 3: Басни, стихотворения, пьесы.</p>
+            <p>И. А. Крылов. Басни. — М.: Изд-во АН СССР, 1956 (академическое издание под ред. Д. Д. Благого).</p>
+          </div>
+
+          <div class="source">
+            <h3>Античные и западноевропейские источники</h3>
+            <p>Басни Эзопа, Федра, Бабрия; «Панчатантра»; басни Лафонтена, Лессинга, Флориана, Дмитриева, Хемницера.</p>
+            <p>Русские народные пословицы, поговорки, сказки, исторические анекдоты и сатирические журналы XVIII века.</p>
+          </div>
+
+          <div class="source">
+            <h3>Историко-литературные работы</h3>
+            <p>Д. Д. Благой. «И. А. Крылов — великий русский баснописец»; исследования Н. Л. Степанова, А. П. Могилянского, В. И. Коровина.</p>
+            <p>Комментарии к академическому изданию 1956 г. и к ПСС 1945–1946 гг.</p>
+          </div>
+
+          <div class="source">
+            <h3>Психолого-педагогические исследования</h3>
+            <p>Работы о восприятии басни детьми младшего и среднего школьного возраста; методика преподавания литературы в начальной школе.</p>
+            <p>Исследования нравственного развития и формирования эмпатии у детей, возрастной психологии чтения.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= О ПРОЕКТЕ ================= -->
+      <section id="about" aria-labelledby="about-h">
+        <h2 id="about-h">О проекте</h2>
+        <p class="sub">
+          «Басни Крылова» — информационно-аналитический ресурс, посвящённый психолого-педагогической
+          проблематике произведений И. А. Крылова, созданных им на протяжении более полувека — с
+          1788 по 1843 год. Материалы размещаются последовательными группами по десять произведений:
+          каждая группа получает отдельную страницу с разбором источников, психологического
+          содержания, педагогического замысла и дидактической ценности.
+        </p>
+        <p class="sub">
+          Структура рубрикатора охватывает весь сводный перечень из 232 позиций академического
+          издания 1956 года — от классических басен первого сборника 1809 года до набросков,
+          шуточных басен и текстов, приписываемых Крылову. Такой охват позволяет проследить, как
+          в единой художественной системе Крылова соединяются античная традиция, русская народная
+          речь, злободневная сатира и вечные нравственные вопросы.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="#method">Методология анализа</a></li>
+            <li><a href="#groups">Группы произведений</a></li>
+            <li><a href="#sources">Источники</a></li>
+            <li><a href="#about">О проекте</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Группы 1–8</h4>
+          <ul>
+            <li><a href="krylov_group-01.html">01 · Произведения 1–10</a></li>
+            <li><a href="krylov_group-02.html">02 · Произведения 11–20</a></li>
+            <li><a href="krylov_group-03.html">03 · Произведения 21–30</a></li>
+            <li><a href="krylov_group-04.html">04 · Произведения 31–40</a></li>
+            <li><a href="krylov_group-05.html">05 · Произведения 41–50</a></li>
+            <li><a href="krylov_group-06.html">06 · Произведения 51–60</a></li>
+            <li><a href="krylov_group-07.html">07 · Произведения 61–70</a></li>
+            <li><a href="krylov_group-08.html">08 · Произведения 71–80</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Группы 9–16</h4>
+          <ul>
+            <li><a href="krylov_group-09.html">09 · Произведения 81–90</a></li>
+            <li><a href="krylov_group-10.html">10 · Произведения 91–100</a></li>
+            <li><a href="krylov_group-11.html">11 · Произведения 101–110</a></li>
+            <li><a href="krylov_group-12.html">12 · Произведения 111–120</a></li>
+            <li><a href="krylov_group-13.html">13 · Произведения 121–130</a></li>
+            <li><a href="krylov_group-14.html">14 · Произведения 131–140</a></li>
+            <li><a href="krylov_group-15.html">15 · Произведения 141–150</a></li>
+            <li><a href="krylov_group-16.html">16 · Произведения 151–160</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Группы 17–24</h4>
+          <ul>
+            <li><a href="krylov_group-17.html">17 · Произведения 161–170</a></li>
+            <li><a href="krylov_group-18.html">18 · Произведения 171–180</a></li>
+            <li><a href="krylov_group-19.html">19 · Произведения 181–190</a></li>
+            <li><a href="krylov_group-20.html">20 · Произведения 191–200</a></li>
+            <li><a href="krylov_group-21.html">21 · Произведения 201–210</a></li>
+            <li><a href="krylov_group-22.html">22 · Произведения 211–220</a></li>
+            <li><a href="krylov_group-23.html">23 · Произведения 221–230</a></li>
+            <li><a href="krylov_group-24.html">24 · Произведения 231–232</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy">
+        <span>© Аналитический проект «Басни Крылова». Материалы носят образовательный характер.</span>
+        <span>232 произведения · 24 группы · психолого-педагогический анализ</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var input    = document.getElementById("q");
+      var clearBtn = document.getElementById("clear");
+      var hits     = document.getElementById("hits");
+      var empty    = document.getElementById("empty");
+      var groups   = Array.prototype.slice.call(document.querySelectorAll(".group"));
+
+      // Собираем индекс: для каждой группы — её пункты с нормализованным текстом
+      var index = groups.map(function (g) {
+        var items = Array.prototype.slice.call(g.querySelectorAll(".works li"));
+        return {
+          el: g,
+          items: items,
+          text: items.map(function (li) {
+            return normalize(li.textContent);
+          })
+        };
+      });
+
+      function normalize(s) {
+        return s
+          .toLowerCase()
+          .replace(/ё/g, "е")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+
+      function apply() {
+        var q = normalize(input.value);
+        clearBtn.hidden = q.length === 0;
+
+        if (!q) {
+          index.forEach(function (g) {
+            g.el.style.display = "";
+            g.items.forEach(function (li) {
+              li.style.display = "";
+            });
+          });
+          hits.textContent = "";
+          empty.style.display = "none";
+          return;
+        }
+
+        var total = 0;
+        var groupsFound = 0;
+
+        index.forEach(function (g) {
+          var visible = 0;
+          g.items.forEach(function (li, i) {
+            var match = g.text[i].indexOf(q) !== -1;
+            li.style.display = match ? "" : "none";
+            if (match) visible++;
+          });
+          g.el.style.display = visible ? "" : "none";
+          if (visible) {
+            groupsFound++;
+            total += visible;
+          }
+        });
+
+        hits.textContent = total
+          ? "Найдено: " + total + " " + plural(total, "произведение", "произведения", "произведений") +
+            " в " + groupsFound + " " + plural(groupsFound, "группе", "группах", "группах")
+          : "";
+
+        empty.style.display = total ? "none" : "block";
+      }
+
+      function plural(n, one, few, many) {
+        var m10 = n % 10;
+        var m100 = n % 100;
+        if (m10 === 1 && m100 !== 11) return one;
+        if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+        return many;
+      }
+
+      var timer = null;
+
+      input.addEventListener("input", function () {
+        clearTimeout(timer);
+        timer = setTimeout(apply, 120);
+      });
+
+      clearBtn.addEventListener("click", function () {
+        input.value = "";
+        apply();
+        input.focus();
+      });
+
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          input.value = "";
+          apply();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
