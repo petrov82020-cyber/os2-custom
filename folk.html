@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,272 +8,420 @@
 <style>
 :root {
   --bg: #faf6f0;
+  --text: #3d2b1f;
+  --accent: #8b6914;
   --card-bg: #fff9f0;
-  --card-border: #d4c4a8;
-  --accent: #8b6f47;
-  --accent-light: #c4a96a;
-  --accent-dark: #6b5435;
-  --text: #3d2e1e;
-  --text-light: #6b5d4f;
+  --card-border: #d4b896;
   --nav-bg: #e8dcc8;
   --nav-border: #c4a87a;
+  --nav-text: #5a3e1b;
   --footer-bg: #e0d0b8;
   --footer-border: #b8a888;
-  --link: #8b6f47;
-  --link-hover: #6b5435;
-  --warm: #d4a96a;
+  --link: #8b6914;
+  --link-hover: #5a3e1b;
+  --shadow: rgba(139,105,20,0.15);
+  --section-title: #6b4226;
+  --quote-bg: #f5ede0;
+  --quote-border: #c4a87a;
+  --number-bg: #8b6914;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Georgia, "Times New Roman", serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
 }
-/* Шапка */
 header {
-  background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 50%, #c4b498 100%);
-  padding: 60px 20px 50px;
+  background: linear-gradient(135deg, #d4b896, #e8dcc8, #f5ede0);
+  padding: 3rem 2rem 2.5rem;
   text-align: center;
-  border-bottom: 3px solid var(--nav-border);
+  border-bottom: 2px solid var(--nav-border);
 }
 header h1 {
-  font-size: 2.6rem;
-  color: var(--accent-dark);
-  margin-bottom: 14px;
+  font-size: 2.4rem;
+  color: var(--section-title);
+  margin-bottom: 0.5rem;
   letter-spacing: 0.5px;
 }
 header p {
   font-size: 1.15rem;
-  color: var(--text-light);
-  max-width: 640px;
+  color: var(--nav-text);
+  max-width: 700px;
   margin: 0 auto;
   font-style: italic;
 }
-/* Навигация */
 nav {
   background: var(--nav-bg);
-  border-bottom: 2px solid var(--nav-border);
+  border-bottom: 1px solid var(--nav-border);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(139, 111, 71, 0.15);
+  padding: 0.6rem 0;
+  box-shadow: 0 2px 8px var(--shadow);
 }
 nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 4px;
-  padding: 10px 16px;
+  gap: 0.3rem 1.2rem;
+  padding: 0 1rem;
 }
 nav a {
-  display: block;
-  padding: 8px 14px;
-  color: var(--accent-dark);
   text-decoration: none;
+  color: var(--nav-text);
   font-size: 0.95rem;
-  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
   transition: background 0.2s, color 0.2s;
 }
 nav a:hover {
-  background: var(--accent-light);
-  color: #fff;
-}
-/* Контент */
-main { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
-section { margin-bottom: 55px; }
-h2 {
-  font-size: 1.7rem;
-  color: var(--accent-dark);
-  margin-bottom: 22px;
-  border-bottom: 2px solid var(--card-border);
-  padding-bottom: 8px;
-}
-h3 {
-  font-size: 1.2rem;
+  background: var(--card-bg);
   color: var(--accent);
-  margin-bottom: 10px;
 }
-p { margin-bottom: 14px; }
-/* Карточки */
-.card-grid {
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+section {
+  margin-bottom: 3rem;
+}
+section h2 {
+  font-size: 1.7rem;
+  color: var(--section-title);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px dotted var(--card-border);
+}
+section h3 {
+  font-size: 1.25rem;
+  color: var(--section-title);
+  margin: 1.5rem 0 0.7rem;
+}
+p { margin-bottom: 1rem; }
+.intro-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
 }
-.card {
+.intro-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 22px;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px var(--shadow);
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.card:hover {
+.intro-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 16px rgba(139, 111, 71, 0.18);
+  box-shadow: 0 4px 12px var(--shadow);
 }
-.card h3 { margin-bottom: 8px; }
-/* Принципы */
+.intro-card h4 {
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.principles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
 .principle {
-  display: flex;
-  gap: 18px;
-  margin-bottom: 18px;
-  align-items: flex-start;
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 4px var(--shadow);
 }
-.principle-num {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  background: var(--accent-light);
+.principle .num {
+  display: inline-block;
+  background: var(--number-bg);
   color: #fff;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
+  margin-right: 0.6rem;
   font-weight: bold;
 }
-.principle-body { flex: 1; }
-.principle-body h3 { margin-bottom: 6px; }
-/* Пословицы */
-.proverb {
-  background: var(--card-bg);
-  border-left: 4px solid var(--accent-light);
-  border-radius: 0 8px 8px 0;
-  padding: 16px 20px;
-  margin-bottom: 14px;
+.proverbs-group {
+  margin-bottom: 2rem;
 }
-.proverb-text {
-  font-size: 1.15rem;
-  color: var(--accent-dark);
+.proverbs-group h3 {
+  border-bottom: 1px dotted var(--card-border);
+  padding-bottom: 0.3rem;
+}
+.proverb-item {
+  background: var(--quote-bg);
+  border-left: 3px solid var(--quote-border);
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+  border-radius: 0 6px 6px 0;
+}
+.proverb-item .text {
   font-style: italic;
-  margin-bottom: 6px;
+  font-size: 1.1rem;
+  color: var(--section-title);
 }
-.proverb-meaning {
-  color: var(--text-light);
-  font-size: 0.95rem;
+.proverb-item .comment {
+  font-size: 0.92rem;
+  margin-top: 0.4rem;
+  color: #5a4a3a;
 }
-/* Загадки */
-.riddle {
+.riddles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.riddle-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 18px 22px;
-  margin-bottom: 14px;
+  border-radius: 8px;
+  padding: 1rem;
   cursor: pointer;
-  transition: box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px var(--shadow);
 }
-.riddle:hover { box-shadow: 0 2px 10px rgba(139, 111, 71, 0.15); }
-.riddle-q {
+.riddle-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+.riddle-card .question {
   font-size: 1.05rem;
-  color: var(--accent-dark);
-  font-style: italic;
+  color: var(--section-title);
+  font-weight: bold;
 }
-.riddle-q::before { content: "❓ "; }
-.riddle-answer {
+.riddle-card .answer {
   display: none;
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
   border-top: 1px dashed var(--card-border);
+  font-size: 0.92rem;
 }
-.riddle.open .riddle-answer { display: block; }
-.riddle-answer strong { color: var(--accent); }
-.riddle-answer p { margin-top: 4px; color: var(--text-light); font-size: 0.92rem; }
-/* Игры */
+.riddle-card.open .answer {
+  display: block;
+}
+.riddle-card .answer strong {
+  color: var(--accent);
+}
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
 .game-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 18px 20px;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 4px var(--shadow);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .game-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 3px 12px rgba(139, 111, 71, 0.15);
+  box-shadow: 0 4px 10px var(--shadow);
 }
-.game-card h3 { color: var(--accent-dark); }
-.game-meta {
-  font-size: 0.85rem;
+.game-card h4 {
   color: var(--accent);
-  margin-bottom: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
 }
-.game-desc { font-size: 0.95rem; color: var(--text-light); }
-/* Хронология */
-.timeline { position: relative; padding-left: 30px; }
+.game-card .age {
+  font-size: 0.85rem;
+  color: #8a7a6a;
+  margin-bottom: 0.5rem;
+}
+.game-card .value {
+  font-size: 0.92rem;
+}
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.method-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.method-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+.method-card h4 {
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+.method-card p {
+  font-size: 0.92rem;
+}
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
 .timeline::before {
-  content: "";
+  content: '';
   position: absolute;
-  left: 8px; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--accent-light);
-  border-radius: 2px;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--card-border);
 }
-.timeline-item { position: relative; margin-bottom: 26px; }
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-left: 1.2rem;
+}
 .timeline-item::before {
-  content: "";
+  content: '';
   position: absolute;
-  left: -26px; top: 4px;
-  width: 14px; height: 14px;
+  left: -2rem;
+  top: 6px;
+  width: 14px;
+  height: 14px;
   background: var(--accent);
   border-radius: 50%;
-  border: 3px solid var(--bg);
+  border: 2px solid var(--card-bg);
 }
-.timeline-item h3 { color: var(--accent-dark); margin-bottom: 4px; }
-.timeline-item p { color: var(--text-light); }
-/* Генератор */
-.wisdom-box {
-  background: linear-gradient(135deg, #f5ead8, #e8dcc8);
+.timeline-item .era {
+  font-weight: bold;
+  color: var(--accent);
+  font-size: 1rem;
+}
+.generator-box {
+  background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 14px;
-  padding: 36px;
+  border-radius: 10px;
+  padding: 2rem;
   text-align: center;
+  box-shadow: 0 3px 10px var(--shadow);
 }
-.wisdom-box p.intro { color: var(--text-light); margin-bottom: 20px; }
-#wisdomResult {
-  min-height: 80px;
+.generator-box .output {
   font-size: 1.2rem;
-  color: var(--accent-dark);
   font-style: italic;
-  margin-bottom: 20px;
-  padding: 10px;
+  color: var(--section-title);
+  min-height: 2.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--quote-bg);
+  border-radius: 6px;
+  border: 1px dashed var(--quote-border);
 }
-#wisdomMeaning {
-  min-height: 40px;
-  color: var(--text-light);
+.generator-box .explanation {
   font-size: 0.95rem;
-  margin-bottom: 20px;
-  padding: 0 10px;
+  color: #5a4a3a;
+  margin-bottom: 1rem;
 }
-.wisdom-btn {
+.generator-btn {
   background: var(--accent);
   color: #fff;
   border: none;
-  padding: 12px 30px;
-  font-size: 1.05rem;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
   font-family: Georgia, serif;
-  transition: background 0.2s, transform 0.15s;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
-.wisdom-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
-/* Подвал */
+.generator-btn:hover {
+  background: var(--link-hover);
+}
+.biblio-section {
+  margin-bottom: 1.5rem;
+}
+.biblio-section h3 {
+  color: var(--section-title);
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px dotted var(--card-border);
+}
+.biblio-entry {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 1px 3px var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.biblio-entry:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px var(--shadow);
+}
+.biblio-entry .author {
+  font-weight: bold;
+  color: var(--accent);
+}
+.biblio-entry .title {
+  font-style: italic;
+}
+.biblio-entry .anno {
+  font-size: 0.88rem;
+  color: #6a5a4a;
+  margin-top: 0.4rem;
+}
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.source-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.source-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+.source-card h4 {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.source-card p {
+  font-size: 0.88rem;
+}
 footer {
   background: var(--footer-bg);
-  border-top: 2px solid var(--footer-border);
-  padding: 36px 20px;
+  border-top: 1px solid var(--footer-border);
+  padding: 1.5rem 2rem;
   text-align: center;
-  color: var(--text-light);
+  color: #6a5a4a;
+  font-size: 0.9rem;
 }
-footer p { margin-bottom: 8px; font-size: 0.95rem; }
-footer a { color: var(--accent-dark); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-/* Адаптивность */
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
 @media (max-width: 600px) {
-  header h1 { font-size: 1.9rem; }
-  nav ul { gap: 2px; }
-  nav a { padding: 6px 8px; font-size: 0.85rem; }
-  main { padding: 25px 14px; }
+  header h1 { font-size: 1.6rem; }
+  nav ul { gap: 0.2rem 0.5rem; }
+  nav a { font-size: 0.85rem; }
+  main { padding: 1rem 0.8rem 2rem; }
+  section h2 { font-size: 1.35rem; }
 }
 </style>
 </head>
@@ -280,7 +429,7 @@ footer a:hover { text-decoration: underline; }
 
 <header>
   <h1>Народная мудрость и педагогика</h1>
-  <p>Пословицы, загадки, игры и традиции воспитания, передававшиеся из поколения в поколение</p>
+  <p>Сайт о народной педагогике: пословицы, загадки, игры и традиции воспитания</p>
 </header>
 
 <nav>
@@ -292,405 +441,421 @@ footer a:hover { text-decoration: underline; }
     <li><a href="#games">Игры</a></li>
     <li><a href="#methods">Методы</a></li>
     <li><a href="#history">История</a></li>
-    <li><a href="#wisdom">Мудрость</a></li>
-    <li><a href="#sources">Источники</a></li>
+    <li><a href="#bibliography">Библиография</a></li>
+    <li><a href="#generator">Генератор мудрости</a></li>
   </ul>
 </nav>
 
 <main>
 
-<!-- О проекте -->
 <section id="about">
   <h2>О проекте</h2>
-  <p>Народная педагогика — это свод воспитательных идеалов, правил и методов, которые складывались в течение веков и передавались от поколения к поколению через живое слово, обычай, игру и труд. Она не записывалась в учебниках — она жила в пословицах, сказках, загадках, обрядах и повседневном укладе.</p>
-  <p>Этот сайт собирает ключевые идеи народной педагогики: принципы воспитания, пословицы с их педагогическим смыслом, загадки как инструмент развития мышления, народные игры как школу общения и характера, методы воспитания и историю становления народной педагогики как науки.</p>
-  <div class="card-grid" style="margin-top: 26px;">
-    <div class="card">
-      <h3>Слово</h3>
-      <p>Пословицы, поговорки, загадки и сказки — главное средство передачи мудрости. Кратко, точно, образно.</p>
+  <p>Народная педагогика — это древнейшая форма воспитания, которая формировалась веками в недрах народной культуры. Она не записывалась в учебниках, а передавалась от поколения к поколению через живое слово, обычай, обряд, игру и труд. Главные её инструменты — пословицы, загадки, сказки, песни и поговорки — не просто развлекали, но учили различать добро и зло, труд и лень, честность и хитрость.</p>
+  <p>Этот сайт объединяет ключевые темы народной педагогики: от принципов и методов до конкретных жанров, которые служили воспитательными средствами в традиционной русской культуре.</p>
+  <div class="intro-cards">
+    <div class="intro-card">
+      <h4>Пословицы</h4>
+      <p>Краткие изречения, в которых народ выразил свои взгляды на воспитание, труд и нравственность.</p>
     </div>
-    <div class="card">
-      <h3>Труд</h3>
-      <p>Воспитание через участие в реальном труде — от домашних обязанностей до ремесла и земледелия.</p>
+    <div class="intro-card">
+      <h4>Загадки</h4>
+      <p>Упражнение для ума: учат сообразительности, образному мышлению и вниманию к окружающему миру.</p>
     </div>
-    <div class="card">
-      <h3>Община</h3>
-      <p>Воспитание — дело не только семьи, но и всей общины: соседи, старейшины, ровесники.</p>
+    <div class="intro-card">
+      <h4>Народные игры</h4>
+      <p>Совместные игры приучали детей к коллективу, правилам, ловкости и взаимовыручке.</p>
     </div>
-    <div class="card">
-      <h3>Природа</h3>
-      <p>Природосообразность: учить в согласии с сезонами, возрастом и ритмом жизни.</p>
+    <div class="intro-card">
+      <h4>Сказки и обряды</h4>
+      <p>Сказки учили через мораль, а обряды формировали чувство принадлежности к роду и общине.</p>
     </div>
   </div>
 </section>
 
-<!-- Принципы -->
 <section id="principles">
   <h2>Принципы народной педагогики</h2>
-
-  <div class="principle">
-    <div class="principle-num">1</div>
-    <div class="principle-body">
-      <h3>Природосообразность</h3>
-      <p>Воспитание согласуется с возрастом, временем года и природными циклами. Ребёнка учили наблюдать природу, понимать её ритм и жить в ладу с ней.</p>
+  <div class="principles">
+    <div class="principle">
+      <span class="num">1</span><strong>Природосообразность.</strong> Воспитание строилось в согласии с природой ребёнка: его возрастом, темпераментом и сезонными ритмами. Зимой учили ремёслам в избе, летом — в поле и на пастбище.
     </div>
-  </div>
-
-  <div class="principle">
-    <div class="principle-num">2</div>
-    <div class="principle-body">
-      <h3>Воспитание трудом</h3>
-      <p>Труд — основа народной педагогики. Ребёнок с малых лет включался в посильный труд: помогал по дому, ухаживал за животными, работал в поле и огороде.</p>
+    <div class="principle">
+      <span class="num">2</span><strong>Воспитание в труде.</strong> Труд был главным средством воспитания. С малых лет дети приобщались к посильному труду: девочки — к прядению и стряпне, мальчики — к пахоте и уходу за скотом.
     </div>
-  </div>
-
-  <div class="principle">
-    <div class="principle-num">3</div>
-    <div class="principle-body">
-      <h3>Нравственный пример</h3>
-      <p>Взрослый — образец для подражания. Не нравоучения, а собственное поведение родителей и старших было главным воспитательным средством.</p>
+    <div class="principle">
+      <span class="num">3</span><strong>Нравственный пример.</strong> Взрослые осознавали, что дети учатся не наставлениям, а поступкам. «Каковы сами, таковы и дети» — этот принцип требовал от старших держать себя в руках.
     </div>
-  </div>
-
-  <div class="principle">
-    <div class="principle-num">4</div>
-    <div class="principle-body">
-      <h3>Уважение к старшим</h3>
-      <p>Старшие — носители мудрости и опыта. Их слово имело вес, их советы не оспаривались. Почитание старших было не просто правилом, а образом жизни.</p>
+    <div class="principle">
+      <span class="num">4</span><strong>Уважение к старшим.</strong> Авторитет старших был непререкаем. Бабушки и дедушки — главные носители мудрости — рассказывали сказки, загадывали загадки, учили жизни.
     </div>
-  </div>
-
-  <div class="principle">
-    <div class="principle-num">5</div>
-    <div class="principle-body">
-      <h3>Воспитание в коллективе</h3>
-      <p>Воспитание было делом общинным. Соседи, родственники, старшие дети — все участвовали. Ребёнок рос в кругу людей и чувствовал ответственность перед ними.</p>
+    <div class="principle">
+      <span class="num">5</span><strong>Воспитание в коллективе.</strong> Дети воспитывались не в одиночку, а среди сверстников и сородичей. Общие игры, хороводы и праздники приучали к солидарности и взаимопомощи.
     </div>
-  </div>
-
-  <div class="principle">
-    <div class="principle-num">6</div>
-    <div class="principle-body">
-      <h3>Сила слова</h3>
-      <p>Слово в народной культуре имело особую силу. Напутствие, благословение, запрет, совет — каждое слово старшего воспринималось как наставление на жизнь.</p>
+    <div class="principle">
+      <span class="num">6</span><strong>Сила слова.</strong> Слово в народной культуре имело воспитательную силу. Пословица, присказка, загадка — это не развлечение, а педагогический инструмент, который действовал мягко и точно.
     </div>
   </div>
 </section>
 
-<!-- Пословицы -->
 <section id="proverbs">
   <h2>Пословицы и их педагогический смысл</h2>
+  <p>Пословицы — самая концентрированная форма народной мудрости. В них — весь педагогический опыт народа, переданный в образных и легко запоминающихся формулах.</p>
 
-  <h3 style="margin-top: 24px;">О воспитании и учении</h3>
-  <div class="proverb">
-    <p class="proverb-text">«Учение — свет, а неучение — тьма»</p>
-    <p class="proverb-meaning">Знание просвещает человека, неведение оставляет во тьме. Учиться нужно всю жизнь — это путь к свету.</p>
-  </div>
-  <div class="proverb">
-    <p class="proverb-text">«Корень учения горек, да плод его сладок»</p>
-    <p class="proverb-meaning">Учиться трудно, но результат стоит усилий. Терпение и труд в учении приносят сладкие плоды.</p>
-  </div>
-  <div class="proverb">
-    <p class="proverb-text">«Чему научишься, тому и годишься»</p>
-    <p class="proverb-meaning">Образование определяет пригодность к жизни. Чем больше знаешь и умеешь, тем больше от тебя пользы.</p>
-  </div>
-
-  <h3 style="margin-top: 24px;">О труде</h3>
-  <div class="proverb">
-    <p class="proverb-text">«Без труда не вытащишь и рыбку из пруда»</p>
-    <p class="proverb-meaning">Любое дело требует усилий. Человек, не привыкший к труду, ничего не добьётся.</p>
-  </div>
-  <div class="proverb">
-    <p class="proverb-text">«Терпение и труд всё перетрут»</p>
-    <p class="proverb-meaning">Упорство и трудолюбие преодолевают любые препятствия. Главное — не сдаваться.</p>
-  </div>
-  <div class="proverb">
-    <p class="proverb-text">«Дело мастера боится»</p>
-    <p class="proverb-meaning">Любое сложное дело поддаётся тому, кто мастерски им владеет. Мастерство придаёт уверенность.</p>
+  <div class="proverbs-group">
+    <h3>О учении и знании</h3>
+    <div class="proverb-item">
+      <div class="text">«Учиться никогда не поздно»</div>
+      <div class="comment">Учение — не привилегия возраста, а постоянная задача жизни. Народ учил, что знания нужны всем и всегда.</div>
+    </div>
+    <div class="proverb-item">
+      <div class="text">«Корень учения горек, да плод его сладок»</div>
+      <div class="comment">Трудности учения — временны, а результат — сладостен. Народ призывал терпеть ради будущего блага.</div>
+    </div>
+    <div class="proverb-item">
+      <div class="text">«Чему смолоду научился, того и на старости не забудешь»</div>
+      <div class="comment">Раннее воспитание закладывает фундамент на всю жизнь. Этот принцип прямо перекликается с идеей природосообразности.</div>
+    </div>
   </div>
 
-  <h3 style="margin-top: 24px;">О нравственности</h3>
-  <div class="proverb">
-    <p class="proverb-text">«Каков поп, таков и приход»</p>
-    <p class="proverb-meaning">Каков наставник, таковы и ученики. Личный пример воспитателя определяет воспитанность ребёнка.</p>
+  <div class="proverbs-group">
+    <h3>О воспитании и нравственности</h3>
+    <div class="proverb-item">
+      <div class="text">«Не воспитывай детей, всё равно будут похожи на тебя, воспитывай себя»</div>
+      <div class="comment">Английская пословица, но идея общечеловеческая. Народ хорошо понимал: личный пример сильнее любых наставлений.</div>
+    </div>
+    <div class="proverb-item">
+      <div class="text">«Дерево ивовое гнётся, да не ломится»</div>
+      <div class="comment">Гибкость в воспитании — не слабость, а мудрость. Слишком жёсткое воспитание ломает, слишком мягкое — развращает.</div>
+    </div>
+    <div class="proverb-item">
+      <div class="text">«Дитя плачем, а мать слезами, а всё не по нём»</div>
+      <div class="comment">Материнская любовь и переживание — основа народного воспитания. Народ призывал не оставлять ребёнка без попечения.</div>
+    </div>
   </div>
-  <div class="proverb">
-    <p class="proverb-text">«Что посеешь, то и пожнёшь»</p>
-    <p class="proverb-meaning">Воспитание — это семена. Что вложишь в ребёнка, то и получишь. Зло порождает зло, добро — добро.</p>
-  </div>
-  <div class="proverb">
-    <p class="proverb-text">«Учи дитя, пока поперёк лавки ложится, а как вдоль — поздно будет»</p>
-    <p class="proverb-meaning">Воспитывать нужно с раннего детства. Время упущено — характер уже сформирован.</p>
+
+  <div class="proverbs-group">
+    <h3>О труде и прилежании</h3>
+    <div class="proverb-item">
+      <div class="text">«Без труда не вытащишь и рыбку из пруда»</div>
+      <div class="comment">Простая истина: всё в жизни требует труда. Пословица приучает детей к мысли, что безделье не приносит плодов.</div>
+    </div>
+    <div class="proverb-item">
+      <div class="text">«Что посеешь, то и пожнёшь»</div>
+      <div class="comment">Прямая аналогия с сельским трудом. В воспитании: какие усилия вложишь, такой результат получишь.</div>
+    </div>
+    <div class="proverb-item">
+      <div class="text">«Терпение и труд всё перетрут»</div>
+      <div class="comment">Упорство и трудолюбие — главные добродетели народной педагогики. Народ учил не отступать перед трудностями.</div>
+    </div>
   </div>
 </section>
 
-<!-- Загадки -->
 <section id="riddles">
   <h2>Загадки</h2>
-  <p>Загадка — один из древнейших педагогических инструментов. Она учит мыслить образно, находить неочевидные связи, развивает смекалку и наблюдательность. Нажмите на загадку, чтобы увидеть ответ.</p>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">Без рук, без ног, а ворота открывает.</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Ветер</strong>
-      <p>Загадка учит видеть силу невидимого. Ветер нельзя увидеть, но его действие ощутимо — так и многие явления познаются через последствия.</p>
+  <p>Загадка — один из древнейших жанров народного творчества и важнейший инструмент народной педагогики. Она учит ребёнка образному мышлению, сообразительности, вниманию к предметам и явлениям. В традиционной культуре загадки загадывали на вечёрках, в обрядах, в повседневном общении. Нажмите на карточку, чтобы увидеть ответ и педагогический комментарий.</p>
+  <div class="riddles-grid">
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">Сидит дед, во сто шуб одет. Кто его раздевает, тот слёзы проливает.</div>
+      <div class="answer"><strong>Ответ: Лук.</strong> Загадка учит замечать многослойность предметов и их свойства — лук заставляет плакать. Развивает наблюдательность и образное сравнение.</div>
     </div>
-  </div>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">Сидит дед, во сто шуб одет. Кто его раздевает, тот слёзы проливает.</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Лук</strong>
-      <p>Загадка о природе и быте. Лук — повседневная пища, но его чистка вызывает слёзы. Образное сравнение учит метафорическому мышлению.</p>
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">Не лёд, а тает, не лодка, а уплывает.</div>
+      <div class="answer"><strong>Ответ: Снег.</strong> Учит видеть сходство между разными природными явлениями. Развивает понимание времён года и свойств воды.</div>
     </div>
-  </div>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">Не лёд, а тает, не лодка, а уплывает.</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Снег</strong>
-      <p>Загадка о природных явлениях. Учит наблюдательности и пониманию круговорота воды в природе.</p>
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">Висит груша — нельзя скушать.</div>
+      <div class="answer"><strong>Ответ: Лампочка (в современной трактовке) или лампа.</strong> Классическая загадка, где обман ожидания — главный приём. Учит не доверять первому впечатлению.</div>
     </div>
-  </div>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">Стоят в поле сестрёнки — золотые ушки, шёлковые волосики.</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Колосья пшеницы</strong>
-      <p>Загадка о земледелии — главной отрасли труда. Учит видеть красоту и ценность хлебного поля.</p>
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">Стоит Антошка на одной ножке.</div>
+      <div class="answer"><strong>Ответ: Гриб.</strong> Простая загадка для младших детей. Учит узнавать предметы по одному характерному признаку.</div>
     </div>
-  </div>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">Кто на себе свой дом носит?</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Улитка</strong>
-      <p>Загадка о животном мире. Развивает любознательность и наблюдательность за природой.</p>
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">Без рук, без ног, а ворота отворяет.</div>
+      <div class="answer"><strong>Ответ: Ветер.</strong> Учит понимать невидимые силы природы через их действия. Развивает абстрактное мышление.</div>
     </div>
-  </div>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">Маленький, серенький, а хвостик как ниточка.</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Мышка</strong>
-      <p>Загадка учит выделять главное отличие животного — длинный тонкий хвост. Развивает внимание к деталям.</p>
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">Маленький, удаленький, сквозь землю прошёл, красну шапочку нашёл.</div>
+      <div class="answer"><strong>Ответ: Подберёзовик (гриб).</strong> Учит узнавать грибы по их характерным признакам — цвету шляпки и месту роста. Связь с природой.</div>
     </div>
-  </div>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">Висит груша — нельзя скушать.</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Лампочка</strong>
-      <p>Загадка нового времени — о бытовом предмете. Учит переносить знакомый образ (фрукт) на новый объект (лампочку), развивая аналоговое мышление.</p>
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">Кругла, а не месяц, желта, а не масло, с хвостиком, а не мышь.</div>
+      <div class="answer"><strong>Ответ: Репа.</strong> Загадка с отрицанием — учит мыслить от противного. Развивает логику и знание сельских культур.</div>
     </div>
-  </div>
-
-  <div class="riddle" onclick="this.classList.toggle('open')">
-    <p class="riddle-q">В воде не тонет и в огне не горит.</p>
-    <div class="riddle-answer">
-      <strong>Ответ: Лёд</strong>
-      <p>Загадка с кажущимся противоречием. Лёд не тонет в воде (легче её) и не горит в огне (тает). Учит мыслить парадоксально.</p>
+    <div class="riddle-card" onclick="this.classList.toggle('open')">
+      <div class="question">В воде купался, а сух остался.</div>
+      <div class="answer"><strong>Ответ: Гусь (или утка).</strong> Учит понимать свойства животных — водоплавающие птицы не намокают благодаря оперению. Связь с природой.</div>
     </div>
   </div>
 </section>
 
-<!-- Народные игры -->
 <section id="games">
   <h2>Народные игры</h2>
-  <p>Народные игры — это школа характера, ловкости и общения. Они учат правилам, честности, умению выиграть и проигрывать, работать в команде и постоять за себя.</p>
-  <div class="card-grid" style="margin-top: 26px;">
-
+  <p>Народные игры — это не просто развлечение, а важнейший способ воспитания. Через игру дети учились жить в коллективе, соблюдать правила, развивать ловкость и смекалку. Многие игры сопровождали календарные праздники и обряды.</p>
+  <div class="games-grid">
     <div class="game-card">
-      <h3>Гуси-лебеди</h3>
-      <p class="game-meta">Возраст: 5–10 лет</p>
-      <p class="game-desc">Ведущий («хозяйка») зовёт гусей-лебедей, те бегут домой, а волк их ловит. Игра учит быстроте реакции, бегу, ловкости и чувству товарищества.</p>
+      <h4>Гуси-лебеди</h4>
+      <div class="age">Возраст: 4–8 лет</div>
+      <div class="value">Игра по мотивам сказки учит детей бегать, ориентироваться в пространстве и действовать по правилам. Развивает реакцию и умение слушать водящего.</div>
     </div>
-
     <div class="game-card">
-      <h3>Горелки</h3>
-      <p class="game-meta">Возраст: 6–12 лет</p>
-      <p class="game-desc">Пары стоят друг за другом, водящий кричит «Гори, гори ясно!», пары разбегаются, а водящий ловит. Развивает скорость, координацию и умение действовать в паре.</p>
+      <h4>Горелки</h4>
+      <div class="age">Возраст: 6–12 лет</div>
+      <div class="value">Старинная игра с хороводом. Учит быстроте, ловкости и работе в паре. Воспитывает чувство ритма и солидарности.</div>
     </div>
-
     <div class="game-card">
-      <h3>Прятки</h3>
-      <p class="game-meta">Возраст: 4–10 лет</p>
-      <p class="game-desc">Водящий считает, остальные прячутся. Учит терпению, внимательности, наблюдательности и умению ориентироваться в пространстве.</p>
+      <h4>Прятки</h4>
+      <div class="age">Возраст: 4–10 лет</div>
+      <div class="value">Учит терпению, наблюдательности и умению ориентироваться. Водящий учится честно считать, прячущиеся — контролировать движения и дыхание.</div>
     </div>
-
     <div class="game-card">
-      <h3>Краски</h3>
-      <p class="game-meta">Возраст: 6–12 лет</p>
-      <p class="game-desc">Игроки загадывают цвета, покупатель называет цвет — названный убегает. Развивает память, быстроту и сообразительность.</p>
+      <h4>Краски</h4>
+      <div class="age">Возраст: 5–10 лет</div>
+      <div class="value">Игра на цвет и внимание. Продавец и покупатель меняются цветами, а угадывающий должен найти «украденный» цвет. Развивает память и хитрость.</div>
     </div>
-
     <div class="game-card">
-      <h3>Ручеёк</h3>
-      <p class="game-meta">Возраст: 8–14 лет</p>
-      <p class="game-desc">Пары встают в коридор, поднимают руки, остальные проходят под руками и выбирают новую пару. Игра про знакомство, выбор и умение быть в паре.</p>
+      <h4>Ручеёк</h4>
+      <div class="age">Возраст: 7–14 лет</div>
+      <div class="value">Хороводная игра, в которой пары проходят под руками других. Учит доверию, умению держать руки и не расцепляться. Сплачивает коллектив.</div>
     </div>
-
     <div class="game-card">
-      <h3>Молчанка</h3>
-      <p class="game-meta">Возраст: 4–8 лет</p>
-      <p class="game-desc">Все садятся в круг и молчат. Кто первый засмеётся или заговорит — водит. Учит самоконтролю и выдержке, что важно для маленьких детей.</p>
+      <h4>Молчанка</h4>
+      <div class="age">Возраст: 5–10 лет</div>
+      <div class="value">Игра, в которой дети должны молчать, пока не прозвенит сигнал. Учит самоконтролю, терпению и умению сдерживать смех.</div>
     </div>
-
     <div class="game-card">
-      <h3>Колечко-колечко</h3>
-      <p class="game-meta">Возраст: 7–12 лет</p>
-      <p class="game-desc">Водящий незаметно кладёт колечко одному из игроков, а остальные должны угадать, кому. Развивает наблюдательность и внимание к деталям поведения.</p>
+      <h4>Колечко-колечко</h4>
+      <div class="age">Возраст: 5–12 лет</div>
+      <div class="value">Водящий незаметно передаёт колечко одному из игроков, остальные угадывают кому. Учит внимательности, наблюдению за мимикой и жестами.</div>
     </div>
-
     <div class="game-card">
-      <h3>Классики</h3>
-      <p class="game-meta">Возраст: 6–12 лет</p>
-      <p class="game-desc">Прыжки по расчерченным клеткам с битой. Учит координации, равновесию, точности и умению соблюдать правила.</p>
+      <h4>Классики</h4>
+      <div class="age">Возраст: 6–12 лет</div>
+      <div class="value">Игра с мелом и камешком на асфальте. Учит координации, равновесию, счёту. Развивает упорство — нужно пройти все клетки без ошибки.</div>
     </div>
-
   </div>
 </section>
 
-<!-- Методы -->
 <section id="methods">
   <h2>Методы и приёмы воспитания</h2>
-  <div class="card-grid">
-
-    <div class="card">
-      <h3>Сказка</h3>
-      <p>Сказка — не развлечение, а учебник жизни. Через образы героев ребёнок усваивал представления о добре и зле, о труде и лени, о смелости и трусости.</p>
+  <p>Народная педагогика не знала учебников, но владела богатым арсеналом воспитательных приёмов, которые работали естественно и без принуждения.</p>
+  <div class="methods-grid">
+    <div class="method-card">
+      <h4>Сказка</h4>
+      <p>Сказка — главный воспитательный жанр. Через образы героев дети усваивали моральные нормы: добро побеждает зло, труд вознаграждается, а лень наказывается.</p>
     </div>
-
-    <div class="card">
-      <h3>Обряд и ритуал</h3>
+    <div class="method-card">
+      <h4>Обряд и ритуал</h4>
       <p>Инициации, календарные праздники, семейные ритуалы — всё это формировало у ребёнка чувство принадлежности к роду и общине, вводило в систему ценностей.</p>
     </div>
-
-    <div class="card">
-      <h3>Наставление</h3>
-      <p>Старшие давали советы и наставления — краткие, веские, запоминающиеся. Напутствие перед дальней дорогой, перед свадьбой, перед началом дела.</p>
+    <div class="method-card">
+      <h4>Наставление</h4>
+      <p>Прямое наставление старших применялось реже, чем принято думать. Народ больше верил в силу примера и косвенного влияния — через пословицу, сказку или загадку.</p>
     </div>
-
-    <div class="card">
-      <h3>Поощрение и порицание</h3>
-      <p>Похвала была скупой, но ценилась высоко. Порицание — чаще общественное, не жестокое. Главное — мнение общины, а не только семьи.</p>
+    <div class="method-card">
+      <h4>Поощрение и порицание</h4>
+      <p>Народ не скупился на похвалу за труд, но и не оставлял лень без замечания. Порицание было мягким — чаще через иронию, пословицу или присказку.</p>
     </div>
-
-    <div class="card">
-      <h3>Трудовое воспитание</h3>
-      <p>Ребёнок включался в труд постепенно: сначала помогал, потом работал наравне. Труд был не наказанием, а естественной частью жизни и обучения.</p>
+    <div class="method-card">
+      <h4>Трудовое воспитание</h4>
+      <p>Труд был не средством наказания, а способом взросления. С 5–7 лет дети уже выполняли посильные обязанности, а к 12 годам становились полноправными помощниками.</p>
     </div>
-
-    <div class="card">
-      <h3>Песня и загадка</h3>
-      <p>Песни сопровождали труд и отдых, передавали историю и ценности. Загадки развивали мышление, учили видеть мир образно и нестандартно.</p>
+    <div class="method-card">
+      <h4>Песня и загадка</h4>
+      <p>Песни учили ритму жизни и коллективному чувству, а загадки развивали ум, образное мышление и способность видеть суть за внешностью.</p>
     </div>
-
   </div>
 </section>
 
-<!-- История -->
 <section id="history">
   <h2>История народной педагогики</h2>
   <div class="timeline">
-
     <div class="timeline-item">
-      <h3>Древнейшие времена</h3>
-      <p>Воспитание встроено в жизнь общины. Дети учатся, подражая взрослым: труду, обрядам, речи. Специальных учреждений нет — педагогика живёт в быту.</p>
+      <div class="era">Древнейшие времена</div>
+      <p>Воспитание полностью вплетено в повседневную жизнь. Нет разделения на «учебное» и «внеучебное». Дети учатся через подражание взрослым.</p>
     </div>
-
     <div class="timeline-item">
-      <h3>Средние века</h3>
-      <p>Народная педагогика расцветает в устном творчестве: пословицы, поговорки, сказки, загадки становятся главным средством воспитания. Ремесленное обучение — через подмастерьев.</p>
+      <div class="era">Средневековье</div>
+      <p>Появление инициаций и обрядов перехода. Церковь начинает влиять на воспитание, но народные традиции сохраняются в быту, играх и фольклоре.</p>
     </div>
-
     <div class="timeline-item">
-      <h3>XVIII–XIX века</h3>
-      <p>Просветители обращаются к народной мудрости. В. И. Даль собирает «Пословицы русского народа» (1862). К. Д. Ушинский пишет о народности воспитания.</p>
+      <div class="era">XVIII век</div>
+      <p>Екатерининские реформы. Появление первых школ, но народная педагогика остаётся главной силой воспитания в деревне.</p>
     </div>
-
     <div class="timeline-item">
-      <h3>XX век</h3>
-      <p>Г. Н. Волков создаёт учение об этнопедагогике — науке о народной педагогике. Изучаются традиции воспитания у разных народов, их общность и своеобразие.</p>
+      <div class="era">XIX век</div>
+      <p>К. Д. Ушинский и его труд «Родное слово» — попытка соединить народную мудрость с систематическим обучением. В. И. Даль собирает пословицы.</p>
     </div>
-
     <div class="timeline-item">
-      <h3>XXI век</h3>
-      <p>Интерес к народной педагогике возрождается. Идеи природосообразности, трудового и нравственного воспитания остаются актуальными в современной школе и семье.</p>
+      <div class="era">Начало XX века</div>
+      <p>Я. А. Коменский и идея природосообразного обучения. П. Ф. Каптерев пишет о народности в воспитании. Развитие этнографического изучения фольклора.</p>
     </div>
-
+    <div class="timeline-item">
+      <div class="era">Советский период</div>
+      <p>Г. Н. Волков создаёт концепцию этнопедагогики (1950–1970-е). Изучение народных традиций воспитания становится научной дисциплиной.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="era">XXI век</div>
+      <p>Возрождение интереса к народной педагогике. Включение фольклора и традиционных игр в программы дошкольного и школьного образования.</p>
+    </div>
   </div>
 </section>
 
-<!-- Генератор мудрости -->
-<section id="wisdom">
-  <h2>Генератор народной мудрости</h2>
-  <div class="wisdom-box">
-    <p class="intro">Нажмите кнопку — и получите случайную пословицу с толкованием.</p>
-    <div id="wisdomResult">Нажмите «Дай мудрость», чтобы получить пословицу.</div>
-    <div id="wisdomMeaning"></div>
-    <button class="wisdom-btn" onclick="showWisdom()">Дай мудрость</button>
+<section id="bibliography">
+  <h2>Библиография по феномену русской загадки</h2>
+  <p>Ниже представлены основные источники, посвящённые русской народной загадке — от классических сборников XIX века до современных исследований.</p>
+
+  <div class="biblio-section">
+    <h3>Сборники загадок</h3>
+
+    <div class="biblio-entry">
+      <span class="author">Садовников Д. Н.</span>
+      Загадки русского народа. Сборник загадок, вопросов, притч и задач. — <span class="title">С.-Петербург: Типография Н. А. Лебедева, 1876.</span> [4], VI, [2], 332 с.
+      <div class="anno">Первое большое собрание русских народных загадок в истории фольклористики. Содержит более 3500 загадок, записанных более чем в двадцати губерниях. Загадки расположены по предметно-тематическому принципу: жилище, пища, домашние животные, земледельческие работы и др. Сборник переиздавался в 1901 году и в советское время под редакцией В. П. Аникина.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Рыбникова М. А.</span>
+      Загадки. — <span class="title">Москва — Ленинград: Academia, 1932.</span>
+      <div class="anno">Крупнейший сборник XX века, содержащий около 3500 загадок, записанных в 1920-е годы. В отличие от Садовникова, материал расположен по географическому принципу — по районам записи, что позволяет проследить местные особенности общерусского состава загадок. Во вступительной статье дан обстоятельный анализ загадки как фольклорного жанра.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Митрофанова В. В.</span>
+      Загадки. — <span class="title">Ленинград: Наука, 1968.</span> (Серия «Памятники русского фольклора»).
+      <div class="anno">Сводный том, содержащий 5587 загадок из прежних публикаций и архивных источников. Материал расположен по предметно-тематическому принципу. Критический систематический свод русских загадок, из которого исключены тексты книжного происхождения и не имеющие вариантов.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Худяков И. А.</span>
+      Великорусские загадки. — <span class="title">Москва, 1861.</span>
+      <div class="anno">Один из первых специальных сборников загадок, составленный фольклористом-демократом. Содержит 731 загадку, расположенную в алфавитном порядке по отгадкам. Сборник вышел почти одновременно с трудами Ф. И. Буслаева и положил начало новому этапу в изучении жанра.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Аникин В. П.</span>
+      Русские народные пословицы, поговорки, загадки и детский фольклор. Пособие для учителя. — <span class="title">Москва: Учпедгиз, 1957.</span> 239 с.
+      <div class="anno">Учебное пособие, объединяющее пословицы, поговорки и загадки с детским фольклором. Содержит теоретический анализ жанров и обширный текстовый материал. Ориентировано на школьных учителей и выявляет воспитательный потенциал малых форм фольклора.</div>
+    </div>
+  </div>
+
+  <div class="biblio-section">
+    <h3>Исследования о загадке</h3>
+
+    <div class="biblio-entry">
+      <span class="author">Митрофанова В. В.</span>
+      Русские народные загадки. — <span class="title">Ленинград: Наука, Ленинградское отделение, 1978.</span> 180 с.
+      <div class="anno">Главное монографическое исследование о русских загадках. Рассматриваются вопросы происхождения и изучения жанра, тематика, художественное своеобразие и историческое развитие. Автор анализирует поэтический образ загадки, типы отгадок, вопросы двусмысленности, синтаксис и архитектонику. Впервые сформулировано и доказано положение о смене ритма и рифмы как основном законе поэтики жанра.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Журинский А. Н.</span>
+      Семантическая структура загадки. — <span class="title">Москва: Наука, 1989.</span>
+      <div class="anno">Исследование структурно-семантической организации загадок на материале разных традиций. Автор показывает, что для «зашифровывания» загаданной вещи применяется сравнительно небольшое число приёмов: отделение неотъемлемой части, метафорическое уподобление, отрицание признака и др. Работа выполнена на материале, собранном Г. Л. Пермяковым.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Пермяков Г. Л.</span> (сост.)
+      Паремиологический сборник. Пословица. Загадка. — <span class="title">Москва: Наука, 1978.</span>
+      <div class="anno">Сборник статей советских и зарубежных учёных, посвящённых пословице и загадке. Вторая часть целиком посвящена загадке: статья Ю. И. Левина о семантической структуре загадки, работа Э. Кёнгэс-Маранды о логике загадки и другие исследования. Заложил основы структурной паремиологии как научной дисциплины.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Пермяков Г. Л.</span>
+      Малые формы фольклора. Сборник статей памяти Г. Л. Пермякова. — <span class="title">Москва: Изститут славяноведения РАН, 1995.</span>
+      <div class="anno">Сборник, посвящённый памяти выдающегося паремиолога. Включает исследования о загадках: язык загадок и картина мира, тема смерти в загадках на славянском материале, подмена в основе загадки, загадки-иносказания. Продолжает разработку типологии малых форм фольклора.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Говоркова О. Н.</span>
+      Русская народная загадка (история собирания и изучения). Диссертация на соискание учёной степени кандидата филологических наук. — <span class="title">Москва, 2004.</span>
+      <div class="anno">Систематическое исследование истории собирания и изучения русских народных загадок от первых публикаций до современности. Автор делит историю собирания на три этапа и подробно рассматривает вклад каждого крупного собирателя и исследователя.</div>
+    </div>
+  </div>
+
+  <div class="biblio-section">
+    <h3>Общие труды и контекст</h3>
+
+    <div class="biblio-entry">
+      <span class="author">Даль В. И.</span>
+      Пословицы русского народа. — <span class="title">Москва, 1861–1862.</span> (Переизд.: М.: Наука, 1984.)
+      <div class="anno">Сборник В. И. Даля включает и загадки, которые были собраны им на основе устной традиции. Даль шёл от живой речи, почти не включая загадки рукописного или книжного происхождения. Раздел загадок в его сборнике — важнейший источник наряду с трудами Садовникова и Худякова.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Лазутин С. Г.</span>
+      Поэтика русского фольклора. — <span class="title">Москва, 1981.</span>
+      <div class="anno">Общий труд по поэтике фольклорных жанров, включающий раздел о загадке. Автор рассматривает жанровое определение загадки, её образную систему, ритмическое строение и место среди других малых форм.</div>
+    </div>
+
+    <div class="biblio-entry">
+      <span class="author">Кравцов Н. И., Кулагина А. В.</span>
+      Славянский фольклор. Тексты. — <span class="title">Москва, 1987.</span>
+      <div class="anno">Хрестоматия, содержащая тексты загадок в контексте славянского фольклора. Включает загадки о солнце, природных явлениях, быте — часть которых не регистрируется в основных сборниках.</div>
+    </div>
   </div>
 </section>
 
-<!-- Источники -->
+<section id="generator">
+  <h2>Генератор мудрости</h2>
+  <div class="generator-box">
+    <p>Нажмите на кнопку, чтобы получить случайную пословицу с толкованием.</p>
+    <div class="output" id="gen-output">Здесь появится пословица...</div>
+    <div class="explanation" id="gen-explanation"></div>
+    <button class="generator-btn" onclick="generateWisdom()">Загадать</button>
+  </div>
+</section>
+
 <section id="sources">
   <h2>Источники и литература</h2>
-  <div class="card-grid">
-
-    <div class="card">
-      <h3>В. И. Даль. «Пословицы русского народа»</h3>
-      <p>Собрание более 30 000 пословиц, поговорок и присловий, изданное в 1862 году. Настольная книга по народной мудрости.</p>
+  <div class="sources-grid">
+    <div class="source-card">
+      <h4>В. И. Даль</h4>
+      <p>«Пословицы русского народа» (1861–1862) — фундаментальный сборник, содержащий более 30 000 пословиц, поговорок и загадок.</p>
     </div>
-
-    <div class="card">
-      <h3>Г. Н. Волков. «Этнопедагогика»</h3>
-      <p>Фундаментальный труд, в котором народная педагогика осмыслена как наука. Волков выделил её принципы, методы и категории.</p>
+    <div class="source-card">
+      <h4>Г. Н. Волков</h4>
+      <p>«Этнопедагогика» (труды 1950–1970-х гг.) — концепция народной педагогики как научной дисциплины.</p>
     </div>
-
-    <div class="card">
-      <h3>К. Д. Ушинский. «О народности в воспитании»</h3>
-      <p>Статья, в которой Ушинский обосновал необходимость воспитания на национальной почве, с опорой на язык и народные традиции.</p>
+    <div class="source-card">
+      <h4>К. Д. Ушинский</h4>
+      <p>«Родное слово» (1864) — попытка соединить народную мудрость с систематическим обучением.</p>
     </div>
-
-    <div class="card">
-      <h3>Я. А. Коменский. «Великая дидактика»</h3>
-      <p>Труд, в котором заложены принципы природосообразности и наглядности — идеи, созвучные народной педагогике.</p>
+    <div class="source-card">
+      <h4>Я. А. Коменский</h4>
+      <p>«Великая дидактика» (1657) — принцип природосообразного обучения, созвучный народной педагогике.</p>
     </div>
-
   </div>
 </section>
 
 </main>
 
 <footer>
-  <p>Народная мудрость и педагогика</p>
-  <p>Сайт создан для изучения и сохранения традиций народного воспитания.</p>
+  <p>Народная мудрость и педагогика &middot; Образовательный проект</p>
   <p><a href="https://petrov82020-cyber.github.io/os2-custom/folk.html">petrov82020-cyber.github.io/os2-custom/folk.html</a></p>
 </footer>
 
 <script>
-var wisdomData = [
-  ["Учение — свет, а неучение — тьма", "Знание просвещает человека, неведение оставляет во тьме."],
-  ["Без труда не вытащишь и рыбку из пруда", "Любое дело требует усилий."],
-  ["Терпение и труд всё перетрут", "Упорство преодолевает любые препятствия."],
-  ["Корень учения горек, да плод его сладок", "Учиться трудно, но результат стоит усилий."],
-  ["Что посеешь, то и пожнёшь", "Что вложишь в воспитание, то и получишь."],
-  ["Учи дитя, пока поперёк лавки ложится", "Воспитывать нужно с раннего детства."],
-  ["Дело мастера боится", "Мастерство придаёт уверенность."],
-  ["Чему научишься, тому и годишься", "Образование определяет пригодность к жизни."],
-  ["Каков поп, таков и приход", "Личный пример воспитателя определяет воспитанность."],
-  ["Привычка — вторая натура", "Что привык в детстве, то и останется на всю жизнь."],
-  ["С кем поведёшься, от того и наберёшься", "Окружение формирует человека."],
-  ["Не воспитывай детей, всё равно они будут похожи на тебя", "Главное воспитание — личный пример."],
-  ["Дерево держится корнями, а человек друзьями", "Окружение и связи — основа жизни человека."],
-  ["За одним столом, да не одни разговоры", "В одной семье могут быть разные характеры — нужно учитывать индивидуальность."],
-  ["Маленькое дело лучше большого безделья", "Приучать к труду нужно с малого."]
+var proverbs = [
+  {text: "Учиться никогда не поздно", expl: "Учение — задача всей жизни, а не только детства."},
+  {text: "Корень учения горек, да плод его сладок", expl: "Трудности учения временны, а результат приносит радость."},
+  {text: "Чему смолоду научился, того и на старости не забудешь", expl: "Раннее воспитание закладывает фундамент на всю жизнь."},
+  {text: "Без труда не вытащишь и рыбку из пруда", expl: "Всё в жизни требует труда, безделье не приносит плодов."},
+  {text: "Что посеешь, то и пожнёшь", expl: "Какие усилия вложишь в воспитание, такой результат получишь."},
+  {text: "Терпение и труд всё перетрут", expl: "Упорство и трудолюбие — главные добродетели."},
+  {text: "Дерево ивовое гнётся, да не ломится", expl: "Гибкость в воспитании — не слабость, а мудрость."},
+  {text: "Дитя плачем, а мать слезами", expl: "Материнская любовь — основа народного воспитания."},
+  {text: "Не воспитывай детей, всё равно будут похожи на тебя", expl: "Личный пример сильнее любых наставлений."},
+  {text: "С кем поведёшься, от того и наберёшься", expl: "Окружение формирует характер ребёнка."},
+  {text: "Яблоко от яблони недалеко падает", expl: "Дети наследуют качества родителей — и добрые, и дурные."},
+  {text: "Учи детей, пока поперёк лавки ложатся, а как вдоль — поздно", expl: "Воспитывать нужно смолоду, пока характер ещё гибок."},
+  {text: "Не учи детей, когда они большие, учи, когда маленькие", expl: "Раннее воспитание эффективнее позднего."},
+  {text: "Каков поп, таков и приход", expl: "Каков наставник, таковы и ученики."},
+  {text: "Береги платье снову, а честь смолоду", expl: "Честь и достоинство нужно беречь с ранних лет."}
 ];
-function showWisdom() {
-  var i = Math.floor(Math.random() * wisdomData.length);
-  document.getElementById("wisdomResult").textContent = "«" + wisdomData[i][0] + "»";
-  document.getElementById("wisdomMeaning").textContent = wisdomData[i][1];
+function generateWisdom() {
+  var i = Math.floor(Math.random() * proverbs.length);
+  document.getElementById("gen-output").textContent = proverbs[i].text;
+  document.getElementById("gen-explanation").textContent = proverbs[i].expl;
 }
 </script>
 
