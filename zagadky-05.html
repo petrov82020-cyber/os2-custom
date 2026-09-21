@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Загадки русского народа · Собрание 5 · Загадки 401–500</title>
+<style>
+  :root{
+    --paper:#faf8f2; --paper-2:#fffdf8; --ink:#2e2b26; --ink-soft:#5a5040;
+    --line:#e8dcc8; --line-soft:#f0e6d6; --accent:#8b5a2b; --accent-2:#b8863f;
+    --accent-soft:#f0e4d0; --shadow:0 1px 2px rgba(43,38,32,.05), 0 8px 24px rgba(43,38,32,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+
+  nav.top-nav,
+  nav.bottom-nav {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    background:var(--line-soft);
+    padding:12px 18px;
+    border-radius:6px;
+    margin:20px auto;
+    font-size:15px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    max-width:820px;
+  }
+  nav a {
+    color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:4px;
+    transition:background .2s,color .2s;
+  }
+  nav a:hover{background:var(--accent);color:#fff;text-decoration:none}
+
+  header{
+    text-align:center;
+    padding:40px 20px 30px;
+    border-bottom:2px solid var(--line);
+    background:linear-gradient(135deg,#f5ebe0,#ede0cc);
+  }
+  header h1 {
+    font-size:26px;
+    color:var(--accent);
+    margin:0 0 10px;
+    line-height:1.3;
+  }
+  header .subtitle {
+    font-size:16px;color:#7a7060;font-style:italic;
+  }
+
+  main{padding:30px 0 40px}
+
+  h2 {
+    font-size:22px;color:var(--accent);margin:30px 0 15px;
+    padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  h3 {
+    font-size:19px;color:var(--ink);margin:22px 0 10px;
+  }
+  p{margin:0 0 14px;text-align:justify}
+
+  .note {
+    background:#fdf8ee;border-left:3px solid var(--accent);
+    padding:12px 16px;margin:16px 0;font-size:16px;color:var(--ink-soft);
+    border-radius:0 6px 6px 0;
+  }
+  .note strong{color:var(--accent)}
+
+  .riddles-list{
+    counter-reset:riddle 400;
+    margin:20px 0 40px;
+  }
+  .riddle-item{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 18px;
+    margin-bottom:12px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .riddle-item:hover{
+    box-shadow:0 4px 12px rgba(180,160,130,.18);
+    transform:translateY(-1px);
+  }
+  .riddle-num{
+    counter-increment:riddle;
+    flex:0 0 auto;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border-radius:6px;
+    min-width:44px;
+    text-align:center;
+    padding:3px 8px;
+    margin-top:2px;
+  }
+  .riddle-num::before{content:counter(riddle,decimal-leading-zero)}
+  .riddle-body{
+    flex:1 1 auto;
+    font-size:1.02em;
+  }
+  .riddle-text{
+    font-style:italic;
+    color:#4a3a2a;
+    white-space:pre-line;
+    margin-bottom:6px;
+  }
+  .riddle-answer{
+    color:#7a6a5a;
+    font-size:.95em;
+  }
+  .riddle-answer strong{color:var(--accent)}
+
+  .generator{
+    background:linear-gradient(135deg,#f5ede0,#ede0cc);
+    border:2px solid var(--accent-2);
+    border-radius:14px;
+    padding:30px 26px 24px;
+    margin:30px 0;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .generator::before{
+    content:'ВИКТОРИНА · 300 ЗАГАДОК';
+    position:absolute;top:-12px;left:22px;
+    background:var(--accent);color:#fff;
+    padding:3px 14px;border-radius:999px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.68rem;letter-spacing:.14em;font-weight:700;
+  }
+  .generator h3{margin:0 0 10px;font-size:1.15em;color:var(--accent)}
+  .generator .hint{color:var(--ink-soft);font-size:.92em;margin:0 0 16px}
+  .quiz-question{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 22px;
+    font-size:1.05em;
+    font-style:italic;
+    color:#4a3a2a;
+    white-space:pre-line;
+    margin:0 0 16px;
+    min-height:80px;
+  }
+  .quiz-answers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:0 0 16px;
+  }
+  .quiz-answer{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:11px 14px;
+    font-size:.96em;
+    cursor:pointer;
+    color:var(--ink);
+    text-align:left;
+    font-family:Georgia,serif;
+    transition:background .15s, border-color .15s;
+  }
+  .quiz-answer:hover:not(:disabled){
+    background:var(--accent-soft);
+    border-color:var(--accent-2);
+  }
+  .quiz-answer:disabled{cursor:default;opacity:.85}
+  .quiz-answer.correct{
+    background:#e7f0e2;border-color:#7fa572;color:#2f4a26;font-weight:600;
+  }
+  .quiz-answer.wrong{
+    background:#f6e0e0;border-color:#b26a6a;color:#6b2e2e;
+  }
+  .quiz-controls{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+    margin:0 0 16px;
+  }
+  .gen-btn{
+    background:var(--accent);color:#fff;border:none;
+    border-radius:8px;padding:12px 26px;
+    font-size:1em;font-family:Georgia,serif;
+    cursor:pointer;transition:background .2s;
+  }
+  .gen-btn:hover{background:#6d441c}
+  .gen-btn:disabled{background:#c9b79a;cursor:default}
+  .quiz-feedback{
+    font-size:.95em;
+    min-height:24px;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  .quiz-feedback.ok{color:#2f4a26;font-weight:600;font-style:normal}
+  .quiz-feedback.no{color:#8a3a3a;font-weight:600;font-style:normal}
+  .quiz-stats{
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px dashed var(--accent-2);
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.88em;
+    color:var(--ink-soft);
+  }
+  .quiz-stats strong{color:var(--accent);font-size:1.1em}
+
+  footer{
+    background:var(--line-soft);
+    border-top:2px solid var(--line);
+    padding:24px 20px;
+    text-align:center;
+    color:#7a7060;
+    font-size:.9em;
+  }
+
+  @media (max-width:600px){
+    body{font-size:16px}
+    header h1{font-size:21px}
+    h2{font-size:19px}
+    .quiz-answers{grid-template-columns:1fr}
+    nav.top-nav,nav.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="zagadky.html">На главную</a>
+  <a href="zagadky-04.html">← Собрание 4</a>
+  <span>Собрание 5 · Загадки 401–500</span>
+  <a href="zagadky-06.html">Следующая →</a>
+</nav>
+
+<header>
+  <h1>Загадки русского народа</h1>
+  <p class="subtitle">Собрание пятое · Загадки 401–500</p>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h2>От составителя</h2>
+
+  <p>В этом собрании — следующие сто загадок русского народа, отобранных из классических сборников Д. Н. Садовникова, М. А. Рыбниковой, В. В. Митрофановой и других источников.</p>
+
+  <h2>Загадки 401–500</h2>
+
+  <div class="riddles-list">
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Церковь белена, кисти зелены.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Берёза (с заменой: «Башня белена»).</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит дерево, в этом дереве сусло да масло; при темне — свет, при поле — смерть, старому — потеха, а молодому — наука.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Берёза.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит древо зелено-кудряво, на этом древе сусло и масло, и заду лекарство, и ногам тепло.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Берёза.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Красный катышок, зелёный черешок.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Земляника.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Что за растение, и слепые знают?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Крапива.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На горе шумит, а под горой молчит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лес.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Бей меня, ломи меня; есть у меня гладко, в гладке сладко.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Орех.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит древо-кудряво, когти — волчьи; кто подойдёт, того и обоймёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Репей.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит древо; кто подойдёт, того и заграбат.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Репей.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Пойду я на горушку, заколю белую телушку, мясо брошу, кожу брошу, одно сальчико съем.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Сок берёзы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит сто столбов, у ста столбов сто петель, у ста петель сто кистей.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Хмель.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Дерево голанское, листья боярски, когти цепки.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Шиповник.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит древо деревянское, платье малаханское, цветы нежны, когти цепки.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Шиповник.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит Антошка низок, на нём семьдесят ризок.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вилок капустный.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сидит Маршутка в семидесяти семи шубках.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вилок капустный.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит столбик, ни высок, ни низок, на нём сорок ризок.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вилок капустный.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Мал-малышок в сыру землю ушёл, синю шапку нашёл.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лён.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сидит на грядке вся в заплатках; кто потрогает, тот взвоет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Луковица.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сидит Игнатко на грядке, весь в заплатках; кто его потрогает, тот и заплачет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Луковица.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Есть на свете «чупка» в семи юбках; кто её поцелует, тот сморщится.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Луковица.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сидит бабушка в семи кожухах; кто божуху раздевает, слёзы проливает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Луковица.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сидит кукла в семи юбках; кто заденет, тот заплачет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Луковица.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сидит девица в темнице, коса на виду.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Морковь.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Ни окошек, ни дверей — полна горница людей.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Огурец.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Под ярусом-ярусом висит зипун с гарусом.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Рябина.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В подполье осот бородой трясёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Хрен.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Шут в луже, борода наруже.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Хрен.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Платье потерялось, пуговка осталась.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Черёмуха осенью.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Не бей меня, не руби меня, полезь на меня, да накушайся.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Черёмуха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кругло-мохнато, меж ним горбато; придёт беда, потечёт вода.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Глаза.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два братца рядом живут, друг с другом не видятся.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Глаза.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Белая лебедь всяким кушана.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Грудь матери.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сахар да медан, всяк его едал, ложкой не хлебал, ножом не резывал.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Грудь матери.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два ходила, два махала, два смотрела, одно кивало.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ноги, руки, глаза, голова.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Пять угланчиков, у каждого по чуланчику.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Пальцы в перчатках.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит столб, на столбе — овин, на овине — солома, на соломе свиньи роются.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Тело человека.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит древо, на древе — костёр, в костре свиньи есть.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Тело человека.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Шесть ног, две спины, одна голова.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Человек на стуле.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Не сохнет, не мокнет, не куржевеет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Язык.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В печь несут — жидко, горячо; из печи — густо, холодно.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гороховый кисель.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Не пьют, не едят, не жуют, а глотают и снова выпускают.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Курят табак.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Налетели голуби и сели кругом пролуби.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ложки около блюда.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Бежали беженцы по липовым мостевцам, увидали зарю — побросались в воду.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Пельмени.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Летели гусельцы по липовым мостянцам, увидали зарю — побросались в воду.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Пельмени.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Из воды родится, а воды боится.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соль.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Белая беляна по полю гуляла, к нам пришла — по рукам пошла.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соль.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На воде родился, на огне крестился, мать увидал — сам умер.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соль.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Што за кушанье: вари в двух фунтах соли, а будешь есть, ещё солить придётся.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Яйцо.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В маленьком кавашонке два теста.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Яйцо.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Хожу на голове, а ногами к ногам.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гвозди в сапогах.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Родился не видко, вырос на драку.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гребень.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Шёл по одной, вышел из двух.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ноги в брюках.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Што имеет пять пальцев, но ни одного ногтя?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Перчатки.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стульчики-батульчики по полу катаются, в руки не даются.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Клубы холода зимой.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Шарики-барики к столу катятся, а в руки не даются.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Клубы холода зимой.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Санки-самокатки зиму и лето всё катаются.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ставни.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Круг избушки, всё серебрушки.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Сучки в стене.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Хозяин стал выживать собаку из избы: «Сучка, вон! Сучка, вон!» Сучка не идёт из избы.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Сучки в стене.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит Андрюха, побитое брюхо.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гумно.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит Петруха, соломенно брюхо.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гумно.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Летит ворон через Китай-город, уронил кишку в золотую трубу.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Деревянный колодец.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Брат брата трёт, бела кровь идёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Жернова ручной мельницы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два братца не сойдутся, пояском подпоясаны одним.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Колья огорода.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Корова пёстра, титьки востры, вымя на боку.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Мельница.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит копна посередь мокра; не жнёт, не молотит, каждый день денежки воротит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Мельница.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит Григорий под угором, шатром покрылся, копьём подпёрся.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Овин.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В потёмках родится, с огнём умирает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Восковая свеча.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">За морем-морем добро ясно горит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Горящие дрова в печке.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Синенько суконко, тянется в оконцо.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Дым.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Ходит Хам по избам, лезет Хам ко глазам, отворю окошко: «Выйди, Хам!»</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Дым.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит тюрьма, в тюрьме — ящик, в ящике — мучка, в мучке — золотая жучка.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Дым, печь, зола, загнета.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит свинья — красные бока.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Железная печка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит свинка — золотая щетинка.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Железная печка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Лежит волчок, вырван бочок.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Залавок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Суну-посуну в каменну посуду, в край поволочу, всё позолочу.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Клюка и угли.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чёрный ворон золото клюёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Клюка и угли.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чёрный кот Матрёну трёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Кочерга в печи.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Разломаю клетку, царю не скласть.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лучины нащеплю.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Суха-суха Лукерья, шут Матвей привалился к ней.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Печь и голбец.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Мать толста, дочь красна, сын храбрец, ушёл под небеса.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Печь, огонь, дым.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит Антошка на одной ножке, крошит крошки.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Светильня.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Самсон нагишом, рубашка в пазухе.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Свеча.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Залезла Варвара выше амбара, не ест и не пьёт, всё на небо глядит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Труба.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Не велик мужичок, ножки гладеньки, подпоясан коротенько, по избе пройдёт, пыль пойдёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Веник.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Скок-скок по лавочкам, скок-скок по подлавочкам, сел в уголок, не ворохнётся.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Веник.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Без рук возьмёт, вздымет, не уронит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Деревянный колодец.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Гибкий лес на плечи залез.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Коромысло.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Медвежья нога пол царапат.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Помело.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Ерийко поерит-поерит — опять в голубец убежит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Помело.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чернинька коровка — маленьки ножки.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ухват.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два моря на дуге качаются.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вёдра на коромысле.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Был я на копане, был я на топане, был на пожаре, был на базаре. Молод был — сколько душ кормил, сколько лет терпел, ничего сам не ел. Как пал, так и пропал.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Горшок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Был на топтале, был на кружале, был на пожаре; домой пришёл, всю семью кормил.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Горшок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Был я на копанце, был я на топанце, был я на пожаре, очутился на базаре.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Горшок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На сторожах поставлен, много раз обернут, к огню передан, в море ввергнут; сколько ни поживёт — умрёт — его земля не примет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Горшок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В брюхе баня, в носу решето, на голове пупок, одна рука, да и та на заде.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Чайник.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В земле родился, в огне крестился, пошёл правду искать.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Безмен.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В земле родилось, в огне крестилось, по миру пошло, всю правду нашло.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Безмен.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Худая рогожа всё поле покрыла.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Борона.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чем больше верчусь, тем больше становлюсь.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Веретено.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Мать — лопотунья, дочери — хвастуньи, сын — заплетай.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ладонь, мётлы, вилы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Мать — оладейка, дочери — помазунчики, сыновья — хватоны.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ладонь, мётлы, вилы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Братцы — хватцы, сеструшки — ползушки.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Молотило и мётлы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Старая собака кости жуёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Мялка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Мелко жуёт, сама не ест и другим не даёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Пила.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Летом — по полям, зимой — по щелям.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Серп.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Горбатенькой, зуброватенькой по полю скачет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Серп.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Маленькой, горбатенькой, всё поле пробежал, домой прибежал, весь год пролежал.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Серп.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Заглянула корова, всё поле рогами перепорола.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Свинья о два рога, о два клыка, землю роет, а не ест.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два рога, одна нога.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Весь мир кормит, сама голодна.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Баба-Яга, вилами нога, весь мир кормит, себе только зубы портит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Соха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кланяется, кланяется, придёт домой — растянется.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Топор.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Лежит под лавицей стальная задница.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Топор.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два рожка, одна ножка.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ухват.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Слепой поросёнок, а в огород полезет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Челнок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На поле на Ярском лежат люди боярски, головы обриты, брюха распороты.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Снопы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Роговатину везут моховатину колоть.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вилы и сено.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сила двинет, лес повянет, на то место гора встанет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Косят.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Едешь, едешь — не объедешь.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Косят.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чекатунчики летят, меж собою говорят: чи-ки-чок, чи-ки-чок!</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Молотьба.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Светленька, тоненька, век свой по миру ходит, к работе отпустит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Свинка — золота щетинка, ленной хвост, по белу свету скачет, весь мир красит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Маленькой, горбатенькой по городу скачет, всех людей красит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сам железной, хвост кудельной.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Бежит спинка — железная спинка, ленной хвостик.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Пятеро держат, двое суют, двое глядят.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Ехал, ехал, выпал вехоть, полно ехать.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Завертка порвалась.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Дорога ровная, лошадка деревянная, везёт не кормя, только поворачивается.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лодка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Санки Савины, оглобли Харины, дуга Екимова, кобылка Строгана, бежит да вздрагивает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лодка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В лесу родится, на воде живёт, на огне умирает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лодка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Ни глаз, ни ушей, а слепых водит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Палка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два кума Обакума, две сестры Овдотьи, пять братьев Пантелеев, пять Андреев.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Части дровней.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Што за зверь: две головы, шесть ног, один хвост?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Человек на лошади.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Под мостом калистом камень развалистой.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Книга.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Воронко ушёл, ржёт и домой нейдёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Паровоз.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сто вёрст промахал, нигде не видал.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Паровоз.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Петушок без глаз, а метко клюёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ружьё.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Маленький, брюхатенький, пойди в лесок, раздуй песок.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ружьё.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чёрный кочан дернуть хочет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ружьё.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Летит птица — орёл, крылом махнула, весь свет закрыла.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ночь.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Обулся не так, оболокся не так, завалился в ухаб и не вылезти никак.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Умер.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">В бабе два, в девке ни одного.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Звук «Б».</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кое у Бориса спереди, то у Глеба сзади.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Звук «Б».</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">121 яйцо скольким людям можно разделить поровну?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> 11 человекам.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На окошке 4 кошки, у каждой кошки 4 котёнка. Сколько у них у шеи ног?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> У шеи ног нет.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">У семи ослов много ли у шеи хвостов?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> У шеи хвостов нет.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Заржал жеребец на сияновой горе, услыхали кобылы на сырой земле.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гром.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Рассыпался стакан по всем городам, никому не собрать.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Звёзды.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Деревни, города спят, один бабай не спит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Месяц.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Без рук, без ног — ворота отворяет.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ветер.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кто всех сильней?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вода.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Что на огне не горит и в воде не тонет?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лёд.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Есть штука — три крюка, и нет их кривей.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Огород, река и дорога.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Зимой греет, летом тлеет, осенью оживает, весной умирает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Снег.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Четыре сестрички в одну лунку льют.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вымя.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кто родится с бородой?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Козёл.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Четыре ходаста, два бодаста, один мухтарь, два ухтаря.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Корова.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Четыре четырки, две растопырки, один хлестун.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Корова.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кто родится с усами?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Котёнок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Не шито, не кроено, а клинья вставлены.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Пеганый конь.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На улице пирогом, а в избе калачом.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Собака.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кто на себе свой дом носит?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Улитка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Четыре старичка назад бородами.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Щётки у ног коня.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Через избу не перебросишь.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Перо.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На крышу не забросишь, на печку не поставишь.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Перо и яйцо.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Маленька сарыночка храм сворачивает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Клоп.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На яру, на бору, стоит старичок, красный колпачок.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гриб.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Не гни меня, не ломай меня, залезь на меня, накушайся, начерюмкайся.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Черёмуха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Черненькая, маленькая, всему свету миленькая.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Черёмуха.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Полно корыто людей намыто.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Огурцы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два братца через дорожку живут, друг дружку не видят.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Глаза.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Полно подполье гусей да лебедей.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Зубы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Из-под печки выглядывают белые овечки.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Зубы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоят вилы, на вилах бочка, на бочке кочка, на кочке ветошь, в ветоши звери ходят.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Человек.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Утром на четырёх, в полдень на двух, а вечером на трёх.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Человек.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Рыжий жеребец в берёзовом остожье, ржёт и хохочет — выскочить не может.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Язык.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Лежит в подполье мокренький телёночек.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Язык.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Что всегда поверх воды?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Масло.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">С вечера заморкат, с полуночи захоркат — солнце всходит, всё выходит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Квашня.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Безногий, в печку залезает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Хлеб.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Одну штучку на спичку не повесить.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Яичко.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Каждому мальчику по чуланчику.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Перчатки.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Без начала, без конца.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Кольцо.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два стоят, два лежат, пятый ходит, шестой водит, седьмой песенку поёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Дверь.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Без рук, без ног, а в дом не пускает.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Замок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Выйдется, не сходится.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Пол и потолок.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит соля посередь поля, летит кулик — дыра болит.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Колодец.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два брата одним кушаком подпоясаны.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Колья в изгороди.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Красненький котёночек по жёрдочке ползёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Огонь.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Мать бела, дочь красна, сын суходер, на небо пошёл.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Печь, огонь и дым.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Сам худ, а голова с пуд.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Безмен.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Под полом полом ходит барыня с колом.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Помело.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Новая посуда, а вся в дырах.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Сито.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два братца пошли в воду купаться.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Вёдра.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Утка в море, хвост на приборе.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ковшик.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">На стол не поставишь.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лохань.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чёрный кот Матрёшку трёт.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Помазок и сковорода.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Висит, болтается, всяк за него хватается.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Рукомойник.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Стоит гусь на мосту, кричит: «всех оболью».</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Самовар.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Вокруг избы не обнесёшь.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Сито с водою.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Лежит волк — вырубленый бок.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Солонка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чёрное голенище ржёт и хохочет, выскочить не может.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Чугунка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Четыре брата под одной шляпой.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Стол.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кланяется, кланяется, придёт домой, растянется.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Топор.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Летят гуськи, у них дубовые носки. Летят, говорят: то-то мы и то-то мы.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Молотьба.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Свинья понура, хвостом махнула. Лесы пали, горы стали.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Сенокос.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Загану загадку: брошу через грядку, год пущу, годовинку жду.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Хлеб и овощи.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Утка ныряла, ныряла и хвост потеряла.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Куда нос, туда и хвост.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Иголка и нитка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два кольца, два конца, посредине маковка.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ножницы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Две головы, четыре ноги, один хвост.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Верхом на лошади.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Еду, еду — следу нету; режу, режу — крови нету.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Лодка.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Два волчка бегут, на небо глядят, тыр, тыр, говорят.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Сани.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Четыре братца друг дружку догоняют, а догнать не могут.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Четырёхколёска.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">За морем рубят, а здесь щепки летят.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Письма.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Летит птица Гагана, несёт в роте осетра, посередь хвоста человечья смерть.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Пуля.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Долгая пырка на небо фыркат.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ружьё.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Вечер тёмный, дорога чёрная, река журная. На реке челнок, в челноке человек.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Часы.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Чёрная корова всех нас поборола.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Ночь.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Пирог деревянный, а начинка мясная.</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Гроб.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Что ко всему прилипло?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Имя.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Что солнце не хватает?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Воду в колодце.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Почему во все колокола не звонят?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Колоколов вовсе нет.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Каких деревьев в лесу больше?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Круглых.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Кто без папы рос?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Кто не курит.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Когда коня покупают, какой он бывает?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Мокрый.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">Во время дождя под каким кустом заяц сидел?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Под мокрым.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">А где рыба дорога?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> Рыба в воде, рога на быке.</div>
+    </div></div>
+
+    <div class="riddle-item"><div class="riddle-num"></div><div class="riddle-body">
+      <div class="riddle-text">У кого две кожи?</div>
+      <div class="riddle-answer"><strong>Отгадка:</strong> У человека в сапогах.</div>
+    </div></div>
+
+  </div>
+
+  <h2>Викторина «Угадай загадку»</h2>
+  <p>Викторина содержит триста загадок: около трети — те, что уже встречались в предыдущих собраниях, остальные — новые. Каждая загадка предлагает четыре варианта ответа.</p>
+
+  <div class="generator">
+    <h3>Случайная загадка</h3>
+    <p class="hint">Каждая загадка выпадает случайно, без повторов до полного круга.</p>
+
+    <div class="quiz-question" id="quizQuestion">Нажмите «Начать викторину», чтобы получить первую загадку.</div>
+    <div class="quiz-answers" id="quizAnswers"></div>
+    <div class="quiz-controls">
+      <button class="gen-btn" id="startBtn" onclick="startQuiz()">Начать викторину</button>
+      <button class="gen-btn" id="nextBtn" onclick="nextQuiz()" disabled>Следующая загадка</button>
+    </div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <div class="quiz-stats">
+      <span>Попыток: <strong id="statAttempts">0</strong></span>
+      <span>Правильных: <strong id="statCorrect">0</strong></span>
+      <span>Точность: <strong id="statAccuracy">—</strong></span>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="zagadky.html">На главную</a>
+    <a href="zagadky-04.html">← Собрание 4</a>
+    <span>Собрание 5 · Загадки 401–500</span>
+    <a href="zagadky-06.html">Следующая →</a>
+  </nav>
+
+</div>
+</main>
+
+<footer>
+  <p>Загадки русского народа · Собрание 5 · Загадки 401–500</p>
+  <p>Образовательный проект о народной мудрости</p>
+</footer>
+
+<script>
+/* ============================================================
+   ВИКТОРИНА «УГАДАЙ ЗАГАДКУ» · 300 образцов
+   Около 35% — повторы из собраний 1-4, остальные — новые.
+   ============================================================ */
+
+var quizPool = [
+  /* --- Повторы из собраний 1-4 (около 35%) --- */
+  { q: 'Сидит дед, в шубу одет; кто его раздевает, тот слёзы проливает.', a: 'Лук', w: ['Репа', 'Свёкла', 'Капуста'] },
+  { q: 'Красное коромысло через реку повисло.', a: 'Радуга', w: ['Река', 'Заря', 'Мост'] },
+  { q: 'Стоит Антошка на одной ножке; где солнце станет, туда он и глянет.', a: 'Подсолнух', w: ['Гриб', 'Ромашка', 'Столб'] },
+  { q: 'Не лёд, а тает, не лодка, а уплывает.', a: 'Снег', w: ['Вода', 'Тень', 'Дым'] },
+  { q: 'Кругла, а не месяц, желта, а не масло, с хвостом, а не мышь.', a: 'Репа', w: ['Луна', 'Картофель', 'Морковь'] },
+  { q: 'Без рук, без ног, а ворота отворяет.', a: 'Ветер', w: ['Дождь', 'Тень', 'Ночь'] },
+  { q: 'Что растёт без коренья?', a: 'Камень', w: ['Мох', 'Гриб', 'Лён'] },
+  { q: 'Что шумит без ветра?', a: 'Вода', w: ['Огонь', 'Камыш', 'Тень'] },
+  { q: 'От чего утка плавает?', a: 'От берега', w: ['От воды', 'От пера', 'От озера'] },
+  { q: 'Висит груша — нельзя скушать.', a: 'Лампочка', w: ['Луковица', 'Груша', 'Яблоко'] },
+  { q: 'Елка смахнётся — все люди оглянутся.', a: 'Дверь', w: ['Забор', 'Ставень', 'Ветка'] },
+  { q: 'Утка в море, хвост на заборе.', a: 'Ковш', w: ['Ложка', 'Чашка', 'Кувшин'] },
+  { q: 'Красная девица сидит в темнице, а коса на улице.', a: 'Морковь', w: ['Редиска', 'Свёкла', 'Капуста'] },
+  { q: 'Маленькая собачка свернувшись лежит: не лает, не кусает, а в дом не пускает.', a: 'Замок', w: ['Ключ', 'Щеколда', 'Собачка'] },
+  { q: 'Пять овечек стог подъедают, пять овечек прочь отбегают.', a: 'Руки и кудель', w: ['Овцы и сено', 'Пальцы и булавки', 'Овцы и пастух'] },
+  { q: 'Загуляла корова, всё поле рогами перепорола.', a: 'Соха', w: ['Корова', 'Серп', 'Грабли'] },
+  { q: 'Сам железный, хвост кудельный.', a: 'Иголка', w: ['Ножницы', 'Шило', 'Булавка'] },
+  { q: 'Два моря на дуге качаются.', a: 'Вёдра', w: ['Котлы', 'Бочки', 'Кувшины'] },
+  { q: 'Налетели голуби и сели вокруг пролуби.', a: 'Ложки', w: ['Голуби', 'Стружки', 'Платки'] },
+  { q: 'Летят гуськи, дубовые носки, шейки кожаные.', a: 'Цепы', w: ['Гуси', 'Птицы', 'Куры'] },
+  { q: 'Стоит озерко, в озерке штучка, в штучке окунёк.', a: 'Краска', w: ['Озеро', 'Стакан', 'Ручей'] },
+  { q: 'Катится барыльце, ни дна, ни рыльца.', a: 'Яйцо', w: ['Катушка', 'Мяч', 'Орех'] },
+  { q: 'Ты за ней, а она от тебя, ты от неё, а она за тобой.', a: 'Тень', w: ['Собака', 'Эхо', 'Мысль'] },
+  { q: 'Над нами кверху ногами.', a: 'Муха', w: ['Комар', 'Паук', 'Таракан'] },
+  { q: 'Без топора построена изба.', a: 'Паутина', w: ['Гнездо', 'Нора', 'Муравейник'] },
+  { q: 'Семьсот соловьят на подушках сидят.', a: 'Пчёлы', w: ['Птенцы', 'Кузнечики', 'Муравьи'] },
+  { q: 'Влетела чечотка, не зверь, не потка, на землю падёт — землю дерёт.', a: 'Жук', w: ['Птица', 'Овод', 'Слепень'] },
+  { q: 'Белый плуг побежал вдруг по чёрному полю.', a: 'Мел и доска', w: ['Снег и поле', 'Плуг и земля', 'Лошадь и поле'] },
+  { q: 'Два братца через дорогу живут, а никогда не видятся.', a: 'Глаза', w: ['Уши', 'Пальцы', 'Пятки'] },
+  { q: 'Два братца глядятся, а вместе не сойдутся.', a: 'Пол и потолок', w: ['Окна', 'Стены', 'Двери'] },
+  { q: 'Под большим зеркалом плюх-плюк-плюх.', a: 'Вода подо льдом', w: ['Дождь по крыше', 'Птицы на льду', 'Рыбы в реке'] },
+  { q: 'Не бык, а рогат.', a: 'Ухват', w: ['Коза', 'Баран', 'Корова'] },
+  { q: 'Криво-лукаво, куда побежало? — Зелено-кудряво, тебя стеречи!', a: 'Поле и изгородь', w: ['Река и лес', 'Дорога и кусты', 'Луг и пастух'] },
+  { q: 'Стоит дуб полон круп, шапочкой накрыт, гвоздиком прибит.', a: 'Мак', w: ['Орех', 'Подсолнух', 'Жёлудь'] },
+  { q: 'Без ветра, а шумит.', a: 'Река', w: ['Камыш', 'Огонь', 'Лес'] },
+  { q: 'Чего выше лесу?', a: 'Месяц', w: ['Гора', 'Солнце', 'Туча'] },
+  { q: 'Что не запереть в лукошко?', a: 'Солнце', w: ['Огонь', 'Воду', 'Ветер'] },
+  { q: 'Что ко всему липнет?', a: 'Имя', w: ['Пыль', 'Смола', 'Мёд'] },
+  { q: 'Что быстрей всего на свете?', a: 'Мысль', w: ['Ветер', 'Пуля', 'Птица'] },
+  { q: 'Ни на меру, ни на вес, и у каждого есть.', a: 'Ум', w: ['Сердце', 'Дыхание', 'Имя'] },
+  { q: 'Весной веселит, летом холодит, осенью питает, зимой согревает.', a: 'Дерево', w: ['Печь', 'Шуба', 'Река'] },
+  { q: 'Сам не видит, а дорогу показывает.', a: 'Верстовой столб', w: ['Фонарь', 'Месяц', 'След'] },
+  { q: 'Был я копан, был я топтан, был на кружале, был я на пожаре, сто голов кормил. Сделался стар — пеленаться стал, выбросили в окно, никому не надобно.', a: 'Горшок', w: ['Кирпич', 'Чугун', 'Ковш'] },
+  { q: 'Что у арбы спереди, то у стены сзади?', a: 'Буква «А»', w: ['Буква «Б»', 'Буква «В»', 'Буква «И»'] },
+  { q: 'Две дочери, две матери, да бабушка с внучкой. Всего сколько?', a: 'Трое', w: ['Пятеро', 'Четверо', 'Шестеро'] },
+  { q: 'Сивый жеребёнок в подворотню глядит.', a: 'Месяц', w: ['Конь', 'Туча', 'Овца'] },
+  { q: 'Конь гогочет, овса хочет.', a: 'Жернов', w: ['Лошадь', 'Мельник', 'Печь'] },
+  { q: 'Кобыла ржёт, кверху хвост дерёт.', a: 'Печь и дым', w: ['Лошадь и телега', 'Корова и хлев', 'Коза и забор'] },
+  { q: 'Телятки гладки, привязаны к грядке.', a: 'Огурцы', w: ['Цыплята', 'Поросята', 'Котята'] },
+  { q: 'Промеж гор, печор лежит бык печён, в брюхе мак толчён, в боку нож вострён.', a: 'Пирог', w: ['Каша', 'Кисель', 'Хлеб'] },
+  { q: 'За стеною костяною тетерев живёт.', a: 'Язык', w: ['Зуб', 'Рот', 'Нос'] },
+  { q: 'Две жердки белых курей.', a: 'Зубы', w: ['Глаза', 'Уши', 'Пальцы'] },
+  { q: 'Курица на курице, а хохол на улице.', a: 'Избы', w: ['Деревня', 'Стога', 'Столбы'] },
+  { q: 'Летели белые гуси, крылья русы, да нельзя из их по пёрышку вырвать.', a: 'Снег', w: ['Облака', 'Лебеди', 'Тучи'] },
+  { q: 'Катится катушка, ни зверь, ни птушка, ни камень, ни вода, — не отгадаешь никогда.', a: 'Солнце', w: ['Месяц', 'Облако', 'Звезда'] },
+  { q: 'По серебряному блюдечку золотое яблочко катится.', a: 'Солнце', w: ['Месяц', 'Звезда', 'Капля'] },
+  { q: 'Что выше леса, краше света?', a: 'Солнце', w: ['Месяц', 'Звезда', 'Гора'] },
+  { q: 'Взглянешь — заплачешь, а краше его нет на свете.', a: 'Солнце', w: ['Лук', 'Дым', 'Перец'] },
+  { q: 'Не сторожем родился, а всех рано будит.', a: 'Солнце', w: ['Петух', 'Будильник', 'Колокол'] },
+  { q: 'Над бабушкиной избушкой висит хлеба краюшка; собака лает, а достать не может.', a: 'Месяц', w: ['Луна', 'Звезда', 'Туча'] },
+  { q: 'Лысый конь через прясло глядит.', a: 'Месяц', w: ['Жеребец', 'Бык', 'Вол'] },
+  { q: 'То блин, то пол-блина, то та, то эта сторона.', a: 'Луна', w: ['Звезда', 'Кастрюля', 'Тарелка'] },
+  { q: 'Рассыпан по небу горох, его никто не соберёт: ни царь, ни царица, ни красная девица.', a: 'Звёзды', w: ['Крупа', 'Снег', 'Капли'] },
+  { q: 'Вся дорожка усеяна горошком.', a: 'Звёздное небо', w: ['Поле', 'Тропинка', 'Крыша'] },
+  { q: 'Вечером рассыпался горох, утром встал — нет ничего.', a: 'Звёзды', w: ['Роса', 'Снег', 'Туман'] },
+  { q: 'Голубой шатёр весь мир накрыл.', a: 'Небо', w: ['Туча', 'Море', 'Облако'] },
+  { q: 'Летит орлица по синему небу, крылья распластала, солнышко застлала.', a: 'Туча', w: ['Птица', 'Ветер', 'Тень'] },
+  { q: 'Не стукнет, не брякнет, а в окно войдёт.', a: 'Рассвет', w: ['Гость', 'Ветер', 'Дождь'] },
+  { q: 'Погляди через ворота — там щучка золота.', a: 'Заря', w: ['Луна', 'Солнце', 'Рыба'] },
+  { q: 'Заржал жеребец на Сиенских горах, услышала кобыла на сырой земле.', a: 'Гром', w: ['Ветер', 'Собака', 'Эхо'] },
+  { q: 'Без рук, без ног под окном стучит — в избу просится.', a: 'Ветер', w: ['Дождь', 'Снег', 'Гость'] },
+  { q: 'Вокруг носа вьётся, а в руки не даётся.', a: 'Ветер', w: ['Запах', 'Пыль', 'Дым'] },
+  { q: 'Летит, не птица, воет, а не зверь.', a: 'Ветер', w: ['Гром', 'Эхо', 'Дождь'] },
+  { q: 'И тонок, и долог, а сядет в траву — не видать.', a: 'Дождь', w: ['Столб', 'Шест', 'Тень'] },
+  { q: 'Шёл долговяз, в сыру землю увяз.', a: 'Дождь', w: ['Столб', 'Журавль', 'Шест'] },
+  { q: 'Меня часто просят, ждут, а только покажусь — как прятаться начнут.', a: 'Дождь', w: ['Солнце', 'Гость', 'Рассвет'] },
+  { q: 'Крупно, дробно зачастило, всю землю напоило.', a: 'Дождь', w: ['Град', 'Снег', 'Роса'] },
+  { q: 'Что видно только ночью?', a: 'Звёзды', w: ['Солнце', 'Луна', 'Тучи'] },
+  { q: 'Поле не мерено, овцы не считаны, пастух рогат.', a: 'Небо, звёзды и месяц', w: ['Луг, овцы и пастух', 'Стол, ложки и хозяин', 'Лес, звери и охотник'] },
+  { q: 'Днём стекло разбито, ночью вставлено.', a: 'Прорубь', w: ['Окно', 'Лужа', 'Колодец'] },
+  { q: 'Течёт, течёт — не вытечет, бежит, бежит — не выбежит.', a: 'Река', w: ['Ручей', 'Поток', 'Дождь'] },
+  { q: 'Летом бежит, а зимой стоит.', a: 'Река', w: ['Ручей', 'Дорога', 'Камень'] },
+  { q: 'Зимой спит, а летом шумит.', a: 'Река', w: ['Медведь', 'Печь', 'Лес'] },
+  { q: 'Не конь, а бежит, не лес, а шумит.', a: 'Река', w: ['Дорога', 'Ветер', 'Поле'] },
+  { q: 'Красная девица по полю ходила, ключи потеряла; месяц видел, солнце подняло.', a: 'Роса', w: ['Заря', 'Туча', 'Ночь'] },
+  { q: 'Сивая кобыла по лесу ходила, домой пришла, по рукам пошла.', a: 'Сито', w: ['Прялка', 'Мешок', 'Решето'] },
+  { q: 'Новая посудина — вся в дырках.', a: 'Сито', w: ['Корзина', 'Решето', 'Дуршлаг'] },
+  { q: 'Лежит свинка, вырезана спинка.', a: 'Корыто', w: ['Ложка', 'Кадка', 'Лохань'] },
+  { q: 'Три ноги, два уха, а шестое брюхо.', a: 'Лохань', w: ['Корыто', 'Ушат', 'Кадка'] },
+  { q: 'У туши уши, а головы нет.', a: 'Ушат', w: ['Кадка', 'Лохань', 'Корыто'] },
+  { q: 'Без рук, без ног, а рубашку просит.', a: 'Подушка', w: ['Перина', 'Одеяло', 'Простыня'] },
+  { q: 'Четыре уха, да два брюха.', a: 'Подушка', w: ['Одеяло', 'Перина', 'Ковёр'] },
+  { q: 'Стоят четыре брата под одной шляпой.', a: 'Стол', w: ['Табурет', 'Шкаф', 'Стул'] },
+  { q: 'Я с ножками, но не хожу, со спинкою, но не лежу, садитесь вы — я не сижу.', a: 'Стул', w: ['Стол', 'Кресло', 'Скамья'] },
+  { q: 'Сидит верхом, не знаю на ком, знакомца встречу — сразу соскочу.', a: 'Шапка', w: ['Шляпа', 'Платок', 'Картуз'] },
+  { q: 'В лесу родился, в руках учился, на ногах умер.', a: 'Лапти', w: ['Сапоги', 'Валенки', 'Чоботы'] },
+  { q: 'Из липы свито дырявое корыто.', a: 'Лапти', w: ['Корыто', 'Кадка', 'Лохань'] },
+  { q: 'Привяжешь — пойдут, отвяжешь — отвалятся.', a: 'Лапти', w: ['Лыжи', 'Коньки', 'Сани'] },
+  { q: 'Два крота, четыре хвоста.', a: 'Лапти', w: ['Рукавицы', 'Чулки', 'Носки'] },
+  { q: 'Хожу на голове, хотя и на ногах, хожу я босиком, хотя и в сапогах.', a: 'Гвоздь в сапоге', w: ['Стелька', 'Подошва', 'Каблук'] },
+  { q: 'Весь в шерсти, а кожи нет.', a: 'Валенки', w: ['Шуба', 'Тулуп', 'Рукавицы'] },
+  { q: 'Разошлись мальчики по чуланчикам, каждый мальчик в свой чуланчик.', a: 'Рука в перчатке', w: ['Ноги в сапогах', 'Пальцы в напёрстке', 'Карандаши в пенале'] },
+  { q: 'Пять сараев — одна дверь.', a: 'Перчатка', w: ['Рукавица', 'Шапка', 'Куртка'] },
+  { q: 'Упрятались голышки во мохнатые мешки, четверо вместе, один на шесте.', a: 'Варежки', w: ['Перчатки', 'Носки', 'Чулки'] },
+  { q: 'Сам верхом, а ноги за ушами.', a: 'Очки', w: ['Шапка', 'Картуз', 'Серьги'] },
+  { q: 'Зубов много, а ничего не ест.', a: 'Гребень', w: ['Пила', 'Расчёска', 'Щётка'] },
+  { q: 'Висит, мотается, всяк за него хватается.', a: 'Полотенце', w: ['Скатерть', 'Занавеска', 'Простыня'] },
+  { q: 'Вокруг кола золота трава.', a: 'Кольцо на пальце', w: ['Венок', 'Браслет', 'Обруч'] },
+  { q: 'Без начала, без конца.', a: 'Кольцо', w: ['Обруч', 'Браслет', 'Шнур'] },
+  { q: 'В ненастье должен я гулять, а в ясный день в углу стоять.', a: 'Зонтик', w: ['Плащ', 'Шляпа', 'Фонарь'] },
+  { q: 'Что у тебя меж ногами, то и у меня.', a: 'Порог', w: ['Пол', 'Ступенька', 'Доска'] },
+  { q: 'Через речку повисло красное коромысло.', a: 'Радуга', w: ['Мост', 'Заря', 'Река'] },
+  { q: 'Влезет в окно, растянется, как сукно, не прогонишь ни перстом, ни шестом, пора придёт, сам уйдёт.', a: 'Солнечный луч', w: ['Дождь', 'Ветер', 'Тень'] },
+  { q: 'Ни птица, ни дух — летает вокруг.', a: 'Туча', w: ['Ветер', 'Дым', 'Птица'] },
+  { q: 'Что жирней всего на свете?', a: 'Земля', w: ['Масло', 'Сало', 'Глина'] },
+  { q: 'Баба-яга костяная нога, сама не ест, а людей кормит.', a: 'Земля', w: ['Печь', 'Корова', 'Яблоня'] },
+  { q: 'Чист и ясен, как алмаз, дорог не бывает, он от матери рождён, сам её рождает.', a: 'Лёд', w: ['Снег', 'Стекло', 'Роса'] },
+  { q: 'Без рук, без ног, а рисует.', a: 'Мороз', w: ['Ветер', 'Дождь', 'Тень'] },
+  { q: 'Красненький котёночек по жёрдочке бежит.', a: 'Огонь', w: ['Пар', 'Дым', 'Искра'] },
+  { q: 'Лыки дерёт, а лаптей не имеет.', a: 'Коза', w: ['Овца', 'Баран', 'Корова'] },
+  { q: 'Сидит кошка на окошке, собой будто кошка, голова и хвост у ней как у кошки, всё-таки не кошка.', a: 'Кот', w: ['Собака', 'Лиса', 'Рысь'] },
+  { q: 'Четыре четырки, две растопырки, один махай.', a: 'Корова', w: ['Собака', 'Кошка', 'Лошадь'] },
+  { q: 'Четыре братца в одну конурку льют.', a: 'Коровье вымя', w: ['Коровьи рога', 'Коровьи ноги', 'Коровьи уши'] },
+  { q: 'Под полом ходит барыня с колом.', a: 'Крыса', w: ['Мышь', 'Кошка', 'Собака'] },
+
+  /* --- Новые из собрания 5 --- */
+  { q: 'Церковь белена, кисти зелены.', a: 'Берёза', w: ['Ива', 'Ольха', 'Осина'] },
+  { q: 'Стоит дерево, в этом дереве сусло да масло; при темне — свет, при поле — смерть, старому — потеха, а молодому — наука.', a: 'Берёза', w: ['Ива', 'Клён', 'Липа'] },
+  { q: 'Стоит древо зелено-кудряво, на этом древе сусло и масло, и заду лекарство, и ногам тепло.', a: 'Берёза', w: ['Дуб', 'Клён', 'Вяз'] },
+  { q: 'Красный катышок, зелёный черешок.', a: 'Земляника', w: ['Малина', 'Клубника', 'Костяника'] },
+  { q: 'Что за растение, и слепые знают?', a: 'Крапива', w: ['Полынь', 'Лебеда', 'Осот'] },
+  { q: 'На горе шумит, а под горой молчит.', a: 'Лес', w: ['Поле', 'Луг', 'Сад'] },
+  { q: 'Бей меня, ломи меня; есть у меня гладко, в гладке сладко.', a: 'Орех', w: ['Жёлудь', 'Каштан', 'Семечко'] },
+  { q: 'Стоит древо-кудряво, когти — волчьи; кто подойдёт, того и обоймёт.', a: 'Репей', w: ['Шиповник', 'Крапива', 'Осот'] },
+  { q: 'Стоит древо; кто подойдёт, того и заграбат.', a: 'Репей', w: ['Шиповник', 'Крапива', 'Осот'] },
+  { q: 'Пойду я на горушку, заколю белую телушку, мясо брошу, кожу брошу, одно сальчико съем.', a: 'Сок берёзы', w: ['Сок клёна', 'Сок дуба', 'Сок липы'] },
+  { q: 'Стоит сто столбов, у ста столбов сто петель, у ста петель сто кистей.', a: 'Хмель', w: ['Плющ', 'Виноград', 'Горох'] },
+  { q: 'Дерево голанское, листья боярски, когти цепки.', a: 'Шиповник', w: ['Репей', 'Крапива', 'Осот'] },
+  { q: 'Стоит древо деревянское, платье малаханское, цветы нежны, когти цепки.', a: 'Шиповник', w: ['Репей', 'Боярышник', 'Тёрн'] },
+  { q: 'Стоит Антошка низок, на нём семьдесят ризок.', a: 'Вилок капустный', w: ['Сноп', 'Стог', 'Куст'] },
+  { q: 'Сидит Маршутка в семидесяти семи шубках.', a: 'Вилок капустный', w: ['Лук', 'Кочан', 'Редька'] },
+  { q: 'Стоит столбик, ни высок, ни низок, на нём сорок ризок.', a: 'Вилок капустный', w: ['Сноп', 'Куст', 'Пень'] },
+  { q: 'Мал-малышок в сыру землю ушёл, синю шапку нашёл.', a: 'Лён', w: ['Конопля', 'Клевер', 'Тимофеевка'] },
+  { q: 'Сидит на грядке вся в заплатках; кто потрогает, тот взвоет.', a: 'Луковица', w: ['Капуста', 'Редька', 'Репа'] },
+  { q: 'Сидит Игнатко на грядке, весь в заплатках; кто его потрогает, тот и заплачет.', a: 'Луковица', w: ['Капуста', 'Редька', 'Репа'] },
+  { q: 'Есть на свете «чупка» в семи юбках; кто её поцелует, тот сморщится.', a: 'Луковица', w: ['Капуста', 'Редька', 'Репа'] },
+  { q: 'Сидит бабушка в семи кожухах; кто её раздевает, слёзы проливает.', a: 'Луковица', w: ['Капуста', 'Редька', 'Репа'] },
+  { q: 'Сидит кукла в семи юбках; кто заденет, тот заплачет.', a: 'Луковица', w: ['Капуста', 'Редька', 'Репа'] },
+  { q: 'Сидит девица в темнице, коса на виду.', a: 'Морковь', w: ['Редиска', 'Свёкла', 'Репа'] },
+  { q: 'Под ярусом-ярусом висит зипун с гарусом.', a: 'Рябина', w: ['Калина', 'Брусника', 'Клюква'] },
+  { q: 'В подполье осот бородой трясёт.', a: 'Хрен', w: ['Редька', 'Морковь', 'Свёкла'] },
+  { q: 'Шут в луже, борода наруже.', a: 'Хрен', w: ['Редька', 'Морковь', 'Свёкла'] },
+  { q: 'Платье потерялось, пуговка осталась.', a: 'Черёмуха осенью', w: ['Рябина зимой', 'Калина осенью', 'Боярышник зимой'] },
+  { q: 'Не бей меня, не руби меня, полезь на меня, да накушайся.', a: 'Черёмуха', w: ['Рябина', 'Калина', 'Смородина'] },
+  { q: 'Кругло-мохнато, меж ним горбато; придёт беда, потечёт вода.', a: 'Глаза', w: ['Уши', 'Пальцы', 'Ноздри'] },
+  { q: 'Два братца рядом живут, друг с другом не видятся.', a: 'Глаза', w: ['Уши', 'Пальцы', 'Ноги'] },
+  { q: 'Белая лебедь всяким кушана.', a: 'Грудь матери', w: ['Молоко', 'Сметана', 'Творог'] },
+  { q: 'Сахар да медан, всяк его едал, ложкой не хлебал, ножом не резывал.', a: 'Грудь матери', w: ['Мёд', 'Сахар', 'Варенье'] },
+  { q: 'Два ходила, два махала, два смотрела, одно кивало.', a: 'Ноги, руки, глаза, голова', w: ['Лапы, крылья, глаза, хвост', 'Копыта, рога, уши, хвост', 'Пальцы, ладони, глаза, шея'] },
+  { q: 'Пять угланчиков, у каждого по чуланчику.', a: 'Пальцы в перчатках', w: ['Пальцы в рукавице', 'Ноги в сапогах', 'Ложки в подставке'] },
+  { q: 'Стоит столб, на столбе — овин, на овине — солома, на соломе свиньи роются.', a: 'Тело человека', w: ['Дом', 'Печь', 'Колодец'] },
+  { q: 'Стоит древо, на древе — костёр, в костре свиньи есть.', a: 'Тело человека', w: ['Дерево и гнездо', 'Дом и печь', 'Изба и труба'] },
+  { q: 'Не сохнет, не мокнет, не куржевеет.', a: 'Язык', w: ['Зуб', 'Губа', 'Нёбо'] },
+  { q: 'В печь несут — жидко, горячо; из печи — густо, холодно.', a: 'Гороховый кисель', w: ['Овсяный кисель', 'Молочный кисель', 'Ягодный кисель'] },
+  { q: 'Не пьют, не едят, не жуют, а глотают и снова выпускают.', a: 'Курят табак', w: ['Жуют жвачку', 'Пьют чай', 'Дышат воздухом'] },
+  { q: 'Налетели голуби и сели кругом пролуби.', a: 'Ложки около блюда', w: ['Птицы у проруби', 'Рыбы у кормушки', 'Мыши у сыра'] },
+  { q: 'Бежали беженцы по липовым мостевцам, увидали зарю — побросались в воду.', a: 'Пельмени', w: ['Вареники', 'Клецки', 'Галушки'] },
+  { q: 'Летели гусельцы по липовым мостянцам, увидали зарю — побросались в воду.', a: 'Пельмени', w: ['Вареники', 'Клецки', 'Галушки'] },
+  { q: 'Из воды родится, а воды боится.', a: 'Соль', w: ['Сахар', 'Сода', 'Мука'] },
+  { q: 'На воде родился, на огне крестился, мать увидал — сам умер.', a: 'Соль', w: ['Сахар', 'Хлеб', 'Кисель'] },
+  { q: 'Што за кушанье: вари в двух фунтах соли, а будешь есть, ещё солить придётся.', a: 'Яйцо', w: ['Каша', 'Суп', 'Картошка'] },
+  { q: 'В маленьком кавашонке два теста.', a: 'Яйцо', w: ['Пирог', 'Батон', 'Калач'] },
+  { q: 'Хожу на голове, а ногами к ногам.', a: 'Гвозди в сапогах', w: ['Гвозди в стене', 'Гвозди в доске', 'Гвозди в крыше'] },
+  { q: 'Родился не видко, вырос на драку.', a: 'Гребень', w: ['Пила', 'Топор', 'Коса'] },
+  { q: 'Шёл по одной, вышел из двух.', a: 'Ноги в брюках', w: ['Ноги в сапогах', 'Ноги в чулках', 'Ноги в валенках'] },
+  { q: 'Што имеет пять пальцев, но ни одного ногтя?', a: 'Перчатки', w: ['Рукавицы', 'Носки', 'Чулки'] },
+  { q: 'Стульчики-батульчики по полу катаются, в руки не даются.', a: 'Клубы холода зимой', w: ['Клубы дыма', 'Клубы пыли', 'Клубы пара'] },
+  { q: 'Шарики-барики к столу катятся, а в руки не даются.', a: 'Клубы холода зимой', w: ['Клубы дыма', 'Клубы пыли', 'Клубы пара'] },
+  { q: 'Санки-самокатки зиму и лето всё катаются.', a: 'Ставни', w: ['Двери', 'Окна', 'Ворота'] },
+  { q: 'Круг избушки, всё серебрушки.', a: 'Сучки в стене', w: ['Мох в пазах', 'Гвозди в досках', 'Капли на стене'] },
+  { q: 'Хозяин стал выживать собаку из избы: «Сучка, вон! Сучка, вон!» Сучка не идёт из избы.', a: 'Сучки в стене', w: ['Собака в будке', 'Мышь в норе', 'Кошка на печи'] },
+  { q: 'Стоит Андрюха, побитое брюхо.', a: 'Гумно', w: ['Сарай', 'Амбар', 'Овин'] },
+  { q: 'Стоит Петруха, соломенно брюхо.', a: 'Гумно', w: ['Сарай', 'Амбар', 'Овин'] },
+  { q: 'Летит ворон через Китай-город, уронил кишку в золотую трубу.', a: 'Деревянный колодец', w: ['Печной дымоход', 'Водосточная труба', 'Подзорная труба'] },
+  { q: 'Два братца не сойдутся, пояском подпоясаны одним.', a: 'Колья огорода', w: ['Два столба', 'Два дерева', 'Два колодца'] },
+  { q: 'Корова пёстра, титьки востры, вымя на боку.', a: 'Мельница', w: ['Корова', 'Коза', 'Овца'] },
+  { q: 'Стоит Григорий под угором, шатром покрылся, копьём подпёрся.', a: 'Овин', w: ['Сарай', 'Амбар', 'Рига'] },
+  { q: 'За морем-морем добро ясно горит.', a: 'Горящие дрова в печке', w: ['Заря на небе', 'Огонь в костре', 'Свеча на окне'] },
+  { q: 'Синенько суконко, тянется в оконцо.', a: 'Дым', w: ['Туча', 'Ткань', 'Полог'] },
+  { q: 'Ходит Хам по избам, лезет Хам ко глазам, отворю окошко: «Выйди, Хам!»', a: 'Дым', w: ['Пар', 'Пыль', 'Туман'] },
+  { q: 'Стоит тюрьма, в тюрьме — ящик, в ящике — мучка, в мучке — золотая жучка.', a: 'Дым, печь, зола, загнета', w: ['Дом, чулан, мешок, зерно', 'Погреб, бочка, мука, жук', 'Сарай, ларь, отруби, червяк'] },
+  { q: 'Стоит свинья — красные бока.', a: 'Железная печка', w: ['Чугунный котёл', 'Медный самовар', 'Кирпичный дом'] },
+  { q: 'Стоит свинка — золотая щетинка.', a: 'Железная печка', w: ['Чугунный котёл', 'Медный самовар', 'Кирпичный дом'] },
+  { q: 'Лежит волчок, вырван бочок.', a: 'Залавок', w: ['Сундук', 'Ларь', 'Ящик'] },
+  { q: 'Суну-посуну в каменну посуду, в край поволочу, всё позолочу.', a: 'Клюка и угли', w: ['Ложка и каша', 'Поварёшка и суп', 'Рука и печь'] },
+  { q: 'Чёрный ворон золото клюёт.', a: 'Клюка и угли', w: ['Ворона и зерно', 'Птица и крошки', 'Сорока и бусы'] },
+  { q: 'Чёрный кот Матрёну трёт.', a: 'Кочерга в печи', w: ['Кот и мышь', 'Пёс и кошка', 'Хорёк и курица'] },
+  { q: 'Разломаю клетку, царю не скласть.', a: 'Лучины нащеплю', w: ['Дрова нарублю', 'Сено разметаю', 'Стог разбросаю'] },
+  { q: 'Суха-суха Лукерья, шут Матвей привалился к ней.', a: 'Печь и голбец', w: ['Печь и кочерга', 'Печь и ухват', 'Печь и заслонка'] },
+  { q: 'Мать толста, дочь красна, сын храбрец, ушёл под небеса.', a: 'Печь, огонь, дым', w: ['Река, вода, пар', 'Земля, трава, туман', 'Свеча, огонь, дым'] },
+  { q: 'Стоит Антошка на одной ножке, крошит крошки.', a: 'Светильня', w: ['Лучина', 'Свеча', 'Факел'] },
+  { q: 'Самсон нагишом, рубашка в пазухе.', a: 'Свеча', w: ['Лампа', 'Лучина', 'Факел'] },
+  { q: 'Залезла Варвара выше амбара, не ест и не пьёт, всё на небо глядит.', a: 'Труба', w: ['Колодец', 'Печь', 'Дым'] },
+  { q: 'Не велик мужичок, ножки гладеньки, подпоясан коротенько, по избе пройдёт, пыль пойдёт.', a: 'Веник', w: ['Метла', 'Щётка', 'Помело'] },
+  { q: 'Скок-скок по лавочкам, скок-скок по подлавочкам, сел в уголок, не ворохнётся.', a: 'Веник', w: ['Метла', 'Помело', 'Щётка'] },
+  { q: 'Без рук возьмёт, вздымет, не уронит.', a: 'Деревянный колодец', w: ['Колодец', 'Журавль', 'Ворот'] },
+  { q: 'Гибкий лес на плечи залез.', a: 'Коромысло', w: ['Хомут', 'Дуга', 'Седелка'] },
+  { q: 'Медвежья нога пол царапат.', a: 'Помело', w: ['Веник', 'Метла', 'Щётка'] },
+  { q: 'Ерийко поерит-поерит — опять в голубец убежит.', a: 'Помело', w: ['Веник', 'Метла', 'Щётка'] },
+  { q: 'Чернинька коровка — маленьки ножки.', a: 'Ухват', w: ['Кочерга', 'Рогач', 'Сковородник'] },
+  { q: 'Два моря на дуге качаются.', a: 'Вёдра на коромысле', w: ['Бочки на телеге', 'Котлы на огне', 'Кувшины на полке'] },
+  { q: 'Был на топтале, был на кружале, был на пожаре; домой пришёл, всю семью кормил.', a: 'Горшок', w: ['Чугун', 'Ковш', 'Котёл'] },
+  { q: 'Был я на копанце, был я на топанце, был я на пожаре, очутился на базаре.', a: 'Горшок', w: ['Чугун', 'Ковш', 'Котёл'] },
+  { q: 'На сторожах поставлен, много раз обернут, к огню передан, в море ввергнут; сколько ни поживёт — умрёт — его земля не примет.', a: 'Горшок', w: ['Ковш', 'Чугун', 'Котёл'] },
+  { q: 'В брюхе баня, в носу решето, на голове пупок, одна рука, да и та на заде.', a: 'Чайник', w: ['Самовар', 'Кувшин', 'Кофейник'] },
+  { q: 'В земле родился, в огне крестился, пошёл правду искать.', a: 'Безмен', w: ['Молоток', 'Клин', 'Топор'] },
+  { q: 'В земле родилось, в огне крестилось, по миру пошло, всю правду нашло.', a: 'Безмен', w: ['Молоток', 'Клин', 'Топор'] },
+  { q: 'Худая рогожа всё поле покрыла.', a: 'Борона', w: ['Соха', 'Плуг', 'Грабли'] },
+  { q: 'Чем больше верчусь, тем больше становлюсь.', a: 'Веретено', w: ['Клубок', 'Снежный ком', 'Лавина'] },
+  { q: 'Мать — лопотунья, дочери — хвастуньи, сын — заплетай.', a: 'Ладонь, мётлы, вилы', w: ['Мать, дочки, сын', 'Печь, кочерга, ухват', 'Изба, сени, крыльцо'] },
+  { q: 'Мать — оладейка, дочери — помазунчики, сыновья — хватоны.', a: 'Ладонь, мётлы, вилы', w: ['Мать, дочки, сын', 'Печь, кочерга, ухват', 'Изба, сени, крыльцо'] },
+  { q: 'Братцы — хватцы, сеструшки — ползушки.', a: 'Молотило и мётлы', w: ['Цеп и грабли', 'Вилы и лопата', 'Коса и серп'] },
+  { q: 'Старая собака кости жуёт.', a: 'Мялка', w: ['Пила', 'Тёрка', 'Мельница'] },
+  { q: 'Мелко жуёт, сама не ест и другим не даёт.', a: 'Пила', w: ['Мялка', 'Тёрка', 'Мельница'] },
+  { q: 'Летом — по полям, зимой — по щелям.', a: 'Серп', w: ['Коса', 'Грабли', 'Вилы'] },
+  { q: 'Горбатенькой, зуброватенькой по полю скачет.', a: 'Серп', w: ['Коса', 'Грабли', 'Борона'] },
+  { q: 'Маленькой, горбатенькой, всё поле пробежал, домой прибежал, весь год пролежал.', a: 'Серп', w: ['Коса', 'Грабли', 'Вилы'] },
+  { q: 'Заглянула корова, всё поле рогами перепорола.', a: 'Соха', w: ['Плуг', 'Борона', 'Корова'] },
+  { q: 'Свинья о два рога, о два клыка, землю роет, а не ест.', a: 'Соха', w: ['Плуг', 'Борона', 'Лопата'] },
+  { q: 'Два рога, одна нога.', a: 'Соха', w: ['Плуг', 'Ухват', 'Вилы'] },
+  { q: 'Весь мир кормит, сама голодна.', a: 'Соха', w: ['Мельница', 'Плуг', 'Корова'] },
+  { q: 'Баба-Яга, вилами нога, весь мир кормит, себе только зубы портит.', a: 'Соха', w: ['Плуг', 'Борона', 'Коса'] },
+  { q: 'Лежит под лавицей стальная задница.', a: 'Топор', w: ['Коса', 'Серп', 'Пила'] },
+  { q: 'Два рожка, одна ножка.', a: 'Ухват', w: ['Вилы', 'Рогач', 'Кочерга'] },
+  { q: 'Слепой поросёнок, а в огород полезет.', a: 'Челнок', w: ['Крот', 'Мышь', 'Ёж'] },
+  { q: 'На поле на Ярском лежат люди боярски, головы обриты, брюха распороты.', a: 'Снопы', w: ['Копны', 'Стога', 'Скирды'] },
+  { q: 'Роговатину везут моховатину колоть.', a: 'Вилы и сено', w: ['Грабли и трава', 'Коса и трава', 'Топор и дрова'] },
+  { q: 'Сила двинет, лес повянет, на то место гора встанет.', a: 'Косят', w: ['Жнут', 'Молотят', 'Пашут'] },
+  { q: 'Едешь, едешь — не объедешь.', a: 'Косят', w: ['Жнут', 'Молотят', 'Пашут'] },
+  { q: 'Чекатунчики летят, меж собою говорят: чи-ки-чок, чи-ки-чок!', a: 'Молотьба', w: ['Жатва', 'Косьба', 'Сев'] },
+  { q: 'Светленька, тоненька, век свой по миру ходит, к работе отпустит.', a: 'Иголка', w: ['Булавка', 'Спица', 'Шило'] },
+  { q: 'Свинка — золота щетинка, ленной хвост, по белу свету скачет, весь мир красит.', a: 'Иголка', w: ['Булавка', 'Спица', 'Шило'] },
+  { q: 'Маленькой, горбатенькой по городу скачет, всех людей красит.', a: 'Иголка', w: ['Булавка', 'Спица', 'Шило'] },
+  { q: 'Сам железной, хвост кудельной.', a: 'Иголка', w: ['Булавка', 'Спица', 'Шило'] },
+  { q: 'Бежит спинка — железная спинка, ленной хвостик.', a: 'Иголка', w: ['Булавка', 'Спица', 'Шило'] },
+  { q: 'Пятеро держат, двое суют, двое глядят.', a: 'Иголка', w: ['Булавка', 'Спица', 'Шило'] },
+  { q: 'Ехал, ехал, выпал вехоть, полно ехать.', a: 'Завертка порвалась', w: ['Верёвка лопнула', 'Ось сломалась', 'Колесо отпало'] },
+  { q: 'Санки Савины, оглобли Харины, дуга Екимова, кобылка Строгана, бежит да вздрагивает.', a: 'Лодка', w: ['Телега', 'Сани', 'Воз'] },
+  { q: 'В лесу родится, на воде живёт, на огне умирает.', a: 'Лодка', w: ['Телега', 'Сани', 'Воз'] },
+  { q: 'Ни глаз, ни ушей, а слепых водит.', a: 'Палка', w: ['Собака', 'Поводырь', 'Фонарь'] },
+  { q: 'Два кума Обакума, две сестры Овдотьи, пять братьев Пантелеев, пять Андреев.', a: 'Части дровней', w: ['Части телеги', 'Части саней', 'Части плота'] },
+  { q: 'Што за зверь: две головы, шесть ног, один хвост?', a: 'Человек на лошади', w: ['Конь и всадник', 'Бык и пахарь', 'Корова и доярка'] },
+  { q: 'Под мостом калистом камень развалистой.', a: 'Книга', w: ['Камень под мостом', 'Клад под камнем', 'Мешок под лавкой'] },
+  { q: 'Воронко ушёл, ржёт и домой нейдёт.', a: 'Паровоз', w: ['Конь', 'Бык', 'Лось'] },
+  { q: 'Сто вёрст промахал, нигде не видал.', a: 'Паровоз', w: ['Конь', 'Птица', 'Ветер'] },
+  { q: 'Петушок без глаз, а метко клюёт.', a: 'Ружьё', w: ['Топор', 'Молот', 'Клещи'] },
+  { q: 'Маленький, брюхатенький, пойди в лесок, раздуй песок.', a: 'Ружьё', w: ['Топор', 'Молот', 'Клещи'] },
+  { q: 'Чёрный кочан дернуть хочет.', a: 'Ружьё', w: ['Топор', 'Молот', 'Клещи'] },
+  { q: 'Летит птица — орёл, крылом махнула, весь свет закрыла.', a: 'Ночь', w: ['Туча', 'Буря', 'Мгла'] },
+  { q: 'Обулся не так, оболокся не так, завалился в ухаб и не вылезти никак.', a: 'Умер', w: ['Уснул', 'Заболел', 'Устал'] },
+  { q: 'В бабе два, в девке ни одного.', a: 'Звук «Б»', w: ['Звук «А»', 'Звук «В»', 'Звук «О»'] },
+  { q: 'Кое у Бориса спереди, то у Глеба сзади.', a: 'Звук «Б»', w: ['Звук «А»', 'Звук «В»', 'Звук «О»'] },
+  { q: '121 яйцо скольким людям можно разделить поровну?', a: '11 человекам', w: ['10 человекам', '12 человекам', '13 человекам'] },
+  { q: 'На окошке 4 кошки, у каждой кошки 4 котёнка. Сколько у них у шеи ног?', a: 'У шеи ног нет', w: ['4 ноги', '8 ног', '16 ног'] },
+  { q: 'У семи ослов много ли у шеи хвостов?', a: 'У шеи хвостов нет', w: ['Семь хвостов', 'Ни одного', 'Четырнадцать хвостов'] },
+  { q: 'Заржал жеребец на сияновой горе, услыхали кобылы на сырой земле.', a: 'Гром', w: ['Ветер', 'Эхо', 'Голос'] },
+  { q: 'Рассыпался стакан по всем городам, никому не собрать.', a: 'Звёзды', w: ['Капли', 'Град', 'Крупа'] },
+  { q: 'Деревни, города спят, один бабай не спит.', a: 'Месяц', w: ['Солнце', 'Звезда', 'Туча'] },
+  { q: 'Без рук, без ног — ворота отворяет.', a: 'Ветер', w: ['Дождь', 'Гром', 'Мороз'] },
+  { q: 'Кто всех сильней?', a: 'Вода', w: ['Ветер', 'Огонь', 'Камень'] },
+  { q: 'Что на огне не горит и в воде не тонет?', a: 'Лёд', w: ['Камень', 'Железо', 'Стекло'] },
+  { q: 'Есть штука — три крюка, и нет их кривей.', a: 'Огород, река и дорога', w: ['Дорога, поле и лес', 'Поле, река и луг', 'Двор, сад и огород'] },
+  { q: 'Зимой греет, летом тлеет, осенью оживает, весной умирает.', a: 'Снег', w: ['Лёд', 'Трава', 'Лист'] },
+  { q: 'Четыре сестрички в одну лунку льют.', a: 'Вымя', w: ['Рога', 'Копыта', 'Уши'] },
+  { q: 'Четыре ходаста, два бодаста, один мухтарь, два ухтаря.', a: 'Корова', w: ['Коза', 'Овца', 'Собака'] },
+  { q: 'Четыре четырки, две растопырки, один хлестун.', a: 'Корова', w: ['Коза', 'Овца', 'Собака'] },
+  { q: 'Кто родится с усами?', a: 'Котёнок', w: ['Щенок', 'Ягнёнок', 'Козлёнок'] },
+  { q: 'Не шито, не кроено, а клинья вставлены.', a: 'Пеганый конь', w: ['Пятнистая корова', 'Пёстрая курица', 'Рябая свинья'] },
+  { q: 'На улице пирогом, а в избе калачом.', a: 'Собака', w: ['Кошка', 'Корова', 'Свинья'] },
+  { q: 'Кто на себе свой дом носит?', a: 'Улитка', w: ['Черепаха', 'Ёж', 'Муравей'] },
+  { q: 'Четыре старичка назад бородами.', a: 'Щётки у ног коня', w: ['Копыта коня', 'Рога коровы', 'Лапы собаки'] },
+  { q: 'Через избу не перебросишь.', a: 'Перо', w: ['Пушинку', 'Соломинку', 'Пылинку'] },
+  { q: 'На крышу не забросишь, на печку не поставишь.', a: 'Перо и яйцо', w: ['Пушинку и яйцо', 'Соломинку и яйцо', 'Пёрышко и яйцо'] },
+  { q: 'Маленька сарыночка храм сворачивает.', a: 'Клоп', w: ['Блоха', 'Вошь', 'Таракан'] },
+  { q: 'На яру, на бору, стоит старичок, красный колпачок.', a: 'Гриб', w: ['Пень', 'Куст', 'Камень'] },
+  { q: 'Не гни меня, не ломай меня, залезь на меня, накушайся, начерюмкайся.', a: 'Черёмуха', w: ['Рябина', 'Калина', 'Смородина'] },
+  { q: 'Черненькая, маленькая, всему свету миленькая.', a: 'Черёмуха', w: ['Рябина', 'Калина', 'Смородина'] },
+  { q: 'Полно корыто людей намыто.', a: 'Огурцы', w: ['Помидоры', 'Арбузы', 'Дыни'] },
+  { q: 'Два братца через дорожку живут, друг дружку не видят.', a: 'Глаза', w: ['Уши', 'Пальцы', 'Ноги'] },
+  { q: 'Полно подполье гусей да лебедей.', a: 'Зубы', w: ['Звёзды на небе', 'Гуси на озере', 'Ложки в столе'] },
+  { q: 'Из-под печки выглядывают белые овечки.', a: 'Зубы', w: ['Поросята', 'Котята', 'Щенки'] },
+  { q: 'Стоят вилы, на вилах бочка, на бочке кочка, на кочке ветошь, в ветоши звери ходят.', a: 'Человек', w: ['Дом', 'Изба', 'Колодец'] },
+  { q: 'Рыжий жеребец в берёзовом остожье, ржёт и хохочет — выскочить не может.', a: 'Язык', w: ['Зуб', 'Глаз', 'Рот'] },
+  { q: 'Лежит в подполье мокренький телёночек.', a: 'Язык', w: ['Зуб', 'Глаз', 'Рот'] },
+  { q: 'Что всегда поверх воды?', a: 'Масло', w: ['Пена', 'Сливки', 'Пузырь'] },
+  { q: 'С вечера заморкат, с полуночи захоркат — солнце всходит, всё выходит.', a: 'Квашня', w: ['Печь', 'Опара', 'Тесто'] },
+  { q: 'Безногий, в печку залезает.', a: 'Хлеб', w: ['Пирог', 'Батон', 'Калач'] },
+  { q: 'Одну штучку на спичку не повесить.', a: 'Яичко', w: ['Пёрышко', 'Пушинку', 'Капельку'] },
+  { q: 'Каждому мальчику по чуланчику.', a: 'Перчатки', w: ['Рукавицы', 'Носки', 'Чулки'] },
+  { q: 'Два стоят, два лежат, пятый ходит, шестой водит, седьмой песенку поёт.', a: 'Дверь', w: ['Ворота', 'Калитка', 'Ставни'] },
+  { q: 'Без рук, без ног, а в дом не пускает.', a: 'Замок', w: ['Ключ', 'Щеколда', 'Задвижка'] },
+  { q: 'Выйдется, не сходится.', a: 'Пол и потолок', w: ['Стены', 'Углы', 'Окна'] },
+  { q: 'Стоит соля посередь поля, летит кулик — дыра болит.', a: 'Колодец', w: ['Пруд', 'Родник', 'Яма'] },
+  { q: 'Два брата одним кушаком подпоясаны.', a: 'Колья в изгороди', w: ['Два столба', 'Два дерева', 'Два колышка'] },
+  { q: 'Красненький котёночек по жёрдочке ползёт.', a: 'Огонь', w: ['Пар', 'Дым', 'Искра'] },
+  { q: 'Мать бела, дочь красна, сын суходер, на небо пошёл.', a: 'Печь, огонь и дым', w: ['Река, вода и пар', 'Земля, трава и туман', 'Свеча, огонь и дым'] },
+  { q: 'Под полом полом ходит барыня с колом.', a: 'Помело', w: ['Веник', 'Метла', 'Щётка'] },
+  { q: 'Новая посуда, а вся в дырах.', a: 'Сито', w: ['Решето', 'Дуршлаг', 'Корзина'] },
+  { q: 'Два братца пошли в воду купаться.', a: 'Вёдра', w: ['Ложки', 'Ковши', 'Плошки'] },
+  { q: 'Утка в море, хвост на приборе.', a: 'Ковшик', w: ['Половник', 'Черпак', 'Ложка'] },
+  { q: 'На стол не поставишь.', a: 'Лохань', w: ['Ушат', 'Кадка', 'Корыто'] },
+  { q: 'Чёрный кот Матрёшку трёт.', a: 'Помазок и сковорода', w: ['Кот и мышь', 'Пёс и кошка', 'Хорёк и курица'] },
+  { q: 'Висит, болтается, всяк за него хватается.', a: 'Рукомойник', w: ['Полотенце', 'Занавеска', 'Простыня'] },
+  { q: 'Стоит гусь на мосту, кричит: «всех оболью».', a: 'Самовар', w: ['Чайник', 'Кувшин', 'Поливалка'] },
+  { q: 'Вокруг избы не обнесёшь.', a: 'Сито с водою', w: ['Решето с песком', 'Корзину с землёй', 'Мешок с мукой'] },
+  { q: 'Лежит волк — вырубленый бок.', a: 'Солонка', w: ['Ложка', 'Плошка', 'Чашка'] },
+  { q: 'Чёрное голенище ржёт и хохочет, выскочить не может.', a: 'Чугунка', w: ['Котёл', 'Кастрюля', 'Бочка'] },
+  { q: 'Четыре брата под одной шляпой.', a: 'Стол', w: ['Табурет', 'Шкаф', 'Стул'] },
+  { q: 'Летят гуськи, у них дубовые носки. Летят, говорят: то-то мы и то-то мы.', a: 'Молотьба', w: ['Жатва', 'Косьба', 'Сев'] },
+  { q: 'Свинья понура, хвостом махнула. Лесы пали, горы стали.', a: 'Сенокос', w: ['Жатва', 'Молотьба', 'Пашня'] },
+  { q: 'Загану загадку: брошу через грядку, год пущу, годовинку жду.', a: 'Хлеб и овощи', w: ['Озимый посев', 'Яровой посев', 'Посадка картошки'] },
+  { q: 'Утка ныряла, ныряла и хвост потеряла.', a: 'Иголка', w: ['Булавка', 'Спица', 'Шило'] },
+  { q: 'Куда нос, туда и хвост.', a: 'Иголка и нитка', w: ['Булавка и нитка', 'Спица и нитка', 'Шило и дратва'] },
+  { q: 'Два кольца, два конца, посредине маковка.', a: 'Ножницы', w: ['Щипцы', 'Плоскогубцы', 'Клещи'] },
+  { q: 'Две головы, четыре ноги, один хвост.', a: 'Верхом на лошади', w: ['Верхом на быке', 'Верхом на осле', 'Верхом на верблюде'] },
+  { q: 'Два волчка бегут, на небо глядят, тыр, тыр, говорят.', a: 'Сани', w: ['Телега', 'Воз', 'Дровни'] },
+  { q: 'Четыре братца друг дружку догоняют, а догнать не могут.', a: 'Четырёхколёска', w: ['Телега', 'Воз', 'Дровни'] },
+  { q: 'За морем рубят, а здесь щепки летят.', a: 'Письма', w: ['Газеты', 'Телеграммы', 'Посылки'] },
+  { q: 'Летит птица Гагана, несёт в роте осетра, посередь хвоста человечья смерть.', a: 'Пуля', w: ['Стрела', 'Ядро', 'Камень'] },
+  { q: 'Долгая пырка на небо фыркат.', a: 'Ружьё', w: ['Топор', 'Молот', 'Клещи'] },
+  { q: 'Вечер тёмный, дорога чёрная, река журная. На реке челнок, в челноке человек.', a: 'Часы', w: ['Маятник', 'Стрелка', 'Колесо'] },
+  { q: 'Чёрная корова всех нас поборола.', a: 'Ночь', w: ['Туча', 'Мгла', 'Буря'] },
+  { q: 'Пирог деревянный, а начинка мясная.', a: 'Гроб', w: ['Сундук', 'Короб', 'Ящик'] },
+  { q: 'Что ко всему прилипло?', a: 'Имя', w: ['Пыль', 'Смола', 'Мёд'] },
+  { q: 'Что солнце не хватает?', a: 'Воду в колодце', w: ['Тень в лесу', 'Снег на горе', 'Ветер в поле'] },
+  { q: 'Почему во все колокола не звонят?', a: 'Колоколов вовсе нет', w: ['Колокола сломаны', 'Колокола спрятаны', 'Колокола проданы'] },
+  { q: 'Каких деревьев в лесу больше?', a: 'Круглых', w: ['Хвойных', 'Лиственных', 'Высоких'] },
+  { q: 'Кто без папы рос?', a: 'Кто не курит', w: ['Кто не пьёт', 'Кто не ест', 'Кто не спит'] },
+  { q: 'Когда коня покупают, какой он бывает?', a: 'Мокрый', w: ['Сухой', 'Худой', 'Сытый'] },
+  { q: 'Во время дождя под каким кустом заяц сидел?', a: 'Под мокрым', w: ['Под сухим', 'Под зелёным', 'Под высоким'] },
+  { q: 'А где рыба дорога?', a: 'Рыба в воде, рога на быке', w: ['Рыба в море, рога на олене', 'Рыба на базаре, рога на козе', 'Рыба в реке, рога на корове'] },
+  { q: 'У кого две кожи?', a: 'У человека в сапогах', w: ['У человека в валенках', 'У человека в лаптях', 'У человека в чулках'] }
+];
+
+quizPool = quizPool.slice(0, 300);
+
+var quizBag = [];
+var quizAttempts = 0;
+var quizCorrect = 0;
+var quizCurrent = null;
+var quizAnswered = false;
+
+function shuffleQuizBag() {
+  quizBag = [];
+  for (var i = 0; i < quizPool.length; i++) {
+    quizBag.push(i);
+  }
+  for (var k = quizBag.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var tmp = quizBag[k];
+    quizBag[k] = quizBag[j];
+    quizBag[j] = tmp;
+  }
+}
+
+function shuffleArray(arr) {
+  var a = arr.slice();
+  for (var k = a.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var tmp = a[k];
+    a[k] = a[j];
+    a[j] = tmp;
+  }
+  return a;
+}
+
+function startQuiz() {
+  quizAttempts = 0;
+  quizCorrect = 0;
+  shuffleQuizBag();
+  updateStats();
+  document.getElementById('nextBtn').disabled = false;
+  document.getElementById('startBtn').disabled = true;
+  document.getElementById('startBtn').textContent = 'Викторина идёт';
+  nextQuiz();
+}
+
+function nextQuiz() {
+  if (!quizBag.length) {
+    shuffleQuizBag();
+  }
+  if (!quizBag.length) {
+    return;
+  }
+  var idx = quizBag.pop();
+  quizCurrent = quizPool[idx];
+  quizAnswered = false;
+
+  var q = document.getElementById('quizQuestion');
+  q.textContent = quizCurrent.q;
+
+  var options = shuffleArray([quizCurrent.a].concat(quizCurrent.w)).slice(0, 4);
+  if (options.indexOf(quizCurrent.a) === -1) {
+    options[Math.floor(Math.random() * options.length)] = quizCurrent.a;
+  }
+
+  var box = document.getElementById('quizAnswers');
+  box.innerHTML = '';
+  for (var i = 0; i < options.length; i++) {
+    (function(option){
+      var btn = document.createElement('button');
+      btn.className = 'quiz-answer';
+      btn.type = 'button';
+      btn.textContent = option;
+      btn.onclick = function(){ answerQuiz(btn, option); };
+      box.appendChild(btn);
+    })(options[i]);
+  }
+
+  document.getElementById('quizFeedback').className = 'quiz-feedback';
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('nextBtn').textContent = 'Следующая загадка';
+}
+
+function answerQuiz(btn, chosen) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  quizAttempts++;
+  var feedback = document.getElementById('quizFeedback');
+  var buttons = document.querySelectorAll('.quiz-answer');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = true;
+    if (buttons[i].textContent === quizCurrent.a) {
+      buttons[i].classList.add('correct');
+    }
+  }
+  if (chosen === quizCurrent.a) {
+    quizCorrect++;
+    feedback.className = 'quiz-feedback ok';
+    feedback.textContent = 'Верно!';
+  } else {
+    btn.classList.add('wrong');
+    feedback.className = 'quiz-feedback no';
+    feedback.textContent = 'Не угадали. Правильный ответ: ' + quizCurrent.a + '.';
+  }
+  updateStats();
+}
+
+function updateStats() {
+  document.getElementById('statAttempts').textContent = quizAttempts;
+  document.getElementById('statCorrect').textContent = quizCorrect;
+  var acc = quizAttempts ? Math.round(quizCorrect / quizAttempts * 100) + '%' : '—';
+  document.getElementById('statAccuracy').textContent = acc;
+}
+</script>
+
+</body>
+</html>
