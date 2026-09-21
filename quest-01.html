@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Квест 01 · Небо, земля, стихии · Загадки русского народа</title>
+<style>
+  :root{
+    --paper:#faf8f2; --paper-2:#fffdf8; --ink:#2e2b26; --ink-soft:#5a5040;
+    --line:#e8dcc8; --line-soft:#f0e6d6; --accent:#8b5a2b; --accent-2:#b8863f;
+    --accent-soft:#f0e4d0;
+    --shadow:0 1px 2px rgba(43,38,32,.05), 0 8px 24px rgba(43,38,32,.06);
+    --lvl1:#6f9b6f; --lvl2:#8b9b3a; --lvl3:#c08a2e; --lvl4:#b05a3a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+  nav.top-nav,
+  nav.bottom-nav {
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
+    background:var(--line-soft);
+    padding:12px 18px; border-radius:6px;
+    margin:20px auto; font-size:15px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    max-width:880px;
+  }
+  nav a {color:var(--accent);padding:4px 10px;border-radius:4px;transition:background .2s,color .2s}
+  nav a:hover{background:var(--accent);color:#fff;text-decoration:none}
+  nav span{color:var(--ink-soft);font-weight:600}
+
+  header{
+    text-align:center; padding:44px 20px 32px;
+    border-bottom:2px solid var(--line);
+    background:linear-gradient(135deg,#f5ebe0,#ede0cc);
+  }
+  header h1{font-size:28px;color:var(--accent);margin:0 0 10px;line-height:1.3}
+  header .subtitle{font-size:16px;color:#7a7060;font-style:italic}
+  header .kicker{
+    display:inline-block;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:#fff;background:var(--accent);
+    padding:3px 12px;border-radius:999px;margin-bottom:14px;
+  }
+
+  main{padding:30px 0 40px}
+
+  h2{
+    font-size:22px;color:var(--accent);margin:30px 0 15px;
+    padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  h3{font-size:19px;color:var(--ink);margin:22px 0 10px}
+  p{margin:0 0 14px;text-align:justify}
+
+  .note{
+    background:#fdf8ee;border-left:3px solid var(--accent);
+    padding:12px 16px;margin:16px 0;font-size:16px;color:var(--ink-soft);
+    border-radius:0 6px 6px 0;
+  }
+  .note strong{color:var(--accent)}
+
+  /* Уровневая легенда */
+  .legend{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin:14px 0 24px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:13px;
+  }
+  .legend span{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--paper-2); border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; color:var(--ink-soft);
+  }
+  .legend span i{
+    display:inline-block; width:10px; height:10px; border-radius:50%;
+    font-style:normal;
+  }
+  .legend .d1 i{background:var(--lvl1)}
+  .legend .d2 i{background:var(--lvl2)}
+  .legend .d3 i{background:var(--lvl3)}
+  .legend .d4 i{background:var(--lvl4)}
+
+  /* Теоретическая часть */
+  .riddles-list{
+    counter-reset:riddle;
+    margin:20px 0 40px;
+  }
+  .riddle-item{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 18px;
+    margin-bottom:12px;
+    display:flex; gap:14px; align-items:flex-start;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .riddle-item:hover{
+    box-shadow:0 4px 12px rgba(180,160,130,.18);
+    transform:translateY(-1px);
+  }
+  .riddle-num{
+    counter-increment:riddle;
+    flex:0 0 auto;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-weight:700; font-size:14px;
+    color:var(--accent); background:var(--accent-soft);
+    border-radius:6px; min-width:40px;
+    text-align:center; padding:3px 8px; margin-top:2px;
+  }
+  .riddle-num::before{content:counter(riddle,decimal-leading-zero)}
+  .riddle-body{flex:1 1 auto; font-size:1.02em}
+  .riddle-text{
+    font-style:italic; color:#4a3a2a;
+    white-space:pre-line; margin-bottom:6px;
+  }
+  .riddle-answer{color:#7a6a5a; font-size:.95em}
+  .riddle-answer strong{color:var(--accent)}
+
+  /* Вкладки генераторов */
+  .quiz-tabs{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin:18px 0 18px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+  }
+  .quiz-tab{
+    flex:1 1 auto;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-bottom:3px solid var(--line);
+    border-radius:8px 8px 4px 4px;
+    padding:10px 14px;
+    font-family:inherit;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    cursor:pointer;
+    text-align:center;
+    transition:all .18s;
+    letter-spacing:.01em;
+  }
+  .quiz-tab:hover{background:var(--accent-soft); color:var(--accent)}
+  .quiz-tab.active{
+    background:#fffdf8;
+    color:var(--accent);
+    font-weight:700;
+    border-bottom-color:var(--accent);
+    box-shadow:0 -1px 0 var(--line);
+  }
+  .quiz-tab[data-level="1"].active{border-bottom-color:var(--lvl1);color:#3f6b3f}
+  .quiz-tab[data-level="2"].active{border-bottom-color:var(--lvl2);color:#5c6b1a}
+  .quiz-tab[data-level="3"].active{border-bottom-color:var(--lvl3);color:#8a5e10}
+  .quiz-tab[data-level="4"].active{border-bottom-color:var(--lvl4);color:#8a3a1a}
+
+  .quiz-panel{display:none}
+  .quiz-panel.active{display:block}
+
+  /* Генератор (по образцу) */
+  .generator{
+    background:linear-gradient(135deg,#f5ede0,#ede0cc);
+    border:2px solid var(--accent-2);
+    border-radius:14px;
+    padding:30px 26px 24px;
+    margin:20px 0 26px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .generator.l1{border-color:var(--lvl1)}
+  .generator.l2{border-color:var(--lvl2)}
+  .generator.l3{border-color:var(--lvl3)}
+  .generator.l4{border-color:var(--lvl4)}
+  .generator .gen-label{
+    position:absolute; top:-12px; left:22px;
+    color:#fff;
+    padding:3px 14px; border-radius:999px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.68rem; letter-spacing:.14em; font-weight:700;
+    text-transform:uppercase;
+    background:var(--accent);
+  }
+  .generator.l1 .gen-label{background:var(--lvl1)}
+  .generator.l2 .gen-label{background:var(--lvl2)}
+  .generator.l3 .gen-label{background:var(--lvl3)}
+  .generator.l4 .gen-label{background:var(--lvl4)}
+  .generator h3{margin:0 0 10px; font-size:1.15em; color:var(--accent)}
+  .generator .hint{color:var(--ink-soft); font-size:.92em; margin:0 0 16px}
+  .quiz-question{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 22px;
+    font-size:1.05em;
+    font-style:italic;
+    color:#4a3a2a;
+    white-space:pre-line;
+    margin:0 0 16px;
+    min-height:80px;
+  }
+  .quiz-answers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:0 0 16px;
+  }
+  .quiz-answer{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:11px 14px;
+    font-size:.96em;
+    cursor:pointer;
+    color:var(--ink);
+    text-align:left;
+    font-family:Georgia,serif;
+    transition:background .15s, border-color .15s;
+  }
+  .quiz-answer:hover:not(:disabled){
+    background:var(--accent-soft);
+    border-color:var(--accent-2);
+  }
+  .quiz-answer:disabled{cursor:default; opacity:.85}
+  .quiz-answer.correct{
+    background:#e7f0e2;border-color:#7fa572;color:#2f4a26;font-weight:600;
+  }
+  .quiz-answer.wrong{
+    background:#f6e0e0;border-color:#b26a6a;color:#6b2e2e;
+  }
+  .quiz-controls{
+    display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+    margin:0 0 16px;
+  }
+  .gen-btn{
+    background:var(--accent); color:#fff; border:none;
+    border-radius:8px; padding:12px 26px;
+    font-size:1em; font-family:Georgia,serif;
+    cursor:pointer; transition:background .2s;
+  }
+  .gen-btn:hover{background:#6d441c}
+  .gen-btn:disabled{background:#c9b79a; cursor:default}
+  .quiz-feedback{
+    font-size:.95em; min-height:24px;
+    color:var(--ink-soft); font-style:italic;
+  }
+  .quiz-feedback.ok{color:#2f4a26; font-weight:600; font-style:normal}
+  .quiz-feedback.no{color:#8a3a3a; font-weight:600; font-style:normal}
+  .quiz-stats{
+    margin-top:18px; padding-top:14px;
+    border-top:1px dashed var(--accent-2);
+    display:flex; gap:20px; flex-wrap:wrap;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.88em; color:var(--ink-soft);
+  }
+  .quiz-stats strong{color:var(--accent); font-size:1.1em}
+
+  /* Связка «квесты» */
+  .quest-links{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px; margin:20px 0 10px;
+  }
+  .quest-link{
+    display:block;
+    padding:12px 14px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:8px;
+    text-align:center;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    transition:all .18s;
+  }
+  .quest-link:hover{
+    border-color:var(--accent-2);
+    color:var(--accent);
+    background:var(--accent-soft);
+    text-decoration:none;
+  }
+  .quest-link.current{
+    background:var(--accent);
+    color:#fff;
+    border-color:var(--accent);
+    font-weight:700;
+  }
+
+  footer{
+    background:var(--line-soft);
+    border-top:2px solid var(--line);
+    padding:24px 20px; text-align:center;
+    color:#7a7060; font-size:.9em;
+  }
+  footer p{margin:4px 0}
+
+  @media (max-width:600px){
+    body{font-size:16px}
+    header h1{font-size:22px}
+    h2{font-size:19px}
+    .quiz-answers{grid-template-columns:1fr}
+    nav.top-nav,nav.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}
+    .quiz-tab{font-size:12.5px; padding:9px 8px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="zagadky.html">На главную</a>
+  <a href="quest.html">← Квесты</a>
+  <span>Квест 01 · Небо, земля, стихии</span>
+  <a href="quest-02.html">Следующий →</a>
+</nav>
+
+<header>
+  <span class="kicker">Квест 01</span>
+  <h1>Небо, земля, стихии</h1>
+  <p class="subtitle">Солнце и месяц, звёзды и тучи, заря и радуга, ветер, дождь, снег и лёд.<br>20 образцовых загадок и четыре викторины по 20 загадок — на 100 загадок страницы.</p>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h2>О квесте</h2>
+  <p>Первый квест открывает круг: то, что над головой и под ногами, — свет и тьма, вода и камень, тишина и гром. Загадки этой категории почти всегда построены на одном приёме: небесное названо так, как назвали бы домашнее. Отсюда «хлеба краюшка» вместо месяца, «сивый жеребёнок» вместо луны, «золотое яблочко» вместо солнца.</p>
+  <p>В теоретической части — двадцать самых представительных загадок с отгадками. Ниже — четыре независимые викторины, по уровню сложности. Внутри каждой — своя случайная выборка без повторов до полного круга.</p>
+
+  <div class="legend">
+    <span class="d1"><i></i>Уровень I · Простые</span>
+    <span class="d2"><i></i>Уровень II · Чуть сложнее</span>
+    <span class="d3"><i></i>Уровень III · Ещё сложнее</span>
+    <span class="d4"><i></i>Уровень IV · Самые сложные</span>
+  </div>
+
+  <h2>Загадки 1–20 (с отгадками)</h2>
+
+  <div class="riddles-list">
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Красное коромысло через реку повисло.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Радуга.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Голубой шатёр весь мир накрыл.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Небо.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Рассыпан по небу горох, никто его не соберёт: ни царь, ни царица, ни красная девица.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Звёзды.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Над бабушкиной избушкой висит хлеба краюшка; собака лает, а достать не может.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Месяц.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Что выше леса, краше света?</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Солнце.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Взглянешь — заплачешь, а краше его нет на свете.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Солнце.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Без рук, без ног, а ворота отворяет.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Ветер.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Шёл долговяз, в сыру землю увяз.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Дождь.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Летит — молчит, лежит — молчит, а как умрёт, так заревёт.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Снег.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Зимой греет, весной тлеет, летом умирает, осенью оживает.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Снег.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Не стукнет, не брякнет, а в окно войдёт.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Рассвет.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Летит орлица по синему небу, крылья распластала, солнышко застлала.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Туча.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Синяя шубёнка весь мир покрыла.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Небо.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Заря-заряница, красная девица, по полю ходила, ключи обронила; месяц видел, солнце подняло.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Роса.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Сивый жеребёнок в подворотню глядит.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Месяц.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">То блин, то пол-блина, то та, то эта сторона.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Луна.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Не человек, а пляшет.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Ветер.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">По серебряному блюдечку золотое яблочко катится.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Солнце.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Днём стекло разбито, ночью вставлено.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Прорубь.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Летит не птица, воет не зверь.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Ветер.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Четыре викторины квеста</h2>
+  <p>Выберите уровень. Внутри каждого — своя случайная загадка, четыре варианта ответа и счёт. Загадки не повторяются до полного круга; между уровнями возможно пересечение — так образы закрепляются.</p>
+
+  <div class="quiz-tabs">
+    <button class="quiz-tab active" data-level="1" data-target="panel-1">Уровень I · Простые</button>
+    <button class="quiz-tab" data-level="2" data-target="panel-2">Уровень II · Чуть сложнее</button>
+    <button class="quiz-tab" data-level="3" data-target="panel-3">Уровень III · Ещё сложнее</button>
+    <button class="quiz-tab" data-level="4" data-target="panel-4">Уровень IV · Самые сложные</button>
+  </div>
+
+  <!-- УРОВЕНЬ I -->
+  <div class="quiz-panel active" id="panel-1">
+    <div class="generator l1">
+      <span class="gen-label">Уровень I · Простые</span>
+      <h3>Разминка · 20 загадок</h3>
+      <p class="hint">Узнаются с первого чтения. Хороши для детей и для быстрого старта.</p>
+
+      <div class="quiz-question" id="q-1">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-1"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-1" type="button">Начать</button>
+        <button class="gen-btn" id="next-1" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-1"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-1">0</strong></span>
+        <span>Правильных: <strong id="s-corr-1">0</strong></span>
+        <span>Точность: <strong id="s-acc-1">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- УРОВЕНЬ II -->
+  <div class="quiz-panel" id="panel-2">
+    <div class="generator l2">
+      <span class="gen-label">Уровень II · Чуть сложнее</span>
+      <h3>Второй шаг · 20 загадок</h3>
+      <p class="hint">Нужно сравнить две части образа или различить прямое и переносное значение слова.</p>
+
+      <div class="quiz-question" id="q-2">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-2"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-2" type="button">Начать</button>
+        <button class="gen-btn" id="next-2" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-2"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-2">0</strong></span>
+        <span>Правильных: <strong id="s-corr-2">0</strong></span>
+        <span>Точность: <strong id="s-acc-2">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- УРОВЕНЬ III -->
+  <div class="quiz-panel" id="panel-3">
+    <div class="generator l3">
+      <span class="gen-label">Уровень III · Ещё сложнее</span>
+      <h3>Глубже в образ · 20 загадок</h3>
+      <p class="hint">Здесь встречаются редкие детали быта, старые ремёсла, игры со временем и счётом.</p>
+
+      <div class="quiz-question" id="q-3">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-3"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-3" type="button">Начать</button>
+        <button class="gen-btn" id="next-3" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-3"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-3">0</strong></span>
+        <span>Правильных: <strong id="s-corr-3">0</strong></span>
+        <span>Точность: <strong id="s-acc-3">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- УРОВЕНЬ IV -->
+  <div class="quiz-panel" id="panel-4">
+    <div class="generator l4">
+      <span class="gen-label">Уровень IV · Самые сложные</span>
+      <h3>На пределе · 20 загадок</h3>
+      <p class="hint">Задачи-«ловушки», игра слов, скрытые числа. Их приятно разгадывать вслух, всей компанией.</p>
+
+      <div class="quiz-question" id="q-4">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-4"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-4" type="button">Начать</button>
+        <button class="gen-btn" id="next-4" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-4"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-4">0</strong></span>
+        <span>Правильных: <strong id="s-corr-4">0</strong></span>
+        <span>Точность: <strong id="s-acc-4">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Другие квесты серии</h2>
+  <div class="quest-links">
+    <a class="quest-link current" href="quest-01.html">01 · Небо и стихии</a>
+    <a class="quest-link" href="quest-02.html">02 · Поле и урожай</a>
+    <a class="quest-link" href="quest-03.html">03 · Звери и птицы</a>
+    <a class="quest-link" href="quest-04.html">04 · Человек и тело</a>
+    <a class="quest-link" href="quest-05.html">05 · Изба и утварь</a>
+    <a class="quest-link" href="quest-06.html">06 · Труд и ремёсла</a>
+    <a class="quest-link" href="quest-07.html">07 · Еда и питьё</a>
+    <a class="quest-link" href="quest-08.html">08 · Время и год</a>
+    <a class="quest-link" href="quest-09.html">09 · Грамота и книга</a>
+    <a class="quest-link" href="quest-10.html">10 · Смекалка и числа</a>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="zagadky.html">На главную</a>
+    <a href="quest.html">← Квесты</a>
+    <span>Квест 01 · Небо, земля, стихии</span>
+    <a href="quest-02.html">Следующий →</a>
+  </nav>
+
+</div>
+</main>
+
+<footer>
+  <p>Загадки русского народа · Квест 01 · Небо, земля, стихии</p>
+  <p>Образовательный проект о народной мудрости</p>
+</footer>
+
+<script>
+/* ============================================================
+   КВЕСТ 01 · ЧЕТЫРЕ ВИКТОРИНЫ ПО УРОВНЯМ
+   Каждая викторина — независимый пул на 20 загадок.
+   Логика повторяет испытанный генератор zagadky-01.html.
+   ============================================================ */
+
+/* ---------- Уровень I. Простые ---------- */
+var pool1 = [
+  { q: 'Красное коромысло через реку повисло.', a: 'Радуга', w: ['Река', 'Заря', 'Мост'] },
+  { q: 'Голубой шатёр весь мир накрыл.', a: 'Небо', w: ['Туча', 'Море', 'Облако'] },
+  { q: 'Рассыпан по небу горох, никто его не соберёт.', a: 'Звёзды', w: ['Крупа', 'Снег', 'Капли'] },
+  { q: 'Над бабушкиной избушкой висит хлеба краюшка.', a: 'Месяц', w: ['Луна', 'Звезда', 'Туча'] },
+  { q: 'Что выше леса, краше света?', a: 'Солнце', w: ['Месяц', 'Звезда', 'Гора'] },
+  { q: 'Взглянешь — заплачешь, а краше его нет на свете.', a: 'Солнце', w: ['Лук', 'Дым', 'Перец'] },
+  { q: 'Без рук, без ног, а ворота отворяет.', a: 'Ветер', w: ['Дождь', 'Тень', 'Ночь'] },
+  { q: 'Шёл долговяз, в сыру землю увяз.', a: 'Дождь', w: ['Столб', 'Журавль', 'Шест'] },
+  { q: 'Летит — молчит, лежит — молчит, а как умрёт, так заревёт.', a: 'Снег', w: ['Вода', 'Тень', 'Дым'] },
+  { q: 'Зимой греет, весной тлеет, летом умирает, осенью оживает.', a: 'Снег', w: ['Лёд', 'Дождь', 'Иней'] },
+  { q: 'Не стукнет, не брякнет, а в окно войдёт.', a: 'Рассвет', w: ['Гость', 'Ветер', 'Дождь'] },
+  { q: 'Летит орлица по синему небу, крылья распластала, солнышко застлала.', a: 'Туча', w: ['Птица', 'Ветер', 'Тень'] },
+  { q: 'Синяя шубёнка весь мир покрыла.', a: 'Небо', w: ['Туча', 'Туман', 'Мгла'] },
+  { q: 'Без рук, без ног, а в гору ползёт.', a: 'Ветер', w: ['Дым', 'Туман', 'Пыль'] },
+  { q: 'То блин, то пол-блина, то та, то эта сторона.', a: 'Луна', w: ['Звезда', 'Кастрюля', 'Тарелка'] },
+  { q: 'По серебряному блюдечку золотое яблочко катится.', a: 'Солнце', w: ['Месяц', 'Звезда', 'Капля'] },
+  { q: 'Летит не птица, воет не зверь.', a: 'Ветер', w: ['Гром', 'Эхо', 'Дождь'] },
+  { q: 'Вокруг носа вьётся, а в руки не даётся.', a: 'Ветер', w: ['Запах', 'Пыль', 'Дым'] },
+  { q: 'Лежит, лежит, да в речку побежит.', a: 'Снег', w: ['Камень', 'Лёд', 'Бревно'] },
+  { q: 'Не человек, а пляшет.', a: 'Ветер', w: ['Огонь', 'Тень', 'Луч'] }
+];
+
+/* ---------- Уровень II. Чуть сложнее ---------- */
+var pool2 = [
+  { q: 'Заря-заряница, красная девица, по полю ходила, ключи обронила; месяц видел, солнце подняло.', a: 'Роса', w: ['Дождь', 'Туча', 'Звезда'] },
+  { q: 'Сивый жеребёнок в подворотню глядит.', a: 'Месяц', w: ['Конь', 'Туча', 'Овца'] },
+  { q: 'Днём стекло разбито, ночью вставлено.', a: 'Прорубь', w: ['Окно', 'Лужа', 'Колодец'] },
+  { q: 'Лысый конь через прясло глядит.', a: 'Месяц', w: ['Жеребец', 'Бык', 'Вол'] },
+  { q: 'Не сторожем родился, а всех рано будит.', a: 'Солнце', w: ['Петух', 'Будильник', 'Колокол'] },
+  { q: 'Что без огня горит, без крыл летает, без ног бежит?', a: 'Солнце, тучи и река', w: ['Огонь, ветер и вода', 'Звезда, птица и конь', 'Луна, дым и ручей'] },
+  { q: 'Взгляну я в окошко, раскину рогожку, посею горошку, положу хлеба краюшку.', a: 'Небо, звёзды и месяц', w: ['Поле, пшеница и хлеб', 'Двор, куры и зерно', 'Стол, скатерть и каравай'] },
+  { q: 'Вечером рассыпался горох, утром встал — нет ничего.', a: 'Звёзды', w: ['Роса', 'Снег', 'Туман'] },
+  { q: 'За нашим домом висит кусочек сыру.', a: 'Луна', w: ['Звезда', 'Облако', 'Лампа'] },
+  { q: 'Из какого ковша не пьют, не едят, а только глядят?', a: 'Большая Медведица', w: ['Луна', 'Звезда', 'Месяц'] },
+  { q: 'Погляди через ворота — там щучка золота.', a: 'Заря', w: ['Луна', 'Солнце', 'Рыба'] },
+  { q: 'Тур ходит по горам, турица — по долам; тур свистнет, турица мигнёт.', a: 'Гроза и молния', w: ['Туман и роса', 'Снег и ветер', 'Волк и овца'] },
+  { q: 'Заржал жеребец на Сиенских горах, услышала кобыла на сырой земле.', a: 'Гром', w: ['Ветер', 'Собака', 'Эхо'] },
+  { q: 'И тонок, и долог, а сядет в траву — не видать.', a: 'Дождь', w: ['Столб', 'Шест', 'Тень'] },
+  { q: 'Меня часто просят, ждут, а только покажусь — как прятаться начнут.', a: 'Дождь', w: ['Солнце', 'Гость', 'Рассвет'] },
+  { q: 'Крупно, дробно зачастило, всю землю напоило.', a: 'Дождь', w: ['Град', 'Снег', 'Роса'] },
+  { q: 'Без рук, без ног под окном стучит — в избу просится.', a: 'Ветер', w: ['Дождь', 'Снег', 'Гость'] },
+  { q: 'Вся дорожка усеяна горошком.', a: 'Звёздное небо', w: ['Поле', 'Тропинка', 'Крыша'] },
+  { q: 'Поле не мерено, овцы не считаны, пастух рогат.', a: 'Небо, звёзды и месяц', w: ['Луг, овцы и пастух', 'Стол, ложки и хозяин', 'Лес, звери и охотник'] },
+  { q: 'Летом бежит, а зимой стоит.', a: 'Река', w: ['Ручей', 'Дорога', 'Камень'] }
+];
+
+/* ---------- Уровень III. Ещё сложнее ---------- */
+var pool3 = [
+  { q: 'Летит — молчит, лежит — молчит, сгниёт — и заревёт.', a: 'Снег', w: ['Вода', 'Тень', 'Дым'] },
+  { q: 'Старый дед, ему сто лет, мост намостил во всю реку; а пришла молода — весь мост разогнала.', a: 'Мороз и весна', w: ['Зима и лето', 'Лёд и солнце', 'Дед и внучка'] },
+  { q: 'Сам Самсон мост мостил.', a: 'Лёд', w: ['Мороз', 'Плотник', 'Бобр'] },
+  { q: 'В одну ночь на реке кто-то построил мост.', a: 'Мороз', w: ['Плотник', 'Бобр', 'Туман'] },
+  { q: 'Какой мост мостится без клинов, без подклиньев?', a: 'Лёд на реке', w: ['Каменный мост', 'Деревянный мост', 'Висячий мост'] },
+  { q: 'Чист и ясен, как алмаз, дорог не бывает; он от матери рождён, сам её рождает.', a: 'Лёд', w: ['Снег', 'Иней', 'Стекло'] },
+  { q: 'Белая птица в небе отдыхает на глыбе снега.', a: 'Луна на облаках', w: ['Лебедь на воде', 'Чайка на льдине', 'Снегирь на ветке'] },
+  { q: 'В синем небе светляки, не дотянешь к ним руки; один большой светляк загнулся, как червяк.', a: 'Луна и звёзды', w: ['Огоньки и месяц', 'Светлячки и туча', 'Молнии и радуга'] },
+  { q: 'Летит катушка, ни зверь, ни птушка, ни камень, ни вода.', a: 'Солнце', w: ['Месяц', 'Облако', 'Звезда'] },
+  { q: 'На заре зарянской катится, катится шар веретянский.', a: 'Солнце', w: ['Клубок', 'Облако', 'Месяц'] },
+  { q: 'Красная птица день летает, а вечером на землю садится.', a: 'Солнце', w: ['Заря', 'Облако', 'Луна'] },
+  { q: 'Гоню, гоню — не выгоню, зову, зову — не вызову, а как время придёт, само уйдёт.', a: 'Солнце и его лучи', w: ['Тень и свет', 'Туча и дождь', 'День и ночь'] },
+  { q: 'По утрам и вечерам горит пожар по двум концам.', a: 'Зори', w: ['Костры', 'Свечи', 'Молнии'] },
+  { q: 'Пришла чёрная корова — всех поборола, пришёл белый баран — всех на ноги поднял.', a: 'Ночь и день', w: ['Туча и солнце', 'Дождь и радуга', 'Зима и лето'] },
+  { q: 'Пришла чёрная корова, весь мир поборола.', a: 'Ночь', w: ['Туча', 'Буря', 'Мгла'] },
+  { q: 'Бела корова весь свет поборола.', a: 'День', w: ['Заря', 'Луна', 'Туча'] },
+  { q: 'Махнула птица, покрыла весь свет одним пером.', a: 'Ночь', w: ['Туча', 'Буря', 'Мгла'] },
+  { q: 'Сестра к брату в гости идёт, а брат от неё прячется.', a: 'День и ночь', w: ['Солнце и месяц', 'Лето и зима', 'Весна и осень'] },
+  { q: 'Два брата через дорогу живут, а друг друга не видят.', a: 'День и ночь', w: ['Пол и потолок', 'Глаза', 'Берега'] },
+  { q: 'Золотой уходит, серебряный приходит.', a: 'Солнце и луна', w: ['День и ночь', 'Гость и хозяин', 'Лето и зима'] }
+];
+
+/* ---------- Уровень IV. Самые сложные ---------- */
+var pool4 = [
+  { q: 'Когда небо на земле бывает?', a: 'Когда оно отражается в воде', w: ['Когда идёт дождь', 'Когда падает туман', 'Когда восходит солнце'] },
+  { q: 'Чего над собой не видишь?', a: 'Рост свой', w: ['Неба', 'Тучи', 'Затылка'] },
+  { q: 'Что выше дерева растёт?', a: 'Тесто в квашне', w: ['Туман', 'Дым', 'Сосулька'] },
+  { q: 'Что с крыш не сбросишь?', a: 'Дым', w: ['Снег', 'Лёд', 'Листья'] },
+  { q: 'В небе одна, а у бабы две.', a: 'Буква «Б»', w: ['Звезда', 'Луна', 'Слеза'] },
+  { q: 'Что посреди земли стоит?', a: 'Буква «М»', w: ['Гора', 'Столб', 'Ось'] },
+  { q: 'Что посреди Волги стоит?', a: 'Буква «Л»', w: ['Остров', 'Паром', 'Мост'] },
+  { q: 'Какой самый короткий месяц в году?', a: 'Май', w: ['Февраль', 'Январь', 'Декабрь'] },
+  { q: 'Летели белые гуси, крылья русы, да нельзя из их по пёрышку вырвать.', a: 'Снег и облака', w: ['Лебеди', 'Голуби', 'Тучи'] },
+  { q: 'Хоть и видятся, не сойдутся.', a: 'Солнце и луна', w: ['Два берега', 'Два глаза', 'Два брата'] },
+  { q: 'Что на свете всех жёстче?', a: 'Мороз', w: ['Камень', 'Железо', 'Слово'] },
+  { q: 'Что идёт, не двигаясь с места?', a: 'Время', w: ['Река', 'Дорога', 'Часы'] },
+  { q: 'По какой дороге полгода ходят, а полгода ездят?', a: 'По реке', w: ['По земле', 'По морю', 'По льду'] },
+  { q: 'Что на свете всех быстрее?', a: 'Мысль', w: ['Ветер', 'Свет', 'Птица'] },
+  { q: 'Сидело семь галиц, я стрелил, трёх убил. Много ли осталось?', a: 'Три, остальные улетели', w: ['Семь', 'Четыре', 'Ни одной'] },
+  { q: 'Летели три журавля, одного охотник убил, сколько осталось?', a: 'Один, убитый', w: ['Два', 'Три', 'Ни одного'] },
+  { q: 'Куда заяц бежит в лес?', a: 'До середины', w: ['До опушки', 'До норы', 'До дерева'] },
+  { q: 'Что в огне не горит и в воде не тонет?', a: 'Имя', w: ['Камень', 'Правда', 'Мысль'] },
+  { q: 'Сколько яиц можно съесть натощак?', a: 'Одно', w: ['Два', 'Три', 'Сколько угодно'] },
+  { q: 'Чем оканчивается день и ночь?', a: 'Мягким знаком', w: ['Точкой', 'Запятой', 'Зарёй'] }
+];
+
+/* ============================================================
+   Фабрика викторин
+   ============================================================ */
+function Quiz(opts) {
+  this.pool = opts.pool;
+  this.bag = [];
+  this.attempts = 0;
+  this.correct = 0;
+  this.current = null;
+  this.answered = false;
+  this.el = {
+    question: document.getElementById(opts.questionId),
+    answers:  document.getElementById(opts.answersId),
+    feedback: document.getElementById(opts.feedbackId),
+    startBtn: document.getElementById(opts.startBtnId),
+    nextBtn:  document.getElementById(opts.nextBtnId),
+    statAtt:  document.getElementById(opts.statAttemptsId),
+    statCorr: document.getElementById(opts.statCorrectId),
+    statAcc:  document.getElementById(opts.statAccuracyId)
+  };
+  var self = this;
+  this.el.startBtn.addEventListener('click', function(){ self.start(); });
+  this.el.nextBtn.addEventListener('click', function(){ self.next(); });
+}
+
+Quiz.prototype.shuffleBag = function() {
+  this.bag = [];
+  for (var i = 0; i < this.pool.length; i++) this.bag.push(i);
+  for (var k = this.bag.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var t = this.bag[k]; this.bag[k] = this.bag[j]; this.bag[j] = t;
+  }
+};
+
+Quiz.prototype.shuffleArray = function(arr) {
+  var a = arr.slice();
+  for (var k = a.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var t = a[k]; a[k] = a[j]; a[j] = t;
+  }
+  return a;
+};
+
+Quiz.prototype.start = function() {
+  this.attempts = 0;
+  this.correct = 0;
+  this.shuffleBag();
+  this.updateStats();
+  this.el.nextBtn.disabled = false;
+  this.el.startBtn.disabled = true;
+  this.el.startBtn.textContent = 'Идёт викторина';
+  this.next();
+};
+
+Quiz.prototype.next = function() {
+  if (!this.bag.length) this.shuffleBag();
+  if (!this.bag.length) return;
+  var idx = this.bag.pop();
+  this.current = this.pool[idx];
+  this.answered = false;
+
+  this.el.question.textContent = this.current.q;
+
+  var options = this.shuffleArray([this.current.a].concat(this.current.w)).slice(0, 4);
+  if (options.indexOf(this.current.a) === -1) {
+    options[Math.floor(Math.random() * options.length)] = this.current.a;
+  }
+
+  var box = this.el.answers;
+  box.innerHTML = '';
+  var self = this;
+  for (var i = 0; i < options.length; i++) {
+    (function(opt){
+      var btn = document.createElement('button');
+      btn.className = 'quiz-answer';
+      btn.type = 'button';
+      btn.textContent = opt;
+      btn.onclick = function(){ self.answer(btn, opt); };
+      box.appendChild(btn);
+    })(options[i]);
+  }
+
+  this.el.feedback.className = 'quiz-feedback';
+  this.el.feedback.textContent = '';
+  this.el.nextBtn.textContent = 'Следующая загадка';
+};
+
+Quiz.prototype.answer = function(btn, chosen) {
+  if (this.answered) return;
+  this.answered = true;
+  this.attempts++;
+
+  var fb = this.el.feedback;
+  var buttons = this.el.answers.querySelectorAll('.quiz-answer');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = true;
+    if (buttons[i].textContent === this.current.a) {
+      buttons[i].classList.add('correct');
+    }
+  }
+
+  if (chosen === this.current.a) {
+    this.correct++;
+    fb.className = 'quiz-feedback ok';
+    fb.textContent = 'Верно!';
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'quiz-feedback no';
+    fb.textContent = 'Не угадали. Правильный ответ: ' + this.current.a + '.';
+  }
+  this.updateStats();
+};
+
+Quiz.prototype.updateStats = function() {
+  this.el.statAtt.textContent = this.attempts;
+  this.el.statCorr.textContent = this.correct;
+  var acc = this.attempts ? Math.round(this.correct / this.attempts * 100) + '%' : '—';
+  this.el.statAcc.textContent = acc;
+};
+
+/* Создаём четыре викторины */
+new Quiz({ pool: pool1, questionId: 'q-1', answersId: 'a-1', feedbackId: 'f-1',
+           startBtnId: 'start-1', nextBtnId: 'next-1',
+           statAttemptsId: 's-att-1', statCorrectId: 's-corr-1', statAccuracyId: 's-acc-1' });
+
+new Quiz({ pool: pool2, questionId: 'q-2', answersId: 'a-2', feedbackId: 'f-2',
+           startBtnId: 'start-2', nextBtnId: 'next-2',
+           statAttemptsId: 's-att-2', statCorrectId: 's-corr-2', statAccuracyId: 's-acc-2' });
+
+new Quiz({ pool: pool3, questionId: 'q-3', answersId: 'a-3', feedbackId: 'f-3',
+           startBtnId: 'start-3', nextBtnId: 'next-3',
+           statAttemptsId: 's-att-3', statCorrectId: 's-corr-3', statAccuracyId: 's-acc-3' });
+
+new Quiz({ pool: pool4, questionId: 'q-4', answersId: 'a-4', feedbackId: 'f-4',
+           startBtnId: 'start-4', nextBtnId: 'next-4',
+           statAttemptsId: 's-att-4', statCorrectId: 's-corr-4', statAccuracyId: 's-acc-4' });
+
+/* Переключение вкладок уровней */
+(function(){
+  var tabs = document.querySelectorAll('.quiz-tab');
+  var panels = document.querySelectorAll('.quiz-panel');
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function(){
+      var target = this.getAttribute('data-target');
+      for (var k = 0; k < tabs.length; k++) tabs[k].classList.remove('active');
+      for (var m = 0; m < panels.length; m++) panels[m].classList.remove('active');
+      this.classList.add('active');
+      var panel = document.getElementById(target);
+      if (panel) panel.classList.add('active');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
