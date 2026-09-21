@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Загадки русского народа · Главная</title>
+<style>
+  :root{
+    --paper:#faf8f2; --paper-2:#fffdf8; --ink:#2e2b26; --ink-soft:#5a5040;
+    --line:#e8dcc8; --line-soft:#f0e6d6; --accent:#8b5a2b; --accent-2:#b8863f;
+    --accent-soft:#f0e4d0; --shadow:0 1px 2px rgba(43,38,32,.05), 0 8px 24px rgba(43,38,32,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+
+  nav.top-nav,
+  nav.bottom-nav {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    background:var(--line-soft);
+    padding:12px 18px;
+    border-radius:6px;
+    margin:20px auto;
+    font-size:15px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    max-width:820px;
+  }
+  nav a {
+    color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:4px;
+    transition:background .2s,color .2s;
+  }
+  nav a:hover{background:var(--accent);color:#fff;text-decoration:none}
+  nav .current{color:var(--ink-soft);font-weight:600}
+
+  header{
+    text-align:center;
+    padding:48px 20px 36px;
+    border-bottom:2px solid var(--line);
+    background:linear-gradient(135deg,#f5ebe0,#ede0cc);
+  }
+  header h1 {
+    font-size:28px;
+    color:var(--accent);
+    margin:0 0 12px;
+    line-height:1.3;
+  }
+  header .subtitle {
+    font-size:17px;color:#7a7060;font-style:italic;max-width:640px;margin:0 auto;
+  }
+
+  main{padding:30px 0 40px}
+
+  h2 {
+    font-size:22px;color:var(--accent);margin:34px 0 15px;
+    padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  h3 {
+    font-size:18px;color:var(--ink);margin:22px 0 10px;
+  }
+  p{margin:0 0 14px;text-align:justify}
+
+  .note {
+    background:#fdf8ee;border-left:3px solid var(--accent);
+    padding:14px 18px;margin:16px 0;font-size:16px;color:var(--ink-soft);
+    border-radius:0 6px 6px 0;
+  }
+  .note strong{color:var(--accent)}
+
+  /* Список собраний */
+  .collections{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    margin:20px 0 40px;
+  }
+  .collection{
+    display:flex;
+    gap:16px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+    align-items:flex-start;
+  }
+  .collection:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(180,160,130,.22);
+    border-color:var(--accent-2);
+  }
+  .coll-num{
+    flex:0 0 auto;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-weight:700; font-size:15px;
+    color:#fff; background:var(--accent);
+    width:48px; height:48px;
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    letter-spacing:.02em;
+  }
+  .coll-body{flex:1 1 auto}
+  .coll-body h3{margin:0 0 4px;font-size:18px}
+  .coll-body h3 a{color:var(--accent)}
+  .coll-body p{margin:0;font-size:15px;color:var(--ink-soft);text-align:left}
+  .coll-meta{
+    display:flex; gap:14px; flex-wrap:wrap;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:12.5px; color:var(--ink-soft);
+    margin-top:8px;
+  }
+  .coll-meta span{background:var(--accent-soft);padding:2px 9px;border-radius:999px}
+  .coll-meta span b{color:var(--accent);font-weight:700}
+
+  /* Смежные проекты */
+  .related{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+    margin:20px 0 30px;
+  }
+  .related-card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 22px;
+    box-shadow:var(--shadow);
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .related-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(180,160,130,.22);
+    border-color:var(--accent-2);
+  }
+  .related-card h3{margin:0 0 6px;font-size:17px}
+  .related-card h3 a{color:var(--accent)}
+  .related-card p{margin:0;font-size:14.5px;color:var(--ink-soft);text-align:left}
+
+  footer{
+    background:var(--line-soft);
+    border-top:2px solid var(--line);
+    padding:24px 20px;
+    text-align:center;
+    color:#7a7060;
+    font-size:.9em;
+  }
+  footer p{margin:4px 0;text-align:center}
+
+  @media (max-width:600px){
+    body{font-size:16px}
+    header h1{font-size:22px}
+    h2{font-size:19px}
+    .collection{flex-direction:column;gap:10px}
+    nav.top-nav,nav.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html">На главную сайта</a>
+  <span class="current">Загадки русского народа</span>
+  <a href="folk.html">Народная мудрость</a>
+  <a href="quest.html">Квесты</a>
+</nav>
+
+<header>
+  <h1>Загадки русского народа</h1>
+  <p class="subtitle">Девять собраний по сто загадок. Классические сборники, отобранные и приведённые в единый вид.</p>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h2>О проекте</h2>
+  <p>В этом разделе собраны загадки русского народа, отобранные из классических сборников Д. Н. Садовникова, М. А. Рыбниковой, В. В. Митрофановой и других источников. Материал разделён на девять частей по сто загадок в каждой. Внутри каждого собрания загадки расположены подряд, с отгадками; в конце страницы — викторина-генератор, предлагающая случайную загадку из большого фонда и четыре варианта ответа.</p>
+
+  <div class="note">
+    <strong>Примечание.</strong> Загадки можно читать подряд или выбирать по вкусу. Викторина в каждом собрании содержит триста образцов: около трети — те, что уже встречались в предыдущих частях, остальные — новые. Каждая загадка сопровождается четырьмя вариантами ответа, ведётся счёт попыток и правильных ответов.
+  </div>
+
+  <h2>Собрания загадок</h2>
+
+  <div class="collections">
+
+    <div class="collection">
+      <div class="coll-num">01</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-01.html">Собрание первое · Загадки 1–100</a></h3>
+        <p>Первая сотня загадок. Небо и земля, растения и животные, дом и утварь, человек и его тело, труд и ремёсла, еда и питьё.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">02</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-02.html">Собрание второе · Загадки 101–200</a></h3>
+        <p>Вторая сотня. Гром и молния, звёзды и месяц, ветер и вода, день и ночь, дорога и берега, лягушка и мышь.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">03</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-03.html">Собрание третье · Загадки 201–300</a></h3>
+        <p>Третья сотня. Радуга и солнечный луч, дождь и земля, лёд и мороз, река и роса, снег и тень, яма и коза.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">04</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-04.html">Собрание четвёртое · Загадки 301–400</a></h3>
+        <p>Четвёртая сотня. Солнце и болото, ветер и лёд, тень и жук, конь и вол, уж и свинья, гусь и блоха, пчёлы и гриб.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">05</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-05.html">Собрание пятое · Загадки 401–500</a></h3>
+        <p>Пятая сотня. Берёза и земляника, крапива и лес, орех и репей, хмель и шиповник, капуста и лён, луковица и морковь, огурец.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">06</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-06.html">Собрание шестое · Загадки 501–600</a></h3>
+        <p>Шестая сотня. Орех и гриб, дерево и лес, паук и муравейник, муха и оса, паутина и пчела, мёд в сотах и соты.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">07</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-07.html">Собрание седьмое · Загадки 601–700</a></h3>
+        <p>Седьмая сотня. Млечный путь и весна, вода и дождь, замёрзшая река и земной шар, изморозь и мираж, мороз и ночь, роса и ручьи, снег и тень, эхо.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">08</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-08.html">Собрание восьмое · Загадки 701–800</a></h3>
+        <p>Восьмая сотня. Большая Медведица и гроза, звёзды и месяц, луна и луч солнца, небо и звёзды, поле и месяц.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="coll-num">09</div>
+      <div class="coll-body">
+        <h3><a href="zagadky-09.html">Собрание девятое · Загадки 801–900</a></h3>
+        <p>Девятая сотня. Мороз и прорубь, пар и пена, река и берега, роса и ручей, снег и сосульки, тень и эхо, яма и запах, заря и земля, лёд и капли, луч солнца и дождь.</p>
+        <div class="coll-meta">
+          <span><b>100</b> загадок</span>
+          <span>Викторина · 300 образцов</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Смежные проекты</h2>
+  <p>Рядом с разделом загадок на сайте развиваются ещё два направления, связанные с народной культурой и образованием.</p>
+
+  <div class="related">
+    <div class="related-card">
+      <h3><a href="folk.html">Народная мудрость и педагогика</a></h3>
+      <p>Пословицы, загадки, игры и воспитательные традиции. Принципы народной педагогики, разбор пословиц и описание народных игр.</p>
+    </div>
+    <div class="related-card">
+      <h3><a href="quest.html">Загадки русского народа. Квест</a></h3>
+      <p>Десять тематических сборников по сто загадок. Четыре уровня сложности и четыре викторины на каждой странице — от простых до самых сложных.</p>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html">На главную сайта</a>
+  <span class="current">Загадки русского народа</span>
+  <a href="folk.html">Народная мудрость</a>
+  <a href="quest.html">Квесты</a>
+</nav>
+
+<footer>
+  <p>Загадки русского народа · Главная</p>
+  <p>Образовательный проект о народной мудрости</p>
+</footer>
+
+</body>
+</html>
