@@ -6,398 +6,317 @@
 <title>Загадки русского народа · Квест · Главная</title>
 <style>
   :root{
-    --paper:#faf8f2; --paper-2:#fffdf8; --ink:#2e2b26; --ink-soft:#5a5040;
-    --line:#e8dcc8; --line-soft:#f0e6d6; --accent:#8b5a2b; --accent-2:#b8863f;
-    --accent-soft:#f0e4d0;
-    --shadow:0 1px 2px rgba(43,38,32,.05), 0 8px 24px rgba(43,38,32,.06);
-    --lvl1:#6f9b6f; --lvl2:#8b9b3a; --lvl3:#c08a2e; --lvl4:#b05a3a;
+    --paper:#fbfaf6;
+    --ink:#2b2b2b;
+    --ink-soft:#555;
+    --ink-mute:#777;
+    --line:#d9d4c8;
+    --line-soft:#eae6dc;
+    --link:#5a4a2f;
+    --link-hover:#2b2b2b;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0; background:var(--paper); color:var(--ink);
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
     font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
-    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
   }
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
+  a{color:var(--link);text-decoration:none;border-bottom:1px solid var(--line)}
+  a:hover{color:var(--link-hover);border-bottom-color:var(--ink)}
 
-  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
 
   nav.top-nav,
-  nav.bottom-nav {
-    display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; gap:10px;
-    background:var(--line-soft);
-    padding:12px 18px; border-radius:6px;
-    margin:20px auto; font-size:15px;
+  nav.bottom-nav{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:8px;
+    padding:14px 0;
     font-family:"Segoe UI",system-ui,sans-serif;
-    max-width:880px;
+    font-size:14px;
+    border-bottom:1px solid var(--line-soft);
+    margin:0 auto;
+    max-width:760px;
   }
-  nav a {color:var(--accent);padding:4px 10px;border-radius:4px;transition:background .2s,color .2s}
-  nav a:hover{background:var(--accent);color:#fff;text-decoration:none}
-  nav span{color:var(--ink-soft);font-weight:600}
+  nav.bottom-nav{border-bottom:none;border-top:1px solid var(--line-soft);margin-top:40px}
+  nav a{border-bottom:none;padding:2px 0}
+  nav a:hover{text-decoration:underline}
+  nav .current{color:var(--ink-mute)}
 
   header{
-    text-align:center; padding:48px 20px 36px;
-    border-bottom:2px solid var(--line);
-    background:linear-gradient(135deg,#f5ebe0,#ede0cc);
+    padding:48px 0 28px;
+    border-bottom:1px solid var(--line);
   }
-  header h1{font-size:30px;color:var(--accent);margin:0 0 12px;line-height:1.3}
-  header .subtitle{font-size:17px;color:#7a7060;font-style:italic;max-width:640px;margin:0 auto}
+  header h1{
+    font-size:24px;
+    font-weight:normal;
+    letter-spacing:.01em;
+    margin:0 0 10px;
+    color:var(--ink);
+  }
+  header .subtitle{
+    font-size:15px;
+    color:var(--ink-mute);
+    margin:0;
+  }
 
-  main{padding:30px 0 40px}
+  main{padding:34px 0 20px}
 
   h2{
-    font-size:22px;color:var(--accent);margin:34px 0 15px;
-    padding-bottom:8px;border-bottom:1px solid var(--line);
+    font-size:18px;
+    font-weight:normal;
+    letter-spacing:.02em;
+    margin:36px 0 14px;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--line-soft);
+    color:var(--ink);
   }
-  h3{font-size:19px;color:var(--ink);margin:22px 0 10px}
+  h3{
+    font-size:16px;
+    font-weight:bold;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
   p{margin:0 0 14px;text-align:justify}
+  ul,ol{margin:0 0 14px 22px;padding:0}
+  li{margin-bottom:6px}
 
-  .note{
-    background:#fdf8ee;border-left:3px solid var(--accent);
-    padding:14px 18px;margin:16px 0;font-size:16px;color:var(--ink-soft);
-    border-radius:0 6px 6px 0;
+  .intro{
+    font-size:16px;
+    color:var(--ink-soft);
   }
-  .note strong{color:var(--accent)}
 
   /* Уровни */
   .levels{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-    margin:20px 0 30px;
+    margin:18px 0 8px;
   }
   .level{
-    background:var(--paper-2);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:16px 18px;
-    border-top:4px solid var(--accent);
-    box-shadow:var(--shadow);
+    padding:12px 0;
+    border-bottom:1px solid var(--line-soft);
   }
-  .level h3{margin:0 0 6px;font-size:16px;letter-spacing:.02em}
-  .level .lvl-tag{
+  .level:last-child{border-bottom:none}
+  .level h3{margin:0 0 4px}
+  .level .roman{
     display:inline-block;
+    min-width:52px;
+    color:var(--ink-mute);
     font-family:"Segoe UI",system-ui,sans-serif;
-    font-size:11px;font-weight:700;letter-spacing:.12em;
-    text-transform:uppercase;
-    color:#fff; background:var(--accent);
-    padding:2px 10px;border-radius:999px;
-    margin-bottom:8px;
+    font-size:13px;
+    letter-spacing:.04em;
   }
-  .level.l1{border-top-color:var(--lvl1)}
-  .level.l1 .lvl-tag{background:var(--lvl1)}
-  .level.l2{border-top-color:var(--lvl2)}
-  .level.l2 .lvl-tag{background:var(--lvl2)}
-  .level.l3{border-top-color:var(--lvl3)}
-  .level.l3 .lvl-tag{background:var(--lvl3)}
-  .level.l4{border-top-color:var(--lvl4)}
-  .level.l4 .lvl-tag{background:var(--lvl4)}
-  .level p{font-size:15px;margin:0;color:var(--ink-soft);text-align:left}
+  .level p{margin:2px 0 0 0;font-size:15px;color:var(--ink-soft);text-align:left}
 
-  /* Категории */
+  /* Список категорий */
   .cats{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:14px;
-    margin:20px 0 40px;
+    margin:16px 0 8px;
+    counter-reset:cat;
   }
   .cat{
-    display:flex;
-    gap:16px;
-    background:var(--paper-2);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:18px 20px;
-    box-shadow:var(--shadow);
-    transition:transform .2s, box-shadow .2s, border-color .2s;
-    align-items:flex-start;
+    padding:16px 0;
+    border-bottom:1px solid var(--line-soft);
+    counter-increment:cat;
   }
-  .cat:hover{
-    transform:translateY(-2px);
-    box-shadow:0 6px 18px rgba(180,160,130,.22);
-    border-color:var(--accent-2);
+  .cat:last-child{border-bottom:none}
+  .cat h3{
+    margin:0 0 4px;
+    font-size:16px;
+    font-weight:normal;
   }
-  .cat-num{
-    flex:0 0 auto;
+  .cat h3::before{
+    content:counter(cat,decimal-leading-zero) ".";
     font-family:"Segoe UI",system-ui,sans-serif;
-    font-weight:700; font-size:15px;
-    color:#fff; background:var(--accent);
-    width:44px; height:44px;
-    border-radius:10px;
-    display:flex; align-items:center; justify-content:center;
+    font-size:13px;
+    color:var(--ink-mute);
+    margin-right:10px;
+    letter-spacing:.04em;
+  }
+  .cat h3 a{border-bottom:1px solid var(--line)}
+  .cat p{
+    margin:0 0 0 0;
+    font-size:15px;
+    color:var(--ink-soft);
+    text-align:left;
+  }
+  .cat .meta{
+    display:block;
+    margin-top:6px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-mute);
     letter-spacing:.02em;
   }
-  .cat-body{flex:1 1 auto}
-  .cat-body h3{margin:0 0 4px;font-size:18px;color:var(--accent)}
-  .cat-body h3 a{color:var(--accent)}
-  .cat-body p{margin:0;font-size:15px;color:var(--ink-soft);text-align:left}
-  .cat-meta{
-    display:flex; gap:14px; flex-wrap:wrap;
-    font-family:"Segoe UI",system-ui,sans-serif;
-    font-size:12.5px; color:var(--ink-soft);
-    margin-top:8px;
-  }
-  .cat-meta span{background:var(--accent-soft);padding:2px 9px;border-radius:999px}
-  .cat-meta span b{color:var(--accent);font-weight:700}
 
   /* Схема страницы квеста */
   .scheme{
-    background:#fffdf8;
-    border:1px dashed var(--accent-2);
-    border-radius:12px;
-    padding:22px 24px;
-    margin:22px 0 30px;
-    font-family:"Segoe UI",system-ui,sans-serif;
     font-size:15px;
-  }
-  .scheme ol{
-    margin:10px 0 0 20px;
-    padding:0;
     color:var(--ink-soft);
+    margin:12px 0 20px;
   }
-  .scheme ol li{margin-bottom:6px}
-  .scheme ol li b{color:var(--accent)}
+  .scheme ol{margin-left:22px}
+  .scheme li{margin-bottom:4px}
+  .scheme b{font-weight:bold;color:var(--ink)}
 
   footer{
-    background:var(--line-soft);
-    border-top:2px solid var(--line);
-    padding:24px 20px; text-align:center;
-    color:#7a7060; font-size:.9em;
+    border-top:1px solid var(--line-soft);
+    padding:22px 0 40px;
+    text-align:center;
+    color:var(--ink-mute);
+    font-size:13.5px;
+    font-family:"Segoe UI",system-ui,sans-serif;
   }
-  footer p{margin:4px 0}
+  footer p{margin:4px 0;text-align:center}
 
-  @media (max-width:640px){
+  @media (max-width:600px){
     body{font-size:16px}
-    header h1{font-size:22px}
-    h2{font-size:19px}
-    .levels{grid-template-columns:1fr}
-    .cat{flex-direction:column;gap:10px}
-    nav.top-nav,nav.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}
+    header h1{font-size:20px}
+    h2{font-size:17px}
+    nav.top-nav,nav.bottom-nav{flex-direction:column;align-items:flex-start}
   }
 </style>
 </head>
 <body>
 
 <nav class="top-nav">
-  <a href="zagadky.html">На главную</a>
+  <a href="zagadky.html">Главная</a>
   <a href="zagadky-01.html">Викторина «Загадки 1–100»</a>
-  <span>Квесты · Главная</span>
-  <a href="quest-01.html">Первый квест →</a>
+  <span class="current">Квесты</span>
+  <a href="quest-01.html">Квест 01 →</a>
 </nav>
 
 <header>
-  <h1>Загадки русского народа · Квест</h1>
-  <p class="subtitle">Десять тематических сборников. В каждом — сто загадок, четыре уровня сложности и четыре генератора-викторины.</p>
+  <div class="wrap">
+    <h1>Загадки русского народа. Квест</h1>
+    <p class="subtitle">Десять тематических сборников. В каждом — сто загадок, четыре уровня сложности и четыре викторины.</p>
+  </div>
 </header>
 
 <main>
 <div class="wrap">
 
-  <h2>Методика квеста</h2>
-  <p>Каждый файл квеста — это самостоятельная страница-сборник. Она устроена так же, как уже знакомая вам страница викторины, но отвечает другой задаче: не «прочитать сто загадок», а <em>пройти путь</em> от простого к сложному и проверить себя в четырёх независимых викторинах.</p>
+  <h2>Устройство квеста</h2>
+  <p class="intro">Каждая страница серии представляет собой самостоятельный тематический сборник. Материал организован по единой схеме: предварительный раздел с образцами загадок и четыре викторины, различающиеся степенью сложности. Общее число загадок на странице — сто.</p>
 
   <div class="scheme">
-    <b>Что на каждой странице квеста (100 загадок):</b>
     <ol>
-      <li><b>Теоретическая часть</b> — 20 наиболее представительных загадок категории с отгадками, оформленные как список.</li>
-      <li><b>Генератор I · Простые</b> — 20 загадок, доступных и детям, и взрослому с первых секунд.</li>
-      <li><b>Генератор II · Чуть сложнее</b> — 20 загадок, где нужна небольшая работа мысли.</li>
-      <li><b>Генератор III · Ещё сложнее</b> — 20 загадок, требующих внимания к деталям и образного хода.</li>
-      <li><b>Генератор IV · Самые сложные</b> — 20 загадок из разряда «догадаться почти невозможно, но интересно».</li>
+      <li><b>Основной раздел.</b> Двадцать загадок категории с отгадками.</li>
+      <li><b>Викторина I.</b> Двадцать загадок первого уровня сложности.</li>
+      <li><b>Викторина II.</b> Двадцать загадок второго уровня сложности.</li>
+      <li><b>Викторина III.</b> Двадцать загадок третьего уровня сложности.</li>
+      <li><b>Викторина IV.</b> Двадцать загадок четвёртого уровня сложности.</li>
     </ol>
-    Все четыре генератора устроены как известный вам викторинный блок: случайная загадка, четыре варианта ответа, счёт попыток и точности. Загадки внутри генератора не повторяются до полного круга, но могут появляться в других квестах — так фонд постепенно закрепляется в памяти.
   </div>
 
-  <div class="note">
-    <strong>Отбор материала.</strong> Из большого корпуса (около 1200 записей) отобраны загадки, не режущие современный слух: без устаревшей обсценной лексики, без тёмных диалектных слов, которые нельзя объяснить в одну строку, без физиологических и «страшных» сюжетов. Текст загадки иногда слегка выправлен (пунктуация, порядок слов, замена устаревшего слова понятным) — но без потери народной образности и ритма.
-  </div>
+  <p class="intro">Каждая викторина устроена по единому образцу: предъявляется случайная загадка, предлагается четыре варианта ответа, ведётся подсчёт попыток и правильных ответов. Загадки внутри одной викторины не повторяются до полного прохождения круга. Между викторинами и между страницами серии возможны повторы — они служат закреплению материала.</p>
 
-  <h2>Четыре уровня сложности</h2>
-  <p>Один и тот же уровень — сквозной для всех десяти квестов. Это позволяет сравнивать себя не с соседом, а с собственной скоростью узнавания.</p>
+  <h2>Уровни сложности</h2>
 
   <div class="levels">
-    <div class="level l1">
-      <span class="lvl-tag">Уровень I</span>
-      <h3>Простые</h3>
-      <p>Узнаются с первого чтения, часто построены на ярком зрительном образе: «Сидит дед, в шубу одет». Отгадка приходит раньше, чем дочитана строка. Хороши для детей и для разминки.</p>
+    <div class="level">
+      <h3><span class="roman">I.</span>Первый уровень</h3>
+      <p>Загадки, узнаваемые при первом чтении. Построены преимущественно на наглядном образе. Могут использоваться в работе с детьми и в качестве начального упражнения.</p>
     </div>
-    <div class="level l2">
-      <span class="lvl-tag">Уровень II</span>
-      <h3>Чуть сложнее</h3>
-      <p>Нужно небольшое усилие: сравнить две части образа, отделить прямое значение слова от переносного. Часто это загадки-«двухэтажки» — про небо и месяц, про печь и дым.</p>
+    <div class="level">
+      <h3><span class="roman">II.</span>Второй уровень</h3>
+      <p>Загадки, требующие сопоставления двух частей образа или различения прямого и переносного значения слова.</p>
     </div>
-    <div class="level l3">
-      <span class="lvl-tag">Уровень III</span>
-      <h3>Ещё сложнее</h3>
-      <p>Требуют внимания к редкой детали быта или к игре слов. Здесь встречаются устаревшие ремёсла (цепы, борона, прялка), числа, календарь, «двойные» сюжеты вроде загадок-диалогов.</p>
+    <div class="level">
+      <h3><span class="roman">III.</span>Третий уровень</h3>
+      <p>Загадки, предполагающие знание отдельных деталей традиционного быта и ремёсел, а также внимательное отношение к числовым и календарным мотивам.</p>
     </div>
-    <div class="level l4">
-      <span class="lvl-tag">Уровень IV</span>
-      <h3>Самые сложные</h3>
-      <p>Загадки-«перевёртыши», шуточные вопросы, задачи на смекалку и логику, игры со словом и буквой. Их приятно разгадывать не в одиночку, а вслух, всей компанией.</p>
+    <div class="level">
+      <h3><span class="roman">IV.</span>Четвёртый уровень</h3>
+      <p>Загадки-задачи, вопросы на сообразительность, построенные на игре слов, скрытом счёте и логических противопоставлениях.</p>
     </div>
   </div>
 
-  <h2>Десять категорий загадок</h2>
-  <p>Каждый квест собирает загадки вокруг одной темы. Категории покрывают тот круг образов, из которого складывается народная картина мира: небо и земля, дом и труд, еда и грамота.</p>
+  <h2>Разделы серии</h2>
 
   <div class="cats">
 
     <div class="cat">
-      <div class="cat-num">01</div>
-      <div class="cat-body">
-        <h3><a href="quest-01.html">Небо, земля, стихии</a></h3>
-        <p>Солнце, месяц, звёзды, тучи, заря, радуга, ветер, дождь, снег и лёд. Самая «зрелищная» категория: здесь образы парят над головой и дышат движением.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 01</span>
-        </div>
-      </div>
+      <h3><a href="quest-01.html">Небо, земля, стихии</a></h3>
+      <p>Солнце, месяц, звёзды, тучи, заря, радуга, ветер, дождь, снег и лёд.</p>
+      <span class="meta">Квест 01 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">02</div>
-      <div class="cat-body">
-        <h3><a href="quest-02.html">Растения, поле, урожай</a></h3>
-        <p>Капуста и репа, морковь и лук, горох и рожь, огурец и арбуз, грибы и мак. Загадки о том, что растёт и кормит, — с их «сто одёжек» и «золотыми яичками».</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 02</span>
-        </div>
-      </div>
+      <h3><a href="quest-02.html">Растения, поле, урожай</a></h3>
+      <p>Капуста, репа, морковь, лук, горох, рожь, огурец, арбуз, грибы, мак.</p>
+      <span class="meta">Квест 02 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">03</div>
-      <div class="cat-body">
-        <h3><a href="quest-03.html">Звери, птицы, насекомые</a></h3>
-        <p>Конь и корова, заяц и волк, лиса и медведь, петух и ласточка, пчела и комар. Народная зоология — точная и насмешливая одновременно.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 03</span>
-        </div>
-      </div>
+      <h3><a href="quest-03.html">Звери, птицы, насекомые</a></h3>
+      <p>Конь, корова, заяц, волк, лиса, медведь, петух, ласточка, пчела, комар.</p>
+      <span class="meta">Квест 03 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">04</div>
-      <div class="cat-body">
-        <h3><a href="quest-04.html">Человек и его тело</a></h3>
-        <p>Голова, глаза, уши, зубы, язык, руки, пальцы. Загадки, которые «про тебя самого»: узнавание себя через старинный образ — от «двух братцев через дорогу» до «пяти чуланчиков».</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 04</span>
-        </div>
-      </div>
+      <h3><a href="quest-04.html">Человек и его тело</a></h3>
+      <p>Голова, глаза, уши, зубы, язык, руки, пальцы.</p>
+      <span class="meta">Квест 04 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">05</div>
-      <div class="cat-body">
-        <h3><a href="quest-05.html">Изба, дом, домашняя утварь</a></h3>
-        <p>Печь, дверь, порог, окно, стол, скамья, замок, свеча, самовар, ухват, чугун, коромысло. Мир, который начинается за порогом и держится на трёх ногах-опорах.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 05</span>
-        </div>
-      </div>
+      <h3><a href="quest-05.html">Изба, дом, домашняя утварь</a></h3>
+      <p>Печь, дверь, порог, окно, стол, скамья, замок, свеча, самовар, ухват, чугун, коромысло.</p>
+      <span class="meta">Квест 05 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">06</div>
-      <div class="cat-body">
-        <h3><a href="quest-06.html">Труд, орудия, ремёсла</a></h3>
-        <p>Соха и борона, серп и коса, цеп и жернова, топор и пила, игла и веретено, мельница и кузнечный мех. Здесь поёт труд — и загадка звучит как его ритм.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 06</span>
-        </div>
-      </div>
+      <h3><a href="quest-06.html">Труд, орудия, ремёсла</a></h3>
+      <p>Соха, борона, серп, коса, цеп, жернова, топор, пила, игла, веретено, мельница, кузнечный мех.</p>
+      <span class="meta">Квест 06 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">07</div>
-      <div class="cat-body">
-        <h3><a href="quest-07.html">Еда и питьё</a></h3>
-        <p>Хлеб и пирог, блины и каша, молоко и соль, сахар и мёд, чай и квас. Загадки «вкуса»: их разгадывают по запаху и по теплу, а не по форме.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 07</span>
-        </div>
-      </div>
+      <h3><a href="quest-07.html">Еда и питьё</a></h3>
+      <p>Хлеб, пирог, блины, каша, молоко, соль, сахар, мёд, чай, квас.</p>
+      <span class="meta">Квест 07 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">08</div>
-      <div class="cat-body">
-        <h3><a href="quest-08.html">Время, календарь, год</a></h3>
-        <p>День и ночь, зима и весна, двенадцать месяцев, семь дней недели, час и минута. Круг времени — от зорьки до зорьки, от весны до весны.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 08</span>
-        </div>
-      </div>
+      <h3><a href="quest-08.html">Время, календарь, год</a></h3>
+      <p>День и ночь, времена года, двенадцать месяцев, семь дней недели, час и минута.</p>
+      <span class="meta">Квест 08 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">09</div>
-      <div class="cat-body">
-        <h3><a href="quest-09.html">Грамота, книга, письмо</a></h3>
-        <p>Книга и газета, карандаш и перо, чернила и мел, доска, карта, пенал, почтовый ящик. Загадки о том, как слово становится видимым.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 09</span>
-        </div>
-      </div>
+      <h3><a href="quest-09.html">Грамота, книга, письмо</a></h3>
+      <p>Книга, газета, карандаш, перо, чернила, мел, доска, карта, пенал, почтовый ящик.</p>
+      <span class="meta">Квест 09 · 100 загадок · 4 уровня</span>
     </div>
 
     <div class="cat">
-      <div class="cat-num">10</div>
-      <div class="cat-body">
-        <h3><a href="quest-10.html">Смекалка, числа, игра слов</a></h3>
-        <p>Задачи-«ловушки», счёт, буквы, шуточные вопросы, загадки-диалоги. Тот угол народной мысли, где правильный ответ смеётся над неправильным.</p>
-        <div class="cat-meta">
-          <span><b>100</b> загадок</span>
-          <span>4 уровня</span>
-          <span>Квест 10</span>
-        </div>
-      </div>
+      <h3><a href="quest-10.html">Смекалка, числа, игра слов</a></h3>
+      <p>Задачи на сообразительность, счёт, буквы, шуточные вопросы, загадки-диалоги.</p>
+      <span class="meta">Квест 10 · 100 загадок · 4 уровня</span>
     </div>
 
   </div>
 
-  <h2>Как проходить квесты</h2>
-  <p>Можно идти по порядку — от первого к десятому, накапливая образы: сначала небо, потом земля, потом дом. Можно начинать с той категории, которая сейчас ближе (например, с еды или с загадок о теле). Внутри каждой страницы стоит двигаться «снизу вверх»: сначала викторина для разминки, потом — самые сложные загадки. Так устроена и разметка уровней: от зелёного к красно-кирпичному.</p>
-
-  <div class="note">
-    <strong>Совет.</strong> Самые сложные загадки (уровень IV) плохо разгадываются в одиночку и прекрасно — вслух, за столом, с паузой «кто первый догадается». Это их настоящая форма жизни: не текст на экране, а голос в комнате.
-  </div>
-
-  <nav class="bottom-nav">
-    <a href="zagadky.html">На главную</a>
-    <a href="zagadky-01.html">Викторина «Загадки 1–100»</a>
-    <span>Квесты · Главная</span>
-    <a href="quest-01.html">Первый квест →</a>
-  </nav>
+  <h2>Порядок работы</h2>
+  <p class="intro">Разделы могут проходиться последовательно — от первого к десятому — либо выборочно, в зависимости от интересующей темы. Внутри каждой страницы целесообразно начинать с викторины первого уровня и постепенно переходить к последующим. Загадки четвёртого уровня рассчитаны на коллективное обсуждение.</p>
 
 </div>
 </main>
 
+<nav class="bottom-nav">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0">
+    <a href="zagadky.html">Главная</a>
+    <a href="zagadky-01.html">Викторина «Загадки 1–100»</a>
+    <span class="current">Квесты</span>
+    <a href="quest-01.html">Квест 01 →</a>
+  </div>
+</nav>
+
 <footer>
-  <p>Загадки русского народа · Квест</p>
-  <p>Образовательный проект о народной мудрости</p>
+  <p>Загадки русского народа. Квест</p>
+  <p>Образовательный проект</p>
 </footer>
 
 </body>
