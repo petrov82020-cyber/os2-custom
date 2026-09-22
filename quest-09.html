@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Квест 09 · Грамота, книга, письмо · Загадки русского народа</title>
+<style>
+  :root{
+    --paper:#faf8f2; --paper-2:#fffdf8; --ink:#2e2b26; --ink-soft:#5a5040;
+    --line:#e8dcc8; --line-soft:#f0e6d6; --accent:#8b5a2b; --accent-2:#b8863f;
+    --accent-soft:#f0e4d0;
+    --shadow:0 1px 2px rgba(43,38,32,.05), 0 8px 24px rgba(43,38,32,.06);
+    --lvl1:#6f9b6f; --lvl2:#8b9b3a; --lvl3:#c08a2e; --lvl4:#b05a3a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+  nav.top-nav,
+  nav.bottom-nav {
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
+    background:var(--line-soft);
+    padding:12px 18px; border-radius:6px;
+    margin:20px auto; font-size:15px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    max-width:880px;
+  }
+  nav a {color:var(--accent);padding:4px 10px;border-radius:4px;transition:background .2s,color .2s}
+  nav a:hover{background:var(--accent);color:#fff;text-decoration:none}
+  nav span{color:var(--ink-soft);font-weight:600}
+
+  header{
+    text-align:center; padding:44px 20px 32px;
+    border-bottom:2px solid var(--line);
+    background:linear-gradient(135deg,#f5ebe0,#ede0cc);
+  }
+  header h1{font-size:28px;color:var(--accent);margin:0 0 10px;line-height:1.3}
+  header .subtitle{font-size:16px;color:#7a7060;font-style:italic}
+  header .kicker{
+    display:inline-block;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:#fff;background:var(--accent);
+    padding:3px 12px;border-radius:999px;margin-bottom:14px;
+  }
+
+  main{padding:30px 0 40px}
+
+  h2{
+    font-size:22px;color:var(--accent);margin:30px 0 15px;
+    padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  h3{font-size:19px;color:var(--ink);margin:22px 0 10px}
+  p{margin:0 0 14px;text-align:justify}
+
+  .note{
+    background:#fdf8ee;border-left:3px solid var(--accent);
+    padding:12px 16px;margin:16px 0;font-size:16px;color:var(--ink-soft);
+    border-radius:0 6px 6px 0;
+  }
+  .note strong{color:var(--accent)}
+
+  .legend{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin:14px 0 24px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:13px;
+  }
+  .legend span{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--paper-2); border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; color:var(--ink-soft);
+  }
+  .legend span i{
+    display:inline-block; width:10px; height:10px; border-radius:50%;
+    font-style:normal;
+  }
+  .legend .d1 i{background:var(--lvl1)}
+  .legend .d2 i{background:var(--lvl2)}
+  .legend .d3 i{background:var(--lvl3)}
+  .legend .d4 i{background:var(--lvl4)}
+
+  .riddles-list{
+    counter-reset:riddle;
+    margin:20px 0 40px;
+  }
+  .riddle-item{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 18px;
+    margin-bottom:12px;
+    display:flex; gap:14px; align-items:flex-start;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .riddle-item:hover{
+    box-shadow:0 4px 12px rgba(180,160,130,.18);
+    transform:translateY(-1px);
+  }
+  .riddle-num{
+    counter-increment:riddle;
+    flex:0 0 auto;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-weight:700; font-size:14px;
+    color:var(--accent); background:var(--accent-soft);
+    border-radius:6px; min-width:40px;
+    text-align:center; padding:3px 8px; margin-top:2px;
+  }
+  .riddle-num::before{content:counter(riddle,decimal-leading-zero)}
+  .riddle-body{flex:1 1 auto; font-size:1.02em}
+  .riddle-text{
+    font-style:italic; color:#4a3a2a;
+    white-space:pre-line; margin-bottom:6px;
+  }
+  .riddle-answer{color:#7a6a5a; font-size:.95em}
+  .riddle-answer strong{color:var(--accent)}
+
+  .quiz-tabs{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin:18px 0 18px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+  }
+  .quiz-tab{
+    flex:1 1 auto;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-bottom:3px solid var(--line);
+    border-radius:8px 8px 4px 4px;
+    padding:10px 14px;
+    font-family:inherit;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    cursor:pointer;
+    text-align:center;
+    transition:all .18s;
+    letter-spacing:.01em;
+  }
+  .quiz-tab:hover{background:var(--accent-soft); color:var(--accent)}
+  .quiz-tab.active{
+    background:#fffdf8;
+    color:var(--accent);
+    font-weight:700;
+    border-bottom-color:var(--accent);
+    box-shadow:0 -1px 0 var(--line);
+  }
+  .quiz-tab[data-level="1"].active{border-bottom-color:var(--lvl1);color:#3f6b3f}
+  .quiz-tab[data-level="2"].active{border-bottom-color:var(--lvl2);color:#5c6b1a}
+  .quiz-tab[data-level="3"].active{border-bottom-color:var(--lvl3);color:#8a5e10}
+  .quiz-tab[data-level="4"].active{border-bottom-color:var(--lvl4);color:#8a3a1a}
+
+  .quiz-panel{display:none}
+  .quiz-panel.active{display:block}
+
+  .generator{
+    background:linear-gradient(135deg,#f5ede0,#ede0cc);
+    border:2px solid var(--accent-2);
+    border-radius:14px;
+    padding:30px 26px 24px;
+    margin:20px 0 26px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .generator.l1{border-color:var(--lvl1)}
+  .generator.l2{border-color:var(--lvl2)}
+  .generator.l3{border-color:var(--lvl3)}
+  .generator.l4{border-color:var(--lvl4)}
+  .generator .gen-label{
+    position:absolute; top:-12px; left:22px;
+    color:#fff;
+    padding:3px 14px; border-radius:999px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.68rem; letter-spacing:.14em; font-weight:700;
+    text-transform:uppercase;
+    background:var(--accent);
+  }
+  .generator.l1 .gen-label{background:var(--lvl1)}
+  .generator.l2 .gen-label{background:var(--lvl2)}
+  .generator.l3 .gen-label{background:var(--lvl3)}
+  .generator.l4 .gen-label{background:var(--lvl4)}
+  .generator h3{margin:0 0 10px; font-size:1.15em; color:var(--accent)}
+  .generator .hint{color:var(--ink-soft); font-size:.92em; margin:0 0 16px}
+  .quiz-question{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 22px;
+    font-size:1.05em;
+    font-style:italic;
+    color:#4a3a2a;
+    white-space:pre-line;
+    margin:0 0 16px;
+    min-height:80px;
+  }
+  .quiz-answers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:0 0 16px;
+  }
+  .quiz-answer{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:11px 14px;
+    font-size:.96em;
+    cursor:pointer;
+    color:var(--ink);
+    text-align:left;
+    font-family:Georgia,serif;
+    transition:background .15s, border-color .15s;
+  }
+  .quiz-answer:hover:not(:disabled){
+    background:var(--accent-soft);
+    border-color:var(--accent-2);
+  }
+  .quiz-answer:disabled{cursor:default; opacity:.85}
+  .quiz-answer.correct{
+    background:#e7f0e2;border-color:#7fa572;color:#2f4a26;font-weight:600;
+  }
+  .quiz-answer.wrong{
+    background:#f6e0e0;border-color:#b26a6a;color:#6b2e2e;
+  }
+  .quiz-controls{
+    display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+    margin:0 0 16px;
+  }
+  .gen-btn{
+    background:var(--accent); color:#fff; border:none;
+    border-radius:8px; padding:12px 26px;
+    font-size:1em; font-family:Georgia,serif;
+    cursor:pointer; transition:background .2s;
+  }
+  .gen-btn:hover{background:#6d441c}
+  .gen-btn:disabled{background:#c9b79a; cursor:default}
+  .quiz-feedback{
+    font-size:.95em; min-height:24px;
+    color:var(--ink-soft); font-style:italic;
+  }
+  .quiz-feedback.ok{color:#2f4a26; font-weight:600; font-style:normal}
+  .quiz-feedback.no{color:#8a3a3a; font-weight:600; font-style:normal}
+  .quiz-stats{
+    margin-top:18px; padding-top:14px;
+    border-top:1px dashed var(--accent-2);
+    display:flex; gap:20px; flex-wrap:wrap;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.88em; color:var(--ink-soft);
+  }
+  .quiz-stats strong{color:var(--accent); font-size:1.1em}
+
+  .quest-links{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px; margin:20px 0 10px;
+  }
+  .quest-link{
+    display:block;
+    padding:12px 14px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:8px;
+    text-align:center;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    transition:all .18s;
+  }
+  .quest-link:hover{
+    border-color:var(--accent-2);
+    color:var(--accent);
+    background:var(--accent-soft);
+    text-decoration:none;
+  }
+  .quest-link.current{
+    background:var(--accent);
+    color:#fff;
+    border-color:var(--accent);
+    font-weight:700;
+  }
+
+  footer{
+    background:var(--line-soft);
+    border-top:2px solid var(--line);
+    padding:24px 20px; text-align:center;
+    color:#7a7060; font-size:.9em;
+  }
+  footer p{margin:4px 0}
+
+  @media (max-width:600px){
+    body{font-size:16px}
+    header h1{font-size:22px}
+    h2{font-size:19px}
+    .quiz-answers{grid-template-columns:1fr}
+    nav.top-nav,nav.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}
+    .quiz-tab{font-size:12.5px; padding:9px 8px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="zagadky.html">На главную</a>
+  <a href="quest.html">← Квесты</a>
+  <span>Квест 09 · Грамота, книга, письмо</span>
+  <a href="quest-10.html">Следующий →</a>
+</nav>
+
+<header>
+  <span class="kicker">Квест 09</span>
+  <h1>Грамота, книга, письмо</h1>
+  <p class="subtitle">Книга и газета, карандаш и перо, чернила и мел, доска, карта, пенал, почтовый ящик.<br>20 образцовых загадок и четыре викторины по 20 загадок — на 100 загадок страницы.</p>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h2>О квесте</h2>
+  <p>Девятый квест посвящён слову записанному. Загадки этой категории говорят о том, как мысль становится видимой: книга «не куст, а с листочками», карандаш «чёрный Ивашка, деревянная рубашка», мел «белый зайчик прыгает по чёрному полю», перо «дадут пить — станет говорить». Здесь мало чистых описаний — почти каждая загадка построена на действии: пишет, читает, чертит, отправляет. Разгадывая их, читатель учится видеть назначение вещи, а не только её внешность.</p>
+  <p>В теоретической части — двадцать самых представительных загадок с отгадками. Ниже — четыре независимые викторины, по уровню сложности. Внутри каждой — своя случайная выборка без повторов до полного круга.</p>
+
+  <div class="legend">
+    <span class="d1"><i></i>Уровень I · Простые</span>
+    <span class="d2"><i></i>Уровень II · Чуть сложнее</span>
+    <span class="d3"><i></i>Уровень III · Ещё сложнее</span>
+    <span class="d4"><i></i>Уровень IV · Самые сложные</span>
+  </div>
+
+  <h2>Загадки 1–20 (с отгадками)</h2>
+
+  <div class="riddles-list">
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Не куст, а с листочками, не рубашка, а сшита, не человек, а рассказывает.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Книга.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Не дерево, а с листочками, не рубашка, а сшита, не человек, а разговаривает.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Книга.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">С листьями, а не дерево.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Книга.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Один заварил, другой насолил, сколько ни хлебай, на любую артель хватит.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Книга.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">В Москве рубят, а к нам щепки летят.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Газета.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Птица белая, вестями обклеена.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Газета.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Языка не имеет, а у кого побывает, тот очень много узнает.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Газета.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Чёрный Ивашка, деревянная рубашка, где носом поведёт, там заметку кладёт.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Карандаш.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">В тонком деревце чёрное сердце.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Карандаш.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Грамоте не знаю, а весь век пишу.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Карандаш.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Срежу голову, выну сердце, дам пить — станет говорить.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Перо гусиное.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Без сердца родился, народу пригодился; дам пить — пьёт, попрошу — отдаёт.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Перо.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Стальной конёк по белому полю бегает и за собою чёрные следы оставляет.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Перо.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Стальной нос, деревянный хвост, по полю запляшет, беззвучно скажет.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Ручка с пером.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Разноцветная водица, для грамотных годится.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Чернила.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Белый зайчик прыгает по чёрному полю.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Мел.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Белая чайка по чёрному полю скакала, дорогу за собой оставляла.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Мел и доска.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Чёрное поле, кругом горы, на поле растут белые цветы.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Классная доска.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Птичка рябая из рук в руки порхает и летит к тому, послали к кому.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Письмо.</div>
+      </div>
+    </div>
+
+    <div class="riddle-item">
+      <div class="riddle-num"></div>
+      <div class="riddle-body">
+        <div class="riddle-text">Жёлтый домик у ворот. Отгадай, кто в нём живёт; щёлка узкая такая, не пролезет в неё и мышь.</div>
+        <div class="riddle-answer"><strong>Отгадка:</strong> Почтовый ящик.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Четыре викторины квеста</h2>
+  <p>Выберите уровень. Внутри каждого — своя случайная загадка, четыре варианта ответа и счёт. Загадки не повторяются до полного круга; между уровнями возможно пересечение — так образы закрепляются.</p>
+
+  <div class="quiz-tabs">
+    <button class="quiz-tab active" data-level="1" data-target="panel-1">Уровень I · Простые</button>
+    <button class="quiz-tab" data-level="2" data-target="panel-2">Уровень II · Чуть сложнее</button>
+    <button class="quiz-tab" data-level="3" data-target="panel-3">Уровень III · Ещё сложнее</button>
+    <button class="quiz-tab" data-level="4" data-target="panel-4">Уровень IV · Самые сложные</button>
+  </div>
+
+  <!-- УРОВЕНЬ I -->
+  <div class="quiz-panel active" id="panel-1">
+    <div class="generator l1">
+      <span class="gen-label">Уровень I · Простые</span>
+      <h3>Разминка · 20 загадок</h3>
+      <p class="hint">Узнаются с первого чтения. Хороши для детей и для быстрого старта.</p>
+
+      <div class="quiz-question" id="q-1">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-1"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-1" type="button">Начать</button>
+        <button class="gen-btn" id="next-1" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-1"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-1">0</strong></span>
+        <span>Правильных: <strong id="s-corr-1">0</strong></span>
+        <span>Точность: <strong id="s-acc-1">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- УРОВЕНЬ II -->
+  <div class="quiz-panel" id="panel-2">
+    <div class="generator l2">
+      <span class="gen-label">Уровень II · Чуть сложнее</span>
+      <h3>Второй шаг · 20 загадок</h3>
+      <p class="hint">Нужно сравнить две части образа или различить прямое и переносное значение слова.</p>
+
+      <div class="quiz-question" id="q-2">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-2"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-2" type="button">Начать</button>
+        <button class="gen-btn" id="next-2" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-2"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-2">0</strong></span>
+        <span>Правильных: <strong id="s-corr-2">0</strong></span>
+        <span>Точность: <strong id="s-acc-2">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- УРОВЕНЬ III -->
+  <div class="quiz-panel" id="panel-3">
+    <div class="generator l3">
+      <span class="gen-label">Уровень III · Ещё сложнее</span>
+      <h3>Глубже в образ · 20 загадок</h3>
+      <p class="hint">Здесь встречаются старинные предметы письма, редкие сравнения, наблюдения за работой писца и печатника.</p>
+
+      <div class="quiz-question" id="q-3">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-3"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-3" type="button">Начать</button>
+        <button class="gen-btn" id="next-3" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-3"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-3">0</strong></span>
+        <span>Правильных: <strong id="s-corr-3">0</strong></span>
+        <span>Точность: <strong id="s-acc-3">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- УРОВЕНЬ IV -->
+  <div class="quiz-panel" id="panel-4">
+    <div class="generator l4">
+      <span class="gen-label">Уровень IV · Самые сложные</span>
+      <h3>На пределе · 20 загадок</h3>
+      <p class="hint">Задачи-«ловушки», игра слов, скрытые числа. Их приятно разгадывать вслух, всей компанией.</p>
+
+      <div class="quiz-question" id="q-4">Нажмите «Начать», чтобы получить первую загадку.</div>
+      <div class="quiz-answers" id="a-4"></div>
+      <div class="quiz-controls">
+        <button class="gen-btn" id="start-4" type="button">Начать</button>
+        <button class="gen-btn" id="next-4" type="button" disabled>Следующая загадка</button>
+      </div>
+      <div class="quiz-feedback" id="f-4"></div>
+      <div class="quiz-stats">
+        <span>Попыток: <strong id="s-att-4">0</strong></span>
+        <span>Правильных: <strong id="s-corr-4">0</strong></span>
+        <span>Точность: <strong id="s-acc-4">—</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Другие квесты серии</h2>
+  <div class="quest-links">
+    <a class="quest-link" href="quest-01.html">01 · Небо и стихии</a>
+    <a class="quest-link" href="quest-02.html">02 · Поле и урожай</a>
+    <a class="quest-link" href="quest-03.html">03 · Звери и птицы</a>
+    <a class="quest-link" href="quest-04.html">04 · Человек и тело</a>
+    <a class="quest-link" href="quest-05.html">05 · Изба и утварь</a>
+    <a class="quest-link" href="quest-06.html">06 · Труд и ремёсла</a>
+    <a class="quest-link" href="quest-07.html">07 · Еда и питьё</a>
+    <a class="quest-link" href="quest-08.html">08 · Время и год</a>
+    <a class="quest-link current" href="quest-09.html">09 · Грамота и книга</a>
+    <a class="quest-link" href="quest-10.html">10 · Смекалка и числа</a>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="zagadky.html">На главную</a>
+    <a href="quest.html">← Квесты</a>
+    <span>Квест 09 · Грамота, книга, письмо</span>
+    <a href="quest-10.html">Следующий →</a>
+  </nav>
+
+</div>
+</main>
+
+<footer>
+  <p>Загадки русского народа · Квест 09 · Грамота, книга, письмо</p>
+  <p>Образовательный проект о народной мудрости</p>
+</footer>
+
+<script>
+/* ============================================================
+   КВЕСТ 09 · ГРАМОТА, КНИГА, ПИСЬМО
+   Четыре викторины по уровням сложности.
+   Каждый пул — 20 загадок.
+   ============================================================ */
+
+/* ---------- Уровень I. Простые ---------- */
+var pool1 = [
+  { q: 'Не куст, а с листочками, не рубашка, а сшита, не человек, а рассказывает.', a: 'Книга', w: ['Газета', 'Журнал', 'Тетрадь'] },
+  { q: 'Не дерево, а с листочками, не рубашка, а сшита, не человек, а разговаривает.', a: 'Книга', w: ['Газета', 'Тетрадь', 'Письмо'] },
+  { q: 'С листьями, а не дерево.', a: 'Книга', w: ['Газета', 'Тетрадь', 'Письмо'] },
+  { q: 'Один заварил, другой насолил, сколько ни хлебай, на любую артель хватит.', a: 'Книга', w: ['Газета', 'Щи', 'Каша'] },
+  { q: 'В Москве рубят, а к нам щепки летят.', a: 'Газета', w: ['Телеграф', 'Письмо', 'Посылка'] },
+  { q: 'Птица белая, вестями обклеена.', a: 'Газета', w: ['Книга', 'Журнал', 'Письмо'] },
+  { q: 'Языка не имеет, а у кого побывает, тот очень много узнает.', a: 'Газета', w: ['Книга', 'Письмо', 'Разговор'] },
+  { q: 'Чёрный Ивашка, деревянная рубашка, где носом поведёт, там заметку кладёт.', a: 'Карандаш', w: ['Ручка', 'Кисточка', 'Мел'] },
+  { q: 'В тонком деревце чёрное сердце.', a: 'Карандаш', w: ['Перо', 'Спичка', 'Ручка'] },
+  { q: 'Грамоте не знаю, а весь век пишу.', a: 'Карандаш', w: ['Ручка', 'Мел', 'Кисточка'] },
+  { q: 'Маленький Ивашка, красная рубашка, где носом ткнёт, там черту проведёт.', a: 'Карандаш', w: ['Ручка', 'Кисточка', 'Мел'] },
+  { q: 'Срежу голову, выну сердце, дам пить — станет говорить.', a: 'Перо гусиное', w: ['Карандаш', 'Ручка', 'Кисточка'] },
+  { q: 'Без сердца родился, народу пригодился.', a: 'Перо', w: ['Карандаш', 'Ручка', 'Кисточка'] },
+  { q: 'Стальной конёк по белому полю бегает и за собою чёрные следы оставляет.', a: 'Перо', w: ['Карандаш', 'Ручка', 'Мел'] },
+  { q: 'Разноцветная водица, для грамотных годится.', a: 'Чернила', w: ['Краска', 'Тушь', 'Акварель'] },
+  { q: 'Белый зайчик прыгает по чёрному полю.', a: 'Мел', w: ['Карандаш', 'Пух', 'Снежок'] },
+  { q: 'Белая чайка по чёрному полю скакала, дорогу за собой оставляла.', a: 'Мел и доска', w: ['Карандаш и бумага', 'Перо и лист', 'Кисть и холст'] },
+  { q: 'Чёрное поле, кругом горы, на поле растут белые цветы.', a: 'Классная доска', w: ['Тетрадь', 'Книга', 'Газета'] },
+  { q: 'Птичка рябая из рук в руки порхает и летит к тому, послали к кому.', a: 'Письмо', w: ['Газета', 'Телеграмма', 'Посылка'] },
+  { q: 'Что у тебя меж ногами, то и у меня.', a: 'Порог', w: ['Пол', 'Ступенька', 'Доска'] }
+];
+
+/* ---------- Уровень II. Чуть сложнее ---------- */
+var pool2 = [
+  { q: 'Маленький зайчик весь мир обскакал.', a: 'Газета', w: ['Письмо', 'Посылка', 'Телеграмма'] },
+  { q: 'Поля белые, овцы чёрные.', a: 'Газета', w: ['Книга', 'Тетрадь', 'Письмо'] },
+  { q: 'Одни заварили, другие налили, сколько ни хлебай, на любую артель хватит.', a: 'Газета', w: ['Книга', 'Письмо', 'Журнал'] },
+  { q: 'Моё тело ножом срежут, бросят в печь и там сгорит; моё сердце ткнут в бумагу, и оно заговорит.', a: 'Карандаш', w: ['Перо', 'Ручка', 'Кисточка'] },
+  { q: 'На столе лежит червяк, а не гнётся.', a: 'Карандаш', w: ['Перо', 'Ручка', 'Мел'] },
+  { q: 'Не копьё, а острое, не уголь, а пишет.', a: 'Карандаш', w: ['Перо', 'Мел', 'Кисть'] },
+  { q: 'Одного червяка пятеро водят.', a: 'Карандаш и пальцы', w: ['Ложку и пальцы', 'Перо и пальцы', 'Кисть и пальцы'] },
+  { q: 'Чёрная кошечка на рыхлом снегу скачет и оставляет за собой следы.', a: 'Карандаш и бумага', w: ['Ручка и тетрадь', 'Мел и доска', 'Кисть и холст'] },
+  { q: 'Срежут голову, вынут сердце, дадут пить — и стану говорить.', a: 'Перо гусиное', w: ['Карандаш', 'Ручка', 'Мел'] },
+  { q: 'Когда я пьян, тогда и говорю.', a: 'Перо', w: ['Карандаш', 'Ручка', 'Кисточка'] },
+  { q: 'По чистому полю дорогу проводят в человеческую волю.', a: 'Перо', w: ['Карандаш', 'Ручка', 'Мел'] },
+  { q: 'Стальной нос, деревянный хвост, по полю запляшет, беззвучно скажет.', a: 'Ручка с пером', w: ['Карандаш', 'Кисточка', 'Мел'] },
+  { q: 'Беленький клубочек по чёрному полю скачет и всем всё рассказывает.', a: 'Мел', w: ['Карандаш', 'Снежок', 'Клубок'] },
+  { q: 'Бежит зайчик по чистому полю, следы оставляет.', a: 'Мел, доска и буквы', w: ['Карандаш и бумага', 'Перо и чернила', 'Кисть и холст'] },
+  { q: 'Белая чайка по чёрному полю скакала, следы за собой оставляла.', a: 'Мел и доска', w: ['Карандаш и бумага', 'Перо и лист', 'Кисть и холст'] },
+  { q: 'Чёрное поле взято в неволю, на чёрном поле белых цветов в волю.', a: 'Классная доска', w: ['Тетрадь', 'Пенал', 'Книга'] },
+  { q: 'Что всегда идёт, а с места не сходит?', a: 'Часы', w: ['Река', 'Дорога', 'Время'] },
+  { q: 'Не человек, а рассказывает.', a: 'Книга', w: ['Газета', 'Радио', 'Телефон'] },
+  { q: 'В длинненьком корытце крышечкой закрыто; как крышку откроешь, увидишь там: как длинненькие, тоненькие писатели живут.', a: 'Пенал', w: ['Шкатулка', 'Ящик', 'Ларец'] },
+  { q: 'Дороги имеются — ехать нельзя, земля есть — пахать нельзя, луга есть — косить нельзя, в реках, в морях — воды нет.', a: 'Географическая карта', w: ['План города', 'Схема метро', 'Атлас'] }
+];
+
+/* ---------- Уровень III. Ещё сложнее ---------- */
+var pool3 = [
+  { q: 'На одной бумаге весь мир помещён.', a: 'Географическая карта', w: ['Газета', 'Журнал', 'Атлас'] },
+  { q: 'Что острее меча и мягче пуха?', a: 'Слово', w: ['Игла', 'Перо', 'Взгляд'] },
+  { q: 'Без языка, а сказывается.', a: 'Грамота', w: ['Книга', 'Письмо', 'Газета'] },
+  { q: 'Без языка, а сказывается.', a: 'Болезнь', w: ['Грамота', 'Советь', 'Радость'] },
+  { q: 'Тонкий Макар в шляпе в крышу впился.', a: 'Гвоздь', w: ['Шуруп', 'Клин', 'Шип'] },
+  { q: 'Сам сидит в темнице, а голова на улице.', a: 'Гвоздь', w: ['Шуруп', 'Клин', 'Шип'] },
+  { q: 'Хоть плоска, а не доска.', a: 'Бумага', w: ['Картон', 'Стекло', 'Жесть'] },
+  { q: 'Что в стену не вобьёшь?', a: 'Тень', w: ['Гвоздь', 'Клин', 'Шип'] },
+  { q: 'Что из стены не вырежешь?', a: 'Луч солнца', w: ['Окно', 'Нишу', 'Кирпич'] },
+  { q: 'Что никуда не запрёшь?', a: 'Луч солнца', w: ['Слово', 'Взгляд', 'Мысль'] },
+  { q: 'Не куст, а с листами.', a: 'Книга', w: ['Газета', 'Тетрадь', 'Письмо'] },
+  { q: 'Не человек, а говорит.', a: 'Попугай', w: ['Радио', 'Телефон', 'Книга'] },
+  { q: 'По белому полю много извилистых дорог проведено.', a: 'Тетрадь', w: ['Книга', 'Карта', 'Газета'] },
+  { q: 'Стоит дом, войдёшь в него слепым, а выйдешь зрячим.', a: 'Школа', w: ['Библиотека', 'Музей', 'Театр'] },
+  { q: 'Один заварил, третий налил; сколько ни хлебай, на любую артель хватит.', a: 'Книга', w: ['Газета', 'Щи', 'Каша'] },
+  { q: 'Кто говорит на всех языках?', a: 'Эхо', w: ['Ветер', 'Птица', 'Переводчик'] },
+  { q: 'Живёт без тела, говорит без языка, плачет без слёз, смеётся без радости.', a: 'Эхо', w: ['Ветер', 'Гром', 'Голос'] },
+  { q: 'Не велик мужичок, ножки гладеньки, подпоясан коротенько, по избе пройдёт, пыль пойдёт.', a: 'Веник', w: ['Метла', 'Щётка', 'Помело'] },
+  { q: 'Стоит старец во секу, весь порвался со смеху.', a: 'Чугуночек', w: ['Горшок', 'Котёл', 'Кувшин'] },
+  { q: 'Белая скатерть весь мир застлала.', a: 'Снег', w: ['Бумага', 'Скатерть', 'Туман'] }
+];
+
+/* ---------- Уровень IV. Самые сложные ---------- */
+var pool4 = [
+  { q: 'Как написать «мышеловка» пятью буквами?', a: 'Кошка', w: ['Сетка', 'Ловушка', 'Капкан'] },
+  { q: 'Какая птица из сорока букв?', a: 'Сорока', w: ['Ворона', 'Галка', 'Синица'] },
+  { q: 'Что посреди земли стоит?', a: 'Буква «М»', w: ['Гора', 'Столб', 'Ось'] },
+  { q: 'Что посреди Волги стоит?', a: 'Буква «Л»', w: ['Остров', 'Паром', 'Мост'] },
+  { q: 'Что находится между горой и долиной?', a: 'Буква «И»', w: ['Река', 'Склон', 'Тропа'] },
+  { q: 'В небе одна, а у бабы две.', a: 'Буква «Б»', w: ['Звезда', 'Луна', 'Слеза'] },
+  { q: 'У девки нет, у бабы две, у Бориса спереди, у Глеба сзади.', a: 'Буква «Б»', w: ['Коса', 'Слеза', 'Родинка'] },
+  { q: 'Что у арбы спереди, то у стены сзади?', a: 'Буква «А»', w: ['Буква «Б»', 'Буква «В»', 'Буква «И»'] },
+  { q: 'А и Б сидели на трубе, А упало, Б пропало — что осталось на трубе?', a: 'Буква «И»', w: ['Буква «А»', 'Буква «Б»', 'Ничего'] },
+  { q: 'Как написать «Я» и «Ц», чтобы получилось название животного?', a: 'Заяц', w: ['Овца', 'Ящерица', 'Куница'] },
+  { q: 'Какая разница между 15-летней девушкой и соломенной шляпой?', a: 'Девушка несовершеннолетняя, а шляпа совершеннолетняя', w: ['Девушка мокрая, а шляпа сухая', 'Девушка живая, а шляпа нет', 'Девушка одна, а шляпа одна'] },
+  { q: 'Чем оканчивается день и ночь?', a: 'Мягким знаком', w: ['Точкой', 'Запятой', 'Зарёй'] },
+  { q: 'Чем оканчивается «Азбука»?', a: 'Буквой «А»', w: ['Буквой «Я»', 'Точкой', 'Словом «конец»'] },
+  { q: 'На какие три буквы нужно поставить государство, чтобы получить цветы?', a: 'Нас-турция', w: ['Гол-ландия', 'Фин-ляндия', 'Ита-лия'] },
+  { q: 'Что останется в коробке, если спички вынешь?', a: 'Дно', w: ['Пустота', 'Крышка', 'Стенки'] },
+  { q: 'Что на спичку не навесить?', a: 'Яйцо', w: ['Каплю', 'Пушинку', 'Пылинку'] },
+  { q: 'Что на гвоздь не повесишь?', a: 'Яйцо', w: ['Шляпу', 'Пальто', 'Сумку'] },
+  { q: 'Что быстрее всего на свете?', a: 'Мысль', w: ['Ветер', 'Свет', 'Птица'] },
+  { q: 'Что ко всему липнет?', a: 'Имя', w: ['Пыль', 'Смола', 'Мёд'] },
+  { q: 'Что дороже золота и серебра?', a: 'Слово', w: ['Дитя', 'Здоровье', 'Друг'] }
+];
+
+/* ============================================================
+   Фабрика викторин
+   ============================================================ */
+function Quiz(opts) {
+  this.pool = opts.pool;
+  this.bag = [];
+  this.attempts = 0;
+  this.correct = 0;
+  this.current = null;
+  this.answered = false;
+  this.el = {
+    question: document.getElementById(opts.questionId),
+    answers:  document.getElementById(opts.answersId),
+    feedback: document.getElementById(opts.feedbackId),
+    startBtn: document.getElementById(opts.startBtnId),
+    nextBtn:  document.getElementById(opts.nextBtnId),
+    statAtt:  document.getElementById(opts.statAttemptsId),
+    statCorr: document.getElementById(opts.statCorrectId),
+    statAcc:  document.getElementById(opts.statAccuracyId)
+  };
+  var self = this;
+  this.el.startBtn.addEventListener('click', function(){ self.start(); });
+  this.el.nextBtn.addEventListener('click', function(){ self.next(); });
+}
+
+Quiz.prototype.shuffleBag = function() {
+  this.bag = [];
+  for (var i = 0; i < this.pool.length; i++) this.bag.push(i);
+  for (var k = this.bag.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var t = this.bag[k]; this.bag[k] = this.bag[j]; this.bag[j] = t;
+  }
+};
+
+Quiz.prototype.shuffleArray = function(arr) {
+  var a = arr.slice();
+  for (var k = a.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var t = a[k]; a[k] = a[j]; a[j] = t;
+  }
+  return a;
+};
+
+Quiz.prototype.start = function() {
+  this.attempts = 0;
+  this.correct = 0;
+  this.shuffleBag();
+  this.updateStats();
+  this.el.nextBtn.disabled = false;
+  this.el.startBtn.disabled = true;
+  this.el.startBtn.textContent = 'Идёт викторина';
+  this.next();
+};
+
+Quiz.prototype.next = function() {
+  if (!this.bag.length) this.shuffleBag();
+  if (!this.bag.length) return;
+  var idx = this.bag.pop();
+  this.current = this.pool[idx];
+  this.answered = false;
+
+  this.el.question.textContent = this.current.q;
+
+  var options = this.shuffleArray([this.current.a].concat(this.current.w)).slice(0, 4);
+  if (options.indexOf(this.current.a) === -1) {
+    options[Math.floor(Math.random() * options.length)] = this.current.a;
+  }
+
+  var box = this.el.answers;
+  box.innerHTML = '';
+  var self = this;
+  for (var i = 0; i < options.length; i++) {
+    (function(opt){
+      var btn = document.createElement('button');
+      btn.className = 'quiz-answer';
+      btn.type = 'button';
+      btn.textContent = opt;
+      btn.onclick = function(){ self.answer(btn, opt); };
+      box.appendChild(btn);
+    })(options[i]);
+  }
+
+  this.el.feedback.className = 'quiz-feedback';
+  this.el.feedback.textContent = '';
+  this.el.nextBtn.textContent = 'Следующая загадка';
+};
+
+Quiz.prototype.answer = function(btn, chosen) {
+  if (this.answered) return;
+  this.answered = true;
+  this.attempts++;
+
+  var fb = this.el.feedback;
+  var buttons = this.el.answers.querySelectorAll('.quiz-answer');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = true;
+    if (buttons[i].textContent === this.current.a) {
+      buttons[i].classList.add('correct');
+    }
+  }
+
+  if (chosen === this.current.a) {
+    this.correct++;
+    fb.className = 'quiz-feedback ok';
+    fb.textContent = 'Верно!';
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'quiz-feedback no';
+    fb.textContent = 'Не угадали. Правильный ответ: ' + this.current.a + '.';
+  }
+  this.updateStats();
+};
+
+Quiz.prototype.updateStats = function() {
+  this.el.statAtt.textContent = this.attempts;
+  this.el.statCorr.textContent = this.correct;
+  var acc = this.attempts ? Math.round(this.correct / this.attempts * 100) + '%' : '—';
+  this.el.statAcc.textContent = acc;
+};
+
+/* Создаём четыре викторины */
+new Quiz({ pool: pool1, questionId: 'q-1', answersId: 'a-1', feedbackId: 'f-1',
+           startBtnId: 'start-1', nextBtnId: 'next-1',
+           statAttemptsId: 's-att-1', statCorrectId: 's-corr-1', statAccuracyId: 's-acc-1' });
+
+new Quiz({ pool: pool2, questionId: 'q-2', answersId: 'a-2', feedbackId: 'f-2',
+           startBtnId: 'start-2', nextBtnId: 'next-2',
+           statAttemptsId: 's-att-2', statCorrectId: 's-corr-2', statAccuracyId: 's-acc-2' });
+
+new Quiz({ pool: pool3, questionId: 'q-3', answersId: 'a-3', feedbackId: 'f-3',
+           startBtnId: 'start-3', nextBtnId: 'next-3',
+           statAttemptsId: 's-att-3', statCorrectId: 's-corr-3', statAccuracyId: 's-acc-3' });
+
+new Quiz({ pool: pool4, questionId: 'q-4', answersId: 'a-4', feedbackId: 'f-4',
+           startBtnId: 'start-4', nextBtnId: 'next-4',
+           statAttemptsId: 's-att-4', statCorrectId: 's-corr-4', statAccuracyId: 's-acc-4' });
+
+/* Переключение вкладок уровней */
+(function(){
+  var tabs = document.querySelectorAll('.quiz-tab');
+  var panels = document.querySelectorAll('.quiz-panel');
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function(){
+      var target = this.getAttribute('data-target');
+      for (var k = 0; k < tabs.length; k++) tabs[k].classList.remove('active');
+      for (var m = 0; m < panels.length; m++) panels[m].classList.remove('active');
+      this.classList.add('active');
+      var panel = document.getElementById(target);
+      if (panel) panel.classList.add('active');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
