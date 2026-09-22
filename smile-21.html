@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Группа 21 · Истории 201–210 — Антология юмора и сатиры</title>
+<meta name="description" content="Смешные истории № 201–210: три черепахи и мороженое, грузчики и пианино в ящике, банан в ухе, библиотека параноика, таксист и чемодан, виски-диета, банкир потерял интерес, я не доверяю лестницам, антигравитационная книга, свадьба двух антенн. Полные тексты, разбор приёмов, рейтинг, история с обрывом и генератор.">
+<link rel="canonical" href="https://petrov82020-cyber.github.io/os2-custom/smile-21.html">
+<style>
+  :root{
+    --paper:#f7f3ea; --paper-2:#fffdf8; --ink:#2b2620; --ink-soft:#5c5348;
+    --line:#ddd3c2; --line-soft:#ece4d6; --accent:#8a5a2b; --accent-2:#b8863f;
+    --accent-soft:#f0e4d0; --green:#4f6b4a;
+    --shadow:0 1px 2px rgba(43,38,32,.06), 0 8px 24px rgba(43,38,32,.07);
+    --radius:14px; --maxw:900px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:radial-gradient(1200px 600px at 50% -200px,#fffdf7 0%,transparent 70%),var(--paper);
+    color:var(--ink); font-family:"Georgia","Iowan Old Style","Times New Roman",serif;
+    font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:4px}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:.7em 1.2em;z-index:100;border-radius:0 0 8px 0}
+  .skip:focus{left:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+  header.site{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fffdf8 0%,rgba(255,253,248,.6) 100%)}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:.86rem;font-family:"Segoe UI",system-ui,sans-serif;letter-spacing:.02em;color:var(--ink-soft)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink)}
+  .brand .mark{width:30px;height:30px;flex:0 0 30px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;display:grid;place-items:center;font-size:.9rem;font-weight:700;font-family:"Segoe UI",system-ui,sans-serif}
+  .topbar nav{display:flex;gap:18px;flex-wrap:wrap}
+  .topbar nav a{color:var(--ink-soft)}
+  .topbar nav a:hover{color:var(--accent);text-decoration:none}
+
+  .hero{padding:40px 0 30px;text-align:center}
+  .hero .eyebrow{display:inline-block;font-family:"Segoe UI",system-ui,sans-serif;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid #e6d7bf;border-radius:999px;padding:.4em 1.1em;margin-bottom:18px}
+  .hero h1{margin:0 0 12px;font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.2;font-weight:700;letter-spacing:-.01em}
+  .hero p.lead{max-width:720px;margin:0 auto;color:var(--ink-soft);font-size:1rem}
+
+  .group-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:28px 0 0;font-family:"Segoe UI",system-ui,sans-serif;font-size:.85rem}
+  .group-nav a{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper-2);color:var(--ink-soft)}
+  .group-nav a:hover{border-color:var(--accent-2);color:var(--accent);text-decoration:none}
+
+  main{padding:0 0 70px}
+  section{padding:38px 0}
+  section + section{border-top:1px solid var(--line-soft)}
+
+  .work-head{display:flex;align-items:baseline;gap:14px;margin:0 0 6px;flex-wrap:wrap}
+  .work-num{font-family:"Segoe UI",system-ui,sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;white-space:nowrap}
+  .work-head h2{margin:0;font-size:clamp(1.15rem,2.4vw,1.5rem);letter-spacing:-.01em;line-height:1.25}
+  .rating{display:inline-flex;align-items:center;font-family:"Segoe UI",system-ui,sans-serif;font-size:.82rem;background:var(--accent-soft);border:1px solid #e6d7bf;border-radius:999px;padding:3px 14px;color:#6d441c;font-weight:700;white-space:nowrap}
+  .meta{font-family:"Segoe UI",system-ui,sans-serif;font-size:.84rem;color:var(--ink-soft);margin:0 0 18px}
+
+  .text-block{background:var(--paper-2);border:1px solid var(--line-soft);border-left:3px solid var(--accent-2);border-radius:0 10px 10px 0;padding:20px 22px;margin:0 0 20px;font-size:1rem;line-height:1.7}
+  .text-block p{margin:0 0 .8em}
+  .text-block p:last-child{margin-bottom:0}
+  .text-block .punch{font-style:italic;color:#4a3a2a;font-weight:600}
+  .text-block .source-ref{display:block;margin-top:12px;font-family:"Segoe UI",system-ui,sans-serif;font-size:.78rem;color:var(--ink-soft);font-style:italic}
+
+  .analysis{display:grid;gap:14px}
+  .block{background:var(--paper-2);border:1px solid var(--line-soft);border-radius:10px;padding:16px 20px}
+  .block h3{margin:0 0 8px;font-size:.92rem;font-family:"Segoe UI",system-ui,sans-serif;font-weight:700;letter-spacing:.02em;color:var(--accent)}
+  .block p{margin:0 0 .6em;font-size:.94rem;color:var(--ink)}
+  .block p:last-child{margin-bottom:0}
+  .block ul{margin:0;padding-left:1.2em;font-size:.94rem}
+  .block li{margin-bottom:.4em}
+  .block .rating-note{font-family:"Segoe UI",system-ui,sans-serif;font-size:.9rem;color:var(--ink-soft);margin-top:6px}
+  .block .rating-note strong{color:var(--accent)}
+
+  .questions{background:var(--accent-soft);border:1px solid #e6d7bf;border-radius:10px;padding:16px 20px;margin-top:4px}
+  .questions h3{margin:0 0 8px;font-size:.92rem;font-family:"Segoe UI",system-ui,sans-serif;font-weight:700;color:#6d441c}
+  .questions ol{margin:0;padding-left:1.3em;font-size:.94rem;color:#4a3520}
+  .questions li{margin-bottom:.4em}
+
+  .divider{height:1px;background:var(--line-soft);margin:34px 0 0}
+
+  .summary-box{background:var(--paper-2);border:1px solid var(--line-soft);border-radius:10px;padding:20px 22px;font-size:.95rem}
+  .summary-box h3{margin:0 0 10px;font-size:1.05rem;color:var(--accent)}
+  .summary-box p{margin:0 0 .7em;color:var(--ink-soft)}
+  .summary-box p:last-child{margin-bottom:0}
+
+  .cliffhanger{
+    background:linear-gradient(180deg,#fffdf8 0%,#faf2e6 100%);
+    border:2px solid var(--accent-2);
+    border-radius:14px;
+    padding:30px 26px 24px;
+    margin:0 0 30px;
+    position:relative;
+    box-shadow:var(--shadow);
+  }
+  .cliffhanger::before{
+    content:'ИСТОРИЯ С ОБРЫВОМ';
+    position:absolute;top:-11px;left:22px;
+    background:var(--accent);color:#fff;
+    padding:3px 14px;border-radius:999px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.68rem;letter-spacing:.14em;font-weight:700;
+  }
+  .cliffhanger h3{margin:0 0 14px;font-size:1.1rem;color:var(--accent)}
+  .cliffhanger .story-text{font-size:1.02rem;line-height:1.75;color:var(--ink)}
+  .cliffhanger .story-text p{margin:0 0 .8em}
+  .cliffhanger .cliff-end{
+    font-style:italic;color:var(--accent);font-weight:600;
+    margin:14px 0 0;padding:12px 16px;
+    background:#fff6e8;border-left:3px solid var(--accent-2);
+    border-radius:0 8px 8px 0;
+    font-size:.98rem;
+  }
+  .cliffhanger .continue-btn{
+    display:inline-block;margin-top:18px;
+    background:var(--accent);color:#fff;border:none;
+    border-radius:8px;padding:11px 28px;
+    font-size:.98rem;font-family:"Segoe UI",system-ui,sans-serif;
+    font-weight:600;cursor:pointer;
+    transition:background .2s,transform .1s;
+  }
+  .cliffhanger .continue-btn:hover{background:#6d441c}
+  .cliffhanger .continue-btn:active{transform:translateY(1px)}
+  .cliffhanger .ending{
+    display:none;margin-top:18px;padding-top:18px;
+    border-top:2px dashed var(--accent-2);
+    font-size:1.05rem;font-weight:600;color:#4a3a2a;
+  }
+  .cliffhanger .ending.show{display:block;animation:fadeIn .35s ease}
+  .cliffhanger .ending .note{
+    display:block;margin-top:12px;font-weight:400;
+    font-style:italic;color:var(--ink-soft);font-size:.92rem;
+    padding-top:10px;border-top:1px dashed var(--line);
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+  .mini-generator{
+    background:linear-gradient(135deg,#f5ede0,#ede0cc);
+    border:2px solid var(--accent-2);
+    border-radius:14px;
+    padding:30px 26px 24px;
+    margin:0;
+    position:relative;
+    text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .mini-generator::before{
+    content:'ГЕНЕРАТОР ИСТОРИЙ';
+    position:absolute;top:-11px;left:22px;
+    background:var(--accent);color:#fff;
+    padding:3px 14px;border-radius:999px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.68rem;letter-spacing:.14em;font-weight:700;
+  }
+  .mini-generator .hint{color:var(--ink-soft);font-size:.92rem;margin:0 0 18px}
+  .mini-generator .gen-btn{
+    background:var(--accent);color:#fff;border:none;
+    border-radius:8px;padding:13px 36px;
+    font-size:1.02rem;font-family:Georgia,serif;
+    cursor:pointer;transition:background .2s;
+  }
+  .mini-generator .gen-btn:hover{background:#6d441c}
+  .mini-generator .gen-output{
+    margin-top:20px;padding:20px;
+    background:#fffdf8;border:1px solid var(--line-soft);
+    border-radius:10px;min-height:70px;text-align:left;
+    font-size:.98rem;
+  }
+  .mini-generator .gen-output .gen-cat{
+    display:inline-block;
+    background:var(--accent-soft);color:var(--accent);
+    border-radius:4px;padding:2px 10px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:700;margin-bottom:10px;
+  }
+  .mini-generator .gen-output .gen-text{
+    font-style:italic;color:#4a3a2a;
+    margin:0 0 10px;line-height:1.65;
+  }
+  .mini-generator .gen-output .gen-note{
+    color:var(--ink-soft);font-size:.9rem;
+    border-top:1px dashed var(--line);
+    padding-top:10px;margin:10px 0 0;
+  }
+  .mini-generator .gen-counter{
+    margin-top:14px;color:#9a8a7a;font-size:.84rem;
+    font-family:"Segoe UI",system-ui,sans-serif;
+  }
+
+  footer.site{border-top:1px solid var(--line);background:#fbf7ef;padding:30px 0 36px;font-family:"Segoe UI",system-ui,sans-serif;font-size:.86rem;color:var(--ink-soft)}
+  footer.site .copy{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;border-top:1px solid var(--line-soft);padding-top:18px}
+
+  @media (max-width:560px){
+    body{font-size:16px}
+    .hero{padding:28px 0 22px}
+    .topbar nav{display:none}
+    .work-head{flex-direction:column;gap:4px}
+    .cliffhanger{padding:26px 20px 20px}
+    .mini-generator{padding:26px 20px 20px}
+    .mini-generator .gen-btn{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Перейти к содержанию</a>
+
+<header class="site">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">АЮ</span>
+        <span>Антология юмора и сатиры</span>
+      </div>
+      <nav aria-label="Навигация по сайту">
+        <a href="smile.html">Главная</a>
+        <a href="smile.html#groups">Все группы</a>
+        <a href="smile.html#generator">Генератор</a>
+        <a href="smile.html#biblio">Библиография</a>
+      </nav>
+    </div>
+
+    <div class="hero">
+      <span class="eyebrow">Группа 21 · Истории 201–210</span>
+      <h1>Классика мирового юмора: логика, каламбуры и абсурд</h1>
+      <p class="lead">
+        Десять историй двадцать первой группы. Здесь — три черепахи и мороженое,
+        грузчики и пианино в ящике, банан в ухе, библиотека параноика,
+        таксист и чемодан, виски-диета, банкир потерял интерес,
+        «я не доверяю лестницам», антигравитационная книга, свадьба двух антенн.
+        В конце страницы — история с обрывом и генератор случайных историй.
+      </p>
+
+      <div class="group-nav" aria-label="Навигация по группам">
+        <a href="smile.html#groups">← Все группы</a>
+        <a href="smile-20.html">← Группа 20</a>
+        <a href="smile-22.html">Группа 22 →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <!-- ================= 201. ТРИ ЧЕРЕПАХИ И МОРОЖЕНОЕ ================= -->
+    <section id="s01">
+      <div class="work-head">
+        <span class="work-num">201</span>
+        <h2>Три черепахи и мороженое</h2>
+        <span class="rating">10 / 10</span>
+      </div>
+      <p class="meta">Анекдот · сцена на пляже · отложенная развязка</p>
+
+      <div class="text-block">
+        <p>Три черепахи отправились на пляж. Долго шли, очень устали и решили купить мороженого. Дошли до ларька — и тут обнаружилось, что деньги остались дома.</p>
+        <p>— Кто-то должен вернуться, — сказала старшая.</p>
+        <p>— Пусть идёт младший, — сказала средняя.</p>
+        <p>Младший согласился, но предупредил:</p>
+        <p>— Хорошо. Только пока меня не будет — не трогайте моё мороженое.</p>
+        <p>— Обещаем.</p>
+        <p>Младший ушёл. Час, два, три. Устав ждать, старшие говорят:</p>
+        <p>— Ну ладно, съедим его порцию. Всё равно он не вернётся.</p>
+        <p class="punch">И тут из-за ближайшего куста высунулась голова младшего:<br>— Если бы я это услышал, я бы вообще не пошёл за деньгами!</p>
+        <span class="source-ref">Источник — классический англоязычный анекдот.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Отложенная развязка и накопление времени. Слушатель вместе со старшими черепахами думает, что младший просто медленно идёт. Развязка объясняет всё: он всё это время стоял за кустом и следил — и ждал, чтобы поймать их на слове.</p>
+          <p>Приём — <strong>отложенная развязка</strong> и <strong>симметрия</strong>: самые медленные в мире существа умудряются подозревать друг друга в хитрости.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>10 / 10.</strong> Эталонная конструкция: длинная подготовка, точная пауза, идеальный финал.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Почему младший черепаха согласился идти за деньгами?</li>
+            <li>Чем занят был он всё это время?</li>
+            <li>Почему его реплика звучит одновременно наивно и хитро?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 202. ГРУЗЧИКИ И ПИАНИНО ================= -->
+    <section id="s02">
+      <div class="work-head">
+        <span class="work-num">202</span>
+        <h2>Грузчики и пианино в ящике</h2>
+        <span class="rating">10 / 10</span>
+      </div>
+      <p class="meta">Анекдот · бытовая сцена · короткая развязка</p>
+
+      <div class="text-block">
+        <p>Два грузчика целый час тащили пианино по узкой лестнице на пятый этаж. Пот ручьями, руки дрожат, они наконец втиснули его в квартиру.</p>
+        <p>Один вытирает лоб и говорит:</p>
+        <p>— Уф. Наконец-то. Ну что, по домам?</p>
+        <p class="punch">— Нет. Теперь надо распаковать его из ящика.</p>
+        <span class="source-ref">Источник — классический англоязычный анекдот.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Обманутое ожидание и полная переоценка сцены. Слушатель вместе с грузчиками пережил самое тяжёлое — подъём на пятый этаж. Развязка мгновенно отменяет всю работу: пианино ещё даже не вынуто из ящика, и всё это придётся повторить.</p>
+          <p>Приём — <strong>обманутое ожидание</strong> и <strong>абсурд</strong>: конец работы оказывается её началом.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>10 / 10.</strong> Короткая, точная и беспощадная шутка. Одна фраза обнуляет всё.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Что грузчики считали самым тяжёлым?</li>
+            <li>Что ждало их впереди?</li>
+            <li>Почему финал кажется одновременно смешным и ужасным?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 203. БАНАН В УХЕ ================= -->
+    <section id="s203">
+      <div class="work-head">
+        <span class="work-num">203</span>
+        <h2>Банан в ухе</h2>
+        <span class="rating">9 / 10</span>
+      </div>
+      <p class="meta">Анекдот · медицинская сцена · короткий каламбур</p>
+
+      <div class="text-block">
+        <p>Пациент приходит к врачу с бананом в ухе.</p>
+        <p>Врач смотрит на него и спрашивает:</p>
+        <p>— Что вы делаете с бананом в ухе?</p>
+        <p class="punch">— Простите? Я вас не слышу.</p>
+        <span class="source-ref">Источник — классический англоязычный анекдот.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Самоподтверждение и буквализм. Слушатель вместе с врачом прекрасно понимает, что мешает пациенту слышать, — а пациент отвечает так, будто не понимает. Комизм в том, что проблема и её причина совпадают в одной реплике.</p>
+          <p>Приём — <strong>самоподтверждение</strong>: причина глухоты сама себя объясняет.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>9 / 10.</strong> Одна из самых коротких и точных шуток антологии.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Почему врач удивился?</li>
+            <li>Почему пациент его не слышит?</li>
+            <li>Почему финал работает без всяких объяснений?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 204. БИБЛИОТЕКА ПАРАНОИКА ================= -->
+    <section id="s204">
+      <div class="work-head">
+        <span class="work-num">204</span>
+        <h2>Библиотека параноика</h2>
+        <span class="rating">10 / 10</span>
+      </div>
+      <p class="meta">Анекдот · сцена в библиотеке · короткая развязка</p>
+
+      <div class="text-block">
+        <p>Мужчина подходит к библиотекарю и спрашивает:</p>
+        <p>— У вас есть книги о паранойе?</p>
+        <p class="punch">— Да, конечно. Они прямо за вами.</p>
+        <span class="source-ref">Источник — классический англоязычный анекдот.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Обманутое ожидание и подозрительная точность. Слушатель вместе с посетителем ждёт, что библиотекарь проводит его к полке. Ответ — «они прямо за вами» — мгновенно переворачивает сцену: это именно то, чего боится человек с паранойей. Комизм в том, что библиотекарь абсолютно прав и ничего дурного не имел в виду.</p>
+          <p>Приём — <strong>двусмысленность</strong>: обычный ответ превращается в приговор.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>10 / 10.</strong> Одна из самых изящных коротких шуток. Три реплики — и готовый сюжет.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Что посетитель хотел найти?</li>
+            <li>Что сказал библиотекарь?</li>
+            <li>Почему его ответ звучит одновременно невинно и жутко?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 205. ТАКСИСТ И ЧЕМОДАН ================= -->
+    <section id="s205">
+      <div class="work-head">
+        <span class="work-num">205</span>
+        <h2>Таксист и чемодан</h2>
+        <span class="rating">10 / 10</span>
+      </div>
+      <p class="meta">Анекдот · дорожная сцена · буквализм</p>
+
+      <div class="text-block">
+        <p>Пассажир садится в такси и говорит:</p>
+        <p>— В аэропорт, и наступите на газ!</p>
+        <p>Таксист молча трогается и прибавляет скорость.</p>
+        <p>— Стойте! — кричит пассажир. — Я забыл в багажнике чемодан!</p>
+        <p class="punch">— Не волнуйтесь, — отвечает таксист. — Я на него уже наступил.</p>
+        <span class="source-ref">Источник — классический англоязычный анекдот.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Буквализм и обманутое ожидание. Пассажир использует фразу «наступите на газ» как идиому — поторопитесь. Таксист понимает её буквально и наступает на то, что в машине лежит. Комизм в том, что он честно выполняет просьбу — и совершенно не то, что имелось в виду.</p>
+          <p>Приём — <strong>буквализм</strong> и <strong>двусмысленность</strong>: одна фраза имеет два значения, и выбирается самое неудачное.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>10 / 10.</strong> Эталонный короткий диалог. Финал сокрушителен и мгновенен.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Что пассажир имел в виду?</li>
+            <li>Как понял его таксист?</li>
+            <li>Почему финал кажется одновременно логичным и ужасным?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 206. ВИСКИ-ДИЕТА ================= -->
+    <section id="s206">
+      <div class="work-head">
+        <span class="work-num">206</span>
+        <h2>Виски-диета</h2>
+        <span class="rating">9 / 10</span>
+      </div>
+      <p class="meta">Анекдот · короткая фраза · абсурдная арифметика</p>
+
+      <div class="text-block">
+        <p>— Я сижу на виски-диете.</p>
+        <p class="punch">— И как результаты?</p>
+        <p class="punch">— Уже потерял три дня.</p>
+        <span class="source-ref">Источник — классический англоязычный анекдот.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Обманутое ожидание и подмена единиц. Слушатель вместе с собеседником ждёт ответа про килограммы, но слышит про дни. Комизм в том, что герой честно отчитывается о потерях — просто измеряет их не в весе, а в памяти.</p>
+          <p>Приём — <strong>подмена единиц измерения</strong>: вместо килограммов — дни.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>9 / 10.</strong> Три короткие реплики — и целый портрет.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Что обычно «теряют» на диете?</li>
+            <li>Что потерял герой?</li>
+            <li>Почему ответ звучит честно и абсурдно одновременно?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 207. БАНКИР ПОТЕРЯЛ ИНТЕРЕС ================= -->
+    <section id="s207">
+      <div class="work-head">
+        <span class="work-num">207</span>
+        <h2>Банкир потерял интерес</h2>
+        <span class="rating">9 / 10</span>
+      </div>
+      <p class="meta">Анекдот · короткая фраза · двойной смысл</p>
+
+      <div class="text-block">
+        <p>— Почему ты больше не работаешь в банке?</p>
+        <p class="punch">— Потерял интерес.</p>
+        <span class="source-ref">Источник — классический англоязычный анекдот.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Двусмысленность и подмена значения. «Потерял интерес» может значить и «перестал интересоваться», и «лишился процентов по вкладу». Комизм в том, что в банковском контексте оба значения работают — и второе неожиданно оказывается страшнее первого.</p>
+          <p>Приём — <strong>двусмысленность</strong>: короткая фраза допускает два прочтения, и оба смешные.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>9 / 10.</strong> Один из самых коротких анекдотов в антологии. Одна фраза — целая биография.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Какое значение фразы «потерял интерес» звучит первым?</li>
+            <li>Какое значение имел в виду герой?</li>
+            <li>Почему оба варианта кажутся смешными?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 208. Я НЕ ДОВЕРЯЮ ЛЕСТНИЦАМ ================= -->
+    <section id="s208">
+      <div class="work-head">
+        <span class="work-num">208</span>
+        <h2>Я не доверяю лестницам</h2>
+        <span class="rating">9 / 10</span>
+      </div>
+      <p class="meta">Анекдот · короткая фраза · каламбур</p>
+
+      <div class="text-block">
+        <p>— Почему ты никогда не пользуешься лестницей?</p>
+        <p class="punch">— Я им не доверяю. Они всегда что-то затевают.</p>
+        <span class="source-ref">Источник — классический англоязычный каламбур.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Каламбур и буквализм. Английское «up to something» значит «затевать что-то нехорошее», но буквально — «быть наверху». Лестница действительно всегда ведёт наверх — и потому формально «всегда что-то затевает». Комизм в том, что оба смысла совпадают идеально.</p>
+          <p>Приём — <strong>каламбур</strong> и <strong>буквализм</strong>: переносное значение фразы оказывается буквальным.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>9 / 10.</strong> Один из самых изящных каламбуров антологии. Работает только при точном переводе смысла.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Что значит «затевать» в переносном смысле?</li>
+            <li>Что значит «быть наверху» в буквальном?</li>
+            <li>Почему оба значения сходятся в одной фразе?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 209. АНТИГРАВИТАЦИОННАЯ КНИГА ================= -->
+    <section id="s209">
+      <div class="work-head">
+        <span class="work-num">209</span>
+        <h2>Антигравитационная книга</h2>
+        <span class="rating">9 / 10</span>
+      </div>
+      <p class="meta">Анекдот · короткая фраза · точный каламбур</p>
+
+      <div class="text-block">
+        <p>— Что читаешь?</p>
+        <p>— Книгу об антигравитации.</p>
+        <p class="punch">— И как?</p>
+        <p class="punch">— Отличная. Её невозможно отложить.</p>
+        <span class="source-ref">Источник — классический англоязычный каламбур.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Каламбур и буквализм. «Невозможно отложить» значит и «очень увлекательная», и «физически не откладывается». Антигравитация объясняет второе значение буквально. Комизм в том, что оба смысла совпадают, и ни один не отменяет другого.</p>
+          <p>Приём — <strong>каламбур</strong> и <strong>двусмысленность</strong>: переносное и буквальное значения совпадают.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>9 / 10.</strong> Короткая, точная и умная шутка. Каждый элемент на своём месте.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Что означает «невозможно отложить» в переносном смысле?</li>
+            <li>Что означает это буквально?</li>
+            <li>Почему название книги объясняет оба смысла сразу?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= 210. СВАДЬБА ДВУХ АНТЕНН ================= -->
+    <section id="s210">
+      <div class="work-head">
+        <span class="work-num">210</span>
+        <h2>Свадьба двух антенн</h2>
+        <span class="rating">10 / 10</span>
+      </div>
+      <p class="meta">Анекдот · короткая фраза · идеальный каламбур</p>
+
+      <div class="text-block">
+        <p>Две антенны познакомились на крыше, влюбились друг в друга и решили пожениться.</p>
+        <p>Свадьба была скромная, гостей было мало.</p>
+        <p class="punch">Зато приём был отличный.</p>
+        <span class="source-ref">Источник — классический англоязычный каламбур.</span>
+      </div>
+
+      <div class="analysis">
+        <div class="block">
+          <h3>Комический приём</h3>
+          <p>Каламбур, построенный на двойном значении слова «приём». В бытовом смысле «приём» — это банкет после свадьбы. В техническом — качество сигнала, который антенна принимает. Для антенн второе значение куда важнее первого. Комизм в том, что обычная свадебная фраза обретает совершенно иной смысл в мире антенн.</p>
+          <p>Приём — <strong>каламбур</strong> и <strong>двойной смысл</strong>: одно слово работает в двух реальностях одновременно.</p>
+        </div>
+
+        <div class="block">
+          <h3>Рейтинг</h3>
+          <p class="rating-note"><strong>10 / 10.</strong> Эталонный короткий каламбур. Идеальное совпадение двух смыслов.</p>
+        </div>
+
+        <div class="questions">
+          <h3>Вопросы для обсуждения</h3>
+          <ol>
+            <li>Что такое «приём» в обычной свадьбе?</li>
+            <li>Что такое «приём» для антенны?</li>
+            <li>Почему финал звучит логично с обеих точек зрения?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ================= ИТОГИ ГРУППЫ ================= -->
+    <section id="summary">
+      <h2 style="margin:0 0 12px;font-size:1.2rem">Итог по группе 21</h2>
+      <div class="summary-box">
+        <h3>Средний рейтинг группы: 9.6 / 10</h3>
+        <p>Десять историй двадцать первой группы образуют связный блок классики мирового юмора: логика, каламбуры и абсурд. Здесь есть три черепахи и мороженое; грузчики и пианино в ящике; банан в ухе; библиотека параноика; таксист и чемодан; виски-диета; банкир потерял интерес; «я не доверяю лестницам»; антигравитационная книга; свадьба двух антенн.</p>
+        <p>Объединяющая тема — <strong>буквализм и двусмысленность, которые переворачивают всю сцену</strong>: черепаха ловит старших на слове; таксист честно «наступает на газ»; лестница действительно всегда затевает что-то наверху. Во всех случаях комизм строится на точной игре слов и на мгновенной развязке.</p>
+        <p>Лучшие истории группы: <strong>«Три черепахи и мороженое» (10/10)</strong>, <strong>«Грузчики и пианино в ящике» (10/10)</strong>, <strong>«Библиотека параноика» (10/10)</strong>, <strong>«Таксист и чемодан» (10/10)</strong> и <strong>«Свадьба двух антенн» (10/10)</strong>.</p>
+      </div>
+    </section>
+
+    <!-- ================= ИСТОРИЯ С ОБРЫВОМ ================= -->
+    <section id="cliffhanger-section">
+      <h2 style="margin:0 0 18px">История с обрывом</h2>
+      <p style="color:var(--ink-soft);margin:0 0 20px;font-size:.95rem">
+        Эта история обрывается на самом интересном месте. Прочитайте начало и нажмите кнопку, чтобы узнать развязку.
+      </p>
+
+      <div class="cliffhanger">
+        <h3>Портной и семь дней</h3>
+        <div class="story-text">
+          <p>Клиент приходит к портному и заказывает костюм.</p>
+          <p>— Когда будет готов?</p>
+          <p>— Через неделю.</p>
+          <p>Через неделю клиент приходит — костюм не готов.</p>
+          <p>— Приходите через две недели.</p>
+          <p>Через две недели — снова не готов.</p>
+          <p>— Приходите через месяц.</p>
+          <p>Через месяц клиент получает готовый костюм и говорит:</p>
+          <p>— Костюм прекрасный. Но вы шили его целый месяц! А вот, я слышал, весь мир был создан за семь дней.</p>
+          <p><strong>Портной задумался, посмотрел на костюм, потом на клиента и сказал…</strong></p>
+        </div>
+
+        <p class="cliff-end">История обрывается на самом интересном месте. Что ответил портной?</p>
+
+        <button class="continue-btn" onclick="revealEnding(this)">Продолжение →</button>
+
+        <div class="ending" id="tailorEnding">
+          <p>— И посмотрите, как выглядит мир.</p>
+          <p class="note">
+            Приём — <strong>обманутое ожидание</strong> и <strong>зеркальный аргумент</strong>. Клиент сравнивает работу портного с сотворением мира, надеясь укорить мастера в медлительности. Портной мгновенно принимает сравнение — и переворачивает его: раз мир создан за семь дней, то по его виду и видно, как это было быстро. Комизм в том, что он не защищается, а соглашается — но при этом беспощадно намекает на качество «быстрой работы».
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ГЕНЕРАТОР ИСТОРИЙ ================= -->
+    <section id="generator-section">
+      <h2 style="margin:0 0 18px">Генератор историй</h2>
+      <p style="color:var(--ink-soft);margin:0 0 20px;font-size:.95rem">
+        Нажмите кнопку — генератор случайным образом выберет одну из сорока историй антологии и покажет её с пояснением. Истории не повторяются, пока не будут показаны все.
+      </p>
+
+      <div class="mini-generator">
+        <p class="hint">В базе генератора — 40 историй. Каждая выпадает случайно, без повторов до полного круга.</p>
+        <button class="gen-btn" onclick="generateMiniStory()">Случайная история</button>
+        <div class="gen-output" id="miniOutput">
+          <p style="color:#9a8a7a;margin:0;">Нажмите на кнопку, чтобы получить историю.</p>
+        </div>
+        <div class="gen-counter" id="miniCounter">Показано историй: 0 из 40</div>
+      </div>
+    </section>
+
+    <div class="group-nav" style="margin-top:30px">
+      <a href="smile.html#groups">← Все группы</a>
+      <a href="smile-20.html">← Группа 20</a>
+      <a href="smile-22.html">Группа 22 · Истории 211–220 →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="copy">
+      <span>© Антология юмора и сатиры. Материалы носят образовательный характер.</span>
+      <span>Группа 21 · Истории 201–210 · Средний рейтинг 9.6 / 10</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================= Раскрытие финала истории с обрывом ================= */
+function revealEnding(btn) {
+  var ending = document.getElementById('tailorEnding');
+  if (ending.classList.contains('show')) {
+    ending.classList.remove('show');
+    btn.textContent = 'Продолжение →';
+  } else {
+    ending.classList.add('show');
+    btn.textContent = 'Скрыть ←';
+  }
+}
+
+/* ================= Генератор историй (40 штук, светский корпус) ================= */
+var miniStories = [
+  { cat: 'Анекдот', text: 'Магазинного вора поймали с поличным. «Послушайте, — сказал он, — я знаю, вы не хотите неприятностей. Что если я просто куплю часы, а мы забудем обо всём?» Менеджер согласился и выписал чек. Вор взглянул на чек: «Это несколько больше, чем я собирался потратить. Может, покажете что-нибудь подешевле?»',
+    note: 'Деловая логика, доведённая до абсурда: вор торгуется, как обычный покупатель.' },
+
+  { cat: 'Анекдот', text: '— Почему вы влезали в один и тот же магазин три ночи подряд? — спросил судья. — Я выбрал платье для жены, и мне пришлось дважды его менять.',
+    note: 'Уголовное дело и семейный быт сталкиваются в одной фразе.' },
+
+  { cat: 'Анекдот', text: 'Холмс и Ватсон в походе. «Ватсон, что вы видите?» — «Тысячи звёзд. А что это значит для вас, Холмс?» — «Что кто-то украл нашу палатку».',
+    note: 'Пародия на дедуктивный метод: ответ лежит на поверхности, но Ватсон его не замечает.' },
+
+  { cat: 'Анекдот', text: 'Пара отмечает 50-летие свадьбы. Жена замечает слезу мужа: «Ты расчувствовался?» — «Нет. Я вспомнил, как твой отец с ружьём сказал, что посадит меня в тюрьму на 50 лет, если я на тебе не женюсь. Завтра я был бы свободным человеком!»',
+    note: 'Обманутое ожидание: слеза — не по любви, а по утраченной свободе.' },
+
+  { cat: 'Анекдот', text: 'Умирающий фермер Джонсон просит жену выйти за фермера Джонса. «Но почему?» — «Джонс однажды надул меня при покупке лошади!»',
+    note: 'Логика мести, доведённая до абсурда: месть важнее смерти.' },
+
+  { cat: 'Анекдот', text: 'Молодая жена мужу: «Ты такой непредсказуемый. В понедельник тебе нравилась картошка, во вторник нравилась, в среду нравилась... а в воскресенье ты говоришь, что не любишь картошку».',
+    note: 'Гиперболическое перечисление, которое само себя опровергает.' },
+
+  { cat: 'Анекдот', text: 'Человек в баре: «Моя мать умерла в августе и оставила мне 25 000. Потом отец — 90 000. Тётя — 15 000. А в этом месяце — абсолютно ничего!»',
+    note: 'Накопление, ведущее к развязке: герой считает не умерших, а полученные суммы.' },
+
+  { cat: 'Анекдот', text: 'Пациент: «Я упомянул вас в завещании». Доктор растроганно: «Это очень мило. Можно взглянуть на рецепт? Я хотел бы кое-что изменить...»',
+    note: 'Мгновенная смена мотивации: благодарность обернулась угрозой.' },
+
+  { cat: 'Анекдот', text: 'Врач: «Вы просто ленивы». Пациент: «Хорошо. А теперь назовите мне медицинский термин, чтобы я мог сказать жене».',
+    note: 'Сатира на бытовую необходимость «медицинского оправдания».' },
+
+  { cat: 'Анекдот', text: 'Доктор: «Я думаю, ваша проблема из-за выпивания». Пациент: «В таком случае я вернусь, когда вы будете трезвым».',
+    note: 'Зеркальная развязка: пациент возвращает доктору его же диагноз.' },
+
+  { cat: 'Анекдот', text: 'Пациент: «Доктор, у меня жёлтые зубы, что делать?» — Дантист: «Носите коричневый галстук!»',
+    note: 'Абсурдный совет вместо медицинского решения.' },
+
+  { cat: 'Анекдот', text: 'Пациент: «У меня выпадают волосы. Что вы можете дать, чтобы сохранить их?» — Доктор: «Коробку от ботинок».',
+    note: 'Буквализм: глагол «сохранить» понят в буквальном смысле.' },
+
+  { cat: 'Анекдот', text: 'Доктор: «Что вас беспокоит?» — Пациент: «У меня чувство, что никто не слышит, что я говорю». — Доктор: «Что вас беспокоит?»',
+    note: 'Жалоба подтверждается поведением доктора в ту же секунду.' },
+
+  { cat: 'Анекдот', text: 'Доктор: «Вы доживёте до восьмидесяти». — Пациент: «Но мне уже восемьдесят». — Доктор: «Видите, что я вам говорил».',
+    note: 'Ложное предсказание превращается в подтверждение задним числом.' },
+
+  { cat: 'Анекдот', text: 'Пациент: «У меня серьёзная проблема с памятью». — Доктор: «С какого времени?» — Пациент: «Какая проблема?»',
+    note: 'Жалоба подтверждается в ту же секунду: диагноз ставится самим ответом.' },
+
+  { cat: 'Анекдот', text: 'Мужчина: «Вызовите мне скорую!» — Оператор: «Хорошо, сэр, вы — скорая помощь!»',
+    note: 'Буквализм: двусмысленность фразы «call me an ambulance».' },
+
+  { cat: 'Анекдот', text: 'Ударник решил сменить инструмент и выбрать аккордеон. «Думаю, мне подойдёт большой красный в углу». — «Вы ударник, не так ли? Тот большой красный — это радиатор».',
+    note: 'Попытка уйти от стереотипа лишь подтверждает его.' },
+
+  { cat: 'Анекдот', text: 'Доктор выписывает слабительное музыканту, но ничего не помогает. «Чем вы зарабатываете на жизнь?» — «Я музыкант». — «Вот вам 10 долларов. Идите купите что-нибудь поесть!»',
+    note: 'Социальная сатира на бедность музыкантов.' },
+
+  { cat: 'Анекдот', text: '80-летняя пара пришла к врачу с жалобой на память. Доктор посоветовал записывать. Вечером старик пошёл на кухню за мороженым. Жена: «Запиши, я хочу мороженое с клубникой и взбитыми сливками». Он: «Я и так помню». Через двадцать минут принёс тарелку с беконом и яйцами. — Ты забыл мой тост.',
+    note: 'Накопление деталей и мягкая развязка: герой уверен в своей памяти, но путает всё меню.' },
+
+  { cat: 'Анекдот', text: 'Дирижёр: «Когда музыкант не справляется, у него забирают инструмент, дают две палочки и делают ударником». Шёпот из секции ударных: «А если он и с этим не справляется, забирают одну палочку и делают дирижёром».',
+    note: 'Зеркальный ответ: оскорбление возвращается с удвоенной силой.' },
+
+  { cat: 'Анекдот', text: 'Три старика на веранде дома престарелых. Первый: «Мне 70, каждое утро пытаюсь помочиться, весь день пытаюсь, ничего не помогает». Второй: «Мне 80, то же самое, но с кишечником». Третий: «Мне 90. Ровно в 7:00 я моюсь. Ровно в 8:00 — кишечник. Ровно в 9:00 — просыпаюсь».',
+    note: 'Обманутое ожидание: слушатель ждёт жалобу, а получает невозможный график.' },
+
+  { cat: 'Анекдот', text: 'Пожилой вдовец сделал предложение пожилой вдове. Она сразу сказала «да». Наутро он не смог вспомнить, что она ответила. Позвонил. Она: «Я так рада, что вы позвонили. Я помню, что сказала “да” кому-то, но не помню кому».',
+    note: 'Симметрия и мягкая ирония над возрастом.' },
+
+  { cat: 'Анекдот', text: 'Двое пожилых супругов разговаривают. «Как тебе клиника памяти?» — «Превосходно! Визуализация, ассоциации — очень помогло». — «А как называлась клиника?» Он задумался: «Как называется цветок с длинным стеблем и шипами?» — «Роза?» — «Да, точно!» Повернулся к жене: «Роза, как называлась та клиника?»',
+    note: 'Самоподтверждение: герой демонстрирует ровно ту проблему, от которой лечился.' },
+
+  { cat: 'Анекдот', text: 'Мальчик на свадьбе: «Мама, почему на девушке белое?» — «Потому что невеста счастлива, это самый счастливый день в её жизни». Мальчик подумал: «А почему тогда на мальчике чёрное?»',
+    note: 'Контраст: белое как счастье — и чёрное как… что? Вопрос остаётся открытым.' },
+
+  { cat: 'Анекдот', text: 'Молодая жена мужу: «У меня потрясающая новость! Скоро нас будет трое в этом доме». Муж засиял, обнял её. Она: «Я рада, что ты так это воспринял — завтра утром моя мать переезжает к нам».',
+    note: 'Обманутое ожидание: «нас будет трое» звучит как новость о ребёнке, а означает приезд тёщи.' },
+
+  { cat: 'Анекдот', text: 'Полицейский остановил лихача и посадил его в камеру до возвращения начальника. Через несколько часов: «Тебе повезло, начальник на свадьбе дочери, вернётся в хорошем настроении». — «Не рассчитывайте. Я жених».',
+    note: 'Отложенная развязка: слушатель узнаёт правду вместе с полицейским.' },
+
+  { cat: 'Анекдот', text: 'На лобовом стекле — записка и два билета на концерт. «Извините, что взял вашу машину: жена рожала, пришлось завести проводами». Пара едет на концерт, возвращается — дом ограблен. На двери записка: «Ну, машина у вас осталась. Мне же надо как-то дать образование новорождённому».',
+    note: 'Двойное обманутое ожидание: сначала благородство, потом — план мошенника.' },
+
+  { cat: 'Анекдот', text: 'Диетолог: «Красное мясо ужасно, овощи губительны, в воде бактерии. Но есть один продукт — самый опасный, и мы все его едим». Человек в первом ряду: «Свадебный пирог».',
+    note: 'Неожиданный ответ из зала: вместо еды назван социальный институт.' },
+
+  { cat: 'Анекдот', text: 'Два охотника на медведя. Один остался в хижине. Другой ранил зверя, побежал, споткнулся у двери. Медведь перелетел через него и ввалился в хижину. Охотник вскочил, закрыл дверь и кричит: «Ты снимай шкуру с этого, а я пойду за следующим!»',
+    note: 'Гипербола хладнокровия, доведённая до абсурда.' },
+
+  { cat: 'Анекдот', text: 'Отец и сын на рыбалке. Сын: «Пап, как лодка держится на воде?» — «Не знаю, сынок». — «А как рыба дышит под водой?» — «Не знаю». — «А почему небо голубое?» — «Не знаю». — «Ты не против моих вопросов?» — «Конечно нет. Если не задавать вопросов, никогда ничего не узнаешь».',
+    note: 'Контраст между «не знаю» и педагогическим смыслом разговора.' },
+
+  { cat: 'Анекдот', text: 'Техасский фермер в Австралии. Австралиец показывает пшеничное поле. Техасец: «У нас поля вдвое больше». Показывает стадо. Техасец: «У нас коровы вдвое больше». Видит кенгуру: «А это что?» Австралиец: «Разве у вас в Техасе нет кузнечиков?»',
+    note: 'Обманутое ожидание: насмешка над хвастовством.' },
+
+  { cat: 'Анекдот', text: 'Автобус с политиками съехал с дороги. Фермер выкопал яму и похоронил их. Шериф: «Они все были мертвы?» — «Ну, некоторые говорили, что нет, но вы же знаете, как врут эти политики».',
+    note: 'Чёрный юмор: политическая сатира в одной реплике.' },
+
+  { cat: 'Анекдот', text: 'Дедушка отмечает 100-летие. «Секрет: я на открытом воздухе 75 лет». — «Как?» — «Мы с женой договорились: в ссоре тот, кто неправ, идёт гулять».',
+    note: 'Обманутое ожидание: вместо рецепта здоровья — история о бесконечных прогулках.' },
+
+  { cat: 'Анекдот', text: 'В шикарном отеле старушка в панике: «За окном голый мужчина!» Портье поднялась: «Он одет выше пояса». — «Встаньте на туалетный столик!»',
+    note: 'Абсурд: масштаб тревоги и тривиальность причины несоизмеримы.' },
+
+  { cat: 'Анекдот', text: 'Блондинка-стюардесса не может выйти из номера. «Здесь три двери: ванная, шкаф и с надписью “Не беспокоить”!»',
+    note: 'Буквализм: служебная надпись понята как запрет выходить.' },
+
+  { cat: 'Анекдот', text: 'Выпускник колледжа явился на первую работу. Менеджер дал метлу. «Но я выпускник колледжа!» — «Извините, не знал. Дайте метлу, я покажу, как».',
+    note: 'Ирония: образование не отменяет необходимости начать с простого.' },
+
+  { cat: 'Анекдот', text: 'Крошка Сьюзан помогала накрывать на стол. Мать заметила: гостю не положили нож и вилку. «Я подумала, они не нужны. Папа говорит, он всегда ест, как лошадь!»',
+    note: 'Детская логика: буквальное понимание взрослого сравнения.' },
+
+  { cat: 'Анекдот', text: 'Блондинка у реки кричит другой блондинке на противоположном берегу: «Как мне попасть на другую сторону?» — «Ты уже на другой стороне!»',
+    note: 'Абсурд: обе правы — «другая сторона» относительна.' },
+
+  { cat: 'Анекдот', text: 'Две женщины в парикмахерской о ветреных мужьях. «Никогда не знаю, где он ночью». — «А я всегда знаю». — «Как?» — «Я вдова».',
+    note: 'Чёрный юмор: развязка переворачивает сочувствие в неожиданную сторону.' },
+
+  { cat: 'Анекдот', text: 'Отец: «В детстве меня наказывали, отсылая в комнату без ужина. А у сына там телевизор, телефон, компьютер». — «И что ты делаешь?» — «Отсылаю его в мою комнату!»',
+    note: 'Ирония: наказание обернулось против наказывающего.' },
+
+  { cat: 'Анекдот', text: 'Посетитель полчаса мучил официанта: то жарко, то холодно. Второй посетитель: «Почему вы его не выгоните?» Официант с улыбкой: «У нас вообще нет кондиционера».',
+    note: 'Обманутое ожидание: вся суета была бессмысленной.' },
+
+  { cat: 'Анекдот', text: 'Племянник съел весь арахис из вазочки, пока тётя спала. «Извините, тётушка!» — «Ничего, дорогой. После того как я обсосала с них шоколад, они мне всё равно не нужны».',
+    note: 'Двойное обманутое ожидание: сначала вина племянника, потом — неожиданное признание тёти.' },
+
+  { cat: 'Анекдот', text: 'Человек показывает фокус: крыса играет на крошечном пианино. Потом вынимает лягушку — та поёт. Незнакомец предлагает 500 000. Хозяин соглашается. Бармен в шоке. «Не волнуйтесь: крыса — чревовещательница».',
+    note: 'Отложенная развязка: истинная ценность оказывается не в том, что казалось.' },
+
+  { cat: 'Анекдот', text: 'Пьяный падает со стула каждые две минуты. Бармен просит посетителя отвести его домой. Жена на пороге: «Спасибо. А где его инвалидное кресло?»',
+    note: 'Отложенная развязка: причина падений не в алкоголе.' },
+
+  { cat: 'Анекдот', text: 'Пьяный поцеловал незнакомку в баре, получил пощёчину: «Простите, я думал, вы моя жена». Она завопила. Он: «Забавно. Вы даже звучите точно как она».',
+    note: 'Двойное обманутое ожидание: сначала извинение, потом — новое оскорбление.' },
+
+  { cat: 'Анекдот', text: 'Два парня в баре смотрят новости: человек на мосту собирается прыгнуть. Ставка 10 долларов. Он прыгает. Второй отдаёт деньги. Первый: «Я надул тебя, это было в пятичасовых новостях». — «Я тоже видел. Просто не думал, что он настолько глуп, чтобы прыгнуть снова».',
+    note: 'Двойная развязка: оба знали, но оба не поверили.' },
+
+  { cat: 'Анекдот', text: 'Владелец цирка купил утку, которая танцует на перевёрнутом горшке, за 10 000. Через три дня: «Она не танцует!» — «А вы не забыли зажечь свечу под горшком?»',
+    note: 'Обманутое ожидание: секрет не в утке, а в условии.' },
+
+  { cat: 'Анекдот', text: 'Человек видит, как другой принимает таблетку, выпрыгивает в окно, летает и возвращается. Покупает таблетку за 1000. Прыгает — и разбивается. Бармен, вытирая стакан: «Какой же ты противный, когда пьян, Супермен».',
+    note: 'Отложенная развязка: слушатель узнаёт правду вместе с жертвой.' },
+
+  { cat: 'Анекдот', text: 'Моряк встречает пирата с деревянной ногой, крюком и повязкой. «Как ты потерял ногу?» — «Акула откусила». — «А руку?» — «На абордаже отрубили». — «А глаз?» — «Чайка капнула». — «Из-за помёта?» — «Это был мой первый день с крюком».',
+    note: 'Накопление и развязка: трагические истории оканчиваются бытовой нелепостью.' },
+
+  { cat: 'Анекдот', text: 'Человек заказывает рюмку, смотрит в карман рубашки, заказывает ещё. Бармен: «Почему вы каждый раз смотрите в карман?» — «У меня там фотография жены. Когда она начинает выглядеть хорошо, я иду домой».',
+    note: 'Обманутое ожидание: карман — не сентиментальность, а индикатор опьянения.' },
+
+  { cat: 'Анекдот', text: 'Слепой приехал в Техас. В баре заказал пиво — ему вложили в руки кружку. «Ого, какая большая!» Бармен: «В Техасе всё большое». Слепой пошёл в уборную, перепутал дверь, упал в бассейн: «Не спускайте! Не спускайте!»',
+    note: 'Накопление: каждая деталь подводит к финальной абсурдной сцене.' }
+];
+
+var miniBag = [];
+var miniCount = 0;
+
+function refillMiniBag() {
+  miniBag = [];
+  for (var i = 0; i < miniStories.length; i++) {
+    miniBag.push(i);
+  }
+  for (var k = miniBag.length - 1; k > 0; k--) {
+    var j = Math.floor(Math.random() * (k + 1));
+    var t = miniBag[k];
+    miniBag[k] = miniBag[j];
+    miniBag[j] = t;
+  }
+}
+
+function generateMiniStory() {
+  if (!miniBag.length) { refillMiniBag(); }
+  if (!miniBag.length) { return; }
+
+  var idx = miniBag.pop();
+  var s = miniStories[idx];
+  miniCount++;
+
+  var out = document.getElementById('miniOutput');
+  out.innerHTML =
+    '<div class="gen-cat">' + s.cat + '</div>' +
+    '<p class="gen-text">' + s.text + '</p>' +
+    '<p class="gen-note">' + s.note + '</p>';
+
+  document.getElementById('miniCounter').textContent =
+    'Показано историй: ' + miniCount + ' из ' + miniStories.length +
+    (miniBag.length === 0 ? ' · круг завершён, начинаем заново' : '');
+}
+</script>
+
+</body>
+</html>
