@@ -4,16 +4,145 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Милость Божья — Практика славословия</title>
-  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root {
+      --navy: #1a2a5e;
+      --navy-light: #2c3e7a;
+      --accent: #8b5e3c;
+      --bg: #faf8f5;
+      --text: #2d2d2d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.5rem 1rem;
+    }
+
+    .hymn {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* --- Навигация --- */
+    .hymn__nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.75rem 0;
+      font-size: 0.95rem;
+    }
+
+    .hymn__nav a {
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .hymn__nav a:hover {
+      border-bottom-color: var(--navy);
+    }
+
+    .hymn__nav--top {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+    }
+
+    .hymn__nav--bottom {
+      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+    }
+
+    .hymn__nav-center {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    /* --- Заголовок --- */
+    .hymn__title {
+      font-size: 1.9rem;
+      color: var(--navy);
+      text-align: center;
+      margin: 1rem 0 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* --- Тело гимна --- */
+    .hymn__body {
+      padding: 0 0.25rem;
+    }
+
+    .hymn__verse {
+      margin-bottom: 1.4rem;
+    }
+
+    .hymn__verse p {
+      margin: 0;
+      padding: 0.1rem 0;
+      line-height: 1.5;
+    }
+
+    /* --- Ссылка «Наверх» --- */
+    .hymn__totop {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .hymn__totop a {
+      color: var(--navy-light);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--navy-light);
+    }
+
+    .hymn__totop a:hover {
+      color: var(--navy);
+      border-bottom-style: solid;
+    }
+
+    /* --- Адаптив --- */
+    @media (max-width: 480px) {
+      .hymn__nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hymn__title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="hymn">
-    <header class="hymn__header">
-      <a href="../" class="hymn__back">← К каталогу</a>
-      <h1 class="hymn__title">Милость Божья</h1>
-    </header>
+  <main class="hymn" id="top">
 
+    <!-- Навигация сверху -->
+    <nav class="hymn__nav hymn__nav--top" aria-label="Навигация по каталогу">
+      <a href="#" class="hymn__prev" title="Предыдущий гимн">← Предыдущий</a>
+      <div class="hymn__nav-center">
+        <a href="../" title="Главная страница каталога">Каталог</a>
+        <a href="#" title="Следующий гимн">Следующий →</a>
+      </div>
+    </nav>
+
+    <!-- Заголовок -->
+    <h1 class="hymn__title">Милость Божья</h1>
+
+    <!-- Тело гимна -->
     <article class="hymn__body">
+
       <section class="hymn__verse">
         <p>Славьте Создателя,</p>
         <p>Славьте Творца,</p>
@@ -33,7 +162,23 @@
         <p>В Царство Сына Своего</p>
         <p>Иисуса Христа!</p>
       </section>
+
     </article>
+
+    <!-- Навигация снизу -->
+    <nav class="hymn__nav hymn__nav--bottom" aria-label="Навигация по каталогу">
+      <a href="#" class="hymn__prev" title="Предыдущий гимн">← Предыдущий</a>
+      <div class="hymn__nav-center">
+        <a href="../" title="Главная страница каталога">Каталог</a>
+        <a href="#" title="Следующий гимн">Следующий →</a>
+      </div>
+    </nav>
+
+    <!-- Ссылка «Наверх» -->
+    <div class="hymn__totop">
+      <a href="#top">↑ Наверх</a>
+    </div>
+
   </main>
 </body>
 </html>
