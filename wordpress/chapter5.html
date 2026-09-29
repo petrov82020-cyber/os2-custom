@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 5: Редактирование шаблонов (Templates) в Site Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .template-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .template-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .template-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .templates-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 5: Редактирование шаблонов (Templates) в Site Editor</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~18 минут | 🎯 Цель: научиться менять шапку, подвал и шаблоны страниц через визуальный редактор</div>
+
+    <p>Мы подошли к самому интересному этапу — изменению внешнего вида сайта. Раньше для этого требовался код или сложные настройки, но теперь всё делается через <strong>Site Editor</strong>. В этой главе мы разберём, что такое <strong>шаблоны (Templates)</strong> и <strong>части шаблонов (Template Parts)</strong>, и научимся их редактировать.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое шаблон?</strong><br>
+        Шаблон — это «скелет» страницы. Он определяет, какие элементы где расположены: шапка сверху, подвал снизу, контент в центре. Один шаблон может использоваться для множества страниц. Например, шаблон «Главная страница» применяется только к главной, а шаблон «Страница» — ко всем обычным страницам.
+    </div>
+
+    <h2>5.1 Как открыть Site Editor</h2>
+    <p>Напомню два способа входа:</p>
+    <ol>
+        <li>В левом меню админки: <strong>Внешний вид → Редактор</strong> (Appearance → Editor).</li>
+        <li>Через верхнюю панель инструментов: кнопка <strong>Редактировать сайт</strong> (Edit site) при просмотре сайта.</li>
+    </ol>
+    <p>Откроется полноэкранный редактор. Слева вы увидите вертикальное меню с двумя ключевыми разделами: <strong>Templates</strong> (Шаблоны) и <strong>Template Parts</strong> (Части шаблонов). Именно с ними мы будем работать.</p>
+
+    <h2>5.2 Разбираемся с разделами Site Editor</h2>
+    <p>Интерфейс Site Editor состоит из нескольких зон:</p>
+    <ul>
+        <li><strong>Левая боковая панель</strong> — список шаблонов и частей шаблона, а также настройки стилей.</li>
+        <li><strong>Центральная область</strong> — живой предпросмотр сайта, где можно кликать по элементам и редактировать их.</li>
+        <li><strong>Верхняя панель</strong> — кнопки сохранения, переключения устройств (компьютер/планшет/телефон), вызова списка блоков, настроек.</li>
+        <li><strong>Правая панель</strong> — настройки выделенного блока (появляется при клике на элемент).</li>
+    </ul>
+
+    <h2>5.3 Какие шаблоны бывают</h2>
+    <p>WordPress автоматически создаёт набор шаблонов в зависимости от темы. Вот самые важные:</p>
+
+    <div class="templates-grid">
+        <div class="template-card">
+            <strong>🏠 Index / Главная страница</strong>
+            <span>Основной шаблон для отображения главной страницы сайта. Если не задано иное, используется для всего сайта.</span>
+        </div>
+        <div class="template-card">
+            <strong>📄 Page (Страница)</strong>
+            <span>Шаблон для обычных статических страниц: «О нас», «Услуги», «Контакты».</span>
+        </div>
+        <div class="template-card">
+            <strong>📝 Single Post (Запись)</strong>
+            <span>Шаблон для отображения отдельной записи блога.</span>
+        </div>
+        <div class="template-card">
+            <strong>📚 Archive (Архив)</strong>
+            <span>Шаблон для страниц архивов: список записей по дате, категории, автору.</span>
+        </div>
+        <div class="template-card">
+            <strong>🔍 Search (Поиск)</strong>
+            <span>Шаблон для страницы результатов поиска по сайту.</span>
+        </div>
+        <div class="template-card">
+            <strong>🚫 404</strong>
+            <span>Шаблон для страницы «Не найдено».</span>
+        </div>
+        <div class="template-card">
+            <strong>👤 Author (Автор)</strong>
+            <span>Шаблон для страницы автора записей.</span>
+        </div>
+        <div class="template-card">
+            <strong>🗂️ Category (Категория)</strong>
+            <span>Шаблон для отображения записей определённой категории.</span>
+        </div>
+    </div>
+
+    <p>Щёлкните по любому шаблону в левой панели — откроется его предпросмотр. Вы увидите, что шаблон состоит из блоков: шапки, контента, подвала.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Некоторые темы могут не поддерживать FSE, и тогда Site Editor будет недоступен. Для нашего курса используйте <strong>Twenty Twenty-Four</strong> или <strong>Twenty Twenty-Five</strong> — они полностью совместимы.
+    </div>
+
+    <h2>5.4 Редактирование шапки (Header)</h2>
+    <p>Шапка — это верхняя часть сайта, которая обычно содержит логотип, название и меню. Она относится к <strong>частям шаблона</strong> (Template Parts), потому что используется на всех страницах.</p>
+
+    <h3>Как отредактировать шапку</h3>
+    <ol>
+        <li>В левой панели Site Editor нажмите <strong>Template Parts</strong> (Части шаблона).</li>
+        <li>Найдите пункт <strong>Header</strong> (Шапка) и нажмите на него.</li>
+        <li>Откроется шапка в режиме редактирования. Вы увидите блоки: «Название сайта», «Логотип», «Навигация».</li>
+        <li>Кликните на любой блок, чтобы изменить его содержимое или настройки:
+            <ul>
+                <li><strong>Название сайта</strong> — можно заменить на текст или сделать ссылкой на главную.</li>
+                <li><strong>Логотип</strong> — вставьте изображение из медиабиблиотеки.</li>
+                <li><strong>Навигация</strong> — добавьте пункты меню: «Главная», «О нас», «Услуги», «Контакты».</li>
+            </ul>
+        </li>
+        <li>Нажмите <strong>Сохранить</strong> в правом верхнем углу.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Как добавить логотип:</strong> Внутри блока «Логотип» нажмите «Добавить изображение» (Add media), выберите файл из медиабиблиотеки или загрузите новый. Рекомендуемая высота логотипа — 40–60 пикселей.
+    </div>
+
+    <h3>Настройка меню навигации</h3>
+    <p>Блок навигации — ключевой элемент шапки. С его помощью создаётся главное меню сайта:</p>
+    <ol>
+        <li>Кликните на блок «Навигация».</li>
+        <li>Нажмите на кнопку <strong>+</strong> внутри блока, чтобы добавить новый пункт.</li>
+        <li>Выберите тип ссылки:
+            <ul>
+                <li><strong>Страница</strong> — ссылка на существующую страницу сайта.</li>
+                <li><strong>Произвольная ссылка</strong> — любой URL.</li>
+                <li><strong>Рубрика</strong> — если ведёте блог.</li>
+            </ul>
+        </li>
+        <li>Повторите для всех пунктов меню.</li>
+        <li>Порядок пунктов можно менять перетаскиванием.</li>
+    </ol>
+
+    <h2>5.5 Редактирование подвала (Footer)</h2>
+    <p>Подвал — нижняя часть сайта, где обычно размещают копирайт, ссылки на соцсети и контакты. Редактируется аналогично шапке.</p>
+    <ol>
+        <li>В левой панели выберите <strong>Template Parts → Footer</strong>.</li>
+        <li>Откроется подвал. По умолчанию это абзац с текстом «© Название сайта».</li>
+        <li>Кликните на текст и измените его, например: «© 2026 Мой первый сайт. Все права защищены.».</li>
+        <li>Можно добавить блок «Колонки», чтобы разместить в подвале несколько секций: контакты, ссылки, соцсети.</li>
+        <li>Нажмите <strong>Сохранить</strong>.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Идея для подвала:</strong> Создайте три колонки. В левой — копирайт, в центральной — ссылки на страницы «О нас» и «Контакты», в правой — иконки соцсетей или email. Так подвал будет выглядеть профессионально.
+    </div>
+
+    <h2>5.6 Редактирование шаблона страницы</h2>
+    <p>Теперь разберёмся, как изменить шаблон обычной страницы. Это позволит настроить макет, который будет применяться ко всем страницам типа «Page».</p>
+
+    <ol>
+        <li>В левой панели нажмите <strong>Templates</strong> (Шаблоны).</li>
+        <li>Найдите шаблон <strong>Page</strong> (Страница) и кликните по нему.</li>
+        <li>Откроется предпросмотр шаблона. Вы увидите:
+            <ul>
+                <li>Шапку (Header) — часть шаблона, которую мы уже настроили.</li>
+                <li>Блок <strong>Post Content</strong> (Содержимое страницы) — сюда подставляется текст конкретной страницы.</li>
+                <li>Подвал (Footer).</li>
+            </ul>
+        </li>
+        <li>Можно добавить вокруг контента дополнительные блоки: например, «Заголовок страницы» или «Хлебные крошки».</li>
+        <li>Нажмите <strong>Сохранить</strong>.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Блок <strong>Post Content</strong> нельзя удалять — он отвечает за вывод содержимого каждой конкретной страницы. Если его убрать, страницы станут пустыми.
+    </div>
+
+    <h2>5.7 Создание собственного шаблона</h2>
+    <p>Иногда стандартных шаблонов не хватает. Например, вы хотите создать страницу «Портфолио» с уникальным дизайном. Site Editor позволяет добавить новый шаблон:</p>
+    <ol>
+        <li>В разделе <strong>Templates</strong> нажмите кнопку <strong>+</strong> (Добавить шаблон).</li>
+        <li>Выберите тип: <strong>Страница</strong> (Page) или <strong>Своя конфигурация</strong> (Custom template).</li>
+        <li>Введите название, например «Портфолио».</li>
+        <li>Настройте макет: добавьте блоки, измените расположение элементов.</li>
+        <li>Сохраните шаблон.</li>
+        <li>Теперь при редактировании любой страницы в правой панели можно выбрать этот шаблон в разделе <strong>Шаблон</strong> (Template).</li>
+    </ol>
+
+    <h2>5.8 Настройка главной страницы</h2>
+    <p>По умолчанию главная страница WordPress показывает ленту записей. Но для сайта-визитки удобнее назначить статическую страницу.</p>
+    <ol>
+        <li>Создайте страницу с названием «Главная» и наполните её блоками.</li>
+        <li>Перейдите в <strong>Настройки → Чтение</strong>.</li>
+        <li>В разделе «На главной странице отображать» выберите <strong>Статическую страницу</strong>.</li>
+        <li>В выпадающем списке «Домашняя страница» выберите «Главная».</li>
+        <li>Нажмите <strong>Сохранить изменения</strong>.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Что это даёт:</strong> Теперь главная страница будет показывать именно тот контент, который вы создали, а не список записей. Это правильный подход для сайта-визитки, портфолио или лендинга.
+    </div>
+
+    <h2>5.9 Частые вопросы</h2>
+    <ul>
+        <li><strong>Я изменил шапку, но на сайте всё по-старому.</strong> Убедитесь, что нажали <strong>Сохранить</strong> в Site Editor. Также очистите кэш браузера (Ctrl+F5).</li>
+        <li><strong>Можно ли отменить изменения?</strong> Да, при редактировании шаблона нажмите на три точки в верхней панели и выберите <strong>Отменить</strong> (Undo).</li>
+        <li><strong>Что делать, если я сломал шаблон?</strong> В левой панели можно сбросить шаблон к настройкам темы по умолчанию.</li>
+        <li><strong>Изменения в шаблоне влияют на все страницы?</strong> Да, если это шаблон Page. Если хотите изменить одну страницу — редактируйте её контент в разделе «Страницы».</li>
+    </ul>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Откройте <strong>Site Editor</strong> через меню «Внешний вид → Редактор».<br>
+        2. Отредактируйте <strong>шапку</strong>: добавьте название сайта и логотип.<br>
+        3. Создайте <strong>меню навигации</strong> с пунктами: Главная, О нас, Контакты.<br>
+        4. Отредактируйте <strong>подвал</strong>: добавьте копирайт и email.<br>
+        5. Откройте шаблон <strong>Page</strong> и убедитесь, что блок «Post Content» на месте.<br>
+        6. Создайте новую страницу «Главная» и назначьте её домашней через <strong>Настройки → Чтение</strong>.<br>
+        7. Проверьте сайт — шапка и подвал должны обновиться на всех страницах.
+    </div>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы займёмся <strong>стилями сайта</strong>: изменим цвета, шрифты и отступы через панель глобальных стилей. Вы научитесь настраивать типографику и палитру так, чтобы сайт выглядел целостно и профессионально. А пока закрепите пройденное — выполните задание выше.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter6.html" class="button">📖 Перейти к шестой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

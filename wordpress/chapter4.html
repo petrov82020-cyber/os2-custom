@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 4: Работа с блоками и колонками (Columns Block)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        .blocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .block-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .block-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .block-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .blocks-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 4: Работа с блоками и колонками (Columns Block)</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~18 минут | 🎯 Цель: научиться создавать страницы с помощью блоков и верстать многоколоночные макеты</div>
+
+    <p>В предыдущей главе мы познакомились с админ-панелью и узнали, что WordPress строится на <strong>блоках</strong>. Теперь пришло время освоить их на практике. Блоки — это «кирпичики», из которых собирается любая страница: абзац текста, заголовок, изображение, кнопка, колонки. В этой главе мы разберём основные типы блоков и подробно остановимся на <strong>блоке «Колонки» (Columns)</strong>, который позволяет создавать красивые многоколоночные макеты без знания CSS.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое блочный редактор?</strong><br>
+        С версии WordPress 5.0 весь контент создаётся через <strong>Gutenberg</strong> — блочный редактор. Каждый элемент страницы — это отдельный блок. Блоки можно перемещать, настраивать, группировать и вкладывать друг в друга. Это гораздо гибче, чем старый «классический» редактор.
+    </div>
+
+    <h2>4.1 Основные типы блоков</h2>
+    <p>WordPress предлагает десятки блоков, но для начала достаточно освоить базовые. Вот самые нужные:</p>
+
+    <div class="blocks-grid">
+        <div class="block-card">
+            <strong>📝 Абзац (Paragraph)</strong>
+            <span>Основной текстовый блок. С него начинается любая страница.</span>
+        </div>
+        <div class="block-card">
+            <strong>🔠 Заголовок (Heading)</strong>
+            <span>Заголовки уровней H1–H6. Используются для структуры текста.</span>
+        </div>
+        <div class="block-card">
+            <strong>🖼️ Изображение (Image)</strong>
+            <span>Вставка картинок из медиабиблиотеки или по ссылке.</span>
+        </div>
+        <div class="block-card">
+            <strong>📋 Список (List)</strong>
+            <span>Маркированные и нумерованные списки.</span>
+        </div>
+        <div class="block-card">
+            <strong>🔗 Кнопка (Button)</strong>
+            <span>Кликабельная кнопка со ссылкой.</span>
+        </div>
+        <div class="block-card">
+            <strong>➖ Разделитель (Separator)</strong>
+            <span>Горизонтальная линия для визуального разделения.</span>
+        </div>
+        <div class="block-card">
+            <strong>📦 Группа (Group)</strong>
+            <span>Контейнер, объединяющий несколько блоков. Можно задать фон и отступы.</span>
+        </div>
+        <div class="block-card">
+            <strong>📊 Колонки (Columns)</strong>
+            <span>Разделяет контент на вертикальные колонки.</span>
+        </div>
+        <div class="block-card">
+            <strong>🎬 Медиа и текст (Media & Text)</strong>
+            <span>Готовый макет: слева картинка, справа текст.</span>
+        </div>
+    </div>
+
+    <h2>4.2 Как добавить блок</h2>
+    <p>Создадим первую страницу и наполним её блоками. Для этого:</p>
+    <ol>
+        <li>В левом меню админки выберите <strong>Страницы → Добавить новую</strong>.</li>
+        <li>Введите название страницы, например «О нас».</li>
+        <li>В области редактирования нажмите на кнопку <strong>+</strong> (плюс) в левом верхнем углу или на пустом поле страницы.</li>
+        <li>Откроется панель со списком блоков. Найдите нужный и нажмите на него.</li>
+        <li>Заполните блок содержимым.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Быстрый способ:</strong> Нажмите <code>/</code> (слэш) в пустом поле и начните вводить название блока. WordPress предложит варианты. Например, наберите <code>/columns</code> и нажмите Enter — появится блок колонок.
+    </div>
+
+    <h2>4.3 Блок «Колонки» (Columns) — пошаговый разбор</h2>
+    <p>Блок колонок — один из самых полезных. С его помощью можно создать макеты «две колонки», «три колонки», «картинка + текст рядом» и так далее. Давайте разберём его подробно.</p>
+
+    <h3>Шаг 1: Вставка блока</h3>
+    <ol>
+        <li>Поставьте курсор в нужное место страницы.</li>
+        <li>Нажмите <code>/</code> и введите <code>Колонки</code> или <code>Columns</code>.</li>
+        <li>Нажмите Enter. Появится блок с двумя колонками по умолчанию.</li>
+    </ol>
+
+    <h3>Шаг 2: Настройка количества колонок</h3>
+    <p>После вставки блока справа (или в верхней панели) откроется панель настроек. Найдите раздел <strong>«Вариации»</strong> (Variations) — там представлены готовые варианты:</p>
+    <ul>
+        <li><strong>50 / 50</strong> — две равные колонки.</li>
+        <li><strong>33 / 66</strong> — узкая левая, широкая правая.</li>
+        <li><strong>66 / 33</strong> — широкая левая, узкая правая.</li>
+        <li><strong>33 / 33 / 33</strong> — три равные колонки.</li>
+        <li><strong>25 / 50 / 25</strong> — три колонки с акцентом на центральную.</li>
+    </ul>
+    <p>Выберите подходящий вариант — количество и пропорции колонок изменятся автоматически.</p>
+
+    <h3>Шаг 3: Заполнение колонок</h3>
+    <p>Нажмите внутрь любой колонки — появится мигающий курсор. Теперь можно:</p>
+    <ul>
+        <li>Ввести текст (создастся блок «Абзац»).</li>
+        <li>Нажать <code>/</code> и добавить любой другой блок внутрь колонки: заголовок, изображение, кнопку.</li>
+        <li>Перетаскивать блоки из одной колонки в другую.</li>
+    </ul>
+
+    <h3>Шаг 4: Настройки блока колонок</h3>
+    <p>Выделив весь блок колонок (нажмите на его значок в виде сетки слева от блока), вы получите доступ к дополнительным настройкам в правой панели:</p>
+    <ul>
+        <li><strong>Выравнивание</strong> — по ширине, по центру, на всю ширину.</li>
+        <li><strong>Цвет</strong> — фон, текст, ссылки.</li>
+        <li><strong>Отступы</strong> — внутренние и внешние поля.</li>
+        <li><strong>Дополнительно → CSS-класс</strong> — для продвинутых пользователей.</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> На мобильных устройствах колонки автоматически «складываются» в одну вертикальную колонку, чтобы контент читался удобно. Это поведение можно изменить в настройках адаптивности, но для новичков лучше оставить по умолчанию.
+    </div>
+
+    <h2>4.4 Практический пример: страница «О нас»</h2>
+    <p>Давайте создадим типичную страницу «О нас» с использованием блоков. Структура будет такая:</p>
+    <ol>
+        <li><strong>Заголовок H1</strong> — «О нашем проекте».</li>
+        <li><strong>Абзац</strong> — вступительный текст.</li>
+        <li><strong>Блок колонок 50/50</strong>:
+            <ul>
+                <li>В левой колонке — <strong>изображение</strong> (например, фото команды).</li>
+                <li>В правой колонке — <strong>заголовок H2</strong> и <strong>абзац текста</strong>.</li>
+            </ul>
+        </li>
+        <li><strong>Разделитель</strong>.</li>
+        <li><strong>Блок колонок 33/33/33</strong> с тремя преимуществами:
+            <ul>
+                <li>Каждая колонка: иконка (изображение), заголовок H3 и короткий текст.</li>
+            </ul>
+        </li>
+        <li><strong>Кнопка</strong> — «Связаться с нами» со ссылкой на страницу контактов.</li>
+    </ol>
+
+    <h3>Как это сделать пошагово</h3>
+    <ol>
+        <li>Создайте новую страницу «О нас».</li>
+        <li>Добавьте блок «Заголовок» и введите «О нашем проекте». Убедитесь, что уровень заголовка — <strong>H1</strong>.</li>
+        <li>Добавьте блок «Абзац» и напишите пару предложений о вашем сайте.</li>
+        <li>Добавьте блок «Колонки» с пропорцией 50/50.</li>
+        <li>В левую колонку вставьте блок «Изображение» и загрузите картинку.</li>
+        <li>В правую колонку добавьте «Заголовок H2» и «Абзац».</li>
+        <li>Ниже добавьте «Разделитель».</li>
+        <li>Добавьте второй блок «Колонки» с пропорцией 33/33/33.</li>
+        <li>Заполните каждую колонку: изображение + заголовок H3 + абзац.</li>
+        <li>Внизу добавьте «Кнопку» с текстом «Связаться с нами» и ссылкой на страницу «Контакты».</li>
+        <li>Нажмите <strong>Опубликовать</strong> в правом верхнем углу, затем <strong>Просмотреть страницу</strong>.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Если вы ошиблись, всегда можно нажать <strong>Ctrl+Z</strong> (или <strong>Cmd+Z</strong> на Mac), чтобы отменить последнее действие. WordPress запоминает историю изменений.
+    </div>
+
+    <h2>4.5 Полезные горячие клавиши</h2>
+    <ul>
+        <li><code>/</code> — быстрый вызов блока.</li>
+        <li><code>Ctrl+Z</code> — отменить.</li>
+        <li><code>Ctrl+Shift+Z</code> — повторить отменённое.</li>
+        <li><code>Ctrl+A</code> — выделить весь текст в блоке.</li>
+        <li><code>Ctrl+Shift+D</code> — дублировать выделенный блок.</li>
+        <li><code>Alt+Shift+↑/↓</code> — переместить блок вверх или вниз.</li>
+        <li><code>Enter</code> — новый абзац внутри блока.</li>
+        <li><code>Shift+Enter</code> — перенос строки без создания нового абзаца.</li>
+    </ul>
+
+    <h2>4.6 Частые ошибки новичков</h2>
+    <ul>
+        <li><strong>Слишком много колонок.</strong> На узких экранах 4–5 колонок превращаются в кашу. Оптимально — 2 или 3.</li>
+        <li><strong>Забыли про мобильную версию.</strong> Всегда проверяйте страницу в режиме предпросмотра на телефоне (кнопка с иконкой смартфона в верхней панели).</li>
+        <li><strong>Использование заголовка H1 несколько раз.</strong> На странице должен быть только один H1. Остальные заголовки — H2, H3 и так далее.</li>
+        <li><strong>Картинки без alt-текста.</strong> Всегда заполняйте поле «Альтернативный текст» при загрузке изображения — это важно для SEO и доступности.</li>
+    </ul>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Создайте новую страницу «О нас».<br>
+        2. Добавьте заголовок H1 и вступительный абзац.<br>
+        3. Вставьте блок «Колонки» с пропорцией 50/50.<br>
+        4. В левую колонку поместите изображение, в правую — заголовок H2 и абзац.<br>
+        5. Ниже добавьте блок «Колонки» 33/33/33 с тремя преимуществами.<br>
+        6. Внизу добавьте кнопку «Связаться с нами».<br>
+        7. Опубликуйте страницу и проверьте её на компьютере и на телефоне.
+    </div>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы заглянем в <strong>Site Editor</strong> и научимся редактировать шаблоны: шапку, подвал и шаблон самой страницы. Вы узнаете, как менять логотип, добавлять меню и настраивать глобальные элементы сайта. А пока закрепите пройденное — выполните задание выше.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter5.html" class="button">📖 Перейти к пятой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

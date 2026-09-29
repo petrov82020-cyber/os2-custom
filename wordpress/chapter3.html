@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 3: Знакомство с панелью управления WordPress и Site Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .menu-item {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .menu-item strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .menu-item span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 3: Знакомство с панелью управления WordPress и Site Editor</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~15 минут | 🎯 Цель: освоить интерфейс админ-панели и научиться открывать редактор сайта</div>
+
+    <p>Поздравляю! WordPress установлен, и вы уже входили в админ-панель. Но, скорее всего, вы пока не понимаете, куда нажимать и что здесь к чему. Это нормально — интерфейс WordPress богат на возможности. В этой главе мы разложим всё по полочкам: изучим левое меню, приборную панель и познакомимся с главным инструментом современного WordPress — <strong>Site Editor</strong> (редактором сайта).</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое Site Editor?</strong><br>
+        Site Editor — это визуальный редактор, который позволяет менять внешний вид всего сайта: шапку, подвал, шаблоны страниц, цвета и шрифты. Он появился в WordPress 5.9 и является частью технологии <strong>Full Site Editing (FSE)</strong>. Если раньше для изменения шапки нужно было лезть в код, то теперь всё делается мышкой.
+    </div>
+
+    <h2>3.1 Как войти в админ-панель</h2>
+    <p>Напомню, что админ-панель доступна по адресу <code>https://ваш_домен/wp-admin</code>. Например, <code>https://ivan-wordpress.epizy.com/wp-admin</code>.</p>
+    <p>Если вы вышли из системы или потеряли ссылку, просто добавьте <code>/wp-admin</code> к адресу вашего сайта. WordPress попросит логин и пароль — те, что вы создали при установке через Softaculous.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Если вы забыли пароль, на странице входа есть ссылка «Забыли пароль?». Введите свой email или логин — WordPress вышлет ссылку для сброса. Но учтите: на бесплатном хостинге письма иногда попадают в спам, проверяйте папку «Спам».
+    </div>
+
+    <h2>3.2 Обзор левого меню — навигация по админке</h2>
+    <p>Слева расположено главное меню админ-панели. Именно здесь находятся все инструменты управления сайтом. Давайте пройдёмся по основным пунктам.</p>
+
+    <div class="menu-grid">
+        <div class="menu-item">
+            <strong>🏠 Консоль (Dashboard)</strong>
+            <span>Главная страница админки. Здесь отображается сводка: количество записей, страниц, комментариев, а также новости WordPress.</span>
+        </div>
+        <div class="menu-item">
+            <strong>📝 Записи (Posts)</strong>
+            <span>Блог. Записи — это динамические материалы, которые обычно отображаются в ленте на главной странице. Для сайта-визитки могут не понадобиться.</span>
+        </div>
+        <div class="menu-item">
+            <strong>📄 Страницы (Pages)</strong>
+            <span>Статические страницы: «О нас», «Контакты», «Услуги». Именно здесь мы будем создавать основу сайта.</span>
+        </div>
+        <div class="menu-item">
+            <strong>🖼️ Медиафайлы (Media)</strong>
+            <span>Библиотека изображений, видео и документов. Сюда загружаются все картинки для сайта.</span>
+        </div>
+        <div class="menu-item">
+            <strong>🎨 Внешний вид (Appearance)</strong>
+            <span>Настройки темы: меню, виджеты, редактор сайта (Site Editor). Здесь меняется дизайн.</span>
+        </div>
+        <div class="menu-item">
+            <strong>🔌 Плагины (Plugins)</strong>
+            <span>Дополнительные модули, расширяющие функциональность: формы обратной связи, SEO, кэширование.</span>
+        </div>
+        <div class="menu-item">
+            <strong>👥 Пользователи (Users)</strong>
+            <span>Управление учётными записями. Вы можете добавить авторов, редакторов или администраторов.</span>
+        </div>
+        <div class="menu-item">
+            <strong>⚙️ Инструменты (Tools)</strong>
+            <span>Импорт, экспорт, проверка здоровья сайта и другие служебные функции.</span>
+        </div>
+        <div class="menu-item">
+            <strong>🔧 Настройки (Settings)</strong>
+            <span>Общие параметры сайта: название, описание, URL, часовой пояс, формат даты, постоянные ссылки.</span>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Некоторые пункты меню могут быть скрыты. Например, если вы не планируете вести блог, меню «Записи» можно не трогать. WordPress не заставляет вас использовать все функции сразу.
+    </div>
+
+    <h2>3.3 Приборная панель — что там написано</h2>
+    <p>Когда вы входите в админку, первое, что видите — <strong>Консоль</strong> (Dashboard). Это информационная страница, где собраны основные показатели:</p>
+    <ul>
+        <li><strong>На видном месте</strong> — блок с быстрыми действиями: «Создать запись», «Загрузить медиафайл», «Создать страницу».</li>
+        <li><strong>Активность</strong> — последние комментарии, записи и страницы.</li>
+        <li><strong>Обзор сайта</strong> — статистика: сколько записей, страниц, комментариев, какая тема установлена.</li>
+        <li><strong>Новости WordPress</strong> — анонсы обновлений и события сообщества.</li>
+    </ul>
+    <p>Не пытайтесь запомнить всё сразу. Приборная панель — это просто «прихожая». Основная работа будет происходить в разделах «Страницы» и «Внешний вид».</p>
+
+    <h2>3.4 Настройка профиля и общих параметров сайта</h2>
+    <p>Прежде чем создавать страницы, давайте настроим базовые параметры сайта. Это важно для правильного отображения в поисковых системах и для удобства посетителей.</p>
+
+    <h3>Шаг 1: Настройки → Общие</h3>
+    <ol>
+        <li>В левом меню выберите <strong>Настройки → Общие</strong>.</li>
+        <li><strong>Название сайта</strong> — введите название, которое будет отображаться в шапке и в заголовке вкладки браузера. Например, «Мой первый сайт».</li>
+        <li><strong>Краткое описание</strong> — фраза, поясняющая суть сайта. Например, «Учебный проект по WordPress».</li>
+        <li><strong>Адрес WordPress (URL)</strong> и <strong>Адрес сайта (URL)</strong> — должны совпадать и указывать на ваш домен (например, <code>https://ivan-wordpress.epizy.com</code>). Если здесь что-то не так, исправьте.</li>
+        <li><strong>Административный email</strong> — ваш email для уведомлений.</li>
+        <li>Нажмите <strong>Сохранить изменения</strong> внизу страницы.</li>
+    </ol>
+
+    <h3>Шаг 2: Настройки → Постоянные ссылки</h3>
+    <ol>
+        <li>Выберите <strong>Настройки → Постоянные ссылки</strong>.</li>
+        <li>Установите переключатель на <strong>«Название записи»</strong>. Это сделает адреса страниц красивыми: <code>https://ваш_домен/o-nas/</code> вместо <code>https://ваш_домен/?page_id=2</code>.</li>
+        <li>Нажмите <strong>Сохранить изменения</strong>.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Почему это важно?</strong><br>
+        Красивые ссылки лучше воспринимаются посетителями и поисковыми системами. Если у вас уже были страницы, после смены настроек старые ссылки могут перестать работать — но у нас сайт новый, так что беспокоиться не о чем.
+    </div>
+
+    <h3>Шаг 3: Настройка профиля пользователя</h3>
+    <ol>
+        <li>В правом верхнем углу нажмите на свой аватар и выберите <strong>Редактировать профиль</strong> (или перейдите в <strong>Пользователи → Профиль</strong>).</li>
+        <li>Заполните поля:
+            <ul>
+                <li><strong>Отображаемое имя</strong> — как вас будут видеть читатели.</li>
+                <li><strong>О себе</strong> — краткая биография (можно пропустить).</li>
+                <li><strong>Сменить пароль</strong> — здесь можно задать новый пароль, если текущий кажется неудобным.</li>
+            </ul>
+        </li>
+        <li>Нажмите <strong>Обновить профиль</strong>.</li>
+    </ol>
+
+    <h2>3.5 Знакомство с Site Editor — редактором сайта</h2>
+    <p>Теперь самое главное — <strong>Site Editor</strong>. Это инструмент, который позволяет менять внешний вид сайта без кода. Открыть его можно двумя способами:</p>
+    <ul>
+        <li>Через меню <strong>Внешний вид → Редактор</strong> (Appearance → Editor).</li>
+        <li>Через кнопку <strong>Редактировать сайт</strong> в верхней панели админки (если тема поддерживает FSE).</li>
+    </ul>
+
+    <p>Site Editor откроется в полноэкранном режиме. Вы увидите:</p>
+    <ul>
+        <li><strong>Слева — список шаблонов и частей сайта</strong> (Templates, Template Parts). Здесь можно выбрать, что именно редактировать: главную страницу, шапку, подвал, отдельные страницы.</li>
+        <li><strong>В центре — предпросмотр</strong> вашего сайта в реальном времени.</li>
+        <li><strong>Сверху — панель инструментов</strong> с кнопками сохранения, переключения между устройствами (компьютер, планшет, телефон) и настройками стилей.</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Site Editor работает только с темами, которые поддерживают <strong>Full Site Editing</strong>. Если ваша тема старая, вы увидите обычный «Настройщик» (Customizer). Не пугайтесь — в следующих главах мы разберём оба варианта. Для нашего курса рекомендую использовать тему <strong>Twenty Twenty-Four</strong> или <strong>Twenty Twenty-Five</strong> — они полностью поддерживают FSE.
+    </div>
+
+    <h3>Как проверить, какая у вас тема</h3>
+    <ol>
+        <li>Перейдите в <strong>Внешний вид → Темы</strong>.</li>
+        <li>Посмотрите, какая тема активна. Если это Twenty Twenty-Four, Twenty Twenty-Five или другая современная тема — отлично.</li>
+        <li>Если тема старая, нажмите <strong>Добавить новую</strong>, найдите Twenty Twenty-Four и установите её. Затем активируйте.</li>
+    </ol>
+
+    <h2>3.6 Что мы будем делать в Site Editor</h2>
+    <p>В следующих главах мы подробно разберём:</p>
+    <ul>
+        <li>Как редактировать <strong>шаблоны</strong> (Templates) — главную страницу, страницу записи, архив.</li>
+        <li>Как настраивать <strong>части шаблона</strong> (Template Parts) — шапку и подвал.</li>
+        <li>Как работать с <strong>блоками</strong> — текстом, изображениями, колонками.</li>
+        <li>Как менять <strong>глобальные стили</strong> — цвета, шрифты, отступы.</li>
+    </ul>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Войдите в админ-панель WordPress.<br>
+        2. Изучите левое меню: наведите курсор на каждый пункт, чтобы увидеть подсказки.<br>
+        3. Перейдите в <strong>Настройки → Общие</strong> и укажите название и описание сайта.<br>
+        4. Перейдите в <strong>Настройки → Постоянные ссылки</strong> и выберите «Название записи».<br>
+        5. Откройте <strong>Внешний вид → Редактор</strong> (Site Editor).<br>
+        6. Убедитесь, что у вас установлена тема Twenty Twenty-Four или Twenty Twenty-Five.<br>
+        7. Запишите, какие шаблоны и части шаблона вы видите в Site Editor.
+    </div>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы начнём работать с блоками и колонками. Вы научитесь создавать страницы с текстом, изображениями и многоколоночной версткой — всё это без единой строчки кода. А пока закрепите пройденное — выполните задание выше.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter4.html" class="button">📖 Перейти к четвёртой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

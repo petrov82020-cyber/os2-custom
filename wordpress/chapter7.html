@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 7: Публикация сайта и подключение бесплатного SSL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 7: Публикация сайта и подключение бесплатного SSL</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~18 минут | 🎯 Цель: настроить постоянные ссылки, подключить HTTPS и убедиться, что сайт работает корректно</div>
+
+    <p>Мы проделали огромную работу: создали аккаунт на хостинге, установили WordPress, научились работать с блоками, шаблонами и стилями. Теперь пришло время убедиться, что ваш сайт работает правильно и доступен всем посетителям. В этой главе мы настроим <strong>постоянные ссылки</strong>, подключим <strong>бесплатный SSL-сертификат</strong> и проверим сайт на ошибки.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое SSL и зачем он нужен?</strong><br>
+        SSL (Secure Sockets Layer) — это технология шифрования, которая защищает данные между браузером посетителя и вашим сайтом. Если у сайта нет SSL, адрес начинается с <code>http://</code>, а браузеры помечают его как «Не защищено». С SSL адрес начинается с <code>https://</code>, и рядом появляется замок. Это важно для доверия посетителей и для SEO — Google отдаёт предпочтение защищённым сайтам.
+    </div>
+
+    <h2>7.1 Настройка постоянных ссылок (Permalinks)</h2>
+    <p>По умолчанию WordPress использует «некрасивые» адреса страниц вида <code>https://ваш_домен/?p=123</code>. Их сложно запомнить, и они плохо влияют на SEO. Настроим «человекопонятные» URL.</p>
+
+    <ol>
+        <li>Войдите в админ-панель WordPress.</li>
+        <li>Перейдите в <strong>Настройки → Постоянные ссылки</strong>.</li>
+        <li>Выберите вариант <strong>«Название записи»</strong> (Post name).</li>
+        <li>Нажмите <strong>Сохранить изменения</strong>.</li>
+    </ol>
+
+    <p>Теперь адреса страниц будут выглядеть так: <code>https://ваш_домен/o-nas/</code> вместо <code>https://ваш_домен/?page_id=2</code>.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Если после смены постоянных ссылок страницы перестали открываться (ошибка 404):</strong> WordPress автоматически создаёт файл <code>.htaccess</code> с правилами перенаправления. На некоторых хостингах этот файл может не создаться. Тогда нужно создать его вручную.
+    </div>
+
+    <h3>Создание .htaccess вручную (если нужно)</h3>
+    <ol>
+        <li>В панели управления хостингом (cPanel) откройте <strong>Файловый менеджер</strong>.</li>
+        <li>Перейдите в папку <code>htdocs</code> (это корень вашего сайта).</li>
+        <li>Создайте новый файл с именем <code>.htaccess</code> (обязательно с точкой в начале).</li>
+        <li>Вставьте в него следующий код:</li>
+    </ol>
+
+    <pre># BEGIN WordPress
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+&lt;/IfModule&gt;
+# END WordPress</pre>
+
+    <p>Это стандартный набор правил для WordPress, который заставляет сервер перенаправлять все запросы на <code>index.php</code>, если файл не найден напрямую. Без него «красивые» ссылки не будут работать.</p>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Если вы не уверены, что <code>.htaccess</code> создался автоматически, проверьте его наличие через файловый менеджер. Если файла нет — создайте вручную с кодом выше.
+    </div>
+
+    <h2>7.2 Бесплатный SSL на InfinityFree — хорошие новости</h2>
+    <p>Отличная новость: если вы используете <strong>бесплатный поддомен</strong> InfinityFree (например, <code>ваше_имя.epizy.com</code> или <code>ваше_имя.rf.gd</code>), то <strong>SSL уже включён автоматически</strong>. Все бесплатные поддомены защищены системным сертификатом, и вам не нужно ничего запрашивать вручную.[reference:0]</p>
+
+    <div class="success-box">
+        <strong>✅ Что это значит для вас:</strong> Ваш сайт уже доступен по адресу <code>https://ваше_имя.epizy.com</code>. Не нужно нажимать никаких кнопок «Получить SSL» — сертификат уже работает.
+    </div>
+
+    <p>Если же вы решите подключить <strong>собственный домен</strong> (например, купленный отдельно), то для него потребуется запросить бесплатный SSL-сертификат через панель InfinityFree. Процесс выглядит так:</p>
+    <ol>
+        <li>В личном кабинете InfinityFree перейдите в раздел <strong>Free SSL Certificates</strong>.</li>
+        <li>Нажмите <strong>New SSL Certificate</strong>.</li>
+        <li>Введите ваш домен и выберите провайдера <strong>ZeroSSL</strong> (или оставьте «Recommended»).[reference:1]</li>
+        <li>Нажмите <strong>Create Order</strong>, затем <strong>Setup CNAME Records</strong> — система автоматически добавит нужные записи DNS.</li>
+        <li>Подождите 5–10 минут, пока домен подтвердится. Кнопка <strong>Request Certificate</strong> станет активной — нажмите её.</li>
+        <li>После выпуска сертификата нажмите <strong>Install SSL Certificate Automatically</strong>.[reference:2]</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Бесплатные SSL-сертификаты на InfinityFree <strong>не продлеваются автоматически</strong>. При использовании собственного домена вам придётся раз в 3 месяца запрашивать новый сертификат. Для бесплатного поддомена это не требуется — там сертификат системный.
+    </div>
+
+    <h2>7.3 Принудительное перенаправление на HTTPS</h2>
+    <p>Даже если SSL установлен, сайт может по-прежнему открываться по <code>http://</code>. Нужно заставить WordPress использовать <code>https://</code> всегда. Есть два способа.</p>
+
+    <h3>Способ 1: Через настройки WordPress (рекомендуется)</h3>
+    <ol>
+        <li>Перейдите в <strong>Настройки → Общие</strong>.</li>
+        <li>В полях <strong>Адрес WordPress (URL)</strong> и <strong>Адрес сайта (URL)</strong> замените <code>http://</code> на <code>https://</code>.</li>
+        <li>Нажмите <strong>Сохранить изменения</strong>.</li>
+    </ol>
+    <p>WordPress автоматически будет использовать HTTPS для всех ссылок. Этот способ работает без правки файлов.[reference:3]</p>
+
+    <h3>Способ 2: Через .htaccess (для продвинутых)</h3>
+    <p>Если по какой-то причине первый способ не сработал, можно добавить правило в <code>.htaccess</code>:</p>
+
+    <pre>RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</pre>
+
+    <p>Этот код перенаправляет всех посетителей с <code>http://</code> на <code>https://</code> с кодом 301 (постоянное перенаправление).[reference:4]</p>
+
+    <div class="info-box">
+        <strong>💡 Какой способ выбрать?</strong> Для WordPress всегда используйте <strong>Способ 1</strong> — он проще и безопаснее. Правка <code>.htaccess</code> может привести к конфликтам, если у вас уже есть другие правила.
+    </div>
+
+    <h2>7.4 Проверка работы сайта</h2>
+    <p>После настройки SSL и постоянных ссылок давайте убедимся, что всё работает правильно.</p>
+
+    <h3>Чек-лист проверки</h3>
+    <ol>
+        <li><strong>Откройте сайт по адресу <code>https://ваш_домен</code>.</strong> Рядом с адресом должен быть замок. Если замка нет — проверьте, правильно ли установлен SSL.</li>
+        <li><strong>Откройте любую страницу</strong> (например, «О нас»). Она должна открываться по красивому адресу <code>https://ваш_домен/o-nas/</code>.</li>
+        <li><strong>Проверьте навигацию.</strong> Все пункты меню должны работать.</li>
+        <li><strong>Откройте сайт на телефоне.</strong> Убедитесь, что вёрстка не «разъезжается» и текст читается.</li>
+        <li><strong>Проверьте админ-панель.</strong> Войдите в <code>https://ваш_домен/wp-admin</code> — всё должно работать так же, как и раньше.</li>
+    </ol>
+
+    <h3>Инструменты для проверки SSL</h3>
+    <ul>
+        <li><strong>SSL Labs</strong> (<a href="https://www.ssllabs.com/ssltest/" target="_blank">ssllabs.com/ssltest</a>) — глубокий анализ сертификата.</li>
+        <li><strong>Why No Padlock?</strong> (<a href="https://www.whynopadlock.com/" target="_blank">whynopadlock.com</a>) — покажет, какие элементы на странице загружаются по HTTP и мешают замку.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Если замок не появляется, откройте сайт в режиме инкогнито. Иногда браузер кэширует старую версию страницы без HTTPS.
+    </div>
+
+    <h2>7.5 Что значит «Website Published» в панели InfinityFree</h2>
+    <p>В личном кабинете InfinityFree рядом с вашим аккаунтом есть поле <strong>Website Published</strong>. Если вы устанавливали WordPress через Softaculous (а не через встроенный конструктор Site.pro), там может стоять <strong>красный крест</strong>. Не пугайтесь!</p>
+    <p>Это поле относится только к конструктору сайтов Site.pro. Оно не имеет отношения к вашему WordPress-сайту.[reference:5] Если вы видите красный крест, но ваш сайт открывается и работает — всё в порядке. Игнорируйте этот индикатор.</p>
+
+    <h2>7.6 Базовые плагины для нового сайта</h2>
+    <p>Хотя наш курс посвящён встроенным возможностям WordPress, стоит упомянуть несколько бесплатных плагинов, которые пригодятся почти всем.</p>
+
+    <ul>
+        <li><strong>Really Simple SSL</strong> — автоматически настраивает HTTPS и исправляет смешанный контент. Полезен, если замок не появляется.</li>
+        <li><strong>WordPress SEO (Yoast SEO)</strong> — помогает оптимизировать страницы для поисковых систем.</li>
+        <li><strong>WP Super Cache</strong> — ускоряет загрузку сайта за счёт кэширования.</li>
+        <li><strong>Contact Form 7</strong> — создаёт формы обратной связи.</li>
+        <li><strong>UpdraftPlus</strong> — резервное копирование сайта.</li>
+    </ul>
+
+    <p>Устанавливать плагины можно через <strong>Плагины → Добавить новый</strong>. Но на бесплатном хостинге не стоит устанавливать слишком много — это замедлит сайт.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Осторожно:</strong> Некоторые плагины могут конфликтовать с бесплатным хостингом или требовать больше ресурсов, чем доступно. Устанавливайте только те, которые действительно нужны.
+    </div>
+
+    <h2>7.7 Типичные проблемы и их решения</h2>
+    <ul>
+        <li><strong>Страницы не открываются (404).</strong> Проверьте настройки постоянных ссылок и наличие файла <code>.htaccess</code> в папке <code>htdocs</code>.</li>
+        <li><strong>Замка SSL нет.</strong> Откройте сайт в инкогнито. Если не помогло — используйте <strong>Really Simple SSL</strong> или проверьте, что URL в настройках WordPress начинается с <code>https://</code>.</li>
+        <li><strong>Сайт открывается по <code>http://</code>, а не <code>https://</code>.</strong> Замените URL в настройках WordPress (Настройки → Общие).</li>
+        <li><strong>После смены домена сайт не работает.</strong> Если вы меняли домен, нужно обновить URL в базе данных. Это можно сделать через плагин или вручную через phpMyAdmin.</li>
+        <li><strong>Админка недоступна.</strong> Попробуйте открыть <code>https://ваш_домен/wp-admin</code> напрямую. Если не работает — очистите кэш браузера.</li>
+    </ul>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Перейдите в <strong>Настройки → Постоянные ссылки</strong> и выберите «Название записи».<br>
+        2. Проверьте, что в папке <code>htdocs</code> есть файл <code>.htaccess</code> с правилами WordPress.<br>
+        3. Убедитесь, что ваш сайт открывается по <code>https://</code> (замок в браузере).<br>
+        4. В <strong>Настройки → Общие</strong> проверьте, что оба URL начинаются с <code>https://</code>.<br>
+        5. Откройте сайт на телефоне и проверьте навигацию.<br>
+        6. Войдите в админ-панель <code>/wp-admin</code> и убедитесь, что всё работает.<br>
+        7. Если замка нет — установите плагин <strong>Really Simple SSL</strong> и активируйте его.
+    </div>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей, заключительной главе мы подведём итоги курса: разберём, что вы освоили, как продвигать сайт, какие ресурсы использовать для дальнейшего обучения и что делать, если что-то пошло не так. А пока закрепите пройденное — выполните задание выше.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter8.html" class="button">📖 Перейти к восьмой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

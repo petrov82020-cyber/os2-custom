@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 2: Установка WordPress на хостинг через Softaculous</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 2: Установка WordPress на хостинг через Softaculous</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~12 минут | 🎯 Цель: установить WordPress на InfinityFree и получить доступ к админ-панели</div>
+
+    <p>В первой главе мы создали аккаунт на InfinityFree и получили бесплатный поддомен. Теперь настало время установить на этот хостинг саму систему WordPress. К счастью, InfinityFree предоставляет удобный инструмент <strong>Softaculous</strong>, который устанавливает WordPress в несколько кликов. Никакого программирования, только заполнение простой формы.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое Softaculous?</strong><br>
+        Softaculous — это автоматический установщик скриптов, встроенный в панель управления хостингом (cPanel). Он позволяет установить WordPress, Joomla, Drupal и сотни других CMS за пару минут, без необходимости вручную создавать базы данных и загружать файлы по FTP.
+    </div>
+
+    <h2>2.1 Вход в панель управления хостингом</h2>
+    <p>Сначала войдите в свой личный кабинет InfinityFree.</p>
+    <ol>
+        <li>Откройте сайт <a href="https://infinityfree.net/" target="_blank">infinityfree.net</a> и авторизуйтесь.</li>
+        <li>В <strong>Client Area</strong> найдите созданный вами хостинг-аккаунт (он называется так же, как ваш поддомен, например <code>ivan-wordpress.epizy.com</code>).</li>
+        <li>Нажмите кнопку <strong>Manage</strong> (Управлять) или <strong>Control Panel</strong> (Панель управления). Откроется классическая cPanel.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Иногда панель управления открывается в новом окне и может загружаться несколько секунд. Если появляется предупреждение о безопасности сертификата, просто примите его (это нормально для бесплатного хостинга).
+    </div>
+
+    <h2>2.2 Поиск Softaculous в cPanel</h2>
+    <p>Интерфейс cPanel может показаться перегруженным, но нам нужен всего один раздел. Найдите блок <strong>Softaculous Apps Installer</strong> (обычно он в самом низу или в разделе «Software»). Внутри вы увидите иконки популярных CMS: WordPress, Joomla, Drupal и другие.</p>
+
+    <p>Нажмите на иконку <strong>WordPress</strong>. Откроется страница с описанием и кнопкой <strong>Install Now</strong> (Установить сейчас).</p>
+
+    <h2>2.3 Заполнение формы установки</h2>
+    <p>Перед вами откроется форма с несколькими полями. Не пугайтесь, мы заполним только необходимые.</p>
+
+    <h3>Основные настройки</h3>
+    <ul>
+        <li><strong>Choose Protocol</strong> — выберите <code>https://</code> (если доступно) или <code>http://</code>. Позже мы подключим SSL, но пока можно оставить <code>http://</code>.</li>
+        <li><strong>Choose Domain</strong> — выберите ваш поддомен из списка (например, <code>ivan-wordpress.epizy.com</code>).</li>
+        <li><strong>In Directory</strong> — оставьте поле <strong>пустым</strong>. Это значит, что WordPress будет установлен в корень сайта, и открываться он будет по адресу <code>https://ваш_домен</code>.</li>
+        <li><strong>Site Name</strong> — введите название вашего сайта, например «Мой первый сайт на WordPress».</li>
+        <li><strong>Site Description</strong> — краткое описание (можно оставить пустым или написать «Учебный проект»).</li>
+    </ul>
+
+    <h3>Настройки администратора</h3>
+    <ul>
+        <li><strong>Admin Username</strong> — придумайте логин для входа в админ-панель WordPress. <strong>Не используйте «admin»</strong> — это небезопасно. Например, <code>ivan_admin</code>.</li>
+        <li><strong>Admin Password</strong> — сложный пароль. Softaculous предложит сгенерировать его автоматически — согласитесь и сохраните в надёжном месте.</li>
+        <li><strong>Admin Email</strong> — ваш email. На него будут приходить уведомления.</li>
+    </ul>
+
+    <h3>Дополнительные настройки</h3>
+    <ul>
+        <li><strong>Language</strong> — выберите <code>Russian</code> (Русский), чтобы сразу получить админку на русском языке.</li>
+        <li><strong>Limit Login Attempts</strong> — можно оставить по умолчанию.</li>
+        <li><strong>Advanced Options</strong> — не трогайте, если не уверены.</li>
+    </ul>
+
+    <p>В самом низу введите свой email в поле <strong>Admin Email</strong> и нажмите кнопку <strong>Install</strong>.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Сохраните данные администратора!</strong> Сразу после установки система покажет логин и пароль от админки WordPress. Обязательно скопируйте их или сделайте скриншот. Если вы потеряете пароль, восстановить его будет сложнее.
+    </div>
+
+    <h2>2.4 Ожидание установки</h2>
+    <p>После нажатия кнопки <strong>Install</strong> начнётся процесс установки. Он занимает от 30 секунд до 2 минут. Не закрывайте страницу. Когда всё завершится, вы увидите сообщение об успешной установке с двумя ссылками:</p>
+    <ul>
+        <li><strong>Your Site</strong> — ссылка на ваш новый сайт (пока он выглядит как стандартная заготовка WordPress).</li>
+        <li><strong>Admin Panel</strong> — ссылка на панель управления WordPress (обычно <code>https://ваш_домен/wp-admin</code>).</li>
+    </ul>
+
+    <p>Нажмите на <strong>Admin Panel</strong> и войдите, используя логин и пароль, которые вы задали (или которые сгенерировал Softaculous).</p>
+
+    <h2>2.5 Первый вход в админ-панель WordPress</h2>
+    <p>Вы увидите приветственное окно WordPress с предложением создать первую запись или страницу. Пока не спешите — сначала осмотритесь. В следующей главе мы подробно разберём интерфейс и начнём настройку.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое админ-панель?</strong><br>
+        Админ-панель (или консоль) — это сердце вашего сайта. Здесь вы будете создавать страницы, менять дизайн, устанавливать плагины и управлять всем содержимым. Доступ к ней есть только у вас.
+    </div>
+
+    <h2>2.6 Если что-то пошло не так</h2>
+    <ul>
+        <li><strong>Установка зависла или выдала ошибку.</strong> Попробуйте повторить установку через Softaculous, предварительно удалив неудачную (кнопка <strong>Remove</strong> в списке установок Softaculous).</li>
+        <li><strong>Не приходит письмо с данными.</strong> Проверьте папку «Спам». Если письма нет, зайдите в Softaculous → <strong>Installations</strong> (Установки) и посмотрите данные там.</li>
+        <li><strong>Сайт не открывается.</strong> Подождите 5–10 минут — иногда DNS-записи обновляются не мгновенно.</li>
+    </ul>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Войдите в cPanel вашего хостинга.<br>
+        2. Найдите Softaculous и установите WordPress на ваш поддомен.<br>
+        3. Заполните форму: название сайта, логин администратора, пароль, email.<br>
+        4. Дождитесь окончания установки.<br>
+        5. Войдите в админ-панель WordPress по ссылке <code>https://ваш_домен/wp-admin</code>.<br>
+        6. Убедитесь, что вы видите приборную панель WordPress.
+    </div>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы познакомимся с панелью управления WordPress поближе: разберём меню, настройки и научимся пользоваться <strong>Site Editor</strong> (редактором сайта). Вы узнаете, как менять заголовок сайта, создавать страницы и выбирать шаблоны. А пока закрепите пройденное — выполните задание выше.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter3.html" class="button">📖 Перейти к третьей главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по созданию сайтов | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
