@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 8: Дополнительные настройки — отступы, анимация, z-index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .advanced-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .advanced-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .advanced-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .advanced-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .demo-box {
+            background: #f9fafb;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px 0;
+            text-align: center;
+            color: #5b6e8c;
+            font-style: italic;
+        }
+        .z-demo {
+            position: relative;
+            height: 120px;
+            margin: 20px 0;
+        }
+        .z-layer {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+        .z-layer-1 {
+            background: #3b82f6;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+        .z-layer-2 {
+            background: #f97316;
+            top: 30px;
+            left: 60px;
+            z-index: 2;
+        }
+        .z-layer-3 {
+            background: #16a34a;
+            top: 50px;
+            left: 110px;
+            z-index: 3;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .settings-table td:first-child { width: 40%; }
+            .advanced-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 8: Дополнительные настройки — отступы, анимация, z-index</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~25 минут | 🎯 Цель: освоить вкладку «Дополнительно» и научиться решать задачи точного позиционирования, анимации и наложения элементов</div>
+
+    <p>В предыдущих главах мы разобрали контейнеры, виджеты, стили и адаптивность. Теперь пришло время заглянуть во вкладку <strong>«Дополнительно»</strong> — самый мощный и недооценённый раздел Elementor. Именно здесь находятся инструменты, которые позволяют решать нестандартные задачи: перекрывать элементы, добавлять анимацию при прокрутке, тонко настраивать отступы и управлять порядком наложения.</p>
+
+    <div class="info-box">
+        <strong>💡 Что находится во вкладке «Дополнительно»:</strong><br>
+        Вкладка «Дополнительно» (Advanced) есть у каждого виджета и контейнера. Она содержит настройки, которые не зависят от типа элемента: <strong>Layout</strong> (отступы, ширина, позиция), <strong>Motion Effects</strong> (эффекты движения), <strong>Transform</strong> (трансформации), <strong>Background</strong> (фон), <strong>Border</strong> (границы), <strong>Mask</strong> (маски), <strong>Responsive</strong> (адаптивность) и <strong>Custom CSS</strong> (для продвинутых пользователей).
+    </div>
+
+    <p>Некоторые из этих настроек мы уже рассматривали в контексте стилей (фон, границы, адаптивность). В этой главе мы сосредоточимся на тех инструментах, которые чаще всего вызывают вопросы и при этом дают наибольший эффект: <strong>отступы, позиционирование, z-index, трансформации и эффекты движения</strong>.</p>
+
+    <h2>8.1 Отступы: Padding и Margin</h2>
+
+    <p>Разница между Padding и Margin — фундаментальное понятие в вёрстке. Понимание этой разницы избавит вас от 90% проблем с «непонятными отступами».</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Параметр</th>
+            <th>Что делает</th>
+            <th>Где настраивается</th>
+        </tr>
+        <tr>
+            <td>Padding (внутренний отступ)</td>
+            <td>Расстояние от края элемента до его содержимого. Это «воздух» внутри блока. Фон и границы элемента распространяются на Padding.</td>
+            <td>Вкладка «Дополнительно» → Layout → Padding</td>
+        </tr>
+        <tr>
+            <td>Margin (внешний отступ)</td>
+            <td>Расстояние от элемента до соседних элементов. Это «отступ» снаружи. Фон и границы элемента не распространяются на Margin.</td>
+            <td>Вкладка «Дополнительно» → Layout → Margin</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Простая аналогия:</strong><br>
+        Представьте, что элемент — это картина в рамке. <strong>Padding</strong> — это паспарту (белое поле) между картиной и рамой. <strong>Margin</strong> — это расстояние от рамы до других картин на стене.
+    </div>
+
+    <h3>Как настроить отступы</h3>
+    <ol class="steps">
+        <li><strong>Выделите элемент</strong> (виджет или контейнер) на холсте.</li>
+        <li><strong>Перейдите во вкладку «Дополнительно».</strong></li>
+        <li><strong>Найдите раздел «Layout».</strong> Здесь расположены поля Padding и Margin.</li>
+        <li><strong>Нажмите на иконку связи</strong> (цепочка) — теперь можно задавать отступы отдельно для каждой стороны (верх, право, низ, лево).</li>
+        <li><strong>Введите значения</strong> в пикселях (px), процентах (%) или em/rem.</li>
+        <li><strong>Для Margin можно использовать отрицательные значения</strong> — это позволяет «подтянуть» элементы друг к другу или создать эффект наложения.</li>
+    </ol>
+
+    <h3>Практический приём: отрицательный Margin</h3>
+    <p>Отрицательный Margin — мощный инструмент, который часто используется для:</p>
+    <ul>
+        <li><strong>Наложения элементов:</strong> карточка «наезжает» на фоновое изображение или заголовок.</li>
+        <li><strong>Устранения лишних зазоров:</strong> если между хедером и первым блоком появился нежелательный отступ, задайте первому контейнеру <code>margin-top: -20px</code>.</li>
+        <li><strong>Создания эффекта «выхода за границы»:</strong> изображение или блок выступает за пределы родительского контейнера.</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Осторожно с отрицательными отступами:</strong> они могут «сломать» адаптивность. Всегда проверяйте результат на планшете и телефоне. Если на мобильном наложение выглядит плохо — задайте для этого устройства Margin = 0.
+    </div>
+
+    <h2>8.2 Позиционирование: Position и Z-Index</h2>
+
+    <p>По умолчанию все элементы на странице располагаются в «потоке» — один за другим. Настройка <strong>Position</strong> позволяет вывести элемент из потока и расположить его в произвольном месте.</p>
+
+    <h3>Три типа позиционирования</h3>
+
+    <div class="advanced-grid">
+        <div class="advanced-card">
+            <strong>📌 Default</strong>
+            <span>Элемент в обычном потоке. Позиция определяется порядком добавления и отступами.</span>
+        </div>
+        <div class="advanced-card">
+            <strong>📌 Absolute</strong>
+            <span>Элемент «выходит из потока» и позиционируется относительно ближайшего родителя с非 static позицией. Используется для декоративных элементов, значков «New», бейджей.</span>
+        </div>
+        <div class="advanced-card">
+            <strong>📌 Fixed</strong>
+            <span>Элемент фиксируется относительно окна браузера. Остаётся на месте при прокрутке. Используется для кнопок «Вверх», чатов, плавающих меню.</span>
+        </div>
+    </div>
+
+    <h3>Настройка Absolute позиции</h3>
+    <ol class="steps">
+        <li><strong>Выделите элемент</strong> (например, иконку или бейдж).</li>
+        <li><strong>Перейдите в «Дополнительно» → Layout → Position.</strong></li>
+        <li><strong>Выберите «Absolute».</strong></li>
+        <li><strong>Задайте基准点 (якорь):</strong> по умолчанию используется верхний левый угол родителя. Можно выбрать другой угол или центр.</li>
+        <li><strong>Настройте смещение по X и Y</strong> — в пикселях или процентах.</li>
+        <li><strong>Проверьте результат.</strong> Элемент «вышел» из потока и не влияет на другие элементы.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический пример:</strong> Создайте карточку товара с изображением. Добавьте бейдж «Хит продаж» — маленький контейнер с текстом. Установите ему Position = Absolute, якорь — верхний правый угол, смещение по X = 10px, по Y = 10px. Бейдж «приклеится» к углу карточки и не будет сдвигать остальной контент.
+    </div>
+
+    <h3>Z-Index: управление слоями</h3>
+
+    <p>Z-Index определяет порядок наложения элементов. Чем выше значение, тем «выше» элемент в стопке слоёв — как в Photoshop. Это критически важно, когда элементы перекрываются.</p>
+
+    <div class="z-demo">
+        <div class="z-layer z-layer-1">z-index: 1</div>
+        <div class="z-layer z-layer-2">z-index: 2</div>
+        <div class="z-layer z-layer-3">z-index: 3</div>
+    </div>
+
+    <h3>Когда нужен Z-Index</h3>
+    <ul>
+        <li><strong>Sticky-хедер:</strong> чтобы шапка была поверх контента при прокрутке, задайте ей высокий z-index (например, 999).</li>
+        <li><strong>Выпадающие меню:</strong> чтобы меню не «уходило» под другие элементы.</li>
+        <li><strong>Декоративные элементы:</strong> чтобы иконка или фигура отображалась поверх фона.</li>
+        <li><strong>Оверлей:</strong> чтобы затемняющий слой был над изображением, но под текстом.</li>
+        <li><strong>Попапы и модальные окна:</strong> максимальный z-index (9999), чтобы они были поверх всего.</li>
+    </ul>
+
+    <h3>Как настроить Z-Index</h3>
+    <ol class="steps">
+        <li><strong>Выделите элемент.</strong></li>
+        <li><strong>Перейдите в «Дополнительно» → Layout.</strong></li>
+        <li><strong>Найдите поле Z-Index.</strong></li>
+        <li><strong>Введите число.</strong> Чем выше — тем «ближе» к зрителю. Обычно: фон — 0, контент — 1, хедер — 999, попап — 9999.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Z-Index работает только с Position = Absolute, Fixed или Relative.</strong> Если элемент в обычном потоке (Default), Z-Index не сработает. Сначала установите Position, затем Z-Index.
+    </div>
+
+    <h2>8.3 Трансформации (Transform)</h2>
+
+    <p>Transform — это инструмент для визуального изменения элемента без влияния на соседние. Можно поворачивать, масштабировать, смещать и наклонять элементы.</p>
+
+    <h3>Доступные трансформации</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Тип</th>
+            <th>Что делает</th>
+            <th>Где применить</th>
+        </tr>
+        <tr>
+            <td>Rotate (Поворот)</td>
+            <td>Поворачивает элемент на заданный угол (в градусах). Можно включить 3D-поворот по осям X и Y.</td>
+            <td>Иконки, декоративные элементы, фото с наклоном.</td>
+        </tr>
+        <tr>
+            <td>Offset (Смещение)</td>
+            <td>Сдвигает элемент по осям X и Y. В отличие от Margin, не влияет на поток.</td>
+            <td>Лёгкая «рассинхронизация» элементов, эффект «парения».</td>
+        </tr>
+        <tr>
+            <td>Scale (Масштаб)</td>
+            <td>Увеличивает или уменьшает элемент. Можно сохранить пропорции.</td>
+            <td>Увеличение изображений при наведении, акцентные иконки.</td>
+        </tr>
+        <tr>
+            <td>Skew (Наклон)</td>
+            <td>Наклоняет элемент по осям X и Y.</td>
+            <td>Динамичные карточки, стильные заголовки.</td>
+        </tr>
+        <tr>
+            <td>Flip (Отражение)</td>
+            <td>Отражает элемент по горизонтали или вертикали.</td>
+            <td>Зеркальные иконки, стрелки.</td>
+        </tr>
+    </table>
+
+    <h3>Как настроить трансформации</h3>
+    <ol class="steps">
+        <li><strong>Выделите элемент.</strong></li>
+        <li><strong>Перейдите в «Дополнительно» → Transform.</strong></li>
+        <li><strong>Выберите состояние:</strong> Normal (обычное) или Hover (при наведении).</li>
+        <li><strong>Настройте параметры:</strong> угол поворота, масштаб, смещение.</li>
+        <li><strong>Для Hover-состояния задайте «Transition Duration»</strong> — плавность перехода (например, 0.3s).</li>
+        <li><strong>Проверьте в предпросмотре.</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Создайте карточку с изображением. Настройте Hover → Transform → Scale = 1.05 (увеличение на 5%). Добавьте Transition Duration = 0.3s. При наведении изображение плавно увеличится — эффект «оживления».
+    </div>
+
+    <h2>8.4 Эффекты движения (Motion Effects)</h2>
+
+    <p>Motion Effects — это анимации, которые срабатывают при прокрутке или входе элемента в зону видимости. Они добавляют сайту динамику и интерактивность.</p>
+
+    <h3>Основные типы эффектов</h3>
+
+    <div class="advanced-grid">
+        <div class="advanced-card">
+            <strong>🎬 Entrance Animation</strong>
+            <span>Анимация появления элемента при загрузке страницы. Доступно более 20 эффектов: Fade In, Slide In, Zoom In, Bounce и другие.</span>
+        </div>
+        <div class="advanced-card">
+            <strong>📜 Scrolling Effects</strong>
+            <span>Анимация, привязанная к прокрутке. Элемент движется, исчезает или меняет прозрачность по мере скролла. (Pro-версия)</span>
+        </div>
+        <div class="advanced-card">
+            <strong>🖱️ Mouse Effects</strong>
+            <span>Реакция элемента на движение мыши. Эффект «параллакса» или следования за курсором. (Pro-версия)</span>
+        </div>
+        <div class="advanced-card">
+            <strong>📌 Sticky</strong>
+            <span>Прикрепление элемента к верху экрана при прокрутке. Используется для хедеров и навигации. (Pro-версия)</span>
+        </div>
+    </div>
+
+    <h3>Настройка Entrance Animation (бесплатно)</h3>
+    <ol class="steps">
+        <li><strong>Выделите элемент.</strong></li>
+        <li><strong>Перейдите в «Дополнительно» → Motion Effects.</strong></li>
+        <li><strong>Найдите раздел «Entrance Animation».</strong></li>
+        <li><strong>Выберите анимацию из списка:</strong> Fade In, Fade In Up, Zoom In, Bounce In и другие.</li>
+        <li><strong>Задайте задержку (Animation Delay)</strong> — например, 200ms для второго элемента, 400ms для третьего (эффект «каскада»).</li>
+        <li><strong>Проверьте в предпросмотре:</strong> обновите страницу и наблюдайте появление элементов.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет по анимации:</strong> Не увлекайтесь. Достаточно 2–3 типов анимации на странице. Используйте Fade In Up для блоков контента, Zoom In — для изображений. Избегайте «прыгающих» и «вращающихся» эффектов — они отвлекают от контента.
+    </div>
+
+    <h3>Настройка Sticky (Pro-версия)</h3>
+    <ol class="steps">
+        <li><strong>Выделите хедер</strong> (или другой элемент).</li>
+        <li><strong>Перейдите в «Дополнительно» → Motion Effects.</strong></li>
+        <li><strong>Включите «Sticky» → Top.</strong></li>
+        <li><strong>Настройте «Effects Offset»</strong> — количество пикселей, после которого элемент «прилипает».</li>
+        <li><strong>Задайте Z-Index</strong> — не менее 999, чтобы хедер был поверх контента.</li>
+        <li><strong>Выберите устройства</strong>, на которых будет работать Sticky.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Sticky только в Pro:</strong> В бесплатной версии Elementor эффект Sticky недоступен. Альтернатива — использовать CSS в настройках внешнего вида WordPress (см. раздел «Практические примеры»).
+    </div>
+
+    <h2>8.5 Маски (Mask)</h2>
+
+    <p>Маска — это форма, которая «вырезает» элемент по заданному контуру. С её помощью можно превратить прямоугольное изображение в круг, овал, звезду или любую другую фигуру без редактирования самого файла.</p>
+
+    <h3>Как применить маску</h3>
+    <ol class="steps">
+        <li><strong>Выделите виджет «Изображение».</strong></li>
+        <li><strong>Перейдите в «Дополнительно» → Mask.</strong></li>
+        <li><strong>Выберите форму:</strong> Circle, Ellipse, Triangle, Star, Blob и другие.</li>
+        <li><strong>Настройте размер маски</strong> и положение.</li>
+        <li><strong>Проверьте результат.</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический пример:</strong> Создайте секцию «Наша команда». Для каждого сотрудника используйте изображение с маской Circle. Фото автоматически станет круглым — не нужно обрезать его в графическом редакторе.
+    </div>
+
+    <h2>8.6 Практические примеры: решаем актуальные задачи</h2>
+
+    <h3>Пример 1: Бейдж «Хит продаж» на карточке товара</h3>
+    <ol class="steps">
+        <li><strong>Создайте карточку товара</strong> (контейнер с изображением, заголовком, ценой).</li>
+        <li><strong>Добавьте маленький контейнер</strong> с текстом «Хит продаж». Дайте ему фон #f97316, белый текст, Padding 5px 15px, Border Radius 20px.</li>
+        <li><strong>Выделите бейдж</strong> → «Дополнительно» → Position = Absolute.</li>
+        <li><strong>Выберите якорь</strong> — верхний правый угол родителя.</li>
+        <li><strong>Задайте смещение:</strong> X = -10px, Y = 10px.</li>
+        <li><strong>Установите Z-Index = 10.</strong></li>
+        <li><strong>Проверьте:</strong> бейдж должен «прилипнуть» к углу карточки и не сдвигать контент.</li>
+    </ol>
+
+    <h3>Пример 2: Изображение с эффектом наведения</h3>
+    <ol class="steps">
+        <li><strong>Добавьте виджет «Изображение».</strong></li>
+        <li><strong>Перейдите в «Дополнительно» → Transform → Hover.</strong></li>
+        <li><strong>Установите Scale = 1.08.</strong></li>
+        <li><strong>Добавьте Transition Duration = 0.4s.</strong></li>
+        <li><strong>Вернитесь в Normal → Transform.</strong></li>
+        <li><strong>Установите Overflow = Hidden</strong> у родительского контейнера, чтобы изображение не выходило за границы при увеличении.</li>
+        <li><strong>Проверьте:</strong> при наведении изображение плавно увеличивается внутри карточки.</li>
+    </ol>
+
+    <h3>Пример 3: Sticky-хедер без Pro (через CSS)</h3>
+    <ol class="steps">
+        <li><strong>Откройте «Внешний вид → Настроить → Дополнительные стили».</strong></li>
+        <li><strong>Вставьте код:</strong></li>
+    </ol>
+
+    <pre>header.elementor-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}</pre>
+
+    <ol class="steps">
+        <li><strong>Замените селектор</strong> <code>header.elementor-sticky</code> на класс вашего хедера (найдите через инспектор браузера).</li>
+        <li><strong>Сохраните.</strong> Хедер будет «прилипать» к верху при прокрутке.</li>
+    </ol>
+
+    <h3>Пример 4: Анимация появления блоков при прокрутке</h3>
+    <ol class="steps">
+        <li><strong>Выделите первый блок контента.</strong></li>
+        <li><strong>«Дополнительно» → Motion Effects → Entrance Animation = Fade In Up.</strong></li>
+        <li><strong>Задайте Animation Delay = 0ms.</strong></li>
+        <li><strong>Выделите второй блок.</strong> Entrance Animation = Fade In Up, Delay = 200ms.</li>
+        <li><strong>Третий блок:</strong> Delay = 400ms.</li>
+        <li><strong>Проверьте:</strong> при загрузке страницы блоки появляются каскадом — один за другим.</li>
+    </ol>
+
+    <h3>Пример 5: Декоративный элемент, «выглядывающий» из-за края</h3>
+    <ol class="steps">
+        <li><strong>Создайте контейнер</strong> с изображением или фигурой.</li>
+        <li><strong>Выделите декоративный элемент</strong> → Position = Absolute.</li>
+        <li><strong>Задайте смещение:</strong> X = -30px, Y = 50px.</li>
+        <li><strong>Установите Z-Index = -1</strong> (чтобы элемент был позади основного контента).</li>
+        <li><strong>Убедитесь, что у родительского контейнера Overflow = Visible.</strong></li>
+        <li><strong>Проверьте на мобильном</strong> — возможно, стоит скрыть декоративный элемент для узких экранов.</li>
+    </ol>
+
+    <h2>8.7 Решение частых проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Элемент не двигается при изменении Margin</td>
+            <td>Проверьте, не задан ли элементу Position = Absolute. В этом случае используйте смещение (Offset), а не Margin.</td>
+        </tr>
+        <tr>
+            <td>Z-Index не работает</td>
+            <td>Убедитесь, что у элемента Position = Absolute, Fixed или Relative. В обычном потоке Z-Index игнорируется.</td>
+        </tr>
+        <tr>
+            <td>Анимация срабатывает только один раз</td>
+            <td>Entrance Animation срабатывает при каждой загрузке страницы. Если хотите, чтобы анимация повторялась при прокрутке, используйте Scrolling Effects (Pro).</td>
+        </tr>
+        <tr>
+            <td>Sticky-хедер перекрывает контент</td>
+            <td>Добавьте первому блоку после хедера Padding Top, равный высоте хедера. Или используйте Effects Offset.</td>
+        </tr>
+        <tr>
+            <td>Отрицательный Margin «ломает» мобильную версию</td>
+            <td>Переключитесь на мобильный вид и задайте Margin = 0 для этого устройства.</td>
+        </tr>
+        <tr>
+            <td>Transform не применяется</td>
+            <td>Проверьте, что вы находитесь в правильном состоянии (Normal/Hover). Некоторые трансформации не работают с определёнными типами виджетов.</td>
+        </tr>
+        <tr>
+            <td>Маска обрезает изображение слишком сильно</td>
+            <td>Измените размер маски или положение. Для круга используйте изображение с запасом по краям.</td>
+        </tr>
+    </table>
+
+    <h2>8.8 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Отступы и отрицательный Margin</strong><br>
+        1. Создайте контейнер с изображением и заголовком.<br>
+        2. Задайте изображению Margin Bottom = 30px.<br>
+        3. Создайте второй контейнер с текстом и задайте ему Margin Top = -20px.<br>
+        4. Проверьте, что текст «подтянулся» к изображению.<br>
+        5. На мобильном уберите отрицательный Margin.<br><br>
+        <strong>Часть 2: Бейдж с Absolute позиционированием</strong><br>
+        6. Создайте карточку с изображением и текстом.<br>
+        7. Добавьте маленький контейнер «New!» с оранжевым фоном.<br>
+        8. Установите Position = Absolute, якорь — верхний правый угол.<br>
+        9. Задайте смещение X = -10px, Y = 10px.<br>
+        10. Установите Z-Index = 10.<br><br>
+        <strong>Часть 3: Z-Index и наложение</strong><br>
+        11. Создайте два контейнера, частично перекрывающих друг друга.<br>
+        12. Первому задайте Z-Index = 1, второму — Z-Index = 2.<br>
+        13. Проверьте, какой элемент отображается сверху.<br>
+        14. Поменяйте значения и убедитесь, что порядок изменился.<br><br>
+        <strong>Часть 4: Трансформации при наведении</strong><br>
+        15. Создайте кнопку.<br>
+        16. Настройте Hover → Transform → Scale = 1.05.<br>
+        17. Добавьте Transition Duration = 0.3s.<br>
+        18. Проверьте в предпросмотре.<br><br>
+        <strong>Часть 5: Анимация появления</strong><br>
+        19. Создайте три блока с текстом.<br>
+        20. Первому задайте Entrance Animation = Fade In Up, Delay = 0ms.<br>
+        21. Второму — Fade In Up, Delay = 200ms.<br>
+        22. Третьему — Fade In Up, Delay = 400ms.<br>
+        23. Обновите страницу и наблюдайте каскадное появление.<br><br>
+        <strong>Часть 6: Маска для изображения</strong><br>
+        24. Добавьте изображение.<br>
+        25. Примените маску Circle.<br>
+        26. Проверьте, что изображение стало круглым.<br>
+        27. Попробуйте другие формы (Blob, Star).<br><br>
+        <strong>Часть 7: Проверка</strong><br>
+        28. Сохраните страницу.<br>
+        29. Проверьте на компьютере, планшете и телефоне.<br>
+        30. Убедитесь, что анимации и наложения работают корректно на всех устройствах.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Padding и Margin (включая отрицательные значения), позиционирование (Default, Absolute, Fixed), Z-Index для управления слоями, трансформации (Rotate, Scale, Skew, Offset), эффекты движения (Entrance Animation, Sticky), маски для изображений и решение практических задач наложения и анимации.
+    </div>
+
+    <h2>8.9 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Чем Padding отличается от Margin?</strong> Padding — внутренний отступ (фон распространяется), Margin — внешний (фон не распространяется). Margin поддерживает отрицательные значения.</li>
+        <li><strong>Почему Z-Index не работает?</strong> Скорее всего, у элемента Position = Default. Сначала установите Absolute или Fixed.</li>
+        <li><strong>Можно ли использовать Transform для контейнеров?</strong> В Elementor Transform доступен только для виджетов. Для контейнеров используйте CSS или сторонние плагины.</li>
+        <li><strong>Как сделать, чтобы анимация повторялась?</strong> Entrance Animation срабатывает один раз при загрузке. Для повторяющихся анимаций нужен Scrolling Effects (Pro) или сторонний плагин.</li>
+        <li><strong>Sticky доступен в бесплатной версии?</strong> Нет, только в Pro. Альтернатива — CSS через «Внешний вид → Настроить».</li>
+        <li><strong>Что такое Motion Effects?</strong> Это эффекты, привязанные к движению: появление при загрузке, реакция на прокрутку, следование за мышью. Часть доступна бесплатно (Entrance Animation), часть — в Pro.</li>
+        <li><strong>Как убрать анимацию на мобильных?</strong> В настройках Motion Effects переключитесь на мобильный вид и отключите анимацию для этого устройства.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>шаблоны и повторное использование блоков</strong>: как сохранять созданные секции, применять их на других страницах, работать с глобальными виджетами и библиотекой шаблонов. Это значительно ускорит вашу работу. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter9.html" class="button">📖 Перейти к девятой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по Elementor | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

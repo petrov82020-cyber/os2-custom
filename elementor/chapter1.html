@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 1: Введение в Elementor и вход в редактор</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .interface-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .interface-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .interface-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .interface-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 1: Введение в Elementor и вход в редактор</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~15 минут | 🎯 Цель: установить Elementor, открыть редактор и познакомиться с основными областями интерфейса</div>
+
+    <p>Добро пожаловать в первую главу нашего курса по Elementor! Здесь вы узнаете, что это за инструмент, зачем он нужен и как сделать первый шаг — установить плагин и открыть визуальный редактор. Мы начнём с самых основ, так что даже если вы никогда не работали с конструкторами страниц, всё будет понятно.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое Elementor?</strong><br>
+        Elementor — это визуальный конструктор страниц для WordPress, который позволяет создавать сайты методом <strong>drag &amp; drop</strong> (перетаскивания элементов). Вам не нужно писать код — достаточно выбрать нужный виджет, перетащить его на страницу и настроить внешний вид через удобную панель. Elementor работает по принципу <strong>WYSIWYG</strong> («что видишь, то и получишь») — все изменения отображаются мгновенно, прямо в редакторе.
+    </div>
+
+    <p>Elementor — один из самых популярных конструкторов для WordPress. Он совместим с большинством тем и плагинов, поддерживает адаптивность для всех устройств и имеет огромную библиотеку готовых блоков и шаблонов. В бесплатной версии доступно более 90 виджетов и сотни готовых шаблонов — этого более чем достаточно для создания полноценного сайта.</p>
+
+    <h2>1.1 Почему стоит выбрать Elementor</h2>
+
+    <p>Прежде чем начать, давайте разберёмся, чем Elementor отличается от стандартного редактора WordPress (Gutenberg) и почему миллионы пользователей выбирают именно его.</p>
+
+    <div class="compare-grid">
+        <div class="compare-card bad">
+            <h4>❌ Стандартный редактор Gutenberg</h4>
+            <ul>
+                <li>Блочный подход: каждый элемент — отдельный блок</li>
+                <li>Ограниченные возможности настройки стилей</li>
+                <li>Нет гибкого управления колонками и отступами</li>
+                <li>Сложно создавать сложные макеты</li>
+                <li>Нет библиотеки готовых шаблонов</li>
+            </ul>
+        </div>
+        <div class="compare-card good">
+            <h4>✅ Elementor</h4>
+            <ul>
+                <li>Визуальный подход: перетаскивание элементов мышкой</li>
+                <li>Три вкладки настроек: Контент, Стиль, Дополнительно</li>
+                <li>Гибкая система контейнеров и колонок</li>
+                <li>Интуитивное создание сложных макетов</li>
+                <li>Библиотека готовых шаблонов и блоков</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Главное преимущество Elementor:</strong><br>
+        Elementor сохраняет полный контроль над вашим сайтом — он остаётся в WordPress, на вашем хостинге, с вашими плагинами. В отличие от SaaS-конструкторов (например, Wix или Tilda), вы не платите ежемесячную подписку за сам конструктор, а бесплатная версия полностью функциональна для базовых задач.
+    </div>
+
+    <h2>1.2 Установка Elementor</h2>
+
+    <p>Установка Elementor занимает несколько минут. Прежде чем начать, убедитесь, что ваш сайт на WordPress соответствует минимальным системным требованиям: WordPress 5.0 или новее, PHP 7.0+ (рекомендуется 7.4+ или 8.x), MySQL 5.6+. Если вы используете бесплатный хостинг InfinityFree из нашего предыдущего курса, эти требования уже выполнены.</p>
+
+    <p>Установить Elementor можно двумя способами. Рассмотрим оба.</p>
+
+    <h3>Способ 1: Установка из каталога WordPress (рекомендуется)</h3>
+
+    <ol class="steps">
+        <li><strong>Войдите в админ-панель WordPress.</strong> Откройте <code>https://ваш_домен/wp-admin</code> и авторизуйтесь.</li>
+        <li><strong>Перейдите в раздел «Плагины».</strong> В левом меню найдите пункт <strong>Плагины → Добавить новый</strong>.</li>
+        <li><strong>Найдите Elementor.</strong> В строке поиска введите <code>Elementor</code>. В результатах поиска найдите плагин <strong>Elementor Website Builder</strong>.</li>
+        <li><strong>Установите плагин.</strong> Нажмите кнопку <strong>«Установить сейчас»</strong> (Install Now). Дождитесь завершения установки — это займёт несколько секунд.</li>
+        <li><strong>Активируйте плагин.</strong> После установки кнопка изменится на <strong>«Активировать»</strong> (Activate). Нажмите её.</li>
+    </ol>
+
+    <h3>Способ 2: Установка через загрузку ZIP-архива</h3>
+
+    <p>Этот способ пригодится, если у вас нет доступа к каталогу WordPress или вы хотите установить конкретную версию плагина.</p>
+
+    <ol class="steps">
+        <li><strong>Скачайте архив плагина.</strong> Перейдите на официальный сайт Elementor или в каталог плагинов WordPress и скачайте ZIP-архив.</li>
+        <li><strong>В админ-панели перейдите в «Плагины → Добавить новый».</strong></li>
+        <li><strong>Нажмите кнопку «Загрузить плагин»</strong> в верхней части страницы.</li>
+        <li><strong>Выберите скачанный ZIP-файл</strong> и нажмите <strong>«Установить»</strong>.</li>
+        <li><strong>Активируйте плагин</strong> после завершения установки.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> После активации в левом меню админ-панели появится новый пункт <strong>«Elementor»</strong> с доступом к настройкам, шаблонам и системной информации.
+    </div>
+
+    <h2>1.3 Первый запуск: открываем редактор</h2>
+
+    <p>Теперь, когда Elementor установлен и активирован, давайте откроем редактор и создадим первую страницу.</p>
+
+    <ol class="steps">
+        <li><strong>Создайте новую страницу.</strong> В левом меню выберите <strong>Страницы → Добавить новую</strong>.</li>
+        <li><strong>Введите название страницы.</strong> Например, «Тестовая страница» или «Моя первая страница».</li>
+        <li><strong>Нажмите кнопку «Редактировать в Elementor».</strong> Она расположена в верхней части страницы рядом с кнопкой «Опубликовать».</li>
+    </ol>
+
+    <p>После нажатия кнопки откроется полноэкранный визуальный редактор Elementor. Вы увидите интерфейс, состоящий из нескольких основных областей.</p>
+
+    <div class="info-box">
+        <strong>💡 Важно:</strong> При первом запуске Elementor может предложить пройти onboarding (знакомство) или выбрать шаблон. Вы можете пропустить эти шаги и начать с пустой страницы — мы научимся всему по ходу курса.
+    </div>
+
+    <h2>1.4 Обзор интерфейса редактора</h2>
+
+    <p>Интерфейс Elementor интуитивно понятен и разделён на несколько ключевых областей. Давайте разберём каждую из них.</p>
+
+    <div class="interface-grid">
+        <div class="interface-card">
+            <strong>🔝 Верхняя панель (Top Bar)</strong>
+            <span>Расположена в самом верху редактора. Здесь находятся инструменты управления: логотип Elementor (настройки сайта), кнопка добавления элементов, настройки страницы, история изменений, переключение устройств, предпросмотр и кнопка сохранения.</span>
+        </div>
+        <div class="interface-card">
+            <strong>📋 Левая панель (Panel)</strong>
+            <span>Главная область управления. Когда ничего не выбрано, здесь отображается библиотека виджетов. Когда вы выбираете элемент, панель переключается на его настройки с тремя вкладками: <strong>Содержимое</strong> (Content), <strong>Стиль</strong> (Style) и <strong>Дополнительно</strong> (Advanced).</span>
+        </div>
+        <div class="interface-card">
+            <strong>🎨 Холст (Canvas)</strong>
+            <span>Центральная область — это ваше рабочее пространство. Здесь вы строите страницу, перетаскивая виджеты и настраивая их. Все изменения отображаются мгновенно, в реальном времени.</span>
+        </div>
+        <div class="interface-card">
+            <strong>🧭 Навигатор (Navigator)</strong>
+            <span>Плавающая панель, которая показывает структуру всей страницы в виде дерева. Позволяет легко находить вложенные элементы и управлять ими. Открывается по клику на иконку структуры в верхней панели.</span>
+        </div>
+        <div class="interface-card">
+            <strong>📱 Режим адаптивности (Responsive Mode)</strong>
+            <span>Переключатель в верхней панели для предпросмотра страницы на разных устройствах: компьютер, планшет, телефон. Можно настраивать размеры шрифтов, отступы и видимость элементов отдельно для каждого устройства.</span>
+        </div>
+    </div>
+
+    <h3>Подробнее о верхней панели</h3>
+
+    <p>Верхняя панель — это командный центр редактора. Вот её основные элементы слева направо:</p>
+
+    <ul>
+        <li><strong>Логотип Elementor</strong> — доступ к настройкам сайта, Theme Builder, заметкам, пользовательским настройкам и горячим клавишам.</li>
+        <li><strong>Добавить элемент</strong> — открывает панель виджетов.</li>
+        <li><strong>Настройки страницы</strong> — параметры текущей страницы: макет, стиль, настройки заголовка.</li>
+        <li><strong>История</strong> — просмотр и отмена изменений (аналог Ctrl+Z, но с полной историей).</li>
+        <li><strong>Название страницы</strong> — быстрый переход к недавно редактируемым страницам.</li>
+        <li><strong>Переключение устройств</strong> — компьютер, планшет, телефон.</li>
+        <li><strong>Структура</strong> — открывает навигатор.</li>
+        <li><strong>Предпросмотр</strong> — показать страницу так, как её увидят посетители.</li>
+        <li><strong>Опубликовать / Обновить</strong> — сохранить изменения и сделать страницу доступной.</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Если вы не видите кнопку «Редактировать в Elementor», проверьте, активирован ли плагин. Также убедитесь, что вы редактируете страницу, а не запись — по умолчанию Elementor работает со страницами.
+    </div>
+
+    <h2>1.5 Практическое задание: первая страница</h2>
+
+    <p>Давайте закрепим материал и создадим первую простую страницу с помощью Elementor.</p>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br>
+        1. Установите и активируйте плагин Elementor.<br>
+        2. Создайте новую страницу «Тестовая страница».<br>
+        3. Нажмите «Редактировать в Elementor».<br>
+        4. В открывшемся редакторе найдите и нажмите на синюю иконку <strong>«+»</strong> в центре холста — создайте новый контейнер.<br>
+        5. В левой панели найдите виджет <strong>«Заголовок»</strong> (Heading) и перетащите его в контейнер.<br>
+        6. Введите текст: «Моя первая страница на Elementor».<br>
+        7. Справа в настройках виджета измените выравнивание на «По центру».<br>
+        8. Нажмите <strong>«Обновить»</strong> в левом нижнем углу, чтобы сохранить страницу.<br>
+        9. Нажмите <strong>«Предпросмотр»</strong> в верхней панели, чтобы увидеть результат.
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Что вы только что сделали:</strong> Создали контейнер (структурный блок), добавили в него виджет заголовка, настроили выравнивание и сохранили страницу. Это базовый цикл работы в Elementor, который будет повторяться снова и снова.
+    </div>
+
+    <h2>1.6 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Нужно ли покупать Elementor Pro?</strong> Нет, для начала бесплатной версии более чем достаточно. В ней есть все базовые виджеты: заголовки, текст, изображения, кнопки, колонки, разделители. Pro нужен для продвинутых функций: форм, попапов, Theme Builder и дополнительных виджетов.</li>
+        <li><strong>Совместим ли Elementor с моей темой?</strong> Да, Elementor работает с большинством современных тем WordPress. Для максимальной совместимости рекомендуется выбирать темы с поддержкой Elementor или универсальные темы, такие как Hello Elementor.</li>
+        <li><strong>Что делать, если редактор не открывается?</strong> Проверьте, активирован ли плагин. Попробуйте временно отключить другие плагины — возможно, есть конфликт. Также убедитесь, что на хостинге достаточно памяти (рекомендуется минимум 128 МБ).</li>
+        <li><strong>Можно ли использовать Elementor для записей блога?</strong> Да, по умолчанию Elementor работает только со страницами, но в настройках плагина (<strong>Elementor → Настройки → Общие</strong>) можно включить поддержку записей и других типов контента.</li>
+        <li><strong>Где сохраняются шаблоны?</strong> В разделе <strong>Elementor → Мои шаблоны</strong>. Там можно сохранять созданные блоки и страницы, а также импортировать и экспортировать их.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы подробно разберём каждую область интерфейса Elementor: верхнюю панель, панель виджетов и холст. Вы узнаете, как искать нужные элементы, переключаться между устройствами и использовать навигатор для управления сложными макетами. А пока закрепите пройденное — выполните задание выше.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter2.html" class="button">📖 Перейти ко второй главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по Elementor | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

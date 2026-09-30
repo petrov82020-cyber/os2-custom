@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 5: Стили и фон — оформление контейнеров и виджетов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .color-swatch {
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .color-swatch.dark {
+            color: #1a1e24;
+        }
+        .demo-box {
+            background: #f9fafb;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px 0;
+            text-align: center;
+            color: #5b6e8c;
+            font-style: italic;
+        }
+        .gradient-demo {
+            height: 80px;
+            border-radius: 12px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+        .grad-linear {
+            background: linear-gradient(135deg, #0969da 0%, #f97316 100%);
+        }
+        .grad-radial {
+            background: radial-gradient(circle at center, #3b82f6 0%, #1e1b4b 100%);
+        }
+        .grad-angle {
+            background: linear-gradient(45deg, #16a34a 0%, #facc15 50%, #dc2626 100%);
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .settings-table td:first-child { width: 40%; }
+            .palette { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 5: Стили и фон — оформление контейнеров и виджетов</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~25 минут | 🎯 Цель: освоить работу с цветами, фонами, градиентами, границами и тенями для создания профессионального дизайна</div>
+
+    <p>Мы научились создавать структуру страницы (контейнеры) и наполнять её контентом (виджеты). Но пока сайт выглядит «как из коробки» — стандартные цвета, шрифты, никаких визуальных акцентов. Пришло время заняться <strong>оформлением</strong>. В этой главе мы разберём всё, что касается цветов, фонов, градиентов, границ и теней — инструментов, которые превращают сайт в произведение дизайна.</p>
+
+    <div class="info-box">
+        <strong>💡 Ключевой принцип:</strong> Стили в Elementor делятся на <strong>стили контейнеров</strong> (фон, границы, тени — для целых блоков) и <strong>стили виджетов</strong> (цвет текста, шрифты, отступы — для отдельных элементов). Понимание этой разницы — основа аккуратного дизайна.
+    </div>
+
+    <h2>5.1 Основы работы с цветом</h2>
+
+    <p>Цвет — самый мощный инструмент дизайнера. С его помощью можно расставить акценты, создать настроение и направить внимание посетителя. Elementor предлагает гибкую систему управления цветом.</p>
+
+    <h3>Три способа задать цвет</h3>
+
+    <ol class="steps">
+        <li><strong>Выбор из палитры.</strong> Кликните на цветовой кружок → откроется палитра с предустановленными цветами темы. Это быстрый способ сохранить единый стиль.</li>
+        <li><strong>Произвольный цвет.</strong> В том же окне нажмите на цветовое поле справа — откроется полноценный color picker. Выберите любой оттенок мышкой или введите HEX-код.</li>
+        <li><strong>HEX / RGBA / HSL.</strong> Введите точное значение вручную. Например, <code>#0969da</code> (синий), <code>rgba(9,105,218,0.8)</code> (полупрозрачный синий).</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Что такое HEX?</strong><br>
+        HEX — шестизначный код цвета. Первые две цифры — красный, вторые — зелёный, третьи — синий. Например, <code>#FF0000</code> — чисто красный, <code>#000000</code> — чёрный, <code>#FFFFFF</code> — белый. Использование HEX обеспечивает одинаковый цвет на всех устройствах.
+    </div>
+
+    <h3>Правило 60-30-10</h3>
+
+    <p>Профессиональный дизайн строится на пропорции цветов:</p>
+    <ul>
+        <li><strong>60% — основной (фоновый).</strong> Обычно белый или светло-серый. Задаёт «воздух» на странице.</li>
+        <li><strong>30% — вторичный.</strong> Тёмный текст, тёмно-серые блоки. Создаёт контраст.</li>
+        <li><strong>10% — акцентный.</strong> Яркий фирменный цвет: синий, оранжевый, зелёный. Используется для кнопок, ссылок, иконок.</li>
+    </ul>
+
+    <h3>Популярные цветовые схемы</h3>
+
+    <div class="palette">
+        <div class="color-swatch" style="background: #0969da;">#0969da</div>
+        <div class="color-swatch" style="background: #0a2540;">#0a2540</div>
+        <div class="color-swatch" style="background: #f97316;">#f97316</div>
+        <div class="color-swatch" style="background: #16a34a;">#16a34a</div>
+        <div class="color-swatch dark" style="background: #e2e8f0;">#e2e8f0</div>
+        <div class="color-swatch dark" style="background: #f8fafc;">#f8fafc</div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Частая ошибка новичков:</strong> Использовать слишком много ярких цветов. Пестрота воспринимается как непрофессионализм. Ограничьтесь <strong>3–4 цветами</strong>: фон, текст, акцент и, возможно, второй акцент.
+    </div>
+
+    <h2>5.2 Глобальные цвета и палитра сайта</h2>
+
+    <p>Вместо того чтобы задавать цвета вручную для каждого элемента, настройте <strong>глобальную палитру сайта</strong>. Это экономит время и обеспечивает единство стиля.</p>
+
+    <h3>Настройка глобальной палитры</h3>
+    <ol class="steps">
+        <li><strong>Откройте настройки сайта.</strong> В верхней панели редактора нажмите на логотип Elementor → <strong>«Настройки сайта»</strong> (Site Settings).</li>
+        <li><strong>Перейдите в раздел «Глобальные цвета»</strong> (Global Colors).</li>
+        <li><strong>Настройте основные цвета:</strong>
+            <ul>
+                <li><strong>Primary</strong> — основной акцентный цвет (кнопки, ссылки).</li>
+                <li><strong>Secondary</strong> — вторичный цвет.</li>
+                <li><strong>Text</strong> — цвет основного текста.</li>
+                <li><strong>Accent</strong> — дополнительный акцент.</li>
+            </ul>
+        </li>
+        <li><strong>Дайте осмысленные имена.</strong> Вместо «Primary» можно назвать «Синий бренд». Это упростит работу в будущем.</li>
+        <li><strong>Нажмите «Обновить»</strong> — цвета сохранятся и станут доступны во всех виджетах.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Когда вы меняете глобальный цвет, все элементы, которые его используют, обновляются автоматически. Это значит, что если вы решите поменять фирменный синий на зелёный, не придётся обходить сотню кнопок — достаточно изменить одну настройку в палитре.
+    </div>
+
+    <h2>5.3 Фон контейнера — базовые настройки</h2>
+
+    <p>Фон — это основа оформления любого блока. Elementor предлагает несколько типов фона.</p>
+
+    <h3>Как задать фон контейнера</h3>
+    <ol class="steps">
+        <li><strong>Выделите контейнер</strong> на холсте (клик по иконке-ручке в его верхнем левом углу).</li>
+        <li><strong>Перейдите в левой панели на вкладку «Стиль».</strong></li>
+        <li><strong>Найдите раздел «Фон» (Background).</strong> Выберите тип:
+            <ul>
+                <li><strong>Классический (Classic)</strong> — цвет или изображение.</li>
+                <li><strong>Градиент (Gradient)</strong> — плавный переход между двумя и более цветами.</li>
+            </ul>
+        </li>
+        <li><strong>Настройте параметры</strong> выбранного типа фона.</li>
+    </ol>
+
+    <h3>Классический фон: цвет</h3>
+    <p>Самый простой вариант — залить блок сплошным цветом. Нажмите на цветовой кружок, выберите оттенок из палитры или задайте свой. Используйте этот тип для:</p>
+    <ul>
+        <li>Контрастных секций (тёмно-синий, почти чёрный фон + белый текст).</li>
+        <li>Акцентных блоков (светло-голубой фон для выделения важной информации).</li>
+        <li>Разделения страницы на логические зоны.</li>
+    </ul>
+
+    <div class="demo-box" style="background: #0969da; color: white; border: none;">
+        Пример: контейнер с синим фоном и белым текстом
+    </div>
+
+    <h3>Классический фон: изображение</h3>
+    <p>Фоновое изображение используется для Hero-секций, баннеров и атмосферных блоков. При выборе изображения становятся доступны дополнительные настройки:</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Настройка</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td>Размер (Size)</td>
+            <td><strong>Cover</strong> — изображение заполняет весь блок, обрезая лишнее. <strong>Contain</strong> — вписывается целиком, могут остаться пустые поля. <strong>Auto</strong> — исходный размер.</td>
+        </tr>
+        <tr>
+            <td>Позиция (Position)</td>
+            <td>Где центрировано изображение: <strong>Center Center</strong>, <strong>Top Left</strong>, <strong>Bottom Right</strong> и другие. Например, если на фото человек смещён вправо, выберите <strong>Left Center</strong> — важная часть останется в кадре.</td>
+        </tr>
+        <tr>
+            <td>Прикрепление (Attachment)</td>
+            <td><strong>Default</strong> — изображение прокручивается с контентом. <strong>Fixed</strong> — эффект параллакса: изображение остаётся на месте при прокрутке.</td>
+        </tr>
+        <tr>
+            <td>Повтор (Repeat)</td>
+            <td><strong>No-repeat</strong> — один раз. <strong>Repeat</strong> — заполнить блок повторами (для текстур).</td>
+        </tr>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно для мобильных:</strong> Фон с прикреплением <strong>Fixed</strong> часто не работает на мобильных устройствах и может вызывать «дёргание» страницы при прокрутке. Для мобильной версии рекомендуется отключить Fixed и оставить обычное поведение.
+    </div>
+
+    <h2>5.4 Наложение (Overlay) — читаемость текста на фоне</h2>
+
+    <p>Частая проблема: на фоновом изображении текст плохо читается. Решение — <strong>оверлей</strong> (наложение) — полупрозрачный цвет или градиент поверх изображения.</p>
+
+    <h3>Как настроить оверлей</h3>
+    <ol class="steps">
+        <li><strong>Выделите контейнер с фоновым изображением.</strong></li>
+        <li><strong>Перейдите в «Стиль» → «Фон» → «Наложение» (Background Overlay).</strong></li>
+        <li><strong>Выберите тип наложения:</strong>
+            <ul>
+                <li><strong>Классический (Classic)</strong> — сплошной цвет с регулируемой прозрачностью.</li>
+                <li><strong>Градиент (Gradient)</strong> — плавный переход от одного цвета к другому.</li>
+            </ul>
+        </li>
+        <li><strong>Задайте цвет.</strong> Для тёмного фото — чёрный оверлей, для светлого — белый.</li>
+        <li><strong>Настройте прозрачность (Opacity).</strong> Обычно 30–60% — достаточно, чтобы текст читался, но фон оставался видимым.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практическое правило:</strong> Если текст светлый — используйте тёмный оверлей с прозрачностью 40–60%. Если текст тёмный — светлый оверлей 20–40%. Всегда проверяйте читаемость в режиме предпросмотра.
+    </div>
+
+    <h3>Оверлей с градиентом — эффект «плавного затемнения»</h3>
+    <p>Этот приём часто используется в Hero-секциях. Настройки:</p>
+    <ul>
+        <li><strong>Тип:</strong> Градиент (Linear).</li>
+        <li><strong>Первый цвет:</strong> Чёрный, прозрачность 80%.</li>
+        <li><strong>Второй цвет:</strong> Чёрный, прозрачность 0%.</li>
+        <li><strong>Направление:</strong> Снизу вверх (или слева направо — в зависимости от того, где текст).</li>
+    </ul>
+    <p>Результат: изображение затемняется в одной части и остаётся ярким в другой — идеально для размещения текста с одной стороны.</p>
+
+    <h2>5.5 Градиенты — современный фон</h2>
+
+    <p>Градиент — плавный переход от одного цвета к другому. Это мощный инструмент, который придаёт сайту глубину и современность.</p>
+
+    <h3>Типы градиентов</h3>
+
+    <h4>Линейный градиент (Linear)</h4>
+    <p>Переход по прямой линии: слева направо, сверху вниз или под углом. Классический вариант для кнопок и акцентных блоков.</p>
+    <div class="gradient-demo grad-linear">Линейный градиент 135°</div>
+
+    <h4>Радиальный градиент (Radial)</h4>
+    <p>Переход от центра к краям. Хорошо смотрится на больших фонах — создаёт эффект «свечения» в центре.</p>
+    <div class="gradient-demo grad-radial">Радиальный градиент</div>
+
+    <h4>Многоцветный градиент</h4>
+    <p>До пяти и более цветов в одном переходе. Используйте осторожно — легко получить «кислотный» вид.</p>
+    <div class="gradient-demo grad-angle">Многоцветный градиент 45°</div>
+
+    <h3>Как настроить градиент</h3>
+    <ol class="steps">
+        <li><strong>В настройках фона выберите тип «Градиент».</strong></li>
+        <li><strong>Выберите вид:</strong> Linear или Radial.</li>
+        <li><strong>Установите цвета.</strong> Кликните на цветовой ползунок внизу — задайте первый цвет. Затем перетащите другой ползунок и задайте второй цвет.</li>
+        <li><strong>Настройте угол</strong> (для Linear). Часто используемые значения: 90° (сверху вниз), 180° (слева направо), 135° (по диагонали).</li>
+        <li><strong>Отрегулируйте расположение (Location)</strong> каждой точки: от 0% (начало) до 100% (конец).</li>
+        <li><strong>Добавьте промежуточные точки</strong> — кликните между ползунками или нажмите <strong>«Добавить цвет»</strong>.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет по градиентам:</strong> Используйте два близких оттенка одного цвета (например, тёмно-синий → светло-синий). Это выглядит благородно и не отвлекает от контента. Контрастные цвета (синий → оранжевый) применяйте для ярких акцентов.
+    </div>
+
+    <h2>5.6 Границы (Border) и скругления</h2>
+
+    <p>Границы помогают выделить блок, отделить его от остальных элементов и придать структуру. Скругления делают углы мягче и современнее.</p>
+
+    <h3>Настройка границ</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Параметр</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td>Тип (Border Type)</td>
+            <td><strong>Solid</strong> — сплошная линия. <strong>Double</strong> — двойная. <strong>Dotted</strong> — точечная. <strong>Dashed</strong> — пунктирная. <strong>None</strong> — без границы.</td>
+        </tr>
+        <tr>
+            <td>Ширина (Width)</td>
+            <td>Толщина в пикселях: 1px, 2px, 5px. Для аккуратной границы обычно достаточно 1–2px.</td>
+        </tr>
+        <tr>
+            <td>Цвет (Color)</td>
+            <td>Цвет линии. Используйте светлые оттенки (#e2e8f0) для деликатных границ.</td>
+        </tr>
+        <tr>
+            <td>Скругление (Border Radius)</td>
+            <td>Округление углов. Может быть одинаковым для всех углов или разным для каждого.</td>
+        </tr>
+    </table>
+
+    <h3>Скругление углов — практические значения</h3>
+    <ul>
+        <li><strong>0px</strong> — острые углы. Строгий, техничный вид (подходит для корпоративных сайтов).</li>
+        <li><strong>4–8px</strong> — лёгкое скругление. Универсальный вариант для карточек, кнопок.</li>
+        <li><strong>12–20px</strong> — заметное скругление. Мягкий, дружелюбный вид.</li>
+        <li><strong>50%</strong> — полный круг. Для аватаров, иконок, круглых фото.</li>
+    </ul>
+
+    <h3>Разное скругление для каждого угла</h3>
+    <p>Нажмите на иконку «связи» (цепочка) между полями скругления, чтобы разъединить их. Теперь можно задать отдельное значение для каждого угла. Например, верхний левый — 30px, остальные — 8px. Это создаёт эффект «загнутого уголка».</p>
+
+    <h2>5.7 Тени (Box Shadow)</h2>
+
+    <p>Тень добавляет элементу объём и «приподнимает» его над поверхностью. Это один из самых эффективных инструментов для привлечения внимания к карточкам и кнопкам.</p>
+
+    <h3>Параметры тени</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Параметр</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td>Горизонтальное смещение (Horizontal)</td>
+            <td>Сдвиг тени вправо (положительное) или влево (отрицательное).</td>
+        </tr>
+        <tr>
+            <td>Вертикальное смещение (Vertical)</td>
+            <td>Сдвиг тени вниз (положительное) или вверх (отрицательное).</td>
+        </tr>
+        <tr>
+            <td>Размытие (Blur)</td>
+            <td>Насколько мягкая тень. 0 — резкая граница, 20+ — мягкая дымка.</td>
+        </tr>
+        <tr>
+            <td>Растяжение (Spread)</td>
+            <td>Увеличивает (положительное) или уменьшает (отрицательное) размер тени.</td>
+        </tr>
+        <tr>
+            <td>Цвет (Color)</td>
+            <td>Цвет тени. Обычно чёрный с прозрачностью 10–30%.</td>
+        </tr>
+    </table>
+
+    <h3>Готовые рецепты теней</h3>
+    <ul>
+        <li><strong>Тонкая элегантная:</strong> Horizontal 0, Vertical 4, Blur 12, Spread 0, цвет rgba(0,0,0,0.08).</li>
+        <li><strong>Мягкая «воздушная»:</strong> Horizontal 0, Vertical 10, Blur 30, Spread 0, цвет rgba(0,0,0,0.12).</li>
+        <li><strong>Выраженная карточка:</strong> Horizontal 0, Vertical 15, Blur 35, Spread -10, цвет rgba(0,0,0,0.2).</li>
+        <li><strong>Тень при наведении (Hover):</strong> задайте тень в состоянии «Normal» = none, а в «Hover» = умеренную. При наведении элемент «приподнимется».</li>
+    </ul>
+
+    <div class="demo-box" style="background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.12); border: none; border-radius: 12px;">
+        Пример: карточка с мягкой тенью
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Совет по теням:</strong> Не используйте слишком резкие чёрные тени — они выглядят устаревшими. Тень должна быть едва заметной: цвет чёрный с прозрачностью 8–15%, размытие 10–30. Такой подход соответствует современному «плоскому» дизайну с элементами глубины.
+    </div>
+
+    <h2>5.8 Состояния Normal и Hover</h2>
+
+    <p>Большинство виджетов и контейнеров имеют два состояния: <strong>Normal</strong> (обычное) и <strong>Hover</strong> (при наведении). Переключение между ними — важная часть интерактивного дизайна.</p>
+
+    <h3>Как настроить Hover</h3>
+    <ol class="steps">
+        <li><strong>Выделите элемент</strong> (кнопку, карточку, иконку).</li>
+        <li><strong>Перейдите на вкладку «Стиль».</strong></li>
+        <li><strong>Найдите переключатель «Normal / Hover».</strong> Обычно он в верхней части вкладки «Стиль».</li>
+        <li><strong>Нажмите «Hover».</strong> Теперь все изменения, которые вы внесёте, применятся только при наведении курсора.</li>
+        <li><strong>Настройте:</strong> цвет фона, цвет текста, тень, границу, скругление.</li>
+        <li><strong>Вернитесь в «Normal»</strong> — и проверьте в предпросмотре.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Распространённая ошибка:</strong> Настроить Hover, забыв про Normal. В результате кнопка может быть невидимой в обычном состоянии. Всегда проверяйте оба режима.
+    </div>
+
+    <h3>Что стоит менять при наведении</h3>
+    <ul>
+        <li><strong>Кнопки:</strong> цвет фона (затемнить или осветлить на 10–15%), добавить тень.</li>
+        <li><strong>Карточки:</strong> приподнять с помощью тени, слегка увеличить масштаб (Transform → Scale 1.02).</li>
+        <li><strong>Изображения:</strong> изменить прозрачность (Opacity 80%), добавить размытие.</li>
+        <li><strong>Ссылки:</strong> подчёркивание или изменение цвета.</li>
+    </ul>
+
+    <h2>5.9 Практические примеры: оформляем страницу</h2>
+
+    <h3>Пример 1: Создание Hero-секции с оверлеем</h3>
+    <ol class="steps">
+        <li><strong>Создайте контейнер</strong> с Min Height 80vh.</li>
+        <li><strong>Установите фоновое изображение</strong> (Стиль → Фон → Классический → Изображение).</li>
+        <li><strong>Настройте размер:</strong> Cover, Position Center Center.</li>
+        <li><strong>Добавьте оверлей:</strong> Стиль → Фон → Наложение → Классический. Цвет: #000000, прозрачность 40%.</li>
+        <li><strong>Добавьте контент:</strong> Заголовок H1 белого цвета, подзаголовок, кнопку.</li>
+        <li><strong>Настройте выравнивание:</strong> Align Items → Center, Justify Content → Center.</li>
+        <li><strong>Проверьте на мобильном:</strong> уменьшите Min Height до 60vh, размер шрифта — до 28px.</li>
+    </ol>
+
+    <h3>Пример 2: Карточки услуг с тенью и Hover-эффектом</h3>
+    <ol class="steps">
+        <li><strong>Создайте контейнер</strong> (Row, Wrap).</li>
+        <li><strong>Добавьте три вложенных контейнера</strong> — по 33.33% ширины.</li>
+        <li><strong>Задайте стиль карточки:</strong>
+            <ul>
+                <li>Фон: белый.</li>
+                <li>Padding: 30px.</li>
+                <li>Border Radius: 12px.</li>
+                <li>Box Shadow: 0 4px 12px rgba(0,0,0,0.08).</li>
+            </ul>
+        </li>
+        <li><strong>Внутри карточки:</strong> иконка (60px, синяя), заголовок H3, текст.</li>
+        <li><strong>Настройте Hover:</strong> переключитесь на Hover → Box Shadow: 0 10px 30px rgba(0,0,0,0.15).</li>
+        <li><strong>Проверьте на всех устройствах.</strong></li>
+    </ol>
+
+    <h3>Пример 3: Акцентная секция с градиентом</h3>
+    <ol class="steps">
+        <li><strong>Создайте контейнер</strong> (полная ширина).</li>
+        <li><strong>Стиль → Фон → Градиент.</strong></li>
+        <li><strong>Тип:</strong> Linear, угол 135°.</li>
+        <li><strong>Первый цвет:</strong> #0969da (синий).</li>
+        <li><strong>Второй цвет:</strong> #0a2540 (тёмно-синий).</li>
+        <li><strong>Padding:</strong> 80px по вертикали.</li>
+        <li><strong>Внутри:</strong> белый заголовок H2, белый текст, кнопка белая с синим текстом.</li>
+    </ol>
+
+    <h3>Пример 4: Кнопка с эффектом при наведении</h3>
+    <ol class="steps">
+        <li><strong>Добавьте виджет «Кнопка».</strong></li>
+        <li><strong>Normal:</strong> фон #0969da, текст белый, Border Radius 30px, Padding 15px 40px.</li>
+        <li><strong>Hover:</strong> фон #0550ae, тень 0 8px 20px rgba(9,105,218,0.4).</li>
+        <li><strong>Анимация:</strong> в настройках Hover включите эффект «Grow» (увеличение).</li>
+        <li><strong>Проверьте в предпросмотре.</strong></li>
+    </ol>
+
+    <h2>5.10 Решение частых проблем со стилями</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Фоновое изображение растянулось</td>
+            <td>В настройках фона установите Size = Cover и Position = Center Center.</td>
+        </tr>
+        <tr>
+            <td>Текст плохо читается на фоне</td>
+            <td>Добавьте оверлей (Background Overlay) — чёрный или белый с прозрачностью 30–60%.</td>
+        </tr>
+        <tr>
+            <td>Тень не видна</td>
+            <td>Проверьте цвет — возможно, он слишком светлый. Увеличьте прозрачность или размытие.</td>
+        </tr>
+        <tr>
+            <td>Hover не работает на мобильном</td>
+            <td>Это норма — на сенсорных экранах нет наведения. Убедитесь, что базовый вид (Normal) выглядит хорошо.</td>
+        </tr>
+        <tr>
+            <td>Градиент выглядит «грязно»</td>
+            <td>Используйте два близких оттенка одного цвета, а не контрастные цвета.</td>
+        </tr>
+        <tr>
+            <td>Цвета не совпадают с макетом</td>
+            <td>Используйте HEX-код из макета вместо визуального подбора. Задайте глобальную палитру.</td>
+        </tr>
+        <tr>
+            <td>Фон не растягивается на всю ширину</td>
+            <td>У контейнера установите Content Width → Full Width.</td>
+        </tr>
+    </table>
+
+    <h2>5.11 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Глобальная палитра</strong><br>
+        1. Откройте настройки сайта → Глобальные цвета.<br>
+        2. Задайте: Primary = #0969da, Secondary = #0a2540, Text = #1a1e24, Accent = #f97316.<br>
+        3. Дайте им осмысленные имена.<br><br>
+        <strong>Часть 2: Hero-секция с оверлеем</strong><br>
+        4. Создайте контейнер Min Height 80vh.<br>
+        5. Установите фоновое изображение (любое фото из интернета).<br>
+        6. Размер = Cover, Позиция = Center Center.<br>
+        7. Добавьте оверлей чёрного цвета, прозрачность 50%.<br>
+        8. Внутри разместите: H1 (белый), текст (белый), кнопку (белая с синим текстом).<br><br>
+        <strong>Часть 3: Карточки услуг</strong><br>
+        9. Создайте контейнер (Row, Wrap).<br>
+        10. Добавьте три карточки по 33.33%.<br>
+        11. Каждая: белый фон, Padding 30px, Border Radius 12px, тень 0 4px 12px rgba(0,0,0,0.08).<br>
+        12. Внутри карточек — иконки, заголовки H3, текст.<br>
+        13. Настройте Hover: тень усиливается, карточка приподнимается.<br><br>
+        <strong>Часть 4: Градиентный блок</strong><br>
+        14. Создайте контейнер с градиентом Linear 135° (от #0969da к #0a2540).<br>
+        15. Padding 80px по вертикали.<br>
+        16. Внутри — белый текст и кнопка с эффектом Grow при наведении.<br><br>
+        <strong>Часть 5: Кнопка-акцент</strong><br>
+        17. Создайте кнопку: Normal — синий фон, белый текст.<br>
+        18. Hover — тёмно-синий фон, тень, скругление сохраняется.<br>
+        19. Проверьте на всех трёх устройствах.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Работу с цветом (HEX, палитра, 60-30-10), глобальные цвета сайта, фоновые цвета и изображения, оверлеи для читаемости, градиенты (линейные и радиальные), границы и скругления, тени, состояния Normal и Hover. Теперь вы можете создавать визуально привлекательные страницы профессионального уровня.
+    </div>
+
+    <h2>5.12 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Как выбрать цвет для нового сайта?</strong> Начните с фирменного цвета (если есть). Если нет — используйте сервис Coolors.co для генерации палитры. Ограничьтесь 3–4 цветами.</li>
+        <li><strong>Где брать фоновые изображения?</strong> Unsplash, Pexels, Pixabay — бесплатные фотостоки с качественными изображениями. Для коммерческих проектов проверяйте лицензию.</li>
+        <li><strong>Почему изображение на фоне выглядит размытым на Retina-экранах?</strong> Используйте изображения с разрешением минимум в 2 раза больше отображаемого размера. Например, для блока 1920px шириной загружайте изображение 3840px.</li>
+        <li><strong>Как сделать фон, который не прокручивается?</strong> В настройках фона установите Attachment = Fixed. Но помните — на мобильных это может не работать.</li>
+        <li><strong>Можно ли использовать видео как фон?</strong> Да, но в бесплатной версии Elementor это реализуется через сторонние плагины. Для простого сайта лучше обойтись изображением с оверлеем.</li>
+        <li><strong>Как сделать так, чтобы тень не «резалась» краем контейнера?</strong> Увеличьте Padding контейнера или установите Overflow = Hidden для родительского контейнера.</li>
+        <li><strong>Что делать, если цвета выглядят по-разному на разных мониторах?</strong> Это неизбежно — мониторы имеют разные настройки. Используйте проверенные сочетания (белый фон + тёмно-серый текст) и не полагайтесь на «едва заметные» оттенки.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>типографику</strong>: шрифты, размеры, межстрочные интервалы, выравнивание. Вы узнаете, как подобрать шрифты для проекта, как настроить глобальную типографику и как сделать текст не только красивым, но и удобочитаемым. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter6.html" class="button">📖 Перейти к шестой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по Elementor | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 6: Типографика и работа с текстом</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .font-demo {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .font-demo.serif {
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+        .font-demo.sans {
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .font-demo.mono {
+            font-family: 'Courier New', monospace;
+        }
+        .font-demo .label {
+            font-size: 0.8em;
+            color: #5b6e8c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .font-demo .sample {
+            font-size: 1.5em;
+            color: #0a2540;
+        }
+        .type-scale {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 8px 15px;
+            margin: 20px 0;
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .type-scale .size-label {
+            color: #0969da;
+            font-weight: 600;
+            font-size: 0.85em;
+            align-self: center;
+        }
+        .type-scale .sample-h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #0a2540;
+        }
+        .type-scale .sample-h2 {
+            font-size: 2em;
+            font-weight: 700;
+            color: #0a2540;
+        }
+        .type-scale .sample-h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #0a2540;
+        }
+        .type-scale .sample-body {
+            font-size: 1em;
+            color: #1a1e24;
+        }
+        .type-scale .sample-small {
+            font-size: 0.85em;
+            color: #5b6e8c;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .settings-table td:first-child { width: 40%; }
+            .type-scale .sample-h1 { font-size: 1.8em; }
+            .type-scale .sample-h2 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 6: Типографика и работа с текстом</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~25 минут | 🎯 Цель: освоить работу со шрифтами, размерами, интервалами и выравниванием для создания удобочитаемого и стильного текста</div>
+
+    <p>Типографика — это искусство оформления текста. Она влияет на восприятие сайта не меньше, чем цвета и изображения. Правильно подобранный шрифт делает контент читаемым, приятным для глаза и профессиональным. В этой главе мы разберём всё, что нужно знать о работе с текстом в Elementor.</p>
+
+    <div class="info-box">
+        <strong>💡 Почему типографика важна:</strong><br>
+        Пользователь проводит на сайте 10–15 секунд, прежде чем решить, остаться или уйти. Если текст мелкий, бледный, растянутый или нечитаемый — посетитель уйдёт. Хорошая типографика увеличивает время на сайте, снижает показатели отказов и повышает конверсию.
+    </div>
+
+    <h2>6.1 Основы типографики: что нужно знать</h2>
+
+    <p>Прежде чем перейти к настройкам, разберёмся с базовыми терминами. Это поможет понимать, что именно вы настраиваете.</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Термин</th>
+            <th>Что означает</th>
+        </tr>
+        <tr>
+            <td>Шрифт (Font Family)</td>
+            <td>Гарнитура — например, Arial, Roboto, Open Sans. Определяет «рисунок» букв.</td>
+        </tr>
+        <tr>
+            <td>Размер (Font Size)</td>
+            <td>Высота букв в пикселях (px), em или rem. Основа читаемости.</td>
+        </tr>
+        <tr>
+            <td>Вес (Font Weight)</td>
+            <td>Насыщенность: от 100 (тонкий) до 900 (очень жирный). Normal — 400, Bold — 700.</td>
+        </tr>
+        <tr>
+            <td>Межстрочный интервал (Line Height)</td>
+            <td>Расстояние между строками. Влияет на «дышание» текста.</td>
+        </tr>
+        <tr>
+            <td>Межбуквенное расстояние (Letter Spacing)</td>
+            <td>Расстояние между буквами. Увеличивают для заголовков, уменьшают для плотного текста.</td>
+        </tr>
+        <tr>
+            <td>Интервал между словами (Word Spacing)</td>
+            <td>Расстояние между словами. Используется редко.</td>
+        </tr>
+        <tr>
+            <td>Регистр (Text Transform)</td>
+            <td>None, UPPERCASE (ВСЁ ЗАГЛАВНЫМИ), lowercase (строчными), Capitalize (Каждое Слово С Заглавной).</td>
+        </tr>
+    </table>
+
+    <h2>6.2 Три типа шрифтов</h2>
+
+    <p>Все шрифты делятся на три большие семьи. Понимание разницы помогает выбрать правильный шрифт для задачи.</p>
+
+    <div class="font-demo serif">
+        <div class="label">Serif — с засечками</div>
+        <div class="sample">Классический шрифт с засечками на концах букв</div>
+    </div>
+
+    <div class="font-demo sans">
+        <div class="label">Sans-Serif — без засечек</div>
+        <div class="sample">Современный шрифт без засечек — чистый и минималистичный</div>
+    </div>
+
+    <div class="font-demo mono">
+        <div class="label">Monospace — моноширинный</div>
+        <div class="sample">Каждый символ занимает одинаковую ширину — для кода</div>
+    </div>
+
+    <h3>Когда что использовать</h3>
+    <ul>
+        <li><strong>Serif (с засечками):</strong> Классика, элегантность, традиции. Подходит для юридических, образовательных, издательских сайтов. Примеры: Georgia, Playfair Display, PT Serif.</li>
+        <li><strong>Sans-serif (без засечек):</strong> Современность, чистота, читаемость. Универсальный выбор для большинства сайтов. Примеры: Open Sans, Roboto, Inter, Montserrat.</li>
+        <li><strong>Monospace:</strong> Только для кода, технических данных, таблиц. Не подходит для основного текста. Примеры: Courier New, Fira Code, JetBrains Mono.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Золотое правило:</strong> Для сайта достаточно <strong>двух шрифтов</strong> — один для заголовков, один для текста. Если шрифты контрастные (serif + sans-serif), сайт выглядит стильно. Если одинаковые — минималистично. Главное — не переборщить. Три и более шрифтов создают хаос.
+    </div>
+
+    <h2>6.3 Шрифты в Elementor: где брать</h2>
+
+    <p>Elementor предоставляет доступ к нескольким источникам шрифтов.</p>
+
+    <h3>Шрифты по умолчанию</h3>
+    <p>В настройках типографики любого виджета вы увидите список шрифтов. По умолчанию это <strong>системные шрифты</strong> — те, которые уже установлены на компьютере пользователя: Arial, Georgia, Tahoma, Verdana, Times New Roman. Они загружаются мгновенно, потому что не требуют скачивания. Минус — ограниченный выбор и одинаковый вид у всех.</p>
+
+    <h3>Google Fonts</h3>
+    <p>Elementor интегрирован с <strong>Google Fonts</strong> — библиотекой из 1500+ бесплатных шрифтов. Это шрифты, которые загружаются с серверов Google. Они бесплатны, качественны и поддерживают кириллицу (не все, но большинство).</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Внимание с кириллицей:</strong> Не все шрифты Google Fonts поддерживают русские буквы. Перед выбором обязательно проверьте: в настройках шрифта должен быть указан диапазон <strong>Cyrillic</strong> или <strong>Cyrillic Extended</strong>. Если выбрать шрифт без поддержки кириллицы, русские буквы отобразятся системным шрифтом — это выглядит неряшливо.
+    </div>
+
+    <h3>Как подключить Google Fonts</h3>
+    <ol class="steps">
+        <li><strong>Откройте настройки типографики</strong> любого виджета (например, заголовка).</li>
+        <li><strong>В поле «Семейство шрифтов»</strong> кликните на список.</li>
+        <li><strong>Введите название шрифта</strong> в поиске, например <code>Montserrat</code>.</li>
+        <li><strong>Выберите шрифт</strong> из выпадающего списка.</li>
+        <li><strong>Elementor автоматически загрузит его</strong> с серверов Google.</li>
+        <li><strong>Настройте вес, размер и другие параметры.</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет по производительности:</strong> Каждый Google Font добавляет 1–3 дополнительных запроса к серверам Google. Если используете много шрифтов и начертаний, это замедляет сайт. Ограничьтесь 2–3 шрифтами и только теми начертаниями, которые реально используете (Regular 400, Bold 700 — обычно этого достаточно).
+    </div>
+
+    <h3>Пользовательские шрифты</h3>
+    <p>В Pro-версии Elementor можно загружать собственные файлы шрифтов (WOFF, WOFF2, TTF). Это нужно, если у вас есть фирменный шрифт. В бесплатной версии можно использовать плагин Custom Fonts для той же цели.</p>
+
+    <h2>6.4 Глобальная типографика сайта</h2>
+
+    <p>Вместо того чтобы настраивать шрифты в каждом виджете, настройте <strong>глобальную типографику</strong> один раз — и она применится ко всем элементам сайта.</p>
+
+    <h3>Как настроить глобальную типографику</h3>
+    <ol class="steps">
+        <li><strong>Откройте настройки сайта.</strong> В верхней панели редактора нажмите на логотип Elementor → <strong>«Настройки сайта»</strong>.</li>
+        <li><strong>Перейдите в раздел «Глобальные шрифты»</strong> (Global Fonts).</li>
+        <li><strong>Настройте четыре глобальных шрифта:</strong>
+            <ul>
+                <li><strong>Primary:</strong> основной шрифт для текста.</li>
+                <li><strong>Secondary:</strong> шрифт для заголовков.</li>
+                <li><strong>Text:</strong> шрифт для абзацев (часто совпадает с Primary).</li>
+                <li><strong>Accent:</strong> для акцентных элементов (кнопок, меток).</li>
+            </ul>
+        </li>
+        <li><strong>Настройте параметры каждого шрифта:</strong> семейство, вес, размер, межстрочный интервал, регистр.</li>
+        <li><strong>Нажмите «Обновить».</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Преимущество:</strong> Если вы решите сменить шрифт на всём сайте — достаточно изменить один глобальный шрифт, и все элементы, где он использовался, обновятся автоматически. Это экономит часы работы.
+    </div>
+
+    <h2>6.5 Размеры шрифтов: модульная шкала</h2>
+
+    <p>Размеры шрифтов должны быть согласованы между собой. Профессиональный дизайн использует <strong>модульную шкалу</strong> — набор размеров, которые соотносятся друг с другом.</p>
+
+    <div class="type-scale">
+        <div class="size-label">H1 — 40px</div>
+        <div class="sample-h1">Заголовок первого уровня</div>
+        <div class="size-label">H2 — 32px</div>
+        <div class="sample-h2">Заголовок второго уровня</div>
+        <div class="size-label">H3 — 24px</div>
+        <div class="sample-h3">Заголовок третьего уровня</div>
+        <div class="size-label">Текст — 16px</div>
+        <div class="sample-body">Основной текст страницы, удобный для чтения</div>
+        <div class="size-label">Мелкий — 14px</div>
+        <div class="sample-small">Подписи, сноски, вспомогательная информация</div>
+    </div>
+
+    <h3>Рекомендуемые размеры для десктопа</h3>
+    <table class="settings-table">
+        <tr>
+            <th>Элемент</th>
+            <th>Размер</th>
+            <th>Комментарий</th>
+        </tr>
+        <tr>
+            <td>H1 (главный заголовок)</td>
+            <td>36–56px</td>
+            <td>Должен привлекать внимание. Только один H1 на странице.</td>
+        </tr>
+        <tr>
+            <td>H2 (раздел)</td>
+            <td>28–40px</td>
+            <td>Крупный, но не доминирующий.</td>
+        </tr>
+        <tr>
+            <td>H3 (подраздел)</td>
+            <td>22–28px</td>
+            <td>Акцентирует подтемы.</td>
+        </tr>
+        <tr>
+            <td>H4–H6</td>
+            <td>18–22px</td>
+            <td>Для мелких подзаголовков.</td>
+        </tr>
+        <tr>
+            <td>Основной текст</td>
+            <td>16–18px</td>
+            <td>Стандарт читаемости. Меньше 16px — дискомфорт.</td>
+        </tr>
+        <tr>
+            <td>Мелкий текст</td>
+            <td>14–15px</td>
+            <td>Подписи, сноски, юридическая информация.</td>
+        </tr>
+    </table>
+
+    <h3>Размеры для мобильных устройств</h3>
+    <p>На мобильных экранах текст должен быть <strong>чуть меньше</strong>, но не слишком. Правило: уменьшайте размеры на 15–25% от десктопа.</p>
+    <ul>
+        <li>H1: 28–36px</li>
+        <li>H2: 24–28px</li>
+        <li>Основной текст: 15–16px (не меньше!)</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Частая ошибка:</strong> Слишком мелкий текст на мобильных. Если пользователю приходится «щуриться» или увеличивать масштаб — он уйдёт. Минимальный размер основного текста на мобильном — <strong>15px</strong>.
+    </div>
+
+    <h2>6.6 Межстрочный интервал (Line Height)</h2>
+
+    <p>Межстрочный интервал — расстояние между строками текста. Недооценённая, но критичная настройка для читаемости.</p>
+
+    <h3>Рекомендуемые значения</h3>
+    <ul>
+        <li><strong>Основной текст:</strong> 1.5–1.7 (или 150–170%). Это оптимально для чтения.</li>
+        <li><strong>Заголовки:</strong> 1.1–1.3 (или 110–130%). Плотнее, чтобы выглядело компактно.</li>
+        <li><strong>Мелкий текст:</strong> 1.4–1.6.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Как это выглядит в цифрах:</strong> Если размер шрифта 16px, а межстрочный интервал 1.5 — фактическое расстояние между строками будет 24px. В Elementor можно задавать как коэффициент (1.5), так и точное значение в пикселях (24px).
+    </div>
+
+    <h3>Как настроить Line Height</h3>
+    <ol class="steps">
+        <li><strong>Выделите виджет</strong> (например, «Текст»).</li>
+        <li><strong>Перейдите в «Стиль» → «Типографика».</strong></li>
+        <li><strong>Откройте раздел «Межстрочный интервал».</strong></li>
+        <li><strong>Снимите связь (иконка цепочки).</strong> Теперь можно задать отдельные значения для разных устройств.</li>
+        <li><strong>Укажите значение</strong> — например, 1.6 (или 160%).</li>
+    </ol>
+
+    <h2>6.7 Межбуквенное расстояние (Letter Spacing)</h2>
+
+    <p>Межбуквенное расстояние — небольшой, но важный параметр. Он меняет «плотность» текста.</p>
+
+    <h3>Когда использовать</h3>
+    <ul>
+        <li><strong>Заголовки — увеличивайте до 0.5–1px.</strong> Это делает крупные буквы «дышащими» и более элегантными.</li>
+        <li><strong>Текст — оставляйте 0px.</strong> Увеличение ухудшает читаемость.</li>
+        <li><strong>Кнопки и метки — 0.5–1.5px.</strong> Особенно если текст в верхнем регистре.</li>
+        <li><strong>Текст в верхнем регистре — 1–2px.</strong> UPPERCASE без увеличенного интервала выглядит «слепленным».</li>
+    </ul>
+
+    <h2>6.8 Выравнивание текста</h2>
+
+    <p>Elementor предлагает четыре варианта выравнивания:</p>
+
+    <ul>
+        <li><strong>По левому краю (Left):</strong> Стандарт для большинства текста. Оптимально для чтения. Используйте всегда, если нет причин для другого.</li>
+        <li><strong>По центру (Center):</strong> Для заголовков, кнопок, коротких текстов. Плохо работает с длинными абзацами — теряется «якорь» для глаз.</li>
+        <li><strong>По правому краю (Right):</strong> Используется редко. Например, для подписей к изображениям справа.</li>
+        <li><strong>По ширине (Justify):</strong> Растягивает текст по краям. Работает только для крупных блоков. На узких экранах создаёт «пробелы» в тексте — избегайте.</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Не используйте Justify для коротких абзацев!</strong> Из-за разной длины слов браузер растягивает пробелы — появляются «дыры» в тексте. Это выглядит неряшливо. Justify оправдан только для книжных макетов с широкими колонками.
+    </div>
+
+    <h2>6.9 Работа с цветом текста</h2>
+
+    <p>Цвет текста так же важен, как и шрифт. Плохой контраст — самая частая причина, по которой пользователи уходят с сайта.</p>
+
+    <h3>Правило контраста</h3>
+    <p>Отношение контраста между текстом и фоном должно быть не менее <strong>4.5:1</strong> для обычного текста и <strong>3:1</strong> для крупного (18px+ жирного, 24px+ обычного). Это требование WCAG — стандарта доступности.</p>
+
+    <h3>Проверка контраста</h3>
+    <ol class="steps">
+        <li><strong>Откройте сайт WebAIM Contrast Checker</strong> (webaim.org/resources/contrastchecker).</li>
+        <li><strong>Введите HEX-код текста и фона.</strong></li>
+        <li><strong>Посмотрите результат.</strong> Если контраст ниже 4.5:1 для обычного текста — замените цвет на более тёмный или светлый.</li>
+    </ol>
+
+    <h3>Рабочие сочетания</h3>
+    <ul>
+        <li>✅ Белый фон (#FFFFFF) + тёмно-серый текст (#1a1e24) — идеально.</li>
+        <li>✅ Светло-серый фон (#f8fafc) + почти чёрный текст (#0a2540) — отлично.</li>
+        <li>✅ Тёмно-синий фон (#0a2540) + белый текст (#FFFFFF) — отлично.</li>
+        <li>❌ Жёлтый фон + белый текст — плохо читается.</li>
+        <li>❌ Светло-серый текст на белом фоне — плохо читается.</li>
+    </ul>
+
+    <h2>6.10 Типографика виджетов: где искать настройки</h2>
+
+    <p>В каждом виджете Elementor есть вкладка <strong>«Стиль»</strong>, внутри которой — блок <strong>«Типографика»</strong>. Здесь можно настроить:</p>
+
+    <ul>
+        <li>Семейство шрифтов (Font Family).</li>
+        <li>Размер (Size).</li>
+        <li>Вес (Weight).</li>
+        <li>Регистр (Transform).</li>
+        <li>Стиль (Style — italic, normal, oblique).</li>
+        <li>Оформление (Decoration — underline, line-through).</li>
+        <li>Межстрочный интервал (Line Height).</li>
+        <li>Межбуквенное расстояние (Letter Spacing).</li>
+        <li>Интервал между словами (Word Spacing).</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Лайфхак:</strong> Настроили типографику для одного заголовка и хотите применить её ко всем? Кликните правой кнопкой по виджету → <strong>«Копировать стиль»</strong>. Затем кликните правой кнопкой по другому заголовку → <strong>«Вставить стиль»</strong>. Все настройки (не только шрифт) применятся автоматически.
+    </div>
+
+    <h2>6.11 Практические примеры: типографика для сайта</h2>
+
+    <h3>Пример 1: Настройка глобальной типографики</h3>
+    <ol class="steps">
+        <li><strong>Откройте настройки сайта → Глобальные шрифты.</strong></li>
+        <li><strong>Для заголовков выберите</strong> Montserrat (700 bold, 40px, line-height 1.2, letter-spacing 0.5px).</li>
+        <li><strong>Для текста выберите</strong> Open Sans (400 regular, 16px, line-height 1.6).</li>
+        <li><strong>Проверьте</strong>, что оба шрифта поддерживают кириллицу.</li>
+        <li><strong>Нажмите «Обновить».</strong></li>
+        <li><strong>Проверьте сайт</strong> — все заголовки и тексты автоматически применили новые настройки.</li>
+    </ol>
+
+    <h3>Пример 2: Оформление Hero-секции</h3>
+    <ol class="steps">
+        <li><strong>Откройте Hero-секцию</strong> (заголовок, подзаголовок, кнопка).</li>
+        <li><strong>H1:</strong> размер 48px на десктопе, 32px на мобильном. Weight 700, line-height 1.2.</li>
+        <li><strong>Подзаголовок:</strong> размер 18px, weight 400, line-height 1.5. Может быть чуть светлее основного текста (например, #5b6e8c).</li>
+        <li><strong>Кнопка:</strong> размер 16px, weight 600, letter-spacing 0.5px.</li>
+        <li><strong>Проверьте контраст:</strong> если на тёмном фоне — белый текст, если на светлом — тёмный.</li>
+    </ol>
+
+    <h3>Пример 3: Читаемый текстовый блок</h3>
+    <ol class="steps">
+        <li><strong>Создайте контейнер</strong> для текста шириной 800px (оптимально для чтения).</li>
+        <li><strong>Добавьте виджет «Текст».</strong></li>
+        <li><strong>Настройте:</strong> Open Sans, 18px, line-height 1.7, цвет #1a1e24.</li>
+        <li><strong>Ограничьте ширину:</strong> контент должен занимать 60–80 символов в строке — не больше.</li>
+        <li><strong>Разбейте текст на абзацы</strong> и добавьте подзаголовки H2/H3 между ними.</li>
+    </ol>
+
+    <h3>Пример 4: Акцентный заголовок с эффектом</h3>
+    <ol class="steps">
+        <li><strong>Добавьте заголовок H2.</strong></li>
+        <li><strong>Установите размер 36px, weight 800.</strong></li>
+        <li><strong>Letter-spacing 1px, text-transform uppercase.</strong></li>
+        <li><strong>Создайте акцент:</strong> подчёркивание цветом акцента (например, #f97316).</li>
+        <li><strong>Для этого</strong> можно использовать Border Bottom: 4px solid #f97316 в настройках стиля заголовка.</li>
+        <li><strong>Добавьте отступ снизу</strong> через Padding Bottom = 15px.</li>
+    </ol>
+
+    <h2>6.12 Решение частых проблем с типографикой</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Текст выглядит «слипшимся»</td>
+            <td>Увеличьте line-height до 1.6–1.7. Проверьте padding между абзацами.</td>
+        </tr>
+        <tr>
+            <td>Заголовки слишком крупные на мобильном</td>
+            <td>Переключитесь на вид телефона в редакторе и уменьшите размер шрифта для мобильного.</td>
+        </tr>
+        <tr>
+            <td>Русские буквы выглядят не так, как латинские</td>
+            <td>Шрифт не поддерживает кириллицу. Выберите другой шрифт с поддержкой Cyrillic.</td>
+        </tr>
+        <tr>
+            <td>Текст плохо читается на фоне</td>
+            <td>Проверьте контраст через WebAIM Contrast Checker. Добавьте оверлей или измените цвет текста.</td>
+        </tr>
+        <tr>
+            <td>Строки слишком длинные, глаз «теряется»</td>
+            <td>Ограничьте ширину текстового блока до 60–80 символов. Оптимальная ширина — 650–800px.</td>
+        </tr>
+        <tr>
+            <td>Заголовок растянулся на всю ширину</td>
+            <td>Ограничьте ширину контейнера или задайте max-width в настройках виджета.</td>
+        </tr>
+        <tr>
+            <td>Шрифт загружается медленно</td>
+            <td>Подключите шрифт локально через @font-face или используйте популярные шрифты (Roboto, Open Sans) с быстрой загрузкой.</td>
+        </tr>
+    </table>
+
+    <h2>6.13 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Глобальная типографика</strong><br>
+        1. Откройте настройки сайта → Глобальные шрифты.<br>
+        2. Настройте Primary: Open Sans, 400, 16px, line-height 1.6.<br>
+        3. Настройте Secondary: Montserrat, 700, 40px, line-height 1.2, letter-spacing 0.5px.<br>
+        4. Проверьте, что оба шрифта поддерживают кириллицу.<br><br>
+        <strong>Часть 2: Hero-секция</strong><br>
+        5. Создайте Hero с H1, подзаголовком и кнопкой.<br>
+        6. H1: 48px на десктопе, 32px на мобильном, weight 800.<br>
+        7. Подзаголовок: 20px, weight 400, цвет #5b6e8c.<br>
+        8. Кнопка: 16px, weight 600, letter-spacing 0.5px.<br><br>
+        <strong>Часть 3: Читаемый текстовый блок</strong><br>
+        9. Создайте контейнер шириной 750px.<br>
+        10. Добавьте текст: 18px, line-height 1.7, цвет #1a1e24.<br>
+        11. Разбейте текст на 3 абзаца и добавьте H2 между ними.<br>
+        12. Проверьте через WebAIM Contrast Checker контраст текста и фона.<br><br>
+        <strong>Часть 4: Акцентный заголовок</strong><br>
+        13. Добавьте H2: 32px, weight 800, uppercase, letter-spacing 1px.<br>
+        14. Добавьте нижнюю границу 4px цветом #f97316.<br>
+        15. Проверьте, как выглядит на мобильном.<br><br>
+        <strong>Часть 5: Проверка</strong><br>
+        16. Переключитесь на планшет и телефон. Убедитесь, что все тексты читаемы.<br>
+        17. Проверьте, что нигде не приходится «щуриться».<br>
+        18. Сохраните страницу.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Три типа шрифтов, работу с Google Fonts, глобальную типографику, модульную шкалу размеров, межстрочный и межбуквенный интервалы, выравнивание, цвет текста и правило контраста. Теперь вы можете сделать текст на сайте не только красивым, но и удобочитаемым.
+    </div>
+
+    <h2>6.14 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Сколько шрифтов использовать на сайте?</strong> Максимум два: один для заголовков, один для основного текста. Три и больше — визуальный шум.</li>
+        <li><strong>Какой шрифт лучше для русского текста?</strong> Хорошо подходят: Open Sans, Roboto, Inter, PT Sans, Montserrat, Manrope, Raleway. Все они есть в Google Fonts с поддержкой кириллицы.</li>
+        <li><strong>Можно ли использовать один шрифт, но с разными начертаниями?</strong> Да, и это даже предпочтительнее. Например, Montserrat 700 для заголовков и Montserrat 400 для текста — смотрится гармонично и минималистично.</li>
+        <li><strong>Как сделать текст более «воздушным»?</strong> Увеличьте line-height до 1.7–1.8, padding между абзацами и уменьшите насыщенность цвета (например, #2c3e50 вместо #000000).</li>
+        <li><strong>Почему мой текст выглядит «неровным»?</strong> Возможно, выбран шрифт без поддержки кириллицы, и часть букв отображается системным. Проверьте поддержку шрифта.</li>
+        <li><strong>Как перенести стиль текста на другой сайт?</strong> Сохраните страницу как шаблон (Templates → Save) и импортируйте её на другом сайте через Elementor. Глобальные шрифты сохранятся в шаблоне.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>адаптивность</strong>: как настроить сайт для планшетов и телефонов, как скрывать элементы на отдельных устройствах, как задавать разные размеры и отступы. Вы узнаете, как сделать сайт удобным на любом экране. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter7.html" class="button">📖 Перейти к седьмой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по Elementor | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

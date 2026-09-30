@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 10: Сохранение, публикация и лучшие практики</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .resource-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .resource-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .resource-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .chapter-recap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .recap-item {
+            background: #eef2ff;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.92em;
+        }
+        .recap-item strong {
+            color: #0969da;
+            display: block;
+            margin-bottom: 3px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .settings-table td:first-child { width: 40%; }
+            .resources-grid { grid-template-columns: 1fr; }
+            .chapter-recap { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 10: Сохранение, публикация и лучшие практики</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~25 минут | 🎯 Цель: подготовить сайт к публикации, освоить базовое SEO и производительность, получить ресурсы для дальнейшего роста</div>
+
+    <div class="success-box">
+        <strong>🎉 Поздравляем!</strong> Вы прошли весь курс по Elementor! Теперь вы умеете создавать страницы, работать с контейнерами, виджетами, стилями, типографикой, адаптивностью и шаблонами. Осталось последнее: убедиться, что сайт готов к публикации, оптимизировать его и понять, куда двигаться дальше.
+    </div>
+
+    <p>В этой заключительной главе мы разберём: как правильно сохранять и публиковать страницы, как проверить сайт перед запуском, как оптимизировать его для поисковых систем и скорости загрузки, какие инструменты использовать для резервного копирования и где искать ресурсы для дальнейшего обучения.</p>
+
+    <h2>10.1 Итоги курса: что вы освоили</h2>
+
+    <p>Давайте оглянемся назад и вспомним путь, который мы прошли за девять глав.</p>
+
+    <div class="chapter-recap">
+        <div class="recap-item"><strong>Глава 1</strong> Установка Elementor и первый вход в редактор</div>
+        <div class="recap-item"><strong>Глава 2</strong> Интерфейс: верхняя панель, виджеты, холст, навигатор</div>
+        <div class="recap-item"><strong>Глава 3</strong> Контейнеры: Flexbox, Grid, вложенность, макеты</div>
+        <div class="recap-item"><strong>Глава 4</strong> Виджеты: заголовки, текст, изображения, кнопки, иконки</div>
+        <div class="recap-item"><strong>Глава 5</strong> Стили: цвета, фоны, градиенты, границы, тени</div>
+        <div class="recap-item"><strong>Глава 6</strong> Типографика: шрифты, размеры, интервалы, читаемость</div>
+        <div class="recap-item"><strong>Глава 7</strong> Адаптивность: планшеты, телефоны, breakpoints</div>
+        <div class="recap-item"><strong>Глава 8</strong> Дополнительно: отступы, z-index, анимация, маски</div>
+        <div class="recap-item"><strong>Глава 9</strong> Шаблоны: сохранение, повторное использование, Kit</div>
+    </div>
+
+    <p>У вас есть полный набор инструментов для создания сайта любого уровня сложности. Осталось научиться правильно завершать работу и публиковать результат.</p>
+
+    <h2>10.2 Сохранение vs Публикация: в чём разница</h2>
+
+    <p>Новички часто путают эти два понятия. Разберёмся раз и навсегда.</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Действие</th>
+            <th>Что делает</th>
+            <th>Когда использовать</th>
+        </tr>
+        <tr>
+            <td>Черновик (Draft)</td>
+            <td>Сохраняет изменения, но страница не видна посетителям. Доступна только авторизованным пользователям.</td>
+            <td>В процессе работы над новой страницей.</td>
+        </tr>
+        <tr>
+            <td>Обновить (Update)</td>
+            <td>Сохраняет изменения на уже опубликованной странице. Посетители сразу видят новую версию.</td>
+            <td>При редактировании существующей страницы.</td>
+        </tr>
+        <tr>
+            <td>Опубликовать (Publish)</td>
+            <td>Делает страницу доступной для всех посетителей по URL.</td>
+            <td>Когда страница готова к запуску.</td>
+        </tr>
+        <tr>
+            <td>Предпросмотр (Preview)</td>
+            <td>Показывает страницу так, как её увидят посетители, без сохранения.</td>
+            <td>Для проверки перед публикацией.</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Важное правило:</strong> Перед публикацией обязательно используйте <strong>Предпросмотр</strong>. Это позволит увидеть страницу без панелей редактора и проверить, как она выглядит для посетителя. Также проверьте её на телефоне через предпросмотр на мобильном устройстве.
+    </div>
+
+    <h2>10.3 Финальная проверка страницы перед публикацией</h2>
+
+    <p>Прежде чем нажать «Опубликовать», пройдитесь по этому чек-листу. Он поможет избежать embarrassing ошибок.</p>
+
+    <div class="task-box">
+        <strong>✅ Чек-лист перед публикацией</strong><br><br>
+        <strong>Содержание:</strong>
+        <ul>
+            <li>Все тексты вычитаны, нет опечаток и грамматических ошибок.</li>
+            <li>Все ссылки работают — проверьте каждую вручную.</li>
+            <li>Все изображения загружены и отображаются корректно.</li>
+            <li>У всех изображений заполнен alt-текст (для SEO и доступности).</li>
+            <li>Кнопки ведут туда, куда должны (не на <code>#</code>).</li>
+            <li>Контактная информация верна (телефон, email, адрес).</li>
+        </ul>
+        <strong>Дизайн:</strong>
+        <ul>
+            <li>Цвета единообразны и соответствуют бренду.</li>
+            <li>Шрифты читаемы, нет «вырвиглазных» сочетаний.</li>
+            <li>Отступы и выравнивание аккуратны — ничего не «прилипает».</li>
+            <li>Нет пустых блоков или незаполненных мест.</li>
+            <li>Фоновые изображения отображаются корректно.</li>
+        </ul>
+        <strong>Адаптивность:</strong>
+        <ul>
+            <li>Проверено на компьютере, планшете и телефоне.</li>
+            <li>Нет горизонтальной прокрутки.</li>
+            <li>Кнопки удобно нажимать пальцем (минимум 44×44px).</li>
+            <li>Текст читаем без увеличения (минимум 15px на мобильном).</li>
+            <li>Меню доступно и удобно на телефоне.</li>
+        </ul>
+        <strong>Техническое:</strong>
+        <ul>
+            <li>Заголовок страницы (Title) информативен и содержит ключевые слова.</li>
+            <li>SEO-описание (Meta Description) заполнено.</li>
+            <li>H1 только один на странице.</li>
+            <li>Иерархия заголовков соблюдена (H1 → H2 → H3).</li>
+            <li>Страница быстро загружается (проверьте через PageSpeed Insights).</li>
+        </ul>
+    </div>
+
+    <h2>10.4 Публикация страницы: пошаговая инструкция</h2>
+
+    <p>Когда всё проверено — публикуем.</p>
+
+    <ol class="steps">
+        <li><strong>Нажмите «Опубликовать»</strong> в левом нижнем углу редактора (если страница новая) или «Обновить» (если редактировали существующую).</li>
+        <li><strong>Дождитесь завершения сохранения.</strong> Появится зелёная галочка.</li>
+        <li><strong>Нажмите «Предпросмотр»</strong> в верхней панели, чтобы увидеть страницу как посетитель.</li>
+        <li><strong>Скопируйте URL</strong> страницы из адресной строки браузера.</li>
+        <li><strong>Проверьте страницу на реальном телефоне</strong> — откройте URL на смартфоне.</li>
+        <li><strong>Если нужно внести правки</strong> — вернитесь в редактор, исправьте и нажмите «Обновить».</li>
+    </ol>
+
+    <h3>Настройка главной страницы</h3>
+    <p>По умолчанию WordPress показывает на главной странице ленту записей. Для сайта-визитки или лендинга нужно назначить статическую страницу.</p>
+
+    <ol class="steps">
+        <li><strong>Создайте страницу «Главная»</strong> в WordPress и соберите её в Elementor.</li>
+        <li><strong>Перейдите в Настройки → Чтение.</strong></li>
+        <li><strong>В разделе «На главной странице отображать»</strong> выберите <strong>«Статическую страницу»</strong>.</li>
+        <li><strong>В поле «Домашняя страница»</strong> выберите «Главная».</li>
+        <li><strong>Нажмите «Сохранить изменения».</strong></li>
+        <li><strong>Проверьте:</strong> откройте сайт — теперь на главной отображается ваша страница.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Не удаляйте страницу «Главная» и не меняйте её URL.</strong> Если удалить страницу, назначенную домашней, WordPress покажет ошибку 404 или переключится на ленту записей.
+    </div>
+
+    <h2>10.5 Базовое SEO с Elementor</h2>
+
+    <p>SEO (Search Engine Optimization) — оптимизация сайта для поисковых систем. Хорошая новость: Elementor поддерживает базовое SEO «из коробки». Плохая новость: без дополнительных инструментов вы не раскроете весь потенциал.</p>
+
+    <h3>Что уже делает Elementor</h3>
+    <ul>
+        <li><strong>Чистый HTML:</strong> Elementor генерирует семантически корректный код.</li>
+        <li><strong>Адаптивность:</strong> Google любит мобильные сайты.</li>
+        <li><strong>Скорость:</strong> при правильной настройке сайты на Elementor грузятся быстро.</li>
+        <li><strong>Управление заголовками:</strong> вы сами выбираете уровень H1–H6 для каждого заголовка.</li>
+    </ul>
+
+    <h3>Что нужно добавить вручную</h3>
+    <ol class="steps">
+        <li><strong>Установите SEO-плагин.</strong> Рекомендую <strong>Yoast SEO</strong> или <strong>Rank Math</strong>. Оба бесплатны и мощны.</li>
+        <li><strong>Настройте Title и Description.</strong> Для каждой страницы укажите уникальный заголовок (до 60 символов) и описание (до 160 символов).</li>
+        <li><strong>Заполните alt-текст изображений.</strong> Это важно и для SEO, и для незрячих пользователей.</li>
+        <li><strong>Настройте ЧПУ (постоянные ссылки).</strong> Настройки → Постоянные ссылки → «Название записи».</li>
+        <li><strong>Создайте карту сайта.</strong> SEO-плагины делают это автоматически. Отправьте её в Google Search Console и Яндекс.Вебмастер.</li>
+        <li><strong>Установите SSL.</strong> Сайт должен работать по HTTPS — Google отдаёт предпочтение защищённым сайтам.</li>
+    </ol>
+
+    <h3>Оптимизация изображений</h3>
+    <p>Изображения — главный «пожиратель» скорости. Основные правила:</p>
+    <ul>
+        <li><strong>Сжимайте перед загрузкой.</strong> Используйте <a href="https://tinypng.com" target="_blank">TinyPNG</a> или <a href="https://squoosh.app" target="_blank">Squoosh</a>.</li>
+        <li><strong>Используйте WebP.</strong> Это современный формат, который весит в 2–3 раза меньше JPEG при том же качестве.</li>
+        <li><strong>Задавайте правильный размер.</strong> Не загружайте изображение 4000px, если на сайте оно отображается в 800px.</li>
+        <li><strong>Включите lazy loading.</strong> Elementor делает это по умолчанию для изображений ниже первого экрана.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Инструмент для проверки SEO:</strong> Установите <strong>Rank Math</strong> — он показывает «оценку» каждой страницы по SEO и даёт конкретные рекомендации. Пройдитесь по этим подсказкам, и ваша страница будет оптимизирована на 80% без глубоких знаний SEO.
+    </div>
+
+    <h2>10.6 Оптимизация скорости загрузки</h2>
+
+    <p>Скорость сайта влияет на всё: на позиции в поиске, на конверсию, на удобство для посетителей. Вот что можно сделать.</p>
+
+    <h3>Инструменты для проверки</h3>
+    <ul>
+        <li><strong>PageSpeed Insights</strong> (pagespeed.web.dev) — анализ от Google.</li>
+        <li><strong>GTmetrix</strong> (gtmetrix.com) — детальный отчёт о скорости.</li>
+        <li><strong>Pingdom</strong> (tools.pingdom.com) — проверка со всего мира.</li>
+    </ul>
+
+    <h3>Что можно оптимизировать</h3>
+    <table class="settings-table">
+        <tr>
+            <th>Что</th>
+            <th>Как улучшить</th>
+        </tr>
+        <tr>
+            <td>Изображения</td>
+            <td>Сжать, использовать WebP, задать размеры.</td>
+        </tr>
+        <tr>
+            <td>Шрифты</td>
+            <td>Ограничить количество шрифтов и начертаний. Подключить локально.</td>
+        </tr>
+        <tr>
+            <td>Плагины</td>
+            <td>Удалить неиспользуемые. Каждый плагин — дополнительная нагрузка.</td>
+        </tr>
+        <tr>
+            <td>Кэширование</td>
+            <td>Установить <strong>WP Super Cache</strong> или <strong>LiteSpeed Cache</strong>.</td>
+        </tr>
+        <tr>
+            <td>Минификация</td>
+            <td>Включить минификацию CSS и JS в Elementor: Настройки → Дополнительно → Speed Optimization.</td>
+        </tr>
+        <tr>
+            <td>Ленивая загрузка</td>
+            <td>Включить Lazy Load для изображений и видео (по умолчанию включено).</td>
+        </tr>
+        <tr>
+            <td>Хостинг</td>
+            <td>Перейти на более быстрый хостинг, если текущий медленный.</td>
+        </tr>
+    </table>
+
+    <h3>Elementor Speed Optimization</h3>
+    <ol class="steps">
+        <li><strong>Перейдите в Elementor → Настройки → Дополнительно.</strong></li>
+        <li><strong>Включите «Улучшенная загрузка шрифтов»</strong> (Improved Font Loading).</li>
+        <li><strong>Включите «Минификация CSS».</strong></li>
+        <li><strong>Включите «Минификация JS».</strong></li>
+        <li><strong>Включите «Ленивая загрузка изображений».</strong></li>
+        <li><strong>Включите «Оптимизация DOM»</strong> (Optimized DOM Output).</li>
+        <li><strong>Сохраните изменения.</strong></li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Осторожно:</strong> После включения этих настроек очистите кэш браузера и кэш сайта. Если что-то сломалось (например, не работает плагин), отключите соответствующую опцию и проверьте снова.
+    </div>
+
+    <h2>10.7 Резервное копирование</h2>
+
+    <p>Резервная копия — это ваша страховка от катастрофы. Если сайт «упадёт», хакеры атакуют или вы случайно удалите важные данные — копия спасёт ситуацию.</p>
+
+    <h3>Что нужно сохранять</h3>
+    <ul>
+        <li><strong>Файлы сайта:</strong> вся папка <code>wp-content</code>, включая темы, плагины, загрузки.</li>
+        <li><strong>База данных:</strong> все записи, страницы, настройки, пользователи.</li>
+        <li><strong>Шаблоны Elementor:</strong> сохраняются в базе данных, но также можно экспортировать отдельно.</li>
+    </ul>
+
+    <h3>Как делать резервные копии</h3>
+
+    <h4>Способ 1: Плагин (рекомендуется)</h4>
+    <ol class="steps">
+        <li><strong>Установите UpdraftPlus</strong> (бесплатный плагин).</li>
+        <li><strong>Перейдите в Настройки → UpdraftPlus Backups.</strong></li>
+        <li><strong>Нажмите «Резервное копирование сейчас».</strong></li>
+        <li><strong>Выберите:</strong> «Файлы» и «База данных».</li>
+        <li><strong>Укажите, куда сохранить:</strong> Google Drive, Dropbox, Яндекс.Диск или локально.</li>
+        <li><strong>Нажмите «Резервное копирование».</strong> Дождитесь завершения.</li>
+    </ol>
+
+    <h4>Способ 2: Вручную через хостинг</h4>
+    <ol class="steps">
+        <li><strong>Скачайте папку сайта по FTP</strong> (FileZilla) или через файловый менеджер хостинга.</li>
+        <li><strong>Экспортируйте базу данных</strong> через phpMyAdmin → Экспорт.</li>
+        <li><strong>Сохраните оба архива</strong> в надёжном месте (например, на Яндекс.Диске).</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Регулярность:</strong> Делайте резервную копию <strong>перед крупными изменениями</strong> (установка плагина, смена темы, обновление WordPress) и <strong>раз в неделю/месяц</strong> в качестве профилактики. Для активных сайтов — ежедневно.
+    </div>
+
+    <h2>10.8 Что делать, если что-то сломалось</h2>
+
+    <p>Рано или поздно любой сайт сталкивается с проблемами. Вот алгоритм действий.</p>
+
+    <h3>Белый экран (White Screen of Death)</h3>
+    <ol class="steps">
+        <li><strong>Не паникуйте.</strong> Причина почти всегда в конфликте плагинов или нехватке памяти.</li>
+        <li><strong>Отключите все плагины.</strong> Через FTP переименуйте папку <code>wp-content/plugins</code> в <code>plugins_off</code>.</li>
+        <li><strong>Проверьте сайт.</strong> Если он заработал — проблема в одном из плагинов. Включайте их по одному, чтобы найти виновника.</li>
+        <li><strong>Если не помогло</strong> — переключитесь на стандартную тему WordPress через базу данных или FTP.</li>
+    </ol>
+
+    <h3>Ошибка 500 Internal Server Error</h3>
+    <ul>
+        <li>Проверьте <code>.htaccess</code> — возможно, там лишние правила. Временно переименуйте его в <code>.htaccess_backup</code>.</li>
+        <li>Увеличьте лимит памяти PHP через <code>wp-config.php</code>: <code>define('WP_MEMORY_LIMIT', '256M');</code></li>
+        <li>Обратитесь в поддержку хостинга — возможно, проблема на их стороне.</li>
+    </ul>
+
+    <h3>Страница не открывается (404)</h3>
+    <ul>
+        <li>Проверьте постоянные ссылки: Настройки → Постоянные ссылки → Сохранить (это пересоздаёт <code>.htaccess</code>).</li>
+        <li>Проверьте, что страница опубликована, а не в черновике.</li>
+        <li>Очистите кэш браузера и сайта.</li>
+    </ul>
+
+    <h3>Elementor не загружается</h3>
+    <ul>
+        <li>Проверьте, активирован ли плагин.</li>
+        <li>Убедитесь, что версия PHP не ниже 7.4.</li>
+        <li>Отключите другие плагины — возможен конфликт.</li>
+        <li>Увеличьте лимит памяти до 256 МБ.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Ведите «журнал изменений» — записывайте, что и когда вы меняли (установка плагина, правка кода). При возникновении проблемы это поможет быстро найти причину.
+    </div>
+
+    <h2>10.9 Что дальше: направления развития</h2>
+
+    <p>Курс закончился, но обучение — нет. Вот несколько направлений, куда можно двигаться.</p>
+
+    <h3>Уровень 1: Углубить Elementor</h3>
+    <ul>
+        <li><strong>Elementor Pro:</strong> попапы, формы, Theme Builder (кастомизация хедера/футера), динамический контент, WooCommerce Builder.</li>
+        <li><strong>Сторонние плагины:</strong> ElementsKit, Essential Addons, Crocoblock — расширяют библиотеку виджетов.</li>
+        <li><strong>Кастомный CSS:</strong> изучить основы CSS и добавлять собственные стили через пользовательский CSS в Elementor.</li>
+    </ul>
+
+    <h3>Уровень 2: Освоить WordPress глубже</h3>
+    <ul>
+        <li><strong>Custom Post Types:</strong> создание своих типов записей (например, «Услуги», «Отзывы»).</li>
+        <li><strong>ACF (Advanced Custom Fields):</strong> добавление полей к страницам и записям.</li>
+        <li><strong>WooCommerce:</strong> создание интернет-магазина.</li>
+        <li><strong>Дочерние темы:</strong> безопасная кастомизация темы.</li>
+    </ul>
+
+    <h3>Уровень 3: Веб-разработка</h3>
+    <ul>
+        <li><strong>HTML и CSS:</strong> базовые знания для тонкой настройки.</li>
+        <li><strong>JavaScript:</strong> для интерактивности.</li>
+        <li><strong>PHP:</strong> язык WordPress — для создания своих плагинов и тем.</li>
+        <li><strong>Git:</strong> версионирование кода.</li>
+    </ul>
+
+    <h3>Уровень 4: Профессиональные навыки</h3>
+    <ul>
+        <li><strong>Дизайн:</strong> изучить основы UX/UI, типографику, композицию.</li>
+        <li><strong>SEO:</strong> углубиться в техническое и контентное SEO.</li>
+        <li><strong>Аналитика:</strong> Яндекс.Метрика, Google Analytics — понимание поведения пользователей.</li>
+        <li><strong>Фриланс:</strong> если хотите зарабатывать на создании сайтов — изучить ценообразование, работу с клиентами, договоры.</li>
+    </ul>
+
+    <h2>10.10 Полезные ресурсы</h2>
+
+    <div class="resources-grid">
+        <div class="resource-card">
+            <strong>📘 Официальная документация Elementor</strong>
+            <span>elementor.com/help — база знаний, статьи, видео-уроки.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎥 Elementor YouTube</strong>
+            <span>Официальный канал — вебинары, обзоры новых функций, туториалы.</span>
+        </div>
+        <div class="resource-card">
+            <strong>💬 Elementor Community</strong>
+            <span>Facebook-группа и форум — задать вопрос и получить ответ от сообщества.</span>
+        </div>
+        <div class="resource-card">
+            <strong>📰 WPBeginner</strong>
+            <span>wpbeginner.com — крупнейший блог для новичков в WordPress.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎥 YouTube-каналы</strong>
+            <span>Darrel Wilson, Ferdy Korpershoek, WebDesign Tuts — качественные уроки по Elementor.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎨 Ресурсы для дизайна</strong>
+            <span>Unsplash, Pexels — фото; Google Fonts — шрифты; Coolors — палитры; Figma — макеты.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🔌 Каталог плагинов</strong>
+            <span>wordpress.org/plugins — более 60 000 бесплатных плагинов.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎭 Каталог тем</strong>
+            <span>wordpress.org/themes — тысячи бесплатных тем, включая совместимые с Elementor.</span>
+        </div>
+    </div>
+
+    <h2>10.11 Финальное практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Финальное задание: публикуем сайт</strong><br><br>
+        <strong>Часть 1: Финальная проверка</strong><br>
+        1. Пройдитесь по чек-листу из раздела 10.3.<br>
+        2. Проверьте все страницы на компьютере, планшете и телефоне.<br>
+        3. Исправьте все найденные проблемы.<br><br>
+        <strong>Часть 2: SEO</strong><br>
+        4. Установите Yoast SEO или Rank Math.<br>
+        5. Настройте Title и Description для главной страницы.<br>
+        6. Заполните alt-текст для всех изображений.<br>
+        7. Включите ЧПУ (Название записи).<br><br>
+        <strong>Часть 3: Скорость</strong><br>
+        8. Проверьте сайт через PageSpeed Insights.<br>
+        9. Включите оптимизации в Elementor → Настройки → Дополнительно.<br>
+        10. Установите WP Super Cache и настройте кэширование.<br>
+        11. Сожмите все изображения через TinyPNG.<br><br>
+        <strong>Часть 4: Резервная копия</strong><br>
+        12. Установите UpdraftPlus.<br>
+        13. Сделайте полную резервную копию сайта (файлы + база данных).<br>
+        14. Сохраните архив в облачное хранилище.<br><br>
+        <strong>Часть 5: Публикация</strong><br>
+        15. Назначьте статическую главную страницу.<br>
+        16. Отправьте карту сайта в Google Search Console.<br>
+        17. Поделитесь ссылкой на сайт с друзьями.<br>
+        18. Наслаждайтесь результатом!
+    </div>
+
+    <div class="success-box">
+        <strong>🎉 Поздравляем с завершением курса!</strong><br>
+        Вы прошли путь от установки Elementor до полноценного сайта, готового к публикации. Теперь у вас есть навыки, которые можно применять снова и снова — для себя, для клиентов, для проектов. Не бойтесь экспериментировать, ломать и восстанавливать. Именно так рождается мастерство.
+    </div>
+
+    <h2>10.12 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Можно ли изменить тему после создания сайта на Elementor?</strong> Да, но с осторожностью. Элементы могут «слететь» из-за различий в ширине контейнеров и стилях. Рекомендуется использовать тему Hello Elementor — она специально создана для Elementor.</li>
+        <li><strong>Что делать, если после обновления Elementor что-то сломалось?</strong> Откатитесь к предыдущей версии через FTP или плагин WP Rollback. Сообщите о проблеме в поддержку Elementor.</li>
+        <li><strong>Как перенести сайт на другой хостинг?</strong> Через плагин All-in-One WP Migration или вручную (файлы + база данных). Перед переносом сделайте резервную копию.</li>
+        <li><strong>Нужно ли платить за Elementor Pro?</strong> Для базовых сайтов хватит бесплатной версии. Pro нужен для попапов, форм, Theme Builder и динамического контента. Решайте по задачам.</li>
+        <li><strong>Сколько страниц можно создать на Elementor?</strong> Неограниченно. Ограничения касаются только производительности — при большом количестве страниц и виджетов сайт может замедлиться.</li>
+        <li><strong>Как защитить сайт от взлома?</strong> Обновляйте WordPress, плагины и темы. Используйте сложные пароли. Установите SSL. Делайте резервные копии. Используйте плагины безопасности (Wordfence, Sucuri).</li>
+        <li><strong>Что делать, если сайт стал медленным?</strong> Проверьте через PageSpeed Insights. Сожмите изображения, включите кэширование, удалите неиспользуемые плагины, перейдите на более быстрый хостинг.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💬 Обратная связь</strong><br>
+        Если у вас остались вопросы или вы хотите предложить улучшения для курса — создайте issue в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">репозитории на GitHub</a>. Мы всегда рады помочь и улучшить материалы.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="index.html" class="button">🏠 Вернуться на главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по Elementor | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
