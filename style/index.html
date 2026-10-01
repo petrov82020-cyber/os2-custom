@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экспресс-курс: стили, темы, шаблоны и паттерны в WordPress с нуля</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #222;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #0366d6;
+        }
+        h1 {
+            border-bottom: 2px solid #0366d6;
+            padding-bottom: 10px;
+        }
+        .plan {
+            background: #eef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .plan ol {
+            margin: 10px 0 10px 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 10px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            display: inline-block;
+            background: #0366d6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .button:hover {
+            background: #024ea1;
+            text-decoration: none;
+        }
+        .video-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .info-box {
+            background: #e6f4ff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .site-section-preview {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .site-section-preview h2 {
+            margin-top: 0;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0366d6;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 700px) {
+            .compare-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📘 Экспресс-курс: стили, темы, шаблоны и паттерны в WordPress с нуля</h1>
+
+    <p>Добро пожаловать! Этот курс посвящён одной из самых интересных и быстро развивающихся тем современного WordPress — <strong>полному редактированию сайта</strong> (Full Site Editing, FSE). Вы научитесь работать с блочными темами, менять внешний вид сайта через Редактор сайта, создавать собственные шаблоны и паттерны, настраивать глобальные стили. Всё — без единой строчки кода.</p>
+
+    <div class="note">
+        <strong>🎯 Цель:</strong> к концу курса вы сможете самостоятельно менять тему сайта, редактировать шаблоны страниц, создавать собственные паттерны и настраивать глобальные стили так, чтобы сайт выглядел профессионально и был удобен для посетителей.
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Важно понимать:</strong> Этот курс <strong>не про Elementor</strong>. Мы работаем с встроенными инструментами WordPress — блочным редактором (Gutenberg), Редактором сайта (Site Editor) и современными блочными темами. Если вы хотите изучить Elementor, перейдите на <a href="../elementor/index.html">отдельный курс по Elementor</a>.
+    </div>
+
+    <div class="site-section-preview">
+        <h2>🧩 Что такое тема, шаблон, паттерн и стиль</h2>
+        <p>Прежде чем начать, разберёмся в основных понятиях, с которыми будем работать на протяжении всего курса.</p>
+
+        <div class="compare-grid">
+            <div class="compare-card">
+                <h4>🎨 Тема (Theme)</h4>
+                <p>Полный набор файлов, определяющий внешний вид и функциональность всего сайта. Это «одежда» вашего сайта — она задаёт общий стиль, но не влияет на содержание.</p>
+            </div>
+            <div class="compare-card">
+                <h4>🧱 Шаблон (Template)</h4>
+                <p>Структурная основа для определённого типа страниц. Определяет, какие элементы и в каком порядке отображаются. Это «чертёж» или «каркас» страницы.</p>
+            </div>
+            <div class="compare-card">
+                <h4>📦 Паттерн (Pattern)</h4>
+                <p>Готовая секция контента — блок, который можно вставить на страницу и настроить. Это не весь каркас, а отдельная часть: секция с ценами, галерея, отзывы.</p>
+            </div>
+            <div class="compare-card">
+                <h4>🖌️ Стиль (Style)</h4>
+                <p>Цвета, шрифты, отступы, макет — визуальные параметры, которые применяются ко всему сайту. Настраиваются через глобальные стили в Редакторе сайта.</p>
+            </div>
+        </div>
+
+        <p><a href="chapter1.html">Подробнее о каждом понятии →</a></p>
+    </div>
+
+    <div class="video-container">
+        <h3>🎥 Видео-введение: полное редактирование сайта в WordPress</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/eHjIkPZLm0w?si=ctat7LnYuWPP9bA_" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+        <p><em>Источник: YouTube. Обзор принципов работы с блочными темами и Site Editor.</em></p>
+    </div>
+
+    <div class="info-box">
+        🎬 <strong>Первый шаг:</strong> посмотрите <a href="introduction.html">видео-введение в темы и шаблоны WordPress</a> — узнайте, как устроено полное редактирование сайта и какие возможности оно открывает.
+    </div>
+
+    <h2>📚 План курса</h2>
+    <div class="plan">
+        <ol>
+            <li><strong>Глава 1:</strong> <a href="chapter1.html">Введение: темы, шаблоны, паттерны и стили</a> – разбираем основные понятия и архитектуру современного WordPress.</li>
+            <li><strong>Глава 2:</strong> <a href="chapter2.html">Блочные темы: Twenty Twenty-Three, Four, Five</a> – изучаем три современные темы по умолчанию и их отличия.</li>
+            <li><strong>Глава 3:</strong> <a href="chapter3.html">Установка и смена темы</a> – пошаговая инструкция по смене темы без потери контента.</li>
+            <li><strong>Глава 4:</strong> <a href="chapter4.html">Редактор сайта (Site Editor): обзор интерфейса</a> – знакомимся с главным инструментом FSE.</li>
+            <li><strong>Глава 5:</strong> <a href="chapter5.html">Шаблоны (Templates): структура и редактирование</a> – учимся менять каркас страниц.</li>
+            <li><strong>Глава 6:</strong> <a href="chapter6.html">Части шаблона: шапка, подвал, боковая панель</a> – настраиваем глобальные элементы сайта.</li>
+            <li><strong>Глава 7:</strong> <a href="chapter7.html">Паттерны (Patterns): вставка и настройка</a> – используем готовые секции для быстрой сборки страниц.</li>
+            <li><strong>Глава 8:</strong> <a href="chapter8.html">Создание собственных паттернов и шаблонов</a> – делаем свою библиотеку готовых блоков.</li>
+            <li><strong>Глава 9:</strong> <a href="chapter9.html">Глобальные стили: цвета, шрифты, макет</a> – настраиваем внешний вид всего сайта.</li>
+            <li><strong>Глава 10:</strong> <a href="chapter10.html">Публикация, экспорт и лучшие практики</a> – итоги курса, советы, ресурсы для развития.</li>
+        </ol>
+    </div>
+
+    <h2>🚀 Начните прямо сейчас</h2>
+    <p>Каждый урок содержит пошаговые инструкции, скриншоты и практические задания. Мы будем постепенно дополнять курс. Следите за обновлениями!</p>
+
+    <h2>🧭 Что такое Full Site Editing (FSE)</h2>
+    <div class="site-section-preview">
+        <h2><a href="chapter1.html">Full Site Editing — новая эра WordPress</a></h2>
+        <p>До появления FSE вы могли менять только контент страниц, а внешний вид определялся темой и требовал правки кода или использования «Настройщика». С блочными темами и Редактором сайта вы получаете <strong>полный контроль над всем сайтом</strong> прямо из админки.</p>
+        <p>FSE — это набор инструментов, который позволяет:</p>
+        <ul>
+            <li>Менять шапку, подвал и любые части сайта через визуальный редактор.</li>
+            <li>Создавать и редактировать шаблоны для разных типов страниц.</li>
+            <li>Использовать паттерны — готовые секции для быстрой сборки страниц.</li>
+            <li>Настраивать глобальные стили: цвета, шрифты, отступы, макет.</li>
+            <li>Всё это — без знания HTML, CSS и PHP.</li>
+        </ul>
+        <p><a href="chapter1.html">Перейти к первой главе →</a></p>
+    </div>
+
+    <h2>🎯 Кому подойдёт этот курс</h2>
+    <ul>
+        <li><strong>Новичкам</strong>, которые хотят освоить WordPress с нуля и создать свой сайт без программирования.</li>
+        <li><strong>Владельцам сайтов</strong>, которые хотят самостоятельно менять дизайн, не нанимая разработчика.</li>
+        <li><strong>Фрилансерам</strong>, которые хотят добавить в свои услуги создание сайтов на блочных темах.</li>
+        <li><strong>Тем, кто уже знает Elementor</strong>, но хочет освоить встроенные инструменты WordPress — они легче и быстрее для многих задач.</li>
+    </ul>
+
+    <h2>🕹️ Бонус: эмулятор IBM OS/2 1.0</h2>
+    <p>Параллельно мы экспериментируем с эмулятором старых компьютеров. Вы можете попробовать его прямо сейчас:</p>
+    <p><a href="../os2.html" class="button">Запустить эмулятор OS/2</a></p>
+
+    <hr>
+    <p>📌 <strong>Примечание:</strong> этот сайт создан в рамках самообучения. Если у вас есть вопросы, обращайтесь через <a href="https://github.com/petrov82020-cyber/os2-custom/issues">Issues на GitHub</a>.</p>
+</div>
+</body>
+</html>
