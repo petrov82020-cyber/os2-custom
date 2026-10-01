@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 7: Паттерны (Patterns) — вставка и настройка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .pattern-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .pattern-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .pattern-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .pattern-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.synced h4 {
+            color: #16a34a;
+        }
+        .compare-card.standard h4 {
+            color: #f97316;
+        }
+        .example-block {
+            background: #f9fafb;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .example-block .label {
+            font-size: 0.8em;
+            color: #5b6e8c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .example-pattern {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .example-pattern h3 {
+            margin: 0 0 8px 0;
+            color: #0a2540;
+            font-size: 1.2em;
+        }
+        .example-pattern p {
+            color: #5b6e8c;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+        .example-pattern .btn {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .pattern-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 7: Паттерны (Patterns) — вставка и настройка</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~28 минут | 🎯 Цель: освоить работу с паттернами — готовыми секциями контента, которые ускоряют создание страниц в разы</div>
+
+    <p>Мы разобрали шаблоны и части шаблона — «каркасы» страниц и глобальные элементы. Теперь пришло время познакомиться с <strong>паттернами (Patterns)</strong> — готовыми секциями контента, которые вставляются на страницу одним кликом. Паттерны — это то, что превращает создание сайта из рутинной работы в творческий процесс. Вместо того чтобы собирать каждую секцию с нуля, вы берёте готовый блок и адаптируете его под свои нужды.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое паттерн?</strong><br>
+        Паттерн (Block Pattern) — это предварительно собранная группа блоков, которая образует готовую секцию страницы: Hero-блок, секцию с ценами, отзывы, команду, CTA и так далее. Паттерны вставляются в страницу или запись в один клик, а затем полностью редактируются — вы можете менять текст, изображения, цвета и даже структуру. Каждая вставка паттерна является независимой копией: изменения в одной не влияют на другие.
+    </div>
+
+    <p>Паттерны появились в WordPress 5.5 и с тех пор стали основным инструментом для быстрой сборки страниц. В WordPress 6.7 тема Twenty Twenty-Five включает более 70 паттернов, а официальная библиотека WordPress содержит более 2300 готовых решений. Это означает, что у вас под рукой всегда есть готовые профессиональные секции для любого типа контента.</p>
+
+    <h2>7.1 Чем паттерн отличается от шаблона и части шаблона</h2>
+
+    <p>Прежде чем начать работать с паттернами, важно чётко понимать их место в системе. Мы уже разбирали шаблоны и части шаблона, но давайте сравним все три понятия вместе.</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Характеристика</th>
+            <th>Шаблон (Template)</th>
+            <th>Часть шаблона (Template Part)</th>
+            <th>Паттерн (Pattern)</th>
+        </tr>
+        <tr>
+            <td>Что это</td>
+            <td>Каркас всей страницы</td>
+            <td>Глобальный элемент сайта</td>
+            <td>Готовая секция контента</td>
+        </tr>
+        <tr>
+            <td>Примеры</td>
+            <td>Front Page, Page, Single</td>
+            <td>Header, Footer, Sidebar</td>
+            <td>Hero, Pricing, Testimonials</td>
+        </tr>
+        <tr>
+            <td>Где применяется</td>
+            <td>К целым страницам</td>
+            <td>Внутри шаблонов</td>
+            <td>На страницах и в шаблонах</td>
+        </tr>
+        <tr>
+            <td>Влияние изменений</td>
+            <td>На все страницы этого типа</td>
+            <td>На все страницы, где используется</td>
+            <td>Только на конкретную вставку</td>
+        </tr>
+        <tr>
+            <td>Редактируется в</td>
+            <td>Редактор сайта</td>
+            <td>Редактор сайта</td>
+            <td>Редактор страниц</td>
+        </tr>
+        <tr>
+            <td>Аналогия</td>
+            <td>Чертёж комнаты</td>
+            <td>Мебель, которую переносят</td>
+            <td>Готовый предмет мебели из магазина</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Простая формула:</strong><br>
+        <strong>Шаблон</strong> определяет, <em>какие секции</em> есть на странице. <strong>Паттерн</strong> — это <em>сама секция</em>, готовая к использованию. <strong>Часть шаблона</strong> — это секция, которая <em>повторяется</em> на всех страницах (шапка, подвал).
+    </div>
+
+    <h2>7.2 Синхронизированные и обычные паттерны</h2>
+
+    <p>В WordPress существует два типа паттернов, и понимание разницы между ними критически важно для правильного использования.</p>
+
+    <div class="compare-grid">
+        <div class="compare-card standard">
+            <h4>📦 Обычные паттерны (Standard Patterns)</h4>
+            <ul>
+                <li>При вставке создаётся <strong>независимая копия</strong>.</li>
+                <li>Изменения в одной копии <strong>не влияют</strong> на другие.</li>
+                <li>Идеальны для контента, который должен отличаться: секции услуг, отзывы, карточки товаров.</li>
+                <li>Именно этот тип мы будем использовать чаще всего.</li>
+            </ul>
+        </div>
+        <div class="compare-card synced">
+            <h4>🔄 Синхронизированные паттерны (Synced Patterns)</h4>
+            <ul>
+                <li>Ранее назывались «многоразовыми блоками» (Reusable Blocks).</li>
+                <li>Все копии <strong>связаны</strong> между собой.</li>
+                <li>Изменение одной копии <strong>обновляет все</strong> остальные.</li>
+                <li>Идеальны для повторяющихся элементов: CTA-блок, форма подписки, контактная информация.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Не путайте!</strong><br>
+        Если вы вставили <strong>обычный паттерн</strong> и отредактировали его — изменения затронут только эту вставку. Если вы вставили <strong>синхронизированный паттерн</strong> и отредактировали его — изменения применятся ко <strong>всем</strong> вставкам на сайте. Это может быть как мощным инструментом, так и источником неожиданностей.
+    </div>
+
+    <h2>7.3 Где искать паттерны</h2>
+
+    <p>Паттерны доступны из нескольких источников. Давайте разберём каждый.</p>
+
+    <div class="pattern-grid">
+        <div class="pattern-card">
+            <div class="icon">🎨</div>
+            <strong>Паттерны вашей темы</strong>
+            <span>Каждая блочная тема поставляется с набором паттернов. Twenty Twenty-Five включает более 70 паттернов: Hero, Pricing, Services, Testimonials, FAQ, CTA и другие.</span>
+        </div>
+        <div class="pattern-card">
+            <div class="icon">📚</div>
+            <strong>Библиотека WordPress</strong>
+            <span>Официальный каталог паттернов (wordpress.org/patterns) — более 2300 бесплатных паттернов от сообщества. Можно скопировать и вставить в свой сайт.</span>
+        </div>
+        <div class="pattern-card">
+            <div class="icon">🔌</div>
+            <strong>Паттерны плагинов</strong>
+            <span>Многие плагины добавляют свои паттерны: WooCommerce, Contact Form 7, галереи и другие.</span>
+        </div>
+        <div class="pattern-card">
+            <div class="icon">✏️</div>
+            <strong>Ваши собственные паттерны</strong>
+            <span>Вы можете создавать свои паттерны из любых блоков и сохранять их в библиотеку для повторного использования (подробно в главе 8).</span>
+        </div>
+    </div>
+
+    <h2>7.4 Как вставить паттерн на страницу</h2>
+
+    <p>Вставка паттерна — это самый быстрый способ добавить готовую секцию на страницу. Рассмотрим процесс пошагово.</p>
+
+    <ol class="steps">
+        <li><strong>Откройте страницу или запись в блочном редакторе.</strong> Например, «Страницы → Добавить новую».</li>
+        <li><strong>Нажмите на иконку «+»</strong> в левом верхнем углу холста.</li>
+        <li><strong>Переключитесь на вкладку «Паттерны» (Patterns).</strong> Она расположена рядом с вкладкой «Блоки».</li>
+        <li><strong>Изучите категории.</strong> Вы увидите список категорий:
+            <ul>
+                <li><strong>Featured (Рекомендуемые)</strong> — лучшие паттерны от WordPress.</li>
+                <li><strong>Banners (Баннеры)</strong> — Hero-секции и баннеры.</li>
+                <li><strong>Call to Action (Призыв к действию)</strong> — секции с кнопками.</li>
+                <li><strong>Services (Услуги)</strong> — блоки с описанием услуг.</li>
+                <li><strong>Testimonials (Отзывы)</strong> — блоки с цитатами клиентов.</li>
+                <li><strong>Pricing (Цены)</strong> — таблицы с тарифами.</li>
+                <li><strong>Team (Команда)</strong> — секции с сотрудниками.</li>
+                <li><strong>Contact (Контакты)</strong> — блоки с контактной информацией.</li>
+                <li><strong>Footer (Подвал)</strong> — варианты подвала.</li>
+                <li><strong>Header (Шапка)</strong> — варианты шапки.</li>
+            </ul>
+        </li>
+        <li><strong>Найдите нужный паттерн</strong> через поиск или просмотрите категории.</li>
+        <li><strong>Нажмите на паттерн</strong> — он мгновенно вставится в то место, где стоял курсор.</li>
+        <li><strong>Проверьте результат.</strong> Паттерн появится со всем содержимым и стилями.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> Вы вставили паттерн. Теперь его можно редактировать так же, как обычные блоки — менять текст, изображения, цвета, структуру.
+    </div>
+
+    <h3>Альтернативный способ: перетаскивание</h3>
+    <p>Вместо клика по паттерну его можно перетащить мышкой прямо на холст. Это удобно, когда нужно точно контролировать место вставки.</p>
+
+    <h2>7.5 Настройка и редактирование паттерна</h2>
+
+    <p>После вставки паттерн становится обычным набором блоков. Вы можете редактировать его так же, как если бы создавали с нуля.</p>
+
+    <h3>Что можно менять</h3>
+    <ul>
+        <li><strong>Текст:</strong> кликните на любой текстовый блок и введите свой текст.</li>
+        <li><strong>Изображения:</strong> замените картинки, сохранив размеры и позиционирование.</li>
+        <li><strong>Цвета:</strong> измените цвет фона, текста, кнопок через панель стилей.</li>
+        <li><strong>Структуру:</strong> добавьте или удалите блоки, переставьте элементы местами.</li>
+        <li><strong>Ссылки:</strong> обновите URL-адреса кнопок и ссылок.</li>
+        <li><strong>Типографику:</strong> измените шрифты, размеры, интервалы.</li>
+    </ul>
+
+    <h3>Пошаговое редактирование паттерна «Pricing» (Цены)</h3>
+
+    <ol class="steps">
+        <li><strong>Вставьте паттерн «Pricing, 3 columns»</strong> из категории «Pricing».</li>
+        <li><strong>Кликните на заголовок первой колонки</strong> — измените название тарифа («Базовый» → «Стартовый»).</li>
+        <li><strong>Кликните на цену</strong> — введите свою стоимость.</li>
+        <li><strong>Отредактируйте список возможностей:</strong> уберите лишнее, добавьте нужное.</li>
+        <li><strong>Измените текст кнопки</strong> — например, «Выбрать тариф».</li>
+        <li><strong>Настройте цвет кнопки:</strong> выделите кнопку → панель «Стиль» → «Цвет фона».</li>
+        <li><strong>Повторите для остальных колонок.</strong></li>
+        <li><strong>Проверьте адаптивность:</strong> переключитесь на вид телефона.</li>
+        <li><strong>Сохраните страницу.</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Если паттерн содержит изображения, которые вы не хотите использовать, замените их на свои. Но обратите внимание на пропорции: если оригинальное изображение было квадратным, а вы вставляете прямоугольное — оно может обрезаться или искажаться. Подбирайте похожие по пропорциям картинки.
+    </div>
+
+    <h2>7.6 Обзор популярных паттернов Twenty Twenty-Five</h2>
+
+    <p>Тема Twenty Twenty-Five предлагает более 70 паттернов для разных задач. Вот самые полезные из них.</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Категория</th>
+            <th>Паттерны</th>
+            <th>Для чего</th>
+        </tr>
+        <tr>
+            <td>Hero</td>
+            <td>Cover with big heading, Hero full width image, Hero podcast</td>
+            <td>Главный экран сайта — первое, что видит посетитель.</td>
+        </tr>
+        <tr>
+            <td>Services</td>
+            <td>Services 3 columns, Services team photos, Services subscriber section</td>
+            <td>Описание услуг компании или специалиста.</td>
+        </tr>
+        <tr>
+            <td>Pricing</td>
+            <td>Pricing 2 columns, Pricing 3 columns</td>
+            <td>Таблицы тарифов и цен.</td>
+        </tr>
+        <tr>
+            <td>Testimonials</td>
+            <td>3 column layout with 6 testimonials, Review with large image</td>
+            <td>Отзывы клиентов — повышают доверие.</td>
+        </tr>
+        <tr>
+            <td>Call to Action</td>
+            <td>CTA with book links, CTA with locations, CTA with grid layout</td>
+            <td>Призывы к действию — кнопки «Связаться», «Купить».</td>
+        </tr>
+        <tr>
+            <td>FAQ</td>
+            <td>FAQs</td>
+            <td>Часто задаваемые вопросы.</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>Contact info and locations, Contact location and link</td>
+            <td>Контактная информация, адреса, карты.</td>
+        </tr>
+        <tr>
+            <td>About</td>
+            <td>CV/bio, About me</td>
+            <td>Страницы «О нас» и «Обо мне».</td>
+        </tr>
+        <tr>
+            <td>Landing Page</td>
+            <td>Landing page for book, Landing page for event, Landing page for podcast</td>
+            <td>Полноценные лендинги под конкретные задачи.</td>
+        </tr>
+        <tr>
+            <td>Footer</td>
+            <td>Centered footer, Footer with columns, Footer with newsletter signup</td>
+            <td>Варианты подвала для разных стилей.</td>
+        </tr>
+        <tr>
+            <td>Header</td>
+            <td>Centered site header, Header with columns, Vertical site header</td>
+            <td>Варианты шапки сайта.</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Практический вывод:</strong> Паттерны Twenty Twenty-Five покрывают практически все потребности типового сайта. Вы можете собрать полноценный лендинг, используя только готовые паттерны — без создания блоков с нуля.
+    </div>
+
+    <h2>7.7 Практический пример: собираем лендинг из паттернов за 15 минут</h2>
+
+    <p>Давайте применим знания на практике и соберём полноценный лендинг, используя только готовые паттерны.</p>
+
+    <ol class="steps">
+        <li><strong>Создайте новую страницу</strong> «Лендинг курса».</li>
+        <li><strong>Установите шаблон «Blank»</strong> (пустой, без шапки и подвала) в настройках страницы.</li>
+        <li><strong>Вставьте Hero-паттерн:</strong> «Hero, full width image» из категории Hero. Отредактируйте заголовок и кнопку.</li>
+        <li><strong>Вставьте блок преимуществ:</strong> «Services, 3 columns» из категории Services. Замените текст на преимущества вашего курса.</li>
+        <li><strong>Вставьте блок «О курсе»:</strong> «About me» или «CV/bio». Адаптируйте под описание курса.</li>
+        <li><strong>Вставьте таблицу цен:</strong> «Pricing, 3 columns». Настройте тарифы.</li>
+        <li><strong>Вставьте отзывы:</strong> «3 column layout with 6 testimonials». Замените цитаты на реальные отзывы.</li>
+        <li><strong>Вставьте FAQ:</strong> паттерн «FAQs». Отредактируйте вопросы и ответы.</li>
+        <li><strong>Вставьте финальный CTA:</strong> «CTA with book links». Измените текст и кнопку.</li>
+        <li><strong>Проверьте адаптивность</strong> на планшете и телефоне.</li>
+        <li><strong>Сохраните и опубликуйте.</strong></li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> Полноценный лендинг с 8 секциями, собранный за 15 минут. Без единой строчки кода, без создания блоков с нуля. Всё, что нужно было сделать — вставить паттерны и заменить контент.
+    </div>
+
+    <h2>7.8 Синхронизированные паттерны: когда и как использовать</h2>
+
+    <p>Синхронизированные паттерны (Synced Patterns) — это мощный инструмент, который раньше назывался «многоразовыми блоками» (Reusable Blocks). Их главная особенность: изменение одной копии обновляет все остальные.</p>
+
+    <h3>Когда использовать синхронизированные паттерны</h3>
+    <ul>
+        <li><strong>Кнопка «Позвонить»</strong> — телефон может измениться, и вы хотите обновить его везде сразу.</li>
+        <li><strong>Блок с контактами</strong> — адрес, email, телефон повторяются на всех страницах.</li>
+        <li><strong>Форма подписки на рассылку</strong> — одинаковая на всех страницах.</li>
+        <li><strong>Социальные иконки</strong> — добавили новую соцсеть — обновилось везде.</li>
+        <li><strong>Блок с преимуществами компании</strong> — если он одинаков для всех страниц.</li>
+    </ul>
+
+    <h3>Как создать синхронизированный паттерн</h3>
+    <ol class="steps">
+        <li><strong>Создайте блок</strong> на странице: например, CTA-секцию с заголовком и кнопкой.</li>
+        <li><strong>Выделите все блоки, которые должны войти в паттерн</strong> (Shift+клик для выделения нескольких).</li>
+        <li><strong>Нажмите на три точки</strong> в панели инструментов блока.</li>
+        <li><strong>Выберите «Создать паттерн» (Create Pattern).</strong></li>
+        <li><strong>Введите название</strong> — например, «CTA — Связаться с нами».</li>
+        <li><strong>Включите переключатель «Синхронизировать» (Synced).</strong></li>
+        <li><strong>Нажмите «Создать».</strong></li>
+    </ol>
+
+    <p>После этого паттерн появится в библиотеке с иконкой синхронизации. Вставляя его на другие страницы, вы получаете связанные копии. Изменение любой копии обновит все остальные.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Синхронизированные паттерны — это мощно, но опасно. Если вы случайно измените один экземпляр, думая, что правите только его, изменения применятся ко всем копиям на сайте. Всегда проверяйте, какой паттерн вы редактируете — обычный или синхронизированный. У синхронизированного паттерна есть специальная иконка в навигаторе блоков.
+    </div>
+
+    <h2>7.9 Паттерны из библиотеки WordPress</h2>
+
+    <p>Помимо паттернов темы, вы можете использовать официальную библиотеку WordPress — более 2300 бесплатных паттернов от сообщества.</p>
+
+    <h3>Как вставить паттерн из библиотеки</h3>
+    <ol class="steps">
+        <li><strong>Откройте блочный редактор</strong> любой страницы.</li>
+        <li><strong>Нажмите «+» → вкладка «Паттерны».</strong></li>
+        <li><strong>Прокрутите вниз до раздела «Explore all patterns»</strong> или «Изучить все паттерны».</li>
+        <li><strong>Откроется каталог WordPress.org.</strong> Используйте поиск и фильтры для нахождения нужного паттерна.</li>
+        <li><strong>Нажмите на паттерн</strong> — откроется предпросмотр.</li>
+        <li><strong>Нажмите «Копировать» (Copy pattern).</strong></li>
+        <li><strong>Вернитесь на свою страницу и вставьте (Ctrl+V).</strong> Паттерн появится в содержимом.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Паттерны из библиотеки WordPress не всегда идеально совместимы с вашей темой. Они могут использовать другие шрифты и цвета. После вставки обязательно проверьте, как они выглядят, и при необходимости адаптируйте стили под свою тему.
+    </div>
+
+    <h2>7.10 Решение частых проблем с паттернами</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Паттерн не отображается корректно</td>
+            <td>Конфликт стилей темы и паттерна</td>
+            <td>Адаптируйте цвета и шрифты паттерна под свою тему вручную</td>
+        </tr>
+        <tr>
+            <td>Изображения в паттерне «съехали»</td>
+            <td>Другие пропорции новых изображений</td>
+            <td>Подбирайте изображения с похожими пропорциями или настройте их размер</td>
+        </tr>
+        <tr>
+            <td>Паттерн не вставляется</td>
+            <td>Курсор находится в неподходящем месте</td>
+            <td>Поставьте курсор между блоками, а не внутри текста</td>
+        </tr>
+        <tr>
+            <td>Синхронизированный паттерн изменился везде</td>
+            <td>Так и должно быть — это его особенность</td>
+            <td>Если нужно изменить только одну копию — «отвяжите» её (Unlink)</td>
+        </tr>
+        <tr>
+            <td>Не могу найти нужный паттерн</td>
+            <td>Паттерн скрыт или не входит в тему</td>
+            <td>Проверьте вкладку «Все паттерны» или библиотеку WordPress</td>
+        </tr>
+        <tr>
+            <td>Паттерн содержит лишние блоки</td>
+            <td>Он создан для другой задачи</td>
+            <td>Удалите ненужные блоки после вставки</td>
+        </tr>
+        <tr>
+            <td>Паттерн «сломал» адаптивность</td>
+            <td>Он не оптимизирован для мобильных</td>
+            <td>Проверьте на телефоне и исправьте размеры/отступы вручную</td>
+        </tr>
+        <tr>
+            <td>После вставки паттерна страница стала медленной</td>
+            <td>Слишком много вложенных блоков</td>
+            <td>Упростите структуру паттерна, удалите лишние контейнеры</td>
+        </tr>
+    </table>
+
+    <h2>7.11 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Изучение паттернов темы</strong><br>
+        1. Создайте новую страницу в блочном редакторе.<br>
+        2. Нажмите «+» → вкладка «Паттерны».<br>
+        3. Изучите все категории паттернов.<br>
+        4. Вставьте паттерн «Hero, full width image».<br>
+        5. Замените заголовок и текст на свои.<br>
+        6. Не сохраняйте страницу — просто изучите.<br><br>
+        <strong>Часть 2: Сборка секции из паттернов</strong><br>
+        7. Создайте новую страницу «Тест паттернов».<br>
+        8. Вставьте паттерн «Services, 3 columns».<br>
+        9. Отредактируйте текст в каждой колонке.<br>
+        10. Измените цвет иконок на синий.<br>
+        11. Вставьте паттерн «Pricing, 3 columns».<br>
+        12. Настройте три тарифа с разными ценами.<br>
+        13. Вставьте паттерн «FAQs».<br>
+        14. Отредактируйте 3 вопроса и ответа.<br>
+        15. Сохраните страницу и проверьте на телефоне.<br><br>
+        <strong>Часть 3: Синхронизированный паттерн</strong><br>
+        16. Создайте CTA-блок: заголовок + кнопка.<br>
+        17. Выделите оба блока (Shift+клик).<br>
+        18. Нажмите три точки → «Создать паттерн».<br>
+        19. Назовите «CTA — Тест» и включите «Синхронизировать».<br>
+        20. Вставьте этот паттерн на другую страницу.<br>
+        21. Измените текст в первой копии.<br>
+        22. Проверьте вторую страницу — текст должен обновиться.<br><br>
+        <strong>Часть 4: Лендинг из паттернов</strong><br>
+        23. Создайте страницу «Лендинг».<br>
+        24. Установите шаблон «Blank».<br>
+        25. Соберите страницу из 5–6 паттернов разных типов.<br>
+        26. Настройте контент под свой проект.<br>
+        27. Проверьте адаптивность.<br>
+        28. Опубликуйте страницу.<br><br>
+        <strong>Часть 5: Финальная проверка</strong><br>
+        29. Пройдитесь по всем вставленным паттернам.<br>
+        30. Убедитесь, что все ссылки работают, изображения отображаются, текст читаем.<br>
+        31. Проверьте на компьютере и телефоне.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Что такое паттерны и чем они отличаются от шаблонов и частей шаблона; два типа паттернов (обычные и синхронизированные); где искать паттерны (тема, библиотека WordPress, плагины); как вставлять и редактировать паттерны; обзор паттернов Twenty Twenty-Five; создание лендинга из паттернов за 15 минут; работу с синхронизированными паттернами; решение типичных проблем.
+    </div>
+
+    <h2>7.12 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Чем паттерн отличается от шаблона?</strong> Шаблон — это каркас всей страницы. Паттерн — это готовая секция, которая вставляется в страницу или шаблон. Один шаблон может содержать несколько паттернов.</li>
+        <li><strong>Сколько паттернов можно вставить на одну страницу?</strong> Неограниченно. Но для производительности рекомендуется не более 20–30 паттернов на страницу.</li>
+        <li><strong>Можно ли использовать паттерны из одной темы в другой?</strong> Паттерны из библиотеки WordPress — да. Паттерны, встроенные в конкретную тему, могут не отображаться после смены темы.</li>
+        <li><strong>Как удалить ненужный паттерн из библиотеки?</strong> В разделе «Внешний вид → Паттерны» (или в Редакторе сайта → Паттерны) найдите паттерн и удалите его через меню трёх точек.</li>
+        <li><strong>Что будет, если удалить синхронизированный паттерн?</strong> Все вставки этого паттерна на сайте превратятся в обычные блоки. Контент не потеряется, но синхронизация пропадёт.</li>
+        <li><strong>Можно ли экспортировать паттерны на другой сайт?</strong> Да, через Kit (глава 10) или вручную скопировав блоки и создав паттерн заново.</li>
+        <li><strong>Почему паттерн выглядит иначе, чем в предпросмотре?</strong> Стили темы могут отличаться. Некоторые паттерны разработаны для конкретной темы и требуют адаптации.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>создание собственных паттернов и шаблонов</strong> — вы научитесь сохранять свои секции в библиотеку, делать их синхронизированными и использовать на разных страницах. Это позволит вам создать собственную библиотеку готовых блоков для быстрой сборки сайтов. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter8.html" class="button">📖 Перейти к восьмой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

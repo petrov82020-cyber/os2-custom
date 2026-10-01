@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 5: Шаблоны (Templates) — структура и редактирование</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .template-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .template-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .template-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .template-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .hierarchy {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+            line-height: 1.9;
+            overflow-x: auto;
+        }
+        .hierarchy .level-1 {
+            color: #0969da;
+            font-weight: bold;
+        }
+        .hierarchy .level-2 {
+            color: #2c5282;
+            padding-left: 25px;
+        }
+        .hierarchy .level-3 {
+            color: #5b6e8c;
+            padding-left: 50px;
+        }
+        .hierarchy .level-4 {
+            color: #94a3b8;
+            padding-left: 75px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .template-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 5: Шаблоны (Templates) — структура и редактирование</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~28 минут | 🎯 Цель: освоить работу с шаблонами WordPress — от просмотра до создания собственных макетов для разных типов страниц</div>
+
+    <p>В предыдущей главе мы познакомились с Редактором сайта и узнали, что одним из его главных разделов является <strong>«Шаблоны»</strong>. Теперь пришло время разобраться с ними подробно. Шаблоны — это «скелет» вашего сайта, определяющий структуру каждой страницы. Понимание шаблонов — ключ к созданию профессионального сайта, где каждый тип контента имеет свой подходящий макет.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое шаблон?</strong><br>
+        Шаблон (Template) — это структурная основа для определённого типа страниц. Он определяет, какие элементы и в каком порядке отображаются: где находится шапка, где — контент, где — подвал, есть ли боковая панель, какие блоки выводятся до и после основного контента. Каждый шаблон применяется к определённому типу записей или страниц.
+    </div>
+
+    <h2>5.1 Иерархия шаблонов WordPress</h2>
+
+    <p>WordPress использует систему, которая автоматически выбирает подходящий шаблон для каждого запроса. Это называется <strong>иерархией шаблонов</strong>. Понимание этой системы поможет вам точно контролировать, какой шаблон применяется к какой странице.</p>
+
+    <h3>Как работает иерархия</h3>
+    <p>Когда пользователь открывает страницу, WordPress идёт по «цепочке» и выбирает наиболее подходящий шаблон. Чем специфичнее шаблон, тем выше его приоритет. Если специфичного шаблона нет — используется более общий.</p>
+
+    <div class="hierarchy">
+        <div class="level-1">📄 Обычная страница (Page)</div>
+        <div class="level-2">├── Кастомный шаблон страницы (если назначен вручную)</div>
+        <div class="level-2">├── page-{slug}.html (например, page-o-nas.html)</div>
+        <div class="level-2">├── page-{id}.html (например, page-42.html)</div>
+        <div class="level-2">└── page.html ← основной шаблон для всех страниц</div>
+
+        <div class="level-1">📝 Отдельная запись (Single Post)</div>
+        <div class="level-2">├── single-post-{slug}.html</div>
+        <div class="level-2">├── single-post.html</div>
+        <div class="level-2">├── single.html</div>
+        <div class="level-2">└── index.html</div>
+
+        <div class="level-1">📚 Архив (Archive)</div>
+        <div class="level-2">├── category-{slug}.html</div>
+        <div class="level-2">├── category.html</div>
+        <div class="level-2">├── archive.html</div>
+        <div class="level-2">└── index.html</div>
+
+        <div class="level-1">🌐 Главная страница</div>
+        <div class="level-2">├── front-page.html</div>
+        <div class="level-2">├── home.html</div>
+        <div class="level-2">└── index.html</div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Практический вывод:</strong><br>
+        Вам не нужно создавать все возможные шаблоны. Достаточно тех, которые действительно нужны. Например, если у вас сайт-визитка, хватит трёх шаблонов: <strong>front-page</strong> (главная), <strong>page</strong> (обычные страницы), <strong>404</strong> (страница «не найдено»). Остальные WordPress подтянет автоматически.
+    </div>
+
+    <h2>5.2 Какие шаблоны есть в блочной теме</h2>
+
+    <p>Когда вы активируете блочную тему, она предоставляет набор готовых шаблонов. Давайте разберём, за что отвечает каждый из них.</p>
+
+    <div class="template-grid">
+        <div class="template-card">
+            <div class="icon">🏠</div>
+            <strong>Index</strong>
+            <span>Основной шаблон по умолчанию. Используется, если для запроса нет более специфичного шаблона.</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">🎯</div>
+            <strong>Front Page</strong>
+            <span>Шаблон для главной страницы сайта. Применяется, когда в настройках чтения выбрана «статическая главная».</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">📰</div>
+            <strong>Home</strong>
+            <span>Шаблон для страницы со списком последних записей (если главная показывает блог).</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">📄</div>
+            <strong>Page</strong>
+            <span>Шаблон для всех обычных страниц: «О нас», «Услуги», «Контакты».</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">📝</div>
+            <strong>Single</strong>
+            <span>Шаблон для отдельной записи блога: заголовок, дата, автор, контент, комментарии.</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">📚</div>
+            <strong>Archive</strong>
+            <span>Шаблон для архивов: список записей по категориям, меткам, датам, авторам.</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">🔍</div>
+            <strong>Search</strong>
+            <span>Шаблон для страницы результатов поиска по сайту.</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">🚫</div>
+            <strong>404</strong>
+            <span>Шаблон для страницы «Не найдено» — когда запрошенная страница отсутствует.</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">🖼️</div>
+            <strong>Attachment</strong>
+            <span>Шаблон для отображения отдельного медиафайла (изображения, видео).</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">👤</div>
+            <strong>Author</strong>
+            <span>Шаблон для страниц авторов блога со списком их записей.</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">📅</div>
+            <strong>Date</strong>
+            <span>Шаблон для архивов по датам (месяц, год).</span>
+        </div>
+        <div class="template-card">
+            <div class="icon">📋</div>
+            <strong>Blank</strong>
+            <span>Пустой шаблон — используется как основа для создания собственных макетов.</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Не все шаблоны нужно редактировать!</strong><br>
+        Некоторые шаблоны, например <strong>Index</strong>, используются как «резервные». Если вы измените Index, это может повлиять на многие страницы сайта. Начинайте с конкретных шаблонов (Front Page, Page, Single), а Index трогайте только в случае необходимости.
+    </div>
+
+    <h2>5.3 Как открыть и изучить шаблоны</h2>
+
+    <p>Давайте посмотрим на шаблоны вживую.</p>
+
+    <ol class="steps">
+        <li><strong>Откройте Редактор сайта:</strong> «Внешний вид → Редактор».</li>
+        <li><strong>В левой панели выберите «Шаблоны» (Templates).</strong></li>
+        <li><strong>Вы увидите список всех доступных шаблонов.</strong> Рядом с каждым отображается превью и количество страниц, к которым он применяется.</li>
+        <li><strong>Нажмите на любой шаблон</strong> — например, «Page». Откроется его структура на холсте.</li>
+        <li><strong>Изучите блоки:</strong> вы увидите шапку, содержимое, подвал.</li>
+        <li><strong>Откройте навигатор блоков</strong> (иконка «Структура» в верхней панели) — посмотрите дерево шаблона.</li>
+        <li><strong>Кликните на любой блок</strong> — в правой панели появятся его настройки.</li>
+        <li><strong>Посмотрите на список ниже:</strong> WordPress показывает, к каким страницам применяется этот шаблон.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Обязательно изучите все шаблоны вашей темы. Даже если вы не планируете их редактировать, вы должны знать, что где находится. Это поможет быстрее ориентироваться в дальнейшем.
+    </div>
+
+    <h2>5.4 Редактирование существующего шаблона</h2>
+
+    <p>Редактирование шаблона похоже на редактирование обычной страницы, но есть нюансы.</p>
+
+    <h3>Что можно менять в шаблоне</h3>
+    <ul>
+        <li><strong>Добавлять блоки</strong> — например, вывести дату публикации под заголовком записи.</li>
+        <li><strong>Удалять блоки</strong> — например, убрать блок комментариев из шаблона записи.</li>
+        <li><strong>Менять порядок блоков</strong> — переместить метаданные записи выше или ниже.</li>
+        <li><strong>Настраивать стили</strong> — цвета, шрифты, отступы для конкретного шаблона.</li>
+        <li><strong>Изменять структуру</strong> — добавить колонки, контейнеры, вложенные секции.</li>
+    </ul>
+
+    <h3>Пример: добавляем блок «Хлебные крошки» в шаблон Page</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте Редактор сайта → Шаблоны → Page.</strong></li>
+        <li><strong>Найдите блок «Заголовок записи» (Post Title)</strong> — он отображает заголовок страницы.</li>
+        <li><strong>Наведите курсор перед этим блоком</strong> — появится синяя линия-индикатор.</li>
+        <li><strong>Нажмите на «+»</strong> — откроется библиотека блоков.</li>
+        <li><strong>Введите в поиске «Breadcrumbs»</strong> или «Хлебные крошки».</li>
+        <li><strong>Если блок найден</strong> — вставьте его. Если нет (в стандартном WordPress его нет) — используйте плагин для хлебных крошек или пропустите этот шаг.</li>
+        <li><strong>Настройте отступы</strong> для нового блока через правую панель.</li>
+        <li><strong>Нажмите «Сохранить».</strong></li>
+        <li><strong>Проверьте любую страницу сайта</strong> — теперь над заголовком появились хлебные крошки.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> Ваше изменение применилось ко <strong>всем</strong> страницам, которые используют шаблон Page. Это главное отличие шаблонов от страниц: изменение шаблона влияет на все страницы, изменение страницы — только на неё.
+    </div>
+
+    <h2>5.5 Создание нового шаблона</h2>
+
+    <p>Иногда стандартных шаблонов недостаточно. Например, вам нужна особая структура для лендинга услуг, отличная от обычной страницы. В этом случае создаётся <strong>собственный шаблон</strong>.</p>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте Редактор сайта → Шаблоны.</strong></li>
+        <li><strong>Нажмите на «+» (Добавить новый шаблон)</strong> в верхней части списка.</li>
+        <li><strong>Выберите тип шаблона.</strong> Появится окно с вариантами:
+            <ul>
+                <li><strong>Стандартный шаблон (Standard)</strong> — для страниц, записей, архивов и т. д.</li>
+                <li><strong>Специфичный (Specific)</strong> — с привязкой к конкретной странице, категории, автору.</li>
+            </ul>
+        </li>
+        <li><strong>Выберите «Страница» (Page)</strong> как базовый тип.</li>
+        <li><strong>Введите название шаблона</strong> — например, «Лендинг услуг».</li>
+        <li><strong>Нажмите «Создать».</strong> Откроется пустой шаблон с базовой структурой.</li>
+        <li><strong>Добавьте нужные блоки:</strong> контейнеры, заголовки, изображения, кнопки.</li>
+        <li><strong>Настройте стили и отступы</strong> через правую панель.</li>
+        <li><strong>Нажмите «Сохранить».</strong> Шаблон появится в списке.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Важно понимать:</strong> Новый шаблон <strong>не применяется</strong> автоматически. Его нужно <strong>назначить</strong> конкретной странице или типу страниц. Как это сделать — читайте в следующем разделе.
+    </div>
+
+    <h2>5.6 Назначение шаблона странице</h2>
+
+    <p>Когда шаблон создан, его нужно привязать к странице. Это делается в редакторе самой страницы.</p>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Перейдите в «Страницы → Все страницы».</strong></li>
+        <li><strong>Откройте нужную страницу</strong> для редактирования.</li>
+        <li><strong>В правой панели найдите раздел «Шаблон» (Template).</strong></li>
+        <li><strong>В выпадающем списке выберите созданный вами шаблон</strong> — например, «Лендинг услуг».</li>
+        <li><strong>Нажмите «Обновить».</strong></li>
+        <li><strong>Откройте страницу на сайте</strong> — она теперь использует новый шаблон.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Создайте один шаблон-лендинг с полноценной структурой (Hero, преимущества, услуги, CTA). Затем создавайте страницы-лендинги и назначайте им этот шаблон. Каждая страница будет иметь свой уникальный контент, но одинаковую структуру. Это очень удобно для серийных проектов.
+    </div>
+
+    <h3>Назначение шаблона для целого типа страниц</h3>
+    <p>Если вы создали шаблон и хотите применить его ко <strong>всем</strong> страницам определённого типа (например, ко всем записям категории «Новости»), это делается через специфичные шаблоны:</p>
+
+    <ol class="steps">
+        <li><strong>Создайте новый шаблон</strong> в разделе «Шаблоны».</li>
+        <li><strong>При создании выберите «Специфичный» (Specific).</strong></li>
+        <li><strong>Укажите, к чему привязать:</strong> конкретная страница, категория, автор и т. д.</li>
+        <li><strong>Выберите нужный объект</strong> из списка.</li>
+        <li><strong>Настройте структуру шаблона.</strong></li>
+        <li><strong>Сохраните.</strong> WordPress автоматически применит этот шаблон ко всем страницам выбранного типа.</li>
+    </ol>
+
+    <h2>5.7 Практический пример: создаём шаблон для страницы «Услуги»</h2>
+
+    <p>Давайте создадим кастомный шаблон для страницы услуг, который будет отличаться от обычной страницы.</p>
+
+    <ol class="steps">
+        <li><strong>Откройте Редактор сайта → Шаблоны.</strong></li>
+        <li><strong>Нажмите «+».</strong></li>
+        <li><strong>Выберите тип «Страница».</strong></li>
+        <li><strong>Назовите шаблон «Страница услуг».</strong></li>
+        <li><strong>Нажмите «Создать».</strong></li>
+        <li><strong>Удалите стандартные блоки</strong> (если они есть).</li>
+        <li><strong>Добавьте контейнер</strong> для Hero-секции:
+            <ul>
+                <li>Заголовок H1: «Наши услуги».</li>
+                <li>Подзаголовок: краткое описание.</li>
+                <li>Кнопку «Связаться с нами».</li>
+            </ul>
+        </li>
+        <li><strong>Добавьте блок «Паттерн»</strong> с карточками услуг (если есть готовый) или создайте контейнер с тремя колонками вручную.</li>
+        <li><strong>В каждой колонке разместите:</strong> иконку, заголовок H3, текст, кнопку.</li>
+        <li><strong>Добавьте секцию с CTA</strong> — заголовок + кнопка.</li>
+        <li><strong>Настройте отступы и цвета</strong> через правую панель.</li>
+        <li><strong>Сохраните шаблон.</strong></li>
+        <li><strong>Перейдите в «Страницы»</strong> и создайте новую страницу «Услуги».</li>
+        <li><strong>В правой панели в разделе «Шаблон»</strong> выберите «Страница услуг».</li>
+        <li><strong>Опубликуйте страницу.</strong></li>
+        <li><strong>Проверьте результат:</strong> страница «Услуги» теперь использует ваш кастомный шаблон.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> Вы создали кастомный шаблон и применили его к конкретной странице. Этот шаблон можно использовать для любых других страниц — просто назначьте его в настройках.
+    </div>
+
+    <h2>5.8 Продвинутый приём: шаблон для лендинга без шапки и подвала</h2>
+
+    <p>Часто лендинги делают без стандартной шапки и подвала, чтобы посетитель не отвлекался. В FSE это делается легко.</p>
+
+    <ol class="steps">
+        <li><strong>Создайте новый шаблон</strong> в разделе «Шаблоны».</li>
+        <li><strong>Выберите тип «Страница».</strong></li>
+        <li><strong>Назовите «Лендинг минимальный».</strong></li>
+        <li><strong>Нажмите «Создать».</strong></li>
+        <li><strong>Удалите блоки «Header» и «Footer»</strong> из шаблона (используйте навигатор блоков для точного выделения).</li>
+        <li><strong>Оставьте только блок «Post Content»</strong> — контент страницы.</li>
+        <li><strong>Оберните Post Content в контейнер</strong> и задайте ему нужный фон.</li>
+        <li><strong>Добавьте блок «Мини-шапка»</strong> (если нужно) — с логотипом и кнопкой, но без меню.</li>
+        <li><strong>Сохраните шаблон.</strong></li>
+        <li><strong>Создайте страницу «Курс»</strong> и назначьте ей этот шаблон.</li>
+        <li><strong>Наполните страницу контентом</strong> через редактор страниц.</li>
+        <li><strong>Опубликуйте.</strong> Посетитель увидит чистый лендинг без отвлекающих элементов.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> На странице с таким шаблоном посетитель не сможет перейти в другие разделы сайта, если вы не добавите ссылки вручную. Убедитесь, что ключевые навигационные элементы (ссылка на главную, кнопка «Связаться») присутствуют в контенте.
+    </div>
+
+    <h2>5.9 Решение частых проблем с шаблонами</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Изменения в шаблоне не видны на сайте</td>
+            <td>Кэш браузера или сайта</td>
+            <td>Очистите кэш браузера (Ctrl+F5) и кэш-плагина</td>
+        </tr>
+        <tr>
+            <td>Шаблон не применяется к странице</td>
+            <td>Не назначен в настройках страницы</td>
+            <td>Откройте страницу → правая панель → «Шаблон» → выберите нужный</td>
+        </tr>
+        <tr>
+            <td>Созданный шаблон не отображается в списке</td>
+            <td>Шаблон не сохранён</td>
+            <td>Проверьте, нажали ли вы «Сохранить» в Редакторе сайта</td>
+        </tr>
+        <tr>
+            <td>Кастомный шаблон переопределяет всё</td>
+            <td>Он назначен слишком широко</td>
+            <td>Проверьте назначение — возможно, вы применили его ко всем страницам</td>
+        </tr>
+        <tr>
+            <td>Изменения в шаблоне Page затронули все страницы</td>
+            <td>Так и должно быть — шаблон общий</td>
+            <td>Если нужно изменить одну страницу — редактируйте её контент, а не шаблон</td>
+        </tr>
+        <tr>
+            <td>Хлебные крошки или другие блоки не отображаются</td>
+            <td>Блок требует плагина или темы</td>
+            <td>Установите соответствующий плагин или используйте другой блок</td>
+        </tr>
+        <tr>
+            <td>Не могу найти кнопку «Сохранить»</td>
+            <td>Нет несохранённых изменений</td>
+            <td>Внесите любое изменение — кнопка появится</td>
+        </tr>
+        <tr>
+            <td>Структура шаблона «сломалась» после правок</td>
+            <td>Случайно удалён или перемещён важный блок</td>
+            <td>Используйте «Отменить» (Ctrl+Z) или восстановите из резервной копии</td>
+        </tr>
+    </table>
+
+    <h2>5.10 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Изучение существующих шаблонов</strong><br>
+        1. Откройте «Внешний вид → Редактор → Шаблоны».<br>
+        2. Изучите шаблон «Page» — какие блоки в нём есть.<br>
+        3. Изучите шаблон «Single» — чем он отличается от Page.<br>
+        4. Изучите шаблон «404» — что показывает эта страница.<br>
+        5. Запишите, какие шаблоны использует ваша тема.<br><br>
+        <strong>Часть 2: Редактирование шаблона</strong><br>
+        6. Откройте шаблон «Page».<br>
+        7. Добавьте блок «Разделитель» между заголовком и контентом.<br>
+        8. Измените цвет фона контента на светло-серый.<br>
+        9. Сохраните изменения.<br>
+        10. Откройте любую страницу сайта — проверьте, что изменения применились.<br><br>
+        <strong>Часть 3: Создание нового шаблона</strong><br>
+        11. Нажмите «+» в разделе «Шаблоны».<br>
+        12. Выберите тип «Страница».<br>
+        13. Назовите шаблон «Тестовый лендинг».<br>
+        14. Удалите шапку и подвал (оставьте только Post Content).<br>
+        15. Добавьте перед Post Content контейнер с заголовком H1 «Добро пожаловать».<br>
+        16. Сохраните шаблон.<br><br>
+        <strong>Часть 4: Применение шаблона</strong><br>
+        17. Создайте новую страницу «Тест-лендинг».<br>
+        18. В правой панели выберите шаблон «Тестовый лендинг».<br>
+        19. Опубликуйте страницу.<br>
+        20. Откройте её на сайте — убедитесь, что шапка и подвал отсутствуют.<br>
+        21. Вернитесь в редактор и назначьте странице стандартный шаблон «Page».<br>
+        22. Проверьте, что шапка и подвал вернулись.<br><br>
+        <strong>Часть 5: Финальная проверка</strong><br>
+        23. Убедитесь, что все изменения сохранены.<br>
+        24. Проверьте сайт на компьютере и телефоне.<br>
+        25. Если что-то не понравилось — вернитесь и исправьте.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Иерархию шаблонов WordPress, типы шаблонов в блочной теме, редактирование существующих шаблонов, создание собственных шаблонов, назначение шаблона странице, создание лендинга без шапки и подвала, решение типичных проблем с шаблонами.
+    </div>
+
+    <h2>5.11 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Чем шаблон отличается от страницы?</strong> Страница — это контент (текст, изображения). Шаблон — это структура, в которую этот контент вставляется. Один шаблон может использоваться для множества страниц.</li>
+        <li><strong>Что будет, если удалить шаблон?</strong> Страницы, которые его использовали, переключатся на шаблон по умолчанию (обычно Index). Контент при этом не пострадает.</li>
+        <li><strong>Можно ли восстановить удалённый шаблон?</strong> Если шаблон был из темы — да, при переустановке темы. Если вы создали его сами — только из резервной копии.</li>
+        <li><strong>Как узнать, какой шаблон применяется к странице?</strong> Откройте страницу в редакторе — в правой панели в разделе «Шаблон» будет указан текущий.</li>
+        <li><strong>Можно ли изменить шаблон для всех записей одной категории?</strong> Да, через специфичный шаблон с привязкой к категории.</li>
+        <li><strong>Что такое «Blank» шаблон?</strong> Это пустой шаблон без шапки, подвала и контента. Используется как основа для полной кастомизации.</li>
+        <li><strong>Сколько шаблонов можно создать?</strong> Неограниченно. Но для производительности рекомендуется не создавать шаблоны «на всякий случай» — только те, что реально используются.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>части шаблона (Template Parts)</strong> — шапку, подвал и боковую панель. Вы узнаете, как настраивать глобальные элементы сайта, которые отображаются на всех страницах. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter6.html" class="button">📖 Перейти к шестой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

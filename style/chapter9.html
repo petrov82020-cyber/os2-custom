@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 9: Глобальные стили — цвета, шрифты, макет</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .feature-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .feature-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .feature-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .color-swatch {
+            border-radius: 10px;
+            padding: 18px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .color-swatch.light {
+            color: #1a1e24;
+        }
+        .demo-box {
+            background: #f9fafb;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .demo-btn {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95em;
+            box-shadow: 0 4px 12px rgba(9,105,218,0.3);
+        }
+        .demo-btn.shadow {
+            box-shadow: 0 8px 25px rgba(9,105,218,0.45);
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .style-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .style-compare-card {
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .style-compare-card h4 {
+            margin-bottom: 10px;
+        }
+        .style-compare-card p {
+            font-size: 0.9em;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .style-compare { grid-template-columns: 1fr; }
+            .palette { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 9: Глобальные стили — цвета, шрифты, макет</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~30 минут | 🎯 Цель: освоить глобальные стили WordPress и научиться управлять внешним видом всего сайта из единого центра</div>
+
+    <p>Мы разобрали шаблоны, части шаблона, паттерны и создание собственных заготовок. Теперь пришло время поговорить о том, что объединяет всё это в единую дизайн-систему — о <strong>глобальных стилях (Global Styles)</strong>. Это центральный пульт управления внешним видом вашего сайта. Здесь настраиваются цвета, шрифты, отступы, границы и тени — и всё это применяется мгновенно ко всему сайту.</p>
+
+    <div class="info-box">
+        <strong>💡 Что такое глобальные стили?</strong><br>
+        Глобальные стили (Global Styles) — это интерфейс в WordPress, который позволяет управлять визуальными параметрами всего сайта из одного места. Они появились в WordPress 5.9 как часть Full Site Editing и заменили «Настройщик» (Customizer) для блочных тем. Вместо того чтобы менять цвет каждой кнопки вручную, вы меняете один цвет в глобальных стилях — и все кнопки на сайте обновляются автоматически.
+    </div>
+
+    <p>Глобальные стили — это не просто «настройки темы». Это полноценная <strong>дизайн-система</strong>, аналогичная тем, что используют профессиональные дизайнеры в Figma или Sketch. Вы определяете правила один раз — и они применяются ко всему сайту. Это обеспечивает единообразие, экономит время и позволяет мгновенно менять дизайн.</p>
+
+    <h2>9.1 Как открыть глобальные стили</h2>
+
+    <p>Доступ к глобальным стилям осуществляется через Редактор сайта. Есть два способа.</p>
+
+    <h3>Способ 1: Через левую панель</h3>
+    <ol class="steps">
+        <li><strong>Откройте Редактор сайта:</strong> «Внешний вид → Редактор».</li>
+        <li><strong>В левой панели выберите раздел «Стили» (Styles).</strong></li>
+        <li><strong>Откроется панель глобальных стилей</strong> со списком категорий: Цвета, Типографика, Макет, Границы, Тени.</li>
+    </ol>
+
+    <h3>Способ 2: Через верхнюю панель</h3>
+    <ol class="steps">
+        <li><strong>Откройте Редактор сайта.</strong></li>
+        <li><strong>Нажмите на иконку «Стили»</strong> (полукруг) в правом верхнем углу.</li>
+        <li><strong>Откроется та же панель глобальных стилей.</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Горячая клавиша:</strong> <code>Ctrl + K</code> (или <code>Cmd + K</code>) открывает командную палитру. Начните вводить «Styles» — и вы быстро попадёте в нужный раздел.
+    </div>
+
+    <h2>9.2 Обзор панели глобальных стилей</h2>
+
+    <p>Панель глобальных стилей содержит несколько ключевых разделов.</p>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="icon">🎨</div>
+            <strong>Цвета (Colors)</strong>
+            <span>Управление палитрой, фонами, текстом, ссылками, кнопками. Включает настройку градиентов.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔤</div>
+            <strong>Типографика (Typography)</strong>
+            <span>Настройка шрифтов, размеров, весов, межстрочных интервалов для текста, заголовков, ссылок, кнопок.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📐</div>
+            <strong>Макет (Layout)</strong>
+            <span>Ширина контента, ширина широких блоков, отступы для всего сайта.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔲</div>
+            <strong>Границы (Borders)</strong>
+            <span>Толщина, цвет, стиль и скругление границ для блоков и элементов.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🌑</div>
+            <strong>Тени (Shadows)</strong>
+            <span>Настройка теней для кнопок, изображений и других элементов.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🧩</div>
+            <strong>Стили блоков (Blocks)</strong>
+            <span>Настройка внешнего вида каждого типа блоков: кнопки, изображения, цитаты, заголовки.</span>
+        </div>
+    </div>
+
+    <p>Также в панели есть раздел <strong>«Обзор стилей» (Browse Styles)</strong> — библиотека готовых стилевых вариаций, которые можно применить одним кликом.</p>
+
+    <h2>9.3 Работа с цветами</h2>
+
+    <p>Цвета — самый мощный инструмент глобальных стилей. Здесь вы управляете всей цветовой системой сайта.</p>
+
+    <h3>Палитра (Palette)</h3>
+    <p>Палитра — это набор именованных цветов, которые используются во всех блоках и паттернах. Вместо жёстко заданных цветов каждый элемент ссылается на слот палитры. Это означает, что при изменении цвета в палитре он автоматически обновляется везде.</p>
+
+    <p>Типичная палитра блочной темы включает:</p>
+
+    <div class="palette">
+        <div class="color-swatch" style="background: #0969da;">Primary<br>#0969da</div>
+        <div class="color-swatch" style="background: #0a2540;">Secondary<br>#0a2540</div>
+        <div class="color-swatch" style="background: #f97316;">Accent<br>#f97316</div>
+        <div class="color-swatch light" style="background: #f8fafc;">Base<br>#f8fafc</div>
+        <div class="color-swatch light" style="background: #e2e8f0;">Contrast<br>#e2e8f0</div>
+        <div class="color-swatch light" style="background: #ffffff;">White<br>#ffffff</div>
+    </div>
+
+    <h3>Пошаговая настройка палитры</h3>
+    <ol class="steps">
+        <li><strong>Откройте «Стили → Цвета → Палитра» (Palette).</strong></li>
+        <li><strong>Вы увидите список цветов с названиями.</strong> Кликните на любой цветовой кружок.</li>
+        <li><strong>Откроется цветовой пикер.</strong> Выберите новый оттенок или введите HEX-код.</li>
+        <li><strong>Повторите для всех ключевых цветов:</strong> Primary, Secondary, Accent, Base, Contrast.</li>
+        <li><strong>Проверьте, как изменился сайт.</strong> Все элементы, использующие этот цвет, обновятся мгновенно.</li>
+        <li><strong>Нажмите «Сохранить».</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Используйте сервис Coolors.co для подбора гармоничной палитры. Сгенерируйте схему, затем перенесите HEX-коды в глобальные стили WordPress. Это займёт 5 минут, а результат будет профессиональным.
+    </div>
+
+    <h3>Настройка цветов по элементам</h3>
+    <p>Помимо палитры, можно настроить конкретные цвета для элементов:</p>
+    <ul>
+        <li><strong>Текст (Text):</strong> основной цвет текста на сайте.</li>
+        <li><strong>Фон (Background):</strong> цвет фона страниц.</li>
+        <li><strong>Ссылки (Links):</strong> цвет гиперссылок.</li>
+        <li><strong>Заголовки (Headings):</strong> цвет всех заголовков H1–H6.</li>
+        <li><strong>Кнопки (Buttons):</strong> фон и текст кнопок.</li>
+    </ul>
+
+    <p>Все эти настройки находятся в разделе <strong>«Стили → Цвета»</strong>. Кликните на нужный элемент и выберите цвет из палитры или задайте свой.</p>
+
+    <h3>Градиенты (Gradients)</h3>
+    <p>Помимо сплошных цветов, глобальные стили позволяют управлять градиентами. В разделе <strong>«Цвета → Градиенты»</strong> вы можете:</p>
+    <ul>
+        <li>Просматривать встроенные градиенты темы.</li>
+        <li>Создавать собственные градиенты (линейные и радиальные).</li>
+        <li>Задавать углы и расположение цветовых точек.</li>
+        <li>Использовать градиенты как фон для блоков и кнопок.</li>
+    </ul>
+
+    <h2>9.4 Типографика</h2>
+
+    <p>Типографика — вторая по важности категория глобальных стилей. Здесь настраиваются шрифты для всех текстовых элементов сайта.</p>
+
+    <h3>Шрифты (Fonts)</h3>
+    <p>В разделе <strong>«Стили → Типографика»</strong> вы можете:</p>
+    <ul>
+        <li><strong>Выбрать шрифт для текста (Body):</strong> основной шрифт сайта.</li>
+        <li><strong>Выбрать шрифт для заголовков (Headings):</strong> может отличаться от основного.</li>
+        <li><strong>Настроить шрифт для ссылок (Links) и кнопок (Buttons).</strong></li>
+        <li><strong>Задать вес (Weight):</strong> от 100 (тонкий) до 900 (очень жирный).</li>
+        <li><strong>Настроить межстрочный интервал (Line Height):</strong> 1.5–1.7 для текста, 1.1–1.3 для заголовков.</li>
+        <li><strong>Задать межбуквенное расстояние (Letter Spacing).</strong></li>
+        <li><strong>Включить курсив или подчёркивание.</strong></li>
+    </ul>
+
+    <h3>Подключение Google Fonts</h3>
+    <ol class="steps">
+        <li><strong>Откройте «Стили → Типографика → Текст».</strong></li>
+        <li><strong>В поле «Шрифт» нажмите на выпадающий список.</strong></li>
+        <li><strong>Выберите «Установить шрифты» (Install Fonts).</strong></li>
+        <li><strong>Найдите нужный шрифт в библиотеке Google Fonts.</strong></li>
+        <li><strong>Установите его.</strong></li>
+        <li><strong>Выберите установленный шрифт для текста, заголовков и других элементов.</strong></li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно для кириллицы:</strong> Не все шрифты Google Fonts поддерживают русские буквы. Перед установкой проверьте, что шрифт содержит диапазон <strong>Cyrillic</strong>. Хорошие варианты: Open Sans, Roboto, Inter, Montserrat, PT Sans, Manrope.
+    </div>
+
+    <h3>Размеры шрифтов (Font Sizes)</h3>
+    <p>В глобальных стилях можно задать предустановленные размеры шрифтов, которые затем используются в блоках. Типичный набор:</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Название</th>
+            <th>Размер</th>
+            <th>Где используется</th>
+        </tr>
+        <tr>
+            <td>Small (Малый)</td>
+            <td>14px</td>
+            <td>Подписи, сноски, мелкий текст</td>
+        </tr>
+        <tr>
+            <td>Medium (Средний)</td>
+            <td>16–18px</td>
+            <td>Основной текст</td>
+        </tr>
+        <tr>
+            <td>Large (Большой)</td>
+            <td>20–24px</td>
+            <td>Подзаголовки, лиды</td>
+        </tr>
+        <tr>
+            <td>Extra Large</td>
+            <td>28–36px</td>
+            <td>Заголовки H2–H3</td>
+        </tr>
+        <tr>
+            <td>XXL</td>
+            <td>40–56px</td>
+            <td>Заголовки H1</td>
+        </tr>
+    </table>
+
+    <h3>Fluid Typography (Адаптивная типографика)</h3>
+    <p>Современные блочные темы поддерживают <strong>Fluid Typography</strong> — размеры шрифтов автоматически адаптируются под ширину экрана. Это значит, что H1 будет 56px на большом мониторе и 32px на телефоне — без ручной настройки для каждого устройства.</p>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Установите минимальный и максимальный размеры для каждого уровня заголовков. WordPress автоматически рассчитает промежуточные значения. Это избавляет от необходимости настраивать адаптивность вручную.
+    </div>
+
+    <h2>9.5 Макет (Layout)</h2>
+
+    <p>Раздел <strong>«Стили → Макет»</strong> отвечает за ширину контента и отступы на всём сайте.</p>
+
+    <h3>Ширина контента (Content Width)</h3>
+    <p>Определяет максимальную ширину текста и изображений при выравнивании «по умолчанию». Оптимальное значение — 650–800px для читаемости.</p>
+
+    <h3>Ширина широких блоков (Wide Width)</h3>
+    <p>Определяет ширину блоков с выравниванием «на всю ширину». Обычно 1100–1400px. Используется для изображений, галерей, таблиц.</p>
+
+    <h3>Отступы (Padding)</h3>
+    <p>Глобальные отступы для всего сайта. Обычно настраиваются следующим образом:</p>
+    <ul>
+        <li><strong>Слева и справа:</strong> 20–40px (чтобы контент не прилипал к краям экрана).</li>
+        <li><strong>Сверху и снизу:</strong> 0 или небольшое значение (отступы задаются в блоках).</li>
+    </ul>
+
+    <h3>Промежутки (Block Gap)</h3>
+    <p>Расстояние между блоками по умолчанию. Обычно 20–30px. Это значение используется, если у блока не задано собственное значение отступа.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Если отступы не работают:</strong> В некоторых темах padding может не применяться из-за конфликта стилей. Проверьте, не переопределён ли он в настройках конкретных блоков. В крайнем случае используйте дополнительный CSS (см. раздел 9.9).
+    </div>
+
+    <h2>9.6 Границы и тени</h2>
+
+    <p>Разделы <strong>«Границы» (Borders)</strong> и <strong>«Тени» (Shadows)</strong> позволяют настроить внешний вид элементов на глобальном уровне.</p>
+
+    <h3>Границы (Borders)</h3>
+    <p>В разделе «Стили → Границы» вы можете:</p>
+    <ul>
+        <li><strong>Задать толщину границы</strong> (в пикселях).</li>
+        <li><strong>Выбрать цвет границы</strong> из палитры или задать свой.</li>
+        <li><strong>Выбрать стиль границы:</strong> сплошная, пунктирная, точечная.</li>
+        <li><strong>Настроить скругление углов (Border Radius):</strong> от 0 (острые углы) до 100 (полное скругление).</li>
+        <li><strong>Разъединить стороны (Unlink Sides):</strong> задать разные значения для каждой стороны блока.</li>
+    </ul>
+
+    <h3>Тени (Shadows)</h3>
+    <p>В разделе «Стили → Тени» настраиваются тени для элементов, поддерживающих эту функцию (кнопки, изображения). Параметры:</p>
+    <ul>
+        <li><strong>Горизонтальное смещение (X):</strong> сдвиг тени вправо или влево.</li>
+        <li><strong>Вертикальное смещение (Y):</strong> сдвиг тени вверх или вниз.</li>
+        <li><strong>Размытие (Blur):</strong> мягкость тени.</li>
+        <li><strong>Растяжение (Spread):</strong> увеличение или уменьшение размера тени.</li>
+        <li><strong>Цвет:</strong> обычно чёрный с прозрачностью 10–30%.</li>
+    </ul>
+
+    <div class="demo-box">
+        <p style="margin-bottom: 15px; color: #5b6e8c;">Пример кнопки с глобальной тенью:</p>
+        <div class="demo-btn">Кнопка с тенью</div>
+        <p style="margin-top: 10px; font-size: 0.85em; color: #94a3b8;">Тень задана в глобальных стилях и применяется ко всем кнопкам</p>
+    </div>
+
+    <h2>9.7 Стили блоков (Blocks)</h2>
+
+    <p>Раздел <strong>«Стили → Блоки»</strong> позволяет настроить внешний вид каждого типа блоков на глобальном уровне. Это невероятно мощный инструмент: вы можете задать стиль для всех кнопок сразу, для всех цитат, для всех заголовков H2 — и это применится ко всему сайту.</p>
+
+    <h3>Как настроить стиль блока глобально</h3>
+    <ol class="steps">
+        <li><strong>Откройте «Стили → Блоки».</strong></li>
+        <li><strong>Вы увидите список всех типов блоков:</strong> Кнопка, Изображение, Цитата, Заголовок, Список, Абзац и так далее.</li>
+        <li><strong>Кликните на нужный блок</strong> — например, «Кнопка».</li>
+        <li><strong>Настройте параметры:</strong> фон, цвет текста, границы, тень, типографику, отступы.</li>
+        <li><strong>Нажмите «Сохранить».</strong> Все кнопки на сайте обновятся.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Настройте стиль для блока «Цитата» — добавьте фоновый цвет, левую границу и отступы. Теперь все цитаты на сайте будут выглядеть стильно и единообразно. Это экономит время при создании контента.
+    </div>
+
+    <h3>Стилевые вариации блоков (Block Style Variations)</h3>
+    <p>Помимо глобального стиля, у некоторых блоков есть <strong>вариации</strong> — предустановленные наборы стилей, которые можно применить к отдельному блоку. Например, у кнопки могут быть вариации «Fill» (заполненная) и «Outline» (контурная).</p>
+
+    <p>Чтобы применить вариацию к конкретному блоку:</p>
+    <ol class="steps">
+        <li><strong>Выделите блок</strong> на странице.</li>
+        <li><strong>В правой панели откройте вкладку «Стили».</strong></li>
+        <li><strong>Прокрутите до раздела «Стили» (Styles).</strong></li>
+        <li><strong>Выберите одну из доступных вариаций.</strong></li>
+    </ol>
+
+    <div class="style-compare">
+        <div class="style-compare-card" style="background: #0969da; color: white;">
+            <h4>Fill (Заполненная)</h4>
+            <p>Сплошной фон, белый текст. Для главных кнопок.</p>
+        </div>
+        <div class="style-compare-card" style="background: white; border: 2px solid #0969da; color: #0969da;">
+            <h4>Outline (Контурная)</h4>
+            <p>Прозрачный фон, цветная граница. Для второстепенных кнопок.</p>
+        </div>
+    </div>
+
+    <h2>9.8 Стилевые вариации (Style Variations)</h2>
+
+    <p><strong>Стилевые вариации</strong> — это готовые наборы глобальных стилей: палитра, шрифты, макет. Они позволяют примерить разные дизайны одним кликом.</p>
+
+    <h3>Как применить стилевую вариацию</h3>
+    <ol class="steps">
+        <li><strong>Откройте «Стили» в Редакторе сайта.</strong></li>
+        <li><strong>Нажмите «Обзор стилей» (Browse Styles).</strong></li>
+        <li><strong>Откроется библиотека вариаций вашей темы.</strong> Twenty Twenty-Five предлагает 9 вариаций.</li>
+        <li><strong>Кликните на вариацию</strong> — сайт мгновенно изменится.</li>
+        <li><strong>Если нравится — нажмите «Сохранить».</strong></li>
+        <li><strong>Если нет — примените другую или вернитесь к исходной.</strong></li>
+    </ol>
+
+    <h3>Создание собственной стилевой вариации</h3>
+    <p>Вы можете создать собственную стилевую вариацию на основе текущих настроек. Для этого потребуется плагин <strong>Create Block Theme</strong>.</p>
+
+    <ol class="steps">
+        <li><strong>Установите и активируйте плагин Create Block Theme.</strong></li>
+        <li><strong>Настройте глобальные стили</strong> так, как вам нравится: цвета, шрифты, макет.</li>
+        <li><strong>Откройте Редактор сайта.</strong></li>
+        <li><strong>Нажмите на иконку гаечного ключа (Wrench)</strong> в правом верхнем углу.</li>
+        <li><strong>Выберите «Создать вариацию темы» (Create Theme Variation).</strong></li>
+        <li><strong>Введите название вариации.</strong></li>
+        <li><strong>Убедитесь, что стоит галочка «Сохранить шрифты».</strong></li>
+        <li><strong>Нажмите «Создать».</strong> Вариация сохранится в тему и станет доступна в «Обзоре стилей».</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Зачем это нужно?</strong> Создав несколько стилевых вариаций, вы можете быстро переключаться между дизайнами для разных целей: «Светлая тема», «Тёмная тема», «Праздничная тема». Это идеально для сезонных акций или A/B-тестирования.
+    </div>
+
+    <h2>9.9 Дополнительный CSS</h2>
+
+    <p>Иногда глобальных стилей недостаточно, и нужно добавить собственный CSS. В WordPress есть раздел <strong>«Дополнительный CSS» (Additional CSS)</strong>.</p>
+
+    <h3>Как открыть дополнительный CSS</h3>
+    <ol class="steps">
+        <li><strong>Откройте «Стили» в Редакторе сайта.</strong></li>
+        <li><strong>Нажмите на три точки (⋮) рядом с «Стили».</strong></li>
+        <li><strong>Выберите «Дополнительный CSS» (Additional CSS).</strong></li>
+        <li><strong>Введите ваш CSS-код.</strong></li>
+        <li><strong>Нажмите «Сохранить».</strong></li>
+    </ol>
+
+    <p>Альтернативный способ: перейдите по адресу <code>ваш_сайт/wp-admin/customize.php</code> — откроется старый интерфейс Настройщика с полем для CSS.</p>
+
+    <h3>Примеры полезного CSS</h3>
+    <pre>/* Скрыть заголовок на всех страницах */
+.page-title {
+    display: none;
+}
+
+/* Убрать горизонтальную прокрутку на мобильных */
+body {
+    overflow-x: hidden;
+}
+
+/* Стилизовать выделение текста */
+::selection {
+    background: #0969da;
+    color: white;
+}</pre>
+
+    <div class="warning-box">
+        <strong>⚠️ Осторожно с CSS!</strong> Дополнительный CSS применяется ко всему сайту. Если вы не уверены в селекторе, сначала проверьте его в инструментах разработчика браузера (F12). Ошибка в CSS может «сломать» внешний вид сайта.
+    </div>
+
+    <h2>9.10 Практические примеры: решаем актуальные задачи</h2>
+
+    <h3>Пример 1: Ребрендинг сайта за 5 минут</h3>
+    <p><strong>Задача:</strong> Компания сменила фирменный цвет с синего на зелёный. Нужно обновить весь сайт.</p>
+    <ol class="steps">
+        <li><strong>Откройте «Стили → Цвета → Палитра».</strong></li>
+        <li><strong>Найдите слот «Primary»</strong> (синий цвет #0969da).</li>
+        <li><strong>Замените его на новый зелёный цвет</strong> (например, #16a34a).</li>
+        <li><strong>Нажмите «Сохранить».</strong></li>
+        <li><strong>Все кнопки, ссылки и акценты на сайте автоматически станут зелёными.</strong></li>
+    </ol>
+    <div class="info-box">
+        <strong>💡 Результат:</strong> Вместо обхода сотни страниц вы изменили один цвет. Это и есть сила глобальных стилей.
+    </div>
+
+    <h3>Пример 2: Настройка типографики под бренд</h3>
+    <p><strong>Задача:</strong> Установить фирменные шрифты: Montserrat для заголовков, Open Sans для текста.</p>
+    <ol class="steps">
+        <li><strong>Откройте «Стили → Типографика».</strong></li>
+        <li><strong>Для заголовков выберите Montserrat.</strong></li>
+        <li><strong>Для текста выберите Open Sans.</strong></li>
+        <li><strong>Установите размеры:</strong> H1 — 48px, H2 — 36px, H3 — 28px, текст — 17px.</li>
+        <li><strong>Задайте межстрочный интервал:</strong> 1.6 для текста, 1.2 для заголовков.</li>
+        <li><strong>Нажмите «Сохранить».</strong></li>
+    </ol>
+
+    <h3>Пример 3: Единые кнопки для всего сайта</h3>
+    <p><strong>Задача:</strong> Все кнопки должны иметь скругление 30px, синий фон, тень и эффект при наведении.</p>
+    <ol class="steps">
+        <li><strong>Откройте «Стили → Блоки → Кнопка».</strong></li>
+        <li><strong>Настройте фон:</strong> #0969da.</li>
+        <li><strong>Настройте текст:</strong> белый, размер 16px, вес 600.</li>
+        <li><strong>Настройте границы:</strong> скругление 30px.</li>
+        <li><strong>Настройте тень:</strong> 0 4px 12px rgba(9,105,218,0.3).</li>
+        <li><strong>Настройте состояние «При наведении» (Hover):</strong> фон #0550ae.</li>
+        <li><strong>Нажмите «Сохранить».</strong> Все кнопки на сайте обновятся.</li>
+    </ol>
+
+    <h3>Пример 4: Тёмная тема для сайта</h3>
+    <p><strong>Задача:</strong> Создать тёмную версию сайта для вечернего чтения.</p>
+    <ol class="steps">
+        <li><strong>Примените стилевую вариацию</strong> с тёмным фоном (если есть в теме).</li>
+        <li><strong>Или настройте вручную:</strong> «Стили → Цвета → Фон» → выберите тёмно-серый (#1a1e24).</li>
+        <li><strong>Настройте цвет текста:</strong> светло-серый (#e2e8f0).</li>
+        <li><strong>Настройте цвет ссылок:</strong> голубой (#60a5fa).</li>
+        <li><strong>Сохраните как стилевую вариацию</strong> через Create Block Theme.</li>
+    </ol>
+
+    <h2>9.11 Решение частых проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Изменения в глобальных стилях не видны</td>
+            <td>Кэш браузера или сайта</td>
+            <td>Очистите кэш браузера (Ctrl+F5) и кэш-плагина</td>
+        </tr>
+        <tr>
+            <td>Цвета не совпадают с палитрой</td>
+            <td>Некоторые блоки используют «жёсткие» цвета, а не палитру</td>
+            <td>Откройте блок и замените цвет на цвет из палитры</td>
+        </tr>
+        <tr>
+            <td>Шрифт не отображается</td>
+            <td>Шрифт не поддерживает кириллицу</td>
+            <td>Выберите шрифт с поддержкой Cyrillic</td>
+        </tr>
+        <tr>
+            <td>Отступы не применяются</td>
+            <td>Конфликт с настройками конкретных блоков</td>
+            <td>Проверьте отступы в настройках блока, используйте CSS при необходимости</td>
+        </tr>
+        <tr>
+            <td>Стилевая вариация не сохраняется</td>
+            <td>Не установлен плагин Create Block Theme</td>
+            <td>Установите и активируйте плагин</td>
+        </tr>
+        <tr>
+            <td>После смены вариации «слетели» настройки</td>
+            <td>Вариация переопределила все стили</td>
+            <td>Настройте стили заново или используйте историю изменений (иконка часов)</td>
+        </tr>
+        <tr>
+            <td>Дополнительный CSS не применяется</td>
+            <td>Специфичность селектора ниже, чем у WordPress</td>
+            <td>Используйте более специфичные селекторы или <code>!important</code></td>
+        </tr>
+        <tr>
+            <td>Глобальные стили «не работают» после обновления WordPress</td>
+            <td>Изменения в API стилей</td>
+            <td>Обновите тему, проверьте совместимость, обратитесь в поддержку</td>
+        </tr>
+    </table>
+
+    <h2>9.12 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Настройка цветов</strong><br>
+        1. Откройте «Стили → Цвета → Палитра».<br>
+        2. Измените Primary на ваш любимый цвет.<br>
+        3. Измените Accent на контрастный цвет.<br>
+        4. Проверьте, как изменился сайт.<br>
+        5. Сохраните изменения.<br><br>
+        <strong>Часть 2: Типографика</strong><br>
+        6. Откройте «Стили → Типографика».<br>
+        7. Установите шрифт Montserrat для заголовков.<br>
+        8. Установите шрифт Open Sans для текста.<br>
+        9. Задайте размеры: H1 — 48px, H2 — 36px, текст — 17px.<br>
+        10. Установите межстрочный интервал 1.6 для текста.<br>
+        11. Проверьте, что русские буквы отображаются корректно.<br><br>
+        <strong>Часть 3: Макет</strong><br>
+        12. Откройте «Стили → Макет».<br>
+        13. Установите ширину контента 700px.<br>
+        14. Установите ширину широких блоков 1200px.<br>
+        15. Установите боковые отступы 30px.<br>
+        16. Сохраните.<br><br>
+        <strong>Часть 4: Стили блоков</strong><br>
+        17. Откройте «Стили → Блоки → Кнопка».<br>
+        18. Настройте фон #0969da, скругление 30px, тень.<br>
+        19. Настройте состояние «При наведении»: фон #0550ae.<br>
+        20. Сохраните.<br>
+        21. Проверьте любую кнопку на сайте.<br><br>
+        <strong>Часть 5: Стилевая вариация</strong><br>
+        22. Установите плагин Create Block Theme.<br>
+        23. Настройте стили так, как вам нравится.<br>
+        24. Создайте стилевую вариацию «Мой стиль».<br>
+        25. Проверьте, что она появилась в «Обзоре стилей».<br>
+        26. Примените её к сайту.<br><br>
+        <strong>Часть 6: Дополнительный CSS</strong><br>
+        27. Откройте «Стили → Дополнительный CSS».<br>
+        28. Добавьте код: <code>::selection { background: #0969da; color: white; }</code><br>
+        29. Сохраните.<br>
+        30. Выделите текст на сайте — он должен быть синим.<br><br>
+        <strong>Часть 7: Финальная проверка</strong><br>
+        31. Проверьте сайт на компьютере и телефоне.<br>
+        32. Убедитесь, что все стили применились корректно.<br>
+        33. Проверьте контраст текста и фона.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Работу с глобальными стилями WordPress: цвета и палитру, типографику и Google Fonts, макет и отступы, границы и тени, стили блоков, стилевые вариации, создание собственных вариаций, дополнительный CSS. Теперь вы можете управлять внешним видом всего сайта из единого центра.
+    </div>
+
+    <h2>9.13 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Чем глобальные стили отличаются от Настройщика?</strong> Настройщик (Customizer) использовался в классических темах. Глобальные стили — это новый инструмент для блочных тем. Они несовместимы: если у вас блочная тема, используйте глобальные стили.</li>
+        <li><strong>Где хранятся глобальные стили?</strong> В базе данных WordPress. Также они могут быть экспортированы в файл <code>theme.json</code> при использовании плагина Create Block Theme.</li>
+        <li><strong>Можно ли отменить изменения?</strong> Да, нажмите на иконку часов в панели «Стили» — откроется история изменений.</li>
+        <li><strong>Что такое Fluid Typography?</strong> Это адаптивная типографика: размеры шрифтов автоматически масштабируются под ширину экрана. Включается в настройках типографики.</li>
+        <li><strong>Можно ли использовать глобальные стили с классической темой?</strong> Нет, глобальные стили доступны только для блочных тем (FSE).</li>
+        <li><strong>Как перенести глобальные стили на другой сайт?</strong> Через экспорт/импорт Kit (глава 10) или через файл <code>theme.json</code>.</li>
+        <li><strong>Что делать, если стили «слетели» после обновления?</strong> Проверьте историю изменений, восстановите предыдущую версию. Если не помогает — обратитесь в поддержку темы.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей, заключительной главе мы подведём итоги курса: разберём, что вы освоили, как публиковать сайт, какие есть ресурсы для дальнейшего обучения и как поддерживать сайт в хорошем состоянии. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter10.html" class="button">📖 Перейти к десятой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

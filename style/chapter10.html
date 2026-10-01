@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 10: Публикация, экспорт и лучшие практики</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .feature-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .feature-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .feature-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .chapter-recap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .recap-item {
+            background: #eef2ff;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.92em;
+        }
+        .recap-item strong {
+            color: #0969da;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .resource-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .resource-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .resource-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .resources-grid { grid-template-columns: 1fr; }
+            .chapter-recap { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 10: Публикация, экспорт и лучшие практики</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~30 минут | 🎯 Цель: подготовить сайт к публикации, освоить базовое SEO и производительность, получить ресурсы для дальнейшего роста</div>
+
+    <div class="success-box">
+        <strong>🎉 Поздравляем!</strong> Вы прошли весь курс по стилям, темам, шаблонам и паттернам WordPress! Теперь вы умеете менять темы, работать с Редактором сайта, создавать шаблоны и части шаблона, использовать и создавать паттерны, настраивать глобальные стили. Осталось последнее: убедиться, что сайт готов к публикации, оптимизировать его и понять, куда двигаться дальше.
+    </div>
+
+    <p>В этой заключительной главе мы разберём: как правильно публиковать сайт, как проверить его перед запуском, как оптимизировать для поисковых систем и скорости загрузки, как делать резервные копии, экспортировать контент и где искать ресурсы для дальнейшего обучения.</p>
+
+    <h2>10.1 Итоги курса: что вы освоили</h2>
+
+    <p>Давайте оглянемся назад и вспомним путь, который мы прошли за девять глав.</p>
+
+    <div class="chapter-recap">
+        <div class="recap-item"><strong>Глава 1</strong> Основные понятия: тема, шаблон, паттерн, стиль</div>
+        <div class="recap-item"><strong>Глава 2</strong> Блочные темы: Twenty Twenty-Three, Four, Five</div>
+        <div class="recap-item"><strong>Глава 3</strong> Установка и смена темы без потери контента</div>
+        <div class="recap-item"><strong>Глава 4</strong> Редактор сайта: интерфейс и навигация</div>
+        <div class="recap-item"><strong>Глава 5</strong> Шаблоны: структура, редактирование, создание</div>
+        <div class="recap-item"><strong>Глава 6</strong> Части шаблона: шапка, подвал, сайдбар</div>
+        <div class="recap-item"><strong>Глава 7</strong> Паттерны: вставка, настройка, использование</div>
+        <div class="recap-item"><strong>Глава 8</strong> Создание собственных паттернов и шаблонов</div>
+        <div class="recap-item"><strong>Глава 9</strong> Глобальные стили: цвета, шрифты, макет</div>
+    </div>
+
+    <p>У вас есть полный набор инструментов для создания сайта любого уровня сложности на блочных темах WordPress. Осталось научиться правильно завершать работу и публиковать результат.</p>
+
+    <h2>10.2 Финальная проверка перед публикацией</h2>
+
+    <p>Прежде чем открыть сайт для посетителей, пройдитесь по этому чек-листу. Он поможет избежать embarrassing ошибок.</p>
+
+    <div class="task-box">
+        <strong>✅ Чек-лист перед публикацией</strong><br><br>
+        <strong>Содержание:</strong>
+        <ul class="checklist">
+            <li>Все тексты вычитаны, нет опечаток и грамматических ошибок.</li>
+            <li>Все ссылки работают — проверьте каждую вручную.</li>
+            <li>Все изображения загружены и отображаются корректно.</li>
+            <li>У всех изображений заполнен alt-текст (для SEO и доступности).</li>
+            <li>Кнопки ведут туда, куда должны (не на <code>#</code>).</li>
+            <li>Контактная информация верна (телефон, email, адрес).</li>
+            <li>Формы работают — отправьте тестовое сообщение.</li>
+        </ul>
+        <strong>Дизайн:</strong>
+        <ul class="checklist">
+            <li>Цвета единообразны и соответствуют бренду.</li>
+            <li>Шрифты читаемы, нет «вырвиглазных» сочетаний.</li>
+            <li>Отступы и выравнивание аккуратны — ничего не «прилипает».</li>
+            <li>Нет пустых блоков или незаполненных мест.</li>
+            <li>Фоновые изображения отображаются корректно.</li>
+            <li>Шапка и подвал выглядят одинаково на всех страницах.</li>
+        </ul>
+        <strong>Адаптивность:</strong>
+        <ul class="checklist">
+            <li>Проверено на компьютере, планшете и телефоне.</li>
+            <li>Нет горизонтальной прокрутки.</li>
+            <li>Кнопки удобно нажимать пальцем (минимум 44×44px).</li>
+            <li>Текст читаем без увеличения (минимум 15px на мобильном).</li>
+            <li>Меню доступно и удобно на телефоне.</li>
+        </ul>
+        <strong>Техническое:</strong>
+        <ul class="checklist">
+            <li>Заголовок страницы (Title) информативен и содержит ключевые слова.</li>
+            <li>SEO-описание (Meta Description) заполнено.</li>
+            <li>H1 только один на странице.</li>
+            <li>Иерархия заголовков соблюдена (H1 → H2 → H3).</li>
+            <li>Страница быстро загружается (проверьте через PageSpeed Insights).</li>
+            <li>Сайт работает по HTTPS (замок в браузере).</li>
+        </ul>
+    </div>
+
+    <h2>10.3 Публикация сайта: пошаговая инструкция</h2>
+
+    <p>Когда всё проверено — публикуем. В WordPress публикация — это процесс, состоящий из нескольких шагов.</p>
+
+    <h3>Шаг 1: Проверьте настройки чтения</h3>
+    <ol class="steps">
+        <li><strong>Перейдите в «Настройки → Чтение».</strong></li>
+        <li><strong>В разделе «На главной странице отображать»</strong> выберите:
+            <ul>
+                <li><strong>«Статическую страницу»</strong> — если у вас сайт-визитка или лендинг.</li>
+                <li><strong>«Последние записи»</strong> — если у вас блог.</li>
+            </ul>
+        </li>
+        <li><strong>Назначьте «Домашнюю страницу» и «Страницу записей»</strong> (если выбрана статическая).</li>
+        <li><strong>Нажмите «Сохранить изменения».</strong></li>
+    </ol>
+
+    <h3>Шаг 2: Настройте постоянные ссылки</h3>
+    <ol class="steps">
+        <li><strong>Перейдите в «Настройки → Постоянные ссылки».</strong></li>
+        <li><strong>Выберите «Название записи» (Post name).</strong></li>
+        <li><strong>Нажмите «Сохранить изменения».</strong></li>
+        <li><strong>Проверьте, что страницы открываются по красивым URL</strong> (например, <code>ваш_сайт/o-nas/</code>).</li>
+    </ol>
+
+    <h3>Шаг 3: Проверьте видимость сайта</h3>
+    <ol class="steps">
+        <li><strong>Перейдите в «Настройки → Чтение».</strong></li>
+        <li><strong>Убедитесь, что галочка «Попросить поисковые системы не индексировать сайт» СНЯТА.</strong></li>
+        <li><strong>Если галочка стоит — снимите её.</strong> Иначе сайт не будет индексироваться поисковиками.</li>
+    </ol>
+
+    <h3>Шаг 4: Проверьте SSL</h3>
+    <ol class="steps">
+        <li><strong>Откройте сайт по адресу</strong> <code>https://ваш_домен</code>.</li>
+        <li><strong>Убедитесь, что в браузере есть замок.</strong></li>
+        <li><strong>Если замка нет</strong> — перейдите в «Настройки → Общие» и замените <code>http://</code> на <code>https://</code> в обоих полях URL.</li>
+        <li><strong>Если SSL не установлен</strong> — обратитесь к хостингу или установите плагин Really Simple SSL.</li>
+    </ol>
+
+    <h3>Шаг 5: Публикация страниц</h3>
+    <ol class="steps">
+        <li><strong>Откройте каждую страницу в редакторе.</strong></li>
+        <li><strong>Нажмите «Опубликовать»</strong> (если страница новая) или «Обновить» (если редактировали).</li>
+        <li><strong>Проверьте страницу на сайте</strong> — откройте в новой вкладке.</li>
+        <li><strong>Повторите для всех страниц.</strong></li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> Ваш сайт опубликован. Откройте его на телефоне и компьютере — убедитесь, что всё работает корректно.
+    </div>
+
+    <h2>10.4 Базовое SEO с блочными темами</h2>
+
+    <p>SEO (Search Engine Optimization) — оптимизация сайта для поисковых систем. Хорошая новость: блочные темы WordPress генерируют семантически чистый HTML, что уже даёт хорошую базу. Плохая новость: без дополнительных инструментов вы не раскроете весь потенциал.</p>
+
+    <h3>Что уже делает WordPress</h3>
+    <ul>
+        <li><strong>Чистый HTML:</strong> блочные темы генерируют семантически корректный код.</li>
+        <li><strong>Адаптивность:</strong> Google любит мобильные сайты.</li>
+        <li><strong>Управление заголовками:</strong> вы сами выбираете уровень H1–H6 для каждого заголовка.</li>
+        <li><strong>Alt-текст:</strong> можно заполнить для каждого изображения.</li>
+    </ul>
+
+    <h3>Что нужно добавить вручную</h3>
+    <ol class="steps">
+        <li><strong>Установите SEO-плагин.</strong> Рекомендую <strong>Yoast SEO</strong> или <strong>Rank Math</strong>. Оба бесплатны и мощны.</li>
+        <li><strong>Настройте Title и Description.</strong> Для каждой страницы укажите уникальный заголовок (до 60 символов) и описание (до 160 символов).</li>
+        <li><strong>Заполните alt-текст изображений.</strong> Это важно и для SEO, и для незрячих пользователей.</li>
+        <li><strong>Создайте карту сайта.</strong> SEO-плагины делают это автоматически. Отправьте её в Google Search Console и Яндекс.Вебмастер.</li>
+        <li><strong>Проверьте индексацию.</strong> Убедитесь, что сайт не закрыт от поисковиков.</li>
+    </ol>
+
+    <h3>Структура заголовков</h3>
+    <p>Правильная иерархия заголовков важна для SEO и доступности. Используйте эту структуру:</p>
+    <ul>
+        <li><strong>H1</strong> — один на странице, главный заголовок (название страницы или статьи).</li>
+        <li><strong>H2</strong> — разделы страницы (основные блоки контента).</li>
+        <li><strong>H3</strong> — подразделы внутри H2.</li>
+        <li><strong>H4–H6</strong> — для более глубокой вложенности (используется редко).</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Инструмент для проверки SEO:</strong> Установите <strong>Rank Math</strong> — он показывает «оценку» каждой страницы по SEO и даёт конкретные рекомендации. Пройдитесь по этим подсказкам, и ваша страница будет оптимизирована на 80% без глубоких знаний SEO.
+    </div>
+
+    <h2>10.5 Оптимизация скорости загрузки</h2>
+
+    <p>Скорость сайта влияет на всё: на позиции в поиске, на конверсию, на удобство для посетителей. Вот что можно сделать.</p>
+
+    <h3>Инструменты для проверки</h3>
+    <ul>
+        <li><strong>PageSpeed Insights</strong> (pagespeed.web.dev) — анализ от Google.</li>
+        <li><strong>GTmetrix</strong> (gtmetrix.com) — детальный отчёт о скорости.</li>
+        <li><strong>Pingdom</strong> (tools.pingdom.com) — проверка со всего мира.</li>
+    </ul>
+
+    <h3>Что можно оптимизировать</h3>
+    <table class="settings-table">
+        <tr>
+            <th>Что</th>
+            <th>Как улучшить</th>
+        </tr>
+        <tr>
+            <td>Изображения</td>
+            <td>Сжать, использовать WebP, задать размеры, включить Lazy Load.</td>
+        </tr>
+        <tr>
+            <td>Шрифты</td>
+            <td>Ограничить количество шрифтов и начертаний. Подключить локально.</td>
+        </tr>
+        <tr>
+            <td>Плагины</td>
+            <td>Удалить неиспользуемые. Каждый плагин — дополнительная нагрузка.</td>
+        </tr>
+        <tr>
+            <td>Кэширование</td>
+            <td>Установить <strong>WP Super Cache</strong> или <strong>LiteSpeed Cache</strong>.</td>
+        </tr>
+        <tr>
+            <td>Минификация</td>
+            <td>Включить минификацию CSS и JS в настройках плагина кэширования.</td>
+        </tr>
+        <tr>
+            <td>Ленивая загрузка</td>
+            <td>Включить Lazy Load для изображений (по умолчанию включено в WordPress).</td>
+        </tr>
+        <tr>
+            <td>Хостинг</td>
+            <td>Перейти на более быстрый хостинг, если текущий медленный.</td>
+        </tr>
+    </table>
+
+    <h3>Оптимизация изображений</h3>
+    <p>Изображения — главный «пожиратель» скорости. Основные правила:</p>
+    <ul>
+        <li><strong>Сжимайте перед загрузкой.</strong> Используйте <a href="https://tinypng.com" target="_blank">TinyPNG</a> или <a href="https://squoosh.app" target="_blank">Squoosh</a>.</li>
+        <li><strong>Используйте WebP.</strong> Это современный формат, который весит в 2–3 раза меньше JPEG при том же качестве.</li>
+        <li><strong>Задавайте правильный размер.</strong> Не загружайте изображение 4000px, если на сайте оно отображается в 800px.</li>
+        <li><strong>Включите lazy loading.</strong> WordPress делает это по умолчанию для изображений ниже первого экрана.</li>
+    </ul>
+
+    <h2>10.6 Резервное копирование</h2>
+
+    <p>Резервная копия — это ваша страховка от катастрофы. Если сайт «упадёт», хакеры атакуют или вы случайно удалите важные данные — копия спасёт ситуацию.</p>
+
+    <h3>Что нужно сохранять</h3>
+    <ul>
+        <li><strong>Файлы сайта:</strong> вся папка <code>wp-content</code>, включая темы, плагины, загрузки.</li>
+        <li><strong>База данных:</strong> все записи, страницы, настройки, пользователи.</li>
+        <li><strong>Шаблоны и паттерны:</strong> сохраняются в базе данных, но можно экспортировать отдельно.</li>
+    </ul>
+
+    <h3>Как делать резервные копии</h3>
+
+    <h4>Способ 1: Плагин (рекомендуется)</h4>
+    <ol class="steps">
+        <li><strong>Установите UpdraftPlus</strong> (бесплатный плагин).</li>
+        <li><strong>Перейдите в «Настройки → UpdraftPlus Backups».</strong></li>
+        <li><strong>Нажмите «Резервное копирование сейчас».</strong></li>
+        <li><strong>Выберите:</strong> «Файлы» и «База данных».</li>
+        <li><strong>Укажите, куда сохранить:</strong> Google Drive, Dropbox, Яндекс.Диск или локально.</li>
+        <li><strong>Нажмите «Резервное копирование».</strong> Дождитесь завершения.</li>
+    </ol>
+
+    <h4>Способ 2: Вручную через хостинг</h4>
+    <ol class="steps">
+        <li><strong>Скачайте папку сайта по FTP</strong> (FileZilla) или через файловый менеджер хостинга.</li>
+        <li><strong>Экспортируйте базу данных</strong> через phpMyAdmin → Экспорт.</li>
+        <li><strong>Сохраните оба архива</strong> в надёжном месте (например, на Яндекс.Диске).</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Регулярность:</strong> Делайте резервную копию <strong>перед крупными изменениями</strong> (установка плагина, смена темы, обновление WordPress) и <strong>раз в неделю/месяц</strong> в качестве профилактики. Для активных сайтов — ежедневно.
+    </div>
+
+    <h2>10.7 Экспорт и перенос сайта</h2>
+
+    <p>Иногда нужно перенести сайт на другой хостинг или создать его копию. Для этого используется экспорт.</p>
+
+    <h3>Экспорт контента WordPress</h3>
+    <ol class="steps">
+        <li><strong>Перейдите в «Инструменты → Экспорт».</strong></li>
+        <li><strong>Выберите «Всё содержимое»</strong> или конкретные типы (записи, страницы, паттерны).</li>
+        <li><strong>Нажмите «Скачать файл экспорта».</strong></li>
+        <li><strong>Сохраните XML-файл.</strong></li>
+    </ol>
+
+    <h3>Экспорт Kit (набор сайта)</h3>
+    <p>Плагин <strong>Create Block Theme</strong> позволяет экспортировать не только контент, но и все настройки блочной темы: шаблоны, части шаблона, паттерны, глобальные стили.</p>
+
+    <ol class="steps">
+        <li><strong>Установите плагин Create Block Theme.</strong></li>
+        <li><strong>Настройте сайт так, как хотите сохранить.</strong></li>
+        <li><strong>Нажмите на иконку гаечного ключа (Wrench)</strong> в правом верхнем углу Редактора сайта.</li>
+        <li><strong>Выберите «Экспортировать тему» (Export Theme).</strong></li>
+        <li><strong>Выберите, что экспортировать:</strong> шаблоны, паттерны, стили, контент.</li>
+        <li><strong>Нажмите «Экспортировать».</strong> Скачается ZIP-файл.</li>
+    </ol>
+
+    <h3>Импорт на другой сайт</h3>
+    <ol class="steps">
+        <li><strong>Установите Create Block Theme на новом сайте.</strong></li>
+        <li><strong>Нажмите на гаечный ключ в Редакторе сайта.</strong></li>
+        <li><strong>Выберите «Импортировать тему» (Import Theme).</strong></li>
+        <li><strong>Загрузите ZIP-файл.</strong></li>
+        <li><strong>Подтвердите импорт.</strong></li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Перед импортом:</strong> Импорт Kit может перезаписать существующие настройки сайта. Всегда делайте резервную копию перед импортом.
+    </div>
+
+    <h2>10.8 Что делать, если что-то сломалось</h2>
+
+    <p>Рано или поздно любой сайт сталкивается с проблемами. Вот алгоритм действий.</p>
+
+    <h3>Белый экран (White Screen of Death)</h3>
+    <ol class="steps">
+        <li><strong>Не паникуйте.</strong> Причина почти всегда в конфликте плагинов или нехватке памяти.</li>
+        <li><strong>Отключите все плагины.</strong> Через FTP переименуйте папку <code>wp-content/plugins</code> в <code>plugins_off</code>.</li>
+        <li><strong>Проверьте сайт.</strong> Если он заработал — проблема в одном из плагинов. Включайте их по одному, чтобы найти виновника.</li>
+        <li><strong>Если не помогло</strong> — переключитесь на стандартную тему WordPress через базу данных или FTP.</li>
+    </ol>
+
+    <h3>Ошибка 500 Internal Server Error</h3>
+    <ul>
+        <li>Проверьте <code>.htaccess</code> — возможно, там лишние правила. Временно переименуйте его в <code>.htaccess_backup</code>.</li>
+        <li>Увеличьте лимит памяти PHP через <code>wp-config.php</code>: <code>define('WP_MEMORY_LIMIT', '256M');</code></li>
+        <li>Обратитесь в поддержку хостинга — возможно, проблема на их стороне.</li>
+    </ul>
+
+    <h3>Страница не открывается (404)</h3>
+    <ul>
+        <li>Проверьте постоянные ссылки: «Настройки → Постоянные ссылки» → Сохранить (это пересоздаёт <code>.htaccess</code>).</li>
+        <li>Проверьте, что страница опубликована, а не в черновике.</li>
+        <li>Очистите кэш браузера и сайта.</li>
+    </ul>
+
+    <h3>Редактор сайта не загружается</h3>
+    <ul>
+        <li>Проверьте, что тема поддерживает FSE (блочная тема).</li>
+        <li>Убедитесь, что версия PHP не ниже 7.4.</li>
+        <li>Отключите другие плагины — возможен конфликт.</li>
+        <li>Увеличьте лимит памяти до 256 МБ.</li>
+    </ul>
+
+    <h3>Изменения в стилях не применяются</h3>
+    <ul>
+        <li>Очистите кэш браузера (Ctrl+F5) и кэш-плагина.</li>
+        <li>Проверьте, что изменения сохранены.</li>
+        <li>Проверьте, не переопределены ли стили в настройках конкретных блоков.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Ведите «журнал изменений» — записывайте, что и когда вы меняли (установка плагина, правка кода). При возникновении проблемы это поможет быстро найти причину.
+    </div>
+
+    <h2>10.9 Что дальше: направления развития</h2>
+
+    <p>Курс закончился, но обучение — нет. Вот несколько направлений, куда можно двигаться.</p>
+
+    <h3>Уровень 1: Углубить WordPress</h3>
+    <ul>
+        <li><strong>Custom Post Types:</strong> создание своих типов записей (например, «Услуги», «Отзывы»).</li>
+        <li><strong>ACF (Advanced Custom Fields):</strong> добавление полей к страницам и записям.</li>
+        <li><strong>WooCommerce:</strong> создание интернет-магазина.</li>
+        <li><strong>Дочерние темы:</strong> безопасная кастомизация темы.</li>
+    </ul>
+
+    <h3>Уровень 2: Веб-разработка</h3>
+    <ul>
+        <li><strong>HTML и CSS:</strong> базовые знания для тонкой настройки.</li>
+        <li><strong>JavaScript:</strong> для интерактивности.</li>
+        <li><strong>PHP:</strong> язык WordPress — для создания своих плагинов и тем.</li>
+        <li><strong>Git:</strong> версионирование кода.</li>
+    </ul>
+
+    <h3>Уровень 3: Профессиональные навыки</h3>
+    <ul>
+        <li><strong>Дизайн:</strong> изучить основы UX/UI, типографику, композицию.</li>
+        <li><strong>SEO:</strong> углубиться в техническое и контентное SEO.</li>
+        <li><strong>Аналитика:</strong> Яндекс.Метрика, Google Analytics — понимание поведения пользователей.</li>
+        <li><strong>Фриланс:</strong> если хотите зарабатывать на создании сайтов — изучить ценообразование, работу с клиентами, договоры.</li>
+    </ul>
+
+    <h3>Уровень 4: Блочные темы и FSE</h3>
+    <ul>
+        <li><strong>theme.json:</strong> изучение файла конфигурации темы.</li>
+        <li><strong>Создание собственных блочных тем:</strong> с нуля или на основе существующих.</li>
+        <li><strong>Разработка паттернов:</strong> создание собственных библиотек паттернов.</li>
+        <li><strong>Кастомные блоки:</strong> разработка собственных блоков Gutenberg.</li>
+    </ul>
+
+    <h2>10.10 Полезные ресурсы</h2>
+
+    <div class="resources-grid">
+        <div class="resource-card">
+            <strong>📘 Официальная документация WordPress</strong>
+            <span>wordpress.org/documentation — база знаний, статьи, видео-уроки.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎥 Learn WordPress</strong>
+            <span>learn.wordpress.org — бесплатные курсы и уроки от команды WordPress.</span>
+        </div>
+        <div class="resource-card">
+            <strong>📰 WPBeginner</strong>
+            <span>wpbeginner.com — крупнейший блог для новичков в WordPress.</span>
+        </div>
+        <div class="resource-card">
+            <strong>📚 Full Site Editing</strong>
+            <span>fullsiteediting.com — ресурс, посвящённый блочным темам и FSE.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎨 Ресурсы для дизайна</strong>
+            <span>Unsplash, Pexels — фото; Google Fonts — шрифты; Coolors — палитры; Figma — макеты.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🔌 Каталог плагинов</strong>
+            <span>wordpress.org/plugins — более 60 000 бесплатных плагинов.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎭 Каталог тем</strong>
+            <span>wordpress.org/themes — тысячи бесплатных тем, включая блочные.</span>
+        </div>
+        <div class="resource-card">
+            <strong>📦 Каталог паттернов</strong>
+            <span>wordpress.org/patterns — более 2300 бесплатных паттернов от сообщества.</span>
+        </div>
+    </div>
+
+    <h2>10.11 Финальное практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Финальное задание: публикуем сайт</strong><br><br>
+        <strong>Часть 1: Финальная проверка</strong><br>
+        1. Пройдитесь по чек-листу из раздела 10.2.<br>
+        2. Проверьте все страницы на компьютере, планшете и телефоне.<br>
+        3. Исправьте все найденные проблемы.<br><br>
+        <strong>Часть 2: SEO</strong><br>
+        4. Установите Yoast SEO или Rank Math.<br>
+        5. Настройте Title и Description для главной страницы.<br>
+        6. Заполните alt-текст для всех изображений.<br>
+        7. Включите ЧПУ (Название записи).<br>
+        8. Отправьте карту сайта в Google Search Console.<br><br>
+        <strong>Часть 3: Скорость</strong><br>
+        9. Проверьте сайт через PageSpeed Insights.<br>
+        10. Установите WP Super Cache и настройте кэширование.<br>
+        11. Сожмите все изображения через TinyPNG.<br>
+        12. Включите Lazy Load для изображений.<br><br>
+        <strong>Часть 4: Резервная копия</strong><br>
+        13. Установите UpdraftPlus.<br>
+        14. Сделайте полную резервную копию сайта (файлы + база данных).<br>
+        15. Сохраните архив в облачное хранилище.<br><br>
+        <strong>Часть 5: Экспорт</strong><br>
+        16. Установите Create Block Theme.<br>
+        17. Экспортируйте тему (шаблоны, паттерны, стили).<br>
+        18. Сохраните ZIP-файл.<br>
+        19. Экспортируйте контент через «Инструменты → Экспорт».<br><br>
+        <strong>Часть 6: Публикация</strong><br>
+        20. Назначьте статическую главную страницу.<br>
+        21. Проверьте видимость сайта для поисковиков.<br>
+        22. Убедитесь, что SSL работает.<br>
+        23. Поделитесь ссылкой на сайт с друзьями.<br>
+        24. Наслаждайтесь результатом!
+    </div>
+
+    <div class="success-box">
+        <strong>🎉 Поздравляем с завершением курса!</strong><br>
+        Вы прошли путь от понимания основ WordPress до полноценного сайта, готового к публикации. Теперь у вас есть навыки, которые можно применять снова и снова — для себя, для клиентов, для проектов. Не бойтесь экспериментировать, ломать и восстанавливать. Именно так рождается мастерство.
+    </div>
+
+    <h2>10.12 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Нужно ли платить за WordPress?</strong> Сам WordPress бесплатен. Платить нужно за хостинг и домен. Бесплатный хостинг (например, InfinityFree) тоже возможен, но с ограничениями.</li>
+        <li><strong>Можно ли изменить тему после создания сайта?</strong> Да, но с осторожностью. Сделайте резервную копию, протестируйте на копии сайта. Контент не потеряется, но внешний вид изменится.</li>
+        <li><strong>Что делать, если после обновления WordPress что-то сломалось?</strong> Откатитесь к предыдущей версии через FTP или плагин WP Rollback. Сообщите о проблеме в поддержку.</li>
+        <li><strong>Как перенести сайт на другой хостинг?</strong> Через плагин All-in-One WP Migration или вручную (файлы + база данных). Перед переносом сделайте резервную копию.</li>
+        <li><strong>Нужно ли покупать премиум-тему?</strong> Для базовых сайтов хватит бесплатных блочных тем (Twenty Twenty-Five). Премиум-темы нужны для специфических задач: магазины, сложные порталы.</li>
+        <li><strong>Сколько страниц можно создать?</strong> Неограниченно. Ограничения касаются только производительности — при большом количестве страниц и контента сайт может замедлиться.</li>
+        <li><strong>Как защитить сайт от взлома?</strong> Обновляйте WordPress, плагины и темы. Используйте сложные пароли. Установите SSL. Делайте резервные копии. Используйте плагины безопасности (Wordfence, Sucuri).</li>
+        <li><strong>Что делать, если сайт стал медленным?</strong> Проверьте через PageSpeed Insights. Сожмите изображения, включите кэширование, удалите неиспользуемые плагины, перейдите на более быстрый хостинг.</li>
+        <li><strong>Можно ли создать интернет-магазин на блочной теме?</strong> Да, Twenty Twenty-Five хорошо интегрируется с WooCommerce. Установите WooCommerce и настройте магазин.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💬 Обратная связь</strong><br>
+        Если у вас остались вопросы или вы хотите предложить улучшения для курса — создайте issue в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">репозитории на GitHub</a>. Мы всегда рады помочь и улучшить материалы.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="index.html" class="button">🏠 Вернуться на главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

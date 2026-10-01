@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 1: Введение — темы, шаблоны, паттерны и стили</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .concept-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .concept-card .icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+        .concept-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.1em;
+        }
+        .concept-card span {
+            font-size: 0.92em;
+            color: #5b6e8c;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .hierarchy {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .hierarchy .level-1 {
+            color: #0969da;
+            font-weight: bold;
+        }
+        .hierarchy .level-2 {
+            color: #2c5282;
+            padding-left: 25px;
+        }
+        .hierarchy .level-3 {
+            color: #5b6e8c;
+            padding-left: 50px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .concept-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 1: Введение — темы, шаблоны, паттерны и стили</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~20 минут | 🎯 Цель: разобраться в основных понятиях современного WordPress и понять, как они связаны между собой</div>
+
+    <p>Добро пожаловать в первую главу курса! Прежде чем мы начнём что-то менять и настраивать, нужно разобраться в терминологии. <strong>Тема, шаблон, паттерн, стиль</strong> — эти четыре понятия часто путают, но они означают разные вещи. Понимание их различий — основа для всей дальнейшей работы.</p>
+
+    <div class="info-box">
+        <strong>💡 Главная идея курса:</strong> Современный WordPress (начиная с версии 5.9) работает по принципу <strong>Full Site Editing (FSE)</strong> — полное редактирование сайта. Вы можете менять не только контент страниц, но и весь внешний вид сайта — прямо из админки, без правки кода. Но чтобы использовать эту возможность, нужно понимать, из каких «кирпичиков» состоит сайт.
+    </div>
+
+    <h2>1.1 Что такое тема WordPress</h2>
+
+    <p><strong>Тема</strong> — это полный набор файлов, который определяет внешний вид и функциональность всего вашего сайта. Она включает в себя все стили, шаблоны, скрипты и изображения. Проще говоря, тема — это «одежда» для вашего сайта, которая задаёт общий стиль, но не влияет на содержание.</p>
+
+    <p>Когда вы устанавливаете WordPress, автоматически активируется одна из тем по умолчанию. Меняя тему, вы полностью меняете внешний вид сайта — но все ваши записи, страницы и медиафайлы остаются на месте.</p>
+
+    <h3>Что входит в тему</h3>
+    <ul>
+        <li><strong>Шаблоны:</strong> структура для разных типов страниц (главная, запись блога, архив, страница 404 и т. д.).</li>
+        <li><strong>Стили:</strong> цвета, шрифты, отступы, макет — визуальное оформление.</li>
+        <li><strong>Файлы функций:</strong> PHP-файл <code>functions.php</code>, который добавляет функциональность.</li>
+        <li><strong>Скриншот:</strong> превью темы, которое отображается в админке.</li>
+        <li><strong>Паттерны:</strong> готовые секции контента, входящие в состав темы.</li>
+    </ul>
+
+    <h3>Блочные и классические темы</h3>
+
+    <p>Сегодня все темы делятся на два больших класса:</p>
+
+    <div class="compare-grid">
+        <div class="compare-card bad">
+            <h4>❌ Классические темы</h4>
+            <ul>
+                <li>Используют «Настройщик» (Customizer) для изменения внешнего вида</li>
+                <li>Шаблоны — это PHP-файлы, которые нужно править в коде</li>
+                <li>Ограниченные возможности настройки без программирования</li>
+                <li>Не поддерживают полное редактирование сайта</li>
+                <li>Примеры: Twenty Twenty-One, Astra, OceanWP</li>
+            </ul>
+        </div>
+        <div class="compare-card good">
+            <h4>✅ Блочные темы (FSE)</h4>
+            <ul>
+                <li>Используют <strong>Редактор сайта</strong> для всего</li>
+                <li>Шаблоны — это HTML-файлы, редактируемые визуально</li>
+                <li>Полный контроль над дизайном без кода</li>
+                <li>Поддерживают паттерны, глобальные стили, шаблоны</li>
+                <li>Примеры: Twenty Twenty-Three, Twenty Twenty-Four, Twenty Twenty-Five</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> В этом курсе мы работаем только с <strong>блочными темами</strong>. Если у вас установлена классическая тема, часть инструментов, которые мы будем изучать (Редактор сайта, паттерны, глобальные стили), будет недоступна. Рекомендуем переключиться на одну из тем по умолчанию WordPress — об этом мы поговорим во второй главе.
+    </div>
+
+    <h2>1.2 Что такое шаблон (Template)</h2>
+
+    <p><strong>Шаблон</strong> — это структурная основа для определённого типа страниц вашего сайта. Он определяет, какие элементы и в каком порядке будут отображаться на странице. Думайте о нём как о <strong>чертеже или каркасе здания</strong>.</p>
+
+    <h3>Как это работает</h3>
+    <p>В блочных темах шаблоны — это HTML-файлы, которые состоят из блоков и паттернов. Например:</p>
+    <ul>
+        <li>Есть шаблон для <strong>главной страницы</strong> — он определяет, что сначала идёт Hero-секция, потом блок преимуществ, потом отзывы.</li>
+        <li>Есть шаблон для <strong>отдельной записи блога</strong> — он показывает заголовок, дату, автора, контент, комментарии.</li>
+        <li>Есть шаблон для <strong>страницы «Контакты»</strong> — с картой и формой.</li>
+    </ul>
+
+    <h3>Где искать шаблоны</h3>
+    <p>Все шаблоны темы можно увидеть и отредактировать в <strong>Редакторе сайта</strong>:</p>
+    <ol class="steps">
+        <li><strong>Войдите в админ-панель WordPress.</strong></li>
+        <li><strong>Перейдите в «Внешний вид» → «Редактор».</strong></li>
+        <li><strong>В левой панели выберите раздел «Шаблоны».</strong></li>
+        <li><strong>Нажмите на любой шаблон</strong> — откроется его структура из блоков.</li>
+        <li><strong>Вы можете редактировать любой блок</strong> так же, как при редактировании обычной страницы.</li>
+    </ol>
+
+    <h3>Примеры шаблонов</h3>
+    <table class="settings-table">
+        <tr>
+            <th>Шаблон</th>
+            <th>Для чего используется</th>
+        </tr>
+        <tr>
+            <td>Index / Главная страница</td>
+            <td>Основной шаблон для отображения главной страницы сайта.</td>
+        </tr>
+        <tr>
+            <td>Page (Страница)</td>
+            <td>Шаблон для обычных статических страниц: «О нас», «Услуги», «Контакты».</td>
+        </tr>
+        <tr>
+            <td>Single Post (Запись)</td>
+            <td>Шаблон для отображения отдельной записи блога.</td>
+        </tr>
+        <tr>
+            <td>Archive (Архив)</td>
+            <td>Шаблон для страниц архивов: список записей по дате, категории, автору.</td>
+        </tr>
+        <tr>
+            <td>Search (Поиск)</td>
+            <td>Шаблон для страницы результатов поиска по сайту.</td>
+        </tr>
+        <tr>
+            <td>404</td>
+            <td>Шаблон для страницы «Не найдено».</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Полезная аналогия:</strong><br>
+        Представьте, что сайт — это дом. <strong>Тема</strong> — это архитектурный стиль (модерн, классика, хай-тек). <strong>Шаблон</strong> — это чертёж конкретной комнаты (гостиной, кухни, спальни). <strong>Паттерн</strong> — это готовый предмет мебели (диван, шкаф), который можно поставить в любую комнату.
+    </div>
+
+    <h2>1.3 Что такое паттерн (Pattern)</h2>
+
+    <p><strong>Паттерн</strong> — это готовый блок контента, который можно вставить на страницу и настроить под себя. Паттерн — это не весь каркас страницы, а её отдельная секция: например, красивый заголовок с кнопкой, галерея изображений, блок с отзывами или раздел с ценами.</p>
+
+    <h3>Как это работает</h3>
+    <p>Вы просто перетаскиваете паттерн из специальной библиотеки в нужное место на странице — и он появляется со всем своим оформлением. После этого вы можете изменить текст, картинки и цвета, но структура останется.</p>
+
+    <h3>Где искать паттерны</h3>
+    <ol class="steps">
+        <li><strong>Откройте любую страницу в блочном редакторе</strong> (Страницы → Добавить новую).</li>
+        <li><strong>Нажмите на значок «+»</strong> для добавления блока.</li>
+        <li><strong>Переключитесь на вкладку «Паттерны»</strong> (Patterns).</li>
+        <li><strong>Изучите доступные категории:</strong>
+            <ul>
+                <li><strong>Featured (Рекомендуемые)</strong> — лучшие паттерны от WordPress.</li>
+                <li><strong>Text (Текст)</strong> — заголовки, абзацы, списки.</li>
+                <li><strong>Call to Action (Призыв)</strong> — секции с кнопками.</li>
+                <li><strong>Banners (Баннеры)</strong> — Hero-секции.</li>
+                <li><strong>Services (Услуги)</strong> — блоки с описанием услуг.</li>
+                <li><strong>Testimonials (Отзывы)</strong> — блоки с цитатами клиентов.</li>
+                <li><strong>Pricing (Цены)</strong> — таблицы с тарифами.</li>
+                <li><strong>Team (Команда)</strong> — секции с сотрудниками.</li>
+            </ul>
+        </li>
+        <li><strong>Нажмите на паттерн</strong> — он вставится на страницу.</li>
+            </ol>
+
+    <h3>Отличия паттернов от шаблонов</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Характеристика</th>
+            <th>Шаблон</th>
+            <th>Паттерн</th>
+        </tr>
+        <tr>
+            <td>Что это</td>
+            <td>Весь каркас страницы</td>
+            <td>Отдельная секция</td>
+        </tr>
+        <tr>
+            <td>Пример</td>
+            <td>«Страница блога»</td>
+            <td>«Секция с последними записями»</td>
+        </tr>
+        <tr>
+            <td>Где применяется</td>
+            <td>Для типа страниц (все записи блога, все страницы)</td>
+            <td>Для конкретного места на странице</td>
+        </tr>
+        <tr>
+            <td>Настраивается</td>
+            <td>В Редакторе сайта → Шаблоны</td>
+            <td>В блочном редакторе → Паттерны</td>
+        </tr>
+        <tr>
+            <td>Иерархия</td>
+            <td>Верхний уровень</td>
+            <td>Внутри шаблона или страницы</td>
+        </tr>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ Не путайте!</strong> <strong>Шаблон</strong> — это весь каркас страницы. <strong>Паттерн</strong> — это готовая секция для этого каркаса. Шаблон можно представить как «пустую страницу с разметкой», а паттерн — как «готовый блок, который вставляется в эту разметку».
+    </div>
+
+    <h2>1.4 Что такое стиль (Style)</h2>
+
+    <p><strong>Стиль</strong> — это визуальные параметры, которые применяются ко всему сайту: цвета, шрифты, отступы, макет. Стили настраиваются в <strong>Редакторе сайта</strong> в разделе «Стили» (Styles) и применяются глобально — то есть меняют внешний вид сразу везде.</p>
+
+    <h3>Что можно настроить в стилях</h3>
+    <ul>
+        <li><strong>Цвета:</strong> основная палитра, фоны, текст, ссылки, кнопки.</li>
+        <li><strong>Типографика:</strong> шрифты для заголовков, основного текста, ссылок, кнопок.</li>
+        <li><strong>Макет:</strong> ширина контента, отступы, промежутки.</li>
+        <li><strong>Границы:</strong> скругления, толщина, цвет.</li>
+        <li><strong>Тени:</strong> тени для блоков и кнопок.</li>
+    </ul>
+
+    <h3>Как настроить глобальные стили</h3>
+    <ol class="steps">
+        <li><strong>Перейдите в «Внешний вид» → «Редактор».</strong></li>
+        <li><strong>В левой панели выберите раздел «Стили».</strong></li>
+        <li><strong>Откройте нужную категорию:</strong> «Цвета», «Типографика», «Макет».</li>
+        <li><strong>Измените параметры.</strong> Все изменения применяются мгновенно ко всему сайту.</li>
+        <li><strong>Нажмите «Сохранить».</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Преимущество глобальных стилей:</strong><br>
+        Вместо того чтобы менять цвет каждой кнопки вручную, вы меняете один цвет в глобальных стилях — и все кнопки на сайте обновляются автоматически. Это называется «дизайн-система» и является стандартом современной веб-разработки.
+    </div>
+
+    <h2>1.5 Как всё это связано: иерархия понятий</h2>
+
+    <p>Чтобы окончательно закрепить понимание, представим иерархию:</p>
+
+    <div class="hierarchy">
+        <div class="level-1">🎨 Тема (Theme)</div>
+        <div class="level-2">├── 🧱 Шаблоны (Templates)</div>
+        <div class="level-3">│   ├── Главная страница (Index)</div>
+        <div class="level-3">│   ├── Страница (Page)</div>
+        <div class="level-3">│   ├── Запись (Single Post)</div>
+        <div class="level-3">│   └── Архивы, поиск, 404</div>
+        <div class="level-2">├── 🧩 Части шаблона (Template Parts)</div>
+        <div class="level-3">│   ├── Шапка (Header)</div>
+        <div class="level-3">│   └── Подвал (Footer)</div>
+        <div class="level-2">├── 📦 Паттерны (Patterns)</div>
+        <div class="level-3">│   ├── Hero-секции</div>
+        <div class="level-3">│   ├── Блоки с ценами</div>
+        <div class="level-3">│   └── Отзывы, команда, FAQ</div>
+        <div class="level-2">└── 🖌️ Стили (Styles)</div>
+        <div class="level-3">    ├── Цвета</div>
+        <div class="level-3">    ├── Типографика</div>
+        <div class="level-3">    └── Макет</div>
+    </div>
+
+    <p>Тема — это контейнер верхнего уровня. Внутри неё находятся шаблоны (каркасы страниц), части шаблона (глобальные элементы), паттерны (готовые секции) и стили (визуальные настройки). Все эти элементы работают вместе, создавая целостный сайт.</p>
+
+    <h2>1.6 Практические примеры: как всё работает вместе</h2>
+
+    <h3>Пример 1: Сайт-визитка компании</h3>
+    <ol class="steps">
+        <li><strong>Тема:</strong> Twenty Twenty-Five.</li>
+        <li><strong>Шаблоны:</strong> главная страница (Hero + преимущества + услуги + контакты), страница «О нас», страница «Услуги», страница «Контакты».</li>
+        <li><strong>Части шаблона:</strong> шапка с логотипом и меню, подвал с копирайтом и контактами.</li>
+        <li><strong>Паттерны:</strong> вставляем готовые блоки для Hero, преимуществ, отзывов.</li>
+        <li><strong>Стили:</strong> настраиваем синий цвет бренда, шрифт Montserrat для заголовков, Open Sans для текста.</li>
+    </ol>
+
+    <h3>Пример 2: Блог о путешествиях</h3>
+    <ol class="steps">
+        <li><strong>Тема:</strong> Twenty Twenty-Four.</li>
+        <li><strong>Шаблоны:</strong> главная страница с лентой записей, шаблон отдельной записи с большой картинкой, архив по категориям.</li>
+        <li><strong>Части шаблона:</strong> шапка с меню категорий, подвал со ссылками на соцсети.</li>
+        <li><strong>Паттерны:</strong> галерея фотографий, блок «Похожие записи», блок подписки на рассылку.</li>
+        <li><strong>Стили:</strong> тёплые тона, шрифт PT Serif для текста, крупные заголовки для акцента.</li>
+    </ol>
+
+    <h3>Пример 3: Лендинг курса</h3>
+    <ol class="steps">
+        <li><strong>Тема:</strong> Twenty Twenty-Five.</li>
+        <li><strong>Шаблоны:</strong> только главная страница-лендинг с последовательными секциями.</li>
+        <li><strong>Части шаблона:</strong> минимальная шапка (лого + кнопка), минимальный подвал.</li>
+        <li><strong>Паттерны:</strong> используем как можно больше готовых блоков из библиотеки.</li>
+        <li><strong>Стили:</strong> яркий акцентный цвет, крупный H1, чёткие CTA-кнопки.</li>
+    </ol>
+
+    <h2>1.7 Практическое задание: изучаем свою тему</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Узнайте свою тему</strong><br>
+        1. Войдите в админ-панель WordPress.<br>
+        2. Перейдите в «Внешний вид» → «Темы».<br>
+        3. Посмотрите, какая тема активна. Запишите её название.<br>
+        4. Определите, является ли она блочной (поддерживает ли FSE).<br><br>
+        <strong>Часть 2: Изучите шаблоны</strong><br>
+        5. Перейдите в «Внешний вид» → «Редактор».<br>
+        6. Откройте раздел «Шаблоны».<br>
+        7. Нажмите на шаблон «Главная страница» (Index).<br>
+        8. Запишите, из каких блоков он состоит (например: Header, Post Content, Footer).<br>
+        9. Посмотрите ещё 2–3 шаблона — сравните их структуру.<br><br>
+        <strong>Часть 3: Изучите паттерны</strong><br>
+        10. Создайте новую страницу в WordPress.<br>
+        11. Нажмите «+» для добавления блока.<br>
+        12. Переключитесь на вкладку «Паттерны».<br>
+        13. Просмотрите 5–7 паттернов из разных категорий.<br>
+        14. Вставьте один паттерн на страницу.<br>
+        15. Измените в нём текст и цвет кнопки.<br>
+        16. Удалите страницу (не сохраняйте изменения).<br><br>
+        <strong>Часть 4: Изучите стили</strong><br>
+        17. Перейдите в «Внешний вид» → «Редактор» → «Стили».<br>
+        18. Откройте раздел «Цвета».<br>
+        19. Посмотрите, какие цвета заданы в палитре.<br>
+        20. Откройте раздел «Типографика» и посмотрите, какие шрифты используются.<br>
+        21. Ничего не меняйте — просто изучите.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Основные понятия современного WordPress — тему, шаблон, паттерн и стиль. Вы поняли, как они связаны между собой, и увидели их в реальной админке. Теперь у вас есть база для дальнейшего изучения.
+    </div>
+
+    <h2>1.8 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Чем отличается тема от шаблона?</strong> Тема — это весь «набор одежды» сайта, включающий шаблоны, стили, функции. Шаблон — это «чертёж» конкретной страницы или типа страниц, который входит в тему.</li>
+        <li><strong>Можно ли использовать паттерны из одной темы в другой?</strong> Да, если паттерны сохранены в общей библиотеке WordPress. Но паттерны, встроенные в конкретную тему, могут не отображаться при смене темы.</li>
+        <li><strong>Что такое FSE и зачем он нужен?</strong> Full Site Editing — это технология, которая позволяет редактировать весь сайт (включая шапку, подвал, шаблоны) визуально, без кода. Это делает WordPress доступнее для новичков.</li>
+        <li><strong>Нужно ли знать HTML/CSS для работы с блочными темами?</strong> Нет, для базовых задач достаточно визуального редактора. Знание CSS может пригодиться для тонкой настройки, но не обязательно.</li>
+        <li><strong>Можно ли смешивать классические и блочные темы?</strong> Нет, это разные подходы. Если вы работаете с FSE, используйте блочную тему. Если хотите использовать «Настройщик» — классическую.</li>
+        <li><strong>Где хранятся паттерны, которые я создал?</strong> В разделе «Внешний вид» → «Паттерны» (или в «Редакторе сайта» → «Паттерны»). Их можно использовать на любой странице сайта.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        Во второй главе мы подробно разберём три современные блочные темы WordPress: Twenty Twenty-Three, Twenty Twenty-Four и Twenty Twenty-Five. Вы узнаете, чем они отличаются, для каких проектов подходят и какую тему выбрать для своего сайта. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter2.html" class="button">📖 Перейти ко второй главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
