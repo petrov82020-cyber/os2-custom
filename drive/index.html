@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экспресс-курс: код, стили, FTP, пакетная загрузка и восстановление сайта WordPress</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #222;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #0366d6;
+        }
+        h1 {
+            border-bottom: 2px solid #0366d6;
+            padding-bottom: 10px;
+        }
+        .plan {
+            background: #eef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .plan ol {
+            margin: 10px 0 10px 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 10px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            display: inline-block;
+            background: #0366d6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .button:hover {
+            background: #024ea1;
+            text-decoration: none;
+        }
+        .video-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .info-box {
+            background: #e6f4ff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .site-section-preview {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .site-section-preview h2 {
+            margin-top: 0;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0366d6;
+            margin-bottom: 8px;
+        }
+        .compare-card p {
+            font-size: 0.92em;
+        }
+        .bonus-box {
+            background: #fff8e6;
+            border: 1px solid #ffcc00;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .bonus-box h2 {
+            color: #b45309;
+            margin-top: 0;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 8px;
+        }
+        .bonus-box h3 {
+            color: #92400e;
+        }
+        .bonus-label {
+            display: inline-block;
+            background: #ffcc00;
+            color: #78350f;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 700px) {
+            .compare-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📘 Экспресс-курс: код, стили, FTP, пакетная загрузка и восстановление сайта WordPress</h1>
+
+    <p>Добро пожаловать! Этот курс — для тех, кто хочет выйти за пределы визуальных редакторов и получить <strong>полный контроль над своим сайтом на WordPress</strong>. Мы научимся работать с кодом, добавлять собственные стили CSS, подключаться к сайту по FTP, массово загружать файлы (включая Google Диск и WP-CLI) и — самое главное — восстанавливать сайт из резервной копии, если он «рухнул».</p>
+
+    <div class="note">
+        <strong>🎯 Цель:</strong> к концу курса вы сможете самостоятельно править код темы, добавлять собственные стили, работать с файлами сайта по FTP, загружать сотни файлов за один раз и восстанавливать сайт из резервной копии в любой ситуации.
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Важно понимать:</strong> Этот курс <strong>не про визуальные конструкторы</strong> (Elementor, Gutenberg, drag-and-drop). Мы работаем с «внутренностями» WordPress: кодом, файлами, базами данных. Если вы ещё не знакомы с основами WordPress, начните с <a href="../style/index.html">курса по темам и стилям</a> или <a href="../elementor/index.html">курса по Elementor</a>.
+    </div>
+
+    <div class="site-section-preview">
+        <h2>🧩 Что вы освоите в этом курсе</h2>
+        <p>Мы пройдём путь от базовой работы с кодом до полного восстановления сайта после катастрофы.</p>
+
+        <div class="compare-grid">
+            <div class="compare-card">
+                <h4>💻 Работа с кодом</h4>
+                <p>Изучим HTML, CSS, PHP в контексте WordPress. Научимся безопасно править файлы темы, добавлять свои функции и стили.</p>
+            </div>
+            <div class="compare-card">
+                <h4>🎨 Дополнительные стили</h4>
+                <p>Освоим CSS-кастомизацию: как добавить свои стили через Site Editor, плагины, дочернюю тему или встроенный редактор.</p>
+            </div>
+            <div class="compare-card">
+                <h4>🔌 FTP и файлы</h4>
+                <p>Научимся подключаться к сайту по FTP/SFTP, работать с файловой системой, загружать и редактировать файлы.</p>
+            </div>
+            <div class="compare-card">
+                <h4>📦 Пакетная загрузка</h4>
+                <p>Загрузим сотни файлов за один раз: через FTP-клиент, архивы, WP-CLI, Google Диск и специальные плагины.</p>
+            </div>
+            <div class="compare-card">
+                <h4>🤖 WP-CLI и скрипты</h4>
+                <p>Освоим командную строку WordPress и напишем скрипты для автоматизации массовых операций.</p>
+            </div>
+            <div class="compare-card">
+                <h4>💾 Резервное копирование</h4>
+                <p>Освоим ручное и автоматическое резервное копирование файлов и базы данных сайта.</p>
+            </div>
+            <div class="compare-card">
+                <h4>🔄 Восстановление сайта</h4>
+                <p>Разберём пошаговый алгоритм восстановления сайта из резервной копии, если он «рухнул».</p>
+            </div>
+            <div class="compare-card">
+                <h4>☁️ Google Диск и облака</h4>
+                <p>Научимся импортировать файлы из Google Диска в медиабиблиотеку WordPress и использовать облачные хранилища.</p>
+            </div>
+        </div>
+
+        <p><a href="chapter1.html">Начать с первой главы →</a></p>
+    </div>
+
+    <div class="video-container">
+        <h3>🎥 Видео-введение: работа с кодом и восстановление WordPress</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/eHjIkPZLm0w?si=ctat7LnYuWPP9bA_" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+        <p><em>Источник: YouTube. Обзор методов работы с файлами и кодом WordPress.</em></p>
+    </div>
+
+    <div class="info-box">
+        🎬 <strong>Первый шаг:</strong> посмотрите <a href="introduction.html">видео-введение в работу с кодом и восстановление сайта</a> — узнайте, зачем нужны эти навыки и как они спасают проекты.
+    </div>
+
+    <h2>📚 План курса</h2>
+    <div class="plan">
+        <ol>
+            <li><strong>Глава 1:</strong> <a href="chapter1.html">Введение: зачем нужен код и когда без него не обойтись</a> – разбираем, что такое HTML, CSS, PHP в контексте WordPress, и какие задачи требуют работы с кодом.</li>
+            <li><strong>Глава 2:</strong> <a href="chapter2.html">Структура файлов WordPress — что где лежит</a> – изучаем файловую систему: wp-content, themes, plugins, uploads, wp-config.php.</li>
+            <li><strong>Глава 3:</strong> <a href="chapter3.html">Доступ к файлам: FTP, SFTP, SSH, файловый менеджер хостинга</a> – настраиваем FileZilla, подключаемся к сайту, изучаем альтернативные способы.</li>
+            <li><strong>Глава 4:</strong> <a href="chapter4.html">Редактор кода: инструменты и правила безопасности</a> – выбираем редактор, настраиваем подсветку, работаем с копиями файлов.</li>
+            <li><strong>Глава 5:</strong> <a href="chapter5.html">Основы CSS: синтаксис, селекторы, свойства</a> – изучаем CSS с нуля: как писать правила, находить селекторы, применять стили.</li>
+            <li><strong>Глава 6:</strong> <a href="chapter6.html">Дополнительные стили WordPress: Site Editor, классы, плагины</a> – добавляем свои стили через Редактор сайта, создаём CSS-классы для блоков.</li>
+            <li><strong>Глава 7:</strong> <a href="chapter7.html">Правка файлов темы и дочерние темы</a> – работаем с functions.php, style.css, создаём дочернюю тему для безопасной кастомизации.</li>
+            <li><strong>Глава 8:</strong> <a href="chapter8.html">Пакетная загрузка файлов: FTP, архивы, WP-CLI, Google Диск</a> – массовая загрузка, импорт из Google Диска, скрипты автоматизации, плагины.</li>
+            <li><strong>Глава 9:</strong> <a href="chapter9.html">Резервное копирование: файлы, база данных, полный бэкап</a> – осваиваем ручное и автоматическое резервное копирование сайта.</li>
+            <li><strong>Глава 10:</strong> <a href="chapter10.html">Восстановление сайта: алгоритм спасения после сбоя</a> – пошаговое восстановление сайта из резервной копии, диагностика проблем, итоги курса.</li>
+        </ol>
+    </div>
+
+    <h2>🚀 Начните прямо сейчас</h2>
+    <p>Каждый урок содержит пошаговые инструкции, примеры кода, скриншоты и практические задания. Мы будем постепенно дополнять курс. Следите за обновлениями!</p>
+
+    <!-- БОНУСНЫЙ БЛОК 1 -->
+    <div class="bonus-box">
+        <span class="bonus-label">Бонус · Подробно в главе 6</span>
+        <h2>🎨 Работа с кодом и дополнительными стилями: полный разбор</h2>
+
+        <p>В WordPress есть несколько способов добавить свой CSS-код. Для блочных тем (Twenty Twenty-Five) основной путь — через <strong>Редактор сайта</strong>. Это безопасный способ: ваши изменения не затрагивают файлы темы и не пропадут при её обновлении.</p>
+
+        <h3>Где найти «Дополнительные CSS»</h3>
+        <ol>
+            <li>В админ-панели перейдите в <strong>«Внешний вид» → «Редактор»</strong>.</li>
+            <li>В левой панели нажмите на иконку <strong>«Стили»</strong> (чёрно-белый круг).</li>
+            <li>Выберите раздел <strong>«Дополнительные CSS»</strong>.</li>
+            <li>Введите CSS-правила — они применятся ко всему сайту.</li>
+        </ol>
+
+        <h3>Как это работает</h3>
+        <p>Вы вводите CSS-правила, и они применяются ко всему сайту. Это безопасный способ, потому что ваши изменения не затрагивают файлы темы и не пропадут при её обновлении.</p>
+
+        <h3>Для отдельного блока</h3>
+        <ol>
+            <li>Создайте CSS-класс в «Дополнительных стилях».</li>
+            <li>В редакторе страницы выберите нужный блок.</li>
+            <li>Откройте раздел «Дополнительно» в правой панели.</li>
+            <li>Впишите имя класса в поле <strong>«Дополнительный CSS-класс(ы)»</strong>.</li>
+        </ol>
+
+        <h3>Правила безопасности</h3>
+        <p><strong>Важно:</strong> перед любыми экспериментами с кодом всегда делайте резервную копию сайта. Это убережёт от потери данных, если что-то пойдёт не так.</p>
+
+        <p><a href="chapter6.html">Подробный разбор в главе 6 →</a></p>
+    </div>
+
+    <!-- БОНУСНЫЙ БЛОК 2 -->
+    <div class="bonus-box">
+        <span class="bonus-label">Бонус · Подробно в главе 8</span>
+        <h2>☁️ Заливка файлов на Google Диск и их использование в WordPress</h2>
+
+        <p>Да, это возможно, но напрямую «подтащить» файл из Google Диска в медиабиблиотеку WordPress нельзя — нужно либо импортировать его, либо использовать специальный плагин.</p>
+
+        <h3>Самый простой способ — плагины импорта</h3>
+
+        <h4>Michael Cloud Image Auto Importer</h4>
+        <p>Этот плагин позволяет подключаться к вашему Google Диску и <strong>массово импортировать изображения</strong> прямо в медиабиблиотеку WordPress. Он умеет импортировать целые папки, а также автоматически создавать alt-тексты на основе имён файлов для лучшего SEO. Для подключения не нужны сложные API-ключи, достаточно авторизовать аккаунт Google.</p>
+
+        <h4>KFX Media Importer for Google Drive</h4>
+        <p>Ещё один плагин с похожим функционалом, который также позволяет импортировать изображения из Google Диска в стандартную медиатеку.</p>
+
+        <h3>Альтернативный подход — через формы</h3>
+        <p>Если вы хотите, чтобы посетители могли сами загружать файлы на ваш Google Диск, можно использовать плагины форм, например, <strong>Formidable Forms</strong>. Вы создаёте форму, и при её отправке файл автоматически сохраняется в указанную папку на Google Диске.</p>
+
+        <p><a href="chapter8.html">Подробный разбор в главе 8 →</a></p>
+    </div>
+
+    <!-- БОНУСНЫЙ БЛОК 3 -->
+    <div class="bonus-box">
+        <span class="bonus-label">Бонус · Подробно в главе 8</span>
+        <h2>🤖 Скрипты для пакетной загрузки и автоматизации</h2>
+
+        <p>Да, такие скрипты существуют. Это более продвинутый уровень работы, но он очень эффективен для больших объёмов.</p>
+
+        <h3>Основной инструмент — WP-CLI</h3>
+        <p><strong>WP-CLI (WordPress Command Line Interface)</strong> — это интерфейс командной строки для управления WordPress. С его помощью можно выполнять массовые операции без захода в админ-панель.</p>
+
+        <p>Пример команды для загрузки:</p>
+        <pre style="background: #1e1e2e; color: #f8f8f2; padding: 12px; border-radius: 8px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 0.85em;">wp media import /path/to/images/*.jpg --title="Bulk Upload"</pre>
+        <p>Эта команда загрузит все JPG-файлы из указанной папки в медиабиблиотеку.</p>
+
+        <h3>Для продвинутых пользователей</h3>
+        <p>Можно писать собственные скрипты (например, на PHP или Python), которые будут взаимодействовать с WordPress через <strong>REST API</strong> или <strong>WP-CLI</strong>. Это позволяет автоматизировать практически любые задачи: от обновления записей до массовой загрузки и оптимизации файлов.</p>
+
+        <h3>Готовые плагины для пакетной загрузки</h3>
+        <p>Если не хочется работать с командной строкой, есть плагины, которые делают то же самое через удобный интерфейс:</p>
+        <ul>
+            <li><strong>Nifa Bulk Media Uploader</strong> — позволяет загружать изображения и видео, упакованные в ZIP-архив. Плагин сам распакует архив и добавит все файлы в медиабиблиотеку.</li>
+            <li><strong>MediaNest Upload Manager</strong> — ещё один плагин для пакетной загрузки файлов и папок в медиатеку WordPress.</li>
+        </ul>
+
+        <p><a href="chapter8.html">Подробный разбор в главе 8 →</a></p>
+    </div>
+
+    <h2>🛡️ Почему важно уметь восстанавливать сайт</h2>
+    <div class="site-section-preview">
+        <h2><a href="chapter10.html">Восстановление сайта — навык, который спасает проекты</a></h2>
+        <p>Сайты «рушатся» по разным причинам: неудачное обновление плагина, конфликт темы, ошибка в коде, взлом, сбой на хостинге, случайное удаление файла. Без резервной копии восстановление может занять дни. С правильным подходом — не более часа.</p>
+        <p>В этом курсе мы освоим:</p>
+        <ul>
+            <li>Как правильно делать резервные копии файлов и базы данных.</li>
+            <li>Как восстановить сайт из бэкапа через FTP и phpMyAdmin.</li>
+            <li>Как восстановить доступ к админке, если сайт не открывается.</li>
+            <li>Как откатить проблемное обновление.</li>
+            <li>Как предотвратить будущие сбои.</li>
+        </ul>
+        <p><a href="chapter10.html">Перейти к главе о восстановлении →</a></p>
+    </div>
+
+    <h2>🎯 Кому подойдёт этот курс</h2>
+    <ul>
+        <li><strong>Владельцам сайтов</strong>, которые хотят самостоятельно управлять своим проектом и не зависеть от разработчиков.</li>
+        <li><strong>Начинающим веб-мастерам</strong>, которые освоили WordPress и хотят выйти на новый уровень — работа с кодом и файлами.</li>
+        <li><strong>Фрилансерам</strong>, которые создают сайты клиентам и должны уметь быстро восстанавливать проекты после сбоев.</li>
+        <li><strong>Тем, кто уже попал в ситуацию «сайт упал»</strong>, и хочет понять, как это исправить и предотвратить в будущем.</li>
+    </ul>
+
+    <h2>🕹️ Бонус: эмулятор IBM OS/2 1.0</h2>
+    <p>Параллельно мы экспериментируем с эмулятором старых компьютеров. Вы можете попробовать его прямо сейчас:</p>
+    <p><a href="../os2.html" class="button">Запустить эмулятор OS/2</a></p>
+
+    <hr>
+    <p>📌 <strong>Примечание:</strong> этот сайт создан в рамках самообучения. Если у вас есть вопросы, обращайтесь через <a href="https://github.com/petrov82020-cyber/os2-custom/issues">Issues на GitHub</a>.</p>
+</div>
+</body>
+</html>
