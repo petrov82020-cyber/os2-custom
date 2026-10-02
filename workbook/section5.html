@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 5. «Мир вокруг нас» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .experiment-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .experiment-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding-left: 42px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .red-book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .red-book-item {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .red-book-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .red-book-item .name {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 0.95rem;
+        }
+        .red-book-item .desc {
+            font-size: 0.8rem;
+            color: #7f1d1d;
+            margin-top: 4px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🔍🌍🌱 Раздел 5. «Мир вокруг нас» (экология)</h1>
+    <div class="section-meta">📖 Часть 2. «Удивительный мир природы» | 🎯 Для детей 7–9 лет | ⏱ 8 тем, 16–18 заданий</div>
+
+    <p>Дорогой друг! Ты закончил первую часть тетради «Первые шаги в природу» и теперь смело можешь называть себя <strong>юным экологом</strong>. Ты научился видеть красоту в каждом листочке, различать птиц и зверей, помогать природе зимой. Но это только начало. Настоящий исследователь не просто <strong>смотрит</strong> на природу — он пытается <strong>понять</strong>, как она устроена. Он задаёт вопросы: «Почему идёт дождь?», «Куда исчезает вода из лужи?», «Почему листья зелёные?», «Откуда берётся воздух?».</p>
+
+    <p>В этом разделе мы <strong>заглянем внутрь природы</strong> и увидим то, что скрыто от глаз. Мы узнаем, как в природе всё связано друг с другом: как растения зависят от воды, как животные зависят от растений, как человек зависит от всего живого. Мы <strong>проведём настоящие опыты</strong> с водой, воздухом и почвой. Мы научимся <strong>предсказывать погоду</strong> по приметам и <strong>беречь редких животных и растения</strong>, занесённых в Красную книгу.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать со второй частью тетради:</strong> Задания здесь сложнее, чем в первой части. Тебе придётся <strong>сравнивать, анализировать, делать выводы</strong>. Не бойся ошибиться — ошибка это тоже путь к знанию! Главное — <strong>думать, пробовать, исследовать</strong>. И тогда природа откроет тебе свои самые большие тайны.
+    </div>
+
+    <div class="svg-illustration" viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: связь в природе">
+        <rect x="10" y="10" width="580" height="240" rx="16" fill="#f8fafc"/>
+        <text x="300" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ВСЁ В ПРИРОДЕ СВЯЗАНО</text>
+
+        <!-- Солнце -->
+        <circle cx="110" cy="110" r="35" fill="#fde047" stroke="#eab308" stroke-width="2"/>
+        <text x="110" y="118" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">☀️</text>
+        <text x="110" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#854d0e">Солнце</text>
+
+        <!-- Растения -->
+        <rect x="240" y="75" width="120" height="70" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="300" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">🌱</text>
+        <text x="300" y="132" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">Растения</text>
+
+        <!-- Животные -->
+        <rect x="240" y="165" width="120" height="70" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="300" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">🦋</text>
+        <text x="300" y="222" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">Животные</text>
+
+        <!-- Человек -->
+        <rect x="450" y="75" width="120" height="70" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="510" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">🧒</text>
+        <text x="510" y="132" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">Человек</text>
+
+        <!-- Вода -->
+        <rect x="450" y="165" width="120" height="70" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+        <text x="510" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">💧</text>
+        <text x="510" y="222" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#075985">Вода</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+            </marker>
+        </defs>
+        <line x1="150" y1="110" x2="235" y2="110" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="300" y1="145" x2="300" y2="160" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="360" y1="110" x2="445" y2="110" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="360" y1="200" x2="445" y2="200" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="510" y1="145" x2="510" y2="160" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    </svg>
+    <p class="svg-caption">Схема 5. Связи в природе: солнце → растения → животные → человек</p>
+
+    <!-- ТЕМА 2.1.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">📅</span>
+        <span>Тема 2.1.1. Времена года. Сезонные изменения</span>
+    </div>
+
+    <p>В первой части тетради ты уже познакомился с временами года и их признаками. Но теперь мы заглянем <strong>глубже</strong>. Почему происходит смена времён года? Что заставляет природу меняться? Ответ — <strong>движение Земли вокруг Солнца</strong>. Земля вращается вокруг Солнца, и в разное время года она повёрнута к нему по-разному. Поэтому зимой солнце светит меньше и греет слабее, а летом — больше и сильнее.</p>
+
+    <p>Все изменения в природе, связанные со сменой времён года, называются <strong>сезонными изменениями</strong>. Они происходят в жизни растений (листопад, распускание почек), в жизни животных (спячка, перелёты, линька), в неживой природе (таяние снега, замерзание рек).</p>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.1.1. «Сезонные изменения в природе»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Заполни таблицу: укажи, какие сезонные изменения происходят в неживой природе, в жизни растений и в жизни животных в каждом времени года.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Время года</th>
+                    <th>Неживая природа</th>
+                    <th>Растения</th>
+                    <th>Животные</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🍂 Осень</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>❄️ Зима</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🌸 Весна</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>☀️ Лето</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему одни животные впадают в спячку, а другие — нет?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 5.1.2. «Дневник фенолога»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Фенология — это наука о сезонных изменениях в природе. Веди настоящий дневник фенолога: отмечай, когда происходят ключевые события в природе.</p>
+        <table>
+            <thead>
+                <tr><th>Событие</th><th>Дата, когда я это заметил</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌱 Появление первых проталин</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐦 Прилёт первых птиц (грачей)</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌸 Первый цветок (мать-и-мачеха)</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌳 Распускание первой почки</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🍂 Начало листопада</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>❄️ Первый снег</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ТЕМА 2.1.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌦</span>
+        <span>Тема 2.1.2. Народные приметы и пословицы о природе</span>
+    </div>
+
+    <p>В первой части тетради ты познакомился с простыми народными приметами. Теперь мы узнаем <strong>больше</strong>. Народные приметы — это <strong>копилка народной мудрости</strong>, результат многовековых наблюдений за природой. Наши предки подмечали, как ведут себя животные, растения, как меняется небо, и делали выводы о том, какая будет погода.</p>
+
+    <p>Современная наука подтверждает многие народные приметы. Например, ласточки действительно летают низко перед дождём — потому что насекомые, которыми они питаются, опускаются ближе к земле из-за влажности. А если кошка сворачивается клубком — значит, чувствует приближение холода.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.2.1. «Собери приметы»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини начало и конец приметы. Объясни, почему так говорят. Нарисуй, как выглядит эта примета в природе.</p>
+        <table>
+            <thead>
+                <tr><th>Начало приметы</th><th>Конец приметы</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Ласточки летают низко —</td><td>...к дождю</td></tr>
+                <tr><td>Птицы хохлятся —</td><td>...к ненастью</td></tr>
+                <tr><td>Дым из трубы столбом —</td><td>...к морозу</td></tr>
+                <tr><td>Много рябины родилось —</td><td>...к холодной зиме</td></tr>
+                <tr><td>Звёзды ярко блестят —</td><td>...к морозу</td></tr>
+                <tr><td>Утром туман стелется по земле —</td><td>...к ясной погоде</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌾 Задание 5.2.2. «Народная мудрость»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Прочитай пословицы о природе. Подумай, какой смысл в них заложен. Запиши своё объяснение.</p>
+        <table>
+            <thead>
+                <tr><th>Пословица</th><th>Как ты её понимаешь?</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>«Лес и вода — брат и сестра»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>«Много снега — много хлеба»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>«Ласточка день начинает, а соловей кончает»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>«Вода камень точит»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему в народе говорят: "Примета — не обман, а подсказка"?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о явлениях природы</div>
+        <ul>
+            <li>«Разноцветное коромысло над рекой повисло» (радуга).</li>
+            <li>«Грохочет, громыхает, всех пугает» (гром).</li>
+            <li>«Без рук, без ног, а ворота открывает» (ветер).</li>
+            <li>«С неба падает, землю мочит» (дождь).</li>
+            <li>«Золотое яблочко по небу катается, всем улыбается» (солнце).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌿 Пословицы и поговорки о природе:</strong>
+        <ul>
+            <li>«Вода — всему голова».</li>
+            <li>«Лес — лёгкие земли».</li>
+            <li>«Без солнышка нет цветочка, без дождя нет грибочка».</li>
+            <li>«Земля — кормилица, а вода — поилица».</li>
+            <li>«Что летом родится, то зимой пригодится».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.1.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌳</span>
+        <span>Тема 2.1.3. Растения вокруг нас. Разнообразие</span>
+    </div>
+
+    <p>В первой части тетради ты узнал, что растения делятся на <strong>три группы</strong>: деревья, кустарники и травы. Теперь мы посмотрим на растения <strong>глазами исследователя</strong>. Мы научимся <strong>сравнивать</strong> их по форме, размеру, окрасу, продолжительности жизни.</p>
+
+    <p>Растения — это <strong>удивительные живые существа</strong>. Они дышат, пьют воду, растут, размножаются. Они тянутся к свету и поворачивают листья к солнцу. У растений есть свои способы защиты: одни выделяют горькие или ядовитые вещества, другие защищаются шипами и колючками.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.3.1. «Сравни растения»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Сравни три растения по образцу. Найди общее и различное.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Признак</th>
+                    <th>🌳 Дуб</th>
+                    <th>🌿 Сирень</th>
+                    <th>🌱 Одуванчик</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Высота</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Форма листа</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Цвет листа</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Есть ли ствол?</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Сколько живёт?</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему деревья живут дольше, чем травы?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 5.3.2. «Найди симметрию в растениях»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Многие растения обладают симметрией. Найди в природе листья, цветы или плоды с симметричной формой. Зарисуй их.</p>
+        <table>
+            <thead>
+                <tr><th>№</th><th>Растение</th><th>Что симметрично?</th><th>Рисунок</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:60px;"></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:60px;"></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:60px;"></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Подсказка:</strong> симметрия есть у листьев клёна, ромашки, подсолнуха, гороха, фасоли.</p>
+    </div>
+
+    <!-- ТЕМА 2.1.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🦊</span>
+        <span>Тема 2.1.4. Животные нашего края. Разнообразие</span>
+    </div>
+
+    <p>В первой части ты познакомился с птицами, домашними животными, дикими зверями и насекомыми. Теперь мы <strong>сравним</strong> их между собой и узнаем, как животные <strong>приспосабливаются</strong> к жизни в разных условиях.</p>
+
+    <p>Животные очень разные: одни живут в воде, другие — на земле, третьи — в воздухе. Одни питаются растениями, другие — другими животными, третьи — всем подряд. У каждого животного есть <strong>свои приспособления</strong> для жизни: у рыб — плавники, у птиц — крылья, у крота — сильные лапы для рытья земли, у зайца — быстрые ноги.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.4.1. «Кто как приспособился?»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини животное с тем приспособлением, которое помогает ему выживать.</p>
+        <table>
+            <thead>
+                <tr><th>Животное</th><th>Приспособление</th><th>Для чего?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🐟 Рыба</td><td>Плавники и хвост</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐦 Птица</td><td>Крылья и перья</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐇 Заяц</td><td>Длинные быстрые ноги</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🦔 Ёж</td><td>Иголки</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐿 Белка</td><td>Пушистый хвост и цепкие лапки</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🦌 Олень</td><td>Рога</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, какие приспособления помогают животным спасаться от врагов, а какие — добывать пищу?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎭 Задание 5.4.2. Игра «Кто чем питается?»</div>
+        <p><span class="signal">🎭 Поиграй</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Раздели животных на три группы: <strong>растительноядные</strong> (едят растения), <strong>хищные</strong> (едят других животных), <strong>всеядные</strong> (едят всё).</p>
+        <table>
+            <thead>
+                <tr><th>Животное</th><th>Растительноядное</th><th>Хищное</th><th>Всеядное</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🐇 Заяц</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🦊 Лиса</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐻 Медведь</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐄 Корова</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐺 Волк</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐗 Кабан</td><td>☐</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Подсказка:</strong> заяц ест траву и кору, лиса — мышей и птиц, медведь — всё: ягоды, мёд, рыбу, мясо.</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о животных</div>
+        <ul>
+            <li>«Что за зверь лесной встал, как столбик, под сосной?» (заяц).</li>
+            <li>«Рыжая хозяйка из лесу пришла, всех кур пересчитала и с собой унесла» (лиса).</li>
+            <li>«По веткам скачет, да не птица; рыжая, да не лисица» (белка).</li>
+            <li>«Не портной, а всю жизнь с иголками ходит» (ёж).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.1.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">💧</span>
+        <span>Тема 2.1.5. Вода в природе. Круговорот воды</span>
+    </div>
+
+    <p>Вода — <strong>самое удивительное вещество на Земле</strong>. Без неё невозможна жизнь. Вода есть везде: в реках, озёрах, морях, в подземных водах, в облаках, в живых организмах. Человек на 70% состоит из воды, а тело медузы — на 98%!</p>
+
+    <p>В природе вода постоянно <strong>путешествует</strong> — испаряется с поверхности земли, поднимается в небо, превращается в облака, возвращается обратно на землю дождём или снегом. Это называется <strong>круговорот воды в природе</strong>.</p>
+
+    <div class="svg-illustration" viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: круговорот воды в природе">
+        <rect x="10" y="10" width="580" height="240" rx="16" fill="#f8fafc"/>
+        <text x="300" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="17" font-weight="bold" fill="#075985">КРУГОВОРОТ ВОДЫ В ПРИРОДЕ</text>
+
+        <!-- Море -->
+        <rect x="50" y="180" width="500" height="50" rx="8" fill="#bae6fd" stroke="#0284c7"/>
+        <text x="300" y="211" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#075985">Реки, озёра, моря</text>
+
+        <!-- Солнце -->
+        <circle cx="90" cy="80" r="28" fill="#fde047" stroke="#eab308"/>
+        <text x="90" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">☀️</text>
+
+        <!-- Облака -->
+        <ellipse cx="300" cy="80" rx="60" ry="22" fill="#e2e8f0" stroke="#94a3b8"/>
+        <ellipse cx="350" cy="75" rx="45" ry="18" fill="#e2e8f0" stroke="#94a3b8"/>
+        <ellipse cx="260" cy="72" rx="40" ry="16" fill="#e2e8f0" stroke="#94a3b8"/>
+        <text x="300" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">Облака</text>
+
+        <!-- Дождь -->
+        <text x="470" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">🌧️</text>
+        <text x="470" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">Дождь</text>
+
+        <!-- Испарение -->
+        <text x="140" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">💨</text>
+        <text x="140" y="172" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">Испарение</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#0284c7"/>
+            </marker>
+        </defs>
+        <line x1="170" y1="160" x2="230" y2="100" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="360" y1="90" x2="450" y2="120" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="470" y1="160" x2="470" y2="180" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="200" y1="185" x2="130" y2="120" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow2)"/>
+    </svg>
+    <p class="svg-caption">Схема 6. Круговорот воды в природе</p>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт «Круговорот воды в миниатюре»</div>
+        <p><strong>Цель:</strong> Увидеть, как вода испаряется и снова превращается в капли.</p>
+        <p><strong>Материалы:</strong> прозрачная стеклянная банка, блюдце, вода, полиэтиленовая плёнка, скотч, солнечное место.</p>
+        <ol class="step-list">
+            <li>Налей в блюдце немного воды и поставь его на дно банки.</li>
+            <li>Накрой банку полиэтиленовой плёнкой и закрепи скотчем.</li>
+            <li>Поставь банку в тёплое солнечное место.</li>
+            <li>Наблюдай в течение дня, что происходит внутри банки.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Через некоторое время на плёнке появятся капли воды — вода испарилась с блюдца и снова превратилась в капли на плёнке.</p>
+        <p><strong>Вывод:</strong> Вода может испаряться и снова превращаться в капли. Так происходит и в природе — это <strong>круговорот воды</strong>.</p>
+        <p><em>Вопрос для размышления:</em> «Куда исчезает вода из лужи после дождя? Что с ней происходит?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о воде</div>
+        <ul>
+            <li>«В морях и реках обитает, но часто по небу летает. А как наскучит ей летать, на землю падает опять» (вода).</li>
+            <li>«Прозрачный, как стекло, а не вставишь в окно» (лёд).</li>
+            <li>«Белое покрывало на земле лежало, лето пришло — всё сошло» (снег).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.1.6 -->
+    <div class="topic-header">
+        <span class="topic-emoji">💨</span>
+        <span>Тема 2.1.6. Воздух и его свойства</span>
+    </div>
+
+    <p>Воздух — это <strong>невидимое, но очень важное</strong> вещество. Мы его не видим, но постоянно чувствуем: когда дует ветер, когда мы дышим. Без воздуха жизнь невозможна: ни люди, ни животные, ни растения не могут жить без него. Воздух состоит из смеси газов, главный из которых — <strong>кислород</strong>.</p>
+
+    <p>Воздух есть везде: в комнате, в воде, в почве. Он занимает место, имеет вес, может сжиматься и расширяться. Тёплый воздух легче холодного, поэтому он поднимается вверх — именно поэтому воздушный шарик улетает в небо.</p>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт 1. «Поймай воздух»</div>
+        <p><strong>Цель:</strong> Доказать, что воздух существует, хотя мы его не видим.</p>
+        <p><strong>Материалы:</strong> стакан, таз с водой, салфетка.</p>
+        <ol class="step-list">
+            <li>Сомни салфетку и положи её на дно стакана.</li>
+            <li>Переверни стакан вверх дном и медленно опусти его в таз с водой.</li>
+            <li>Достань стакан и проверь, намокла ли салфетка.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Салфетка осталась сухой.</p>
+        <p><strong>Вывод:</strong> В стакане был воздух, который не пустил воду внутрь. Значит, воздух существует!</p>
+        <p><em>Вопрос для размышления:</em> «Почему салфетка не намокла? Что помешало воде попасть в стакан?»</p>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт 2. «Воздух занимает место»</div>
+        <p><strong>Цель:</strong> Увидеть, что воздух занимает место и может быть вытеснен.</p>
+        <p><strong>Материалы:</strong> стакан, таз с водой.</p>
+        <ol class="step-list">
+            <li>Переверни пустой стакан вверх дном и опусти его в воду.</li>
+            <li>Медленно наклони стакан в воде.</li>
+            <li>Понаблюдай, что появится из стакана.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Из стакана выходят пузырьки.</p>
+        <p><strong>Вывод:</strong> Пузырьки — это воздух, который выходит из стакана, когда его наклоняют. Значит, воздух занимал место в стакане.</p>
+        <p><em>Вопрос для размышления:</em> «Почему пузырьки поднимаются вверх? Что легче — воздух или вода?»</p>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт 3. «Воздух нужен для дыхания»</div>
+        <p><strong>Цель:</strong> Узнать, нужен ли воздух растениям.</p>
+        <p><strong>Материалы:</strong> комнатное растение, прозрачный полиэтиленовый пакет, нитка.</p>
+        <ol class="step-list">
+            <li>Накрой один лист растения прозрачным пакетом.</li>
+            <li>Закрепи пакет ниткой у основания листа.</li>
+            <li>Оставь на 2–3 дня.</li>
+            <li>Понаблюдай, что появилось внутри пакета.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Внутри пакета появились капли воды.</p>
+        <p><strong>Вывод:</strong> Растение дышит и испаряет воду. Воздух нужен растениям для жизни.</p>
+        <p><em>Вопрос для размышления:</em> «Почему в лесу легко дышится? Как растения очищают воздух?»</p>
+        <p><em>Пословица:</em> «Лес — лёгкие земли».</p>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать:</strong> Один взрослый человек за сутки вдыхает около 20 000 литров воздуха! А растения, наоборот, очищают воздух, поглощая углекислый газ и выделяя кислород. Поэтому так важно беречь леса и парки.
+    </div>
+
+    <!-- ТЕМА 2.1.7 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌱</span>
+        <span>Тема 2.1.7. Почва и её обитатели</span>
+    </div>
+
+    <p>Почва — это <strong>верхний плодородный слой земли</strong>, в котором растут растения. Почва — это <strong>живое вещество</strong>: в ней живут миллионы микроорганизмов, насекомых, червей. Почва образуется очень медленно: чтобы получился слой почвы в 1 сантиметр, нужно около 100 лет!</p>
+
+    <p>В почве есть всё, что нужно растениям: <strong>вода</strong>, <strong>воздух</strong>, <strong>минеральные вещества</strong>, <strong>перегной</strong>. Перегной (гумус) — это разложившиеся остатки растений и животных, которые делают почву плодородной.</p>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт 1. «Что находится в почве?»</div>
+        <p><strong>Цель:</strong> Узнать, из чего состоит почва.</p>
+        <p><strong>Материалы:</strong> образец почвы, стакан с водой, лупа.</p>
+        <ol class="step-list">
+            <li>Рассмотри почву через лупу. Что ты видишь?</li>
+            <li>Положи почву в стакан с водой и размешай.</li>
+            <li>Понаблюдай, что появится на поверхности воды, что осядет на дно.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> На поверхности воды появляются пузырьки (воздух). На дно оседают песок и глина. В воде остаются растительные остатки.</p>
+        <p><strong>Вывод:</strong> В почве есть воздух, песок, глина, остатки растений. Почва — это сложное вещество.</p>
+        <p><em>Вопрос для размышления:</em> «Почему в почве живут дождевые черви? Как они помогают почве?»</p>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт 2. «Какая почва лучше пропускает воду?»</div>
+        <p><strong>Цель:</strong> Узнать, как разные виды почвы пропускают воду.</p>
+        <p><strong>Материалы:</strong> два стакана с воронками, песок, глина, вода.</p>
+        <ol class="step-list">
+            <li>Поставь воронку с песком в один стакан, с глиной — в другой.</li>
+            <li>Налей одинаковое количество воды в каждую воронку.</li>
+            <li>Понаблюдай, где вода пройдёт быстрее.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Вода быстрее проходит через песок, медленнее — через глину.</p>
+        <p><strong>Вывод:</strong> Песок лучше пропускает воду, чем глина. Глина задерживает воду.</p>
+        <p><em>Вопрос для размышления:</em> «Почему после дождя на глинистой дороге остаются лужи, а на песчаной — нет?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 5.7.1. «Обитатели почвы»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Рассмотри почву на клумбе или в огороде. Кого ты там найдёшь? Зарисуй или запиши.</p>
+        <table>
+            <thead>
+                <tr><th>Кто живёт в почве?</th><th>Как он выглядит?</th><th>Чем полезен?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🪱 Дождевой червь</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐜 Муравей</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐛 Личинка жука</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🕷️ Паук</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Народная мудрость:</strong> «Земля — кормилица».</p>
+    </div>
+
+    <!-- ТЕМА 2.1.8 -->
+    <div class="topic-header">
+        <span class="topic-emoji">📕</span>
+        <span>Тема 2.1.8. Красная книга. Редкие растения и животные</span>
+    </div>
+
+    <p>Некоторые растения и животные на Земле стали <strong>очень редкими</strong>. Их осталось так мало, что они могут исчезнуть навсегда. Чтобы этого не случилось, учёные создали <strong>Красную книгу</strong>. В неё записывают всех редких и исчезающих животных и растения. Красный цвет — это сигнал тревоги, призыв о помощи.</p>
+
+    <p>В <strong>Красную книгу Республики Беларусь</strong> занесены многие удивительные создания. Мы должны знать их в лицо и беречь, чтобы они не исчезли с нашей планеты.</p>
+
+    <div class="red-book-grid">
+        <div class="red-book-item">
+            <span class="emoji">🦬</span>
+            <span class="name">Зубр</span>
+            <span class="desc">Самый крупный зверь Европы. Живёт в Беловежской пуще.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🐻</span>
+            <span class="name">Бурый медведь</span>
+            <span class="desc">Крупный хищник. Обитает в глухих лесах.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🦌</span>
+            <span class="name">Благородный олень</span>
+            <span class="desc">Красивое животное с ветвистыми рогами.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🦉</span>
+            <span class="name">Филин</span>
+            <span class="desc">Крупная сова с ушками. Ночной охотник.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🌸</span>
+            <span class="name">Венерин башмачок</span>
+            <span class="desc">Редкая лесная орхидея. Цветок похож на туфельку.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🌷</span>
+            <span class="name">Сон-трава</span>
+            <span class="desc">Весенний цветок с пушистыми лепестками.</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 5.8.1. «Моя Красная книга»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери одно редкое растение или животное из Красной книги Беларуси. Нарисуй его и напиши, почему оно нуждается в охране.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.8.2. «Как я могу помочь?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Подумай и запиши, что ты можешь сделать, чтобы редкие растения и животные не исчезли.</p>
+        <ul>
+            <li>Не рвать редкие цветы.</li>
+            <li>Не ловить редких насекомых и животных.</li>
+            <li>Не мусорить в лесу и на лугу.</li>
+            <li>Рассказывать друзьям о редких видах.</li>
+            <li>Участвовать в экологических акциях.</li>
+        </ul>
+        <p><strong>Творческое задание:</strong> Нарисуй плакат в защиту редких растений и животных.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>📕 Запомни:</strong> Красная книга — это не список «плохих» или «ненужных» животных. Это список тех, кого мы можем потерять навсегда. Если исчезнет хоть один вид, природа станет беднее. Мы должны беречь всё живое на Земле!
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 5. «Мир вокруг нас»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Как происходят <strong>сезонные изменения</strong> в природе и почему они случаются.</li>
+            <li>Какие <strong>народные приметы</strong> помогают предсказывать погоду и как их проверять.</li>
+            <li>Чем <strong>различаются</strong> растения по форме, размеру, продолжительности жизни.</li>
+            <li>Как <strong>животные приспосабливаются</strong> к жизни и чем они питаются.</li>
+            <li>Как происходит <strong>круговорот воды</strong> в природе.</li>
+            <li>Какими <strong>свойствами обладает воздух</strong> и почему он важен.</li>
+            <li>Из чего состоит <strong>почва</strong> и кто в ней живёт.</li>
+            <li>Какие животные и растения занесены в <strong>Красную книгу</strong> и как их беречь.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Почему происходит смена времён года?</li>
+            <li>Как связаны солнце, растения, животные и человек?</li>
+            <li>Что происходит с водой в природе?</li>
+            <li>Докажи, что воздух существует.</li>
+            <li>Из чего состоит почва?</li>
+            <li>Какие редкие животные и растения ты знаешь?</li>
+            <li>Как ты можешь помочь природе?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌍 Молодец!</strong> Ты справился с пятым разделом рабочей тетради «Друзья природы». Теперь ты знаешь, как устроена природа, как всё в ней связано, какие удивительные процессы происходят вокруг нас каждый день. Ты провёл настоящие опыты и сделал открытия, как настоящий учёный. Впереди тебя ждут новые путешествия: мы познакомимся с растениями-помощниками человека, узнаем, как связаны природа и искусство, и научимся проводить экологические праздники!
+    </div>
+
+    <div class="quote">
+        «Природа — это единственная книга, каждая страница которой полна глубокого содержания». — И.В. Гёте
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section4.html" class="button">← Раздел 4. «Животные рядом с нами»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

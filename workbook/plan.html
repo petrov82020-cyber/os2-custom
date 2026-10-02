@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структурный план рабочей тетради «Друзья природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 2px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        ul, ol { margin: 10px 0 10px 25px; }
+        li { margin: 8px 0; }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+        .part-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .part-card-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .section-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 16px 0;
+        }
+        .section-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .section-card-title a {
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+        .section-card-title a:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+        .topic-list { margin-left: 20px; margin-top: 8px; }
+        .topic-list li { margin: 6px 0; }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .tag-observation { background: #dcfce7; color: #166534; }
+        .tag-experiment { background: #dbeafe; color: #1e40af; }
+        .tag-creative { background: #fae8ff; color: #6b21a8; }
+        .tag-practical { background: #fef3c7; color: #92400e; }
+        .tag-game { background: #ffe4e6; color: #9f1239; }
+        .tag-diagnostic { background: #e0e7ff; color: #3730a3; }
+        .ready-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .ready-card-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>📚 Рабочая тетрадь «Друзья природы»: структурный план разделов и тем</h1>
+    <div class="chapter-meta">✍️ Компонент образовательно-методического комплекса эколого-биологического профиля для детей 6–10 лет</div>
+
+    <p>Структурный план рабочей тетради «Друзья природы» отражает <strong>логику освоения программы объединения по интересам</strong> и обеспечивает <strong>последовательное восхождение ребёнка от простого к сложному</strong>. Тетрадь состоит из <strong>трёх частей</strong>, каждая из которых соответствует определённому этапу образовательной деятельности. Внутри каждой части выделены <strong>разделы</strong>, которые, в свою очередь, включают <strong>темы</strong>, раскрывающие содержание программы.</p>
+
+    <div class="info-box">
+        <strong>💡 Условные обозначения типов заданий:</strong>
+        <ul>
+            <li><span class="tag tag-observation">👁 Наблюдение</span> — карты наблюдений, дневники природы, календари;</li>
+            <li><span class="tag tag-experiment">🔬 Опыт</span> — опыты и эксперименты;</li>
+            <li><span class="tag tag-creative">🎨 Творчество</span> — рисование, лепка, аппликация, поделки;</li>
+            <li><span class="tag tag-practical">🌿 Практика</span> — практические задания, уход, посадка;</li>
+            <li><span class="tag tag-game">🎭 Игра</span> — ребусы, кроссворды, загадки, пословицы, игры;</li>
+            <li><span class="tag tag-diagnostic">📊 Диагностика</span> — графические тесты, опорно-аналитические таблицы.</li>
+        </ul>
+    </div>
+
+    <h2>Часть 1. «Первые шаги в природу» (ознакомительный этап)</h2>
+
+    <div class="part-card">
+        <div class="part-card-title">🎯 Цель части: сформировать первоначальные представления о природе, вызвать интерес к её изучению, познакомить с основными правилами поведения в природе</div>
+        <p><strong>Возрастная адресация:</strong> преимущественно для детей 6–7 лет, а также для детей старшего возраста, начинающих заниматься в объединении.</p>
+        <p><strong>Характер заданий:</strong> простые, наглядные, доступные; преобладают игровые и творческие формы; задания выполняются с помощью педагога или родителей.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section1.html">Раздел 1.1. «Здравствуй, природа!» (вводный раздел)</a></div>
+        <p><strong>Цель:</strong> познакомить детей с понятием «природа», вызвать интерес к её изучению, сформировать первоначальные представления о правилах поведения в природе.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 1.1.1. Что такое природа?</strong> — знакомство с понятием «природа», беседа о том, что нас окружает. <span class="tag tag-creative">🎨 Творчество</span> <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.1.2. Мы — юные экологи.</strong> — кто такие экологи, чем они занимаются. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 1.1.3. Правила поведения в природе.</strong> — что можно и что нельзя делать в природе. <span class="tag tag-game">🎭 Игра</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 1.1.4. Природа родного края.</strong> — знакомство с природой своего города, района. <span class="tag tag-observation">👁 Наблюдение</span></li>
+            <li><strong>Тема 1.1.5. Экскурсия в парк.</strong> — первое наблюдение за природой. <span class="tag tag-observation">👁 Наблюдение</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section2.html">Раздел 1.2. «Времена года» (ознакомительный раздел)</a></div>
+        <p><strong>Цель:</strong> сформировать первоначальные представления о временах года, их признаках, научить замечать изменения в природе.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 1.2.1. Осень — золотая пора.</strong> — признаки осени, осенние изменения в природе. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 1.2.2. Зимушка-зима.</strong> — признаки зимы, зимние явления. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.2.3. Весна-красна.</strong> — признаки весны, весеннее пробуждение природы. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 1.2.4. Лето — припасиха.</strong> — признаки лета, летние явления. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.2.5. Народные приметы о временах года.</strong> — знакомство с приметами. <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.2.6. Мой календарь погоды.</strong> — первые наблюдения за погодой. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-diagnostic">📊 Диагностика</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section3.html">Раздел 1.3. «Растения вокруг нас» (ознакомительный раздел)</a></div>
+        <p><strong>Цель:</strong> познакомить детей с разнообразием растений, научить узнавать деревья, кустарники, травы, сформировать навыки простейшего ухода за растениями.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 1.3.1. Деревья, кустарники, травы.</strong> — знакомство с группами растений. <span class="tag tag-creative">🎨 Творчество</span> <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.3.2. Листья деревьев.</strong> — узнавание листьев по форме. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 1.3.3. Цветы на клумбе.</strong> — знакомство с цветами, их красотой. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 1.3.4. Комнатные растения.</strong> — знакомство с комнатными растениями, первые навыки ухода. <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 1.3.5. Огород на подоконнике.</strong> — посадка лука. <span class="tag tag-experiment">🔬 Опыт</span> <span class="tag tag-practical">🌿 Практика</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section4.html">Раздел 1.4. «Животные рядом с нами» (ознакомительный раздел)</a></div>
+        <p><strong>Цель:</strong> познакомить детей с разнообразием животного мира, научить узнавать животных по внешнему виду, сформировать бережное отношение к живым существам.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 1.4.1. Птицы — наши друзья.</strong> — знакомство с птицами родного края. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.4.2. Домашние животные.</strong> — знакомство с домашними животными, забота о них. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 1.4.3. Дикие животные нашего леса.</strong> — знакомство с дикими животными. <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.4.4. Насекомые.</strong> — знакомство с насекомыми, их ролью в природе. <span class="tag tag-observation">👁 Наблюдение</span></li>
+            <li><strong>Тема 1.4.5. Кто где живёт?</strong> — жилища животных. <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 1.4.6. Кормушка для птиц.</strong> — изготовление кормушки. <span class="tag tag-practical">🌿 Практика</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+        </ul>
+    </div>
+
+    <h2>Часть 2. «Удивительный мир природы» (основной этап)</h2>
+
+    <div class="part-card">
+        <div class="part-card-title">🎯 Цель части: углубить знания о взаимосвязях в природе, развить умения наблюдать, сравнивать, анализировать, сформировать навыки практической природоохранной деятельности</div>
+        <p><strong>Возрастная адресация:</strong> для детей 7–9 лет, а также для детей, успешно освоивших задания первой части.</p>
+        <p><strong>Характер заданий:</strong> задания на сравнение, анализ, установление связей; карты наблюдений; опыты и эксперименты; творческие и игровые задания; задания повышенной сложности.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section5.html">Раздел 2.1. «Мир вокруг нас» (экология)</a></div>
+        <p><strong>Цель:</strong> сформировать элементарные экологические представления, научить видеть взаимосвязи в природе.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 2.1.1. Времена года. Сезонные изменения.</strong> — углублённое наблюдение за сезонными изменениями. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-diagnostic">📊 Диагностика</span></li>
+            <li><strong>Тема 2.1.2. Народные приметы и пословицы о природе.</strong> — расширение знаний о фольклоре. <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 2.1.3. Растения вокруг нас. Разнообразие.</strong> — сравнение растений по форме, размеру, цвету. <span class="tag tag-creative">🎨 Творчество</span> <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 2.1.4. Животные нашего края. Разнообразие.</strong> — сравнение животных, их повадки. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 2.1.5. Вода в природе. Круговорот воды.</strong> — свойства воды, её роль в природе. <span class="tag tag-experiment">🔬 Опыт</span></li>
+            <li><strong>Тема 2.1.6. Воздух и его свойства.</strong> — опыты с воздухом. <span class="tag tag-experiment">🔬 Опыт</span></li>
+            <li><strong>Тема 2.1.7. Почва и её обитатели.</strong> — опыты с почвой. <span class="tag tag-experiment">🔬 Опыт</span></li>
+            <li><strong>Тема 2.1.8. Красная книга. Редкие растения и животные.</strong> — знакомство с редкими видами. <span class="tag tag-creative">🎨 Творчество</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section6.html">Раздел 2.2. «Растения рядом с нами» (растениеводство)</a></div>
+        <p><strong>Цель:</strong> сформировать практические умения и навыки по уходу за растениями, познакомить с основами растениеводства.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 2.2.1. Комнатные растения. Уход и наблюдение.</strong> — практические навыки ухода. <span class="tag tag-practical">🌿 Практика</span> <span class="tag tag-observation">👁 Наблюдение</span></li>
+            <li><strong>Тема 2.2.2. Огород на подоконнике. Посадка лука, гороха, фасоли.</strong> — наблюдение за ростом растений. <span class="tag tag-experiment">🔬 Опыт</span> <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 2.2.3. Цветы на клумбе. Выращивание рассады.</strong> — практическая работа. <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 2.2.4. Что нужно растению для жизни?</strong> — опыт «Свет, вода и тепло». <span class="tag tag-experiment">🔬 Опыт</span></li>
+            <li><strong>Тема 2.2.5. Как растение пьёт воду?</strong> — опыт «Цветная вода». <span class="tag tag-experiment">🔬 Опыт</span></li>
+            <li><strong>Тема 2.2.6. От зерна до хлеба.</strong> — знакомство с сельскохозяйственными работами. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section7.html">Раздел 2.3. «Природа и творчество» (интеграция экологии и искусства)</a></div>
+        <p><strong>Цель:</strong> раскрыть красоту и гармонию природы через творческую деятельность, развить эстетическое восприятие.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 2.3.1. Симметрия и гармония в природе.</strong> — наблюдение симметрии в природе. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 2.3.2. Краски природы.</strong> — наблюдение цвета в природе. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 2.3.3. Природа в стихах и сказках.</strong> — чтение, обсуждение, творческие работы. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 2.3.4. Природа в загадках и пословицах.</strong> — отгадывание и сочинение загадок. <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 2.3.5. Поделки из природного материала.</strong> — творческие работы. <span class="tag tag-creative">🎨 Творчество</span> <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 2.3.6. Аппликация из листьев и семян.</strong> — творческие работы. <span class="tag tag-creative">🎨 Творчество</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section8.html">Раздел 2.4. «Экологические праздники и акции»</a></div>
+        <p><strong>Цель:</strong> сформировать активную природоохранную позицию, вовлечь детей в практическую природоохранную деятельность.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 2.4.1. День Земли.</strong> — экологический праздник. <span class="tag tag-game">🎭 Игра</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 2.4.2. Птицы — наши друзья.</strong> — изготовление кормушек, подкормка птиц. <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 2.4.3. Экологическая акция «Чистый двор».</strong> — уборка территории. <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 2.4.4. Игра-квест «Спасём лес от мусора».</strong> — командная игра. <span class="tag tag-game">🎭 Игра</span></li>
+            <li><strong>Тема 2.4.5. Береги воду!</strong> — энерго- и ресурсосбережение. <span class="tag tag-creative">🎨 Творчество</span> <span class="tag tag-practical">🌿 Практика</span></li>
+        </ul>
+    </div>
+
+    <h2>Часть 3. «Мы — друзья природы» (творческий и природоохранный этап)</h2>
+
+    <div class="part-card">
+        <div class="part-card-title">🎯 Цель части: закрепить навыки экологически устойчивого стиля жизни, развить творческие способности, сформировать активную природоохранную позицию</div>
+        <p><strong>Возрастная адресация:</strong> для детей 9–10 лет, а также для детей, успешно освоивших задания первой и второй частей.</p>
+        <p><strong>Характер заданий:</strong> проектные и исследовательские задания; творческие работы высокого уровня сложности; практическая природоохранная деятельность; рефлексивные задания; итоговая диагностика.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section9.html">Раздел 3.1. «Я — исследователь» (проектная деятельность)</a></div>
+        <p><strong>Цель:</strong> развить исследовательские навыки, научить планировать и реализовывать собственные проекты.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 3.1.1. Мой экологический проект.</strong> — разработка и защита проекта. <span class="tag tag-creative">🎨 Творчество</span> <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 3.1.2. Наблюдение за ростом растения (долгосрочный проект).</strong> — ведение дневника наблюдений. <span class="tag tag-observation">👁 Наблюдение</span> <span class="tag tag-diagnostic">📊 Диагностика</span></li>
+            <li><strong>Тема 3.1.3. Исследование свойств воды, воздуха, почвы.</strong> — проведение опытов, оформление результатов. <span class="tag tag-experiment">🔬 Опыт</span></li>
+            <li><strong>Тема 3.1.4. Моя Красная книга.</strong> — создание собственной Красной книги. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 3.1.5. Презентация проекта.</strong> — защита результатов. <span class="tag tag-creative">🎨 Творчество</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section10.html">Раздел 3.2. «Я — защитник природы» (природоохранная деятельность)</a></div>
+        <p><strong>Цель:</strong> сформировать активную природоохранную позицию, вовлечь детей в реальную природоохранную деятельность.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 3.2.1. Помоги птицам зимой.</strong> — изготовление и развешивание кормушек. <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 3.2.2. Посади дерево.</strong> — посадка саженцев. <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 3.2.3. Сохрани первоцветы.</strong> — изготовление и распространение листовок. <span class="tag tag-creative">🎨 Творчество</span> <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 3.2.4. Сдай батарейку — спаси ёжика.</strong> — сбор использованных батареек. <span class="tag tag-practical">🌿 Практика</span></li>
+            <li><strong>Тема 3.2.5. Экономим воду и свет.</strong> — энерго- и ресурсосбережение в быту. <span class="tag tag-practical">🌿 Практика</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section11.html">Раздел 3.3. «Я — творец» (творческая деятельность)</a></div>
+        <p><strong>Цель:</strong> развить творческие способности, научить выражать своё отношение к природе через искусство.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 3.3.1. Плакат в защиту природы.</strong> — создание агитационного плаката. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 3.3.2. Сочини сказку о природе.</strong> — литературное творчество. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 3.3.3. Придумай экологическую игру.</strong> — разработка игры. <span class="tag tag-game">🎭 Игра</span> <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 3.3.4. Выставка моих достижений.</strong> — подготовка и проведение выставки. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 3.3.5. Моё лето в природе.</strong> — творческий отчёт о летних наблюдениях. <span class="tag tag-creative">🎨 Творчество</span></li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section12.html">Раздел 3.4. «Я и моя планета» (рефлексия и итоги)</a></div>
+        <p><strong>Цель:</strong> подвести итоги работы с рабочей тетрадью, развить навыки рефлексии и самооценки.</p>
+        <ul class="topic-list">
+            <li><strong>Тема 3.4.1. Что я узнал? Чему я научился?</strong> — рефлексивные задания. <span class="tag tag-diagnostic">📊 Диагностика</span></li>
+            <li><strong>Тема 3.4.2. Мои экологические привычки.</strong> — самоанализ. <span class="tag tag-diagnostic">📊 Диагностика</span></li>
+            <li><strong>Тема 3.4.3. Письмо природе.</strong> — творческое задание. <span class="tag tag-creative">🎨 Творчество</span></li>
+            <li><strong>Тема 3.4.4. Итоговое занятие «Мы — друзья природы».</strong> — обобщение, награждение. <span class="tag tag-game">🎭 Игра</span></li>
+        </ul>
+    </div>
+
+    <h2>📊 Сводная таблица разделов и тем рабочей тетради</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Часть</th>
+                <th>Разделы</th>
+                <th>Количество тем</th>
+                <th>Преобладающие типы заданий</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Часть 1. «Первые шаги в природу»</strong></td>
+                <td>1.1. «Здравствуй, природа!»<br>1.2. «Времена года»<br>1.3. «Растения вокруг нас»<br>1.4. «Животные рядом с нами»</td>
+                <td>22</td>
+                <td>Раскрашивание, обводка, простые наблюдения, игры, творческие работы</td>
+            </tr>
+            <tr>
+                <td><strong>Часть 2. «Удивительный мир природы»</strong></td>
+                <td>2.1. «Мир вокруг нас»<br>2.2. «Растения рядом с нами»<br>2.3. «Природа и творчество»<br>2.4. «Экологические праздники и акции»</td>
+                <td>25</td>
+                <td>Наблюдения, опыты, сравнение, творческие и игровые задания, практические работы</td>
+            </tr>
+            <tr>
+                <td><strong>Часть 3. «Мы — друзья природы»</strong></td>
+                <td>3.1. «Я — исследователь»<br>3.2. «Я — защитник природы»<br>3.3. «Я — творец»<br>3.4. «Я и моя планета»</td>
+                <td>19</td>
+                <td>Проектные задания, практическая природоохранная деятельность, творческие работы, рефлексия, диагностика</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📈 Диагностический инструментарий рабочей тетради</h2>
+
+    <p>В рабочей тетради «Друзья природы» предусмотрены следующие <strong>диагностические материалы</strong>:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Вид диагностики</th>
+                <th>Где размещена</th>
+                <th>Что оценивается</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Входная диагностика</strong></td>
+                <td>Часть 1, вводный раздел</td>
+                <td>Исходный уровень знаний о природе, интересы, мотивация</td>
+            </tr>
+            <tr>
+                <td><strong>Текущая диагностика</strong></td>
+                <td>Во всех разделах</td>
+                <td>Освоение материала после каждой темы (наблюдение, беседа, практическая работа)</td>
+            </tr>
+            <tr>
+                <td><strong>Промежуточная диагностика</strong></td>
+                <td>Часть 2, конец раздела 2.1</td>
+                <td>Продвижение за первое полугодие</td>
+            </tr>
+            <tr>
+                <td><strong>Итоговая диагностика</strong></td>
+                <td>Часть 3, раздел 3.4</td>
+                <td>Уровень освоения программы за год</td>
+            </tr>
+            <tr>
+                <td><strong>Графические тесты</strong></td>
+                <td>В каждом разделе</td>
+                <td>Внимание, мелкая моторика, умение работать по образцу</td>
+            </tr>
+            <tr>
+                <td><strong>Опорно-аналитические таблицы</strong></td>
+                <td>Приложения к тетради</td>
+                <td>Динамика развития каждого ребёнка</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🎯 Ожидаемые результаты работы с рабочей тетрадью</h2>
+
+    <p>В результате освоения всех разделов рабочей тетради «Друзья природы» дети 6–10 лет должны достичь следующих <strong>результатов</strong>:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа результатов</th>
+                <th>Показатели</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Личностные</strong></td>
+                <td>Проявление интереса к природе, эмоциональной отзывчивости на её красоту; сформированность элементарных навыков экологической этики; проявление доброты, отзывчивости, ответственности за живые существа; формирование гражданско-патриотических чувств через любовь к родной природе.</td>
+            </tr>
+            <tr>
+                <td><strong>Метапредметные</strong></td>
+                <td>Умение наблюдать за природными объектами и явлениями, замечать изменения; умение сравнивать, находить общее и различное, делать простые выводы; умение работать в группе, договариваться, помогать товарищам; умение планировать свою деятельность и доводить дело до конца.</td>
+            </tr>
+            <tr>
+                <td><strong>Предметные</strong></td>
+                <td>Знание названий растений и животных родного края; знание простых правил поведения в природе; умение ухаживать за комнатными растениями; умение выполнять простые творческие работы на экологическую тему; умение проводить простые опыты и наблюдения.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>✅ Реализованные разделы рабочей тетради</h2>
+
+    <div class="ready-card">
+        <div class="ready-card-title">📖 Раздел 1. «Здравствуй, природа!» — вводный раздел (Часть 1)</div>
+        <p>Раздел раскрывает цели, задачи, ключевые понятия и основные направления программы объединения по интересам «Друзья природы». В разделе представлены пять тем: «Что такое природа?», «Мы — юные экологи», «Правила поведения в природе», «Природа родного края», «Экскурсия в парк».</p>
+
+        <p><strong>Ключевые элементы раздела:</strong></p>
+        <ul>
+            <li>знакомство с понятиями «живая» и «неживая» природа, «эколог», «юный эколог»;</li>
+            <li>правила поведения в природе, оформленные в виде наглядных блоков;</li>
+            <li>символы природы Беларуси (дуб, берёза, зубр, аист, василёк);</li>
+            <li>задание на классификацию «Живое и неживое» с табличной формой;</li>
+            <li>задание «Что можно, а что нельзя?» с цветовой индикацией;</li>
+            <li>творческое задание «Придумай знак» (рисунок запрещающего или разрешающего знака);</li>
+            <li>карта наблюдений «Мои наблюдения» для экскурсии в парк;</li>
+            <li>загадки о природе, деревьях, солнце, облаке;</li>
+            <li>вопросы для размышления и задание для самопроверки «Что я запомнил?».</li>
+        </ul>
+
+        <p><a href="section1.html" class="button">📖 Открыть раздел 1. «Здравствуй, природа!» →</a></p>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Назначение плана:</strong> Структурный план служит <strong>навигатором</strong> по рабочей тетради. Он показывает, какие разделы и темы будут раскрыты, какие типы заданий преобладают в каждом разделе, как обеспечивается последовательность и полнота содержания.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="preface.html" class="button">← Вернуться к аннотации</a>
+        <a href="index.html" class="button">На главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

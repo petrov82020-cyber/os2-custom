@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 2. «Времена года» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0 10px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .season-autumn {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+            border-left: 6px solid #d97706;
+        }
+        .season-winter {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            color: #075985;
+            border-left: 6px solid #0284c7;
+        }
+        .season-spring {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .season-summer {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde047 100%);
+            color: #854d0e;
+            border-left: 6px solid #eab308;
+        }
+        .season-emoji {
+            font-size: 1.8rem;
+        }
+        .weather-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 14px 0;
+        }
+        .weather-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 90px;
+        }
+        .weather-item .icon {
+            font-size: 1.6rem;
+            display: block;
+        }
+        .weather-item .label {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .fourseasons-svg {
+            display: block;
+            margin: 20px auto;
+            max-width: 480px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🍂❄️🌸☀️ Раздел 2. «Времена года»</h1>
+    <div class="section-meta">📖 Часть 1. «Первые шаги в природу» | 🎯 Для детей 6–7 лет (и старше — начинающих) | ⏱ 6 тем, 12–14 заданий</div>
+
+    <p>Дорогой друг! В первом разделе ты узнал, что такое природа, кто такие экологи и как вести себя в лесу. А теперь мы отправимся в <strong>увлекательное путешествие по временам года</strong>. Каждое время года по-своему прекрасно и удивительно. Весна дарит нам первые цветы и пение птиц, лето — тепло и ягоды, осень — золотые листья и богатый урожай, а зима — пушистый снег и весёлые праздники.</p>
+
+    <p>Ты научишься <strong>замечать изменения</strong> в природе, <strong>вести календарь погоды</strong>, <strong>узнавать времена года по приметам</strong>, а также играть в игры и разгадывать загадки. Вместе мы пройдём по всем четырём сезонам и узнаем, почему у каждого из них свой характер, свои звуки, свои краски.</p>
+
+    <div class="svg-illustration fourseasons-svg" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Круг времён года">
+        <!-- Круг -->
+        <circle cx="240" cy="240" r="200" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+        <!-- Разделительные линии -->
+        <line x1="240" y1="40" x2="240" y2="440" stroke="#cbd5e1" stroke-width="2"/>
+        <line x1="40" y1="240" x2="440" y2="240" stroke="#cbd5e1" stroke-width="2"/>
+
+        <!-- Осень (левый верхний сектор) -->
+        <text x="140" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="40">🍂</text>
+        <text x="140" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#92400e">ОСЕНЬ</text>
+        <text x="140" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#a16207">сентябрь, октябрь, ноябрь</text>
+
+        <!-- Зима (правый верхний сектор) -->
+        <text x="340" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="40">❄️</text>
+        <text x="340" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#075985">ЗИМА</text>
+        <text x="340" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#0369a1">декабрь, январь, февраль</text>
+
+        <!-- Весна (левый нижний сектор) -->
+        <text x="140" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="40">🌸</text>
+        <text x="140" y="375" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#166534">ВЕСНА</text>
+        <text x="140" y="395" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#15803d">март, апрель, май</text>
+
+        <!-- Лето (правый нижний сектор) -->
+        <text x="340" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="40">☀️</text>
+        <text x="340" y="375" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#854d0e">ЛЕТО</text>
+        <text x="340" y="395" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#a16207">июнь, июль, август</text>
+
+        <!-- Стрелки по кругу -->
+        <text x="240" y="60" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" fill="#94a3b8">↻</text>
+        <text x="440" y="245" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" fill="#94a3b8">↻</text>
+        <text x="240" y="440" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" fill="#94a3b8">↻</text>
+        <text x="40" y="245" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" fill="#94a3b8">↻</text>
+
+        <!-- Центр -->
+        <text x="240" y="235" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#334155">ВРЕМЕНА</text>
+        <text x="240" y="258" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#334155">ГОДА</text>
+    </svg>
+    <p class="svg-caption">Схема 2. Круг времён года</p>
+
+    <div class="info-box">
+        <strong>💡 Запомни:</strong> В году <strong>четыре времени года</strong>: осень, зима, весна и лето. Каждое длится <strong>три месяца</strong>. Времена года сменяют друг друга <strong>по кругу</strong> — и так повторяется из года в год. Ты сам можешь наблюдать, как за осенью приходит зима, за зимой — весна, за весной — лето, а потом снова осень.
+    </div>
+
+    <!-- ТЕМА 1.2.1. ОСЕНЬ -->
+    <div class="season-header season-autumn">
+        <span class="season-emoji">🍂</span>
+        <span>Тема 1.2.1. Осень — золотая пора</span>
+    </div>
+
+    <p>Осень — самое <strong>красивое</strong> время года. Листья на деревьях окрашиваются в золотые, багряные и оранжевые цвета. Воздух становится прозрачным и свежим, а в лесу пахнет грибами и мокрой листвой. Птицы собираются в стаи и улетают в тёплые края. Белки запасают орехи, ежи готовятся к зимней спячке, а медведи ищут место для берлоги.</p>
+
+    <p>Осень бывает <strong>ранней</strong>, <strong>золотой</strong> и <strong>поздней</strong>. Ранняя осень ещё радует тёплыми деньками. Золотая — самая красивая, когда все деревья стоят в ярком наряде. А поздняя осень — грустная и дождливая: листья опали, небо серое, часто моросит дождь.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 2.1.1. «Осенняя палитра»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">🔗 Соедини</span></p>
+        <p>У осени много разных красок. Раскрась кружки подходящими цветами и соедини линиями с названиями:</p>
+        <table>
+            <thead>
+                <tr><th>Цвет</th><th>Что бывает такого цвета осенью?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🟡 Жёлтый</td><td>Листья берёзы, клёна, солнце</td></tr>
+                <tr><td>🟠 Оранжевый</td><td>Листья рябины, осины, тыква</td></tr>
+                <tr><td>🔴 Красный</td><td>Ягоды рябины, листья клёна, калина</td></tr>
+                <tr><td>🟤 Коричневый</td><td>Листья дуба, шишки, жёлуди</td></tr>
+                <tr><td>🟢 Зелёный</td><td>Хвойные деревья — ель, сосна</td></tr>
+            </tbody>
+        </table>
+        <p><em>Описание рисунка:</em> на странице нарисованы контуры трёх деревьев (берёза, клён, дуб) и рядом — пять пустых кружков-палитр. Нужно раскрасить каждый кружок в осенний цвет и соединить с подходящим деревом.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 2.1.2. «Дневник наблюдений. Осень»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Наблюдай за осенними изменениями в природе в течение недели. Записывай или зарисовывай то, что ты видишь:</p>
+        <table>
+            <thead>
+                <tr><th>День</th><th>Погода</th><th>Что изменилось в природе?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Понедельник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вторник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Среда</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Четверг</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Пятница</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему осень называют "золотой порой"?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки об осени</div>
+        <ul>
+            <li>«Пришла без красок и без кисти и перекрасила все листья» (осень).</li>
+            <li>«Пусты поля, мокнет земля, дождь поливает. Когда это бывает?» (осенью).</li>
+            <li>«Летом вырастают, а осенью опадают» (листья).</li>
+            <li>«Кто всю ночь по крыше бьёт да постукивает, и бормочет, и поёт, убаюкивает?» (дождь).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌾 Пословицы и поговорки об осени:</strong>
+        <ul>
+            <li>«Весна красна цветами, а осень — снопами».</li>
+            <li>«Осень — перемен восемь».</li>
+            <li>«Осень идёт — за собою дождь ведёт».</li>
+            <li>«В осеннее ненастье семь погод на дворе: сеет, веет, крутит, мутит, рвёт, сверху льёт и снизу метёт».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 1.2.2. ЗИМА -->
+    <div class="season-header season-winter">
+        <span class="season-emoji">❄️</span>
+        <span>Тема 1.2.2. Зимушка-зима</span>
+    </div>
+
+    <p>Зима — <strong>самое холодное</strong> время года. Земля укрывается пушистым снежным одеялом, реки и озёра покрываются льдом, а деревья засыпают под снегом до весны. Солнце зимой встаёт поздно и садится рано, дни становятся короткими. Часто бывают морозы, метели и снегопады.</p>
+
+    <p>Зимой природа словно <strong>замирает</strong>, но жизнь не останавливается. Под снегом зимуют мыши и ежи, в берлоге спит медведь, в дупле — белка. Птицы, которые остались зимовать (синицы, воробьи, снегири), перебираются поближе к жилью человека, где легче найти корм.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 2.2.1. «Снежинка-симметрия»</div>
+        <p><span class="signal">🖍️ Дорисуй</span></p>
+        <p>Снежинка — удивительное творение природы. У каждой снежинки <strong>шесть лучей</strong>, и все они одинаковые. Это называется <strong>симметрия</strong>. На рисунке нарисованы только три луча снежинки. Дорисуй остальные три так, чтобы снежинка стала целой и красивой.</p>
+        <p><em>Описание рисунка:</em> в центре листа — круг, от которого отходят три луча: верхний и два нижних. Каждый луч состоит из основной линии и двух коротких ответвлений. Нужно дорисовать лучи слева, справа и снизу, повторяя узор.</p>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, бывают ли одинаковые снежинки? Почему?»</p>
+        <p><em>Народная мудрость:</em> «Снежинка — звезда, упавшая с неба».</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎭 Задание 2.2.2. Игра «Снежки»</div>
+        <p><span class="signal">🎭 Поиграй</span></p>
+        <p>Поиграй с друзьями в игру «Снежки». Правила простые: нужно бросать друг в друга «снежки» (мягкие шарики из бумаги). Но кто попал — тот должен назвать <strong>примету зимы</strong> или <strong>зимнюю забаву</strong>.</p>
+        <p><strong>Примеры для ответов:</strong> снегопад, мороз, метель, лёд, сосульки, снеговик, санки, лыжи, коньки, снежная крепость.</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о зиме</div>
+        <ul>
+            <li>«Скатерть бела весь свет одела» (снег).</li>
+            <li>«Без рук, без ног, а рисовать умеет» (мороз).</li>
+            <li>«Что вверх корнем растёт?» (сосулька).</li>
+            <li>«С неба — звездой, на ладошку — водой» (снежинка).</li>
+            <li>«Двенадцать братьев друг за другом бродят, друг друга не обходят» (месяцы).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>❄️ Пословицы и поговорки о зиме:</strong>
+        <ul>
+            <li>«Зима без снега — лето без хлеба».</li>
+            <li>«Много снега — много хлеба».</li>
+            <li>«Зимой солнце светит, да не греет».</li>
+            <li>«Береги нос в большой мороз».</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>🐦 Помоги птицам зимой!</strong><br>
+        Зимой птицам очень трудно найти корм. Ты можешь помочь им: сделай вместе с родителями <strong>кормушку</strong> из картонной коробки или пластиковой бутылки. Повесь её за окном или во дворе. Каждый день насыпай туда крошки, семечки, зёрнышки. Скоро к твоей кормушке прилетят синички, воробьи и снегири. Понаблюдай за ними — это очень интересно!
+    </div>
+
+    <!-- ТЕМА 1.2.3. ВЕСНА -->
+    <div class="season-header season-spring">
+        <span class="season-emoji">🌸</span>
+        <span>Тема 1.2.3. Весна-красна</span>
+    </div>
+
+    <p>Весна — время <strong>пробуждения природы</strong>. Солнце светит ярче и греет сильнее, снег тает, бегут ручьи, на деревьях набухают почки, а затем появляются первые листочки. Из тёплых краёв возвращаются перелётные птицы: грачи, скворцы, ласточки. На проталинах расцветают первые весенние цветы — <strong>подснежники</strong>, <strong>мать-и-мачеха</strong>, <strong>медуница</strong>.</p>
+
+    <p>Весна бывает <strong>ранней</strong> (март), <strong>серединой весны</strong> (апрель) и <strong>поздней</strong> (май). Ранней весной ещё холодно, но уже чувствуется приближение тепла. В апреле всё вокруг зеленеет и цветёт. А в мае природа полностью оживает, начинается настоящая весенняя красота.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 2.3.1. «Лента времени. Весна»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Весной природа меняется очень быстро. Отмечай в ленте времени, когда ты заметил то или иное весеннее явление:</p>
+        <table>
+            <thead>
+                <tr><th>Весеннее явление</th><th>Дата</th><th>Что я видел?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌞 Первое яркое солнце</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>💧 Первые сосульки</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐦 Прилетели грачи</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌱 Появилась первая трава</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌸 Расцвёл первый цветок</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Народная примета:</strong> «Увидел грача — весну встречай».</p>
+        <p><strong>Творческое задание:</strong> Нарисуй, как ты встречаешь весну. Что ты видишь вокруг? Что тебе нравится в весне больше всего?</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 2.3.2. «Первоцветы»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Первые весенние цветы очень хрупкие и нежные. Их называют <strong>первоцветами</strong>. Рассмотри контурные изображения первоцветов и раскрась их:</p>
+        <ul>
+            <li><strong>Подснежник</strong> — белые лепестки, тонкий стебелёк, зелёные листья.</li>
+            <li><strong>Мать-и-мачеха</strong> — жёлтые цветочки, похожие на маленькие солнышки.</li>
+            <li><strong>Медуница</strong> — сначала розовые, потом синие цветочки на одном стебле.</li>
+        </ul>
+        <p><em>Описание рисунка:</strong> на странице нарисованы контуры трёх цветов и под каждым — строчка для подписи. Нужно раскрасить цветы и подписать их названия.</p>
+        <p><strong>Правило:</strong> Не рви первоцветы! Они занесены в Красную книгу. Пусть они растут и радуют всех своей красотой.</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о весне</div>
+        <ul>
+            <li>«Тает снежок, ожил лужок, день прибывает. Когда это бывает?» (весной).</li>
+            <li>«Кто приходит весной, а уходит осенью?» (перелётные птицы).</li>
+            <li>«Из-под снега расцветает, раньше всех весну встречает» (подснежник).</li>
+            <li>«Зимой бело, весной черно, летом зелено, осенью стрижено» (поле).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌱 Пословицы и поговорки о весне:</strong>
+        <ul>
+            <li>«Весна красна цветами, а осень — снопами».</li>
+            <li>«Вода с гор потекла — весну принесла».</li>
+            <li>«Март с водой, апрель с травой, а май с цветами».</li>
+            <li>«Апрельские ручьи землю будят».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 1.2.4. ЛЕТО -->
+    <div class="season-header season-summer">
+        <span class="season-emoji">☀️</span>
+        <span>Тема 1.2.4. Лето — припасиха</span>
+    </div>
+
+    <p>Лето — самое <strong>тёплое</strong> время года. Солнце светит долго и греет жарко, дни длинные, а ночи короткие. Всё вокруг зеленеет, цветёт и благоухает. На лугах цветут ромашки, васильки и колокольчики, в лесу созревают ягоды и грибы, в саду — фрукты, а на огороде — овощи.</p>
+
+    <p>Лето — время <strong>каникул и отдыха</strong>. Дети купаются в реке, загорают, играют, путешествуют. Но лето — это ещё и время <strong>труда</strong>: люди собирают урожай, косят траву, заготавливают корм для животных. Недаром лето называют <strong>«припасихой»</strong> — оно запасает еду на всю зиму.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 2.4.1. «Собери лукошко»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Летом в лесу и в саду созревает много вкусного и полезного. Рассмотри изображения (описания) и соедини линиями то, что где растёт:</p>
+        <table>
+            <thead>
+                <tr><th>Что растёт?</th><th>Где растёт?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🍓 Земляника</td><td>В лесу на солнечных полянах</td></tr>
+                <tr><td>🫐 Черника</td><td>В лесу, в тени, под елями</td></tr>
+                <tr><td>🍄 Белый гриб</td><td>В лесу, рядом с дубами и берёзами</td></tr>
+                <tr><td>🥕 Морковь</td><td>В огороде на грядке</td></tr>
+                <tr><td>🍎 Яблоко</td><td>В саду на яблоне</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему лето называют "припасихой"? Что запасают летом?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">☀️ Задание 2.4.2. «Правила безопасного лета»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Летом очень важно соблюдать <strong>правила безопасности</strong>. Подумай и запиши, что нужно делать, чтобы лето было безопасным:</p>
+        <ul>
+            <li>Носи <strong>головной убор</strong> — панаму или кепку, чтобы не напекло голову.</li>
+            <li>Купайся только <strong>со взрослыми</strong> и на оборудованном пляже.</li>
+            <li>Не ешь <strong>незнакомые ягоды и грибы</strong> — они могут быть опасны.</li>
+            <li>Мой руки перед едой и после прогулки.</li>
+            <li>Не находись долго на солнце в жаркие часы.</li>
+        </ul>
+        <p><strong>Творческое задание:</strong> Нарисуй знак «Безопасное лето» и подпиши его.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о лете</div>
+        <ul>
+            <li>«Солнце печёт, липа цветёт, рожь поспевает. Когда это бывает?» (летом).</li>
+            <li>«Ягодка красна, да не так вкусна, а черна — да сладка» (черника).</li>
+            <li>«Стоит в саду кудряшка — белая рубашка, сердечко золотое. Что это такое?» (ромашка).</li>
+            <li>«Сам алый, сахарный, кафтан зелёный, бархатный» (арбуз).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>☀️ Пословицы и поговорки о лете:</strong>
+        <ul>
+            <li>«Лето — припасиха, зима — подбериха».</li>
+            <li>«Лето красное — для всех время прекрасное».</li>
+            <li>«Что летом соберёшь, то зимой на столе найдёшь».</li>
+            <li>«Летний день год кормит».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 1.2.5. НАРОДНЫЕ ПРИМЕТЫ -->
+    <div class="season-header season-autumn">
+        <span class="season-emoji">🌦</span>
+        <span>Тема 1.2.5. Народные приметы о временах года</span>
+    </div>
+
+    <p>Люди издавна наблюдали за природой и <strong>замечали закономерности</strong>. Так появились <strong>народные приметы</strong> — короткие изречения, которые помогают предсказывать погоду и узнавать, каким будет год. Верить в приметы или нет — каждый решает сам, но <strong>знать их очень интересно</strong>! Они учат нас быть <strong>внимательными к природе</strong>.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 2.5.1. «Отгадай примету»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Прочитай примету и подумай, что она означает. Запиши объяснение своими словами. Нарисуй, как выглядит эта примета в природе.</p>
+        <table>
+            <thead>
+                <tr><th>Примета</th><th>Что она означает?</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🌳 «Если осенью листья на берёзе начинают желтеть с верхушки — весна будет ранняя»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>❄️ «Много снега зимой — много хлеба летом»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🐦 «Ранний прилёт жаворонков — к ранней весне»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🌧 «Ласточки летают низко — к дождю»</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему в народе говорят: "Примета — не обман, а подсказка"?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌾 Задание 2.5.2. «Собери примету»</div>
+        <p><span class="signal">🔗 Соедини</span></p>
+        <p>Соедини начало и конец приметы. Проверь, правильно ли ты её собрал.</p>
+        <table>
+            <thead>
+                <tr><th>Начало приметы</th><th>Конец приметы</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Если зимой много снега,</td><td>...то летом будет много хлеба</td></tr>
+                <tr><td>Ласточки летают низко —</td><td>...к дождю</td></tr>
+                <tr><td>Если осенью листья желтеют с верхушки —</td><td>...весна будет ранняя</td></tr>
+                <tr><td>Дым из трубы столбом —</td><td>...к морозу</td></tr>
+                <tr><td>Кошка сворачивается клубком —</td><td>...к холоду</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ТЕМА 1.2.6. КАЛЕНДАРЬ ПОГОДЫ -->
+    <div class="season-header season-winter">
+        <span class="season-emoji">📅</span>
+        <span>Тема 1.2.6. Мой календарь погоды</span>
+    </div>
+
+    <p>Настоящий исследователь природы всегда ведёт <strong>дневник наблюдений</strong>. В нём он записывает, какая была погода, что изменилось в природе. Такой дневник называется <strong>календарь погоды</strong>. Давай и мы с тобой заведём такой календарь!</p>
+
+    <p>Для наблюдений нам понадобятся <strong>условные знаки</strong>. Вот они:</p>
+
+    <div class="weather-row">
+        <div class="weather-item"><span class="icon">☀️</span><span class="label">Солнечно</span></div>
+        <div class="weather-item"><span class="icon">⛅</span><span class="label">Переменная облачность</span></div>
+        <div class="weather-item"><span class="icon">☁️</span><span class="label">Пасмурно</span></div>
+        <div class="weather-item"><span class="icon">🌧️</span><span class="label">Дождь</span></div>
+        <div class="weather-item"><span class="icon">🌨️</span><span class="label">Снег</span></div>
+        <div class="weather-item"><span class="icon">💨</span><span class="label">Ветер</span></div>
+        <div class="weather-item"><span class="icon">🌡️</span><span class="label">Температура</span></div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📅 Задание 2.6.1. «Календарь погоды на неделю»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Каждый день в течение недели наблюдай за погодой и заполняй календарь. Используй условные знаки.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>День недели</th>
+                    <th>☀️ / ⛅ / ☁️</th>
+                    <th>🌧️ / 🌨️</th>
+                    <th>💨</th>
+                    <th>🌡️ Тепло/холодно</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Понедельник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вторник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Среда</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Четверг</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Пятница</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Суббота</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Воскресенье</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Каких дней за неделю было больше: солнечных или пасмурных? Как ты думаешь, почему?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 2.6.2. «Что я знаю о временах года?»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Проверь себя: заполни таблицу, указав признаки каждого времени года.</p>
+        <table>
+            <thead>
+                <tr><th>Время года</th><th>Признаки в природе</th><th>Что делают люди?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🍂 Осень</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>❄️ Зима</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌸 Весна</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>☀️ Лето</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>📝 Итоги раздела 2. «Времена года»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Какие <strong>четыре времени года</strong> существуют и как они сменяют друг друга.</li>
+            <li>Какие <strong>признаки</strong> у каждого времени года.</li>
+            <li>Как природа <strong>меняется</strong> в течение года.</li>
+            <li>Какие <strong>народные приметы</strong> помогают предсказывать погоду.</li>
+            <li>Как <strong>вести календарь погоды</strong> и наблюдать за природой.</li>
+            <li>Как <strong>помогать природе</strong> в разное время года (например, подкармливать птиц зимой).</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Итоговое творческое задание «Моё любимое время года»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Подумай, какое время года тебе нравится больше всего. Нарисуй его. Напиши, почему ты его любишь и что тебе нравится в нём больше всего.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌿 Молодец!</strong> Ты справился со вторым разделом рабочей тетради «Друзья природы». Теперь ты знаешь все времена года и умеешь наблюдать за изменениями в природе. Впереди тебя ждут новые открытия: ты познакомишься с <strong>растениями вокруг нас</strong> и <strong>животными родного края</strong>. Природа — наш лучший друг. Береги её и изучай!
+    </div>
+
+    <div class="quote">
+        «Четыре времени года — это четыре волшебника, которые по очереди раскрашивают нашу планету в разные цвета». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section1.html" class="button">← Раздел 1. «Здравствуй, природа!»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

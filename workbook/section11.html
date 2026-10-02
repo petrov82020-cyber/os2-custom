@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 11. «Я — творец» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .poster-card {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .poster-card-title {
+            font-weight: 700;
+            color: #6b21a8;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .tale-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .tale-card-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .game-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .game-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .exhibition-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .exhibition-card-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .steps-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .steps-card-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding-left: 42px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: #10b981;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .summer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .summer-item {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde047 100%);
+            border: 2px solid #eab308;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .summer-item .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .summer-item .label {
+            font-weight: 700;
+            color: #854d0e;
+            font-size: 0.95rem;
+        }
+        .summer-item .desc {
+            font-size: 0.8rem;
+            color: #a16207;
+            margin-top: 4px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🎨📖🎭 Раздел 11. «Я — творец» (творческая деятельность)</h1>
+    <div class="section-meta">📖 Часть 3. «Мы — друзья природы» | 🎯 Для детей 9–10 лет | ⏱ 5 тем, 12–14 заданий</div>
+
+    <p>Дорогой друг! Ты прошёл долгий путь: стал исследователем, научился защищать природу, помогать птицам и растениям. Но у настоящего друга природы есть ещё один дар — <strong>умение творить</strong>. Творить — значит <strong>создавать новое, выражать свои чувства, делиться красотой с другими</strong>.</p>
+
+    <p>В этом разделе мы будем творить: рисовать плакаты в защиту природы, сочинять сказки о лесных жителях, придумывать экологические игры, готовить выставку своих достижений. А ещё — вспомним, каким было наше лето в природе, и расскажем о нём так, чтобы всем стало тепло и радостно.</p>
+
+    <p>Творчество — это язык, на котором человек говорит с природой и с другими людьми. И чем богаче этот язык, тем больше людей услышат твой призыв беречь наш общий дом — планету Земля.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этим разделом:</strong> Здесь нет «правильных» и «неправильных» ответов. Ты — <strong>автор, художник, сказочник</strong>. Доверяй своей фантазии, не бойся экспериментировать, пробуй разные формы. Помни: даже самая маленькая творческая работа может стать началом большого дела!
+    </div>
+
+    <div class="svg-illustration" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: пять направлений творчества">
+        <rect x="10" y="10" width="580" height="180" rx="16" fill="#f8fafc"/>
+        <text x="300" y="40" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ПЯТЬ ТВОРЧЕСКИХ ДЕЛ ЮНОГО ЭКОЛОГА</text>
+
+        <!-- Плакат -->
+        <rect x="30" y="65" width="100" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="80" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🎨</text>
+        <text x="80" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Плакат</text>
+        <text x="80" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">в защиту природы</text>
+
+        <!-- Сказка -->
+        <rect x="145" y="65" width="100" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="195" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">📖</text>
+        <text x="195" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Сказка</text>
+        <text x="195" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">о природе</text>
+
+        <!-- Игра -->
+        <rect x="260" y="65" width="100" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="310" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🎭</text>
+        <text x="310" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Игра</text>
+        <text x="310" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">экологическая</text>
+
+        <!-- Выставка -->
+        <rect x="375" y="65" width="100" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="425" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🖼️</text>
+        <text x="425" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Выставка</text>
+        <text x="425" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">моих работ</text>
+
+        <!-- Лето -->
+        <rect x="490" y="65" width="80" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="530" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">☀️</text>
+        <text x="530" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Лето</text>
+        <text x="530" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">в природе</text>
+    </svg>
+    <p class="svg-caption">Схема 11. Пять творческих дел юного эколога</p>
+
+    <!-- ТЕМА 3.3.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🎨</span>
+        <span>Тема 3.3.1. Плакат в защиту природы</span>
+    </div>
+
+    <p><strong>Плакат</strong> — это особый вид творчества, который соединяет <strong>рисунок и слово</strong>. Плакат говорит с людьми <strong>ярко, коротко и убедительно</strong>. Его задача — <strong>привлечь внимание и побудить к действию</strong>. Плакат в защиту природы может рассказать о том, что нужно беречь лес, воду, животных, не мусорить, экономить ресурсы.</p>
+
+    <p>Хороший плакат имеет несколько обязательных элементов:</p>
+
+    <ul>
+        <li><strong>Яркий образ</strong> — крупный рисунок, который сразу привлекает внимание.</li>
+        <li><strong>Короткий лозунг</strong> — 1–5 слов, которые запоминаются.</li>
+        <li><strong>Понятный смысл</strong> — каждый должен понять, что хотел сказать автор.</li>
+        <li><strong>Призыв к действию</strong> — что нужно делать или чего нельзя делать.</li>
+    </ul>
+
+    <div class="poster-card">
+        <div class="poster-card-title">🎨 Примеры лозунгов для плакатов</div>
+        <ul>
+            <li><strong>«Не мусори в лесу!»</strong> — простой и понятный призыв.</li>
+            <li><strong>«Береги воду — источник жизни!»</strong> — напоминание о ценности воды.</li>
+            <li><strong>«Покорми птиц зимой — они отблагодарят весной!»</strong> — конкретное действие.</li>
+            <li><strong>«Не рви первоцветы — они просят защиты!»</strong> — эмоциональный призыв.</li>
+            <li><strong>«Земля — наш дом. Не мусори в нём!»</strong> — метафора, которая запоминается.</li>
+            <li><strong>«Сдай батарейку — спаси ёжика!»</strong> — неожиданная связь, привлекающая внимание.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 11.1.1. «Плакат "Сохраним природу вместе!"»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Создай свой плакат в защиту природы. Выбери одну проблему (мусор, вода, лес, животные, ресурсы) и изобрази её в своём плакате. Придумай короткий и убедительный лозунг.</p>
+        <p><strong>Тема моего плаката:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой лозунг:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой плакат:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 11.1.2. «Плакат-серия "Береги природу!"»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Создай серию мини-плакатов на разные темы: воздух, вода, лес, животные, ресурсы. Придумай короткий лозунг для каждого.</p>
+        <table>
+            <thead>
+                <tr><th>Тема плаката</th><th>Лозунг</th><th>Мой рисунок</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌳 Лес</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:70px;"></td></tr>
+                <tr><td>💧 Вода</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:70px;"></td></tr>
+                <tr><td>🐦 Птицы</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:70px;"></td></tr>
+                <tr><td>🗑️ Мусор</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:70px;"></td></tr>
+                <tr><td>💡 Ресурсы</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:70px;"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Секрет хорошего плаката:</strong> Не перегружай его мелкими деталями. Лучше <strong>один яркий образ</strong> и <strong>один короткий лозунг</strong>, чем десять маленьких рисунков и длинный текст. Плакат должен «крикнуть» о проблеме, а не прошептать.
+    </div>
+
+    <!-- ТЕМА 3.3.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">📖</span>
+        <span>Тема 3.3.2. Сочини сказку о природе</span>
+    </div>
+
+    <p><strong>Сказка</strong> — это удивительный жанр, в котором возможны любые чудеса. Через сказку можно рассказать о самом важном: о дружбе, о добре, о бережном отношении к природе. В сказке <strong>природа оживает</strong>: деревья и цветы говорят, ветер поёт, животные помогают друг другу.</p>
+
+    <p>Сказки о природе бывают разными:</p>
+
+    <ul>
+        <li><strong>Сказки-объяснения</strong> — почему у зайца длинные уши, почему у ёжика иголки, почему зимой идёт снег.</li>
+        <li><strong>Сказки-приключения</strong> — как звери спасали лес от пожара, как птицы помогали друг другу.</li>
+        <li><strong>Сказки-воспитания</strong> — о том, как нельзя мусорить, рвать цветы, обижать животных.</li>
+        <li><strong>Сказки-мечты</strong> — о том, как природа и человек могут жить в мире и согласии.</li>
+    </ul>
+
+    <div class="tale-card">
+        <div class="tale-card-title">📖 Как сочинить сказку о природе</div>
+        <ol>
+            <li><strong>Выбери героев.</strong> Кто будет в твоей сказке? Заяц и ёжик? Берёза и ручеёк? Капля воды и солнечный лучик?</li>
+            <li><strong>Придумай проблему.</strong> Что случилось с героями? Что они хотят? Что им мешает?</li>
+            <li><strong>Придумай, как герои решают проблему.</strong> Кто им помогает? Что они делают?</li>
+            <li><strong>Придумай конец.</strong> Что получилось в итоге? Чему научились герои? Какой вывод сделал читатель?</li>
+            <li><strong>Придумай название.</strong> Название должно быть коротким и интересным.</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📖 Задание 11.2.1. «Начало моей сказки»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Придумай начало сказки о природе. Выбери героев и место действия, опиши, что произошло в самом начале.</p>
+        <p><strong>Название сказки:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Герои моей сказки:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Начало сказки:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 11.2.2. «Моя сказка полностью»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Запиши свою сказку о природе полностью. Нарисуй иллюстрацию к ней — самый яркий эпизод.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Иллюстрация к сказке:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Вдохновляющий пример:</strong> Жил-был маленький ручеёк. Он бежал с горы, играл с камешками и поил всех зверей. Но однажды люди бросили в него мусор, и ручеёк заболел. Тогда звери собрались вместе и убрали мусор. Ручеёк снова стал чистым и весёлым. И все поняли: природа — наш общий дом, и мы вместе за него в ответе.
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о героях сказок</div>
+        <ul>
+            <li>«Под соснами, под ёлками лежит мешок с иголками» (ёжик).</li>
+            <li>«Длинные ушки, быстрые ножки, прыгает ловко, любит морковку» (заяц).</li>
+            <li>«Хитрая плутовка, рыжая головка, пушистый хвост — краса» (лиса).</li>
+            <li>«Кто зимой холодной ходит злой, голодный?» (волк).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 3.3.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🎭</span>
+        <span>Тема 3.3.3. Придумай экологическую игру</span>
+    </div>
+
+    <p>Игра — это <strong>лучший способ учиться</strong>. Играя, дети не только весело проводят время, но и узнают много нового, учатся думать, взаимодействовать, принимать решения. Ты можешь придумать <strong>свою экологическую игру</strong> — и тогда твои друзья будут учиться беречь природу вместе с тобой!</p>
+
+    <p>Экологические игры бывают разных видов:</p>
+
+    <div class="game-card">
+        <div class="game-card-title">🎭 Виды экологических игр</div>
+        <table>
+            <thead>
+                <tr><th>Вид игры</th><th>Что развивает</th><th>Пример</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🎲 Настольная игра</td><td>Мышление, внимание</td><td>«Экологическое лото», «Путешествие по лесу»</td></tr>
+                <tr><td>🏃 Подвижная игра</td><td>Ловкость, реакция</td><td>«Птицы и кошка», «Ручеёк», «Съедобное — несъедобное»</td></tr>
+                <tr><td>🎭 Сюжетно-ролевая игра</td><td>Фантазия, коммуникация</td><td>«Мы — юные экологи», «На ферме», «В лесу»</td></tr>
+                <tr><td>🧩 Игра-головоломка</td><td>Логика, усидчивость</td><td>«Собери цветок из частей», «Чей домик?»</td></tr>
+                <tr><td>🗺 Игра-квест</td><td>Командная работа, творчество</td><td>«Спасём лес от мусора», «Найди клад природы»</td></tr>
+                <tr><td>📖 Игра-викторина</td><td>Знания, память</td><td>«Что я знаю о природе?», «Угадай животное»</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="steps-card">
+        <div class="steps-card-title">🎭 Как придумать экологическую игру</div>
+        <ol class="step-list">
+            <li><strong>Выбери тему.</strong> О чём будет твоя игра? (животные, растения, вода, воздух, мусор)</li>
+            <li><strong>Выбери вид игры.</strong> Какая это будет игра? (настольная, подвижная, викторина, квест)</li>
+            <li><strong>Придумай правила.</strong> Как играть? Что должен делать каждый игрок? Как выиграть?</li>
+            <li><strong>Подготовь материалы.</strong> Что нужно для игры? Карточки, фишки, поле, кубик?</li>
+            <li><strong>Придумай название.</strong> Как будет называться твоя игра?</li>
+            <li><strong>Протестируй игру.</strong> Поиграй с друзьями. Понравилось ли им? Что можно улучшить?</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎭 Задание 11.3.1. «Моя экологическая игра»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Придумай свою экологическую игру. Заполни таблицу и нарисуй её элементы (карточки, поле, фишки).</p>
+        <table>
+            <thead>
+                <tr><th>Что нужно</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Название игры</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Вид игры</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Тема игры</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Для кого игра?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Сколько игроков?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Правила игры</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Как выиграть?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок элементов игры:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 11.3.2. «Опиши свою игру»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Опиши подробно свою игру: как в неё играть, что нужно делать, как узнать победителя. Напиши так, чтобы твои друзья смогли играть по твоему описанию.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о природе для игры-викторины</div>
+        <ul>
+            <li>«Летом серый, зимой белый» (заяц).</li>
+            <li>«На спине иголки, длинные и колкие» (ёж).</li>
+            <li>«Стоит Алёна — платок зелёный, тонкий стан, белый сарафан» (берёза).</li>
+            <li>«В морях и реках обитает, но часто по небу летает» (вода).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🎭 Пословицы и поговорки об игре и учении:</strong>
+        <ul>
+            <li>«Игра — путь детей к познанию мира».</li>
+            <li>«В игре и дело спорится».</li>
+            <li>«Играй, да дело знай».</li>
+            <li>«Хороша игра — учит уму-разуму».</li>
+            <li>«Умей играть, умей и дело делать».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 3.3.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🖼️</span>
+        <span>Тема 3.3.4. Выставка моих достижений</span>
+    </div>
+
+    <p>Ты проделал огромную работу: рисовал, лепил, мастерил, наблюдал, сажал, помогал, защищал, творил. Теперь пришло время <strong>показать свои достижения другим</strong>. <strong>Выставка</strong> — это не просто «показ работ», это <strong>праздник творчества</strong>, где ты можешь рассказать о том, что ты сделал, чему научился, чем гордишься.</p>
+
+    <p>Выставка может быть разной: рисунков, поделок, фотографий, плакатов, наблюдений. На ней можно не только показать работы, но и <strong>рассказать о своём пути</strong> — как ты шёл к результату, что было трудно, что получилось особенно хорошо.</p>
+
+    <div class="exhibition-card">
+        <div class="exhibition-card-title">🖼️ Что можно показать на выставке</div>
+        <ul>
+            <li><strong>Рисунки</strong> — пейзажи, животные, растения, экологические ситуации.</li>
+            <li><strong>Плакаты</strong> — призывы беречь природу, защищать животных.</li>
+            <li><strong>Поделки</strong> — из природного материала, шишек, листьев, семян.</li>
+            <li><strong>Аппликации</strong> — из листьев, семян, круп.</li>
+            <li><strong>Гербарии</strong> — коллекции засушенных листьев и цветов.</li>
+            <li><strong>Дневники наблюдений</strong> — записи, схемы, зарисовки.</li>
+            <li><strong>Сказки и истории</strong> — написанные о природе.</li>
+            <li><strong>Плакаты с играми</strong> — придуманные тобой экологические игры.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🖼️ Задание 11.4.1. «Моя выставка»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Организуй выставку своих достижений. Собери все работы, которые ты сделал за время занятий. Опиши свою выставку.</p>
+        <table>
+            <thead>
+                <tr><th>Название выставки</th><th><span class="line-for-writing" style="margin:0;"></span></th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Какие работы я представлю?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Где я организую выставку?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Кого я приглашу?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Что я расскажу о своих работах?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Как я оформлю выставку?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой эскиз оформления выставки:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 11.4.2. «Рассказ о моей любимой работе»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Выбери свою самую любимую работу, сделанную за время занятий. Расскажи о ней: почему ты её выбрал, как её делал, что было интересно, что получилось особенно хорошо.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> На выставке важно не только показать работы, но и <strong>рассказать о них</strong>. Рассказ помогает зрителям понять твой замысел, увидеть то, что не всегда заметно на рисунке. Подготовь короткие истории о каждой своей работе — это сделает выставку живой и интересной.
+    </div>
+
+    <div class="quote">
+        «Творчество — это не только создание нового, но и умение показать это новое другим. В этом — высший смысл творчества». — Народная мудрость
+    </div>
+
+    <!-- ТЕМА 3.3.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">☀️</span>
+        <span>Тема 3.3.5. Моё лето в природе</span>
+    </div>
+
+    <p>Лето — <strong>самое щедрое время года</strong>. Летом природа показывает всё, на что она способна: цветут цветы, поспевают ягоды, зреют фрукты, поют птицы, стрекочут кузнечики, летают бабочки. Летом можно гулять, купаться, наблюдать, играть, путешествовать. И каждый день лета — это маленькое открытие.</p>
+
+    <p>Давай вспомним, каким было <strong>твоё лето в природе</strong>. Что ты видел, слышал, чувствовал? Что тебя удивило? Чему ты научился? Расскажи о своём лете так, чтобы и другим захотелось пойти в лес, на речку, на луг — и увидеть всю эту красоту своими глазами.</p>
+
+    <div class="summer-grid">
+        <div class="summer-item">
+            <span class="icon">🌻</span>
+            <span class="label">Растения лета</span>
+            <span class="desc">ромашка, василёк, подсолнух, малина</span>
+        </div>
+        <div class="summer-item">
+            <span class="icon">🦋</span>
+            <span class="label">Насекомые лета</span>
+            <span class="desc">бабочки, пчёлы, кузнечики, стрекозы</span>
+        </div>
+        <div class="summer-item">
+            <span class="icon">🐦</span>
+            <span class="label">Птицы лета</span>
+            <span class="desc">ласточки, скворцы, жаворонки, кукушки</span>
+        </div>
+        <div class="summer-item">
+            <span class="icon">💧</span>
+            <span class="label">Вода лета</span>
+            <span class="desc">речка, озеро, ручей, дождь, роса</span>
+        </div>
+        <div class="summer-item">
+            <span class="icon">☀️</span>
+            <span class="label">Погода лета</span>
+            <span class="desc">солнце, тепло, гроза, радуга</span>
+        </div>
+        <div class="summer-item">
+            <span class="icon">🍓</span>
+            <span class="label">Урожай лета</span>
+            <span class="desc">ягоды, фрукты, овощи, грибы</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 11.5.1. «Мой дневник лета»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Вспомни самые яркие моменты своего лета в природе. Заполни таблицу и нарисуй свои самые любимые летние впечатления.</p>
+        <table>
+            <thead>
+                <tr><th>Что я видел летом?</th><th>Где я это видел?</th><th>Что я почувствовал?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок «Моё лето в природе»:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 11.5.2. «Сочини рассказ "Моё лето"»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши рассказ о своём лете в природе. Опиши, где ты был, что видел, что тебя удивило, чему ты научился. Постарайся передать свои чувства и настроение.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о лете</div>
+        <ul>
+            <li>«Солнце печёт, липа цветёт, рожь поспевает. Когда это бывает?» (летом).</li>
+            <li>«Ягодка красна, да не так вкусна, а черна — да сладка» (черника).</li>
+            <li>«Стоит в саду кудряшка — белая рубашка, сердечко золотое» (ромашка).</li>
+            <li>«Сам алый, сахарный, кафтан зелёный, бархатный» (арбуз).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>☀️ Пословицы и поговорки о лете:</strong>
+        <ul>
+            <li>«Лето — припасиха, зима — подбериха».</li>
+            <li>«Лето красное — для всех время прекрасное».</li>
+            <li>«Что летом соберёшь, то зимой на столе найдёшь».</li>
+            <li>«Летний день год кормит».</li>
+            <li>«Летом каждый кустик ночевать пустит».</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <strong>☀️ Летний совет:</strong> Летом не забывай о правилах безопасности на природе. Надевай головной убор, купайся только со взрослыми, не ешь незнакомые ягоды и грибы, не разводи костёр без взрослых. И помни: природа — это дом, в который мы приходим в гости. И в гостях нужно вести себя вежливо!
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 11. «Я — творец»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Чему ты научился в этом разделе:</strong>
+        <ul>
+            <li>Как создавать <strong>плакаты в защиту природы</strong> с ярким образом и коротким лозунгом.</li>
+            <li>Как <strong>сочинять сказки о природе</strong>, где герои учат добру и заботе.</li>
+            <li>Как <strong>придумывать экологические игры</strong> для друзей и одноклассников.</li>
+            <li>Как <strong>организовать выставку своих достижений</strong> и рассказать о своих работах.</li>
+            <li>Как <strong>описать своё лето в природе</strong> так, чтобы всем стало тепло и радостно.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Какие элементы обязательно должны быть на плакате?</li>
+            <li>О чём можно сочинить сказку? Каких героев можно выбрать?</li>
+            <li>Какие бывают экологические игры?</li>
+            <li>Что можно показать на выставке достижений?</li>
+            <li>Что тебе больше всего понравилось в твоём лете в природе?</li>
+            <li>Какая из твоих творческих работ самая любимая и почему?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🎨 Молодец!</strong> Ты справился с одиннадцатым разделом рабочей тетради «Друзья природы». Теперь ты не только исследователь и защитник, но и <strong>настоящий творец</strong>. Ты создал плакаты, сочинил сказку, придумал игру, подготовил выставку и рассказал о своём лете. Ты научился выражать свои чувства и мысли через творчество. Это огромный шаг вперёд — теперь ты можешь говорить с миром о самом важном. Впереди тебя ждёт последний раздел, где мы подведём итоги всей нашей работы: вспомним, что ты узнал, чему научился, и помечтаем о будущем.
+    </div>
+
+    <div class="quote">
+        «Творить — значит добавлять в мир что-то своё, чего раньше не было. А если это «своё» помогает природе и людям — это творчество высшего уровня». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section10.html" class="button">← Раздел 10. «Я — защитник природы»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

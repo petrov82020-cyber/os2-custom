@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 8. «Экологические праздники и акции» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .holiday-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .holiday-card-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .action-item {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+        .action-item .icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .action-item .label {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .action-item .desc {
+            font-size: 0.85rem;
+            color: #78350f;
+        }
+        .steps-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .steps-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding-left: 42px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .save-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .save-item {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border: 2px solid #0284c7;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .save-item .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .save-item .label {
+            font-weight: 700;
+            color: #075985;
+            font-size: 0.95rem;
+        }
+        .save-item .desc {
+            font-size: 0.8rem;
+            color: #0c4a6e;
+            margin-top: 4px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🌍🐦💧 Раздел 8. «Экологические праздники и акции»</h1>
+    <div class="section-meta">📖 Часть 2. «Удивительный мир природы» | 🎯 Для детей 7–9 лет | ⏱ 5 тем, 12–14 заданий</div>
+
+    <p>Дорогой друг! Ты уже много знаешь о природе: как она устроена, как в ней всё связано, как выращивать растения и беречь животных. Но знания — это только половина дела. Настоящий друг природы — это тот, кто не только <strong>знает</strong>, но и <strong>действует</strong>. Тот, кто не просто любуется красотой, а <strong>помогает природе</strong>.</p>
+
+    <p>В этом разделе мы будем <strong>действовать</strong>. Мы узнаем о самых важных <strong>экологических праздниках</strong>, которые отмечают люди во всём мире, и о том, как ты сам можешь стать участником <strong>природоохранных акций</strong>. Ты научишься делать кормушки для птиц, участвовать в уборке территории, экономить воду и свет, а ещё играть в увлекательные экологические игры-квесты. И самое главное — ты почувствуешь, что <strong>твои добрые дела действительно важны</strong> для природы.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этим разделом:</strong> Здесь много <strong>практических дел</strong>. Не просто читай и пиши, а <strong>действуй</strong>: делай кормушки, убирай территорию, экономь воду. И рассказывай о своих добрых делах друзьям, родителям, одноклассникам. Чем больше людей заботятся о природе, тем чище и красивее будет наш общий дом — планета Земля.
+    </div>
+
+    <div class="svg-illustration" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: экологические праздники и акции">
+        <rect x="10" y="10" width="580" height="180" rx="16" fill="#f8fafc"/>
+        <text x="300" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ЭКОЛОГИЧЕСКИЕ ПРАЗДНИКИ И АКЦИИ</text>
+
+        <!-- День Земли -->
+        <rect x="30" y="70" width="170" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="115" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌍</text>
+        <text x="115" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">День Земли</text>
+        <text x="115" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">22 апреля</text>
+
+        <!-- Помощь птицам -->
+        <rect x="215" y="70" width="170" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="300" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🐦</text>
+        <text x="300" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">Помощь птицам</text>
+        <text x="300" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">зимой и весной</text>
+
+        <!-- Береги воду -->
+        <rect x="400" y="70" width="170" height="100" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="485" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">💧</text>
+        <text x="485" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">Береги воду</text>
+        <text x="485" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">каждый день</text>
+    </svg>
+    <p class="svg-caption">Схема 8. Главные дела юного эколога</p>
+
+    <!-- ТЕМА 2.4.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌍</span>
+        <span>Тема 2.4.1. День Земли</span>
+    </div>
+
+    <p><strong>День Земли</strong> — это международный праздник, который отмечается <strong>22 апреля</strong>. В этот день люди во всём мире вспоминают, что Земля — наш общий дом, что её нужно беречь и защищать. Это день, когда каждый может сделать что-то полезное для природы: посадить дерево, убрать мусор, рассказать другим о том, как важно беречь природу.</p>
+
+    <p>В разных странах День Земли отмечают по-разному. Кто-то сажает деревья, кто-то участвует в экологических акциях, кто-то проводит праздники и концерты. Но все объединены одной идеей: <strong>Земля — наш дом, и мы за него в ответе</strong>.</p>
+
+    <div class="holiday-card">
+        <div class="holiday-card-title">🌍 Символы Дня Земли</div>
+        <ul>
+            <li><strong>Флаг Земли</strong> — изображение нашей планеты на синем фоне.</li>
+            <li><strong>Колокол Мира</strong> — символ спокойствия и дружбы народов.</li>
+            <li><strong>Зелёный цвет</strong> — цвет жизни и природы.</li>
+            <li><strong>Дерево</strong> — символ жизни, роста и связи поколений.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 8.1.1. «Поздравь Землю»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>В День Земли принято говорить добрые слова нашей планете. Напиши поздравление Земле и нарисуй к нему рисунок.</p>
+        <p><strong>Моё поздравление Земле:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 8.1.2. «Что я могу сделать для Земли?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Подумай, что ты можешь сделать для нашей планеты прямо сейчас. Запиши свои идеи в таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>Что я могу сделать?</th><th>Когда я это сделаю?</th><th>Кто мне поможет?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Посадить дерево или цветок</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Убрать мусор во дворе</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Сделать кормушку для птиц</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Экономить воду и свет</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о Земле</div>
+        <ul>
+            <li>«Ни начала, ни конца, ни затылка, ни лица. Знают все, и млад и стар, что она — огромный шар» (Земля).</li>
+            <li>«Кто весь мир питает, а сама есть не просит?» (земля-кормилица).</li>
+            <li>«Меня бьют, колотят, ворочают, режут — я всё терплю и всем добром плачу» (земля).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌍 Пословицы и поговорки о Земле:</strong>
+        <ul>
+            <li>«Земля — кормилица, а вода — поилица».</li>
+            <li>«Землю красит солнце, а человека — труд».</li>
+            <li>«Кто землю лелеет, того земля жалеет».</li>
+            <li>«Без хозяина земля — сирота».</li>
+            <li>«Земля — тарелка: что положишь, то и возьмёшь».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.4.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🐦</span>
+        <span>Тема 2.4.2. Птицы — наши друзья. Изготовление кормушек</span>
+    </div>
+
+    <p>В первой части тетради ты уже узнал, как важно помогать птицам зимой. Теперь мы сделаем это <strong>по-настоящему</strong>. Мы изготовим кормушки и будем подкармливать птиц не только зимой, но и весной, когда им особенно трудно найти корм после долгой зимы.</p>
+
+    <p>Птицы — это <strong>наши верные помощники</strong>. Они поедают насекомых-вредителей, разносят семена растений, радуют нас своим пением. А ещё птицы — это <strong>живой барометр</strong>: по их поведению можно предсказывать погоду. Недаром в народе говорят: <strong>«Ласточки летают низко — к дождю»</strong>.</p>
+
+    <div class="steps-card">
+        <div class="steps-card-title">🌿 Как сделать кормушку своими руками</div>
+        <p><strong>Вариант 1. Кормушка из картонной коробки</strong></p>
+        <ol class="step-list">
+            <li>Возьми ненужную картонную коробку (например, из-под сока или молока).</li>
+            <li>Прорежь в ней большое отверстие — «вход» для птиц.</li>
+            <li>Сделай небольшие бортики, чтобы корм не высыпался.</li>
+            <li>Проделай в верхней части отверстие и продень верёвку.</li>
+            <li>Повесь кормушку за окном или во дворе на дерево.</li>
+        </ol>
+        <p><strong>Вариант 2. Кормушка из пластиковой бутылки</strong></p>
+        <ol class="step-list">
+            <li>Возьми чистую пластиковую бутылку (1,5–2 литра).</li>
+            <li>Прорежь в ней окошки с двух сторон.</li>
+            <li>Сделай небольшие «полочки» из палочек, чтобы птицы могли сидеть.</li>
+            <li>Продень верёвку через крышку или горлышко.</li>
+            <li>Повесь кормушку на ветку дерева.</li>
+        </ol>
+    </div>
+
+    <div class="info-box">
+        <strong>🌾 Чем кормить птиц:</strong>
+        <ul>
+            <li><strong>Семечки подсолнечника</strong> — любимая еда всех птиц.</li>
+            <li><strong>Крошки белого хлеба</strong> — но не чёрного.</li>
+            <li><strong>Сало несолёное</strong> — для синичек.</li>
+            <li><strong>Пшено, овёс, просо</strong> — для воробьёв.</li>
+            <li><strong>Ягоды рябины</strong> — для снегирей.</li>
+            <li><strong>Тыквенные семечки</strong> — для всех птиц.</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Нельзя кормить птиц:</strong> жареными семечками, солёным салом, чёрным хлебом, чипсами, конфетами, печеньем. От такой еды птицы могут заболеть и даже погибнуть.
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 8.2.1. «Сделай и повесь кормушку»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Сделай кормушку вместе с родителями или педагогом. Повесь её за окном или во дворе. Наблюдай, какие птицы прилетают к твоей кормушке, и заполняй таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>Дата</th><th>Какие птицы прилетели?</th><th>Сколько их было?</th><th>Что они ели?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему важно подкармливать птиц именно зимой и ранней весной?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 8.2.2. «Нарисуй свою кормушку»</div>
+        <p><span class="signal">🎨 Раскрась</span></p>
+        <p>Нарисуй кормушку, которую ты сделал, и птиц, которые к ней прилетают. Раскрась свой рисунок.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о птицах у кормушки</div>
+        <ul>
+            <li>«Маленький мальчишка в сером армячишке по дворам шныряет, крохи собирает» (воробей).</li>
+            <li>«Спинка зеленовата, животик желтоватый, чёрненькая шапочка и полоска шарфика» (синица).</li>
+            <li>«Красногрудый, чернокрылый, любит зёрнышки клевать. С первым снегом на рябине он появится опять» (снегирь).</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Птицы — это вестники радости. Они приносят нам весну на своих крыльях». — Народная мудрость
+    </div>
+
+    <!-- ТЕМА 2.4.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🗑️</span>
+        <span>Тема 2.4.3. Экологическая акция «Чистый двор»</span>
+    </div>
+
+    <p>Мусор — одна из главных проблем современного мира. Брошенная бутылка, пакет, бумажка — всё это <strong>загрязняет природу</strong> и вредит животным. Но каждый из нас может сделать мир чище! Для этого нужно совсем немного: <strong>не мусорить самому</strong> и <strong>убирать за другими</strong>.</p>
+
+    <p>Экологическая акция <strong>«Чистый двор»</strong> — это когда дети и взрослые вместе выходят на улицу и убирают мусор: во дворе, в парке, на берегу реки. Это не только полезное, но и очень <strong>весёлое дело</strong>, ведь работать вместе интереснее!</p>
+
+    <div class="action-grid">
+        <div class="action-item">
+            <span class="icon">🗑️</span>
+            <span class="label">Уборка мусора</span>
+            <span class="desc">Собери мусор в пакеты и отнеси в специальные контейнеры</span>
+        </div>
+        <div class="action-item">
+            <span class="icon">♻️</span>
+            <span class="label">Сортировка мусора</span>
+            <span class="desc">Раздели мусор: бумага, пластик, стекло, органические отходы</span>
+        </div>
+        <div class="action-item">
+            <span class="icon">🌳</span>
+            <span class="label">Посадка растений</span>
+            <span class="desc">Посади дерево, куст или цветы на месте убранного мусора</span>
+        </div>
+        <div class="action-item">
+            <span class="icon">📢</span>
+            <span class="label">Напоминание другим</span>
+            <span class="desc">Расскажи друзьям, почему важно не мусорить</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 8.3.1. «Уберём наш двор!»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Прими участие в экологической акции «Чистый двор» вместе с друзьями, родителями или педагогом. Уберите мусор во дворе, в парке или на берегу реки. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>Где мы убирали?</th><th>Сколько мусора собрали?</th><th>Какой мусор был?</th><th>Что мы сделали потом?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему люди мусорят? Что нужно сделать, чтобы мусора стало меньше?»</p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> При уборке мусора будь <strong>осторожен</strong>! Надевай перчатки, не трогай руками битое стекло, острые предметы и подозрительные предметы. Если найдёшь что-то опасное, позови взрослых.
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 8.3.2. «Плакат "Не мусори!"»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй плакат, который убедит людей не мусорить. Придумай к нему короткий лозунг.</p>
+        <p><strong>Мой лозунг:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой плакат:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌍 Интересно знать:</strong> Один выброшенный пластиковый пакет разлагается в природе около <strong>400 лет</strong>, а стеклянная бутылка — почти <strong>1000 лет</strong>. А вот бумага разлагается всего за 2–4 месяца. Вот почему так важно сортировать мусор и сдавать его на переработку!
+    </div>
+
+    <!-- ТЕМА 2.4.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🎮</span>
+        <span>Тема 2.4.4. Игра-квест «Спасём лес от мусора»</span>
+    </div>
+
+    <p>Экологические знания лучше всего запоминаются, когда их применяешь в <strong>игре</strong>. Предлагаем тебе и твоим друзьям сыграть в увлекательный <strong>квест «Спасём лес от мусора»</strong>. Это командная игра, в которой нужно выполнить несколько заданий, чтобы «спасти» лес от злого волшебника.</p>
+
+    <div class="holiday-card">
+        <div class="holiday-card-title">🎮 Правила игры-квеста «Спасём лес от мусора»</div>
+        <p><strong>Легенда:</strong> Злой волшебник Мусорун заколдовал лес — засыпал его мусором, отравил воздух и напугал всех зверей. Чтобы спасти лес, команда юных экологов должна пройти пять испытаний.</p>
+        <p><strong>Цель:</strong> выполнить все пять заданий и получить волшебный ключ, который снимет заклятие.</p>
+        <p><strong>Участники:</strong> 2–4 команды по 3–5 человек.</p>
+        <p><strong>Время:</strong> 30–40 минут.</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🗺️ Задания квеста «Спасём лес от мусора»</div>
+        <table>
+            <thead>
+                <tr><th>№</th><th>Задание</th><th>Что нужно сделать?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>🌳 «Узнай дерево»</td><td>Найти в лесу (парке) и назвать пять деревьев. За правильный ответ — жетон.</td></tr>
+                <tr><td>2</td><td>🐦 «Птичьи голоса»</td><td>Отгадать три загадки о птицах. За правильный ответ — жетон.</td></tr>
+                <tr><td>3</td><td>🎨 «Знак защиты»</td><td>Придумать и нарисовать знак «Не мусори в лесу!». За лучший знак — жетон.</td></tr>
+                <tr><td>4</td><td>🗑️ «Чистый участок»</td><td>Собрать весь «мусор» (бумажки, разбросанные взрослыми) на определённом участке. За скорость — жетон.</td></tr>
+                <tr><td>5</td><td>🌱 «Посади дерево»</td><td>Посадить дерево, куст или цветок (или нарисовать его на асфальте мелками). За выполнение — жетон.</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Побеждает команда, которая быстрее соберёт все пять жетонов и получит волшебный ключ.</strong></p>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему важно работать в команде? Что легче — делать добрые дела одному или вместе?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 8.4.1. «Моя роль в команде»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Расскажи, как ты участвовал в игре-квесте. Что тебе понравилось больше всего? Что было трудно? Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>Что я делал в команде?</th><th>Что мне понравилось?</th><th>Что было трудно?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🤝 Пословицы и поговорки о дружбе и совместном труде:</strong>
+        <ul>
+            <li>«Один в поле не воин».</li>
+            <li>«Вместе — мы сила».</li>
+            <li>«Дружно — не грузно, а врозь — хоть брось».</li>
+            <li>«Берись дружно — не будет грузно».</li>
+            <li>«Одна пчела много мёду не принесёт».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.4.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">💧</span>
+        <span>Тема 2.4.5. Береги воду! Энерго- и ресурсосбережение</span>
+    </div>
+
+    <p>Вода — <strong>источник жизни</strong> на Земле. Без неё не могут жить ни люди, ни животные, ни растения. Но чистой воды на планете становится всё меньше. Чтобы воды хватило всем, нужно <strong>бережно к ней относиться</strong> — экономить её каждый день.</p>
+
+    <p>Кроме воды, мы используем и другие <strong>природные ресурсы</strong>: электричество, газ, бумагу, пластик. Всё это создано природой и требует бережного отношения. Если каждый из нас будет экономить воду, свет, бумагу, мы вместе <strong>сохраним природу для будущих поколений</strong>.</p>
+
+    <div class="save-grid">
+        <div class="save-item">
+            <span class="icon">🚱</span>
+            <span class="label">Закрывай кран</span>
+            <span class="desc">Когда чистишь зубы, выключай воду</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">🚿</span>
+            <span class="label">Принимай душ</span>
+            <span class="desc">Душ экономичнее, чем ванна</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">💡</span>
+            <span class="label">Выключай свет</span>
+            <span class="desc">Уходя из комнаты, гаси свет</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">🔌</span>
+            <span class="label">Выключай приборы</span>
+            <span class="desc">Не оставляй технику в режиме ожидания</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">📄</span>
+            <span class="label">Экономь бумагу</span>
+            <span class="desc">Используй обе стороны листа</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">♻️</span>
+            <span class="label">Сортируй мусор</span>
+            <span class="desc">Сдавай бумагу, пластик, стекло на переработку</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 8.5.1. «Экономим воду»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Понаблюдай, сколько воды ты используешь за день. Заполни таблицу и придумай, как можно сэкономить воду.</p>
+        <table>
+            <thead>
+                <tr><th>На что уходит вода?</th><th>Примерно сколько литров?</th><th>Как можно сэкономить?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🚿 Утренний душ</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🦷 Чистка зубов</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🍽️ Мытьё посуды</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🚽 Туалет</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌱 Полив растений</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему воду нужно беречь? Что было бы, если бы вода исчезла?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 8.5.2. «Плакат "Береги воду!"»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй плакат, который напомнит людям о необходимости беречь воду. Придумай к нему короткий лозунг.</p>
+        <p><strong>Мой лозунг:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой плакат:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о воде</div>
+        <ul>
+            <li>«В морях и реках обитает, но часто по небу летает. А как наскучит ей летать, на землю падает опять» (вода).</li>
+            <li>«Очень добродушная, мягкая, послушная, но когда захочет — камень источит» (вода).</li>
+            <li>«Без неё не будет ни ростка, ни цветка, ни травы, ни листьев» (вода).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>💧 Пословицы и поговорки о воде:</strong>
+        <ul>
+            <li>«Вода — всему голова».</li>
+            <li>«Вода камень точит».</li>
+            <li>«Хлеб да вода — молодецкая еда».</li>
+            <li>«Не плюй в колодец — пригодится воды напиться».</li>
+            <li>«И в мутной воде рыбу ловят».</li>
+            <li>«Вода путь найдёт».</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>🌍 Интересно знать:</strong> Если оставить кран открытым, пока чистишь зубы, за одну минуту утекает около <strong>6 литров воды</strong>. А если закрыть кран — только 0,5 литра. За год экономия составит более <strong>10 000 литров</strong> — это целый бассейн!
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 8. «Экологические праздники и акции»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал и чему научился в этом разделе:</strong>
+        <ul>
+            <li>Какой праздник — <strong>День Земли</strong> и почему его отмечают 22 апреля.</li>
+            <li>Как <strong>помогать птицам</strong>: делать кормушки и подкармливать их.</li>
+            <li>Как проводить <strong>экологическую акцию «Чистый двор»</strong> и почему важно убирать мусор.</li>
+            <li>Как играть в <strong>игру-квест «Спасём лес от мусора»</strong> и работать в команде.</li>
+            <li>Как <strong>беречь воду, свет, бумагу</strong> и другие природные ресурсы.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Когда отмечают День Земли и почему?</li>
+            <li>Как ты помогаешь птицам зимой и весной?</li>
+            <li>Почему важно не мусорить и убирать за другими?</li>
+            <li>Что нужно делать, чтобы сэкономить воду?</li>
+            <li>Как ты можешь сэкономить электричество?</li>
+            <li>Какие добрые дела для природы ты уже сделал?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Итоговое творческое задание «Мой экологический проект»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Придумай свой экологический проект. Что ты можешь сделать для природы вместе с друзьями и родителями? Нарисуй план своего проекта и опиши, что ты будешь делать, кто тебе поможет, какой результат ты хочешь получить.</p>
+        <p><strong>Название моего проекта:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Что я буду делать?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Кто мне поможет?</strong></p>
+        <span class="line-for-writing"></span>
+        <p><strong>Какой результат я хочу получить?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок проекта:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌍 Молодец!</strong> Ты справился с восьмым разделом рабочей тетради «Друзья природы». Теперь ты не просто знаешь о природе — ты <strong>действуешь</strong>: помогаешь птицам, убираешь мусор, экономишь воду. Ты — настоящий <strong>друг природы</strong>! И таких друзей становится всё больше, ведь ты рассказываешь о своих добрых делах другим. Вместе мы можем сделать наш общий дом — планету Земля — чище, красивее и добрее. Впереди тебя ждёт третья часть тетради, где ты станешь <strong>настоящим исследователем</strong>: будешь вести долгосрочные наблюдения, создавать свои проекты и защищать природу как взрослый эколог!
+    </div>
+
+    <div class="quote">
+        «Природа — это наш общий дом. И от того, как мы о нём заботимся, зависит наше будущее и будущее наших детей». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section7.html" class="button">← Раздел 7. «Природа и творчество»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

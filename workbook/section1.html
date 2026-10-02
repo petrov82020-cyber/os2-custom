@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 1. «Здравствуй, природа!» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .color-swatch {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            margin: 4px 6px 4px 0;
+            vertical-align: middle;
+            border: 2px solid #e2e8f0;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .rule-item {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+        .rule-item strong {
+            color: #166534;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🌿 Раздел 1. «Здравствуй, природа!»</h1>
+    <div class="section-meta">📖 Часть 1. «Первые шаги в природу» | 🎯 Для детей 6–7 лет (и старше — начинающих) | ⏱ 5 тем, 10–12 заданий</div>
+
+    <p>Здравствуй, дорогой друг!</p>
+
+    <p>Ты открыл первую страницу рабочей тетради «Друзья природы». Это значит, что совсем скоро ты отправишься в <strong>увлекательное путешествие</strong> по миру живой природы. Ты узнаешь, кто такие экологи, научишься видеть красоту в каждой травинке и каждой снежинке, познакомишься с удивительными растениями и животными родного края.</p>
+
+    <p>Но прежде чем отправиться в путь, давай познакомимся с <strong>правилами путешественника</strong>. Они совсем простые: будь внимательным, не бойся задавать вопросы, помогай товарищам и бережно относись ко всему живому. Тогда природа откроет тебе свои самые сокровенные тайны.</p>
+
+    <div class="quote">
+        «Природа — это единственная книга, каждая страница которой полна глубокого содержания». — И.В. Гёте
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этой тетрадью:</strong><br>
+        В тетради ты будешь встречать разные значки — <strong>опорные сигналы</strong>. Они подскажут, что нужно делать:
+        <ul style="margin-top: 8px;">
+            <li><span class="signal">🎨 Раскрась</span> — возьми цветные карандаши и раскрась рисунок.</li>
+            <li><span class="signal">✏️ Обведи</span> — обведи рисунок по пунктирной линии.</li>
+            <li><span class="signal">🖍️ Дорисуй</span> — добавь то, чего не хватает на рисунке.</li>
+            <li><span class="signal">🔗 Соедини</span> — соедини линиями предметы или картинки.</li>
+            <li><span class="signal">👁 Понаблюдай</span> — посмотри внимательно вокруг себя.</li>
+            <li><span class="signal">📝 Запиши</span> — напиши или нарисуй ответ.</li>
+            <li><span class="signal">❓ Отгадай</span> — разгадай загадку.</li>
+            <li><span class="signal">🎭 Поиграй</span> — сыграй в игру.</li>
+        </ul>
+    </div>
+
+    <h2>Тема 1.1. Что такое природа?</h2>
+
+    <p>Посмотри в окно. Что ты видишь? Солнце, небо, облака, деревья, птиц… Всё это — <strong>природа</strong>. Природа — это всё, что нас окружает и что <strong>не создано руками человека</strong>. Солнце и луна, реки и моря, леса и поля, животные и растения — это природа. А вот дом, в котором ты живёшь, машина, на которой ездит папа, и компьютер, за которым ты играешь, — это <strong>не природа</strong>. Это предметы, созданные человеком.</p>
+
+    <p>Природа бывает <strong>живая</strong> и <strong>неживая</strong>. К живой природе относятся растения, животные, грибы и сам человек. К неживой — солнце, вода, воздух, камни, облака. Живая и неживая природа связаны между собой: растения не могут жить без солнечного света и воды, а животные — без растений и чистого воздуха.</p>
+
+    <svg class="svg-illustration" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: живая и неживая природа">
+        <rect x="10" y="10" width="580" height="160" rx="16" fill="#f8fafc"/>
+        <text x="300" y="40" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ПРИРОДА</text>
+        <line x1="300" y1="50" x2="300" y2="70" stroke="#94a3b8" stroke-width="2"/>
+        <line x1="150" y1="70" x2="450" y2="70" stroke="#94a3b8" stroke-width="2"/>
+        <line x1="150" y1="70" x2="150" y2="90" stroke="#94a3b8" stroke-width="2"/>
+        <line x1="450" y1="70" x2="450" y2="90" stroke="#94a3b8" stroke-width="2"/>
+        <rect x="60" y="90" width="180" height="60" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="150" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">Живая природа</text>
+        <text x="150" y="137" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#475569">растения, животные, грибы</text>
+        <rect x="360" y="90" width="180" height="60" rx="12" fill="#e0f2fe" stroke="#0284c7"/>
+        <text x="450" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#075985">Неживая природа</text>
+        <text x="450" y="137" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#475569">солнце, вода, воздух, камни</text>
+    </svg>
+    <p class="svg-caption">Схема 1. Живая и неживая природа</p>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.1.1. «Живое и неживое»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Посмотри внимательно на список предметов и явлений. Подумай, что относится к <strong>живой природе</strong>, а что — к <strong>неживой</strong>. Соедини линиями:</p>
+        <table>
+            <thead>
+                <tr><th>Объект</th><th>Живая природа</th><th>Неживая природа</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🐦 Птица</td><td>☐</td><td>☐</td></tr>
+                <tr><td>☀️ Солнце</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌳 Дерево</td><td>☐</td><td>☐</td></tr>
+                <tr><td>💧 Вода</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🍄 Гриб</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🪨 Камень</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🦋 Бабочка</td><td>☐</td><td>☐</td></tr>
+                <tr><td>☁️ Облако</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, что было бы, если бы неживая природа исчезла? Смогли бы тогда жить растения и животные?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о природе</div>
+        <p>Отгадай загадки. Нарисуй отгадки.</p>
+        <ul>
+            <li>«Катится по небу золотое яблочко, всем улыбается» (солнце).</li>
+            <li>«Белая вата плывёт куда-то, чем вата ниже, тем дождик ближе» (облако).</li>
+            <li>«Весной веселит, летом холодит, осенью питает, зимой согревает» (дерево).</li>
+        </ul>
+    </div>
+
+    <h2>Тема 1.2. Мы — юные экологи</h2>
+
+    <p>А знаешь ли ты, кто такой <strong>эколог</strong>? Экология — это наука о том, как живые существа связаны друг с другом и с окружающим миром. Экологи — это люди, которые <strong>изучают природу</strong> и <strong>помогают ей</strong>: они следят за чистотой воздуха и воды, защищают редких животных и растения, учат людей бережно относиться к природе.</p>
+
+    <p>А <strong>юный эколог</strong> — это ты! Да-да, ты тоже можешь стать настоящим другом природы. Для этого нужно совсем немного: <strong>любить природу</strong>, <strong>наблюдать за ней</strong>, <strong>не мусорить</strong> и <strong>помогать</strong> растениям и животным. Начнём с малого — понаблюдаем за тем, что нас окружает.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.2.1. «Портрет юного эколога»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">🖍️ Дорисуй</span></p>
+        <p>Перед тобой контурный рисунок мальчика (или девочки) с рюкзаком и лупой в руках — это юный эколог, который отправляется в путешествие. Раскрась его. Дорисуй, что ещё нужно взять с собой в путешествие (например, блокнот, карандаш, корзинку).</p>
+        <p><em>Описание рисунка:</em> в центре — силуэт ребёнка с лупой в правой руке и рюкзаком за спиной. Рядом — контурные изображения пенала, блокнота, корзинки. Ребёнку нужно раскрасить силуэт и дополнить рисунок.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>Тема 1.3. Правила поведения в природе</h2>
+
+    <p>Когда ты приходишь в гости, ты здороваешься и ведёшь себя вежливо. Когда приходишь в <strong>гости к природе</strong>, тоже нужно соблюдать правила. Они совсем не сложные, но очень важные. Давай выучим их вместе.</p>
+
+    <div class="rules-grid">
+        <div class="rule-item"><strong>🌳 Не ломай ветки и не рви цветы.</strong> Пусть они растут и радуют всех.</div>
+        <div class="rule-item"><strong>🐦 Не разоряй гнёзда и муравейники.</strong> Там живут маленькие жители леса.</div>
+        <div class="rule-item"><strong>🗑️ Не мусори.</strong> Уноси мусор с собой, не оставляй его в лесу.</div>
+        <div class="rule-item"><strong>🔥 Не разжигай костёр в лесу.</strong> От огня может начаться пожар.</div>
+        <div class="rule-item"><strong>🤫 Не шуми в лесу.</strong> Громкие звуки пугают зверей и птиц.</div>
+        <div class="rule-item"><strong>🐛 Не лови бабочек и насекомых.</strong> Пусть они живут на воле.</div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.3.1. «Что можно, а что нельзя?»</div>
+        <p><span class="signal">🎨 Раскрась</span></p>
+        <p>Посмотри на описанные ниже ситуации. Раскрась кружок <span class="color-swatch" style="background:#dcfce7;"></span> зелёным цветом, если так поступать <strong>можно</strong>, и <span class="color-swatch" style="background:#fee2e2;"></span> красным, если <strong>нельзя</strong>.</p>
+        <table>
+            <thead>
+                <tr><th>Ситуация</th><th>Оценка</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Покормить птиц зимой</td><td>☐</td></tr>
+                <tr><td>Сорвать красивый цветок на память</td><td>☐</td></tr>
+                <tr><td>Посадить дерево весной</td><td>☐</td></tr>
+                <tr><td>Разорить гнездо птицы</td><td>☐</td></tr>
+                <tr><td>Убрать мусор после пикника</td><td>☐</td></tr>
+                <tr><td>Поймать бабочку в сачок и посадить в банку</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.3.2. «Придумай знак»</div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">📝 Запиши</span></p>
+        <p>Придумай и нарисуй свой знак, который напоминал бы людям о правилах поведения в природе. Например, знак «Не мусори!» или «Не рви цветы!». Напиши под знаком, что он означает.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Вопрос для размышления:</strong> «Почему важно соблюдать правила поведения в природе? Что было бы, если бы все люди их нарушали?»</p>
+    </div>
+
+    <h2>Тема 1.4. Природа родного края</h2>
+
+    <p>У каждого человека есть <strong>родной край</strong> — то место, где он родился и живёт. Для нас с тобой родной край — это прекрасная <strong>Беларусь</strong>: страна с густыми лесами, широкими полями, голубыми озёрами и быстрыми реками. Наша страна богата разнообразными растениями и животными.</p>
+
+    <p>В лесах Беларуси растут <strong>сосны</strong> и <strong>ели</strong>, <strong>берёзы</strong> и <strong>дубы</strong>, <strong>клёны</strong> и <strong>осины</strong>. Здесь живут <strong>зубр</strong> — самый крупный зверь Европы, грациозная <strong>рысь</strong>, хитрый <strong>лис</strong> и пугливый <strong>заяц</strong>. А над полями кружат <strong>аисты</strong> — символ нашей страны.</p>
+
+    <p>Символы природы Беларуси, которые ты должен знать:</p>
+
+    <ul>
+        <li><strong>🌳 Дуб</strong> — символ силы и долголетия.</li>
+        <li><strong>🌿 Берёза</strong> — символ чистоты и света.</li>
+        <li><strong>🦬 Зубр</strong> — символ мощи и заповедной природы.</li>
+        <li><strong>🕊️ Аист</strong> — символ мира и родного дома.</li>
+        <li><strong>🌸 Василёк</strong> — символ неба и чистоты.</li>
+    </ul>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.4.1. «Символы моего края»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Рассмотри контурные изображения растений и животных — символов Беларуси. Раскрась их. Соедини линиями каждое изображение с его названием.</p>
+        <table>
+            <thead>
+                <tr><th>Изображение</th><th>Название</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌳 Дерево с белым стволом</td><td>Дуб</td></tr>
+                <tr><td>🌳 Могучее дерево с резными листьями</td><td>Берёза</td></tr>
+                <tr><td>🦬 Крупный зверь с рогами</td><td>Аист</td></tr>
+                <tr><td>🕊️ Птица с длинными ногами и красным клювом</td><td>Зубр</td></tr>
+                <tr><td>🌸 Синий полевой цветок</td><td>Василёк</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему именно эти растения и животные стали символами Беларуси?»</p>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Запомни:</strong> Природа родного края — это <strong>наше богатство</strong>. Мы должны беречь её, чтобы и наши дети, и внуки смогли увидеть зубров в лесу, аистов над полями и васильки на лугах.
+    </div>
+
+    <h2>Тема 1.5. Экскурсия в парк</h2>
+
+    <p>А теперь — самое интересное! Мы отправляемся на <strong>экскурсию в парк</strong> (или в лес, в сквер, на луг). Там ты сможешь <strong>понаблюдать за природой</strong> своими глазами. Возьми с собой блокнот, карандаш и хорошее настроение. Постарайся заметить как можно больше интересного.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 1.5.1. «Карта моих наблюдений»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Во время экскурсии понаблюдай за природой и запиши (или зарисуй), что ты увидел:</p>
+        <table>
+            <thead>
+                <tr><th>Что наблюдаем</th><th>Мои наблюдения</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌳 Какие деревья ты встретил?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🍂 Какие листья ты собрал?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐦 Каких птиц ты увидел?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐜 Каких насекомых ты заметил?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>☀️ Какая была погода?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Творческое задание:</strong> Нарисуй то, что тебе больше всего понравилось на экскурсии.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎭 Задание 1.5.2. Игра «Найди пару»</div>
+        <p><span class="signal">🎭 Поиграй</span></p>
+        <p>Собери листья разных деревьев во время экскурсии. Дома или на занятии поиграй в игру: разложи листья на столе и попробуй отгадать, с какого дерева каждый лист. Затем проверь себя по картинке.</p>
+        <p><em>Подсказка:</em> у клёна лист резной, с острыми уголками; у берёзы — маленький, округло-сердцевидный; у дуба — продолговатый, с волнистыми краями.</p>
+        <p><strong>Народная примета:</strong> «Если осенью листья с берёзы начинают желтеть с верхушки — весна будет ранняя, а если снизу — поздняя».</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о деревьях</div>
+        <ul>
+            <li>«Стоит Алёна — платок зелёный, тонкий стан, белый сарафан» (берёза).</li>
+            <li>«Что за дерево стоит — ветра нет, а лист дрожит?» (осина).</li>
+            <li>«Я из крошки-бочки вылез, корешки пустил и вырос. Я кормлю свиней и белок, ничего, что плод мой мелок» (дуб).</li>
+        </ul>
+    </div>
+
+    <h2>📝 Итоги раздела 1. «Здравствуй, природа!»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>природа</strong> и чем она отличается от предметов, созданных человеком.</li>
+            <li>Что природа бывает <strong>живая</strong> и <strong>неживая</strong>.</li>
+            <li>Кто такие <strong>экологи</strong> и <strong>юные экологи</strong>.</li>
+            <li>Какие <strong>правила поведения</strong> нужно соблюдать в природе.</li>
+            <li>Какие растения и животные — <strong>символы Беларуси</strong>.</li>
+            <li>Как <strong>наблюдать</strong> за природой во время экскурсии.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Что относится к живой природе: солнце, дерево, камень, бабочка?</li>
+            <li>Кто такие экологи?</li>
+            <li>Какие правила поведения в природе ты запомнил?</li>
+            <li>Какие символы природы Беларуси ты знаешь?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌿 Молодец!</strong> Ты справился с первым разделом рабочей тетради «Друзья природы». Теперь ты знаешь, что такое природа, кто такие экологи, как вести себя в природе. Впереди тебя ждут новые открытия и увлекательные путешествия. <strong>Природа — наш лучший друг. Береги её и изучай!</strong>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="plan.html" class="button">← К плану тетради</a>
+        <a href="section2.html" class="button">📖 Перейти к разделу 2. «Времена года» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

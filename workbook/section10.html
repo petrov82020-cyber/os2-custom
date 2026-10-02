@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 10. «Я — защитник природы» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .action-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .action-card-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .steps-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .steps-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding-left: 42px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .save-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .save-item {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border: 2px solid #0284c7;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .save-item .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .save-item .label {
+            font-weight: 700;
+            color: #075985;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .save-item .desc {
+            font-size: 0.8rem;
+            color: #0c4a6e;
+        }
+        .primrose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .primrose-item {
+            background: linear-gradient(135deg, #fae8ff 0%, #f5d0fe 100%);
+            border: 2px solid #a855f7;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .primrose-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .primrose-item .name {
+            font-weight: 700;
+            color: #6b21a8;
+            font-size: 0.95rem;
+        }
+        .primrose-item .desc {
+            font-size: 0.8rem;
+            color: #7e22ce;
+            margin-top: 4px;
+        }
+        .battery-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .battery-card-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🛡️🌳💚 Раздел 10. «Я — защитник природы» (природоохранная деятельность)</h1>
+    <div class="section-meta">📖 Часть 3. «Мы — друзья природы» | 🎯 Для детей 9–10 лет | ⏱ 5 тем, 12–14 заданий</div>
+
+    <p>Дорогой друг! В предыдущем разделе ты стал <strong>исследователем</strong>: научился задавать вопросы, выдвигать гипотезы, проводить опыты, делать выводы. Ты узнал, как устроена природа, и понял, насколько она хрупка и беззащитна перед человеком. Теперь настало время <strong>действовать</strong>.</p>
+
+    <p>Настоящий защитник природы — это не тот, кто много знает, а тот, кто <strong>реально помогает</strong>. Он не проходит мимо брошенного мусора, не остаётся равнодушным, когда гибнут птицы, не ждёт, пока кто-то другой посадит дерево. Он <strong>сам берёт и делает</strong>. И таких людей на Земле становится всё больше. Ты — один из них.</p>
+
+    <p>В этом разделе мы будем <strong>защищать природу на деле</strong>. Мы построим и развесим кормушки для птиц, посадим деревья и кусты, сохраним первоцветы, соберём опасные отходы и научимся экономить воду и свет. И ты увидишь: <strong>твои добрые дела действительно меняют мир к лучшему</strong>.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этим разделом:</strong> Здесь почти нет «письменных» заданий. Всё, что ты узнаешь, нужно будет <strong>делать руками</strong> — сажать, строить, собирать, помогать. Это не «работа для педагога», а <strong>твоя личная помощь природе</strong>. И чем больше ты сделаешь, тем чище, красивее и добрее станет мир вокруг тебя.
+    </div>
+
+    <div class="svg-illustration" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: пять добрых дел защитника природы">
+        <rect x="10" y="10" width="580" height="200" rx="16" fill="#f8fafc"/>
+        <text x="300" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ПЯТЬ ДОБРЫХ ДЕЛ ЗАЩИТНИКА ПРИРОДЫ</text>
+
+        <!-- Дело 1 -->
+        <circle cx="80" cy="120" r="32" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="80" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🐦</text>
+        <text x="80" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Помоги</text>
+        <text x="80" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">птицам</text>
+
+        <!-- Дело 2 -->
+        <circle cx="185" cy="120" r="32" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="185" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🌳</text>
+        <text x="185" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Посади</text>
+        <text x="185" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">дерево</text>
+
+        <!-- Дело 3 -->
+        <circle cx="300" cy="120" r="32" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="300" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🌸</text>
+        <text x="300" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Сохрани</text>
+        <text x="300" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">первоцветы</text>
+
+        <!-- Дело 4 -->
+        <circle cx="415" cy="120" r="32" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="415" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🔋</text>
+        <text x="415" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Сдай</text>
+        <text x="415" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">батарейки</text>
+
+        <!-- Дело 5 -->
+        <circle cx="530" cy="120" r="32" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="530" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">💡</text>
+        <text x="530" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Экономь</text>
+        <text x="530" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">ресурсы</text>
+    </svg>
+    <p class="svg-caption">Схема 10. Пять добрых дел защитника природы</p>
+
+    <!-- ТЕМА 3.2.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🐦</span>
+        <span>Тема 3.2.1. Помоги птицам зимой</span>
+    </div>
+
+    <p>Зимой птицам очень трудно. Земля покрыта снегом, насекомые спрятались, ягоды и семена найти нелегко. В сильные морозы <strong>каждая кормушка спасает десятки птичьих жизней</strong>. Если ты помогаешь птицам зимой — ты настоящий защитник природы.</p>
+
+    <p>Птицы, которые остаются зимовать (синицы, воробьи, снегири, свиристели, поползни), перебираются поближе к жилью человека — здесь легче найти корм. И наша задача — <strong>помочь им пережить холода</strong>.</p>
+
+    <div class="action-card">
+        <div class="action-card-title">🌾 Чем кормить птиц зимой</div>
+        <table>
+            <thead>
+                <tr><th>Птица</th><th>Что любит?</th><th>Что нельзя?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🐦 Синица</td><td>Сало несолёное, семечки, крошки</td><td>Солёное сало, жареные семечки</td></tr>
+                <tr><td>🐦 Воробей</td><td>Пшено, просо, овёс, крошки</td><td>Чёрный хлеб, чипсы, конфеты</td></tr>
+                <tr><td>🐦 Снегирь</td><td>Ягоды рябины, семена</td><td>Солёное, сладкое, жареное</td></tr>
+                <tr><td>🐦 Свиристель</td><td>Ягоды рябины, калины, яблоки</td><td>Солёное, жареное, кислое</td></tr>
+                <tr><td>🐦 Поползень</td><td>Семечки, орешки, сало</td><td>Солёное, сладкое</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важное правило:</strong> Птиц нужно <strong>подкармливать</strong>, а не <strong>кормить</strong>! Это значит, что в кормушке всегда должно быть немного еды — столько, чтобы птицы не привыкали к «полному столу» и не переставали искать корм сами. Иначе, если ты вдруг перестанешь их подкармливать, они могут погибнуть.
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 10.1.1. «Изготовь кормушку-автомат»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Сделай кормушку, которая сама выдаёт корм понемногу. Например, из пластиковой бутылки с отверстием снизу — корм будет высыпаться по мере съедания. Повесь её за окном или во дворе.</p>
+        <p><strong>Моя кормушка:</strong></p>
+        <table>
+            <thead>
+                <tr><th>Из чего сделана</th><th>Где повешена</th><th>Кто прилетает?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 10.1.2. «Дневник птичьей столовой»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Наблюдай за птицами у кормушки в течение недели. Отмечай, кто прилетает, сколько птиц, что они едят и как себя ведут.</p>
+        <table>
+            <thead>
+                <tr><th>День</th><th>Кто прилетал?</th><th>Сколько?</th><th>Что ели?</th><th>Поведение</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Пн</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вт</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Ср</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Чт</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Пт</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Сб</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вс</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о зимующих птицах</div>
+        <ul>
+            <li>«Спинка зеленовата, животик желтоватый, чёрненькая шапочка и полоска шарфика» (синица).</li>
+            <li>«Красногрудый, чернокрылый, любит зёрнышки клевать. С первым снегом на рябине он появится опять» (снегирь).</li>
+            <li>«Маленький мальчишка в сером армячишке по дворам шныряет, крохи собирает» (воробей).</li>
+            <li>«Кто в беретке ярко-красной, в чёрной курточке атласной? На меня он не глядит, всё стучит, стучит, стучит» (дятел).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🐦 Пословицы и поговорки о птицах:</strong>
+        <ul>
+            <li>«Птица сильна крыльями, а человек — дружбой».</li>
+            <li>«Сытая птица не боится мороза».</li>
+            <li>«Птица рада весне, а младенец — матери».</li>
+            <li>«Невелика птичка-синичка, а и та свой праздник помнит».</li>
+            <li>«Соловей поёт — себя не щадит».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 3.2.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌳</span>
+        <span>Тема 3.2.2. Посади дерево</span>
+    </div>
+
+    <p>Дерево — это <strong>самое ценное, что человек может подарить природе</strong>. Одно взрослое дерево за год очищает воздух от 20 килограммов пыли и выделяет столько кислорода, сколько нужно для дыхания трёх человек. А ещё дерево — это дом для птиц, насекомых, белок, это тень в жаркий день, это красота и радость.</p>
+
+    <p>Посадить дерево — это <strong>поступок настоящего защитника природы</strong>. Ты не просто «делаешь доброе дело» — ты <strong>создаёшь будущее</strong>. Пройдут годы, дерево вырастет, и под его кроной будут отдыхать люди, а в его ветвях будут петь птицы. Это твой след на Земле.</p>
+
+    <div class="steps-card">
+        <div class="steps-card-title">🌳 Как посадить дерево правильно</div>
+        <ol class="step-list">
+            <li><strong>Выбери место.</strong> Дереву нужно много света и свободного пространства. Не сажай его там, где проходят провода или трубы.</li>
+            <li><strong>Подготовь яму.</strong> Выкопай яму глубиной и шириной около 50–60 см.</li>
+            <li><strong>Подготовь саженец.</strong> Осторожно расправь корни саженца, не повреди их.</li>
+            <li><strong>Посади дерево.</strong> Поставь саженец в яму, засыпь землёй, слегка утрамбуй.</li>
+            <li><strong>Полей.</strong> Полей дерево 2–3 вёдрами воды.</li>
+            <li><strong>Закрепи.</strong> Привяжи саженец к колышку, чтобы ветер его не сломал.</li>
+            <li><strong>Ухаживай.</strong> Первый год поливай дерево регулярно, особенно в жаркую погоду.</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 10.2.1. «Моё дерево»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Посади дерево (или куст) вместе с родителями, педагогом или друзьями. Заполни «паспорт» своего дерева.</p>
+        <table>
+            <thead>
+                <tr><th>Вопрос</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Какое дерево я посадил?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Где я его посадил?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Дата посадки</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Кто мне помогал?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Как я буду ухаживать за деревом?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок дерева:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 10.2.2. «Письмо моему дереву»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши письмо своему дереву. Расскажи, почему ты его посадил, как будешь за ним ухаживать, о чём мечтаешь, глядя на него через много лет.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="quote">
+        «Каждый человек должен посадить хотя бы одно дерево, построить дом и воспитать ребёнка. Но дерево — самое главное, потому что оно переживёт и дом, и нас». — Народная мудрость
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать:</strong> Некоторые деревья живут <strong>тысячи лет</strong>. Самому старому дереву в Европе — <strong>сосне Григория</strong> в Италии — около 1230 лет. А в Беларуси есть дубы, которым более 400 лет! Твоё дерево тоже может стать долгожителем — если ты правильно за ним ухаживаешь.
+    </div>
+
+    <!-- ТЕМА 3.2.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌸</span>
+        <span>Тема 3.2.3. Сохрани первоцветы</span>
+    </div>
+
+    <p>Весной, когда природа только просыпается, в лесах и на лугах появляются <strong>первые цветы — первоцветы</strong>. Они хрупкие, нежные и удивительно красивые. Но именно из-за своей красоты первоцветы страдают больше всего: люди рвут их целыми охапками, чтобы принести домой. А ведь многие из них занесены в <strong>Красную книгу</strong> и находятся на грани исчезновения!</p>
+
+    <p>Сохранить первоцветы — это <strong>долг каждого защитника природы</strong>. Есть простые правила, которые помогут сберечь эту красоту для будущих поколений:</p>
+
+    <div class="primrose-grid">
+        <div class="primrose-item">
+            <span class="emoji">🌷</span>
+            <span class="name">Сон-трава</span>
+            <span class="desc">Цветок с пушистыми лепестками. Цветёт в апреле-мае.</span>
+        </div>
+        <div class="primrose-item">
+            <span class="emoji">🌸</span>
+            <span class="name">Медуница</span>
+            <span class="desc">Сначала розовая, потом синяя. Цветёт в апреле.</span>
+        </div>
+        <div class="primrose-item">
+            <span class="emoji">🌼</span>
+            <span class="name">Мать-и-мачеха</span>
+            <span class="desc">Жёлтые цветочки на голом стебле. Цветёт в марте.</span>
+        </div>
+        <div class="primrose-item">
+            <span class="emoji">🌱</span>
+            <span class="name">Подснежник</span>
+            <span class="desc">Белые поникшие цветки. Цветёт в марте-апреле.</span>
+        </div>
+        <div class="primrose-item">
+            <span class="emoji">🌿</span>
+            <span class="name">Ветреница</span>
+            <span class="desc">Жёлтые или белые цветки. Цветёт в апреле.</span>
+        </div>
+        <div class="primrose-item">
+            <span class="emoji">🌸</span>
+            <span class="name">Хохлатка</span>
+            <span class="desc">Сиреневые цветки-хохолки. Цветёт в апреле-мае.</span>
+        </div>
+    </div>
+
+    <div class="action-card">
+        <div class="action-card-title">🌸 Правила сохранения первоцветов</div>
+        <ul>
+            <li><strong>Не рви первоцветы!</strong> Полюбуйся ими в лесу и оставь их расти.</li>
+            <li><strong>Не покупай букеты первоцветов</strong> — так ты поддерживаешь браконьеров.</li>
+            <li><strong>Рассказывай друзьям</strong> о том, что первоцветы нужно беречь.</li>
+            <li><strong>Участвуй в акциях</strong> по защите первоцветов.</li>
+            <li><strong>Делай фотографии</strong> вместо того, чтобы рвать цветы — красоту можно сохранить и без вреда природе.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 10.3.1. «Листовка в защиту первоцветов»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй листовку в защиту первоцветов. Придумай короткий лозунг, который убедит людей не рвать весенние цветы. Раскрась свою листовку.</p>
+        <p><strong>Мой лозунг:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Моя листовка:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 10.3.2. «Что я расскажу друзьям?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Представь, что твой друг хочет сорвать букет первоцветов. Что ты ему скажешь? Напиши свой ответ.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о первоцветах</div>
+        <ul>
+            <li>«Из-под снега расцветает, раньше всех весну встречает» (подснежник).</li>
+            <li>«Я цветок нежный, голубой, расту в лесу под сосной» (медуница).</li>
+            <li>«Жёлтый цветочек на голом стебле, весной появляется раньше травы» (мать-и-мачеха).</li>
+            <li>«Цветок-пушинка, весенний снежок, откроет лепестки свои в срок» (сон-трава).</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Рвать первоцветы — <strong>противозаконно</strong>! За уничтожение редких растений, занесённых в Красную книгу, предусмотрена административная ответственность. Но главное — это не страх наказания, а <strong>понимание</strong>: первоцветы растут годами, а срываются за секунду. Подумай, стоит ли красота в вазе того, чтобы целый вид исчез навсегда.
+    </div>
+
+    <!-- ТЕМА 3.2.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🔋</span>
+        <span>Тема 3.2.4. Сдай батарейку — спаси ёжика</span>
+    </div>
+
+    <p>Ты, наверное, удивишься: как связаны батарейки и ёжик? Оказывается, связаны напрямую! Одна выброшенная в мусор батарейка <strong>загрязняет 20 квадратных метров земли и 400 литров воды</strong>. В почве накапливаются тяжёлые металлы (ртуть, свинец, кадмий), которые отравляют растения, насекомых, червей, а через них — ежей, птиц и других животных.</p>
+
+    <p>А ещё одна батарейка в почве — это <strong>погибший ёжик</strong>. Ёжики питаются насекомыми и червями, которые впитывают токсины из отравленной почвы. Так загрязнение возвращается к живым существам. Поэтому очень важно <strong>сдавать батарейки в специальные пункты приёма</strong>, а не выбрасывать их в мусор.</p>
+
+    <div class="battery-card">
+        <div class="battery-card-title">🔋 Что происходит с батарейкой в мусоре?</div>
+        <ol>
+            <li><strong>Батарейка попадает в мусор.</strong> На свалке оболочка батарейки постепенно разрушается.</li>
+            <li><strong>Тяжёлые металлы попадают в почву.</strong> Ртуть, свинец, кадмий просачиваются в землю.</li>
+            <li><strong>Металлы попадают в воду.</strong> Грунтовые воды разносят токсины на десятки километров.</li>
+            <li><strong>Растения впитывают яды.</strong> Через корни токсины попадают в траву, ягоды, овощи.</li>
+            <li><strong>Животные едят отравленное.</strong> Насекомые, черви, ежи, птицы — все получают дозу токсинов.</li>
+            <li><strong>Человек страдает тоже.</strong> Через продукты и воду яды попадают в организм человека.</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 10.4.1. «Собери батарейки»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Организуй в классе (или дома) сбор использованных батареек. Поставь коробку, куда все будут их складывать. Затем отнеси собранные батарейки в пункт приёма опасных отходов.</p>
+        <table>
+            <thead>
+                <tr><th>Сколько батареек собрали?</th><th>Где мы их собирали?</th><th>Куда сдали?</th><th>Дата</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 10.4.2. «Плакат "Не выбрасывай батарейку!"»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй плакат, который объяснит людям, почему нельзя выбрасывать батарейки в обычный мусор. Раскрась свой плакат и придумай к нему короткий призыв.</p>
+        <p><strong>Мой призыв:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой плакат:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки и вопросы о батарейках</div>
+        <ul>
+            <li>«Маленькая, но сильная: в фонарик залезет — светить поможет» (батарейка).</li>
+            <li>«Что опаснее для природы: один брошенный пакет или одна батарейка?»</li>
+            <li>«Куда нужно сдавать использованные батарейки, чтобы не навредить природе?»</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать:</strong> Одна пальчиковая батарейка содержит столько вредных веществ, что может загрязнить до <strong>20 квадратных метров почвы</strong> — это площадь двухкомнатной квартиры! В Беларуси работают специальные пункты приёма батареек — их можно найти в крупных магазинах, школах, библиотеках. Сдать батарейку — это маленький шаг, но он спасёт жизнь целому лесу.
+    </div>
+
+    <!-- ТЕМА 3.2.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">💡</span>
+        <span>Тема 3.2.5. Экономим воду и свет</span>
+    </div>
+
+    <p>Каждый день мы используем <strong>воду, электричество, газ, бумагу</strong> — природные ресурсы, которые не бесконечны. Если мы будем расходовать их неразумно, скоро может не хватить всем. Но если каждый из нас научится экономить — мы вместе сохраним природу для будущих поколений.</p>
+
+    <p>Защитник природы — это тот, кто <strong>экономно расходует воду и свет</strong> дома, в школе, на природе. Это не «жадность», а <strong>уважение к природе и к другим людям</strong>.</p>
+
+    <div class="save-grid">
+        <div class="save-item">
+            <span class="icon">🚱</span>
+            <span class="label">Закрывай кран</span>
+            <span class="desc">Во время чистки зубов не оставляй воду включённой</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">🚿</span>
+            <span class="label">Принимай душ</span>
+            <span class="desc">Душ экономичнее, чем ванна — на 2–3 раза меньше воды</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">💧</span>
+            <span class="label">Поливай экономно</span>
+            <span class="desc">Используй для полива талую или дождевую воду</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">💡</span>
+            <span class="label">Гаси свет</span>
+            <span class="desc">Уходя из комнаты, выключай свет</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">🔌</span>
+            <span class="label">Выключай приборы</span>
+            <span class="desc">Не оставляй технику в режиме ожидания</span>
+        </div>
+        <div class="save-item">
+            <span class="icon">📄</span>
+            <span class="label">Экономь бумагу</span>
+            <span class="desc">Используй обе стороны листа, сдавай макулатуру</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 10.5.1. «Мой экологический дневник»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>В течение недели следи, как ты расходуешь воду и свет. Отмечай каждый раз, когда удалось сэкономить.</p>
+        <table>
+            <thead>
+                <tr><th>День</th><th>Что я сделал для экономии?</th><th>Сколько удалось сэкономить?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Пн</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вт</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Ср</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Чт</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Пт</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Сб</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вс</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 10.5.2. «Памятка для моей семьи»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Составь памятку для своей семьи «Как экономить воду и свет дома». Напиши 5–7 простых правил и нарисуй знаки-подсказки.</p>
+        <table>
+            <thead>
+                <tr><th>№</th><th>Правило</th><th>Знак-подсказка</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td>5</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о воде и свете</div>
+        <ul>
+            <li>«В морях и реках обитает, но часто по небу летает» (вода).</li>
+            <li>«Дом — стеклянный пузырёк, а живёт в нём огонёк. Днём он спит, а как проснётся, ярким пламенем зажжётся» (лампочка).</li>
+            <li>«Сама не бежит, а стоять не велит» (вода).</li>
+            <li>«Не портной, а всю жизнь с иголками ходит» (ёжик).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>💧 Пословицы и поговорки о бережливости:</strong>
+        <ul>
+            <li>«Вода — всему голова».</li>
+            <li>«Бережливая вещь два века живёт».</li>
+            <li>«Копейка рубль бережёт».</li>
+            <li>«Что сегодня сбережёшь, завтра пригодится».</li>
+            <li>«Хлеб да вода — молодецкая еда».</li>
+            <li>«Не плюй в колодец — пригодится воды напиться».</li>
+        </ul>
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 10. «Я — защитник природы»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты сделал для природы в этом разделе:</strong>
+        <ul>
+            <li>Изготовил и развесил <strong>кормушки для птиц</strong>, наблюдал за птицами и вёл дневник.</li>
+            <li>Посадил <strong>дерево или куст</strong> и составил «паспорт» своего дерева.</li>
+            <li>Узнал, как <strong>сохранить первоцветы</strong> и сделал листовку в их защиту.</li>
+            <li>Организовал <strong>сбор использованных батареек</strong> и сдал их в пункт приёма.</li>
+            <li>Научился <strong>экономить воду и свет</strong> дома и в школе.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Чем можно и чем нельзя кормить зимующих птиц?</li>
+            <li>Как правильно посадить дерево?</li>
+            <li>Почему нельзя рвать первоцветы?</li>
+            <li>Какой вред природе наносит одна выброшенная батарейка?</li>
+            <li>Какие простые способы экономии воды и света ты знаешь?</li>
+            <li>Какое из добрых дел в этом разделе было для тебя самым важным?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🛡️ Молодец!</strong> Ты справился с десятым разделом рабочей тетради «Друзья природы». Теперь ты не просто знаешь природу и умеешь её исследовать — ты <strong>защищаешь её своими руками</strong>. Ты помог птицам, посадил дерево, сохранил первоцветы, сдал опасные отходы, научился экономить ресурсы. Это настоящие добрые дела, которые делают мир лучше. Защитник природы — это не тот, кто говорит правильные слова, а тот, кто <strong>делает добрые дела</strong>. И таких людей становится всё больше благодаря тебе! Впереди тебя ждёт творческая часть — ты станешь <strong>творцом</strong>: создашь плакаты, придумаешь сказки, нарисуешь картины и сделаешь выставку своих достижений!
+    </div>
+
+    <div class="quote">
+        «Не жди, что кто-то придёт и сделает мир лучше. Ты сам можешь стать этим «кто-то». Начни с малого: сделай кормушку, посади дерево, не мусори. И мир вокруг тебя станет чище и добрее». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section9.html" class="button">← Раздел 9. «Я — исследователь»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

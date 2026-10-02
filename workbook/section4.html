@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 4. «Животные рядом с нами» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .animal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .animal-item {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 12px;
+            padding: 14px 18px;
+        }
+        .animal-item strong {
+            color: #166534;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .match-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .bird-feeder {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .bird-feeder-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🐦🐾🦋 Раздел 4. «Животные рядом с нами»</h1>
+    <div class="section-meta">📖 Часть 1. «Первые шаги в природу» | 🎯 Для детей 6–7 лет (и старше — начинающих) | ⏱ 6 тем, 12–14 заданий</div>
+
+    <p>Дорогой друг! Ты уже познакомился с растениями, которые нас окружают, и научился ухаживать за ними. Но растения — это только половина живой природы. Вторая половина — <strong>животные</strong>. Они бегают, летают, плавают, ползают — словом, ведут активную жизнь, и наблюдать за ними очень интересно.</p>
+
+    <p>Животные живут повсюду: в лесу и на лугу, в реке и в поле, дома и на ферме. Они бывают большие и маленькие, пушистые и гладкие, пернатые и мохнатые. В этом разделе мы познакомимся с <strong>птицами</strong>, <strong>домашними животными</strong>, <strong>дикими зверями нашего леса</strong> и <strong>насекомыми</strong>. Ты научишься узнавать их по внешнему виду, понимать, где они живут, чем питаются, и как заботиться о братьях наших меньших.</p>
+
+    <div class="svg-illustration" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: группы животных">
+        <rect x="10" y="10" width="580" height="220" rx="16" fill="#f8fafc"/>
+        <text x="300" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ГРУППЫ ЖИВОТНЫХ</text>
+
+        <!-- Птицы -->
+        <rect x="30" y="70" width="160" height="140" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="110" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🐦</text>
+        <text x="110" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">Птицы</text>
+        <text x="110" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">тело покрыто перьями,</text>
+        <text x="110" y="172" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">есть клюв и крылья,</text>
+        <text x="110" y="189" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">умеют летать</text>
+
+        <!-- Звери -->
+        <rect x="220" y="70" width="160" height="140" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="300" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🐿</text>
+        <text x="300" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">Звери</text>
+        <text x="300" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">тело покрыто шерстью,</text>
+        <text x="300" y="172" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">есть четыре лапы,</text>
+        <text x="300" y="189" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">кормят детёнышей молоком</text>
+
+        <!-- Насекомые -->
+        <rect x="410" y="70" width="160" height="140" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="490" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🦋</text>
+        <text x="490" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">Насекомые</text>
+        <text x="490" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">шесть ног, тело разделено</text>
+        <text x="490" y="172" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">на три части,</text>
+        <text x="490" y="189" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">многие умеют летать</text>
+    </svg>
+    <p class="svg-caption">Схема 4. Группы животных</p>
+
+    <!-- ТЕМА 1.4.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🐦</span>
+        <span>Тема 1.4.1. Птицы — наши друзья</span>
+    </div>
+
+    <p>Птицы — удивительные создания! Они украшают нашу жизнь своим пением, ярким оперением и весёлым щебетом. Птицы — единственные животные, у которых есть <strong>перья</strong>. Есть у них и <strong>крылья</strong>, которые помогают им летать. А ещё у птиц есть <strong>клюв</strong> — им они добывают пищу и строят гнёзда.</p>
+
+    <p>Птицы бывают <strong>оседлые</strong> и <strong>перелётные</strong>. Оседлые птицы остаются с нами зимовать — это воробьи, синицы, голуби, сороки, вороны. А перелётные — улетают осенью в тёплые края и возвращаются весной: это грачи, скворцы, ласточки, журавли.</p>
+
+    <div class="animal-grid">
+        <div class="animal-item">
+            <strong>🐦 Воробей</strong>
+            Маленькая серо-коричневая птичка. Живёт рядом с человеком. Питается крошками, семечками, насекомыми.
+        </div>
+        <div class="animal-item">
+            <strong>🐦 Синица</strong>
+            Птичка с жёлтой грудкой и чёрной шапочкой. Зимой прилетает к кормушкам. Любит семечки и сало.
+        </div>
+        <div class="animal-item">
+            <strong>🐦 Снегирь</strong>
+            Птица с ярко-красной грудкой. Прилетает к нам зимой. Питается ягодами рябины.
+        </div>
+        <div class="animal-item">
+            <strong>🐦 Грач</strong>
+            Крупная чёрная птица. Прилетает весной одной из первых. Строит гнёзда на деревьях.
+        </div>
+        <div class="animal-item">
+            <strong>🐦 Ласточка</strong>
+            Быстрая птица с длинными крыльями и раздвоенным хвостом. Строит гнёзда под крышами домов.
+        </div>
+        <div class="animal-item">
+            <strong>🕊️ Аист</strong>
+            Большая белая птица с длинными ногами и красным клювом. Символ Беларуси. Строит огромные гнёзда на крышах.
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 4.1.1. «Раскрась птиц»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Рассмотри контурные изображения птиц и раскрась их в правильные цвета:</p>
+        <ul>
+            <li><strong>Синица</strong> — жёлтая грудка, чёрная шапочка, зелёная спинка.</li>
+            <li><strong>Снегирь</strong> — красная грудка, серая спинка, чёрная шапочка.</li>
+            <li><strong>Воробей</strong> — коричневая спинка, серая грудка.</li>
+            <li><strong>Аист</strong> — белое тело, чёрные крылья, красный клюв и ноги.</li>
+        </ul>
+        <p><em>Описание рисунка:</em> на странице нарисованы контуры четырёх птиц, сидящих на ветке. Под каждой — строчка для подписи. Нужно раскрасить птиц и подписать их названия.</p>
+        <p><strong>Вопрос для размышления:</strong> «Каких птиц ты видел во дворе? Какие из них остаются зимовать, а какие улетают?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о птицах</div>
+        <ul>
+            <li>«Спинка зеленовата, животик желтоватый, чёрненькая шапочка и полоска шарфика» (синица).</li>
+            <li>«Красногрудый, чернокрылый, любит зёрнышки клевать. С первым снегом на рябине он появится опять» (снегирь).</li>
+            <li>«Всех перелётных птиц черней, чистит пашню от червей» (грач).</li>
+            <li>«Прилетает к нам с теплом, путь, проделав длинный. Лепит домик под окном из травы и глины» (ласточка).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🐦 Пословицы и поговорки о птицах:</strong>
+        <ul>
+            <li>«Увидел грача — весну встречай».</li>
+            <li>«Ласточки летают низко — к дождю».</li>
+            <li>«Птица сильна крыльями, а человек — дружбой».</li>
+            <li>«Соловей поёт — себя не щадит».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 1.4.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🐕</span>
+        <span>Тема 1.4.2. Домашние животные</span>
+    </div>
+
+    <p><strong>Домашние животные</strong> — это животные, которых <strong>приручил человек</strong> и заботится о них. Они живут рядом с людьми: в доме, во дворе, на ферме. Домашние животные помогают человеку: дают молоко, мясо, шерсть, охраняют дом, перевозят грузы. А человек заботится о них: кормит, поит, строит жилище, лечит.</p>
+
+    <p>Есть домашние животные, которые живут прямо в доме (кошка, собака, попугай), и те, что живут в хозяйстве (корова, лошадь, овца, курица). А ещё домашние животные приносят нам радость: собака — верный друг, кошка — ласковый питомец, а попугай веселит нас своим щебетом.</p>
+
+    <div class="animal-grid">
+        <div class="animal-item">
+            <strong>🐕 Собака</strong>
+            Верный друг человека. Охраняет дом, помогает на охоте, пасёт стада. У собаки хороший нюх и слух.
+        </div>
+        <div class="animal-item">
+            <strong>🐈 Кошка</strong>
+            Ласковый и независимый питомец. Ловит мышей, любит спать на солнце, умывается лапкой.
+        </div>
+        <div class="animal-item">
+            <strong>🐄 Корова</strong>
+            Даёт молоко, из которого делают масло, сыр, творог. Корова ест траву и сено, живёт в коровнике.
+        </div>
+        <div class="animal-item">
+            <strong>🐖 Свинья</strong>
+            Живёт на ферме. Даёт мясо и сало. Свиньи умные, но любят поваляться в грязи.
+        </div>
+        <div class="animal-item">
+            <strong>🐓 Курица</strong>
+            Домашняя птица, которая несёт яйца. Петух — глава птичьего двора, будит всех утром своим криком.
+        </div>
+        <div class="animal-item">
+            <strong>🐴 Лошадь</strong>
+            Сильное и красивое животное. Перевозит грузы, катает людей. Лошадь ест овёс и сено.
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 4.2.1. «Кто что даёт?»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини линиями домашнее животное и то, что оно даёт человеку:</p>
+        <table>
+            <thead>
+                <tr><th>Животное</th><th>Что даёт человеку?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🐄 Корова</td><td>Яйца</td></tr>
+                <tr><td>🐓 Курица</td><td>Молоко</td></tr>
+                <tr><td>🐑 Овца</td><td>Мясо и сало</td></tr>
+                <tr><td>🐖 Свинья</td><td>Шерсть</td></tr>
+                <tr><td>🐝 Пчела</td><td>Мёд</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как человек заботится о домашних животных? Что было бы, если бы человек перестал о них заботиться?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 4.2.2. «Мой питомец»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Если у тебя есть домашний питомец, расскажи о нём. Если нет — расскажи о том, какого питомца ты хотел бы завести.</p>
+        <table>
+            <thead>
+                <tr><th>Вопрос</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Как зовут питомца?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Как он выглядит?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что он любит есть?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что он любит делать?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Творческое задание:</strong> Нарисуй своего питомца (или того, о котором мечтаешь).</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о домашних животных</div>
+        <ul>
+            <li>«С хозяином дружит, дом сторожит, живёт под крылечком, а хвост колечком» (собака).</li>
+            <li>«Мягкие лапки, а в лапках — царапки» (кошка).</li>
+            <li>«Голодная мычит, сытая жуёт, всем ребятам молоко даёт» (корова).</li>
+            <li>«Хвост с узорами, сапоги со шпорами, рано встаёт, голосисто поёт» (петух).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 1.4.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🦊</span>
+        <span>Тема 1.4.3. Дикие животные нашего леса</span>
+    </div>
+
+    <p><strong>Дикие животные</strong> живут в лесу, в поле, на болоте — там, где человек их не приручил. Они сами добывают себе пищу, строят жилища, воспитывают детёнышей. Дикие животные очень разные: одни — <strong>хищные</strong> (питаются другими животными), другие — <strong>растительноядные</strong> (едят траву, листья, ягоды), третьи — <strong>всеядные</strong> (едят и то, и другое).</p>
+
+    <p>В лесах Беларуси живёт много удивительных зверей. Давай познакомимся с самыми известными.</p>
+
+    <div class="animal-grid">
+        <div class="animal-item">
+            <strong>🦬 Зубр</strong>
+            Самый крупный зверь Европы. Живёт в заповедных лесах Беларуси. Питается травой, ветками, корой. Символ нашей страны.
+        </div>
+        <div class="animal-item">
+            <strong>🦊 Лиса</strong>
+            Рыжая хищница с пушистым хвостом. Живёт в норе. Охотится на мышей, зайцев, птиц. Хитрая и ловкая.
+        </div>
+        <div class="animal-item">
+            <strong>🐺 Волк</strong>
+            Серый хищник, живёт стаями. Охотится на крупных животных. Сильный, выносливый, умный.
+        </div>
+        <div class="animal-item">
+            <strong>🐻 Медведь</strong>
+            Крупный всеядный зверь. Любит мёд, ягоды, рыбу. На зиму впадает в спячку, спит в берлоге.
+        </div>
+        <div class="animal-item">
+            <strong>🐿 Белка</strong>
+            Пушистый зверёк с пушистым хвостом. Живёт в дупле. Питается орехами, грибами, семенами. Запасает корм на зиму.
+        </div>
+        <div class="animal-item">
+            <strong>🦔 Ёж</strong>
+            Колючий зверёк. Тело покрыто иголками. Питается насекомыми, червями, ягодами. Зимой спит, свернувшись в клубок.
+        </div>
+        <div class="animal-item">
+            <strong>🐇 Заяц</strong>
+            Быстрый и пугливый зверёк. Летом серый, зимой белый. Питается травой, корой, ветками. Убегает от хищников.
+        </div>
+        <div class="animal-item">
+            <strong>🐗 Кабан</strong>
+            Дикая свинья. Живёт в лесу. Питается жёлудями, кореньями, грибами. У него крепкие клыки.
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 4.3.1. «Угадай, кто это?»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Прочитай описание и соедини его с названием животного:</p>
+        <table>
+            <thead>
+                <tr><th>Описание</th><th>Животное</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Рыжая, с пушистым хвостом, живёт в норе</td><td>Медведь</td></tr>
+                <tr><td>Колючий, спит зимой, свернувшись в клубок</td><td>Белка</td></tr>
+                <tr><td>Большой, бурый, спит в берлоге</td><td>Лиса</td></tr>
+                <tr><td>Маленькая, с пушистым хвостом, живёт в дупле</td><td>Ёж</td></tr>
+                <tr><td>Самый крупный зверь Европы, символ Беларуси</td><td>Зубр</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему одни звери спят зимой, а другие — нет?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎭 Задание 4.3.2. Игра «Кто как готовится к зиме?»</div>
+        <p><span class="signal">🎭 Поиграй</span> <span class="signal">📝 Запиши</span></p>
+        <p>Поиграй в игру: назови, как разные звери готовятся к зиме. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>Животное</th><th>Как готовится к зиме?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🐻 Медведь</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐿 Белка</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🦔 Ёж</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐇 Заяц</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Подсказка:</strong> кто-то меняет шубку, кто-то запасает корм, кто-то впадает в спячку.</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о диких животных</div>
+        <ul>
+            <li>«Хитрая плутовка, рыжая головка, пушистый хвост — краса. Кто это?» (лиса).</li>
+            <li>«Кто зимой холодной ходит злой, голодный?» (волк).</li>
+            <li>«Летом ходит без дороги возле сосен и берёз, а зимой он спит в берлоге, от мороза прячет нос» (медведь).</li>
+            <li>«На спине иголки, длинные и колкие. А свернётся он в клубок — нет ни головы, ни ног» (ёж).</li>
+            <li>«Маленький, беленький: по лесочку прыг-прыг, по снежочку тык-тык» (заяц).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🦊 Пословицы и поговорки о диких животных:</strong>
+        <ul>
+            <li>«Волка ноги кормят».</li>
+            <li>«Лиса семерых волков проведёт».</li>
+            <li>«Заяц от листа, а лягушка от зайца бежит».</li>
+            <li>«Медведь неуклюж, да дюж».</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Дикие животные — не игрушки! Их нельзя ловить, пугать, уносить домой. Они должны жить на воле, в своей среде. Если ты нашёл раненое животное или птенца, который выпал из гнезда, — скажи взрослым, но не трогай его сам без необходимости.
+    </div>
+
+    <!-- ТЕМА 1.4.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🦋</span>
+        <span>Тема 1.4.4. Насекомые</span>
+    </div>
+
+    <p><strong>Насекомые</strong> — самые маленькие и самые многочисленные жители нашей планеты. Они живут везде: в траве, на деревьях, в цветах, в земле, в воде. У всех насекомых есть <strong>шесть ног</strong> и <strong>тело, разделённое на три части</strong>. У многих есть <strong>крылья</strong>, и они умеют летать.</p>
+
+    <p>Насекомые бывают <strong>полезные</strong> (пчёлы, муравьи, божьи коровки) и <strong>вредные</strong> (колорадский жук, комары, мухи). Полезные насекомые помогают растениям: пчёлы опыляют цветы, муравьи рыхлят землю, божьи коровки поедают вредителей.</p>
+
+    <div class="animal-grid">
+        <div class="animal-item">
+            <strong>🦋 Бабочка</strong>
+            Красивое насекомое с большими крыльями. Питается нектаром цветов. Крылья бабочки симметричны — левое и правое одинаковые.
+        </div>
+        <div class="animal-item">
+            <strong>🐝 Пчела</strong>
+            Полосатое насекомое, которое делает мёд. Живёт в улье большой семьёй. Пчёлы опыляют цветы.
+        </div>
+        <div class="animal-item">
+            <strong>🐜 Муравей</strong>
+            Маленькое трудолюбивое насекомое. Живёт в муравейнике. Муравьи — «санитары леса», они очищают лес от вредителей.
+        </div>
+        <div class="animal-item">
+            <strong>🐞 Божья коровка</strong>
+            Красный жучок с чёрными точками. Поедает тлю — вредителя растений. Полезное насекомое.
+        </div>
+        <div class="animal-item">
+            <strong>🦗 Кузнечик</strong>
+            Зелёное насекомое с длинными ногами. Умеет стрекотать. Питается травой и мелкими насекомыми.
+        </div>
+        <div class="animal-item">
+            <strong>🐌 Улитка</strong>
+            Медлительное существо с раковиной на спине. Раковина закручена по спирали. Питается листьями.
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 4.4.1. «Симметрия бабочки»</div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Крылья бабочки обладают <strong>симметрией</strong> — левое и правое крылья одинаковые. На рисунке нарисована только левая половина бабочки. Дорисуй правую половину так, чтобы бабочка стала целой и красивой. Раскрась крылья одинаково.</p>
+        <p><em>Описание рисунка:</em> на листе изображена половина бабочки — тело и левое крыло. Крыло имеет красивый узор: несколько кружков и волнистых линий. Нужно зеркально дорисовать правое крыло.</p>
+        <p><strong>Вопрос для размышления:</strong> «Почему природа создала бабочку симметричной? Как ты думаешь, это красиво?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 4.4.2. «Наблюдение за муравьями»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Найди муравейник в лесу или парке. Понаблюдай за муравьями и запиши:</p>
+        <table>
+            <thead>
+                <tr><th>Что наблюдаем</th><th>Мои наблюдения</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Куда бегут муравьи?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что они несут?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Как они помогают друг другу?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему муравьёв называют "санитарами леса"?»</p>
+        <p><strong>Народная мудрость:</strong> «Муравей невелик, а горы копает».</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о насекомых</div>
+        <ul>
+            <li>«Над цветком порхает, пляшет, веерком узорным машет» (бабочка).</li>
+            <li>«Домовитая хозяйка пролетает над лужайкой, похлопочет над цветком — он поделится медком» (пчела).</li>
+            <li>«Красненькие крылышки, чёрные горошки. Кто это гуляет по моей ладошке?» (божья коровка).</li>
+            <li>«На поляне возле ёлок дом построен из иголок. За травой не виден он, а жильцов в нём миллион» (муравейник).</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>🐝 Интересно знать:</strong> Пчёлы — удивительные труженицы. Чтобы сделать одну ложку мёда, им нужно облететь тысячи цветов. А бабочки пробуют пищу... ногами! На лапках у них находятся вкусовые рецепторы.
+    </div>
+
+    <!-- ТЕМА 1.4.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🏠</span>
+        <span>Тема 1.4.5. Кто где живёт?</span>
+    </div>
+
+    <p>У каждого животного есть <strong>свой дом</strong> — место, где оно живёт, укрывается от врагов и непогоды, выводит детёнышей. Жилища животных очень разные: одни живут в норах под землёй, другие — на деревьях, третьи — в воде, четвёртые — в ульях и муравейниках.</p>
+
+    <table>
+        <thead>
+            <tr><th>Животное</th><th>Жилище</th><th>Что это за дом?</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>🦊 Лиса</td><td>Нора</td><td>Глубокая яма под землёй</td></tr>
+            <tr><td>🐻 Медведь</td><td>Берлога</td><td>Укрытие под корнями деревьев или в яме</td></tr>
+            <tr><td>🐿 Белка</td><td>Дупло</td><td>Углубление в стволе дерева</td></tr>
+            <tr><td>🐦 Птица</td><td>Гнездо</td><td>Постройка из веточек и травы на дереве</td></tr>
+            <tr><td>🐜 Муравей</td><td>Муравейник</td><td>Куча из хвоинок и веточек</td></tr>
+            <tr><td>🐝 Пчела</td><td>Улей</td><td>Домик, который делает человек</td></tr>
+            <tr><td>🐟 Рыба</td><td>Вода</td><td>Река, озеро, пруд</td></tr>
+            <tr><td>🕷️ Паук</td><td>Паутина</td><td>Сеть, которую он сам плетёт</td></tr>
+        </tbody>
+    </table>
+
+    <div class="task-box">
+        <div class="task-box-title">🎭 Задание 4.5.1. Игра «Чей домик?»</div>
+        <p><span class="signal">🔗 Соедини</span></p>
+        <p>Соедини линиями животное и его жилище:</p>
+        <table>
+            <thead>
+                <tr><th>Животное</th><th>Жилище</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🦊 Лиса</td><td>Гнездо</td></tr>
+                <tr><td>🐦 Птица</td><td>Берлога</td></tr>
+                <tr><td>🐻 Медведь</td><td>Нора</td></tr>
+                <tr><td>🐿 Белка</td><td>Муравейник</td></tr>
+                <tr><td>🐜 Муравей</td><td>Дупло</td></tr>
+                <tr><td>🐝 Пчела</td><td>Улей</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему у каждого животного свой дом? Что было бы, если бы лиса жила в гнезде?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 4.5.2. «Нарисуй домик для животного»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери любое животное. Нарисуй его домик. Расскажи, как называется этот домик и почему животное выбрало именно его.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ТЕМА 1.4.6 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌾</span>
+        <span>Тема 1.4.6. Кормушка для птиц</span>
+    </div>
+
+    <div class="bird-feeder">
+        <div class="bird-feeder-title">🐦 Помоги птицам зимой!</div>
+        <p>Зимой птицам очень трудно. Земля покрыта снегом, насекомые спрятались, ягоды и семена найти нелегко. В морозные дни птицы особенно нуждаются в нашей помощи. Ты можешь сделать <strong>кормушку</strong> и подкармливать птиц всю зиму!</p>
+    </div>
+
+    <p>Кормушку можно сделать из разных материалов: из картонной коробки, из пластиковой бутылки, из деревянных дощечек. А можно просто повесить за окном кусочек сала для синичек или насыпать семечек на подоконник.</p>
+
+    <div class="info-box">
+        <strong>🌾 Чем можно кормить птиц:</strong>
+        <ul>
+            <li><strong>Семечки</strong> (подсолнечные, тыквенные) — любят все птицы.</li>
+            <li><strong>Крошки белого хлеба</strong> — но не чёрного (от него птицы болеют).</li>
+            <li><strong>Сало</strong> — для синичек (несолёное!).</li>
+            <li><strong>Зёрнышки</strong> (пшено, овёс) — для воробьёв.</li>
+            <li><strong>Ягоды рябины</strong> — для снегирей.</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Нельзя кормить птиц:</strong> жареными семечками, солёным салом, чёрным хлебом, чипсами, конфетами. От такой еды птицы могут погибнуть!
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 4.6.1. «Сделай кормушку»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Сделай кормушку вместе с родителями. Повесь её за окном или во дворе. Каждый день насыпай туда корм. Наблюдай, какие птицы прилетают к твоей кормушке, и заполняй таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>Дата</th><th>Какие птицы прилетели?</th><th>Сколько их было?</th><th>Что они ели?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему важно подкармливать птиц зимой? Что было бы, если бы люди не помогали птицам?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 4.6.2. «Нарисуй свою кормушку»</div>
+        <p><span class="signal">🎨 Раскрась</span></p>
+        <p>Нарисуй кормушку, которую ты сделал, и птиц, которые к ней прилетают. Раскрась свой рисунок.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Творческое задание:</strong> Придумай и напиши небольшой рассказ о том, как ты помогаешь птицам зимой.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о птицах у кормушки</div>
+        <ul>
+            <li>«Маленький мальчишка в сером армячишке по дворам шныряет, крохи собирает» (воробей).</li>
+            <li>«Спинка зеленовата, животик желтоватый, а зовут её...» (синица).</li>
+            <li>«Красногрудый, чернокрылый, любит зёрнышки клевать» (снегирь).</li>
+        </ul>
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 4. «Животные рядом с нами»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Какие <strong>группы животных</strong> существуют: птицы, звери, насекомые.</li>
+            <li>Каких <strong>птиц</strong> можно увидеть в нашем крае и как их различать.</li>
+            <li>Какие бывают <strong>домашние животные</strong> и что они дают человеку.</li>
+            <li>Какие <strong>дикие животные</strong> живут в наших лесах.</li>
+            <li>Какие бывают <strong>насекомые</strong> и какую роль они играют в природе.</li>
+            <li>Где живут разные животные — у каждого свой <strong>домик</strong>.</li>
+            <li>Как <strong>помочь птицам зимой</strong> — сделать кормушку и подкармливать их.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Какие птицы остаются зимовать, а какие улетают на юг?</li>
+            <li>Каких домашних животных ты знаешь? Что они дают человеку?</li>
+            <li>Какие дикие животные живут в лесу? Как они готовятся к зиме?</li>
+            <li>Сколько ног у насекомых? Каких насекомых ты знаешь?</li>
+            <li>Где живут лиса, медведь, белка, муравей?</li>
+            <li>Как ты можешь помочь птицам зимой?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌿 Молодец!</strong> Ты справился с четвёртым разделом рабочей тетради «Друзья природы». Теперь ты знаешь, какие животные нас окружают, умеешь различать птиц, зверей и насекомых, знаешь, где они живут и как о них заботиться. Первая часть тетради — «Первые шаги в природу» — подошла к концу. Ты научился видеть красоту природы, наблюдать за ней, помогать ей. Впереди — вторая часть, где ты станешь настоящим исследователем природы!
+    </div>
+
+    <div class="quote">
+        «Животные — это наши меньшие братья, и мы должны заботиться о них так же, как заботимся о себе». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section3.html" class="button">← Раздел 3. «Растения вокруг нас»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

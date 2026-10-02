@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 12. «Я и моя планета» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .diary-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .diary-card-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .habit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .habit-item {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+        .habit-item .icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .habit-item .label {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .habit-item .desc {
+            font-size: 0.85rem;
+            color: #78350f;
+        }
+        .letter-card {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .letter-card-title {
+            font-weight: 700;
+            color: #6b21a8;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .final-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 3px solid #d97706;
+            border-radius: 20px;
+            padding: 25px 30px;
+            margin: 25px 0;
+        }
+        .final-card-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 14px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .achievement-item {
+            background: white;
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .achievement-item .medal {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .achievement-item .name {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 0.9rem;
+        }
+        .achievement-item .desc {
+            font-size: 0.8rem;
+            color: #78350f;
+            margin-top: 4px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🌍💚🏆 Раздел 12. «Я и моя планета» (рефлексия и итоги)</h1>
+    <div class="section-meta">📖 Часть 3. «Мы — друзья природы» | 🎯 Для детей 9–10 лет | ⏱ 4 темы, 10–12 заданий | 🏁 Заключительный раздел</div>
+
+    <p>Дорогой друг! Ты прошёл долгий и увлекательный путь. Вместе мы изучили природу родного края, научились наблюдать за временами года, различать растения и животных, помогать птицам, экономить воду и свет. Ты стал <strong>исследователем</strong>, <strong>защитником</strong> и <strong>творцом</strong>. И теперь настало время <strong>оглянуться назад</strong> и увидеть, какой большой путь ты прошёл.</p>
+
+    <p>Этот раздел — <strong>заключительный</strong>. Он не про новые знания, а про <strong>осмысление того, что уже сделано</strong>. Здесь ты вспомнишь всё, чему научился, оценишь свои достижения, задумаешься о своих экологических привычках, напишешь письмо природе и вместе с друзьями отпразднуешь окончание курса.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этим разделом:</strong> Это <strong>раздел-рефлексия</strong>. Здесь нет «правильных» ответов, потому что каждый из вас прошёл свой путь. Постарайся <strong>честно</strong> ответить на вопросы, вспомнить самые яркие моменты, поблагодарить тех, кто был рядом. И пусть этот раздел станет не «концом», а <strong>началом нового пути</strong> — пути человека, который навсегда подружился с природой.
+    </div>
+
+    <div class="svg-illustration" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: путь юного эколога">
+        <rect x="10" y="10" width="580" height="200" rx="16" fill="#f8fafc"/>
+        <text x="300" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">МОЙ ПУТЬ ЮНОГО ЭКОЛОГА</text>
+
+        <!-- Начало пути -->
+        <circle cx="80" cy="130" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="80" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">🌱</text>
+        <text x="80" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Начало</text>
+        <text x="80" y="196" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">я — новичок</text>
+
+        <!-- Узнал -->
+        <circle cx="205" cy="130" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="205" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">👁</text>
+        <text x="205" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Узнал</text>
+        <text x="205" y="196" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">наблюдал</text>
+
+        <!-- Помогал -->
+        <circle cx="330" cy="130" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="330" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">🛡️</text>
+        <text x="330" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Помогал</text>
+        <text x="330" y="196" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">защищал</text>
+
+        <!-- Творил -->
+        <circle cx="455" cy="130" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="455" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">🎨</text>
+        <text x="455" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Творил</text>
+        <text x="455" y="196" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">создавал</text>
+
+        <!-- Друг природы -->
+        <circle cx="550" cy="130" r="32" fill="#fde047" stroke="#d97706" stroke-width="2"/>
+        <text x="550" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">💚</text>
+        <text x="550" y="182" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#92400e">Друг</text>
+        <text x="550" y="198" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#78350f">природы</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+            </marker>
+        </defs>
+        <line x1="112" y1="130" x2="173" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow5)"/>
+        <line x1="237" y1="130" x2="298" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow5)"/>
+        <line x1="362" y1="130" x2="423" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow5)"/>
+        <line x1="487" y1="130" x2="517" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow5)"/>
+    </svg>
+    <p class="svg-caption">Схема 12. Путь юного эколога: от новичка до друга природы</p>
+
+    <!-- ТЕМА 3.4.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🤔</span>
+        <span>Тема 3.4.1. Что я узнал? Чему я научился?</span>
+    </div>
+
+    <p>За время занятий в объединении по интересам «Друзья природы» ты узнал много нового о мире, который нас окружает. Ты научился <strong>смотреть на природу другими глазами</strong> — не просто «видеть», а <strong>замечать</strong>. Не просто «знать», а <strong>понимать</strong>. Не просто «делать», а <strong>думать о последствиях</strong>.</p>
+
+    <p>Вспомним вместе, через что мы прошли. Мы изучали <strong>времена года</strong> и их изменения. Мы знакомились с <strong>растениями и животными</strong> родного края. Мы исследовали <strong>воду, воздух и почву</strong>. Мы учились <strong>выращивать растения</strong> и <strong>ухаживать за ними</strong>. Мы <strong>помогали птицам</strong> и <strong>экономили ресурсы</strong>. Мы <strong>творили</strong> и <strong>мечтали</strong>.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.1.1. «Мои экологические знания»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Заполни таблицу: напиши, что ты узнал о каждом из этих природных объектов или явлений.</p>
+        <table>
+            <thead>
+                <tr><th>О чём я узнал?</th><th>Что я теперь знаю?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌦 Времена года</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌳 Растения</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐦 Животные и птицы</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>💧 Вода</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>💨 Воздух</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌱 Почва</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌍 Защита природы</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.1.2. «Мои умения»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Подумай, чему ты научился за время занятий. Отметь галочкой те умения, которые у тебя уже хорошо получаются.</p>
+        <table>
+            <thead>
+                <tr><th>Умение</th><th>Умею хорошо</th><th>Хочу научиться лучше</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>👁 Наблюдать за природой</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🎨 Рисовать и мастерить</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🔬 Проводить опыты</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌱 Ухаживать за растениями</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐦 Помогать птицам и животным</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📖 Сочинять сказки и истории</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🎭 Придумывать игры</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🤝 Работать в команде</td><td>☐</td><td>☐</td></tr>
+                <tr><td>💚 Заботиться о природе</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 12.1.3. «Моё самое яркое открытие»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Вспомни, какое открытие за время занятий стало для тебя самым ярким. Напиши о нём и нарисуй его.</p>
+        <p><strong>Моё самое яркое открытие:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Почему оно запомнилось больше всего?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок открытия:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="quote">
+        «Знание — это сокровище, но самое ценное знание — то, которое помогает беречь наш общий дом — природу». — Народная мудрость
+    </div>
+
+    <!-- ТЕМА 3.4.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">💚</span>
+        <span>Тема 3.4.2. Мои экологические привычки</span>
+    </div>
+
+    <p>Знания — это важно. Но ещё важнее — <strong>привычки</strong>. Если ты знаешь, что нужно экономить воду, но не делаешь этого — знание остаётся «мёртвым». А если ты <strong>привык</strong> закрывать кран, выключать свет, не мусорить — тогда ты <strong>настоящий друг природы</strong>.</p>
+
+    <p>Экологические привычки — это <strong>маленькие ежедневные дела</strong>, которые вместе дают большой результат. Они не требуют героических усилий — только <strong>внимания и постоянства</strong>. И чем раньше ты их приобретёшь, тем легче они станут частью твоей жизни.</p>
+
+    <div class="habit-grid">
+        <div class="habit-item">
+            <span class="icon">💧</span>
+            <span class="label">Экономлю воду</span>
+            <span class="desc">Закрываю кран, когда чищу зубы, принимаю душ вместо ванны</span>
+        </div>
+        <div class="habit-item">
+            <span class="icon">💡</span>
+            <span class="label">Экономлю свет</span>
+            <span class="desc">Выключаю свет, уходя из комнаты; использую энергосберегающие лампы</span>
+        </div>
+        <div class="habit-item">
+            <span class="icon">🚮</span>
+            <span class="label">Не мусорю</span>
+            <span class="desc">Не бросаю мусор на улице, в лесу, убираю за собой</span>
+        </div>
+        <div class="habit-item">
+            <span class="icon">♻️</span>
+            <span class="label">Сортирую отходы</span>
+            <span class="desc">Разделяю бумагу, пластик, стекло; сдаю батарейки</span>
+        </div>
+        <div class="habit-item">
+            <span class="icon">🐦</span>
+            <span class="label">Помогаю птицам</span>
+            <span class="desc">Зимой подкармливаю птиц, делаю и развешиваю кормушки</span>
+        </div>
+        <div class="habit-item">
+            <span class="icon">🌱</span>
+            <span class="label">Ухаживаю за растениями</span>
+            <span class="desc">Поливаю, рыхлю, забочусь о растениях дома и в классе</span>
+        </div>
+        <div class="habit-item">
+            <span class="icon">📄</span>
+            <span class="label">Экономлю бумагу</span>
+            <span class="desc">Использую обе стороны листа, сдаю макулатуру</span>
+        </div>
+        <div class="habit-item">
+            <span class="icon">🌸</span>
+            <span class="label">Берегу первоцветы</span>
+            <span class="desc">Не рву весенние цветы, рассказываю об этом друзьям</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">💚 Задание 12.2.1. «Мои экологические привычки»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Отметь, какие экологические привычки у тебя уже есть, а какие ты хотел бы приобрести. Честно ответь на вопросы.</p>
+        <table>
+            <thead>
+                <tr><th>Привычка</th><th>Уже есть</th><th>Хочу приобрести</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>💧 Экономлю воду</td><td>☐</td><td>☐</td></tr>
+                <tr><td>💡 Экономлю свет</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🚮 Не мусорю</td><td>☐</td><td>☐</td></tr>
+                <tr><td>♻️ Сортирую отходы</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐦 Помогаю птицам</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌱 Ухаживаю за растениями</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📄 Экономлю бумагу</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌸 Берегу первоцветы</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.2.2. «Мой план экологических привычек»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь план: какие экологические привычки ты хочешь приобрести и как будешь это делать.</p>
+        <table>
+            <thead>
+                <tr><th>Привычка</th><th>Как я буду её тренировать?</th><th>Кто поможет?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Как ты думаешь, почему маленькие привычки важнее больших порывов?»</p>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать:</strong> Одна хорошая привычка закрепляется примерно за <strong>21 день</strong>. Это значит, что если ты будешь повторять одно и то же действие три недели подряд, оно станет частью тебя. Начни с одной привычки — например, «закрывать кран» — и через месяц она будет у тебя «в крови». А потом добавь вторую. Так, шаг за шагом, ты станешь настоящим защитником природы.
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌱 Пословицы и поговорки о привычках:</strong>
+        <ul>
+            <li>«Посеешь привычку — пожнёшь характер».</li>
+            <li>«Привычка — вторая натура».</li>
+            <li>«Маленькое дело лучше большого безделья».</li>
+            <li>«Капля по капле и камень долбит».</li>
+            <li>«Терпенье и труд всё перетрут».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 3.4.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">✉️</span>
+        <span>Тема 3.4.3. Письмо природе</span>
+    </div>
+
+    <p>Иногда самые важные слова мы не можем сказать вслух. Тогда мы берём бумагу и пишем <strong>письмо</strong>. Сегодня ты напишешь письмо <strong>самой Природе</strong>. Это может быть благодарность за красоту, извинение за ошибки, обещание заботиться или просто рассказ о том, что ты чувствуешь.</p>
+
+    <p>В письме не нужно соблюдать особые правила. Пиши так, как чувствуешь. Пусть Природа «услышит» тебя. Ведь она — живая, она всё понимает, она ждёт нашей заботы и нашей любви.</p>
+
+    <div class="letter-card">
+        <div class="letter-card-title">✉️ Как написать письмо природе</div>
+        <ol>
+            <li><strong>Обращение.</strong> Как ты обратишься к природе? «Дорогая Природа», «Милый лес», «Здравствуй, Земля»?</li>
+            <li><strong>Благодарность.</strong> За что ты хочешь поблагодарить природу? За красоту, за чистый воздух, за вкусные ягоды?</li>
+            <li><strong>Извинение.</strong> За что ты хочешь извиниться? Может быть, за брошенный мусор или сорванный цветок?</li>
+            <li><strong>Обещание.</strong> Что ты обещаешь природе? Например: «Я обещаю никогда не мусорить».</li>
+            <li><strong>Прощание.</strong> Как ты попрощаешься? «С любовью», «Твой друг», «С благодарностью»?</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">✉️ Задание 12.3.1. «Моё письмо природе»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Напиши письмо природе. Расскажи, что ты о ней думаешь, за что благодарен, что обещаешь. Нарисуй небольшой рисунок рядом с письмом.</p>
+        <p><strong>Обращение:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Моё письмо:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок к письму:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.3.2. «Обращение к людям»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Теперь напиши <strong>обращение к людям</strong> — всем, кто живёт на нашей планете. Расскажи, почему важно беречь природу, и что каждый из нас может сделать для этого.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="quote">
+        «Природа — это не то, что мы получили в наследство от наших родителей. Это то, что мы взяли в долг у наших детей». — Народная мудрость
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки-напутствия на прощание</div>
+        <ul>
+            <li>«Ни начала, ни конца, ни затылка, ни лица. Знают все, и млад и стар, что она — огромный шар» (Земля).</li>
+            <li>«Стоит дом, кто в него войдёт, тот ум приобретёт» (школа).</li>
+            <li>«Кто молчит, а уму учит?» (книга).</li>
+            <li>«Век живи — век учись» (не загадка, а правда!).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 3.4.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🏆</span>
+        <span>Тема 3.4.4. Итоговое занятие «Мы — друзья природы»</span>
+    </div>
+
+    <p>Вот и подошло к концу наше путешествие в мир природы. Мы многое узнали, многому научились, многое сделали. И теперь настало время <strong>праздника</strong> — итогового занятия, где мы подведём итоги, наградим самых активных, вспомним самые яркие моменты и скажем друг другу спасибо.</p>
+
+    <p>Итоговое занятие — это не «экзамен» и не «проверка». Это <strong>праздник творчества и дружбы</strong>. На нём ты покажешь своим друзьям и родителям, чему научился, что сделал, о чём мечтаешь. А ещё — получишь <strong>заслуженные награды</strong> и <strong>слова благодарности</strong>.</p>
+
+    <div class="final-card">
+        <div class="final-card-title">🏆 Программа итогового занятия «Мы — друзья природы»</div>
+        <ol>
+            <li><strong>Приветствие.</strong> Ведущий открывает праздник, приветствует гостей.</li>
+            <li><strong>Выставка работ.</strong> Все показывают свои рисунки, поделки, плакаты, дневники наблюдений.</li>
+            <li><strong>Презентация проектов.</strong> Каждый рассказывает о своём исследовании или творческой работе.</li>
+            <li><strong>Викторина «Что я знаю о природе?»</strong> Командная игра с вопросами и загадками.</li>
+            <li><strong>Награждение.</strong> Вручение грамот, медалей и небольших подарков.</li>
+            <li><strong>Слово благодарности.</strong> Дети благодарят педагогов, родителей и друзей.</li>
+            <li><strong>Финальная песня или стихотворение о природе.</strong></li>
+            <li><strong>Чаепитие.</strong> Дружеская беседа и обмен впечатлениями.</li>
+        </ol>
+    </div>
+
+    <div class="achievement-grid">
+        <div class="achievement-item">
+            <span class="medal">🥇</span>
+            <span class="name">Знаток природы</span>
+            <span class="desc">за лучшие знания о растениях и животных</span>
+        </div>
+        <div class="achievement-item">
+            <span class="medal">🥇</span>
+            <span class="name">Юный исследователь</span>
+            <span class="desc">за лучший проект или наблюдение</span>
+        </div>
+        <div class="achievement-item">
+            <span class="medal">🥇</span>
+            <span class="name">Художник природы</span>
+            <span class="desc">за лучшие рисунки и поделки</span>
+        </div>
+        <div class="achievement-item">
+            <span class="medal">🥇</span>
+            <span class="name">Защитник природы</span>
+            <span class="desc">за активные добрые дела</span>
+        </div>
+        <div class="achievement-item">
+            <span class="medal">🥇</span>
+            <span class="name">Сказочник</span>
+            <span class="desc">за лучшие сказки и истории</span>
+        </div>
+        <div class="achievement-item">
+            <span class="medal">🥇</span>
+            <span class="name">Друг природы</span>
+            <span class="desc">главная награда — за любовь к природе</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🏆 Задание 12.4.1. «Моё выступление на итоговом занятии»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Подготовь короткое выступление на итоговом занятии. Расскажи, что ты узнал, что сделал, что тебе понравилось больше всего.</p>
+        <p><strong>Что я расскажу о своих знаниях?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Какую работу я покажу?</strong></p>
+        <span class="line-for-writing"></span>
+        <p><strong>Кого я хочу поблагодарить?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Что я обещаю природе?</strong></p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.4.2. «Мои пожелания друзьям»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши пожелания своим друзьям — тем, с кем ты занимался в объединении «Друзья природы». Пусть твои слова станут для них добрым напутствием.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 12.4.3. «Самооценка за год»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Оцени свою работу за весь год. Честно ответь на вопросы.</p>
+        <table>
+            <thead>
+                <tr><th>Вопрос</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Что мне больше всего понравилось за год?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что было самым интересным?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что было трудно?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Чему я научился?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что я хочу сделать в следующем году?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Оценка моей работы за год (по 5-балльной шкале)</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 12.4.4. «Рисунок "Мы — друзья природы"»</div>
+        <p><span class="signal">🎨 Раскрась</span></p>
+        <p>Нарисуй рисунок на тему «Мы — друзья природы». Изобрази себя, своих друзей, педагога и природу, которую вы вместе бережёте и любите.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ЗАКЛЮЧЕНИЕ -->
+    <h2>🌟 Заключение: Природа — наш общий дом</h2>
+
+    <div class="info-box">
+        <strong>🌍 Дорогой друг!</strong><br>
+        Вот и закончилось наше путешествие по страницам рабочей тетради «Друзья природы». Ты прошёл долгий путь: узнал, как устроена природа, научился наблюдать, исследовать, помогать и творить. Ты стал <strong>настоящим другом природы</strong> — не на словах, а на деле.
+        <br><br>
+        Помни: <strong>природа — наш общий дом</strong>. И от того, как ты будешь к ней относиться, зависит, каким этот дом будет — чистым и красивым или замусоренным и уставшим. Ты уже много сделал. Но впереди ещё целая жизнь, и каждый день ты можешь делать добрые дела для природы.
+    </div>
+
+    <div class="final-card">
+        <div class="final-card-title">💚 Пять обещаний друга природы</div>
+        <ol>
+            <li>Я никогда не буду мусорить в лесу, в парке, на улице.</li>
+            <li>Я буду беречь воду, свет и бумагу — каждый день.</li>
+            <li>Я буду помогать птицам и животным, когда им трудно.</li>
+            <li>Я буду ухаживать за растениями и сажать новые деревья.</li>
+            <li>Я буду рассказывать друзьям и близким, как важно беречь природу.</li>
+        </ol>
+        <p style="text-align: center; margin-top: 14px;"><strong>Я — друг природы. Я обещаю это!</strong></p>
+    </div>
+
+    <div class="quote">
+        «Мы не наследуем Землю у наших предков, мы берём её в долг у наших детей. И от того, как мы о ней заботимся, зависит, что мы им вернём». — Народная мудрость
+    </div>
+
+    <div class="note">
+        <strong>🌟 Пусть природа всегда будет твоим другом, а ты — её защитником!</strong> Помни: всё большое начинается с малого. Твои маленькие добрые дела — это огромный вклад в сохранение нашего общего дома. Пусть каждый твой день будет наполнен вниманием к природе, а сердце — благодарностью за её красоту. И тогда мир вокруг тебя станет чище, добрее и радостнее. <strong>До новых встреч, юный эколог!</strong>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Финальная загадка</div>
+        <p>«Кто утром на четырёх ногах, днём на двух, а вечером на трёх?» (человек: ребёнок, взрослый, старик).</p>
+        <p><strong>А теперь другая, о тебе:</strong> «Кто пришёл в этот мир не гостем, а другом? Кто обещал беречь природу и сдержал слово?» (ты!).</p>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌍 Пословицы и поговорки на прощание:</strong>
+        <ul>
+            <li>«Земля — кормилица, а вода — поилица».</li>
+            <li>«Лес и вода — брат и сестра».</li>
+            <li>«Кто землю лелеет, того земля жалеет».</li>
+            <li>«Не плюй в колодец — пригодится воды напиться».</li>
+            <li>«Береги природу — она у нас одна».</li>
+            <li>«Друзья природы — друзья на всю жизнь».</li>
+        </ul>
+    </div>
+
+    <p style="text-align: center; margin-top: 30px; font-size: 1.15rem;">
+        <strong>🌍 Спасибо тебе, юный друг, за этот путь!</strong><br>
+        Пусть природа отвечает тебе красотой, радостью и здоровьем!
+    </p>
+
+    <p style="margin-top: 30px;">
+        <a href="section11.html" class="button">← Раздел 11. «Я — творец»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+        <a href="index.html" class="button">На главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

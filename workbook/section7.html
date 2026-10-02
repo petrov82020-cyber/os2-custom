@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 7. «Природа и творчество» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .poem-card {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .poem-card-title {
+            font-weight: 700;
+            color: #6b21a8;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .poem {
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .symmetry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .symmetry-item {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .symmetry-item .icon {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .symmetry-item .label {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 0.95rem;
+        }
+        .symmetry-item .desc {
+            font-size: 0.8rem;
+            color: #4338ca;
+            margin-top: 4px;
+        }
+        .palette-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .palette-item {
+            border-radius: 12px;
+            padding: 16px 14px;
+            text-align: center;
+            border: 2px solid;
+            color: #1a1e24;
+        }
+        .palette-item .color-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .palette-item .color-where {
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+        .craft-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin: 18px 0;
+        }
+        .craft-card-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🎨🦋✨ Раздел 7. «Природа и творчество»</h1>
+    <div class="section-meta">📖 Часть 2. «Удивительный мир природы» | 🎯 Для детей 7–9 лет | ⏱ 6 тем, 14–16 заданий</div>
+
+    <p>Дорогой друг! Ты уже много узнал о природе: научился наблюдать за временами года, выращивать растения, понимать, как связаны солнце, вода, воздух и всё живое. Но у природы есть ещё одна удивительная сторона, о которой мы пока не говорили. Природа — это <strong>величайший художник и скульптор</strong>. Она создаёт такие красивые формы, такое разнообразие красок, такую гармонию, которые вдохновляют людей на создание произведений искусства.</p>
+
+    <p>В этом разделе мы <strong>посмотрим на природу глазами художника и поэта</strong>. Мы найдём в ней симметрию и гармонию, увидим её краски, услышим её голос в стихах и сказках. Мы будем <strong>рисовать, лепить, мастерить</strong> — словом, творить. Ведь творчество — это язык, на котором человек говорит с природой. И чем лучше ты научишься этому языку, тем богаче станет твоя душа.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этим разделом:</strong> Здесь нет «правильных» и «неправильных» ответов. Творчество — это <strong>свобода</strong>. Ты можешь рисовать так, как чувствуешь, придумывать то, что тебе нравится. Главное — <strong>внимательно смотреть, слушать, чувствовать</strong> и не бояться выразить себя.
+    </div>
+
+    <!-- ТЕМА 2.3.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🦋</span>
+        <span>Тема 2.3.1. Симметрия и гармония в природе</span>
+    </div>
+
+    <p>Посмотри на бабочку, на снежинку, на лист клёна. Что в них общего? Все они <strong>симметричны</strong>. Симметрия — это когда <strong>одна половина предмета повторяет другую</strong>, как отражение в зеркале. Это одна из главных загадок красоты в природе.</p>
+
+    <p>Симметрия бывает разной. <strong>Зеркальная симметрия</strong> — когда левая и правая половины одинаковые (бабочка, лист, человек). <strong>Радиальная симметрия</strong> — когда части расположены вокруг центра по кругу (ромашка, снежинка, морская звезда). И та, и другая симметрия создают ощущение <strong>равновесия, устойчивости, завершённости</strong>. Именно поэтому симметричные формы кажутся нам красивыми.</p>
+
+    <div class="symmetry-grid">
+        <div class="symmetry-item">
+            <span class="icon">🦋</span>
+            <span class="label">Бабочка</span>
+            <span class="desc">зеркальная симметрия крыльев</span>
+        </div>
+        <div class="symmetry-item">
+            <span class="icon">❄️</span>
+            <span class="label">Снежинка</span>
+            <span class="desc">шестилучевая радиальная симметрия</span>
+        </div>
+        <div class="symmetry-item">
+            <span class="icon">🌼</span>
+            <span class="label">Ромашка</span>
+            <span class="desc">лепестки по кругу</span>
+        </div>
+        <div class="symmetry-item">
+            <span class="icon">🍁</span>
+            <span class="label">Лист клёна</span>
+            <span class="desc">зеркальная симметрия половинок</span>
+        </div>
+        <div class="symmetry-item">
+            <span class="icon">⭐</span>
+            <span class="label">Морская звезда</span>
+            <span class="desc">пять лучей вокруг центра</span>
+        </div>
+        <div class="symmetry-item">
+            <span class="icon">🌻</span>
+            <span class="label">Подсолнух</span>
+            <span class="desc">семена по спирали Фибоначчи</span>
+        </div>
+    </div>
+
+    <p>Симметрия — это не просто «красиво». Это <strong>мудрость природы</strong>. Симметричное тело помогает животному двигаться, балансировать, охотиться. Симметричные крылья позволяют птице летать. Симметричные цветы легче опыляются насекомыми. Красота и польза в природе идут рука об руку.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 7.1.1. «Дорисуй симметрию»</div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой три половинки природных объектов. Дорисуй вторую половину так, чтобы предмет стал симметричным. Раскрась его.</p>
+        <table>
+            <thead>
+                <tr><th>№</th><th>Что нарисовано?</th><th>Место для дорисовывания</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Левая половинка бабочки</td><td style="height:80px;"></td></tr>
+                <tr><td>2</td><td>Левая половинка листа клёна</td><td style="height:80px;"></td></tr>
+                <tr><td>3</td><td>Половина снежинки (три луча из шести)</td><td style="height:80px;"></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему природа создала так много симметричных форм? Как ты думаешь, это случайность или закономерность?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 7.1.2. «Найди симметрию вокруг»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Выйди на прогулку и найди в природе пять симметричных объектов. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>№</th><th>Что я нашёл?</th><th>Какая симметрия?</th><th>Рисунок</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td>☐ зеркальная ☐ радиальная</td><td style="height:60px;"></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td>☐ зеркальная ☐ радиальная</td><td style="height:60px;"></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td>☐ зеркальная ☐ радиальная</td><td style="height:60px;"></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td><td>☐ зеркальная ☐ радиальная</td><td style="height:60px;"></td></tr>
+                <tr><td>5</td><td><span class="line-for-writing" style="margin:0;"></span></td><td>☐ зеркальная ☐ радиальная</td><td style="height:60px;"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="note">
+        <strong>✨ Интересно знать:</strong> Семена в корзинке подсолнуха расположены по спиралям. Если посчитать, сколько спиралей закручено по часовой стрелке и сколько против, получаются числа <strong>21 и 34</strong> или <strong>34 и 55</strong>. Это числа из знаменитой последовательности Фибоначчи. Так природа соединяет красоту и математику!
+    </div>
+
+    <!-- ТЕМА 2.3.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌈</span>
+        <span>Тема 2.3.2. Краски природы</span>
+    </div>
+
+    <p>Природа — <strong>самый богатый художник</strong> на свете. У неё есть тысячи красок и оттенков, и она щедро раскрашивает ими всё вокруг: небо, землю, воду, растения, животных. Посмотри на закат — сколько там оттенков оранжевого, розового, фиолетового! А сколько зелёных оттенков у травы и листьев!</p>
+
+    <p>Каждое время года приносит <strong>свои краски</strong>. Весна — нежно-зелёные, светло-голубые, розовые. Лето — яркие, насыщенные, сочные. Осень — золотые, багряные, тёплые. Зима — белые, синие, серебристые. И каждая из этих палитр по-своему прекрасна.</p>
+
+    <div class="palette-card">
+        <div class="palette-item" style="background:#dcfce7; border-color:#16a34a;">
+            <div class="color-name">Зелёный</div>
+            <div class="color-where">трава, листья, ёлка</div>
+        </div>
+        <div class="palette-item" style="background:#fef9c3; border-color:#eab308;">
+            <div class="color-name">Жёлтый</div>
+            <div class="color-where">солнце, одуванчик, осенние листья</div>
+        </div>
+        <div class="palette-item" style="background:#fee2e2; border-color:#ef4444;">
+            <div class="color-name">Красный</div>
+            <div class="color-where">ягоды, мак, осенний клён</div>
+        </div>
+        <div class="palette-item" style="background:#dbeafe; border-color:#3b82f6;">
+            <div class="color-name">Синий</div>
+            <div class="color-where">небо, василёк, вода</div>
+        </div>
+        <div class="palette-item" style="background:#f3e8ff; border-color:#a855f7;">
+            <div class="color-name">Фиолетовый</div>
+            <div class="color-where">закат, колокольчик, сирень</div>
+        </div>
+        <div class="palette-item" style="background:#ffedd5; border-color:#f97316;">
+            <div class="color-name">Оранжевый</div>
+            <div class="color-where">апельсин, бархатцы, закат</div>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 7.2.1. «Найди краски природы»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Вспомни или найди в природе предметы каждого цвета. Заполни таблицу и раскрась кружки.</p>
+        <table>
+            <thead>
+                <tr><th>Цвет</th><th>Что бывает такого цвета в природе?</th><th>Мой образец цвета</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🟢 Зелёный</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#dcfce7;"></td></tr>
+                <tr><td>🟡 Жёлтый</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#fef9c3;"></td></tr>
+                <tr><td>🔴 Красный</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#fee2e2;"></td></tr>
+                <tr><td>🔵 Синий</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#dbeafe;"></td></tr>
+                <tr><td>🟣 Фиолетовый</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#f3e8ff;"></td></tr>
+                <tr><td>🟠 Оранжевый</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#ffedd5;"></td></tr>
+                <tr><td>🟤 Коричневый</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#fde68a;"></td></tr>
+                <tr><td>⚪ Белый</td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="background:#f8fafc;"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 7.2.2. «Краски моего настроения»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй четыре времени года так, как ты их чувствуешь. Используй те цвета, которые, как тебе кажется, больше всего подходят каждому сезону. Напиши, почему ты выбрал именно эти цвета.</p>
+        <table>
+            <thead>
+                <tr><th>🌸 Весна</th><th>☀️ Лето</th><th>🍂 Осень</th><th>❄️ Зима</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="height:120px;"></td>
+                    <td style="height:120px;"></td>
+                    <td style="height:120px;"></td>
+                    <td style="height:120px;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему у каждого времени года свой цвет? Как цвет влияет на наше настроение?»</p>
+    </div>
+
+    <div class="note">
+        <strong>🎨 Интересно знать:</strong> Человеческий глаз различает около 10 миллионов оттенков. А некоторые животные, например, бабочки и птицы, видят даже ультрафиолетовый свет, который для нас невидим. Для них мир выглядит ещё ярче и удивительнее!
+    </div>
+
+    <!-- ТЕМА 2.3.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">📖</span>
+        <span>Тема 2.3.3. Природа в стихах и сказках</span>
+    </div>
+
+    <p>Природа вдохновляла людей с древних времён. Ей посвящали стихи, песни, сказки, картины. Поэты находили в природе <strong>созвучие своим чувствам</strong>: радость, грусть, удивление, восхищение. А сказки помогали объяснить, почему мир устроен именно так.</p>
+
+    <p>Александр Сергеевич Пушкин, Фёдор Иванович Тютчев, Сергей Александрович Есенин — все великие русские поэты писали о природе. И в каждом стихотворении природа живая: она дышит, радуется, грустит, разговаривает с человеком.</p>
+
+    <div class="poem-card">
+        <div class="poem-card-title">🍂 Стихотворение об осени</div>
+        <div class="poem">
+            Уж небо осенью дышало,<br>
+            Уж реже солнышко блистало,<br>
+            Короче становился день,<br>
+            Лесов таинственная сень<br>
+            С печальным шумом обнажалась...<br>
+            <span style="font-size:0.9rem;color:#6b21a8;">— А.С. Пушкин</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 7.3.1. «Найди природу в стихах»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Прочитай стихотворение. Найди в нём слова, которые описывают природу. Запиши их. Нарисуй то, что ты представил, когда читал стихотворение.</p>
+        <table>
+            <thead>
+                <tr><th>Слова о природе</th><th>Что я представил?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td rowspan="4" style="height:120px;"></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📖 Задание 7.3.2. «Природа в сказках»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Вспомни сказки, в которых природа помогает героям или является частью сюжета. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>Название сказки</th><th>Какая природа в ней?</th><th>Чему учит сказка?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Подсказка:</strong> вспомни сказки «Теремок», «Двенадцать месяцев», «Снегурочка», «Лиса и заяц», «Зимовье зверей».</p>
+    </div>
+
+    <div class="quote">
+        «Природа — это единственная книга, каждая страница которой полна глубокого содержания». — И.В. Гёте
+    </div>
+
+    <!-- ТЕМА 2.3.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">❓</span>
+        <span>Тема 2.3.4. Природа в загадках и пословицах</span>
+    </div>
+
+    <p>Загадки и пословицы — это <strong>народная мудрость о природе</strong>, собранная веками. В загадках природа говорит с нами <strong>образами</strong>: солнце — золотое яблочко, снег — белая скатерть, ветер — невидимка. А пословицы учат нас <strong>уважать природу и жить с ней в согласии</strong>.</p>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о природе</div>
+        <ul>
+            <li>«Разноцветное коромысло над рекой повисло» (радуга).</li>
+            <li>«Белая скатерть всё поле одела» (снег).</li>
+            <li>«Катится по небу золотое яблочко, всем улыбается» (солнце).</li>
+            <li>«Без рук, без ног, а ворота открывает» (ветер).</li>
+            <li>«Прозрачный, как стекло, а не вставишь в окно» (лёд).</li>
+            <li>«Стоит Алёна — платок зелёный, тонкий стан, белый сарафан» (берёза).</li>
+            <li>«Зимой и летом одним цветом» (ель).</li>
+            <li>«Дышит, растёт, а ходить не может» (растение).</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 7.4.1. «Сочини загадку»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Придумай свою загадку о природном объекте или явлении. Опиши его так, чтобы другие дети смогли отгадать. Не называй сам предмет. Нарисуй отгадку.</p>
+        <p><strong>Подсказка:</strong> подумай, какого цвета предмет, какой он формы, где живёт, что делает.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Моя загадка:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Отгадка:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌿 Пословицы и поговорки о природе:</strong>
+        <ul>
+            <li>«Лес и вода — брат и сестра».</li>
+            <li>«Вода — всему голова».</li>
+            <li>«Много снега — много хлеба».</li>
+            <li>«Без солнышка нет цветочка, без дождя нет грибочка».</li>
+            <li>«Земля — кормилица, а вода — поилица».</li>
+            <li>«Что летом родится, то зимой пригодится».</li>
+            <li>«Ласточка день начинает, а соловей кончает».</li>
+            <li>«Весна красна цветами, а осень — снопами».</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 7.4.2. «Объясни пословицу»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Выбери одну пословицу о природе. Объясни, как ты её понимаешь. Нарисуй, о чём она.</p>
+        <p><strong>Моя пословица:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Как я её понимаю:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок к пословице:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ТЕМА 2.3.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌰</span>
+        <span>Тема 2.3.5. Поделки из природного материала</span>
+    </div>
+
+    <p>Природа дарит нам не только красоту, но и <strong>материал для творчества</strong>. Из шишек, жёлудей, каштанов, листьев, семян, веточек можно сделать удивительные поделки. Всё, что нужно — <strong>воображение и умелые руки</strong>.</p>
+
+    <p>Собирать природный материал лучше всего <strong>осенью</strong>, когда созревают жёлуди и каштаны, а листья становятся особенно красивыми. Но и в другое время года можно найти много интересного: веточки, камешки, ракушки, сухие травы.</p>
+
+    <div class="craft-card">
+        <div class="craft-card-title">🦔 Поделка «Ёжик из шишки»</div>
+        <p><strong>Что понадобится:</strong> сосновая или еловая шишка, пластилин, веточки, сухие листья.</p>
+        <p><strong>Как делать:</strong></p>
+        <ol>
+            <li>Скатай из пластилина небольшой овал — это будет тело ёжика.</li>
+            <li>Прикрепи шишку к телу — это будут иголки.</li>
+            <li>Сделай из пластилина носик и глазки.</li>
+            <li>Из веточек сделай лапки.</li>
+            <li>Поставь ёжика на сухие листья — получился осенний лес.</li>
+        </ol>
+    </div>
+
+    <div class="craft-card">
+        <div class="craft-card-title">🌰 Поделка «Гусеница из каштанов»</div>
+        <p><strong>Что понадобится:</strong> 5–6 каштанов, пластилин, зубочистки, цветная бумага.</p>
+        <p><strong>Как делать:</strong></p>
+        <ol>
+            <li>Соедини каштаны между собой с помощью пластилина или зубочисток.</li>
+            <li>Первый каштан — голова. Сделай на нём глазки и усики из пластилина.</li>
+            <li>Из цветной бумаги вырежи маленькие кружочки и приклей на спинку гусеницы.</li>
+            <li>Гусеница готова!</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 7.5.1. «Собери природный материал»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Собери на прогулке природный материал для поделок. Запиши, что ты собрал.</p>
+        <table>
+            <thead>
+                <tr><th>Что я собрал?</th><th>Сколько?</th><th>Где нашёл?</th><th>Что можно сделать?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌰 Каштаны</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌲 Шишки</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🍂 Листья</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🪵 Веточки</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌾 Семена</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 7.5.2. «Придумай свою поделку»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Придумай свою поделку из природного материала. Нарисуй её и напиши, как ты будешь её делать.</p>
+        <p><strong>Как называется моя поделка?</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Что мне понадобится?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Как я буду делать?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок поделки:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Собирая природный материал, <strong>не ломай живые растения</strong>. Бери только то, что уже упало на землю: опавшие листья, шишки, жёлуди, каштаны. Помни: природа — наш друг, и мы должны беречь её.
+    </div>
+
+    <!-- ТЕМА 2.3.6 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🍁</span>
+        <span>Тема 2.3.6. Аппликация из листьев и семян</span>
+    </div>
+
+    <p><strong>Аппликация</strong> — это создание картинки путём наклеивания разных элементов на лист бумаги. Природа даёт нам для аппликации прекрасный материал: <strong>листья, семена, крупы, лепестки</strong>. Из них получаются удивительные картины: животные, пейзажи, узоры.</p>
+
+    <p>Листья можно использовать целые или разрезать на части. Например, из листа клёна может получиться голова льва, из берёзового листа — крыло бабочки, из дубового — спинка жука. А из семян и круп можно выложить настоящие мозаики.</p>
+
+    <div class="craft-card">
+        <div class="craft-card-title">🍁 Аппликация «Осенний букет»</div>
+        <p><strong>Что понадобится:</strong> сухие листья разных деревьев, плотная бумага, клей ПВА, кисточка.</p>
+        <p><strong>Как делать:</strong></p>
+        <ol>
+            <li>Высушенные листья положи под пресс (под тяжёлую книгу) на 2–3 дня.</li>
+            <li>Разложи листья на листе бумаги так, чтобы получился красивый букет.</li>
+            <li>Аккуратно приклей каждый лист.</li>
+            <li>Подпиши, с каких деревьев листья.</li>
+        </ol>
+    </div>
+
+    <div class="craft-card">
+        <div class="craft-card-title">🌻 Аппликация «Подсолнух из семян»</div>
+        <p><strong>Что понадобится:</strong> контур подсолнуха на картоне, семена подсолнечника, крупа (пшено), клей ПВА.</p>
+        <p><strong>Как делать:</strong></p>
+        <ol>
+            <li>Нарисуй на картоне контур подсолнуха.</li>
+            <li>Нанеси клей на середину цветка и засыпь её семечками — это серединка.</li>
+            <li>Нанеси клей на лепестки и засыпь крупой.</li>
+            <li>Дай клею высохнуть, стряхни лишнюю крупу.</li>
+            <li>Раскрась лепестки жёлтым цветом.</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 7.6.1. «Моя аппликация»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Придумай и сделай свою аппликацию из листьев или семян. Приклей её на этот лист или нарисуй то, что ты хочешь сделать.</p>
+        <table>
+            <thead>
+                <tr><th>Название моей аппликации</th><th>Материалы</th><th>Моя работа</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td style="height:120px;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Почему из простых листьев и семян получаются такие красивые картины? Откуда берётся красота?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 7.6.2. «Опиши свою работу»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Расскажи о своей аппликации: что на ней изображено, какие материалы ты использовал, что тебе понравилось больше всего во время работы.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🎨 Маленькая хитрость:</strong> Чтобы листья хорошо сохранились, их можно <strong>прогладить утюгом</strong> через лист бумаги или смазать <strong>раствором желатина</strong>. Тогда они не будут ломаться и дольше сохранят цвет. А ещё можно делать аппликации из <strong>свежих листьев</strong> — они наклеиваются прямо на бумагу и потом засыхают, сохраняя форму.
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 7. «Природа и творчество»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>симметрия</strong> и почему она так важна в природе.</li>
+            <li>Как <strong>краски природы</strong> меняются в зависимости от времени года и как они влияют на настроение.</li>
+            <li>Как природа отражается в <strong>стихах и сказках</strong>.</li>
+            <li>Как <strong>загадки и пословицы</strong> помогают понять и полюбить природу.</li>
+            <li>Как делать <strong>поделки из природного материала</strong>.</li>
+            <li>Как создавать <strong>аппликации из листьев и семян</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Что такое симметрия? Приведи примеры симметрии в природе.</li>
+            <li>Какие краски у каждого времени года?</li>
+            <li>Какие стихи и сказки о природе ты знаешь?</li>
+            <li>Какие загадки и пословицы о природе ты запомнил?</li>
+            <li>Какие поделки можно сделать из природного материала?</li>
+            <li>Что тебе больше всего понравилось в этом разделе?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🎨 Молодец!</strong> Ты справился с седьмым разделом рабочей тетради «Друзья природы». Теперь ты умеешь видеть красоту в каждой снежинке и каждом листочке, находить симметрию и гармонию в природе, выражать свои чувства через творчество. Ты научился мастерить поделки из природного материала и делать красивые аппликации. Природа — это не только источник знаний, но и источник вдохновения. И чем тоньше ты чувствуешь её красоту, тем богаче становится твоя душа. Впереди тебя ждут новые путешествия: мы узнаем, как люди отмечают экологические праздники и какие добрые дела можно сделать для природы!
+    </div>
+
+    <div class="quote">
+        «Красота природы — это великое чудо, доступное каждому. Смотри внимательно — и ты увидишь её в обычном листке, в капле росы, в облаке, плывущем по небу». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section6.html" class="button">← Раздел 6. «Растения рядом с нами»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

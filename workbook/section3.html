@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 3. «Растения вокруг нас» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .plant-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .plant-item {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 12px;
+            padding: 14px 18px;
+        }
+        .plant-item strong {
+            color: #166534;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .leaf-svg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .leaf-svg-item {
+            text-align: center;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px;
+        }
+        .leaf-svg-item svg {
+            display: block;
+            margin: 0 auto;
+        }
+        .leaf-svg-item .leaf-name {
+            font-size: 0.9rem;
+            color: #166534;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🌿🌳🌷 Раздел 3. «Растения вокруг нас»</h1>
+    <div class="section-meta">📖 Часть 1. «Первые шаги в природу» | 🎯 Для детей 6–7 лет (и старше — начинающих) | ⏱ 5 тем, 12–14 заданий</div>
+
+    <p>Дорогой друг! Ты уже знаешь, что такое природа, умеешь различать времена года и наблюдать за погодой. А теперь мы познакомимся с <strong>удивительным миром растений</strong>. Растения окружают нас повсюду: высокие деревья в лесу, пушистые кустарники в парке, яркие цветы на клумбе, зелёная трава на лугу. Без растений невозможна жизнь на Земле: они дают нам кислород, которым мы дышим, пищу, которую мы едим, и красоту, которая радует наш глаз.</p>
+
+    <p>В этом разделе ты научишься <strong>различать деревья, кустарники и травы</strong>, <strong>узнавать листья по форме</strong>, <strong>любоваться цветами</strong>, <strong>ухаживать за комнатными растениями</strong> и даже <strong>выращивать лук на подоконнике</strong>. Ты узнаешь, что в мире растений есть своя <strong>гармония, симметрия и красота</strong>, и научишься видеть её в каждой травинке и каждом листочке.</p>
+
+    <div class="svg-illustration" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: группы растений">
+        <rect x="10" y="10" width="580" height="200" rx="16" fill="#f8fafc"/>
+        <text x="300" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ГРУППЫ РАСТЕНИЙ</text>
+
+        <!-- Дерево -->
+        <rect x="30" y="70" width="160" height="120" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="110" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🌳</text>
+        <text x="110" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">Деревья</text>
+        <text x="110" y="148" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">один ствол,</text>
+        <text x="110" y="164" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">высокие, живут долго</text>
+
+        <!-- Кустарник -->
+        <rect x="220" y="70" width="160" height="120" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="300" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🌿</text>
+        <text x="300" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">Кустарники</text>
+        <text x="300" y="148" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">несколько стволиков,</text>
+        <text x="300" y="164" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">ниже деревьев</text>
+
+        <!-- Травы -->
+        <rect x="410" y="70" width="160" height="120" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="490" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🌱</text>
+        <text x="490" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">Травы</text>
+        <text x="490" y="148" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">мягкие стебли,</text>
+        <text x="490" y="164" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">самые низкие</text>
+    </svg>
+    <p class="svg-caption">Схема 3. Три группы растений</p>
+
+    <!-- ТЕМА 1.3.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌳</span>
+        <span>Тема 1.3.1. Деревья, кустарники, травы</span>
+    </div>
+
+    <p>Все растения на Земле делятся на <strong>три большие группы</strong>: деревья, кустарники и травы. Они отличаются друг от друга <strong>высотой</strong>, <strong>строением</strong> и <strong>продолжительностью жизни</strong>.</p>
+
+    <div class="plant-group">
+        <div class="plant-item">
+            <strong>🌳 Деревья</strong>
+            У дерева один <strong>толстый ствол</strong>, покрытый корой. От ствола отходят ветки, на которых растут листья. Деревья — самые высокие растения. Они живут <strong>много лет</strong> — некоторые по сто и даже больше. Примеры: дуб, берёза, клён, сосна, ель.
+        </div>
+        <div class="plant-item">
+            <strong>🌿 Кустарники</strong>
+            У кустарника <strong>несколько тонких стволиков</strong>, которые растут от земли. Кустарники <strong>ниже деревьев</strong>, но тоже живут много лет. Примеры: сирень, малина, смородина, шиповник.
+        </div>
+        <div class="plant-item">
+            <strong>🌱 Травы</strong>
+            У травы <strong>мягкие, сочные стебли</strong>, которые не покрыты корой. Травы — <strong>самые низкие</strong> растения. Многие травы живут только одно лето, а некоторые — несколько лет. Примеры: ромашка, одуванчик, подорожник, клевер.
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 3.1.1. «Что где растёт?»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Рассмотри контурные изображения растений и соедини их с названиями групп:</p>
+        <table>
+            <thead>
+                <tr><th>Растение</th><th>Группа</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌳 Дуб (высокое дерево с резными листьями)</td><td>☐ Дерево ☐ Кустарник ☐ Трава</td></tr>
+                <tr><td>🌿 Сирень (несколько стволиков с душистыми цветами)</td><td>☐ Дерево ☐ Кустарник ☐ Трава</td></tr>
+                <tr><td>🌱 Одуванчик (жёлтый цветок на тонком стебле)</td><td>☐ Дерево ☐ Кустарник ☐ Трава</td></tr>
+                <tr><td>🌳 Берёза (белый ствол с чёрными полосками)</td><td>☐ Дерево ☐ Кустарник ☐ Трава</td></tr>
+                <tr><td>🌿 Малина (колючие стебли с красными ягодами)</td><td>☐ Дерево ☐ Кустарник ☐ Трава</td></tr>
+                <tr><td>🌱 Подорожник (листья с продольными жилками)</td><td>☐ Дерево ☐ Кустарник ☐ Трава</td></tr>
+            </tbody>
+        </table>
+        <p><em>Описание рисунка:</em> на странице нарисованы контуры шести растений — дуба, сирени, одуванчика, берёзы, малины и подорожника. Нужно раскрасить их и отметить галочкой, к какой группе относится каждое растение.</p>
+        <p><strong>Вопрос для размышления:</strong> «Чем дерево отличается от кустарника? А чем кустарник отличается от травы?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о растениях</div>
+        <ul>
+            <li>«Стоит Алёна — платок зелёный, тонкий стан, белый сарафан» (берёза).</li>
+            <li>«Что за дерево стоит — ветра нет, а лист дрожит?» (осина).</li>
+            <li>«Сидит на палочке в красной рубашечке, брюшко сыто — камешками набито» (шиповник).</li>
+            <li>«Белым шариком пушистым я красуюсь в поле чистом» (одуванчик).</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <strong>🌳 Интересно знать:</strong> Самое высокое дерево в мире — <strong>секвойя</strong>. Она может вырасти выше 100 метров — это как тридцатиэтажный дом! А самое старое дерево — <strong>сосна остистая</strong> — живёт более 4000 лет. В Беларуси растут могучие дубы, которым более 300 лет.
+    </div>
+
+    <!-- ТЕМА 1.3.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🍁</span>
+        <span>Тема 1.3.2. Листья деревьев</span>
+    </div>
+
+    <p>Листья — это <strong>«лёгкие» дерева</strong>. Через них дерево дышит и получает питание от солнечного света. У каждого дерева листья <strong>особенной формы</strong>. Если ты научишься различать листья, то сможешь узнать любое дерево даже без таблички.</p>
+
+    <p>Вот самые распространённые деревья и их листья. Обрати внимание на <strong>форму</strong> листа и его <strong>край</strong>.</p>
+
+    <div class="leaf-svg-grid">
+        <div class="leaf-svg-item">
+            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 10 Q20 25 20 50 Q20 70 45 80 Q70 70 70 50 Q70 25 45 10 Z" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+                <line x1="45" y1="15" x2="45" y2="78" stroke="#15803d" stroke-width="1.5"/>
+                <line x1="45" y1="35" x2="30" y2="45" stroke="#15803d" stroke-width="1"/>
+                <line x1="45" y1="45" x2="30" y2="55" stroke="#15803d" stroke-width="1"/>
+                <line x1="45" y1="35" x2="60" y2="45" stroke="#15803d" stroke-width="1"/>
+                <line x1="45" y1="45" x2="60" y2="55" stroke="#15803d" stroke-width="1"/>
+            </svg>
+            <div class="leaf-name">Берёза</div>
+            <div style="font-size:0.8rem;color:#64748b;">маленький, округло-сердцевидный</div>
+        </div>
+
+        <div class="leaf-svg-item">
+            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 10 L35 30 L15 25 L25 45 L10 55 L30 58 L25 78 L45 65 L65 78 L60 58 L80 55 L65 45 L75 25 L55 30 Z" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+                <line x1="45" y1="15" x2="45" y2="70" stroke="#15803d" stroke-width="1.5"/>
+            </svg>
+            <div class="leaf-name">Клён</div>
+            <div style="font-size:0.8rem;color:#64748b;">резной, с острыми уголками</div>
+        </div>
+
+        <div class="leaf-svg-item">
+            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 10 Q30 15 25 30 Q20 45 25 60 Q30 75 45 82 Q60 75 65 60 Q70 45 65 30 Q60 15 45 10 Z" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+                <path d="M25 30 Q35 35 45 30 Q55 25 65 30" fill="none" stroke="#15803d" stroke-width="1"/>
+                <path d="M25 45 Q35 50 45 45 Q55 40 65 45" fill="none" stroke="#15803d" stroke-width="1"/>
+                <path d="M25 60 Q35 65 45 60 Q55 55 65 60" fill="none" stroke="#15803d" stroke-width="1"/>
+                <line x1="45" y1="15" x2="45" y2="80" stroke="#15803d" stroke-width="1.5"/>
+            </svg>
+            <div class="leaf-name">Дуб</div>
+            <div style="font-size:0.8rem;color:#64748b;">продолговатый, с волнистыми краями</div>
+        </div>
+
+        <div class="leaf-svg-item">
+            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <line x1="45" y1="80" x2="45" y2="20" stroke="#15803d" stroke-width="1.5"/>
+                <line x1="45" y1="30" x2="25" y2="20" stroke="#16a34a" stroke-width="1.5"/>
+                <line x1="45" y1="30" x2="65" y2="20" stroke="#16a34a" stroke-width="1.5"/>
+                <line x1="45" y1="45" x2="20" y2="38" stroke="#16a34a" stroke-width="1.5"/>
+                <line x1="45" y1="45" x2="70" y2="38" stroke="#16a34a" stroke-width="1.5"/>
+                <line x1="45" y1="60" x2="25" y2="55" stroke="#16a34a" stroke-width="1.5"/>
+                <line x1="45" y1="60" x2="65" y2="55" stroke="#16a34a" stroke-width="1.5"/>
+            </svg>
+            <div class="leaf-name">Ель</div>
+            <div style="font-size:0.8rem;color:#64748b;">иголки (хвоинки)</div>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 3.2.1. «Угадай дерево по листу»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Рассмотри контуры листьев. Подпиши, с какого дерева каждый лист. Раскрась листья в осенние цвета.</p>
+        <p><em>Описание рисунка:</em> на странице нарисованы четыре контура листьев: маленький округло-сердцевидный, резной с острыми уголками, продолговатый с волнистыми краями и хвоинки ели. Под каждым — строчка для подписи.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Вопрос для размышления:</strong> «Почему у деревьев разные листья? Как ты думаешь, от чего это зависит?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 3.2.2. «Гербарий»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Собери на прогулке листья разных деревьев. Дома положи их под пресс (например, под тяжёлую книгу) на несколько дней, а потом наклей на этот лист. Подпиши, с какого дерева каждый лист.</p>
+        <table>
+            <thead>
+                <tr><th>№</th><th>Лист (место для наклейки)</th><th>Название дерева</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td style="height:70px;"></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td style="height:70px;"></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td style="height:70px;"></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Народная примета:</strong> «Если осенью листья на берёзе начинают желтеть с верхушки — весна будет ранняя, а если снизу — поздняя».</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о листьях и деревьях</div>
+        <ul>
+            <li>«Летом вырастают, а осенью опадают» (листья).</li>
+            <li>«Зимой и летом одним цветом» (ель, сосна).</li>
+            <li>«Стоит красавица: косы зелёные, платье белое, а в косах — чёрные ленточки» (берёза).</li>
+            <li>«Что за дерево-чудеса? Листья — резные, а плоды — крылатые» (клён).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 1.3.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌷</span>
+        <span>Тема 1.3.3. Цветы на клумбе</span>
+    </div>
+
+    <p>Цветы — это <strong>самое красивое украшение природы</strong>. Они радуют нас яркими красками и нежным ароматом. Цветы растут на клумбах, в садах, на лугах, в лесу и даже в поле. Каждый цветок <strong>по-своему красив и удивителен</strong>.</p>
+
+    <p>Давай познакомимся с самыми распространёнными цветами, которые украшают наши клумбы. Обрати внимание на их <strong>цвет</strong>, <strong>форму лепестков</strong> и <strong>середину</strong> цветка.</p>
+
+    <table>
+        <thead>
+            <tr><th>Цветок</th><th>Описание</th><th>Цвет</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>🌼 Ромашка</td><td>Белоснежные лепестки, жёлтая середина</td><td>Белый, жёлтый</td></tr>
+            <tr><td>🌷 Тюльпан</td><td>Плотный бутон, гладкие лепестки</td><td>Красный, жёлтый, розовый</td></tr>
+            <tr><td>🌸 Бархатцы</td><td>Махровые цветки с волнистыми лепестками</td><td>Оранжевый, жёлтый</td></tr>
+            <tr><td>🌺 Астра</td><td>Много тонких лепестков вокруг жёлтой середины</td><td>Сиреневый, розовый, белый</td></tr>
+            <tr><td>🌻 Подсолнух</td><td>Крупный цветок с жёлтыми лепестками и тёмной серединой</td><td>Жёлтый</td></tr>
+        </tbody>
+    </table>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 3.3.1. «Раскрась клумбу»</div>
+        <p><span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой контурная клумба с пятью цветами. Раскрась их так, чтобы клумба стала яркой и красивой. Подпиши названия цветов.</p>
+        <p><em>Описание рисунка:</em> на странице нарисована круглая клумба, в которой растут пять цветов: ромашка, тюльпан, бархатцы, астра и подсолнух. Каждый цветок имеет свой контур. Рядом — строчки для подписей.</p>
+        <p><strong>Вопрос для размышления:</strong> «Какой цветок тебе нравится больше всего? Почему?»</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 3.3.2. «Симметрия цветка»</div>
+        <p><span class="signal">🖍️ Дорисуй</span></p>
+        <p>Многие цветы обладают <strong>симметрией</strong> — их лепестки одинаковые и расположены по кругу. На рисунке нарисована только половина ромашки. Дорисуй вторую половину так, чтобы ромашка стала целой.</p>
+        <p><em>Описание рисунка:</em> на листе изображена половина ромашки — с левой стороны. Видны пять белых лепестков и половина жёлтой середины. Нужно дорисовать правую половину симметрично.</p>
+        <p><strong>Вопрос для размышления:</strong> «Почему в природе так много симметричных форм? Как ты думаешь, почему это красиво?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о цветах</div>
+        <ul>
+            <li>«Стоит в саду кудряшка — белая рубашка, сердечко золотое. Что это такое?» (ромашка).</li>
+            <li>«Из-под снега расцветает, раньше всех весну встречает» (подснежник).</li>
+            <li>«Золотое решето чёрных домиков полно» (подсолнух).</li>
+            <li>«Я — травянистое растение с цветком сиреневого цвета, но переставьте ударение — и превращусь в конфету» (ирис).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌷 Пословицы и поговорки о цветах:</strong>
+        <ul>
+            <li>«Цветок — душа растения, а человек — душа мира».</li>
+            <li>«Весна красна цветами, а осень — снопами».</li>
+            <li>«Каждый цветок — от земли».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 1.3.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🪴</span>
+        <span>Тема 1.3.4. Комнатные растения</span>
+    </div>
+
+    <p>Комнатные растения — это <strong>наши зелёные друзья</strong>, которые живут рядом с нами дома и в классе. Они очищают воздух, увлажняют его, радуют нас своей зеленью и цветами. Чтобы растения хорошо росли, за ними нужно <strong>ухаживать</strong>.</p>
+
+    <div class="plant-group">
+        <div class="plant-item">
+            <strong>💧 Полив</strong>
+            Растения нужно поливать тёплой водой. Летом — чаще, зимой — реже. Нельзя поливать слишком много: от этого корни могут загнить.
+        </div>
+        <div class="plant-item">
+            <strong>☀️ Свет</strong>
+            Большинство комнатных растений любят свет, но не прямые солнечные лучи. Лучше ставить их на подоконник или рядом с ним.
+        </div>
+        <div class="plant-item">
+            <strong>🌬️ Воздух</strong>
+            Растениям нужен свежий воздух. Проветривай комнату, но не ставь растение на сквозняк.
+        </div>
+        <div class="plant-item">
+            <strong>🧹 Уход за листьями</strong>
+            Листья нужно протирать влажной тряпочкой, чтобы на них не скапливалась пыль.
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 3.4.1. «Помоги растению»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🌿 Практика</span></p>
+        <p>Выбери комнатное растение в классе или дома. Узнай его название. Составь план ухода за ним и выполняй его в течение недели.</p>
+        <table>
+            <thead>
+                <tr><th>Название растения</th><th>Как часто поливать?</th><th>Что ещё нужно делать?</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Что будет, если растение не поливать? А если поливать слишком часто?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 3.4.2. «Моё комнатное растение»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй комнатное растение, которое тебе нравится. Раскрась его. Напиши, как оно называется и как за ним ухаживать.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ТЕМА 1.3.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🧅</span>
+        <span>Тема 1.3.5. Огород на подоконнике</span>
+    </div>
+
+    <p>Настоящий исследователь природы умеет не только наблюдать, но и <strong>выращивать растения своими руками</strong>. Давай посадим <strong>лук</strong> — простое и очень полезное растение. Лук можно вырастить прямо на подоконнике в банке с водой или в горшке с землёй.</p>
+
+    <p>В народе говорят: <strong>«Лук от семи недуг»</strong>. Это значит, что лук помогает от многих болезней. В нём много витаминов, особенно весной, когда нашему организму не хватает свежей зелени.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">🌱 Задание 3.5.1. «Посади лук»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Посади луковицу в банку с водой или в горшок с землёй. Каждый день наблюдай за ней и заполняй таблицу.</p>
+        <table>
+            <thead>
+                <tr><th>День</th><th>Что появилось?</th><th>Мои наблюдения</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>День 1</td><td>Посадили лук</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>День 3</td><td>Появились корешки</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>День 5</td><td>Показались зелёные перья</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>День 7</td><td>Перья выросли</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>День 10</td><td>Можно срезать зелень</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Что нужно луку для роста? Почему в темноте лук растёт медленнее?»</p>
+        <p><strong>Народная мудрость:</strong> «Лук от семи недуг».</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 3.5.2. «Нарисуй, как растёт лук»</div>
+        <p><span class="signal">🎨 Раскрась</span></p>
+        <p>Нарисуй три стадии роста лука: <strong>луковица с корешками</strong>, <strong>первые зелёные перья</strong>, <strong>большой пучок зелени</strong>. Раскрась рисунки.</p>
+        <table>
+            <thead>
+                <tr><th>Стадия 1</th><th>Стадия 2</th><th>Стадия 3</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="height:100px;"></td>
+                    <td style="height:100px;"></td>
+                    <td style="height:100px;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадка</div>
+        <p>«Сидит дед, во сто шуб одет. Кто его раздевает, тот слёзы проливает» (лук).</p>
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 3. «Растения вокруг нас»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Какие <strong>три группы растений</strong> существуют: деревья, кустарники, травы.</li>
+            <li>Чем <strong>отличаются</strong> деревья, кустарники и травы.</li>
+            <li>Как <strong>различать листья</strong> разных деревьев по форме и краю.</li>
+            <li>Какие <strong>цветы</strong> растут на клумбах и как они выглядят.</li>
+            <li>Как <strong>ухаживать за комнатными растениями</strong>.</li>
+            <li>Как <strong>вырастить лук</strong> на подоконнике и наблюдать за его ростом.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Чем дерево отличается от кустарника?</li>
+            <li>Какой лист у клёна, а какой — у берёзы?</li>
+            <li>Какие цветы ты знаешь? Опиши один из них.</li>
+            <li>Как нужно ухаживать за комнатными растениями?</li>
+            <li>Что нужно луку для роста?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌿 Молодец!</strong> Ты справился с третьим разделом рабочей тетради «Друзья природы». Теперь ты знаешь, какие растения нас окружают, умеешь различать деревья и кустарники, узнавать листья по форме, а также ухаживать за растениями. Впереди тебя ждёт знакомство с <strong>животными родного края</strong> — пушистыми, пернатыми и крылатыми. Природа — наш лучший друг. Береги её и изучай!
+    </div>
+
+    <div class="quote">
+        «Растение — это посредник между небом и землёй, это живой мост, по которому красота поднимается от земли к солнцу». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section2.html" class="button">← Раздел 2. «Времена года»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

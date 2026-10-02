@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 9. «Я — исследователь» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .steps-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .steps-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding-left: 42px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .project-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .project-card-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        .red-book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .red-book-item {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .red-book-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .red-book-item .name {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 0.95rem;
+        }
+        .red-book-item .desc {
+            font-size: 0.8rem;
+            color: #7f1d1d;
+            margin-top: 4px;
+        }
+        .research-journal {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .research-journal-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🔬🌿📔 Раздел 9. «Я — исследователь» (проектная деятельность)</h1>
+    <div class="section-meta">📖 Часть 3. «Мы — друзья природы» | 🎯 Для детей 9–10 лет | ⏱ 5 тем, 12–14 заданий</div>
+
+    <p>Дорогой друг! Ты прошёл долгий путь: изучил природу родного края, узнал, как связаны солнце, вода, воздух, растения, животные и человек, научился ухаживать за растениями, делать кормушки, помогать природе. Теперь ты <strong>настоящий юный эколог</strong>. Но у настоящего эколога есть ещё одна важная черта — он умеет <strong>исследовать</strong>. Он не просто наблюдает за природой, но и <strong>ставит вопросы, выдвигает гипотезы, проверяет их, делает выводы</strong>.</p>
+
+    <p>В этом разделе мы научимся быть <strong>исследователями</strong>. Мы разработаем собственные экологические проекты, будем вести долгосрочные наблюдения за ростом растений, исследуем свойства воды, воздуха и почвы, создадим свою Красную книгу. А в конце — представим результаты своих исследований, как это делают настоящие учёные на научных конференциях.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этим разделом:</strong> Исследование — это не «правильный ответ», а <strong>путь к нему</strong>. Ты будешь не просто «проходить тему», а <strong>вести настоящее исследование</strong>: от вопроса к гипотезе, от гипотезы к опыту, от опыта к выводу. Веди аккуратные записи и зарисовки. Всё, что ты наблюдаешь, важно!
+    </div>
+
+    <div class="svg-illustration" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: этапы исследования">
+        <rect x="10" y="10" width="580" height="200" rx="16" fill="#f8fafc"/>
+        <text x="300" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#166534">ЭТАПЫ ИССЛЕДОВАНИЯ</text>
+
+        <!-- Этап 1 -->
+        <circle cx="80" cy="115" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="80" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">❓</text>
+        <text x="80" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Вопрос</text>
+        <text x="80" y="186" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">Что я хочу узнать?</text>
+
+        <!-- Этап 2 -->
+        <circle cx="195" cy="115" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="195" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">💭</text>
+        <text x="195" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Гипотеза</text>
+        <text x="195" y="186" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">Что я думаю?</text>
+
+        <!-- Этап 3 -->
+        <circle cx="310" cy="115" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="310" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">🔬</text>
+        <text x="310" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Опыт</text>
+        <text x="310" y="186" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">Что я сделал?</text>
+
+        <!-- Этап 4 -->
+        <circle cx="425" cy="115" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="425" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">👁</text>
+        <text x="425" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Наблюдение</text>
+        <text x="425" y="186" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">Что я увидел?</text>
+
+        <!-- Этап 5 -->
+        <circle cx="540" cy="115" r="30" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="540" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24">✅</text>
+        <text x="540" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">Вывод</text>
+        <text x="540" y="186" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">Что я узнал?</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+            </marker>
+        </defs>
+        <line x1="112" y1="115" x2="163" y2="115" stroke="#64748b" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="227" y1="115" x2="278" y2="115" stroke="#64748b" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="342" y1="115" x2="393" y2="115" stroke="#64748b" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="457" y1="115" x2="508" y2="115" stroke="#64748b" stroke-width="2" marker-end="url(#arrow4)"/>
+    </svg>
+    <p class="svg-caption">Схема 9. Пять этапов исследования</p>
+
+    <!-- ТЕМА 3.1.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">📔</span>
+        <span>Тема 3.1.1. Мой экологический проект</span>
+    </div>
+
+    <p><strong>Экологический проект</strong> — это твоя собственная исследовательская работа, посвящённая какой-то проблеме природы. Проект отличается от простого задания тем, что ты сам <strong>выбираешь тему</strong>, сам <strong>ставишь цель</strong>, сам <strong>ищешь информацию</strong>, сам <strong>делаешь выводы</strong>. А ещё — сам <strong>представляешь результат</strong> другим людям.</p>
+
+    <p>Экологические проекты могут быть очень разными: о воде, о растениях, о животных, о мусоре, о воздухе, о том, как сделать наш двор чище. Главное — чтобы тема была <strong>интересна тебе</strong> и <strong>полезна природе</strong>.</p>
+
+    <div class="project-card">
+        <div class="project-card-title">📋 Структура проекта: что должно быть в твоей работе</div>
+        <ol>
+            <li><strong>Тема проекта</strong> — о чём ты будешь исследовать?</li>
+            <li><strong>Цель</strong> — чего ты хочешь достичь? (например, «узнать, как влияет свет на рост растения»).</li>
+            <li><strong>Задачи</strong> — что нужно сделать, чтобы достичь цели? (например, «посадить растения, понаблюдать, сравнить, сделать вывод»).</li>
+            <li><strong>Гипотеза</strong> — что ты предполагаешь? («я думаю, что растения на свету растут быстрее»).</li>
+            <li><strong>Методы</strong> — как ты будешь исследовать? (наблюдение, опыт, измерение, чтение книг).</li>
+            <li><strong>Результаты</strong> — что ты получил? (рисунки, таблицы, фотографии, наблюдения).</li>
+            <li><strong>Вывод</strong> — что ты узнал? Подтвердилась ли твоя гипотеза?</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.1.1. «Выбери тему проекта»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Подумай, какая экологическая проблема или тема тебя больше всего интересует. Запиши три возможные темы своего проекта и обоснуй, почему ты выбрал именно их.</p>
+        <table>
+            <thead>
+                <tr><th>№</th><th>Тема проекта</th><th>Почему я выбрал именно её?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Примеры тем:</strong> «Как свет влияет на рост растений», «Почему в нашем дворе стало меньше птиц», «Как сэкономить воду в школе», «Куда исчезают осенние листья», «Что такое "живая" и "мёртвая" вода».</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.1.2. «Мой план проекта»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Выбери одну тему из предыдущего задания и составь план своего проекта.</p>
+        <table>
+            <thead>
+                <tr><th>Элемент проекта</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Тема проекта</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Цель</strong> (чего я хочу достичь)</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Задачи</strong> (что нужно сделать)</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Гипотеза</strong> (что я предполагаю)</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Методы</strong> (как буду исследовать)</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Ожидаемый результат</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет:</strong> Выбирай тему, которая <strong>тебе действительно интересна</strong>. Тогда исследование превратится в увлекательное приключение, а не в скучное задание. И помни: даже самый маленький проект может принести большую пользу природе!
+    </div>
+
+    <!-- ТЕМА 3.1.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌱</span>
+        <span>Тема 3.1.2. Наблюдение за ростом растения (долгосрочный проект)</span>
+    </div>
+
+    <p>Один из самых интересных экологических проектов — <strong>долгосрочное наблюдение за ростом растения</strong>. Это настоящее исследование, которое длится несколько недель или даже месяцев. Ты сможешь увидеть своими глазами, как из маленького семечка вырастает взрослое растение.</p>
+
+    <p>Для такого проекта лучше всего подходят быстрорастущие растения: <strong>лук, горох, фасоль, кресс-салат, овёс</strong>. Можно посадить их в горшок с землёй или в банку с водой и наблюдать за ними каждый день.</p>
+
+    <div class="research-journal">
+        <div class="research-journal-title">📔 Дневник исследователя: наблюдаем за ростом растения</div>
+        <p>Заполняй таблицу каждый день или каждые 2–3 дня. Записывай, что произошло с растением, и зарисовывай его.</p>
+        <table>
+            <thead>
+                <tr><th>Дата</th><th>Что произошло?</th><th>Высота (в см)</th><th>Мой рисунок</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td style="height:50px;"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔬 Задание 9.2.1. «Сравнение: свет и темнота»</div>
+        <p><span class="signal">🔬 Опыт</span> <span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Проведи исследование: посади два одинаковых растения (например, две луковицы). Одно поставь на светлое место, другое — в тёмное. Наблюдай за ними в течение 2–3 недель.</p>
+        <table>
+            <thead>
+                <tr><th>День</th><th>Растение на свету</th><th>Растение в темноте</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>День 3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>День 7</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>День 14</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>День 21</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Подтвердилась ли моя гипотеза?</strong> ☐ Да ☐ Нет</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.2.2. «Портрет моего растения»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй своё растение на разных этапах роста. Напиши, какие изменения ты заметил.</p>
+        <table>
+            <thead>
+                <tr><th>День 1</th><th>День 7</th><th>День 14</th><th>День 21</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="height:100px;"></td>
+                    <td style="height:100px;"></td>
+                    <td style="height:100px;"></td>
+                    <td style="height:100px;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Что изменилось в растении за время наблюдения?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌱 Пословицы и поговорки о росте и терпении:</strong>
+        <ul>
+            <li>«Что посеешь, то и пожнёшь».</li>
+            <li>«Терпенье и труд всё перетрут».</li>
+            <li>«Без труда не выловишь и рыбку из пруда».</li>
+            <li>«Капля по капле и камень долбит».</li>
+            <li>«Растение растёт не по дням, а по часам».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 3.1.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🔬</span>
+        <span>Тема 3.1.3. Исследование свойств воды, воздуха, почвы</span>
+    </div>
+
+    <p>Вода, воздух и почва — это <strong>три главных богатства природы</strong>, без которых невозможна жизнь. Ты уже познакомился с ними во втором разделе. Теперь мы проведём <strong>настоящие исследования</strong>, чтобы лучше понять их свойства. Веди аккуратные записи — это часть твоего экологического проекта.</p>
+
+    <div class="steps-card">
+        <div class="steps-card-title">🔬 Исследование 1. «Вода — растворитель»</div>
+        <p><strong>Цель:</strong> Узнать, какие вещества растворяются в воде, а какие — нет.</p>
+        <p><strong>Материалы:</strong> четыре стакана с водой, сахар, соль, песок, растительное масло, ложка.</p>
+        <ol class="step-list">
+            <li>Налей в каждый стакан воду.</li>
+            <li>В первый стакан добавь сахар и размешай.</li>
+            <li>Во второй — соль и размешай.</li>
+            <li>В третий — песок и размешай.</li>
+            <li>В четвёртый — несколько капель масла.</li>
+            <li>Понаблюдай, что произошло в каждом стакане.</li>
+        </ol>
+        <p><strong>Запиши результаты:</strong></p>
+        <table>
+            <thead>
+                <tr><th>Вещество</th><th>Растворилось?</th><th>Что наблюдаю?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Сахар</td><td>☐ Да ☐ Нет</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Соль</td><td>☐ Да ☐ Нет</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Песок</td><td>☐ Да ☐ Нет</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Масло</td><td>☐ Да ☐ Нет</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="steps-card">
+        <div class="steps-card-title">🔬 Исследование 2. «Воздух занимает место»</div>
+        <p><strong>Цель:</strong> Доказать, что воздух занимает место в пространстве.</p>
+        <p><strong>Материалы:</strong> пустая пластиковая бутылка, глубокая миска с водой.</p>
+        <ol class="step-list">
+            <li>Опусти пустую открытую бутылку в миску с водой горлышком вниз.</li>
+            <li>Понаблюдай, входит ли вода в бутылку.</li>
+            <li>Медленно наклони бутылку в воде.</li>
+            <li>Понаблюдай, что появится из горлышка.</li>
+        </ol>
+        <p><strong>Запиши наблюдения:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой вывод:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="steps-card">
+        <div class="steps-card-title">🔬 Исследование 3. «Почва пропускает воду»</div>
+        <p><strong>Цель:</strong> Сравнить, как разные виды почвы пропускают воду.</p>
+        <p><strong>Материалы:</strong> две воронки, два стакана, песок, глина, вода.</p>
+        <ol class="step-list">
+            <li>Поставь воронку с песком в один стакан, с глиной — в другой.</li>
+            <li>Налей одинаковое количество воды в обе воронки.</li>
+            <li>Заметь время, когда вода начнёт капать в стакан.</li>
+            <li>Сравни, где вода прошла быстрее.</li>
+        </ol>
+        <p><strong>Запиши наблюдения:</strong></p>
+        <table>
+            <thead>
+                <tr><th>Вид почвы</th><th>Скорость прохождения воды</th><th>Какой цвет воды?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Песок</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Глина</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.3.1. «Оформи результаты исследования»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Выбери одно из трёх исследований (или проведи своё собственное). Оформи его результаты в виде небольшого отчёта, как это делают настоящие учёные.</p>
+        <table>
+            <thead>
+                <tr><th>Элемент отчёта</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Название исследования</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Цель</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Гипотеза</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Методы</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Результаты</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Вывод</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок к исследованию:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о воде, воздухе и почве</div>
+        <ul>
+            <li>«В морях и реках обитает, но часто по небу летает» (вода).</li>
+            <li>«Невидимка озорной: всё играет он с травой, листья в воздухе кружит и куда-то всё спешит» (ветер).</li>
+            <li>«Меня бьют, колотят, ворочают, режут — я всё терплю и всем добром плачу» (земля).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 3.1.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">📕</span>
+        <span>Тема 3.1.4. Моя Красная книга</span>
+    </div>
+
+    <p>Ты уже знаешь, что есть <strong>Красная книга</strong> — список редких и исчезающих животных и растений. Теперь пришло время создать <strong>свою Красную книгу</strong>. В неё ты можешь включить редких животных и растения твоего края, которые нуждаются в защите.</p>
+
+    <p>Работа над Красной книгой — это не только творчество, но и <strong>серьёзное исследование</strong>. Нужно найти информацию о редких видах, узнать, где они живут, почему стали редкими, как их можно защитить. Всё это делает настоящий исследователь природы.</p>
+
+    <div class="red-book-grid">
+        <div class="red-book-item">
+            <span class="emoji">🦬</span>
+            <span class="name">Зубр</span>
+            <span class="desc">Самый крупный зверь Европы. Живёт в Беловежской пуще.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🦉</span>
+            <span class="name">Филин</span>
+            <span class="desc">Крупная сова с ушками. Ночной охотник.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🌷</span>
+            <span class="name">Сон-трава</span>
+            <span class="desc">Весенний цветок с пушистыми лепестками.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🌸</span>
+            <span class="name">Венерин башмачок</span>
+            <span class="desc">Редкая лесная орхидея, похожая на туфельку.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🦌</span>
+            <span class="name">Благородный олень</span>
+            <span class="desc">Красивое животное с ветвистыми рогами.</span>
+        </div>
+        <div class="red-book-item">
+            <span class="emoji">🦅</span>
+            <span class="name">Орлан-белохвост</span>
+            <span class="desc">Крупная хищная птица с белым хвостом.</span>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📕 Задание 9.4.1. «Страница моей Красной книги»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери одно редкое животное или растение Беларуси. Найди о нём информацию и оформи страницу своей Красной книги.</p>
+        <table>
+            <thead>
+                <tr><th>Что нужно узнать</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Название</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Как выглядит?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Где живёт?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Чем питается?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Почему стал редким?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Как его защитить?</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок редкого вида:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.4.2. «Обращение к людям»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши обращение к людям, в котором объясни, почему важно беречь редкие виды растений и животных и что нужно делать для их защиты.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать:</strong> Красная книга Беларуси была создана в 1981 году. Сегодня в неё занесено более 200 видов животных и 300 видов растений. Среди них есть такие, которых уже невозможно вернуть — они исчезли навсегда. Но большинство ещё можно спасти, если мы будем бережно относиться к природе!
+    </div>
+
+    <!-- ТЕМА 3.1.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🎤</span>
+        <span>Тема 3.1.5. Презентация проекта</span>
+    </div>
+
+    <p>Ты провёл серьёзное исследование, собрал много информации и сделал важные выводы. Теперь нужно <strong>представить результаты</strong> другим людям — ребятам из твоего объединения, родителям, педагогам. Это называется <strong>презентация проекта</strong>.</p>
+
+    <p>Презентация — это не просто рассказ. Это <strong>объяснение своей работы</strong> так, чтобы другим было понятно и интересно. Ты должен показать, что ты сделал, чему научился, какие выводы получил.</p>
+
+    <div class="steps-card">
+        <div class="steps-card-title">🎤 Как подготовить презентацию проекта</div>
+        <ol class="step-list">
+            <li><strong>Подготовь материалы.</strong> Собери все свои записи, рисунки, фотографии, результаты опытов.</li>
+            <li><strong>Оформи отчёт.</strong> Сделай красивый альбом, плакат или презентацию на компьютере.</li>
+            <li><strong>Составь план рассказа.</strong> Напиши короткий текст (5–7 минут), где расскажешь о теме, цели, гипотезе, методах, результатах и выводах.</li>
+            <li><strong>Потренируйся.</strong> Расскажи свой проект родителям или друзьям. Попроси их задать тебе вопросы.</li>
+            <li><strong>Выступи.</strong> Расскажи проект перед аудиторией. Отвечай на вопросы. Показывай свои материалы.</li>
+            <li><strong>Поблагодари.</strong> Поблагодари всех, кто помогал тебе в исследовании: родителей, педагога, друзей.</li>
+        </ol>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.5.1. «Моё выступление»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь план своего выступления на презентации. Запиши основные мысли, которые ты хочешь донести до слушателей.</p>
+        <table>
+            <thead>
+                <tr><th>Часть выступления</th><th>Что я скажу?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Приветствие</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Тема моего проекта</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Почему я выбрал эту тему</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Что я исследовал</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Что я узнал</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Мой вывод</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Благодарность</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 9.5.2. «Самооценка проекта»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Оцени свою работу над проектом. Ответь честно на вопросы.</p>
+        <table>
+            <thead>
+                <tr><th>Вопрос</th><th>Мой ответ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Доволен ли я своей работой?</td><td>☐ Очень ☐ Так себе ☐ Нет</td></tr>
+                <tr><td>Что мне больше всего понравилось в исследовании?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что было трудно?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Чему я научился?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что я хотел бы сделать в следующий раз?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет:</strong> Не бойся волноваться перед выступлением — это нормально! Помни: ты <strong>знаешь свою тему лучше всех</strong>, потому что ты сам её исследовал. Рассказывай так, как будто делишься с друзьями интересным открытием. И тогда твой проект запомнится всем!
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки-напутствия</div>
+        <ul>
+            <li>«Не куст, а с листочками, не рубашка, а сшита, не человек, а рассказывает» (книга).</li>
+            <li>«Говорит она беззвучно, но понятно и не скучно. Ты беседуй чаще с ней — станешь вчетверо умней» (книга).</li>
+            <li>«Кто молчит, а уму учит?» (книга).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>📚 Пословицы и поговорки об учении и исследовании:</strong>
+        <ul>
+            <li>«Ученье — свет, а неученье — тьма».</li>
+            <li>«Корень ученья горек, да плод его сладок».</li>
+            <li>«Век живи — век учись».</li>
+            <li>«Знание — сила».</li>
+            <li>«Не стыдно не знать, стыдно не учиться».</li>
+        </ul>
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 9. «Я — исследователь»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Чему ты научился в этом разделе:</strong>
+        <ul>
+            <li>Как <strong>выбирать тему</strong> и составлять <strong>план экологического проекта</strong>.</li>
+            <li>Как вести <strong>долгосрочное наблюдение</strong> за ростом растения и фиксировать результаты.</li>
+            <li>Как <strong>исследовать свойства воды, воздуха и почвы</strong> с помощью простых опытов.</li>
+            <li>Как создать <strong>свою Красную книгу</strong> и защищать редкие виды.</li>
+            <li>Как <strong>представлять результаты</strong> своего исследования другим людям.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Из каких этапов состоит исследование?</li>
+            <li>Как нужно вести дневник наблюдений?</li>
+            <li>Какие опыты ты провёл со водой, воздухом и почвой?</li>
+            <li>Что такое Красная книга и зачем она нужна?</li>
+            <li>Как подготовить презентацию проекта?</li>
+            <li>Что было самым интересным в твоём исследовании?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🔬 Молодец!</strong> Ты справился с девятым разделом рабочей тетради «Друзья природы». Теперь ты не просто наблюдатель — ты <strong>настоящий исследователь</strong>. Ты умеешь ставить вопросы, выдвигать гипотезы, проводить опыты, анализировать результаты и делать выводы. Ты создал свой проект, оформил его и представил другим. Это большой шаг вперёд! Впереди тебя ждут новые дела: ты станешь <strong>защитником природы</strong> — будешь сажать деревья, помогать птицам, сохранять первоцветы. А ещё ты научишься <strong>творить</strong>, создавая плакаты, сказки и экологические игры. И тогда ты по праву сможешь назвать себя настоящим другом природы!
+    </div>
+
+    <div class="quote">
+        «Исследователь — это не тот, кто много знает, а тот, кто хочет узнать ещё больше. Исследователь — это тот, кто задаёт вопросы и ищет на них ответы». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section8.html" class="button">← Раздел 8. «Экологические праздники и акции»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

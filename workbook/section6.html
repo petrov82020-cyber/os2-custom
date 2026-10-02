@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 6. «Растения рядом с нами» — Рабочая тетрадь «Друзья природы»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover {
+            background: #15803d;
+        }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #166534;
+            font-weight: 600;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-left: 3px solid #16a34a;
+            margin: 15px 0;
+            background: #f0fdf4;
+            border-radius: 0 8px 8px 0;
+        }
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 14px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 6px;
+        }
+        .svg-illustration {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .svg-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0 12px 0;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border-left: 6px solid #16a34a;
+        }
+        .topic-emoji {
+            font-size: 1.8rem;
+        }
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .experiment-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .experiment-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding-left: 42px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .plant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .plant-item {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 12px;
+            padding: 14px 18px;
+        }
+        .plant-item strong {
+            color: #166534;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .need-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .need-item {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .need-item .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .need-item .label {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1rem;
+        }
+        .need-item .desc {
+            font-size: 0.85rem;
+            color: #78350f;
+            margin-top: 6px;
+        }
+        .grain-svg {
+            display: block;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К плану тетради</a>
+
+    <h1>🌱🪴🌾 Раздел 6. «Растения рядом с нами» (растениеводство)</h1>
+    <div class="section-meta">📖 Часть 2. «Удивительный мир природы» | 🎯 Для детей 7–9 лет | ⏱ 6 тем, 14–16 заданий</div>
+
+    <p>Дорогой друг! В предыдущем разделе ты заглянул <strong>внутрь природы</strong>: узнал, как связаны солнце, растения, животные и человек, как происходит круговорот воды, из чего состоит почва. Теперь настало время стать <strong>настоящим садоводом и огородником</strong>. Ты научишься <strong>ухаживать за растениями</strong>, <strong>выращивать лук, горох и фасоль</strong>, <strong>сажать цветы</strong> и <strong>узнаешь, откуда берётся хлеб</strong>.</p>
+
+    <p>Растениеводство — это <strong>древнейшее занятие человека</strong>. С тех пор как люди научились выращивать растения, они перестали голодать и смогли обустроить свою жизнь. Растения дают нам <strong>пищу</strong>, <strong>кислород</strong>, <strong>лекарства</strong>, <strong>материалы для одежды</strong> и <strong>красоту</strong>. А ещё работа с растениями учит <strong>терпению, ответственности и трудолюбию</strong>. Недаром в народе говорят: <strong>«Что посеешь, то и пожнёшь»</strong>.</p>
+
+    <div class="info-box">
+        <strong>💡 Как работать с этим разделом:</strong> Здесь много <strong>практических заданий</strong>. Тебе придётся не только читать и писать, но и <strong>сажать, поливать, наблюдать, ухаживать</strong>. Не бойся испачкать руки землёй — это руки настоящего исследователя природы! И помни: растение — это живое существо, которое нуждается в твоей заботе.
+    </div>
+
+    <!-- ТЕМА 2.2.1 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🪴</span>
+        <span>Тема 2.2.1. Комнатные растения. Уход и наблюдение</span>
+    </div>
+
+    <p>Комнатные растения — это <strong>наши зелёные друзья</strong>, которые живут рядом с нами дома и в классе. Они очищают воздух от пыли и вредных веществ, увлажняют его, выделяют кислород, которым мы дышим. А ещё они просто <strong>радуют глаз</strong> своей зеленью и цветами.</p>
+
+    <p>Комнатные растения бывают очень разными: с крупными листьями (монстера, фикус), с мелкими листьями (традесканция, хлорофитум), цветущие (фиалка, герань, орхидея) и даже кактусы, которые запасают воду в своих колючих стеблях.</p>
+
+    <div class="plant-grid">
+        <div class="plant-item">
+            <strong>🌿 Хлорофитум</strong>
+            Растение с длинными узкими листьями и «детками» на усах. Очень неприхотливое, любит свет и полив.
+        </div>
+        <div class="plant-item">
+            <strong>🌸 Фиалка</strong>
+            Небольшое растение с бархатными листьями и цветами разного цвета. Любит свет, но не прямые лучи.
+        </div>
+        <div class="plant-item">
+            <strong>🌴 Фикус</strong>
+            Растение с крупными кожистыми листьями. Любит свет и умеренный полив. Может вырасти до потолка.
+        </div>
+        <div class="plant-item">
+            <strong>🌵 Кактус</strong>
+            Растение с колючками вместо листьев. Запасает воду в стебле. Поливать нужно редко.
+        </div>
+        <div class="plant-item">
+            <strong>🌿 Традесканция</strong>
+            Растение с длинными стеблями и мелкими листьями. Растёт быстро, любит влагу.
+        </div>
+        <div class="plant-item">
+            <strong>🌺 Герань</strong>
+            Растение с яркими цветами и листьями с приятным запахом. Неприхотлива и красива.
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 6.1.1. «Правила ухода за комнатными растениями»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Соедини, что нужно делать при уходе за растением, с объяснением, для чего это нужно.</p>
+        <table>
+            <thead>
+                <tr><th>Что делать?</th><th>Для чего это нужно?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>💧 Поливать тёплой водой</td><td>...чтобы растение получало питательные вещества</td></tr>
+                <tr><td>🧹 Протирать листья влажной тряпочкой</td><td>...чтобы корни не загнили</td></tr>
+                <tr><td>🌱 Рыхлить землю в горшке</td><td>...чтобы растение дышало и получало свет</td></tr>
+                <tr><td>☀️ Ставить в светлое место</td><td>...чтобы листья не запылились</td></tr>
+                <tr><td>🌬️ Проветривать комнату</td><td>...чтобы корни дышали</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Что будет, если растение не поливать? А если поливать слишком часто?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 6.1.2. «Моё растение»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери комнатное растение в классе или дома. Узнай его название. Наблюдай за ним в течение недели. Записывай свои наблюдения.</p>
+        <table>
+            <thead>
+                <tr><th>День</th><th>Что я делал?</th><th>Что изменилось?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Понедельник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Среда</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Пятница</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Воскресенье</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Творческое задание:</strong> Нарисуй своё растение и подпиши его название.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о комнатных растениях</div>
+        <ul>
+            <li>«На окне растёт, лепестки свои взметнул, а зовут его...» (фикус).</li>
+            <li>«Есть растение с колючками, не похоже на других. Воду в стебле запасает, потому и толст он» (кактус).</li>
+            <li>«Лист с горбочком, с желобочком, шипами оброс, а зовут его...» (алоэ).</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.2.2 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🧅</span>
+        <span>Тема 2.2.2. Огород на подоконнике. Посадка лука, гороха, фасоли</span>
+    </div>
+
+    <p>Настоящий исследователь не боится <strong>выращивать растения сам</strong>. Прямо на подоконнике можно устроить <strong>мини-огород</strong>: посадить лук, горох, фасоль, укроп, петрушку. Это не только интересно, но и полезно: у тебя всегда будет свежая зелень.</p>
+
+    <p>Для огорода на подоконнике нужны: <strong>земля</strong> (или вода), <strong>горшки или банки</strong>, <strong>семена или луковицы</strong>, <strong>вода для полива</strong>, а главное — <strong>терпение и забота</strong>.</p>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт «Лук в банке с водой»</div>
+        <p><strong>Цель:</strong> Понаблюдать, как растёт лук и что появляется первым — корешки или зелёные перья.</p>
+        <p><strong>Материалы:</strong> луковица, стеклянная банка, вода.</p>
+        <ol class="step-list">
+            <li>Налей в банку немного воды, чтобы она касалась только донца луковицы.</li>
+            <li>Поставь банку с луковицей на подоконник.</li>
+            <li>Каждый день наблюдай за луковицей и зарисовывай изменения.</li>
+            <li>Меняй воду каждые 2–3 дня.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Через 2–3 дня появятся первые корешки, затем — зелёные перья.</p>
+        <p><strong>Вывод:</strong> Для роста луку нужны вода, свет и тепло.</p>
+        <p><em>Вопрос для размышления:</em> «Что появилось первым — корешки или зелень? Как ты думаешь, почему?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌱 Задание 6.2.1. «Дневник наблюдений за луком»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Посади лук и заполняй дневник наблюдений. Зарисовывай, как меняется луковица, и записывай свои наблюдения.</p>
+        <table>
+            <thead>
+                <tr><th>День</th><th>Что появилось?</th><th>Мой рисунок</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>День 1</td><td>Посадил лук</td><td style="height:60px;"></td></tr>
+                <tr><td>День 3</td><td>Появились корешки</td><td style="height:60px;"></td></tr>
+                <tr><td>День 5</td><td>Показались зелёные перья</td><td style="height:60px;"></td></tr>
+                <tr><td>День 7</td><td>Перья выросли</td><td style="height:60px;"></td></tr>
+                <tr><td>День 10</td><td>Можно срезать зелень</td><td style="height:60px;"></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Что нужно луку для роста? Почему в темноте лук растёт медленнее?»</p>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт «Горох и фасоль: сравнение роста»</div>
+        <p><strong>Цель:</strong> Сравнить, как растут горох и фасоль, какое растение всходит быстрее.</p>
+        <p><strong>Материалы:</strong> семена гороха и фасоли, два горшка с землёй, вода.</p>
+        <ol class="step-list">
+            <li>Посади в один горшок горох, в другой — фасоль.</li>
+            <li>Полей оба горшка и поставь их на подоконник.</li>
+            <li>Каждый день наблюдай и записывай, когда появились первые ростки.</li>
+            <li>Измеряй высоту ростков линейкой и записывай.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Сравни, у какого растения раньше появились ростки, какое растёт быстрее.</p>
+        <p><strong>Вывод:</strong> Разные растения всходят и растут с разной скоростью.</p>
+        <p><em>Вопрос для размышления:</em> «Как ты думаешь, почему горох всходит быстрее фасоли?»</p>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о луке, горохе и фасоли</div>
+        <ul>
+            <li>«Сидит дед, во сто шуб одет. Кто его раздевает, тот слёзы проливает» (лук).</li>
+            <li>«На жёлтом солнышке подсолнух, а на зелёной грядке...» (горох).</li>
+            <li>«Дом зелёный тесноват: узкий, длинный, гладкий. В доме рядышком сидят круглые ребятки» (горох в стручке).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌱 Пословицы и поговорки о труде и растениях:</strong>
+        <ul>
+            <li>«Что посеешь, то и пожнёшь».</li>
+            <li>«Без труда не выловишь и рыбку из пруда».</li>
+            <li>«Лук от семи недуг».</li>
+            <li>«Каждому овощу своё время».</li>
+            <li>«Труд кормит, а лень портит».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.2.3 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌸</span>
+        <span>Тема 2.2.3. Цветы на клумбе. Выращивание рассады</span>
+    </div>
+
+    <p>Цветы — это <strong>украшение нашей жизни</strong>. Они радуют нас яркими красками, нежным ароматом, красивыми формами. Цветы растут на клумбах, в садах, на балконах. Чтобы цветы радовали нас всё лето, нужно заранее <strong>вырастить рассаду</strong>.</p>
+
+    <p><strong>Рассада</strong> — это молодые растения, которые выращивают в помещении, а потом высаживают в открытый грунт. Рассаду выращивают весной, когда на улице ещё холодно. Когда погода становится тёплой, растения высаживают на клумбу.</p>
+
+    <table>
+        <thead>
+            <tr><th>Цветок</th><th>Когда сеять на рассаду?</th><th>Когда высаживать в грунт?</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>🌺 Бархатцы</td><td>Март–апрель</td><td>Май–июнь</td></tr>
+            <tr><td>🌼 Астры</td><td>Март</td><td>Май</td></tr>
+            <tr><td>🌸 Петуния</td><td>Февраль–март</td><td>Май–июнь</td></tr>
+            <tr><td>🌻 Настурция</td><td>Апрель–май</td><td>Май–июнь</td></tr>
+            <tr><td>🌷 Календула</td><td>Апрель</td><td>Май</td></tr>
+        </tbody>
+    </table>
+
+    <div class="task-box">
+        <div class="task-box-title">🌱 Задание 6.3.1. «Вырасти рассаду»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Попробуй вырастить рассаду цветов (например, бархатцев или календулы) вместе с родителями или педагогом. Заполняй дневник наблюдений.</p>
+        <table>
+            <thead>
+                <tr><th>Этап</th><th>Дата</th><th>Что произошло?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1. Посеяли семена в землю</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2. Появились первые всходы</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3. Появились настоящие листья</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>4. Рассада окрепла</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>5. Высадили на клумбу</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Зачем нужно выращивать рассаду? Почему нельзя сразу посеять семена в открытый грунт?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 6.3.2. «Симметрия цветка»</div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Многие цветы обладают <strong>симметрией</strong>: их лепестки одинаковые и расположены по кругу. На рисунке нарисована только половина цветка. Дорисуй вторую половину так, чтобы цветок стал целым и красивым. Раскрась его.</p>
+        <p><em>Описание рисунка:</em> на листе изображена половина цветка с пятью лепестками. Нужно зеркально дорисовать недостающие лепестки.</p>
+        <p><strong>Вопрос для размышления:</strong> «Почему природа создаёт цветы симметричными? Как ты думаешь, это красиво?»</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о цветах</div>
+        <ul>
+            <li>«Стоит в саду кудряшка — белая рубашка, сердечко золотое. Что это такое?» (ромашка).</li>
+            <li>«Золотое решето чёрных домиков полно» (подсолнух).</li>
+            <li>«Из-под снега расцветает, раньше всех весну встречает» (подснежник).</li>
+            <li>«Я — травянистое растение с цветком сиреневого цвета, но переставьте ударение — и превращусь в конфету» (ирис).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌸 Пословицы и поговорки о цветах:</strong>
+        <ul>
+            <li>«Цветок — душа растения, а человек — душа мира».</li>
+            <li>«Весна красна цветами, а осень — снопами».</li>
+            <li>«Каждый цветок — от земли».</li>
+            <li>«Кто выращивает цветы, тот украшает мир».</li>
+        </ul>
+    </div>
+
+    <!-- ТЕМА 2.2.4 -->
+    <div class="topic-header">
+        <span class="topic-emoji">☀️</span>
+        <span>Тема 2.2.4. Что нужно растению для жизни? Опыт «Свет, вода и тепло»</span>
+    </div>
+
+    <p>Растения — это <strong>живые существа</strong>. Как и людям, им нужны определённые условия для жизни. Если эти условия нарушить, растение может заболеть или погибнуть. Что же нужно растениям?</p>
+
+    <div class="need-card">
+        <div class="need-item">
+            <span class="icon">☀️</span>
+            <span class="label">Свет</span>
+            <span class="desc">Из света растения получают энергию для роста</span>
+        </div>
+        <div class="need-item">
+            <span class="icon">💧</span>
+            <span class="label">Вода</span>
+            <span class="desc">Вода нужна для питания и охлаждения</span>
+        </div>
+        <div class="need-item">
+            <span class="icon">🌡️</span>
+            <span class="label">Тепло</span>
+            <span class="desc">В тепле растения растут быстрее</span>
+        </div>
+        <div class="need-item">
+            <span class="icon">🌱</span>
+            <span class="label">Почва</span>
+            <span class="desc">Из почвы растения получают питательные вещества</span>
+        </div>
+        <div class="need-item">
+            <span class="icon">💨</span>
+            <span class="label">Воздух</span>
+            <span class="desc">Растения дышат, как и мы</span>
+        </div>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт «Свет, вода и тепло»</div>
+        <p><strong>Цель:</strong> Узнать, какие условия нужны растению для роста.</p>
+        <p><strong>Материалы:</strong> три одинаковых растения (например, лук в банке с водой), тёмное место, светлое место, холодное место.</p>
+        <ol class="step-list">
+            <li>Поставь первое растение в светлое тёплое место и поливай.</li>
+            <li>Поставь второе растение в тёмное место и поливай.</li>
+            <li>Поставь третье растение в холодное место и поливай.</li>
+            <li>Наблюдай в течение недели, как растут растения.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Лучше всех растёт растение в светлом тёплом месте. В темноте растение желтеет и вянет. На холоде рост замедляется.</p>
+        <p><strong>Вывод:</strong> Растениям нужны свет, тепло и вода. Без этих условий они не могут нормально расти.</p>
+        <p><em>Вопрос для размышления:</em> «Почему весной растения начинают расти? Что изменилось в природе?»</p>
+        <p><em>Пословица:</em> «Без солнышка нет цветочка, без дождя нет грибочка».</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 6.4.1. «Что нужно растениям?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Заполни таблицу: напиши, что произойдёт с растением, если лишить его одного из условий.</p>
+        <table>
+            <thead>
+                <tr><th>Условие</th><th>Что будет с растением?</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🌑 Растение стоит в темноте</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🚱 Растение не поливают</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>❄️ Растение стоит на холоде</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>💨 Растение стоит на сквозняке</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ТЕМА 2.2.5 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🎨</span>
+        <span>Тема 2.2.5. Как растение пьёт воду? Опыт «Цветная вода»</span>
+    </div>
+
+    <p>Ты уже знаешь, что растениям нужна вода. Но <strong>как</strong> вода попадает в растение? Ведь оно не может «пить» как человек. Оказывается, растение всасывает воду <strong>корнями</strong> из почвы, а потом вода поднимается <strong>по стеблю</strong> к листьям и цветкам. Это удивительный процесс, который можно увидеть своими глазами!</p>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт «Цветная вода»</div>
+        <p><strong>Цель:</strong> Увидеть, как вода движется по растению от корня к листьям и цветкам.</p>
+        <p><strong>Материалы:</strong> белый цветок (гвоздика, хризантема или нарцисс), стакан с водой, пищевой краситель.</p>
+        <ol class="step-list">
+            <li>Добавь в воду несколько капель пищевого красителя.</li>
+            <li>Поставь цветок в подкрашенную воду.</li>
+            <li>Оставь на несколько часов (лучше на ночь).</li>
+            <li>Утром посмотри, что произошло с лепестками цветка.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Лепестки цветка окрасились в цвет красителя.</p>
+        <p><strong>Вывод:</strong> Вода поднимается по стеблю к лепесткам. Растение «пьёт» воду через корни и стебель.</p>
+        <p><em>Вопрос для размышления:</em> «Как вода попадает в листья на верхушке дерева? Что помогает воде подниматься?»</p>
+        <p><em>Загадка:</em> «Стоит дуб, на дубу — кувшин, в кувшине — вода» (дерево, вода в стволе).</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 6.5.1. «Путь воды в растении»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй путь воды от корня до лепестка цветка. Раскрась воду в синий цвет, а растение — в зелёный. Подпиши части растения: корень, стебель, лист, цветок.</p>
+        <p><em>Описание рисунка:</em> на листе изображён контур растения с корнем, стеблем, листьями и цветком. Рядом — стрелки для обозначения пути воды. Нужно раскрасить растение и показать, как вода поднимается от корня к цветку.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-card-title">🔬 Опыт «Как растение теряет воду?»</div>
+        <p><strong>Цель:</strong> Узнать, испаряет ли растение воду.</p>
+        <p><strong>Материалы:</strong> комнатное растение, прозрачный полиэтиленовый пакет, нитка.</p>
+        <ol class="step-list">
+            <li>Накрой один лист растения прозрачным пакетом.</li>
+            <li>Закрепи пакет ниткой у основания листа.</li>
+            <li>Оставь на 2–3 дня.</li>
+            <li>Понаблюдай, что появилось внутри пакета.</li>
+        </ol>
+        <p><strong>Наблюдение:</strong> Внутри пакета появились капли воды.</p>
+        <p><strong>Вывод:</strong> Растение испаряет воду через листья. Этот процесс называется <strong>транспирацией</strong>.</p>
+        <p><em>Вопрос для размышления:</em> «Почему в жаркий день под деревом прохладнее, чем на открытом солнце?»</p>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать:</strong> Одно большое дерево (например, дуб) за день испаряет до 200 литров воды — это целая бочка! Вот почему в лесу всегда прохладнее и влажнее, чем в городе.
+    </div>
+
+    <!-- ТЕМА 2.2.6 -->
+    <div class="topic-header">
+        <span class="topic-emoji">🌾</span>
+        <span>Тема 2.2.6. От зерна до хлеба</span>
+    </div>
+
+    <p>Хлеб — это <strong>главный продукт на нашем столе</strong>. Недаром в народе говорят: <strong>«Хлеб — всему голова»</strong>. Но мало кто задумывается о том, <strong>какой долгий путь</strong> проходит хлеб, прежде чем попасть к нам на стол. Этот путь начинается с маленького <strong>зёрнышка</strong>, брошенного в землю.</p>
+
+    <div class="grain-svg svg-illustration" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема: путь хлеба">
+        <rect x="10" y="10" width="480" height="160" rx="16" fill="#f8fafc"/>
+        <text x="250" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#854d0e">ПУТЬ ХЛЕБА: ОТ ЗЕРНА ДО СТОЛА</text>
+
+        <!-- Зерно -->
+        <circle cx="60" cy="100" r="25" fill="#fde047" stroke="#ca8a04" stroke-width="2"/>
+        <text x="60" y="106" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🌾</text>
+        <text x="60" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#854d0e">Зерно</text>
+
+        <!-- Всходы -->
+        <circle cx="160" cy="100" r="25" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+        <text x="160" y="106" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🌱</text>
+        <text x="160" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#166534">Всходы</text>
+
+        <!-- Колосья -->
+        <circle cx="260" cy="100" r="25" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="260" y="106" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🌾</text>
+        <text x="260" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#92400e">Колосья</text>
+
+        <!-- Мука -->
+        <circle cx="360" cy="100" r="25" fill="#f5f5f4" stroke="#a8a29e" stroke-width="2"/>
+        <text x="360" y="106" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🥣</text>
+        <text x="360" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#57534e">Мука</text>
+
+        <!-- Хлеб -->
+        <circle cx="450" cy="100" r="25" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+        <text x="450" y="106" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🍞</text>
+        <text x="450" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#9a3412">Хлеб</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+            </marker>
+        </defs>
+        <line x1="88" y1="100" x2="132" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="188" y1="100" x2="232" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="288" y1="100" x2="332" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="388" y1="100" x2="422" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+    </svg>
+    <p class="svg-caption">Схема 7. Путь хлеба: от зерна до стола</p>
+
+    <p>Вот как долог путь хлеба:</p>
+
+    <ol>
+        <li><strong>Весной</strong> люди вспахивают поле и сеют зерно.</li>
+        <li><strong>Летом</strong> зерно прорастает, появляются зелёные всходы, а потом — золотые колосья.</li>
+        <li><strong>Осенью</strong> колосья убирают — это называется <strong>жатва</strong>. Зерно обмолачивают и везут на мельницу.</li>
+        <li><strong>На мельнице</strong> зерно перемалывают в муку.</li>
+        <li><strong>На хлебозаводе</strong> из муки замешивают тесто и пекут хлеб.</li>
+        <li><strong>В магазине</strong> мы покупаем готовый хлеб.</li>
+    </ol>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 6.6.1. «Путь хлеба»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Расставь этапы пути хлеба в правильном порядке. Поставь цифры от 1 до 6.</p>
+        <table>
+            <thead>
+                <tr><th>Этап</th><th>Порядок</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>🍞 Выпечка хлеба на хлебозаводе</td><td>☐</td></tr>
+                <tr><td>🌾 Посев зерна в поле</td><td>☐</td></tr>
+                <tr><td>🥣 Перемалывание зерна в муку</td><td>☐</td></tr>
+                <tr><td>🌱 Появление всходов и рост колосьев</td><td>☐</td></tr>
+                <tr><td>🛒 Покупка хлеба в магазине</td><td>☐</td></tr>
+                <tr><td>🌾 Уборка урожая (жатва)</td><td>☐</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> «Сколько людей трудится, чтобы у нас на столе был хлеб? Как мы должны относиться к хлебу?»</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 6.6.2. «Хлеб — всему голова»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй хлеб и другие хлебобулочные изделия. Напиши, какие пословицы и поговорки о хлебе ты знаешь.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Правило:</strong> Хлеб — это <strong>труд многих людей</strong>. В нём — труд пахаря, сеятеля, комбайнёра, мельника, пекаря, водителя. Никогда не бросай хлеб! Если хлеб зачерствел, из него можно сделать сухарики или покормить птиц.
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о хлебе</div>
+        <ul>
+            <li>«Рос сперва на воле в поле, летом цвёл и колосился, а когда обмолотили, он в зерно вдруг превратился» (хлебный колос).</li>
+            <li>«Мягкий, пышный и душистый, он и чёрный, он и белый, а бывает подгорелый» (хлеб).</li>
+            <li>«Отгадать легко и быстро: мягкий, пышный и душистый, он и чёрный, он и белый, а бывает подгорелый» (хлеб).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🍞 Пословицы и поговорки о хлебе:</strong>
+        <ul>
+            <li>«Хлеб — всему голова».</li>
+            <li>«Без хлеба нет обеда».</li>
+            <li>«Хлеб на стол — и стол престол, а хлеба ни куска — и стол доска».</li>
+            <li>«Труд хлебом сыт».</li>
+            <li>«Хлеб да вода — молодецкая еда».</li>
+            <li>«Не трудиться — хлеба не добиться».</li>
+        </ul>
+    </div>
+
+    <!-- ИТОГИ РАЗДЕЛА -->
+    <h2>📝 Итоги раздела 6. «Растения рядом с нами»</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Как <strong>ухаживать за комнатными растениями</strong> и что им нужно для жизни.</li>
+            <li>Как <strong>вырастить лук, горох и фасоль</strong> на подоконнике.</li>
+            <li>Как <strong>вырастить рассаду цветов</strong> и высадить её на клумбу.</li>
+            <li>Что растениям нужны <strong>свет, вода, тепло, почва и воздух</strong>.</li>
+            <li>Как <strong>вода движется по растению</strong> от корня к листьям.</li>
+            <li>Какой <strong>долгий путь</strong> проходит хлеб от зерна до стола.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы:</p>
+        <ol>
+            <li>Что нужно растениям для жизни?</li>
+            <li>Как нужно ухаживать за комнатными растениями?</li>
+            <li>Что появляется первым у лука — корешки или зелень?</li>
+            <li>Зачем нужно выращивать рассаду?</li>
+            <li>Как вода попадает в листья растения?</li>
+            <li>Какой путь проходит хлеб от зерна до стола?</li>
+            <li>Почему хлеб называют «всему голове»?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌱 Молодец!</strong> Ты справился с шестым разделом рабочей тетради «Друзья природы». Теперь ты умеешь ухаживать за комнатными растениями, выращивать лук и цветы, понимаешь, что нужно растениям для жизни. Ты узнал, какой долгий путь проходит хлеб, прежде чем попасть на наш стол. Растениеводство — это труд, требующий терпения и заботы. И этот труд вознаграждается сторицей: свежей зеленью, красивыми цветами и вкусным хлебом. Впереди тебя ждут новые открытия: мы узнаем, как связаны природа и творчество, и научимся видеть красоту и гармонию в каждой травинке!
+    </div>
+
+    <div class="quote">
+        «Кто выращивает цветы, тот украшает мир. Кто сажает деревья, тот строит будущее. Кто выращивает хлеб, тот кормит человечество». — Народная мудрость
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section5.html" class="button">← Раздел 5. «Мир вокруг нас»</a>
+        <a href="plan.html" class="button">К плану тетради</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Друзья природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>
