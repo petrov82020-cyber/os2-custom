@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структурный план рабочей тетради «Гармония»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #5b21b6;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 22px 0 10px 0;
+            color: #6d28d9;
+        }
+        h4 {
+            font-size: 1.02rem;
+            margin: 16px 0 8px 0;
+            color: #5b21b6;
+            font-weight: 700;
+        }
+        p { margin: 8px 0; text-align: justify; }
+        ul, ol { margin: 8px 0 10px 26px; }
+        li { margin: 6px 0; }
+
+        .key-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 26px 0 14px 0;
+            position: relative;
+        }
+        .key-section::before {
+            content: attr(data-key);
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .key-section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #166534;
+            margin-top: 6px;
+            margin-bottom: 8px;
+        }
+        .key-section-desc {
+            font-size: 0.94rem;
+            color: #14532d;
+            line-height: 1.6;
+        }
+
+        .section-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 18px 0;
+            transition: border-color 0.2s;
+        }
+        .section-card:hover {
+            border-color: #0969da;
+        }
+        .section-card-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .section-card-title a {
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+        .section-card-title a:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+        .topic-list {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        .topic-list li {
+            margin: 6px 0;
+        }
+        .topic-hours {
+            display: inline-block;
+            background: #f0fdf4;
+            color: #166534;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        .tag-pract { background: #dcfce7; color: #166534; }
+        .tag-creative { background: #fae8ff; color: #6b21a8; }
+        .tag-observ { background: #dbeafe; color: #1e40af; }
+        .tag-music { background: #fef3c7; color: #92400e; }
+        .tag-moral { background: #ffe4e6; color: #9f1239; }
+        .tag-art { background: #fef9c3; color: #854d0e; }
+        .tag-reflect { background: #e0e7ff; color: #3730a3; }
+
+        .integration-box {
+            background: #f8fafc;
+            border-left: 4px solid #16a34a;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .integration-box strong { color: #166534; }
+        .integration-box ul { margin: 6px 0 6px 20px; }
+        .integration-box li { margin: 4px 0; }
+
+        .note {
+            background: #ffffcc;
+            padding: 14px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.94rem;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 0.94rem;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+            font-size: 0.95rem;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.55rem; }
+            h2 { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации и пояснительной записке</a>
+
+    <h1>🎨 Рабочая тетрадь «Гармония»: структурный план</h1>
+    <div class="chapter-meta">✍️ Компонент образовательно-методического комплекса эколого-биологического профиля для детей 8–11 лет | Третья ступень непрерывного экологического образования</div>
+
+    <p>Структурный план рабочей тетради «Гармония» выстроен <strong>по принципу восхождения к целостности</strong>: от первичного чувства прекрасного — через осмысление его источников и способов восприятия — к нравственным и художественным основам отношения к природе. Тетрадь не повторяет содержание предыдущих ступеней («Друзья природы» и «Знатоки природы»), а <strong>открывает природу с новой стороны</strong> — как источник красоты, добра и вдохновения.</p>
+
+    <p>Тетрадь состоит из <strong>вводного занятия и семи разделов</strong>, объединённых сквозной идеей гармонии. Каждый раздел снабжён практическими работами, экскурсиями и творческими заданиями, образующими единую образовательную траекторию. По завершении работы предполагается итоговое обобщение и презентация достижений.</p>
+
+    <div class="info-box">
+        <strong>🧭 Четыре сквозные линии тетради:</strong>
+        <ul>
+            <li><strong>Линия красоты:</strong> от восприятия прекрасного — к пониманию его свойств и созданию собственных творческих работ.</li>
+            <li><strong>Линия звука:</strong> от слушания звуков природы — к пониманию их смысла и созданию звуковых образов.</li>
+            <li><strong>Линия нравственности:</strong> от наблюдения примеров отзывчивости — к осознанию ответственности за сохранение прекрасного.</li>
+            <li><strong>Линия художественной культуры:</strong> от знакомства с видами искусства — к созданию собственных художественных образов и пониманию их связи с экологически устойчивым стилем жизни.</li>
+        </ul>
+    </div>
+
+    <!-- ВВОДНОЕ ЗАНЯТИЕ И РАЗДЕЛ 1 -->
+    <div class="key-section" data-key="СТАРТ">
+        <div class="key-section-title">🌅 Вводное занятие и Раздел 1. Организация работы объединения</div>
+        <div class="key-section-desc">Знакомство с курсом «Гармония», организационными основами работы объединения и базовыми понятиями о прекрасном и экологически устойчивом стиле жизни.</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section1.html">Вводное занятие и Раздел 1. Организация работы объединения</a></div>
+        <ul class="topic-list">
+            <li><strong>Вводное занятие.</strong> Понятие о прекрасном. Источники прекрасного. Понятие экологически устойчивого стиля жизни. <span class="tag tag-pract">Практика</span> «Свойства прекрасного». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 1.1.</strong> Организация занятий объединения. Цели и задачи объединения. План работы объединения, порядок проведения занятий. Правила поведения в образовательном учреждении. <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 1.2.</strong> Выборы актива объединения. Распределение обязанностей, формы самоуправления, коллективное планирование. <span class="topic-hours">2 ч</span></li>
+        </ul>
+        <div class="integration-box">
+            <strong>Средства, формы и методы:</strong>
+            <ul>
+                <li><em>Формы:</em> вводная беседа, анкетирование, коллективное планирование, игра-знакомство.</li>
+                <li><em>Методы:</em> объяснение, демонстрация, дискуссия, метод проектов (планирование работы на год).</li>
+                <li><em>Средства:</em> рабочая тетрадь, карточки с заданиями, слайд-презентация, аудиозаписи звуков природы.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 2 -->
+    <div class="key-section" data-key="ЛИНИЯ КРАСОТЫ">
+        <div class="key-section-title">🌸 Раздел 2. Мир прекрасного</div>
+        <div class="key-section-desc">Формирование представлений о прекрасном, его формах и проявлениях в природе и жизни человека, о роли искусства в постижении красоты.</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section2.html">Раздел 2. Мир прекрасного</a></div>
+        <ul class="topic-list">
+            <li><strong>Тема 2.1. Прекрасное в природе.</strong> Формы проявления прекрасного. Иллюстрации прекрасных природных явлений и объектов. Понятие о целесообразности прекрасного в природе. <span class="tag tag-pract">Практика</span> «Природа как источник прекрасного». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 2.2. Прекрасное и человек.</strong> Прекрасное в жизни человека. Отношение к прекрасному. Значение красоты для человека. <span class="tag tag-pract">Практика</span> «Взаимосвязь прекрасного и полезного». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 2.3. Искусство.</strong> Понятие об искусстве. Роль искусства в жизни человека. Виды искусства. <span class="tag tag-art">Творчество</span> Практика «Тема природы в искусстве». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 2.4. Обобщение.</strong> Свойства прекрасного. Критерии оценки прекрасного. Прекрасное в природе и в жизни человека. Природа и искусство. <span class="tag tag-pract">Практика</span> «Отношение к прекрасному». <span class="topic-hours">2 ч</span></li>
+        </ul>
+        <div class="integration-box">
+            <strong>Средства, формы и методы:</strong>
+            <ul>
+                <li><em>Формы:</em> беседа, наблюдение, экскурсия в природу или музей, творческая мастерская, выставка.</li>
+                <li><em>Методы:</em> словесные, наглядные (репродукции, фотографии), практические (рисунок, аппликация), игровые.</li>
+                <li><em>Средства:</em> рабочая тетрадь, репродукции картин И.И. Левитана, И.И. Шишкина, В.К. Бялыницкого-Бирули, музыкальные фрагменты П.И. Чайковского, А. Вивальди.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 3 -->
+    <div class="key-section" data-key="ЛИНИЯ ЗВУКА И ЦВЕТА">
+        <div class="key-section-title">🌿 Раздел 3. Источники прекрасного</div>
+        <div class="key-section-desc">Изучение звуков, красок и композиций природы как источников прекрасного; формирование целостного восприятия природы через соединение разных сенсорных каналов.</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section3.html">Раздел 3. Источники прекрасного</a></div>
+        <ul class="topic-list">
+            <li><strong>Тема 3.1. Звуки природы. Музыка природы.</strong> Многообразие звуков в природе. Воздействие природной музыки на человека. <span class="tag tag-music">Музыка</span> Практика «Источники звуков». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 3.2. Краски природы.</strong> Природа цвета. Классификация цветов. Многообразие цветов в природе. Виды окрасок живых организмов. <span class="tag tag-pract">Практика</span> «Значение цвета в природе». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 3.3. Природные композиции.</strong> Объединение звуков, красок и территорий в природные композиции. Виды природных композиций. Звуки и краски различных природных сообществ (леса, луга, водоёма, поля, моря, гор). Понятие о взаимосвязи природных элементов. <span class="tag tag-pract">Практика</span> «Свойства природы». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 3.4. Обобщение.</strong> Природа как сложноорганизованная система. Взаимосвязи всех элементов в природе. Прекрасное как свойство природы. Природное движение. Способность природы к самообновлению. Удивительные факты из жизни природы. <span class="tag tag-pract">Практика</span> «Сезонные явления в природе». <span class="tag tag-observ">Экскурсия</span> «Природа осенью». <span class="topic-hours">4 ч</span></li>
+        </ul>
+        <div class="integration-box">
+            <strong>Средства, формы и методы:</strong>
+            <ul>
+                <li><em>Формы:</em> экскурсия, звуковое наблюдение, творческая мастерская, «цветовой дневник», коллективная композиция.</li>
+                <li><em>Методы:</em> сенсорное восприятие, аудирование, сравнение, моделирование, метод проектов.</li>
+                <li><em>Средства:</em> аудиозаписи звуков леса, луга, водоёма; репродукции; цветовые палитры; гербарии; микроскоп/лупа для наблюдения за окраской.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 4 -->
+    <div class="key-section" data-key="ЛИНИЯ ВОСПРИЯТИЯ">
+        <div class="key-section-title">👁️ Раздел 4. Восприятие прекрасного</div>
+        <div class="key-section-desc">Развитие чувственного восприятия природы и искусства, формирование умения оценивать прекрасное, понимать язык искусства и выражать свои чувства через художественную деятельность.</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section4.html">Раздел 4. Восприятие прекрасного</a></div>
+        <ul class="topic-list">
+            <li><strong>Тема 4.1. Чувство прекрасного.</strong> Органы чувств. Понятие о чувственном восприятии. Критерии оценки объектов природы и художественных произведений. <span class="tag tag-pract">Практика</span> «Цветочный узор». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 4.2. Художественная деятельность.</strong> Смысл искусства. Цели и задачи художественной деятельности. Отношение к искусству. Нравственный смысл искусства. Создание и распространение эстетических ценностей. <span class="tag tag-art">Творчество</span> Практика «Художественный стиль». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 4.3. Язык искусства.</strong> Эстетическое освоение действительности. Понятие о художественном образе. Использование красок, форм, звуков и движений для создания художественно-образной системы искусства. <span class="tag tag-creative">Практика</span> «Художественно-образная система искусства». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 4.4. Обобщение.</strong> Примеры, иллюстрирующие прекрасное в природе, в труде, в искусстве и общественных явлениях. Творческие способности. Смысл творчества. Сопоставление понятий «художественный стиль» и «экологически устойчивый стиль жизни». <span class="tag tag-pract">Практика</span> «Закономерности художественного творчества». <span class="topic-hours">2 ч</span></li>
+        </ul>
+        <div class="integration-box">
+            <strong>Средства, формы и методы:</strong>
+            <ul>
+                <li><em>Формы:</em> сенсорный практикум, творческая мастерская, «мастерская образа», выставка-презентация.</li>
+                <li><em>Методы:</em> эмпатийное восприятие, арт-терапевтические приёмы, метод сравнения, метод художественного анализа.</li>
+                <li><em>Средства:</em> музыкальные и шумовые записи, репродукции, муляжи природных объектов, театральные элементы, микрофон для звукозаписи.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 5 -->
+    <div class="key-section" data-key="ЛИНИЯ НРАВСТВЕННОСТИ">
+        <div class="key-section-title">💚 Раздел 5. Нравственность и красота</div>
+        <div class="key-section-desc">Формирование нравственных основ отношения к природе: отзывчивости, ответственности, бережного отношения к прекрасному; осмысление связи между нравственностью и сохранением природы.</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section5.html">Раздел 5. Нравственность и красота</a></div>
+        <ul class="topic-list">
+            <li><strong>Тема 5.1. Отзывчивость.</strong> Характеристика отзывчивости. Примеры проявления отзывчивости и доброжелательности. <span class="tag tag-moral">Нравственность</span> Практика «Признаки отзывчивости». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 5.2. Ответственность.</strong> Характеристика ответственности. Чувство долга. Пословицы, иллюстрирующие проявление ответственности в различных ситуациях. <span class="tag tag-pract">Практика</span> «Признаки ответственности». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 5.3. Как сохранить прекрасное в природе?</strong> Идея ответственного отношения к природе. Система мер по сохранению и возобновлению природных ресурсов. <span class="tag tag-pract">Практика</span> «Малозатратные меры энергосбережения». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 5.4. Обобщение.</strong> Система представлений о добре. Нравственные понятия, выраженные в народной мудрости. Нравственность в современном обществе. Доброжелательность и внимательность к людям. Бережное отношение к природе. <span class="tag tag-pract">Практика</span> «Принципы нравственности». <span class="topic-hours">2 ч</span></li>
+        </ul>
+        <div class="integration-box">
+            <strong>Средства, формы и методы:</strong>
+            <ul>
+                <li><em>Формы:</em> этическая беседа, дискуссия, «круг добра», акция, социально значимый проект.</li>
+                <li><em>Методы:</em> метод нравственных дилемм, анализ ситуаций, игровые ситуации, метод «портфолио добрых дел».</li>
+                <li><em>Средства:</em> пословицы и поговорки народов мира, сборники сказок, притчи, видеосюжеты об экологических акциях.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 6 -->
+    <div class="key-section" data-key="ЛИНИЯ ЗВУКА">
+        <div class="key-section-title">🎵 Раздел 6. Путешествие в мир звуков природы</div>
+        <div class="key-section-desc">Углублённое изучение звуковой среды природы: от физической природы звука — к его смыслу, от наблюдения за движениями — к созданию звуковых образов.</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section6.html">Раздел 6. Путешествие в мир звуков природы</a></div>
+        <ul class="topic-list">
+            <li><strong>Тема 6.1. Источники звуков.</strong> Как возникает звук? Виды звуков. Восприятие звуков природы. Природные подобия музыкальных инструментов. <span class="tag tag-music">Музыка</span> Практика «Свойства звуков». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 6.2. Движения и звуки в природе.</strong> Взаимосвязь звука и движения. Виды движений в природе. Времена года. Примеры природных звуков и движений. Эхо. <span class="tag tag-observ">Наблюдение</span> Практика «Распространение звука». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 6.3. Музыка природы.</strong> Звуки различных природных сообществ и времён года. Природные созвучия. Тема природы в музыке. <span class="tag tag-music">Практика</span> «Распознавание птиц по голосам». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 6.4. Обобщение.</strong> Природа звука. Значение звуков в природе. Различие между шумовыми и музыкальными звуками. Примеры шумовых и музыкальных звуков в природе. <span class="tag tag-pract">Практика</span> «Сравнение шумовых и музыкальных звуков». <span class="tag tag-observ">Экскурсия</span> «Природа весной». <span class="topic-hours">4 ч</span></li>
+        </ul>
+        <div class="integration-box">
+            <strong>Средства, формы и методы:</strong>
+            <ul>
+                <li><em>Формы:</em> звуковая экскурсия, «звуковая мастерская», аудиодневник, экскурсия в природу, «концерт природы».</li>
+                <li><em>Методы:</em> аудирование, звукоподражание, звуковая импровизация, метод проектов, сравнение.</li>
+                <li><em>Средства:</em> диктофон, музыкальные инструменты, шумовые инструменты (трещотки, свистульки), аудиозаписи голосов птиц и звуков природы.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 7 -->
+    <div class="key-section" data-key="ЛИНИЯ КУЛЬТУРЫ">
+        <div class="key-section-title">🎭 Раздел 7. Художественная культура</div>
+        <div class="key-section-desc">Формирование целостного представления о художественной культуре как способе сохранения и передачи красоты; осмысление связи искусства с познанием природы и нравственностью.</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section7.html">Раздел 7. Художественная культура</a></div>
+        <ul class="topic-list">
+            <li><strong>Тема 7.1. Ценности искусства и культуры.</strong> Культура как коллективная память общества, совокупность создаваемых и передаваемых из поколения в поколение знаний, навыков, ценностей и идеалов. Цели и задачи художественного творчества. <span class="tag tag-art">Творчество</span> Практика «Отражение красоты природы средствами искусства». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 7.2. Общение с прекрасным.</strong> Примеры прекрасного: как элемента культуры, как эстетического идеала, как свойства совершенного. Воздействие прекрасного на человека. <span class="tag tag-pract">Практика</span> «Прекрасные стремления». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 7.3. Свойства красоты.</strong> Признаки красоты: изящность, неповторимость, гармоничность, симметричность. Восприятие красоты. Иллюстрация свойств красоты на примерах природы. Отражение красоты средствами искусства. <span class="tag tag-creative">Практика</span> «Симметрия и внутренняя мера предмета». <span class="topic-hours">2 ч</span></li>
+            <li><strong>Тема 7.4. Обобщение.</strong> Понятие о художественной культуре. Художественная деятельность в системе культуры. Художественный стиль и художественный образ. Искусство и точные науки. Искусство как познание окружающего мира. <span class="tag tag-art">Практика</span> «Объёмные композиции». <span class="topic-hours">2 ч</span></li>
+        </ul>
+        <div class="integration-box">
+            <strong>Средства, формы и методы:</strong>
+            <ul>
+                <li><em>Формы:</em> виртуальная экскурсия в музей, творческая мастерская, «вернисаж», художественный салон, защита творческих работ.</li>
+                <li><em>Методы:</em> метод художественного анализа, метод проектов, метод образного видения, арт-терапия.</li>
+                <li><em>Средства:</em> репродукции, мультимедийные презентации, аудиозаписи классической музыки, материалы для художественного творчества (краски, пластилин, природный материал).</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>📊 Сводная таблица структуры рабочей тетради</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Раздел</th>
+                <th>Сквозная линия</th>
+                <th>Количество часов</th>
+                <th>Ключевые практики</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Вводное занятие и Раздел 1</strong></td>
+                <td>Старт. Организация</td>
+                <td>6</td>
+                <td>«Свойства прекрасного», планирование работы</td>
+            </tr>
+            <tr>
+                <td><strong>Раздел 2. Мир прекрасного</strong></td>
+                <td>Линия красоты</td>
+                <td>8</td>
+                <td>«Природа как источник прекрасного», «Взаимосвязь прекрасного и полезного», «Тема природы в искусстве», «Отношение к прекрасному»</td>
+            </tr>
+            <tr>
+                <td><strong>Раздел 3. Источники прекрасного</strong></td>
+                <td>Линия звука и цвета</td>
+                <td>10</td>
+                <td>«Источники звуков», «Значение цвета в природе», «Свойства природы», «Сезонные явления в природе», Экскурсия «Природа осенью»</td>
+            </tr>
+            <tr>
+                <td><strong>Раздел 4. Восприятие прекрасного</strong></td>
+                <td>Линия восприятия</td>
+                <td>8</td>
+                <td>«Цветочный узор», «Художественный стиль», «Художественно-образная система искусства», «Закономерности художественного творчества»</td>
+            </tr>
+            <tr>
+                <td><strong>Раздел 5. Нравственность и красота</strong></td>
+                <td>Линия нравственности</td>
+                <td>8</td>
+                <td>«Признаки отзывчивости», «Признаки ответственности», «Малозатратные меры энергосбережения», «Принципы нравственности»</td>
+            </tr>
+            <tr>
+                <td><strong>Раздел 6. Путешествие в мир звуков природы</strong></td>
+                <td>Линия звука</td>
+                <td>10</td>
+                <td>«Свойства звуков», «Распространение звука», «Распознавание птиц по голосам», «Сравнение шумовых и музыкальных звуков», Экскурсия «Природа весной»</td>
+            </tr>
+            <tr>
+                <td><strong>Раздел 7. Художественная культура</strong></td>
+                <td>Линия культуры</td>
+                <td>8</td>
+                <td>«Отражение красоты природы средствами искусства», «Прекрасные стремления», «Симметрия и внутренняя мера предмета», «Объёмные композиции»</td>
+            </tr>
+            <tr style="background:#f0fdf4;font-weight:700;">
+                <td colspan="2">ИТОГО</td>
+                <td>58</td>
+                <td>Основные практические работы</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <strong>🎯 Итоговое занятие «Гармония» (2 ч)</strong> рекомендуется проводить после завершения всех разделов. Оно включает: выставку творческих работ, презентацию достижений, викторину «Знатоки прекрасного», награждение по номинациям («Хранитель красоты», «Юный музыкант природы», «Мастер образа», «Доброе сердце»), вручение «Портфолио гармонии» и коллективное исполнение «Гимна природе».
+    </div>
+
+    <h2>🔗 Навигация по рабочей тетради «Гармония»</h2>
+
+    <div class="section-card">
+        <div class="section-card-title">📋 <a href="preface.html">Аннотация и пояснительная записка</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Назначение, цели, задачи, принципы и структура рабочей тетради «Гармония».</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📄 <a href="program.html">Программа объединения по интересам «Гармония»</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Полный текст программы на 144 часа (4 часа в неделю, 1 год обучения) с пояснительной запиской, УТП, содержанием занятий и ожидаемыми результатами.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section1.html">Вводное занятие и Раздел 1. Организация работы объединения</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Понятие о прекрасном. Источники прекрасного. Экологически устойчивый стиль жизни. Организация занятий и актив объединения.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section2.html">Раздел 2. Мир прекрасного</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Прекрасное в природе и жизни человека. Искусство и его виды. Обобщение знаний о прекрасном.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section3.html">Раздел 3. Источники прекрасного</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Звуки, краски и композиции природы. Экскурсия «Природа осенью».</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section4.html">Раздел 4. Восприятие прекрасного</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Чувство прекрасного. Художественная деятельность и язык искусства.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section5.html">Раздел 5. Нравственность и красота</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Отзывчивость, ответственность, сохранение прекрасного в природе.</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section6.html">Раздел 6. Путешествие в мир звуков природы</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Источники и свойства звуков. Музыка природы. Экскурсия «Природа весной».</p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-card-title">📖 <a href="section7.html">Раздел 7. Художественная культура</a></div>
+        <p style="font-size:0.92rem;color:#334155;">Ценности искусства и культуры. Свойства красоты. Обобщение курса.</p>
+    </div>
+
+    <h2>📚 Преемственность с другими ступенями</h2>
+
+    <div class="info-box">
+        <p><strong>Рабочая тетрадь «Гармония» — третья ступень непрерывного экологического образования</strong> и логическое продолжение двух предыдущих ступеней:</p>
+        <ul>
+            <li><strong>Первая ступень — «Друзья природы».</strong> Формирует первоначальные представления о природе, учит её <em>видеть</em> и наблюдать.</li>
+            <li><strong>Вторая ступень — «Знатоки природы».</strong> Углубляет и систематизирует знания, развивает исследовательские умения, учит природу <em>понимать</em>.</li>
+            <li><strong>Третья ступень — «Гармония».</strong> Открывает природу как источник красоты, добра и вдохновения, учит её <em>чувствовать, ценить и беречь</em>.</li>
+        </ul>
+        <p>Вместе три тетради образуют <strong>трёхлетний цикл непрерывного экологического образования</strong>, охватывающий возраст 6–11 лет.</p>
+    </div>
+
+    <div class="quote">
+        «Красота спасёт мир. Но чтобы мир спасся, красоту нужно увидеть, почувствовать, понять и сохранить. Именно этому учит рабочая тетрадь "Гармония"».
+        <span class="quote-author">— концептуальная идея рабочей тетради «Гармония»</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="preface.html" class="button">← К аннотации</a>
+        <a href="section1.html" class="button">📖 Начать с вводного занятия →</a>
+        <a href="program.html" class="button">📄 Открыть программу «Гармония»</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Гармония» к ОМК эколого-биологического профиля</p>
+        <p>Третья ступень непрерывного экологического образования (после «Друзей природы» и «Знатоков природы»)</p>
+    </footer>
+
+</div>
+</body>
+</html>
