@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 12. Я — знаток природы: портфолио и планы — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ЗАКЛЮЧИТЕЛЬНОЕ ОБРАЩЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .gold-note {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            padding: 20px 24px;
+            border-left: 5px solid #d97706;
+            margin: 22px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Достижения */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .achievement-card {
+            background: white;
+            border: 2px solid #16a34a;
+            border-radius: 14px;
+            padding: 18px 22px;
+            text-align: center;
+        }
+        .achievement-card .ach-icon {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .achievement-card .ach-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .achievement-card .ach-text {
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Портфолио */
+        .portfolio-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .portfolio-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+        }
+        .portfolio-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .portfolio-list li {
+            background: white;
+            border-left: 4px solid #0969da;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 8px 0;
+            font-size: 0.93rem;
+            line-height: 1.55;
+        }
+        .portfolio-list li strong { color: #1e466e; }
+
+        /* Ключевые открытия */
+        .discoveries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .discovery-card {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 20px;
+        }
+        .discovery-card .disc-title {
+            font-weight: 700;
+            color: #6b21a8;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .discovery-card .disc-text {
+            font-size: 0.88rem;
+            color: #4c1d95;
+            line-height: 1.55;
+        }
+
+        /* Компас планов */
+        .compass-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .compass-title {
+            font-weight: 700;
+            color: #065f46;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .compass-item {
+            background: white;
+            border-left: 5px solid #10b981;
+            border-radius: 0 12px 12px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        /* Письмо природе */
+        .letter-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .letter-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Финальный блок */
+        .final-block {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 32px 38px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .final-block h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+            margin-top: 0;
+        }
+        .final-block p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+        .final-block .final-signature {
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section11.html" class="back-link" style="margin-left: 15px;">← Раздел 11</a>
+
+    <h1>🌟 Раздел 12. Я — знаток природы: портфолио и планы</h1>
+    <div class="section-meta">📖 Ключ IV. Руки исследователя | 🎯 Для детей 8–11 лет | ⏱ 10 часов | 🏁 Заключительный раздел</div>
+
+    <div class="intro-card">
+        <p>Дорогой друг! Вот и подошло к концу наше большое путешествие по страницам рабочей тетради «Знатоки природы». Мы прошли долгий путь: учились видеть красоту природы, понимать её законы, оценивать экологические проблемы, ставить опыты, защищать редкие виды, делать добрые дела. Ты стал настоящим исследователем, защитником и творцом.</p>
+        <p>Но прежде чем попрощаться, давай остановимся и <strong>оглянемся назад</strong>. Что ты узнал? Чему научился? Что сделал? Что стало для тебя самым важным? Этот раздел — не про новые знания, а про <strong>осмысление пути</strong>. Здесь ты подведёшь итоги, соберёшь своё портфолио, заглянешь в будущее и напишешь письмо природе. Это твой финальный, но, возможно, самый важный шаг в нашем курсе.</p>
+    </div>
+
+    <h2>🔍 Взгляд назад: вспоминаем свой путь</h2>
+
+    <p>Прежде чем идти дальше, давай вернёмся в самое начало и вспомним, через что мы прошли. Ты открыл первую страницу этой тетради и прочитал, что знаток природы — это тот, кто умеет <strong>видеть, понимать, оценивать и действовать</strong>. И вот теперь, перелистывая страницы тетради, ты можешь увидеть: <em>ты действительно стал таким</em>.</p>
+
+    <p>Мы прошли четыре ключа:</p>
+
+    <ul>
+        <li><strong>Ключ I. Глаз исследователя.</strong> Ты научился видеть природу, наблюдать за ней, вести дневник фенолога, различать погоду и климат.</li>
+        <li><strong>Ключ II. Ум исследователя.</strong> Ты изучил устройство растений и животных, научился ставить опыты с водой, воздухом, почвой, разобрался в экосистемах.</li>
+        <li><strong>Ключ III. Сердце исследователя.</strong> Ты понял, какие экологические проблемы волнуют планету, узнал о Красной книге, научился проводить настоящие исследования.</li>
+        <li><strong>Ключ IV. Руки исследователя.</strong> Ты совершил конкретные добрые дела: посадил дерево, сделал кормушку, защитил первоцветы, помог птицам и природе.</li>
+    </ul>
+
+    <p>Каждый ключ открыл тебе новую дверь. И теперь, когда все двери открыты, перед тобой — <strong>целостный мир природы</strong>, который ты понимаешь, ценишь и защищаешь.</p>
+
+    <h2>🎓 Что я узнал и чему научился</h2>
+
+    <p>Вот время честно ответить самому себе на важный вопрос: <strong>что дал мне этот курс?</strong> Заполни таблицу — это твой первый шаг к созданию портфолио знатока природы.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.1. «Мои знания»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Заполни таблицу: что ты узнал по каждому направлению и что стало для тебя самым важным.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Направление</th>
+                    <th>Что я узнал?</th>
+                    <th>Что было самым важным?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>👁 Наблюдения за природой</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🌿 Мир растений</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🐾 Мир животных</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>💧 Неживая природа</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🌍 Экосистемы</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>⚠️ Экологические проблемы</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🔴 Красная книга</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎯 Задание 12.2. «Мои умения»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Оцени свои умения. Поставь галочку в нужной колонке.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Умение</th>
+                    <th>Умею хорошо</th>
+                    <th>Умею немного</th>
+                    <th>Хочу научиться лучше</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>👁 Вести наблюдения за природой</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📔 Заполнять дневник фенолога</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌡️ Фиксировать погоду</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🔬 Проводить опыты и эксперименты</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌱 Ухаживать за растениями</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐦 Помогать птицам и животным</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📋 Планировать исследование</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📊 Оформлять результаты</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🎤 Защищать свой проект</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌍 Делать добрые дела для природы</td><td>☐</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🗝️ Мои ключевые открытия</h2>
+
+    <p>За время работы с тетрадью у тебя было много открытий. Некоторые из них были научными — например, что растения выделяют кислород. Другие — личными: например, что ты умеешь заботиться о живом. Все эти открытия — твои. Они — как сокровища, которые ты собрал в пути.</p>
+
+    <div class="discoveries-grid">
+        <div class="discovery-card">
+            <div class="disc-title">🔬 Научное открытие</div>
+            <div class="disc-text">Какое научное знание о природе стало для тебя самым удивительным? Почему оно тебя поразило?</div>
+        </div>
+        <div class="discovery-card">
+            <div class="disc-title">🌿 Личное открытие</div>
+            <div class="disc-text">Что ты узнал о самом себе? Может быть, ты понял, что умеешь быть терпеливым, внимательным или заботливым?</div>
+        </div>
+        <div class="discovery-card">
+            <div class="disc-title">💚 Нравственное открытие</div>
+            <div class="disc-text">Что стало для тебя важным с точки зрения отношений с природой и людьми? Что ты понял о доброте и ответственности?</div>
+        </div>
+        <div class="discovery-card">
+            <div class="disc-title">🎨 Творческое открытие</div>
+            <div class="disc-text">Какая творческая работа была для тебя самой интересной? Что нового ты открыл в себе, когда рисовал, придумывал или сочинял?</div>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.3. «Моё главное открытие»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Опиши своё самое главное открытие за время работы с тетрадью. Нарисуй его или сделай к нему иллюстрацию.</p>
+        <p><strong>Моё главное открытие:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Почему оно самое главное для меня:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📔 Моё портфолио знатока природы</h2>
+
+    <div class="portfolio-card">
+        <div class="portfolio-title">📔 Что такое портфолио знатока природы?</div>
+        <p>Портфолио — это твоя <strong>личная папка достижений</strong>. В неё собираются все материалы, которые показывают твой путь: рисунки, дневники наблюдений, фотографии, проекты, добрые дела, творческие работы. Портфолио — это доказательство того, что ты действительно стал знатоком природы.</p>
+    </div>
+
+    <h3>Что должно быть в моём портфолио?</h3>
+
+    <ul class="portfolio-list">
+        <li><strong>📔 Дневник фенолога</strong> — наблюдения за сезонными изменениями в природе.</li>
+        <li><strong>🌡️ Календарь погоды</strong> — записи о погоде за неделю или месяц.</li>
+        <li><strong>🔬 Дневник исследователя</strong> — записи по твоему исследовательскому проекту.</li>
+        <li><strong>🌱 Дневник наблюдений за растением</strong> — если ты вёл его в разделе 6.</li>
+        <li><strong>🐦 Дневник птичьей столовой</strong> — наблюдения за птицами у кормушки.</li>
+        <li><strong>🎨 Творческие работы</strong> — рисунки, плакаты, аппликации, поделки.</li>
+        <li><strong>✉️ Письма и обращения</strong> — письмо природе, обращения к людям.</li>
+        <li><strong>📖 Проект</strong> — твой исследовательский проект и его защита.</li>
+        <li><strong>🌿 Дневник добрых дел</strong> — записи о том, что ты сделал для природы.</li>
+        <li><strong>🏆 Достижения</strong> — грамоты, дипломы, благодарности.</li>
+    </ul>
+
+    <div class="task-box">
+        <div class="task-box-title">📁 Задание 12.4. «Собираю портфолио»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Проверь, какие материалы у тебя уже есть, а какие нужно добавить. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Материал</th>
+                    <th>Есть</th>
+                    <th>Нужно добавить</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>📔 Дневник фенолога</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌡️ Календарь погоды</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🔬 Дневник исследователя</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌱 Дневник наблюдений за растением</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐦 Дневник птичьей столовой</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🎨 Творческие работы</td><td>☐</td><td>☐</td></tr>
+                <tr><td>✉️ Письмо природе</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📖 Проект</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌿 Дневник добрых дел</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🏆 Достижения</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>💚 Мои экологические привычки</h2>
+
+    <p>Знания и умения — это важно. Но самое главное — это <strong>привычки</strong>. Если ты знаешь, что нужно беречь воду, но не делаешь этого, знание остаётся «мёртвым». А если ты <strong>привык</strong> заботиться о природе каждый день — ты настоящий знаток.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">💚 Задание 12.5. «Мои экологические привычки»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Отметь, какие экологические привычки у тебя уже сформированы, а какие ты хотел бы приобрести.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Привычка</th>
+                    <th>Уже есть</th>
+                    <th>Хочу приобрести</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>💧 Экономлю воду</td><td>☐</td><td>☐</td></tr>
+                <tr><td>💡 Выключаю свет, уходя из комнаты</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🚮 Не мусорю в природе</td><td>☐</td><td>☐</td></tr>
+                <tr><td>♻️ Сортирую отходы</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐦 Подкармливаю птиц зимой</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌱 Ухаживаю за растениями</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📄 Экономлю бумагу</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌸 Берегу первоцветы</td><td>☐</td><td>☐</td></tr>
+                <tr><td>📢 Рассказываю другим о природе</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🌳 Участвую в экологических акциях</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 12.6. «Мой план экологических привычек»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь план: какие экологические привычки ты хочешь приобрести в ближайший год и как будешь это делать.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Привычка</th>
+                    <th>Как я буду её тренировать?</th>
+                    <th>Кто поможет?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="gold-note">
+        <strong>🌟 Запомни.</strong> Одна хорошая привычка закрепляется примерно за <strong>три недели</strong>. Это значит, что если ты будешь повторять одно и то же полезное действие три недели подряд — оно станет частью тебя. Начни с одной привычки. Например, «закрывать кран, когда чищу зубы». Через месяц добавь вторую. Так, шаг за шагом, ты станешь настоящим знатоком природы — не только по знаниям, но и по образу жизни.
+    </div>
+
+    <h2>🧭 Компас моих планов: что дальше?</h2>
+
+    <div class="compass-card">
+        <div class="compass-title">🧭 Как поставить цель на будущее</div>
+        <p>Хорошая цель — это как компас: она показывает направление. Чтобы поставить цель правильно, нужно ответить на три вопроса:</p>
+        <div class="compass-item"><strong>Что?</strong> Что именно я хочу сделать или узнать?</div>
+        <div class="compass-item"><strong>Как?</strong> Как я буду это делать? Что мне для этого нужно?</div>
+        <div class="compass-item"><strong>Когда?</strong> К какому сроку я хочу достичь результата?</div>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎯 Задание 12.7. «Мои цели на будущее»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Поставь три цели, связанные с природой, на следующий год. Они могут быть связаны с исследованием, защитой природы или личным развитием.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Цель</th>
+                    <th>Что я хочу сделать?</th>
+                    <th>Как я буду это делать?</th>
+                    <th>Когда?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>✉️ Письмо природе</h2>
+
+    <p>Иногда самые важные слова лучше написать, чем сказать вслух. Сегодня у тебя есть возможность написать <strong>письмо природе</strong>. Это может быть благодарность, обещание, рассказ о том, что ты узнал и почувствовал за время работы с тетрадью.</p>
+
+    <div class="letter-card">
+        <div class="letter-title">✉️ Мой письмо природе</div>
+        <p><strong>Обращение:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Моё письмо:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p style="margin-top: 20px;"><strong>Подпись:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Дата:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <h2>🏆 Мои итоговые достижения</h2>
+
+    <div class="achievements-grid">
+        <div class="achievement-card">
+            <span class="ach-icon">👁</span>
+            <div class="ach-title">Наблюдатель</div>
+            <div class="ach-text">Ты умеешь вести наблюдения за природой и фиксировать их в дневнике.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">🔬</span>
+            <div class="ach-title">Исследователь</div>
+            <div class="ach-text">Ты научился ставить опыты, проводить эксперименты и делать выводы.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">📖</span>
+            <div class="ach-title">Автор проекта</div>
+            <div class="ach-text">Ты разработал свой собственный исследовательский проект и защитил его.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">🌿</span>
+            <div class="ach-title">Защитник природы</div>
+            <div class="ach-text">Ты сделал добрые дела для природы и защищал её в разных ситуациях.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">🎨</span>
+            <div class="ach-title">Творец</div>
+            <div class="ach-text">Ты создал плакаты, листовки, письма и другие творческие работы о природе.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">💚</span>
+            <div class="ach-title">Знаток природы</div>
+            <div class="ach-text">Ты стал настоящим знатоком природы — а это главное достижение курса.</div>
+        </div>
+    </div>
+
+    <h2>📊 Итоговая диагностика</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 12.8. «Итоговая самопроверка»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на итоговые вопросы курса. Это твоя личная проверка — не для оценки, а для осмысления.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Вопрос</th>
+                    <th>Мой ответ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Что нового я узнал о природе?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Чему я научился как исследователь?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что я сделал для природы?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что было для меня самым интересным?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что было самым трудным?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что я хочу узнать дальше?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Какие экологические привычки у меня появились?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что я расскажу о курсе своим друзьям?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🎉 Итоговое занятие «Знатоки природы»</h2>
+
+    <p>Завершается наше путешествие. Как и положено, финал — это <strong>праздник</strong>. Итоговое занятие — это время, когда ты покажешь свои достижения, поделишься открытиями, поблагодаришь друзей и педагога, и получишь заслуженные награды. Это не экзамен — это <strong>торжество дружбы с природой</strong>.</p>
+
+    <h3>Программа итогового занятия</h3>
+
+    <ol>
+        <li><strong>Приветствие.</strong> Ведущий открывает праздник и приветствует гостей.</li>
+        <li><strong>Выставка портфолио.</strong> Все показывают свои работы: рисунки, дневники, проекты, добрые дела.</li>
+        <li><strong>Презентация проектов.</strong> Каждый рассказывает о своём исследовании и его результатах.</li>
+        <li><strong>Викторина «Знатоки природы».</strong> Командная игра с вопросами из всего курса.</li>
+        <li><strong>Награждение.</strong> Вручение дипломов и благодарностей по номинациям.</li>
+        <li><strong>Слово благодарности.</strong> Дети благодарят педагога, родителей, друзей.</li>
+        <li><strong>Финал.</strong> Совместное чтение «Обещания знатока природы» и общая фотография.</li>
+        <li><strong>Чаепитие.</strong> Дружеская беседа, обмен впечатлениями.</li>
+    </ol>
+
+    <h3>Номинации для награждения</h3>
+
+    <div class="achievements-grid">
+        <div class="achievement-card">
+            <span class="ach-icon">🥇</span>
+            <div class="ach-title">Лучший наблюдатель</div>
+            <div class="ach-text">За систематические и точные наблюдения в природе.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">🥇</span>
+            <div class="ach-title">Лучший исследователь</div>
+            <div class="ach-text">За самый глубокий исследовательский проект.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">🥇</span>
+            <div class="ach-title">Лучший защитник природы</div>
+            <div class="ach-text">За активные добрые дела и природоохранную деятельность.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">🥇</span>
+            <div class="ach-title">Лучший творец</div>
+            <div class="ach-text">За оригинальные творческие работы о природе.</div>
+        </div>
+        <div class="achievement-card">
+            <span class="ach-icon">🥇</span>
+            <div class="ach-title">Знаток природы</div>
+            <div class="ach-text">Главная номинация — за любовь к природе и постоянную заботу о ней.</div>
+        </div>
+    </div>
+
+    <h2>🌿 Обещание знатока природы</h2>
+
+    <div class="gold-note">
+        <p style="text-align:center;font-size:1.05rem;line-height:1.8;"><strong>Клятва знатока природы</strong></p>
+        <p style="text-align:center;font-size:1.02rem;line-height:2;margin-top:10px;">
+        Я, знаток природы, обещаю:<br>
+        🌿 Видеть красоту в каждой травинке и каждом листочке.<br>
+        🧠 Понимать законы природы и уважать её мудрость.<br>
+        💚 Ценить всё живое на Земле.<br>
+        🌱 Заботиться о природе каждый день — своими руками и делами.<br>
+        📢 Рассказывать другим о важности охраны природы.<br>
+        🤝 Быть верным другом природы — на всю жизнь.
+        </p>
+        <p style="text-align:center;font-size:1rem;margin-top:20px;"><strong>Подпись: _______________________</strong></p>
+        <p style="text-align:center;font-size:0.95rem;">Дата: _______________</p>
+    </div>
+
+    <h2>📌 Ключевые понятия заключительного раздела</h2>
+
+    <div class="note">
+        <p><strong>Портфолио знатока природы</strong> — личная папка с материалами, отражающими путь и достижения учащегося.</p>
+        <p><strong>Рефлексия</strong> — осмысление своего опыта, знаний и результатов деятельности.</p>
+        <p><strong>Экологическая привычка</strong> — устойчивое поведение, направленное на заботу о природе в повседневной жизни.</p>
+        <p><strong>Цель</strong> — конкретный образ результата, которого человек хочет достичь.</p>
+        <p><strong>Обещание природе</strong> — личное обязательство быть верным другом природы.</p>
+    </div>
+
+    <h2>✏️ Итоговые задания раздела</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📁 Задание 12.9. «Титульный лист моего портфолио»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Создай титульный лист своего портфолио. Напиши имя, фамилию, название курса и нарисуй рисунок, который отражает твой путь знатока природы.</p>
+        <p><strong>Мой рисунок:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎤 Задание 12.10. «Моё финальное выступление»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь план своего выступления на итоговом занятии. Что ты хочешь рассказать о своём пути знатока природы?</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Часть выступления</th>
+                    <th>Что я скажу?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Приветствие</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что мне запомнилось больше всего</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Мой самый значимый проект или дело</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Чему я научился</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Кого я хочу поблагодарить</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что я хочу делать дальше</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">💚 Задание 12.11. «Мои пожелания друзьям»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши пожелания своим друзьям — тем, с кем ты прошёл этот путь по тетради «Знатоки природы». Пусть твои слова станут для них добрым напутствием.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌟 Задание 12.12. «Через 10 лет»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Представь себя через 10 лет. Каким ты будешь? Что ты будешь делать для природы? Какие привычки, которые ты приобрёл в этом курсе, останутся с тобой? Напиши небольшой рассказ или письмо самому себе в будущее.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги курса</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты сделал за время работы с тетрадью «Знатоки природы»:</strong>
+        <ul>
+            <li>Изучил природу как <strong>целостную систему</strong> — от атмосферы до экосистем.</li>
+            <li>Научился <strong>вести наблюдения</strong> и фиксировать их в дневниках.</li>
+            <li>Провёл <strong>опыты и эксперименты</strong> с водой, воздухом, почвой, растениями.</li>
+            <li>Разработал <strong>собственный исследовательский проект</strong> и защитил его.</li>
+            <li>Совершил <strong>добрые дела</strong>: посадил дерево, сделал кормушку, защитил первоцветы.</li>
+            <li>Сформировал <strong>экологические привычки</strong>: экономить воду и свет, не мусорить, сортировать отходы.</li>
+            <li>Создал <strong>портфолио</strong>, отражающее твой путь знатока природы.</li>
+            <li>Поставил <strong>цели на будущее</strong> и дал <strong>обещание природе</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="final-block">
+        <h2>🌍 Прощальное слово</h2>
+        <p>Дорогой друг! Ты прошёл долгий путь по страницам этой тетради. Ты научился видеть, понимать, оценивать и защищать природу. Ты стал настоящим <strong>знатоком природы</strong>.</p>
+        <p>Помни: <strong>природа — это наш общий дом</strong>. И от того, как ты будешь к ней относиться, зависит, каким этот дом будет — чистым и красивым или замусоренным и уставшим. Ты уже многое сделал. Но впереди ещё целая жизнь, и каждый день ты можешь делать новые добрые дела.</p>
+        <p>Пусть природа отвечает тебе красотой, радостью и здоровьем. Пусть каждое твоё доброе дело возвращается к тебе сторицей. И пусть путь знатока природы никогда не заканчивается — потому что он длится всю жизнь.</p>
+        <p class="final-signature">До новых встреч в мире природы, юный друг!</p>
+    </div>
+
+    <div class="quote">
+        «Знаток природы — это не тот, кто много знает. Это тот, кто умеет видеть красоту, понимать связи, ценить жизнь и действовать с добрым сердцем. Именно таким ты стал».
+        <span class="quote-author">— из заключительного слова курса</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section11.html" class="button">← Раздел 11. Мои добрые дела</a>
+        <a href="plan.html" class="button">К структурному плану</a>
+        <a href="preface.html" class="button">К аннотации</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+        <p>Заключительный раздел. Финальное слово курса.</p>
+    </footer>
+
+</div>
+</body>
+</html>

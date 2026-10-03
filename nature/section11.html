@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 11. Мои добрые дела для природы — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки видов деятельности */
+        .action-kinds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .action-kind-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #16a34a;
+        }
+        .action-kind-card .ak-icon {
+            font-size: 1.9rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .action-kind-card .ak-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .action-kind-card .ak-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Календарь добрых дел */
+        .good-deeds-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin: 18px 0;
+        }
+        .calendar-cell {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.8rem;
+            min-height: 80px;
+        }
+        .calendar-cell .day-label {
+            font-weight: 700;
+            color: #166534;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Примеры акций */
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .campaign-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 14px;
+            padding: 16px 20px;
+        }
+        .campaign-card .camp-title {
+            font-weight: 700;
+            color: #065f46;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .campaign-card .camp-text {
+            font-size: 0.88rem;
+            color: #064e3b;
+            line-height: 1.55;
+        }
+
+        /* Обещания природе */
+        .promises-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .promises-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .promise-item {
+            background: white;
+            border-left: 5px solid #d97706;
+            border-radius: 0 12px 12px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        /* Дневник добрых дел */
+        .deeds-journal {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .deeds-journal-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+            .good-deeds-calendar { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section10.html" class="back-link" style="margin-left: 15px;">← Раздел 10</a>
+
+    <h1>🌿 Раздел 11. Мои добрые дела для природы</h1>
+    <div class="section-meta">📖 Ключ IV. Руки исследователя | 🎯 Для детей 8–11 лет | ⏱ 12 часов</div>
+
+    <div class="intro-card">
+        <p>Ты прошёл долгий путь: научился видеть, понимать и оценивать природу. Ты стал настоящим исследователем. Но у настоящего знатока природы есть ещё одно важное качество — <strong>готовность действовать</strong>. Он не только знает о проблемах, но и делает что-то, чтобы их решить. Не только понимает ценность природы, но и защищает её своими руками.</p>
+        <p>В этом разделе мы будем <strong>совершать добрые дела</strong>. Настоящие, конкретные, полезные для природы дела: делать кормушки, сажать деревья, собирать батарейки, экономить воду и свет, убирать мусор. Каждое такое дело — маленький шаг. Но если шагов много — они превращаются в большой путь. И этот путь ведёт к тому миру, где природа и человек живут в согласии.</p>
+    </div>
+
+    <h2>🎯 Кто такой настоящий друг природы</h2>
+
+    <p>Друг природы — это не тот, кто громко говорит о своей любви к природе. Это тот, кто <strong>делает конкретные добрые дела</strong>. Он понимает: знание без действия остаётся бесполезным. Ты уже много знаешь о природе. Теперь пришло время использовать это знание на практике.</p>
+
+    <p>Друг природы делает добрые дела для природы <strong>в разных сферах</strong>. Одни дела связаны с живыми существами — растениями, животными. Другие — с неживой природой — водой, воздухом, почвой. Третьи — с поведением людей вокруг — с тем, чтобы каждый человек осознал свою ответственность.</p>
+
+    <div class="action-kinds-grid">
+        <div class="action-kind-card">
+            <span class="ak-icon">🌱</span>
+            <div class="ak-title">Забота о живом</div>
+            <div class="ak-text">Помощь животным, уход за растениями, посадка деревьев, изготовление кормушек, защита первоцветов.</div>
+        </div>
+        <div class="action-kind-card">
+            <span class="ak-icon">💧</span>
+            <div class="ak-title">Забота о неживой природе</div>
+            <div class="ak-text">Экономия воды и электричества, уборка мусора, сдача батареек, правильное обращение с отходами.</div>
+        </div>
+        <div class="action-kind-card">
+            <span class="ak-icon">👥</span>
+            <div class="ak-title">Просвещение людей</div>
+            <div class="ak-text">Рассказы друзьям и семье о важности охраны природы, участие в экологических акциях, изготовление листовок и плакатов.</div>
+        </div>
+        <div class="action-kind-card">
+            <span class="ak-icon">🏠</span>
+            <div class="ak-title">Забота о своём месте</div>
+            <div class="ak-text">Уборка двора, посадка цветов на клумбе, озеленение школы, бережное отношение к парку, где ты гуляешь.</div>
+        </div>
+        <div class="action-kind-card">
+            <span class="ak-icon">📢</span>
+            <div class="ak-title">Распространение знаний</div>
+            <div class="ak-text">Выступления перед друзьями, публикация статей, создание собственной Красной книги, участие в конкурсах.</div>
+        </div>
+        <div class="action-kind-card">
+            <span class="ak-icon">🤝</span>
+            <div class="ak-title">Вместе с другими</div>
+            <div class="ak-text">Участие в коллективных акциях, работа в команде, вовлечение друзей и родных в добрые дела.</div>
+        </div>
+    </div>
+
+    <div class="quote">
+        «Друзей природы не бывает много. Каждый человек, который посадил дерево, помог птице, убрал мусор, — уже сделал мир немного лучше. А если таких людей миллионы — мир меняется».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <h2>🗓️ Календарь добрых дел: планируем свою заботу</h2>
+
+    <p>Добрые дела не должны быть случайными. Настоящий друг природы <strong>планирует свою заботу</strong>. Как у исследователя есть дневник наблюдений, так у защитника природы — календарь добрых дел.</p>
+
+    <p>Вот пример простого календаря на неделю. Каждый день — одно небольшое дело. За неделю набирается семь добрых дел. За месяц — тридцать. За год — целых триста шестьдесят пять! Вместе с другими ребятами это станет огромным вкладом в сохранение природы.</p>
+
+    <div class="good-deeds-calendar">
+        <div class="calendar-cell">
+            <span class="day-label">Пн</span>
+            💧<br>Экономия воды
+        </div>
+        <div class="calendar-cell">
+            <span class="day-label">Вт</span>
+            💡<br>Выключаю свет
+        </div>
+        <div class="calendar-cell">
+            <span class="day-label">Ср</span>
+            🚮<br>Убираю мусор
+        </div>
+        <div class="calendar-cell">
+            <span class="day-label">Чт</span>
+            🌱<br>Поливаю растения
+        </div>
+        <div class="calendar-cell">
+            <span class="day-label">Пт</span>
+            🐦<br>Наблюдаю за птицами
+        </div>
+        <div class="calendar-cell">
+            <span class="day-label">Сб</span>
+            ♻️<br>Сортирую отходы
+        </div>
+        <div class="calendar-cell">
+            <span class="day-label">Вс</span>
+            📢<br>Рассказываю друзьям
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Совет.</strong> Заведи <strong>собственный календарь добрых дел</strong> на месяц. Каждый вечер отмечай, что полезного ты сделал для природы. Это не для отчёта — это для того, чтобы увидеть, как много ты успеваешь. Иногда кажется, что ты «ничего не делаешь» — а на самом деле за месяц набирается тридцать добрых поступков!
+    </div>
+
+    <h2>🌳 Посадка деревьев: самый долгий след доброты</h2>
+
+    <p>Посадить дерево — это, пожалуй, самое <strong>долговременное доброе дело</strong>. Одно дерево будет жить десятки, а иногда и сотни лет. Оно даст кислород тысячам людей, станет домом для птиц и насекомых, укроет от солнца в жаркий день и напомнит о тебе будущим поколениям.</p>
+
+    <h3>Как правильно посадить дерево</h3>
+
+    <ol>
+        <li><strong>Выбери правильное место.</strong> Дереву нужно много света, но не место рядом с проводами и трубами.</li>
+        <li><strong>Подготовь яму.</strong> Выкопай яму глубиной и шириной 50–60 см.</li>
+        <li><strong>Возьми саженец.</strong> Осторожно расправь его корни — они очень хрупкие.</li>
+        <li><strong>Посади дерево.</strong> Поставь саженец в яму, засыпь землёй, слегка утрамбуй.</li>
+        <li><strong>Полей.</strong> Полей дерево 2–3 вёдрами воды.</li>
+        <li><strong>Закрепи.</strong> Привяжи к колышку, чтобы ветер не сломал саженец.</li>
+        <li><strong>Ухаживай.</strong> В первый год поливай дерево регулярно, особенно в жару.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать.</strong> Одно взрослое дерево за год:
+        <ul>
+            <li>Поглощает около <strong>20 кг пыли</strong>;</li>
+            <li>Выделяет столько кислорода, сколько хватит для дыхания <strong>трёх человек</strong>;</li>
+            <li>Задерживает <strong>тысячи литров дождевой воды</strong>, не давая ей стекать в реки;</li>
+            <li>Становится домом для <strong>десятков видов птиц и насекомых</strong>.</li>
+        </ul>
+    </div>
+
+    <h2>🐦 Помощь птицам: маленькая забота — большая польза</h2>
+
+    <p>Птицы — наши верные помощники и соседи. Они радуют нас пением, поедают насекомых-вредителей, распространяют семена растений. Но зимой и ранней весной им очень трудно: снег покрывает землю, насекомые прячутся, найти корм почти невозможно. И здесь на помощь приходим мы.</p>
+
+    <h3>Как помочь птицам</h3>
+
+    <ul>
+        <li><strong>Сделать кормушку.</strong> Из картонной коробки, пластиковой бутылки или деревянных дощечек.</li>
+        <li><strong>Регулярно подкармливать.</strong> Каждый день немного корма: семечки, крошки, сало для синиц.</li>
+        <li><strong>Не забывать про воду.</strong> Зимой птицам нужна не только еда, но и вода.</li>
+        <li><strong>Наблюдать и записывать.</strong> Какие птицы прилетают? Как они себя ведут? Всё это — ценная информация для исследователя.</li>
+    </ul>
+
+    <div class="campaign-grid">
+        <div class="campaign-card">
+            <div class="camp-title">🌾 Что можно давать птицам</div>
+            <div class="camp-text">Семечки подсолнечника, крошки белого хлеба, несолёное сало, пшено, овёс, тыквенные семечки, ягоды рябины.</div>
+        </div>
+        <div class="campaign-card">
+            <div class="camp-title">🚫 Чего нельзя давать птицам</div>
+            <div class="camp-text">Жареные и солёные семечки, чёрный хлеб, чипсы, конфеты, солёное сало. От такой еды птицы болеют и погибают.</div>
+        </div>
+    </div>
+
+    <h2>🌷 Защита первоцветов: красота, которую нужно сберечь</h2>
+
+    <p>Каждую весну в лесах и на лугах расцветают первые цветы — <strong>первоцветы</strong>. Они появляются, когда ещё лежит снег, и радуют нас своей нежной красотой. Но именно из-за этой красоты первоцветы страдают больше всего: их рвут целыми охапками. Многие из них занесены в Красную книгу и находятся на грани исчезновения.</p>
+
+    <p>Доброе дело защитника природы — <strong>не рвать первоцветы и рассказать об этом другим</strong>.</p>
+
+    <h3>Как защитить первоцветы</h3>
+
+    <ul>
+        <li><strong>Не рвать самому.</strong> Полюбуйся и оставь расти — красота должна жить в природе.</li>
+        <li><strong>Не покупать букеты первоцветов.</strong> Так ты не поддерживаешь браконьеров.</li>
+        <li><strong>Рассказывать друзьям.</strong> Многие просто не знают, что первоцветы редки.</li>
+        <li><strong>Сделать листовку.</strong> Яркая листовка в защиту первоцветов — хорошее доброе дело.</li>
+        <li><strong>Делать фотографии вместо букетов.</strong> Так ты сохранишь красоту навсегда — и не причинишь вреда.</li>
+    </ul>
+
+    <h2>♻️ Сбор батареек: маленькое дело — большая польза</h2>
+
+    <p>Ты, наверное, уже знаешь, что выброшенная батарейка отравляет до 20 квадратных метров земли. Это значит, что одна батарейка в мусоре — это целый погибший участок природы. Поэтому очень важно <strong>собирать использованные батарейки и сдавать их в специальные пункты приёма</strong>.</p>
+
+    <p>Доброе дело друга природы — организовать сбор батареек в классе, дома или во дворе и отнести их в пункт приёма.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно.</strong> Не выбрасывай батарейки в обычный мусор. Даже одна батарейка может загрязнить целый участок земли и воды. Собирай их в отдельную коробочку — и отнеси туда, где принимают опасные отходы. Так ты спасёшь жизнь многим животным и растениям.
+    </div>
+
+    <h2>💧 Экономия ресурсов: маленькие привычки — большие результаты</h2>
+
+    <p>Ты уже знаешь, что вода и электричество — это <strong>природные ресурсы</strong>, которые не бесконечны. И мы можем помочь природе, если будем расходовать их экономно.</p>
+
+    <h3>Простые правила экономии</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ресурс</th>
+                <th>Что делать?</th>
+                <th>Сколько экономится?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>💧 Вода</td>
+                <td>Закрывать кран, когда чистишь зубы</td>
+                <td>До 6 литров в минуту</td>
+            </tr>
+            <tr>
+                <td>💧 Вода</td>
+                <td>Принимать душ вместо ванны</td>
+                <td>До 100 литров за один раз</td>
+            </tr>
+            <tr>
+                <td>💡 Электричество</td>
+                <td>Выключать свет, уходя из комнаты</td>
+                <td>Экономия природных ресурсов</td>
+            </tr>
+            <tr>
+                <td>💡 Электричество</td>
+                <td>Не оставлять приборы в режиме ожидания</td>
+                <td>До 30% экономии</td>
+            </tr>
+            <tr>
+                <td>📄 Бумага</td>
+                <td>Использовать обе стороны листа</td>
+                <td>В два раза меньше бумаги</td>
+            </tr>
+            <tr>
+                <td>🛍️ Упаковка</td>
+                <td>Использовать многоразовые сумки</td>
+                <td>Десятки пакетов в месяц</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🚮 Уборка мусора: чистота своими руками</h2>
+
+    <p>Каждую весну и осень люди по всему миру выходят на <strong>экологические акции</strong>: убирают парки, берега рек, леса, дворы. Это простое, но очень важное дело. Мусор, оставленный в природе, отравляет почву и воду, вредит животным, портит красоту. Убирая его, мы не только делаем природу чище — мы становимся частью большого доброго дела.</p>
+
+    <p>Самые известные акции:</p>
+
+    <ul>
+        <li><strong>«Чистый берег»</strong> — уборка берегов рек и озёр.</li>
+        <li><strong>«Помоги лесу»</strong> — уборка мусора в лесопарках.</li>
+        <li><strong>«Пластик — не для природы»</strong> — сбор и сдача пластика.</li>
+        <li><strong>«Сдай макулатуру — спаси дерево»</strong> — сбор бумаги для переработки.</li>
+        <li><strong>«Сдай батарейку — спаси ёжика»</strong> — сбор использованных батареек.</li>
+        <li><strong>«Каждой пичужке — своя кормушка»</strong> — изготовление и развешивание кормушек.</li>
+    </ul>
+
+    <div class="green-note">
+        <strong>🌿 Важно понять.</strong> Участвовать в экологических акциях — это <strong>доброе дело и весёлое событие одновременно</strong>. Ты не просто помогаешь природе, но и делаешь это вместе с друзьями, узнаёшь новое, испытываешь радость от того, что сделал важное дело. Это — один из лучших способов быть настоящим знатоком природы.
+    </div>
+
+    <h2>📔 Дневник добрых дел: отслеживаем свой путь</h2>
+
+    <div class="deeds-journal">
+        <div class="deeds-journal-title">📔 Что записывать в дневник добрых дел</div>
+        <ul>
+            <li><strong>Дата</strong> доброго дела.</li>
+            <li><strong>Что именно ты сделал.</strong></li>
+            <li><strong>Где это произошло.</strong></li>
+            <li><strong>Кто тебе помогал.</strong></li>
+            <li><strong>Что ты почувствовал, сделав доброе дело.</strong></li>
+            <li><strong>Что можно сделать ещё.</strong></li>
+        </ul>
+    </div>
+
+    <p>Дневник добрых дел — это не «отчёт для взрослых». Это твоя <strong>личная летопись заботы о природе</strong>. В конце года ты сможешь перечитать свои записи и увидеть, как много ты сделал. И, может быть, заметишь, что твои добрые дела стали частью жизни — привычкой, а не разовым поступком.</p>
+
+    <h2>🤝 Обещания природе: как превратить добрые дела в привычку</h2>
+
+    <p>Одно доброе дело — это хорошо. Но настоящее добро — это <strong>постоянная забота</strong>, ставшая привычкой. Чтобы добрые дела стали частью твоей жизни, дай природе <strong>личное обещание</strong>.</p>
+
+    <div class="promises-card">
+        <div class="promises-title">🌿 Мои обещания природе</div>
+        <div class="promise-item">🌱 Я обещаю не мусорить в природе и убирать за собой.</div>
+        <div class="promise-item">💧 Я обещаю экономить воду — каждый день, каждый раз.</div>
+        <div class="promise-item">💡 Я обещаю выключать свет и приборы, когда они не нужны.</div>
+        <div class="promise-item">🐦 Я обещаю помогать птицам зимой и весной.</div>
+        <div class="promise-item">🌸 Я обещаю не рвать редкие цветы и рассказать об этом друзьям.</div>
+        <div class="promise-item">♻️ Я обещаю сортировать отходы и сдавать батарейки.</div>
+        <div class="promise-item">📢 Я обещаю рассказывать другим о том, как важно беречь природу.</div>
+    </div>
+
+    <div class="quote">
+        «Обещания, данные природе, — самые важные обещания в жизни. Их не слышит никто, но природа отвечает на них цветением, пением птиц, чистым воздухом и здоровьем. И это — лучшая награда».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Доброе дело для природы</strong> — конкретное полезное действие, которое улучшает состояние природы или помогает живым существам.</p>
+        <p><strong>Экологическая акция</strong> — организованное коллективное дело, направленное на охрану природы и улучшение окружающей среды.</p>
+        <p><strong>Календарь добрых дел</strong> — план ежедневной заботы о природе на определённый период.</p>
+        <p><strong>Дневник добрых дел</strong> — личная летопись добрых поступков в защиту природы.</p>
+        <p><strong>Обещание природе</strong> — личное обязательство постоянно заботиться о природе, ставшее привычкой.</p>
+    </div>
+
+    <h2>✏️ Задания для юного защитника природы</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 11.1. «Мой календарь добрых дел»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь свой календарь добрых дел на следующую неделю. Каждый день — одно небольшое дело для природы.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>День недели</th>
+                    <th>Моё доброе дело</th>
+                    <th>Что мне понадобится?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Понедельник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вторник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Среда</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Четверг</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Пятница</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Суббота</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Воскресенье</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌳 Задание 11.2. «Моё дерево»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Посади дерево (или куст) вместе с родителями, педагогом или друзьями. Составь «паспорт» своего дерева.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Вопрос</th>
+                    <th>Мой ответ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Какое дерево я посадил?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Где оно растёт?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Дата посадки</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Кто мне помогал?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Как я буду ухаживать за ним?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок дерева:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🐦 Задание 11.3. «Моя кормушка»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Сделай кормушку и повесь её. Наблюдай за птицами и заполняй дневник наблюдений.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Какие птицы прилетали?</th>
+                    <th>Что они ели?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌸 Задание 11.4. «Листовка в защиту первоцветов»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй листовку в защиту первоцветов. Придумай короткий лозунг, который убедит людей не рвать весенние цветы.</p>
+        <p><strong>Мой лозунг:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Моя листовка:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">♻️ Задание 11.5. «Сдай батарейку — спаси ёжика»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Организуй сбор батареек в классе, дома или во дворе. Отнеси их в пункт приёма опасных отходов. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Где собирали?</th>
+                    <th>Сколько батареек?</th>
+                    <th>Куда сдали?</th>
+                    <th>Дата</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">💧 Задание 11.6. «Экономим воду и свет»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь памятку для своей семьи «Как экономить воду и свет дома». Напиши 5–7 простых правил.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Правило</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>5</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🚮 Задание 11.7. «Наша экологическая акция»</div>
+        <p><span class="signal">🌿 Практика</span> <span class="signal">📝 Запиши</span></p>
+        <p>Прими участие в экологической акции вместе с друзьями или семьёй. Заполни таблицу результатов.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Что мы делали?</th>
+                    <th>Где?</th>
+                    <th>Сколько человек участвовало?</th>
+                    <th>Что получилось?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📔 Задание 11.8. «Мой дневник добрых дел»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Заведи дневник добрых дел. В течение месяца записывай в него всё, что ты сделал для природы. В конце месяца подведи итог.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Что я сделал для природы?</th>
+                    <th>Что я почувствовал?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой итог за месяц:</strong> Сколько добрых дел я сделал? Что было самым важным?</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🤝 Задание 11.9. «Мои обещания природе»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши пять обещаний природе от себя лично. Постарайся, чтобы они были конкретными и выполнимыми.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Моё обещание природе</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>5</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Подпись:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Дата:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 11.10. «Плакат "Добрые дела для природы"»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй плакат, который покажет, какие добрые дела может делать каждый человек для природы. Придумай к плакату короткий призыв.</p>
+        <p><strong>Мой призыв:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой плакат:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал и чему научился в этом разделе:</strong>
+        <ul>
+            <li>Что <strong>настоящий друг природы</strong> — это тот, кто делает конкретные добрые дела.</li>
+            <li>Какие <strong>виды добрых дел</strong> существуют: забота о живом, о неживой природе, просвещение людей.</li>
+            <li>Как составить <strong>календарь добрых дел</strong> и вести дневник.</li>
+            <li>Как правильно <strong>посадить дерево</strong>, сделать <strong>кормушку</strong> и помочь птицам.</li>
+            <li>Почему важно <strong>защищать первоцветы</strong> и как это делать.</li>
+            <li>Почему нельзя выбрасывать батарейки и как их правильно <strong>сдавать</strong>.</li>
+            <li>Как <strong>экономить воду, свет и бумагу</strong> — простые привычки, которые помогают природе.</li>
+            <li>Что такое <strong>экологические акции</strong> и как в них участвовать.</li>
+            <li>Зачем давать природе <strong>личные обещания</strong> и как их выполнять.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Чем друг природы отличается от человека, который просто любит природу?</li>
+            <li>Какие три вида добрых дел ты знаешь?</li>
+            <li>Чем можно и чем нельзя кормить птиц?</li>
+            <li>Почему нельзя выбрасывать батарейки в обычный мусор?</li>
+            <li>Какие простые привычки помогают экономить воду и свет?</li>
+            <li>Какие экологические акции ты знаешь?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Добрые дела для природы — это <strong>не разовая акция, а образ жизни</strong>. Настоящий знаток природы — это тот, кто каждый день делает маленький шаг навстречу природе: полил растение, закрыл кран, рассказал другу о Красной книге. Эти маленькие дела вместе дают огромный результат. И каждый из нас может стать частью этого большого доброго дела. Ты уже стал. И это — самое важное.
+    </div>
+
+    <div class="quote">
+        «Природа не требует от нас больших подвигов. Она ждёт наших маленьких, но постоянных добрых дел. Каждое такое дело — это её благодарность, которую она возвращает нам чистым воздухом, пением птиц, здоровьем и радостью».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section10.html" class="button">← Раздел 10. Исследовательский проект</a>
+        <a href="section12.html" class="button">📖 Перейти к разделу 12. «Я — знаток природы» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

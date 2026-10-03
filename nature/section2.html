@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 2. Календарь юного фенолога — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #1e466e;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки природных явлений */
+        .phenomenon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .phenomenon-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #0969da;
+        }
+        .phenomenon-card .phen-icon {
+            font-size: 1.7rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .phenomenon-card .phen-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .phenomenon-card .phen-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Фенологический спектр */
+        .pheno-spectrum {
+            display: flex;
+            gap: 0;
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px -4px rgba(0,0,0,0.08);
+        }
+        .pheno-band {
+            flex: 1;
+            padding: 14px 8px;
+            text-align: center;
+            color: #0a2540;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .pheno-band .band-emoji {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+        .pheno-band .band-label {
+            display: block;
+            font-size: 0.82rem;
+        }
+        .band-winter { background: #e0f2fe; }
+        .band-spring { background: #dcfce7; }
+        .band-summer { background: #fef3c7; }
+        .band-autumn { background: #fed7aa; }
+
+        .symbol-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        .symbol-table th, .symbol-table td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .symbol-table th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+            .pheno-band .band-label { font-size: 0.72rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section1.html" class="back-link" style="margin-left: 15px;">← Раздел 1</a>
+
+    <h1>🍃 Раздел 2. Календарь юного фенолога</h1>
+    <div class="section-meta">📖 Ключ I. Глаз исследователя | 🎯 Для детей 8–11 лет | ⏱ 12 часов</div>
+
+    <div class="intro-card">
+        <p>Однажды древний человек вышел из своей пещеры и заметил: каждый год в одно и то же время на деревьях появляются почки, птицы возвращаются с юга, реки освобождаются ото льда. Он стал запоминать эти события и передавать знания детям. Так родилась <strong>фенология</strong> — наука о сезонных явлениях природы.</p>
+        <p>Сегодня мы с тобой продолжим дело древних наблюдателей. Только теперь у нас есть точные приборы, блокноты, карандаши — и умение задавать вопросы. Мы научимся вести настоящий <strong>дневник фенолога</strong> и читать природу как живую книгу, у которой каждая страница открывается в свой срок.</p>
+    </div>
+
+    <h2>🌍 Что такое фенология и зачем она нужна</h2>
+
+    <p>Слово «фенология» происходит от греческих <em>phaino</em> («являю») и <em>logos</em> («учение»). Буквально — <strong>учение о явлениях</strong>. Фенология изучает, когда и почему в природе происходят сезонные изменения: когда распускаются почки, когда прилетают грачи, когда зацветает черёмуха, когда начинается листопад.</p>
+
+    <p>На первый взгляд может показаться, что это просто «наблюдение за природой». Но фенология — серьёзная наука, потому что её данные нужны многим людям:</p>
+
+    <ul>
+        <li><strong>Учёным-экологам</strong> — чтобы отслеживать, как меняется климат планеты.</li>
+        <li><strong>Сельским жителям</strong> — чтобы вовремя сеять и убирать урожай.</li>
+        <li><strong>Пчёловодам</strong> — чтобы знать, когда выставлять ульи на пасеку.</li>
+        <li><strong>Врачам-аллергологам</strong> — чтобы предупредить людей о начале цветения растений.</li>
+        <li><strong>Работникам заповедников</strong> — чтобы охранять редкие виды в нужный момент.</li>
+    </ul>
+
+    <p>А ещё фенология — это <strong>умение видеть время</strong>. Обычные часы показывают часы и минуты. А фенологический календарь показывает <strong>время жизни природы</strong>: время цветения, время гнездования, время созревания плодов, время покоя.</p>
+
+    <div class="quote">
+        «Фенология — это поэзия науки. Она измеряет время не стрелками, а цветами, листьями и птичьими голосами».
+        <span class="quote-author">— из записной книжки натуралиста</span>
+    </div>
+
+    <h2>📅 Природа как живой календарь</h2>
+
+    <p>Наши предки не имели ни термометров, ни спутников. Но они умели читать природу так, как мы читаем книги. Каждое явление было для них <strong>меткой времени</strong>: вот зацвела верба — пора готовиться к весенним работам, вот прилетели стрижи — скоро наступит тепло, вот пожелтела берёза — осень в разгаре.</p>
+
+    <div class="phenomenon-grid">
+        <div class="phenomenon-card">
+            <span class="phen-icon">🌸</span>
+            <div class="phen-title">Ранняя весна</div>
+            <div class="phen-text">Зацветает мать-и-мачеха. Прилетают грачи и скворцы. Начинается сокодвижение у берёз. Реки освобождаются ото льда.</div>
+        </div>
+        <div class="phenomenon-card">
+            <span class="phen-icon">🌷</span>
+            <div class="phen-title">Середина весны</div>
+            <div class="phen-text">Распускаются почки, зеленеет трава. Зацветают медуница, одуванчик, черёмуха. Возвращаются ласточки и журавли.</div>
+        </div>
+        <div class="phenomenon-card">
+            <span class="phen-icon">🌳</span>
+            <div class="phen-title">Поздняя весна — начало лета</div>
+            <div class="phen-text">Зацветают сирень, ландыш, рябина. Птицы выводят птенцов. В лесу появляются первые грибы и ягоды.</div>
+        </div>
+        <div class="phenomenon-card">
+            <span class="phen-icon">☀️</span>
+            <div class="phen-title">Лето</div>
+            <div class="phen-text">Цветут липа, ромашка, василёк. Созревают земляника, черника, малина. Птицы учат птенцов летать.</div>
+        </div>
+        <div class="phenomenon-card">
+            <span class="phen-icon">🍂</span>
+            <div class="phen-title">Осень</div>
+            <div class="phen-text">Желтеют листья на берёзах и клёнах. Начинается листопад. Птицы собираются в стаи и улетают на юг.</div>
+        </div>
+        <div class="phenomenon-card">
+            <span class="phen-icon">❄️</span>
+            <div class="phen-title">Зима</div>
+            <div class="phen-text">Устанавливается снежный покров. Реки покрываются льдом. Жизнь в природе словно замирает до весны.</div>
+        </div>
+    </div>
+
+    <h2>🎨 Фенологический спектр: палитра года</h2>
+
+    <p>Фенологи придумали красивое и наглядное изображение года — <strong>фенологический спектр</strong>. Это длинная полоса, разделённая на четыре разноцветные части, каждая из которых соответствует своему сезону. Наблюдая за природой и заполняя спектр, ты научишься видеть год целиком, как палитру художника.</p>
+
+    <div class="pheno-spectrum">
+        <div class="pheno-band band-winter">
+            <span class="band-emoji">❄️</span>
+            <span class="band-label">Зима</span>
+        </div>
+        <div class="pheno-band band-spring">
+            <span class="band-emoji">🌸</span>
+            <span class="band-label">Весна</span>
+        </div>
+        <div class="pheno-band band-summer">
+            <span class="band-emoji">☀️</span>
+            <span class="band-label">Лето</span>
+        </div>
+        <div class="pheno-band band-autumn">
+            <span class="band-emoji">🍂</span>
+            <span class="band-label">Осень</span>
+        </div>
+    </div>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 2.1. Фенологический спектр года.</p>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать.</strong> Если нанести на фенологический спектр тысячи наблюдений со всей страны, можно увидеть удивительную картину: в разных регионах времена года наступают в разное время. Где-то черёмуха цветёт в мае, а где-то — в июне. Такие «фенологические карты» составляют учёные Беларуси уже более 100 лет.
+    </div>
+
+    <h2>📔 Дневник фенолога: как его вести</h2>
+
+    <p>Дневник фенолога — это не обычный блокнот с записями. Это <strong>настоящий исследовательский инструмент</strong>. Каждая запись в нём имеет смысл, каждая пометка помогает увидеть закономерности. Ведение дневника дисциплинирует ум, тренирует внимание и учит ценить время.</p>
+
+    <h3>Что важно в дневнике фенолога</h3>
+
+    <ul>
+        <li><strong>Регулярность.</strong> Наблюдать нужно не от случая к случаю, а систематически — хотя бы 2–3 раза в неделю.</li>
+        <li><strong>Точность.</strong> Каждая запись содержит дату, время, погодные условия и описание наблюдения.</li>
+        <li><strong>Краткость.</strong> Не нужно писать длинные сочинения — достаточно лаконичных, но точных сведений.</li>
+        <li><strong>Наглядность.</strong> Записи можно дополнять рисунками, символами, фотографиями.</li>
+        <li><strong>Честность.</strong> Если что-то не удалось заметить, так и пиши: «не заметил». Не выдумывай!</li>
+    </ul>
+
+    <h3>Условные обозначения в дневнике фенолога</h3>
+
+    <p>Чтобы вести наблюдения было удобно, фенологи используют систему условных знаков. Ты можешь взять её за основу и добавить свои символы.</p>
+
+    <table class="symbol-table">
+        <thead>
+            <tr>
+                <th>Знак</th>
+                <th>Что обозначает</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>🟢</td><td>Начало явления (например, начало цветения)</td></tr>
+            <tr><td>🟡</td><td>Массовое явление (например, массовое цветение)</td></tr>
+            <tr><td>🔴</td><td>Окончание явления</td></tr>
+            <tr><td>🌡️</td><td>Температура воздуха</td></tr>
+            <tr><td>🌧️</td><td>Осадки (дождь, снег)</td></tr>
+            <tr><td>💨</td><td>Ветер</td></tr>
+            <tr><td>🌸</td><td>Цветение растений</td></tr>
+            <tr><td>🐦</td><td>Прилёт или отлёт птиц</td></tr>
+            <tr><td>🍂</td><td>Листопад</td></tr>
+            <tr><td>❄️</td><td>Первый снег, установление снежного покрова</td></tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно.</strong> Дневник фенолога — не «тетрадь для отметок». Здесь нет «правильных» и «неправильных» наблюдений. Ценность дневника — в <strong>честности и точности</strong> наблюдений, а не в количестве записей. Даже одна точно описанная встреча с природой стоит десяти приблизительных.
+    </div>
+
+    <h2>🧭 Как правильно наблюдать природу</h2>
+
+    <p>Наблюдение — это не просто «гуляние с открытыми глазами». Это <strong>целенаправленная работа</strong>. Настоящий фенолог перед выходом в природу ставит себе задачу: «Сегодня я хочу узнать, зацвела ли мать-и-мачеха» или «Проверю, начался ли прилёт грачей». Без задачи наблюдение превращается в рассеянное созерцание.</p>
+
+    <h4>Пять правил настоящего наблюдения</h4>
+
+    <ol>
+        <li><strong>Сформулируй вопрос.</strong> Что именно я хочу узнать?</li>
+        <li><strong>Выбери объект.</strong> Что именно я буду наблюдать — дерево, птицу, облака?</li>
+        <li><strong>Определи признаки.</strong> По каким признакам я пойму, что явление началось?</li>
+        <li><strong>Записывай сразу.</strong> Не полагайся на память — записывай на месте или сразу после наблюдения.</li>
+        <li><strong>Сравнивай с прошлыми записями.</strong> Только так можно увидеть динамику и закономерности.</li>
+    </ol>
+
+    <div class="note">
+        <strong>🎯 Совет юному фенологу.</strong> Заведи <em>три постоянных «объекта наблюдения»</em>: одно дерево во дворе, одну клумбу или грядку и одну точку наблюдения за погодой. Возвращайся к ним каждую неделю. Именно длительные наблюдения за одними и теми же объектами дают самые ценные результаты.
+    </div>
+
+    <h2>🔬 Фенология и наука: зачем это серьёзно</h2>
+
+    <p>Может показаться, что фенология — «детская» наука. Но это не так. Современные учёные используют фенологические данные, чтобы <strong>отслеживать изменения климата</strong>. Если сравнить, когда зацветала черёмуха сто лет назад и когда она зацветает сейчас, можно увидеть: цветение сдвинулось на 5–10 дней раньше. Это значит, что климат теплеет.</p>
+
+    <p>В Республике Беларусь существует <strong>сеть фенологических наблюдателей</strong>. Это школьники, педагоги, студенты, взрослые любители природы, которые ежегодно записывают сезонные явления в своих регионах. Их данные обобщаются и публикуются в научных сборниках. Может быть, когда-нибудь и твои записи войдут в такой сборник!</p>
+
+    <h2>🌿 Красота и гармония фенологических явлений</h2>
+
+    <p>Фенология — это не только наука, но и <strong>поэзия природы</strong>. Всмотрись в её закономерности — и увидишь удивительную гармонию:</p>
+
+    <ul>
+        <li><strong>Гармония ритма.</strong> Всё в природе повторяется: утро — вечер, весна — лето, цветение — плодоношение. Этот ритм — музыка жизни, и мы можем её услышать.</li>
+        <li><strong>Гармония цвета.</strong> Каждый месяц года имеет свою палитру. Март — нежно-голубой, май — изумрудный, июль — золотисто-жёлтый, октябрь — багряно-золотой.</li>
+        <li><strong>Гармония смысла.</strong> Каждое природное явление происходит в свой срок не случайно: если бы грачи прилетали зимой, они бы погибли. Всё в природе соразмерно и разумно.</li>
+        <li><strong>Гармония связей.</strong> Цветение черёмухи совпадает с похолоданием; прилёт стрижей — с приходом устойчивого тепла. Явления не существуют отдельно — они связаны друг с другом.</li>
+    </ul>
+
+    <div class="quote">
+        «Фенология — это поэзия науки. Она измеряет время не стрелками, а цветами, листьями и птичьими голосами».
+        <span class="quote-author">— из записной книжки натуралиста</span>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Фенология</strong> — наука о сезонных явлениях природы, сроках их наступления и причинах, определяющих эти сроки.</p>
+        <p><strong>Фенологическое наблюдение</strong> — систематическая фиксация сезонных явлений в жизни растений, животных и неживой природы.</p>
+        <p><strong>Фенологический спектр</strong> — наглядное изображение годового цикла сезонных явлений в виде цветной полосы.</p>
+        <p><strong>Дневник фенолога</strong> — исследовательский документ для систематической записи сезонных наблюдений.</p>
+        <p><strong>Лента времени</strong> — форма фиксации наблюдений, при которой явления отмечаются вдоль длинной горизонтальной полосы.</p>
+    </div>
+
+    <h2>✏️ Задания для юного фенолога</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">🍃 Задание 2.1. «Мой календарь природы»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Раздели страницу на четыре части — по временам года. В каждой части запиши или нарисуй 3 самых ярких, по твоему мнению, природных явления этого сезона. Например, для весны: «Прилетели грачи», «Зацвела мать-и-мачеха», «Начался ледоход».</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>🌸 Весна</th>
+                    <th>☀️ Лето</th>
+                    <th>🍂 Осень</th>
+                    <th>❄️ Зима</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="height:120px;"><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td style="height:120px;"><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td style="height:120px;"><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td style="height:120px;"><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📔 Задание 2.2. «Первая неделя наблюдений»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>В течение недели веди наблюдения за природой. Каждый день записывай в таблицу то, что тебе удалось заметить. Используй условные обозначения из этого раздела.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Погода</th>
+                    <th>Что я заметил в природе</th>
+                    <th>Условный знак</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌳 Задание 2.3. «Моё дерево-свидетель»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери дерево, которое ты будешь наблюдать в течение всего года. Запиши его название и место, где оно растёт. Нарисуй его в том виде, как оно выглядит сейчас.</p>
+        <p><strong>Название дерева:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Где оно растёт:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Как оно выглядит сейчас:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок дерева:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📜 Задание 2.4. «Народные приметы и наука»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Прочитай народные приметы. Соедини каждую с научным объяснением: почему это происходит в природе?</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Народная примета</th>
+                    <th>Научное объяснение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>«Увидел грача — весну встречай»</td>
+                    <td>☐ Грачи возвращаются первыми, когда появляются проталины и первая пища</td>
+                </tr>
+                <tr>
+                    <td>«Черёмуха цветёт — холода идут»</td>
+                    <td>☐ Цветение черёмухи совпадает с возвратом холодных воздушных масс</td>
+                </tr>
+                <tr>
+                    <td>«Если ласточки летают низко — к дождю»</td>
+                    <td>☐ Перед дождём насекомые опускаются ниже, а ласточки летят за ними</td>
+                </tr>
+                <tr>
+                    <td>«Много рябины — к холодной зиме»</td>
+                    <td>☐ Растение заранее реагирует на изменения климата и запасает больше плодов</td>
+                </tr>
+                <tr>
+                    <td>«Осенью листья желтеют с верхушки — весна будет ранняя»</td>
+                    <td>☐ Верхние ветви раньше реагируют на изменение температуры и освещения</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 2.5. «Фенологический спектр моего года»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй свой фенологический спектр года. Раздели полосу на 12 частей — по месяцам. Раскрась каждый месяц в тот цвет, который, по твоему мнению, лучше всего передаёт его природу. Подпиши, какие главные события происходят в природе в каждом месяце.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>фенология</strong> и зачем она нужна людям и науке.</li>
+            <li>Почему природа — это <strong>живой календарь</strong>, а её явления — метки времени.</li>
+            <li>Как устроен <strong>фенологический спектр</strong> года и как его читать.</li>
+            <li>Как вести <strong>дневник фенолога</strong>: правила, условные обозначения, требования.</li>
+            <li>Пять правил настоящего наблюдения.</li>
+            <li>Что в фенологических явлениях скрыта <strong>гармония ритма, цвета, смысла и связей</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Что изучает фенология?</li>
+            <li>Почему для фенолога важна регулярность наблюдений?</li>
+            <li>Какие условные знаки используются в дневнике фенолога?</li>
+            <li>Что такое фенологический спектр?</li>
+            <li>Почему фенологические наблюдения важны для науки о климате?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌟 Запомни главное.</strong> Юный фенолог — это не просто наблюдатель. Это <strong>человек, который учится читать время, скрытое в природе</strong>. Каждая запись в его дневнике — маленькая ступенька к пониманию великих законов жизни. Именно с этих записей начинается путь настоящего знатока природы.
+    </div>
+
+    <div class="quote">
+        «Природа не спешит — и всё успевает. Учитесь у неё мудрому ритму: не торопиться и не опаздывать».
+        <span class="quote-author">— народная мудрость</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section1.html" class="button">← Раздел 1. Учимся видеть природу</a>
+        <a href="section3.html" class="button">📖 Перейти к разделу 3. «Погода и климат» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

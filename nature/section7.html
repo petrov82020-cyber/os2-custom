@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 7. Экосистемы: как всё связано в природе — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #1e466e;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Компоненты экосистемы */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .component-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #0969da;
+        }
+        .component-card .comp-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .component-card .comp-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .component-card .comp-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Функциональные группы */
+        .functional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .functional-card {
+            background: #f8fafc;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+        }
+        .functional-card .fun-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .functional-card .fun-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Экосистемы-плитки */
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .ecosystem-card {
+            border-radius: 16px;
+            padding: 18px 22px;
+            border: 2px solid;
+        }
+        .eco-forest { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border-color: #16a34a; }
+        .eco-meadow { background: linear-gradient(135deg, #fef9c3 0%, #fde047 100%); border-color: #eab308; }
+        .eco-water { background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); border-color: #2563eb; }
+        .eco-swamp { background: linear-gradient(135deg, #f5f5f4 0%, #d6d3d1 100%); border-color: #78716c; }
+        .ecosystem-card .eco-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .ecosystem-card .eco-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: #1a1e24;
+        }
+        .ecosystem-card .eco-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        /* Ярусность */
+        .layers-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .layers-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.08rem;
+            margin-bottom: 12px;
+        }
+        .layers-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .layers-list li {
+            padding: 10px 14px;
+            margin: 8px 0;
+            background: white;
+            border-left: 4px solid #16a34a;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.93rem;
+            line-height: 1.55;
+        }
+        .layers-list li strong { color: #166534; }
+
+        /* Схема цепи питания */
+        .chain-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            text-align: center;
+        }
+        .chain-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .chain-item {
+            background: white;
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 600;
+            color: #166534;
+            min-width: 120px;
+            text-align: center;
+        }
+        .chain-item .chain-emoji {
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+        }
+        .chain-arrow {
+            font-size: 1.6rem;
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        /* Схема потока энергии */
+        .energy-svg {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section6.html" class="back-link" style="margin-left: 15px;">← Раздел 6</a>
+
+    <h1>🌍 Раздел 7. Экосистемы: как всё связано в природе</h1>
+    <div class="section-meta">📖 Ключ II. Ум исследователя | 🎯 Для детей 8–11 лет | ⏱ 14 часов</div>
+
+    <div class="intro-card">
+        <p>Мы уже изучили по отдельности растения, животных, воду, воздух и почву. Но в природе ничего не существует по отдельности! Дерево не растёт в пустоте: его корни держат почву, листья ловят солнце, в его кроне живут птицы, под ним прячутся звери, а в опавших листьях трудятся миллионы микробов. Всё это вместе — <strong>одно целое</strong>, один живой дом.</p>
+        <p>Такой дом учёные называют <strong>экосистемой</strong>. Слово это составное: «эко» — дом, «система» — порядок. Экосистема — это сообщество живых существ вместе с их средой обитания, где всё связано друг с другом и работает как единый механизм. В этом разделе мы научимся видеть <strong>целое там, где раньше замечали только части</strong>. А это — самое трудное и самое важное умение настоящего исследователя природы.</p>
+    </div>
+
+    <h2>🏠 Что такое экосистема</h2>
+
+    <p>Экосистема — это <strong>единство живых организмов и среды их обитания</strong>, связанных между собой обменом веществ и энергии. Экосистема может быть большой или маленькой:</p>
+
+    <ul>
+        <li><strong>Огромные экосистемы:</strong> лес, океан, тундра, пустыня. Учёные называют их <em>биомами</em>.</li>
+        <li><strong>Средние экосистемы:</strong> озеро, луг, болото, роща.</li>
+        <li><strong>Маленькие экосистемы:</strong> пень от старого дерева, лужа, гниющий ствол.</li>
+        <li><strong>Искусственные экосистемы:</strong> аквариум, клумба, огород — созданные человеком.</li>
+    </ul>
+
+    <p>Главное в любой экосистеме — это <strong>связи</strong>. Убери одно звено — и вся система начнёт меняться. Именно поэтому экосистема — это не «просто набор организмов», а <em>сообщество</em>.</p>
+
+    <div class="quote">
+        «Природа — это не набор отдельных предметов. Это единый дом, в котором всё связано со всем. Изучая его, ты изучаешь не части, а целое».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <h2>🧩 Из чего состоит экосистема</h2>
+
+    <p>В любой экосистеме можно выделить <strong>четыре компонента</strong>. Они — как четыре стены одного дома: вместе держат его, а поодиночке не устоят.</p>
+
+    <div class="components-grid">
+        <div class="component-card">
+            <span class="comp-icon">🌱</span>
+            <div class="comp-title">Производители (продуценты)</div>
+            <div class="comp-text">Растения и некоторые бактерии. Они создают органические вещества из неживой природы, используя солнечный свет. Всё живое в экосистеме питается тем, что они создали.</div>
+        </div>
+        <div class="component-card">
+            <span class="comp-icon">🐇</span>
+            <div class="comp-title">Потребители (консументы)</div>
+            <div class="comp-text">Животные, грибы и некоторые микроорганизмы. Они питаются готовыми органическими веществами: растениями или другими животными. Есть потребители первого, второго и третьего порядка.</div>
+        </div>
+        <div class="component-card">
+            <span class="comp-icon">🍄</span>
+            <div class="comp-title">Разрушители (редуценты)</div>
+            <div class="comp-text">Бактерии, грибы, дождевые черви. Они разлагают остатки мёртвых организмов и превращают их в простые вещества, которые снова могут использовать растения. Так завершается круговорот.</div>
+        </div>
+        <div class="component-card">
+            <span class="comp-icon">💧</span>
+            <div class="comp-title">Неживая природа</div>
+            <div class="comp-text">Вода, воздух, свет, тепло, почва, минеральные вещества. Это «сцена», на которой разворачивается жизнь. Без неё ни один живой организм не мог бы существовать.</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Запомни главное.</strong> В природе нет «лишних» организмов. Каждый выполняет свою роль в общем деле. Если исчезнут <em>производители</em> — не будет еды. Если исчезнут <em>разрушители</em> — вся планета покроется остатками мёртвых тел, а питательные вещества перестанут возвращаться в почву. Никакой компонент нельзя убрать безнаказанно.
+    </div>
+
+    <h2>🌳 Четыре главные экосистемы Беларуси</h2>
+
+    <p>Наша страна — удивительно богата природой. В ней встречаются четыре основных типа экосистем. Давай познакомимся с каждой.</p>
+
+    <div class="ecosystem-grid">
+        <div class="ecosystem-card eco-forest">
+            <span class="eco-icon">🌲</span>
+            <div class="eco-title">Лес</div>
+            <div class="eco-text">Самый сложный и богатый жизнью тип экосистемы. Здесь много ярусов, множество видов растений и животных. В лесу накапливается влага, чистый воздух, древесина. Лес — «лёгкие планеты».</div>
+        </div>
+        <div class="ecosystem-card eco-meadow">
+            <span class="eco-icon">🌾</span>
+            <div class="eco-title">Луг</div>
+            <div class="eco-text">Открытое пространство, покрытое травянистыми растениями. Здесь много насекомых, птиц, грызунов. Луг даёт сено, лекарственные травы, а его растения опыляют пчёлы.</div>
+        </div>
+        <div class="ecosystem-card eco-water">
+            <span class="eco-icon">💧</span>
+            <div class="eco-title">Водоём</div>
+            <div class="eco-text">Река, озеро, пруд. В нём живут рыбы, водные растения, насекомые, моллюски, земноводные. Водоём — источник воды и жизни для всей округи.</div>
+        </div>
+        <div class="ecosystem-card eco-swamp">
+            <span class="eco-icon">🌿</span>
+            <div class="eco-title">Болото</div>
+            <div class="eco-text">Особый мир, где всегда сыро. Растут мхи, клюква, багульник. Живут лягушки, змеи, болотные птицы. Болота — настоящие «хранилища воды» и «фильтры» природы.</div>
+        </div>
+    </div>
+
+    <h3>Лес: многоэтажный дом природы</h3>
+
+    <p>Лес — это как многоэтажный дом, где у каждого жильца свой «этаж». Такое устройство называется <strong>ярусностью</strong>. Каждый ярус имеет свой свет, свою влажность, свою температуру — а значит, и своих обитателей.</p>
+
+    <div class="layers-card">
+        <div class="layers-title">🌳 Ярусы лесной экосистемы</div>
+        <ul class="layers-list">
+            <li><strong>1-й ярус (верхний) — высокие деревья.</strong> Ели, сосны, дубы, берёзы. Здесь самые большие кроны, самые крепкие корни. Здесь гнёзда крупных хищных птиц.</li>
+            <li><strong>2-й ярус — деревья пониже.</strong> Рябина, черёмуха, дикие яблони. Здесь гнёзда мелких птиц, дупла белок.</li>
+            <li><strong>3-й ярус — кустарники.</strong> Орешник, малина, калина. Здесь живут многие птицы и зверьки, растут ягодные растения.</li>
+            <li><strong>4-й ярус — травы и кустарнички.</strong> Мхи, кислица, папоротники. Здесь обитают насекомые, мыши, ежи.</li>
+            <li><strong>5-й ярус (подземный) — корни и почва.</strong> Здесь живут крот, дождевой червь, миллионы микроорганизмов.</li>
+        </ul>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Ярусность — мудрое изобретение природы. Она позволяет <strong>всем живым существам жить рядом, не мешая друг другу</strong>. Каждый находит своё место и свой источник питания. Эта гармония создавалась миллионы лет. Наблюдая за лесом, мы учимся <em>правильно распределять пространство и не мешать другим</em>.
+    </div>
+
+    <h2>🔗 Пищевые сети: кто кого ест в экосистеме</h2>
+
+    <p>В экосистеме каждая связь «кто кого ест» называется <strong>пищевой связью</strong>. Когда несколько таких связей соединены вместе, получается <strong>пищевая сеть</strong>. В лесу, на лугу или в водоёме это настоящая паутина взаимных зависимостей.</p>
+
+    <div class="chain-card">
+        <strong>Пример пищевой сети в лесу</strong>
+        <div class="chain-flow">
+            <div class="chain-item"><span class="chain-emoji">🌿</span>Листья дуба</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🐛</span>Гусеница</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🐦</span>Синица</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🦅</span>Ястреб</div>
+        </div>
+        <div class="chain-flow" style="margin-top: -10px;">
+            <div class="chain-item"><span class="chain-emoji">🌰</span>Жёлудь</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🐿</span>Белка</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🦊</span>Лиса</div>
+        </div>
+        <p style="margin-top: 10px;font-size:0.9rem;color:#166534;">Одно растение может быть пищей для многих животных, а одно животное может есть разных растений. Поэтому связи в природе — это не линии, а <em>сеть</em>.</p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно понять.</strong> Если из пищевой сети выпадает хотя бы один вид, <strong>вся сеть начинает перестраиваться</strong>. Иногда это приводит к настоящей экологической катастрофе. Вот почему учёные-экологи тщательно следят за состоянием экосистем и стараются сохранить <em>все виды</em>, даже самые маленькие и незаметные.
+    </div>
+
+    <h2>⚡ Поток энергии: почему в лесу много зелени, но мало волков</h2>
+
+    <p>Задумывался ли ты, почему в лесу так много растений и насекомых — и так мало крупных хищников? Ответ — в <strong>потоке энергии</strong>. Каждый раз, когда одно существо съедает другое, часть энергии теряется: уходит на движение, дыхание, тепло. Поэтому на каждом следующем уровне пищевой цепи энергии остаётся всё меньше.</p>
+
+    <!-- SVG поток энергии -->
+    <svg class="energy-svg" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема потока энергии в экосистеме">
+        <rect x="10" y="10" width="580" height="260" rx="16" fill="#f8fafc"/>
+        <text x="300" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#166534">ПОТОК ЭНЕРГИИ В ЭКОСИСТЕМЕ</text>
+
+        <!-- Уровни -->
+        <rect x="60" y="60" width="480" height="30" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="300" y="80" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">1. Растения (производители) — 100% энергии от солнца</text>
+
+        <rect x="110" y="105" width="380" height="30" rx="6" fill="#bbf7d0" stroke="#16a34a"/>
+        <text x="300" y="125" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">2. Растительноядные — 10% энергии</text>
+
+        <rect x="160" y="150" width="280" height="30" rx="6" fill="#86efac" stroke="#16a34a"/>
+        <text x="300" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#14532d">3. Хищники 1-го порядка — 1% энергии</text>
+
+        <rect x="210" y="195" width="180" height="30" rx="6" fill="#4ade80" stroke="#16a34a"/>
+        <text x="300" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#14532d">4. Хищники 2-го порядка — 0,1%</text>
+
+        <text x="300" y="255" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-style="italic" fill="#475569">На каждом уровне теряется около 90% энергии</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 7.1. Пищевая пирамида — на каждом уровне энергии остаётся всё меньше.</p>
+
+    <p>Именно поэтому:</p>
+
+    <ul>
+        <li>в лесу много травы, кустарников и деревьев;</li>
+        <li>меньше — гусениц и других растительноядных;</li>
+        <li>ещё меньше — птиц, ящериц, мелких хищников;</li>
+        <li>совсем мало — крупных хищников (волков, рысей, орлов).</li>
+    </ul>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Поток энергии учит нас <strong>экономности</strong>. В природе энергия никогда не тратится впустую: каждый её остаток кому-то служит. Растение ловит свет, гусеница ест лист, синица ест гусеницу, ястреб ест синицу, а остатки всех их возвращаются в почву и снова становятся питанием для растений. Это настоящий <em>замкнутый круг жизни</em>. И человек, если он хочет жить в согласии с природой, учится у неё этой экономии.
+    </div>
+
+    <h2>🌊 Круговорот веществ в экосистеме</h2>
+
+    <p>В экосистеме работает не только поток энергии, но и <strong>круговорот веществ</strong>. Это значит, что атомы углерода, азота, фосфора и других элементов не исчезают и не появляются — они постоянно переходят из одного организма в другой и обратно в неживую природу.</p>
+
+    <h3>Как это происходит в лесу</h3>
+
+    <ol>
+        <li><strong>Растение</strong> берёт из воздуха углекислый газ, а из почвы — воду и минеральные соли.</li>
+        <li><strong>На свету</strong> оно превращает их в органические вещества — листья, стволы, плоды.</li>
+        <li><strong>Растительноядные животные</strong> поедают растения и получают эти вещества.</li>
+        <li><strong>Хищники</strong> поедают растительноядных и получают их тоже.</li>
+        <li><strong>Все организмы умирают</strong>, их остатки попадают в почву.</li>
+        <li><strong>Разрушители (бактерии, грибы, черви)</strong> разлагают остатки и возвращают минеральные вещества в почву.</li>
+        <li><strong>Растения снова берут эти вещества</strong> — и всё повторяется.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Запомни.</strong> В природе нет «отходов» — есть только «ресурсы для следующего». Это и есть <em>круговорот</em>. Человек долго не понимал этого принципа и создавал горы мусора. Но теперь, всё чаще, инженеры и учёные смотрят на природу как на образец: строят заводы, где отходы одного процесса — сырьё для другого. Такой подход называют <strong>замкнутым циклом производства</strong>.
+    </div>
+
+    <h2>🔄 Смена экосистем: как природа обновляется</h2>
+
+    <p>Экосистемы не остаются неизменными. Они <strong>меняются со временем</strong>: зарастают озёра, появляются леса на месте лугов, болота превращаются в поля. Это называется <strong>сменой экосистем</strong>.</p>
+
+    <p>Пример такой смены:</p>
+
+    <ol>
+        <li>На голой скале поселяются <strong>лишайники и мхи</strong>.</li>
+        <li>Они создают тонкий слой почвы, и на нём появляются <strong>травы</strong>.</li>
+        <li>Через много лет травы сменяются <strong>кустарниками</strong>.</li>
+        <li>Затем вырастают <strong>светолюбивые деревья</strong> — берёзы, осины, сосны.</li>
+        <li>Под их кронами появляются теневыносливые породы — ели. Лес становится <strong>еловым</strong>.</li>
+        <li>Так постепенно возникает <strong>устойчивое лесное сообщество</strong>, которое может существовать сотни лет.</li>
+    </ol>
+
+    <p>Учёные говорят: экосистема стремится к состоянию <strong>равновесия</strong>. И если человек её не тревожит, она сама восстанавливается и обновляется.</p>
+
+    <h2>🎨 Красота и гармония экосистем</h2>
+
+    <p>Экосистема — это не только научное понятие. Это ещё и великая красота. Всмотрись в лес, луг или озеро — и увидишь удивительную гармонию:</p>
+
+    <ul>
+        <li><strong>Гармония разнообразия.</strong> Каждый вид занимает своё место, но вместе они создают единое целое.</li>
+        <li><strong>Гармония движения.</strong> Всё в экосистеме движется: сок по стволу, вода по кругу, птицы по небу, рыбы по воде, ветер по листьям.</li>
+        <li><strong>Гармония времени.</strong> У каждого события свой срок: весной — цветение, летом — рост, осенью — плоды, зимой — покой.</li>
+        <li><strong>Гармония связей.</strong> Ни одно существо не живёт само по себе — всё соединено в единую сеть жизни.</li>
+    </ul>
+
+    <div class="quote">
+        «Экосистема — это симфония природы. Каждый вид — инструмент, каждая связь — нота. И дирижёр этой симфонии — сама жизнь».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Экосистема</strong> — единство живых организмов и среды их обитания, связанных обменом веществ и энергии.</p>
+        <p><strong>Производители (продуценты)</strong> — растения и некоторые микроорганизмы, создающие органические вещества из неорганических.</p>
+        <p><strong>Потребители (консументы)</strong> — животные и грибы, питающиеся готовыми органическими веществами.</p>
+        <p><strong>Разрушители (редуценты)</strong> — бактерии, грибы, черви, разлагающие остатки организмов.</p>
+        <p><strong>Пищевая связь</strong> — связь «кто кого ест» между организмами.</p>
+        <p><strong>Пищевая сеть</strong> — совокупность пищевых связей в экосистеме.</p>
+        <p><strong>Поток энергии</strong> — переход энергии от одного организма к другому по пищевым связям.</p>
+        <p><strong>Круговорот веществ</strong> — непрерывный переход химических элементов между живыми организмами и средой.</p>
+        <p><strong>Ярусность</strong> — распределение растений и животных по высоте в лесной экосистеме.</p>
+    </div>
+
+    <h2>✏️ Задания для юного исследователя</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">🏠 Задание 7.1. «Четыре компонента экосистемы»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини живой организм с его ролью в экосистеме.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Организм</th>
+                    <th>Роль в экосистеме</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🌳 Дуб</td><td>☐ Производитель ☐ Потребитель ☐ Разрушитель</td></tr>
+                <tr><td>🐇 Заяц</td><td>☐ Производитель ☐ Потребитель ☐ Разрушитель</td></tr>
+                <tr><td>🍄 Гриб-трутовик</td><td>☐ Производитель ☐ Потребитель ☐ Разрушитель</td></tr>
+                <tr><td>🪱 Дождевой червь</td><td>☐ Производитель ☐ Потребитель ☐ Разрушитель</td></tr>
+                <tr><td>🌾 Пшеница</td><td>☐ Производитель ☐ Потребитель ☐ Разрушитель</td></tr>
+                <tr><td>🦊 Лиса</td><td>☐ Производитель ☐ Потребитель ☐ Разрушитель</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌳 Задание 7.2. «Ярусы леса»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Заполни таблицу: распредели растения и животных по ярусам лесной экосистемы.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ярус</th>
+                    <th>Растения</th>
+                    <th>Животные</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>1. Высокие деревья</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>2. Деревья пониже</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>3. Кустарники</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>4. Травы и мхи</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>5. Подземный ярус</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 7.3. «Составь пищевую сеть»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Составь пищевую сеть для лесной экосистемы. Нарисуй не менее четырёх организмов и покажи стрелками, кто кого ест. Обрати внимание: одно животное может есть разных существ — тогда получится <em>сеть</em>, а не одна цепь.</p>
+        <p><strong>Мои организмы:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Моя пищевая сеть:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔍 Задание 7.4. «Исследуй свой уголок природы»</div>
+        <p><span class="signal">🔍 Исследуй</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери небольшой участок природы — двор, парк, луг, берег реки. Проведи исследование: какие компоненты экосистемы здесь есть? Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Компонент</th>
+                    <th>Что я обнаружил?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Производители (растения)</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Потребители (животные)</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Разрушители (грибы, черви)</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><strong>Неживая природа</strong></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод: это настоящая экосистема или её часть? Почему?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">⚡ Задание 7.5. «Пищевая пирамида»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Нарисуй пищевую пирамиду для одной из экосистем (лес, луг или водоём). Покажи, что на каждом уровне энергии становится меньше. Подпиши уровни.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 7.6. «Круговорот веществ»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Опиши круговорот веществ в лесу своими словами. Начни с того, что растение берёт из воздуха и почвы, и закончи тем, как те же вещества снова возвращаются растениям.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌾 Задание 7.7. «Сравни экосистемы»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Сравни две экосистемы: лес и луг. Чем они похожи, чем отличаются?</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Признак</th>
+                    <th>Лес</th>
+                    <th>Луг</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Преобладающие растения</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Основные животные</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Освещённость</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Влажность</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Ярусность</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔄 Задание 7.8. «Как рождается лес»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Опиши и нарисуй, как голая скала или заброшенное поле постепенно превращаются в лес. Расставь этапы смены экосистемы по порядку.</p>
+        <ol>
+            <li>Голая скала или поле</li>
+            <li>Лишайники и мхи</li>
+            <li>Травы</li>
+            <li>Кустарники</li>
+            <li>Светолюбивые деревья (берёза, сосна, осина)</li>
+            <li>Теневыносливые деревья (ель)</li>
+            <li>Устойчивый еловый лес</li>
+        </ol>
+        <p><strong>Мой рисунок одного из этапов:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>экосистема</strong> и почему это единое целое, а не просто «набор организмов».</li>
+            <li>Из каких <strong>четырёх компонентов</strong> состоит любая экосистема.</li>
+            <li>Какие <strong>четыре главные экосистемы</strong> есть в Беларуси: лес, луг, водоём, болото.</li>
+            <li>Что такое <strong>ярусность</strong> и зачем она нужна природе.</li>
+            <li>Что такое <strong>пищевые связи</strong>, <strong>пищевая сеть</strong> и <strong>пищевая пирамида</strong>.</li>
+            <li>Как работает <strong>поток энергии</strong> — почему в природе мало хищников.</li>
+            <li>Что такое <strong>круговорот веществ</strong> и почему в природе нет мусора.</li>
+            <li>Как происходит <strong>смена экосистем</strong> и как природа сама восстанавливается.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Что такое экосистема?</li>
+            <li>Назови четыре компонента любой экосистемы.</li>
+            <li>Что такое ярусность? Приведи пример.</li>
+            <li>Чем пищевая сеть отличается от пищевой цепи?</li>
+            <li>Почему на каждом уровне пищевой пирамиды энергии становится меньше?</li>
+            <li>Что такое круговорот веществ и почему в природе нет мусора?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Экосистема — это <strong>живой дом</strong>, в котором всё связано со всем. Убери один «кирпичик» — и весь дом начнёт шататься. Вот почему настоящий знаток природы никогда не говорит: «Какая разница, если исчезнет один вид?» Он знает: <em>в природе нет «лишних»</em>. Изучая экосистемы, ты учишься видеть целое там, где другие замечают только части. Это и есть настоящее научное зрение.
+    </div>
+
+    <div class="quote">
+        «Всё в природе связано. Тронешь одно — отзовётся другое. Понять это — значит стать настоящим знатоком природы».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section6.html" class="button">← Раздел 6. Тайны неживой природы</a>
+        <a href="section8.html" class="button">📖 Перейти к разделу 8. «Экологические проблемы» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

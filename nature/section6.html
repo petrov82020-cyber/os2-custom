@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 6. Тайны неживой природы: опыты и эксперименты — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #1e466e;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки "стихии" */
+        .element-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .element-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #0969da;
+        }
+        .element-card .el-icon {
+            font-size: 1.9rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .element-card .el-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .element-card .el-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Эксперимент — особая карточка */
+        .experiment-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #0969da;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .experiment-card::before {
+            content: "ОПЫТ";
+            position: absolute;
+            top: -12px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .experiment-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+            margin-top: 6px;
+        }
+        .experiment-card p { font-size: 0.94rem; }
+        .experiment-card .exp-label {
+            display: inline-block;
+            font-weight: 700;
+            color: #1e466e;
+            margin-right: 6px;
+        }
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding-left: 42px;
+            position: relative;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Таблица наблюдений */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Схема круговорота воды */
+        .water-cycle-svg {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+        }
+
+        /* Карусель "физическое/химическое" */
+        .phenom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .phenom-card {
+            background: #f8fafc;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+        }
+        .phenom-card .phen-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .phenom-card .phen-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section5.html" class="back-link" style="margin-left: 15px;">← Раздел 5</a>
+
+    <h1>💧 Раздел 6. Тайны неживой природы: опыты и эксперименты</h1>
+    <div class="section-meta">📖 Ключ II. Ум исследователя | 🎯 Для детей 8–11 лет | ⏱ 14 часов</div>
+
+    <div class="intro-card">
+        <p>Мы с тобой уже хорошо изучили живую природу — растения и животных. Но жизнь на Земле была бы невозможна без трёх великих стихий: <strong>воды, воздуха и почвы</strong>. Они кажутся нам обычными и привычными. Мы пьём воду, дышим воздухом, ходим по земле и почти не замечаем их. А между тем именно в них скрыты самые удивительные тайны природы.</p>
+        <p>В этом разделе мы снова станем исследователями, но уже не наблюдателями, а <strong>экспериментаторами</strong>. Мы будем ставить опыты, проводить измерения, делать выводы. Мы узнаем, почему вода не имеет формы, откуда берётся дождь, что такое круговорот веществ и как однажды использованная вещь возвращается в природу снова. И ещё — увидим, что неживая природа так же удивительна, как и живая.</p>
+    </div>
+
+    <h2>🌍 Три стихии, три основы жизни</h2>
+
+    <p>Вода, воздух и почва — это <strong>три кита, на которых держится вся жизнь на нашей планете</strong>. Учёные называют их <em>абиотическими факторами среды</em> — то есть условиями неживой природы, которые определяют, где и как могут жить живые существа.</p>
+
+    <div class="element-grid">
+        <div class="element-card">
+            <span class="el-icon">💧</span>
+            <div class="el-title">Вода — растворитель жизни</div>
+            <div class="el-text">Все живые существа на 60–98% состоят из воды. В воде растворяются питательные вещества. Без воды невозможен ни один процесс в организме.</div>
+        </div>
+        <div class="element-card">
+            <span class="el-icon">💨</span>
+            <div class="el-title">Воздух — дыхание планеты</div>
+            <div class="el-text">Воздух содержит кислород, которым дышат почти все живые существа, и углекислый газ, который нужен растениям для фотосинтеза.</div>
+        </div>
+        <div class="element-card">
+            <span class="el-icon">🌱</span>
+            <div class="el-title">Почва — дом и кладовая</div>
+            <div class="el-text">В почве растут растения, живут миллионы микроорганизмов. Почва накапливает воду и питательные вещества, а также перерабатывает остатки живого.</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать.</strong> Вода — <strong>единственное вещество на Земле</strong>, которое встречается в природе в трёх состояниях: жидком (вода), твёрдом (лёд, снег) и газообразном (пар). Именно это делает возможным круговорот воды и поддерживает жизнь на всей планете.
+    </div>
+
+    <h2>💧 Вода: удивительные свойства</h2>
+
+    <p>Мы привыкли думать, что «вода — это просто вода». Но на самом деле вода — одно из самых необычных веществ во Вселенной. У неё есть свойства, которых нет ни у одного другого вещества на нашей планете.</p>
+
+    <h3>Главные свойства воды</h3>
+
+    <ul>
+        <li><strong>Прозрачность и бесцветность.</strong> Через воду видно, как через стекло, но сама она не имеет цвета.</li>
+        <li><strong>Отсутствие собственной формы.</strong> Вода принимает форму того сосуда, в который её налили.</li>
+        <li><strong>Текучесть.</strong> Вода всегда стремится занять самое низкое место.</li>
+        <li><strong>Растворитель.</strong> В воде растворяются многие вещества — сахар, соль, минералы.</li>
+        <li><strong>Плотность.</strong> В твёрдом состоянии (лёд) вода легче, чем в жидком. Поэтому лёд плавает, а не тонет.</li>
+        <li><strong>Теплоёмкость.</strong> Вода медленно нагревается и медленно остывает — поэтому водоёмы сглаживают климат.</li>
+    </ul>
+
+    <h3>Три состояния воды: путешествие капельки</h3>
+
+    <p>Вода — настоящая путешественница. Она существует в трёх состояниях и постоянно переходит из одного в другое.</p>
+
+    <div class="experiment-card">
+        <div class="experiment-title">🔬 Опыт «Три состояния воды в одной кастрюле»</div>
+        <p><span class="exp-label">Цель:</span> увидеть своими глазами переход воды из одного состояния в другое.</p>
+        <p><span class="exp-label">Что понадобится:</span> кастрюля с водой, плита (с помощью взрослых!), прозрачная крышка или блюдце, лёд.</p>
+        <ol class="step-list">
+            <li>Положи в кастрюлю кусочек льда — это <strong>твёрдое</strong> состояние воды.</li>
+            <li>Поставь кастрюлю на плиту и включи её (только с разрешения взрослых!).</li>
+            <li>Понаблюдай: лёд тает и превращается в <strong>жидкую</strong> воду.</li>
+            <li>Когда вода закипит, подержи над ней холодную прозрачную крышку или блюдце.</li>
+            <li>На крышке появятся капли — это <strong>пар</strong> снова превратился в воду.</li>
+        </ol>
+        <p><span class="exp-label">Наблюдение:</span> одно и то же вещество побывало во всех трёх состояниях: твёрдом, жидком, газообразном.</p>
+        <p><span class="exp-label">Вывод:</span> вода в природе способна переходить из одного состояния в другое, и это — основа круговорота воды.</p>
+    </div>
+
+    <h2>🌊 Круговорот воды в природе: путешествие без конца</h2>
+
+    <p>Солнце нагревает поверхность воды в океанах, морях, реках, озёрах. Вода испаряется — превращается в невидимый пар и поднимается в воздух. Там пар охлаждается, снова превращается в капельки воды — так образуются облака. Из облаков вода возвращается на землю в виде дождя или снега. Затем она стекает в реки, впитывается в почву — и снова оказывается в морях и океанах. И так без конца.</p>
+
+    <p>Этот удивительный процесс называется <strong>круговоротом воды в природе</strong>. Он работает миллиарды лет и поддерживает жизнь на всей планете.</p>
+
+    <!-- SVG круговорот воды -->
+    <svg class="water-cycle-svg" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема круговорота воды в природе">
+        <rect x="10" y="10" width="580" height="300" rx="16" fill="#f8fafc"/>
+        <text x="300" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#075985">КРУГОВОРОТ ВОДЫ В ПРИРОДЕ</text>
+
+        <!-- Солнце -->
+        <circle cx="80" cy="80" r="28" fill="#fde047" stroke="#eab308"/>
+        <text x="80" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">☀️</text>
+
+        <!-- Море -->
+        <rect x="60" y="220" width="480" height="60" rx="8" fill="#bae6fd" stroke="#0284c7"/>
+        <text x="300" y="255" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#075985">Реки, озёра, моря, океаны</text>
+
+        <!-- Облака -->
+        <ellipse cx="300" cy="110" rx="55" ry="22" fill="#e2e8f0" stroke="#94a3b8"/>
+        <ellipse cx="340" cy="105" rx="40" ry="16" fill="#e2e8f0" stroke="#94a3b8"/>
+        <ellipse cx="260" cy="103" rx="38" ry="15" fill="#e2e8f0" stroke="#94a3b8"/>
+        <text x="300" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">Облака</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="cyc-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#0284c7"/>
+            </marker>
+        </defs>
+
+        <!-- Испарение -->
+        <line x1="170" y1="220" x2="230" y2="130" stroke="#0284c7" stroke-width="2" marker-end="url(#cyc-arrow)"/>
+        <text x="150" y="180" font-family="Segoe UI, sans-serif" font-size="11" fill="#075985">Испарение</text>
+
+        <!-- Движение облаков -->
+        <line x1="360" y1="110" x2="450" y2="135" stroke="#0284c7" stroke-width="2" marker-end="url(#cyc-arrow)"/>
+        <text x="400" y="100" font-family="Segoe UI, sans-serif" font-size="11" fill="#075985">Перенос</text>
+
+        <!-- Дождь -->
+        <line x1="470" y1="150" x2="470" y2="215" stroke="#0284c7" stroke-width="2" marker-end="url(#cyc-arrow)"/>
+        <text x="480" y="180" font-family="Segoe UI, sans-serif" font-size="11" fill="#075985">Осадки</text>
+
+        <!-- Сток -->
+        <line x1="380" y1="240" x2="200" y2="240" stroke="#0284c7" stroke-width="2" marker-end="url(#cyc-arrow)"/>
+        <text x="280" y="235" font-family="Segoe UI, sans-serif" font-size="11" fill="#075985">Сток воды</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 6.1. Круговорот воды в природе — бесконечное путешествие одной капли.</p>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Вода в природе <strong>не исчезает и не появляется</strong> — она лишь переходит из одного места в другое, из одного состояния в другое. Это первый пример <em>замкнутого круговорота веществ</em>. Природа — гениальный эконом: она ничего не выбрасывает и всё использует повторно. Этому мудрому принципу у неё учится и человек — в современном мире его называют <strong>безотходным производством</strong>.
+    </div>
+
+    <h2>💨 Воздух: невидимый, но незаменимый</h2>
+
+    <p>Воздух невозможно увидеть. Но без него жизнь остановилась бы за несколько минут. Воздух — это смесь газов, главные из которых:</p>
+
+    <ul>
+        <li><strong>Азот</strong> — около 78% воздуха. Он необходим растениям и входит в состав белков.</li>
+        <li><strong>Кислород</strong> — около 21%. Им дышат люди и животные.</li>
+        <li><strong>Углекислый газ</strong> — около 0,04%. Необходим растениям для фотосинтеза.</li>
+        <li><strong>Прочие газы</strong> — аргон, водяной пар и другие.</li>
+    </ul>
+
+    <h3>Свойства воздуха: эксперимент за экспериментом</h3>
+
+    <div class="experiment-card">
+        <div class="experiment-title">🔬 Опыт «Воздух занимает место»</div>
+        <p><span class="exp-label">Цель:</span> доказать, что воздух существует и занимает место в пространстве.</p>
+        <p><span class="exp-label">Что понадобится:</span> прозрачный стакан, тазик с водой, салфетка.</p>
+        <ol class="step-list">
+            <li>Сомни салфетку и положи её на дно стакана.</li>
+            <li>Переверни стакан вверх дном и медленно опусти в воду.</li>
+            <li>Достань стакан и проверь, намокла ли салфетка.</li>
+        </ol>
+        <p><span class="exp-label">Наблюдение:</span> салфетка осталась сухой.</p>
+        <p><span class="exp-label">Вывод:</span> в стакане был воздух, который не пустил воду внутрь. Значит, воздух существует и занимает место.</p>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-title">🔬 Опыт «Воздух можно сжать»</div>
+        <p><span class="exp-label">Цель:</span> убедиться, что воздух можно сжимать.</p>
+        <p><span class="exp-label">Что понадобится:</span> медицинский шприц без иглы.</p>
+        <ol class="step-list">
+            <li>Зажми пальцем отверстие шприца.</li>
+            <li>Потяни поршень на себя — воздух войдёт внутрь.</li>
+            <li>Не отпуская палец, попробуй вдавить поршень — воздух сожмётся.</li>
+            <li>Отпусти палец — воздух выйдет с шумом.</li>
+        </ol>
+        <p><span class="exp-label">Наблюдение:</span> воздух можно сжать, но он снова расширяется, как только освобождается место.</p>
+        <p><span class="exp-label">Вывод:</span> воздух — упругое вещество. На этом свойстве работают насосы, надувные лодки, автомобильные шины.</p>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-title">🔬 Опыт «Тёплый воздух легче холодного»</div>
+        <p><span class="exp-label">Цель:</span> увидеть, что тёплый воздух поднимается вверх.</p>
+        <p><span class="exp-label">Что понадобится:</span> два бумажных пакетика, нитки, свеча (только со взрослыми).</p>
+        <ol class="step-list">
+            <li>Подвесь два пакетика на разных концах нитки, уравновесив их.</li>
+            <li>Осторожно поднеси зажжённую свечу под один из пакетиков.</li>
+            <li>Понаблюдай, что произойдёт.</li>
+        </ol>
+        <p><span class="exp-label">Наблюдение:</span> пакетик над свечой поднимается вверх.</p>
+        <p><span class="exp-label">Вывод:</span> тёплый воздух легче холодного и поднимается вверх. Именно поэтому воздушный шар летит в небо, а тёплые потоки воздуха уносят птиц и семена вверх.</p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Внимание.</strong> Опыты с огнём проводи <strong>только со взрослыми</strong>. Настоящий исследователь умеет соблюдать правила безопасности — это часть его профессионализма.
+    </div>
+
+    <h2>🌱 Почва: живая, тёплая, плодородная</h2>
+
+    <p>Почва — это верхний слой земли, в котором растут растения. Но почва — не просто «земля». Это <strong>сложное вещество</strong>, в состав которого входят:</p>
+
+    <ul>
+        <li><strong>Минеральные частицы</strong> — песок, глина.</li>
+        <li><strong>Перегной (гумус)</strong> — разложившиеся остатки растений и животных. Именно он делает почву плодородной и тёмной.</li>
+        <li><strong>Вода</strong> — удерживается в порах между частицами.</li>
+        <li><strong>Воздух</strong> — заполняет другие поры.</li>
+        <li><strong>Живые организмы</strong> — бактерии, грибы, дождевые черви, насекомые.</li>
+    </ul>
+
+    <div class="experiment-card">
+        <div class="experiment-title">🔬 Опыт «Состав почвы»</div>
+        <p><span class="exp-label">Цель:</span> узнать, из чего состоит почва.</p>
+        <p><span class="exp-label">Что понадобится:</span> образец почвы, стакан с водой, палочка, лупа.</p>
+        <ol class="step-list">
+            <li>Рассмотри почву через лупу. Что ты видишь?</li>
+            <li>Положи почву в стакан с водой и размешай.</li>
+            <li>Дай отстояться — понаблюдай, что осело на дно, что всплыло.</li>
+        </ol>
+        <p><span class="exp-label">Наблюдение:</span> на поверхность всплыли лёгкие растительные остатки и пузырьки воздуха; на дно осели песок и глина; в воде остался тёмный перегной.</p>
+        <p><span class="exp-label">Вывод:</span> почва состоит из песка, глины, перегноя, воды, воздуха и живых организмов.</p>
+    </div>
+
+    <div class="experiment-card">
+        <div class="experiment-title">🔬 Опыт «Разная почва — разная пропускная способность»</div>
+        <p><span class="exp-label">Цель:</span> сравнить, как разные виды почвы пропускают воду.</p>
+        <p><span class="exp-label">Что понадобится:</span> две воронки, две ёмкости, песок, глина, вода, часы.</p>
+        <ol class="step-list">
+            <li>Поставь воронку с песком в одну ёмкость, с глиной — в другую.</li>
+            <li>Налей в обе воронки одинаковое количество воды.</li>
+            <li>Заметь, как быстро вода пройдёт через каждую.</li>
+        </ol>
+        <p><span class="exp-label">Наблюдение:</span> через песок вода проходит почти мгновенно, а через глину — очень медленно, часть остаётся сверху.</p>
+        <p><span class="exp-label">Вывод:</span> песчаная почва пропускает воду быстро, а глинистая — медленно. Поэтому после дождя на песчаных дорожках луж нет, а на глинистых — стоят целые озёра.</p>
+    </div>
+
+    <h2>🔬 Физические и химические явления в природе</h2>
+
+    <p>Все изменения, которые происходят в природе, учёные делят на два больших типа: <strong>физические</strong> и <strong>химические</strong>.</p>
+
+    <div class="phenom-grid">
+        <div class="phenom-card">
+            <div class="phen-title">❄️ Физические явления</div>
+            <div class="phen-text">Вещество остаётся тем же, но меняет форму, размер или состояние. Например: таяние льда, кипение воды, растворение сахара, разбитое стекло. Вещество не изменяется — только его внешний вид.</div>
+        </div>
+        <div class="phenom-card">
+            <div class="phen-title">🔥 Химические явления</div>
+            <div class="phen-text">Из одного вещества образуется другое. Например: горение дерева (из дерева получаются зола, дым и газы), ржавление металла, скисание молока. Вещество изменяется — появляется новое.</div>
+        </div>
+        <div class="phenom-card">
+            <div class="phen-title">🌧️ Круговорот воды — физическое явление</div>
+            <div class="phen-text">Вода испаряется, образует облака, выпадает дождём — но остаётся водой. Это изменение состояния, а не превращение в другое вещество.</div>
+        </div>
+        <div class="phenom-card">
+            <div class="phen-title">🍂 Гниение листьев — химическое явление</div>
+            <div class="phen-text">Опавшие листья под действием микроорганизмов превращаются в перегной — совершенно другое вещество. Это химический процесс.</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Запомни.</strong> В природе физические и химические явления происходят постоянно, часто вместе. Когда горит костёр — дерево химически превращается в золу и дым (химическое явление), а вода в котелке над костром испаряется (физическое явление). Настоящий исследователь умеет различать эти два типа явлений.
+    </div>
+
+    <h2>♻️ Круговорот веществ: как природа всё использует повторно</h2>
+
+    <p>В природе нет «мусора». То, что для одного организма отходы — для другого пища. Опавшие листья перерабатываются микроорганизмами в перегной, перегной питает растения, растения поедают животные, животные умирают и снова возвращаются в почву. Так работает <strong>круговорот веществ в природе</strong>.</p>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Природа — <strong>гениальный эконом</strong>. Она не производит отходов. Всё, что перестаёт быть нужным одному организму, становится пищей или строительным материалом для другого. Человек долгое время не понимал этого принципа и создавал горы мусора. Но теперь учёные и инженеры всё чаще смотрят на природу как на образец: создают <em>замкнутые производства</em>, где отходы одного процесса — сырьё для другого.
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Три состояния воды</strong> — твёрдое (лёд, снег), жидкое (вода), газообразное (пар).</p>
+        <p><strong>Круговорот воды в природе</strong> — непрерывный процесс перехода воды из одного состояния в другое и её перемещения по планете.</p>
+        <p><strong>Состав воздуха</strong> — азот (78%), кислород (21%), углекислый газ (0,04%) и другие газы.</p>
+        <p><strong>Состав почвы</strong> — минеральные частицы, перегной, вода, воздух, живые организмы.</p>
+        <p><strong>Плодородие почвы</strong> — способность почвы обеспечивать растения питательными веществами.</p>
+        <p><strong>Физические явления</strong> — изменения формы, размера или состояния вещества без превращения его в другое вещество.</p>
+        <p><strong>Химические явления</strong> — превращение одного вещества в другое.</p>
+        <p><strong>Круговорот веществ</strong> — непрерывное перемещение и превращение веществ в природе.</p>
+    </div>
+
+    <h2>✏️ Задания для юного экспериментатора</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">💧 Задание 6.1. «Три состояния воды»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Приведи примеры трёх состояний воды, которые ты встречал в природе или в быту. Нарисуй каждый пример.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Состояние</th>
+                    <th>Примеры в природе</th>
+                    <th>Примеры в быту</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>❄️ Твёрдое</strong></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>💧 Жидкое</strong></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>☁️ Газообразное</strong></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌊 Задание 6.2. «Расскажи круговорот воды»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Представь, что ты — маленькая капелька воды. Опиши своё путешествие: где ты была, что с тобой происходило, как ты вернулась обратно.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔬 Задание 6.3. «Мои собственные опыты»</div>
+        <p><span class="signal">🔬 Опыт</span> <span class="signal">📝 Запиши</span></p>
+        <p>Проведи один из опытов этого раздела самостоятельно. Опиши его по структуре: цель — материалы — ход — наблюдение — вывод.</p>
+        <p><strong>Цель опыта:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Материалы:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Ход опыта:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Что я наблюдал:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой вывод:</strong></p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌱 Задание 6.4. «Исследование своей почвы»</div>
+        <p><span class="signal">🔍 Исследуй</span> <span class="signal">📝 Запиши</span></p>
+        <p>Возьми образец почвы из своего двора или с клумбы. Рассмотри его, определи цвет, рыхлость, наличие живых организмов. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Что проверяю?</th>
+                    <th>Мой результат</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Цвет почвы</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Рыхлая или плотная?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Кто живёт в почве?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Есть ли остатки растений?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Как пропускает воду?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод о почве:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔥 Задание 6.5. «Физическое или химическое?»</div>
+        <p><span class="signal">🔗 Соедини</span></p>
+        <p>Определи, к какому типу явлений относится каждое. Поставь галочку в нужной колонке.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Явление</th>
+                    <th>Физическое</th>
+                    <th>Химическое</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Таяние льда</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Горение костра</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Растворение сахара в чае</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Скисание молока</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Кипение воды</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Ржавление гвоздя</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">♻️ Задание 6.6. «Круговорот веществ в природе»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Нарисуй схему круговорота веществ в природе. Покажи стрелками, как опавшие листья превращаются в перегной, как перегной питает растения, как растения становятся пищей для животных. Раскрась свою схему.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что вода — <strong>уникальное вещество</strong>, существующее в трёх состояниях.</li>
+            <li>Как происходит <strong>круговорот воды в природе</strong> и почему он важен.</li>
+            <li>Из чего состоит <strong>воздух</strong> и какими свойствами он обладает.</li>
+            <li>Из чего состоит <strong>почва</strong> и почему она плодородна.</li>
+            <li>Чем отличаются <strong>физические и химические явления</strong>.</li>
+            <li>Что такое <strong>круговорот веществ</strong> и почему в природе нет мусора.</li>
+            <li>Как правильно проводить <strong>настоящие опыты и эксперименты</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>В каких трёх состояниях встречается вода в природе?</li>
+            <li>Что такое круговорот воды?</li>
+            <li>Какие газы входят в состав воздуха?</li>
+            <li>Из чего состоит почва?</li>
+            <li>Чем отличаются физические явления от химических?</li>
+            <li>Почему в природе нет мусора?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Неживая природа — <strong>не «мёртвая»</strong>, как иногда кажется. Это основа всей жизни. Вода, воздух и почва — три великие стихии — находятся в постоянном движении, взаимодействии и обновлении. Изучая их, ты учишься у природы её главной мудрости: <em>всё в мире связано, всё возвращается, ничего не исчезает бесследно</em>. Настоящий знаток природы видит в простой капле воды — целый мир.
+    </div>
+
+    <div class="quote">
+        «Капля воды может отражать целый мир. Учёный, который смотрит на неё внимательно, увидит в ней всю мудрость природы».
+        <span class="quote-author">— из размышлений исследователя</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section5.html" class="button">← Раздел 5. Мир животных</a>
+        <a href="section7.html" class="button">📖 Перейти к разделу 7. «Экосистемы» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 8. Экологические проблемы: причины и следствия — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #1e466e;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .red-note {
+            background: #fef2f2;
+            padding: 15px 20px;
+            border-left: 5px solid #dc2626;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки проблем */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .problem-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #dc2626;
+        }
+        .problem-card .prob-icon {
+            font-size: 1.9rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .problem-card .prob-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .problem-card .prob-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Схема "причина — следствие" */
+        .cause-effect {
+            background: #fef2f2;
+            border: 2px solid #dc2626;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 22px 0;
+        }
+        .cause-effect-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+        .cause-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+            padding: 10px 14px;
+            background: white;
+            border-radius: 10px;
+        }
+        .cause-box {
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-width: 140px;
+            text-align: center;
+        }
+        .cause-red {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .cause-orange {
+            background: #ffedd5;
+            color: #9a3412;
+            border: 1px solid #fdba74;
+        }
+        .cause-arrow {
+            color: #dc2626;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Плитки решений */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .solution-card {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border: 2px solid #16a34a;
+            border-radius: 14px;
+            padding: 16px 20px;
+        }
+        .solution-card .sol-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .solution-card .sol-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .solution-card .sol-text {
+            font-size: 0.9rem;
+            color: #14532d;
+            line-height: 1.55;
+        }
+
+        /* Иерархия обращения с отходами */
+        .waste-hierarchy {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .waste-level {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 0.94rem;
+        }
+        .waste-level-1 { background: #dcfce7; border-left: 5px solid #16a34a; }
+        .waste-level-2 { background: #dbeafe; border-left: 5px solid #2563eb; }
+        .waste-level-3 { background: #fef3c7; border-left: 5px solid #d97706; }
+        .waste-level-4 { background: #ffedd5; border-left: 5px solid #ea580c; }
+        .waste-level-5 { background: #fee2e2; border-left: 5px solid #dc2626; }
+        .waste-level .waste-rank {
+            font-weight: 700;
+            font-size: 1.1rem;
+            min-width: 30px;
+        }
+        .waste-level .waste-name {
+            font-weight: 700;
+            min-width: 150px;
+        }
+        .waste-level .waste-desc {
+            font-size: 0.88rem;
+            color: #1a1e24;
+        }
+
+        /* Экологический след */
+        .footprint-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .footprint-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+            .waste-level { flex-direction: column; align-items: flex-start; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section7.html" class="back-link" style="margin-left: 15px;">← Раздел 7</a>
+
+    <h1>⚠️ Раздел 8. Экологические проблемы: причины и следствия</h1>
+    <div class="section-meta">📖 Ключ III. Сердце исследователя | 🎯 Для детей 8–11 лет | ⏱ 12 часов</div>
+
+    <div class="intro-card">
+        <p>До сих пор мы с тобой изучали природу как чудесный дом, полный гармонии и красоты. Но этот дом нуждается в защите. Ведь человек — тоже часть природы, и его деятельность не всегда идёт ей на пользу. Загрязняются реки и воздух, исчезают леса, накапливаются горы мусора, меняется климат планеты. Это — <strong>экологические проблемы</strong>.</p>
+        <p>Изучать экологические проблемы — не значит пугаться или опускать руки. Настоящий знаток природы умеет <strong>видеть причины и следствия</strong>, понимать, откуда пришла проблема и что можно сделать для её решения. Проблема — это не приговор, а задача, которую человек способен решить. В этом разделе мы научимся смотреть на экологические проблемы глазами исследователя — спокойно, точно и с надеждой.</p>
+    </div>
+
+    <h2>🌍 Что такое экологическая проблема</h2>
+
+    <p><strong>Экологическая проблема</strong> — это изменение в природе, вызванное деятельностью человека (или, реже, природными процессами), которое наносит вред живым организмам, экосистемам или самому человеку.</p>
+
+    <p>Экологические проблемы бывают:</p>
+
+    <ul>
+        <li><strong>Локальными</strong> — возникают на небольшой территории (например, загрязнение реки в одном городе).</li>
+        <li><strong>Региональными</strong> — охватывают целые регионы (например, кислотные дожди в Европе).</li>
+        <li><strong>Глобальными</strong> — касаются всей планеты (например, изменение климата, загрязнение Мирового океана).</li>
+    </ul>
+
+    <p>Особенность экологических проблем в том, что они <strong>не признают границ</strong>. То, что произошло в одной стране, может повлиять на весь мир. Вот почему решать их нужно всем вместе.</p>
+
+    <div class="quote">
+        «У природы нет границ. Грязная река в одной стране становится грязной рекой во всём мире. Вот почему экология — это наука о всех сразу».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <h2>🌫️ Главные экологические проблемы современности</h2>
+
+    <p>Учёные выделяют несколько <strong>ключевых экологических проблем</strong>, которые сегодня волнуют всё человечество. С каждой из них мы должны быть знакомы, потому что от их решения зависит будущее нашей планеты.</p>
+
+    <div class="problem-grid">
+        <div class="problem-card">
+            <span class="prob-icon">🏭</span>
+            <div class="prob-title">Загрязнение воздуха</div>
+            <div class="prob-text">Заводы, автомобили и котельные выбрасывают в атмосферу тысячи тонн вредных газов. Это приводит к болезням дыхания, кислотным дождям и парниковому эффекту.</div>
+        </div>
+        <div class="problem-card">
+            <span class="prob-icon">💧</span>
+            <div class="prob-title">Загрязнение воды</div>
+            <div class="prob-text">В реки и озёра попадают промышленные стоки, нефть, удобрения, мусор. Вода становится непригодной для питья, гибнут рыбы и другие обитатели водоёмов.</div>
+        </div>
+        <div class="problem-card">
+            <span class="prob-icon">🗑️</span>
+            <div class="prob-title">Мусор и отходы</div>
+            <div class="prob-text">Каждый год человечество производит миллиарды тонн мусора. Пластик, стекло, металл разлагаются сотни лет и отравляют землю и воду.</div>
+        </div>
+        <div class="problem-card">
+            <span class="prob-icon">🌡️</span>
+            <div class="prob-title">Изменение климата</div>
+            <div class="prob-text">Из-за парникового эффекта средняя температура на планете растёт. Это приводит к таянию ледников, подъёму уровня моря, изменению погоды.</div>
+        </div>
+        <div class="problem-card">
+            <span class="prob-icon">🌲</span>
+            <div class="prob-title">Вырубка лесов</div>
+            <div class="prob-text">Леса исчезают из-за вырубки и пожаров. Это лишает животных жилья, обедняет почву, снижает количество кислорода на планете.</div>
+        </div>
+        <div class="problem-card">
+            <span class="prob-icon">🦏</span>
+            <div class="prob-title">Исчезновение видов</div>
+            <div class="prob-text">Многие виды растений и животных исчезают из-за разрушения их среды обитания. Это обедняет природу и нарушает её равновесие.</div>
+        </div>
+    </div>
+
+    <h2>🔍 Причины и следствия: учимся видеть связи</h2>
+
+    <p>Чтобы понять любую экологическую проблему, нужно найти её <strong>причину</strong> (что произошло) и её <strong>следствие</strong> (к чему это привело). Настоящий исследователь всегда идёт по этой цепочке: причина → следствие → решение.</p>
+
+    <div class="cause-effect">
+        <div class="cause-effect-title">🔗 Примеры причинно-следственных связей в экологии</div>
+
+        <div class="cause-row">
+            <div class="cause-box cause-red">Заводы и автомобили выбрасывают газы</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Загрязнение воздуха</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Болезни людей, кислотные дожди</div>
+        </div>
+
+        <div class="cause-row">
+            <div class="cause-box cause-red">Мусор попадает в реки</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Загрязнение воды</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Гибнут рыбы, нельзя пить воду</div>
+        </div>
+
+        <div class="cause-row">
+            <div class="cause-box cause-red">Люди выбрасывают пластик</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Пластик не разлагается 400 лет</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Загрязнение почвы и океанов</div>
+        </div>
+
+        <div class="cause-row">
+            <div class="cause-box cause-red">Вырубка лесов</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Потеря жилья для животных</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Исчезновение видов</div>
+        </div>
+
+        <div class="cause-row">
+            <div class="cause-box cause-red">Накопление углекислого газа</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Парниковый эффект</div>
+            <div class="cause-arrow">→</div>
+            <div class="cause-box cause-orange">Изменение климата</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Запомни.</strong> Любая экологическая проблема имеет <strong>конкретную причину</strong>. И это очень важно! Ведь если у проблемы есть причина, то есть и <em>возможность её устранить</em>. Человек может изменить своё поведение, научиться делать вещи по-другому, использовать новые технологии. Именно так и решаются экологические проблемы.
+    </div>
+
+    <h2>🗑️ Мусор: главная проблема современного мира</h2>
+
+    <p>Из всех экологических проблем <strong>мусор</strong> — самая близкая и понятная каждому из нас. Мы сталкиваемся с ним каждый день: пакеты из магазина, пластиковые бутылки, использованные батарейки, старые вещи. Куда всё это девается? И что с ним происходит дальше?</p>
+
+    <h3>Как долго разлагается мусор в природе?</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Вид мусора</th>
+                <th>Срок разложения</th>
+                <th>Что происходит с ним</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>🍂 Пищевые отходы</td>
+                <td>1–2 месяца</td>
+                <td>Быстро перерабатываются микроорганизмами, возвращаются в почву</td>
+            </tr>
+            <tr>
+                <td>📰 Бумага</td>
+                <td>2–4 месяца</td>
+                <td>Разлагается бактериями, но если её много — загрязняет почву</td>
+            </tr>
+            <tr>
+                <td>🥫 Консервная банка</td>
+                <td>10–20 лет</td>
+                <td>Ржавеет, оставляет после себя оксиды металлов</td>
+            </tr>
+            <tr>
+                <td>🚬 Окурок</td>
+                <td>1–5 лет</td>
+                <td>Отравляет почву никотином и смолами</td>
+            </tr>
+            <tr>
+                <td>🥤 Пластиковая бутылка</td>
+                <td>400–500 лет</td>
+                <td>Практически не разлагается, только распадается на микропластик</td>
+            </tr>
+            <tr>
+                <td>🛍️ Пластиковый пакет</td>
+                <td>200–400 лет</td>
+                <td>Распадается на микропластик, попадает в воду и живые организмы</td>
+            </tr>
+            <tr>
+                <td>🫙 Стеклянная бутылка</td>
+                <td>до 1000 лет</td>
+                <td>Не разлагается, сохраняется веками</td>
+            </tr>
+            <tr>
+                <td>🔋 Батарейка</td>
+                <td>не разлагается, но опасна</td>
+                <td>Выделяет в почву и воду тяжёлые металлы</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="red-note">
+        <strong>⚠️ Важно понять.</strong> Одна выброшенная пластиковая бутылка будет загрязнять природу <strong>дольше, чем живёт человек</strong>. Один окурок может отравить несколько литров воды. Одна батарейка загрязняет 20 квадратных метров почвы. И таких «одних» выбрасываются миллиарды каждый день. Вот почему правильное обращение с мусором — это <em>личная ответственность каждого</em>.
+    </div>
+
+    <h3>Иерархия обращения с отходами</h3>
+
+    <p>Учёные разработали <strong>пять уровней обращения с отходами</strong>. Чем выше уровень, тем больше пользы для природы. Эти пять принципов — как лестница, по которой человек поднимается к экологически устойчивому будущему.</p>
+
+    <div class="waste-hierarchy">
+        <div class="waste-level waste-level-1">
+            <span class="waste-rank">1</span>
+            <span class="waste-name">🚫 Предотвращение</span>
+            <span class="waste-desc">Лучший вариант — не создавать отходов. Не покупать лишнего, использовать многоразовое вместо одноразового.</span>
+        </div>
+        <div class="waste-level waste-level-2">
+            <span class="waste-rank">2</span>
+            <span class="waste-name">♻️ Повторное использование</span>
+            <span class="waste-desc">Дать вещам вторую жизнь: сдать книги, одежду, игрушки, использовать стеклянные банки для хранения.</span>
+        </div>
+        <div class="waste-level waste-level-3">
+            <span class="waste-rank">3</span>
+            <span class="waste-name">🔄 Переработка</span>
+            <span class="waste-desc">Сдать отходы на переработку: бумагу, пластик, стекло, металл. Из них сделают новые вещи.</span>
+        </div>
+        <div class="waste-level waste-level-4">
+            <span class="waste-rank">4</span>
+            <span class="waste-name">🔥 Сжигание</span>
+            <span class="waste-desc">Используется для отходов, которые нельзя переработать. Требует специального оборудования и фильтров.</span>
+        </div>
+        <div class="waste-level waste-level-5">
+            <span class="waste-rank">5</span>
+            <span class="waste-name">🗑️ Захоронение</span>
+            <span class="waste-desc">Крайний вариант — свалка. Отходы остаются в земле сотни лет и загрязняют среду.</span>
+        </div>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Природа не производит мусора — она использует всё повторно. Лист падает, разлагается, становится перегноем, питает дерево, на дереве появляется новый лист. <em>Замкнутый круг</em>. И человек, если он хочет жить в согласии с природой, тоже должен строить <strong>замкнутые циклы</strong> — так, чтобы отходы одного процесса становились сырьём для другого. Это называется <strong>устойчивым развитием</strong>.
+    </div>
+
+    <h2>♻️ Устойчивое развитие: как жить, чтобы хватило всем</h2>
+
+    <p><strong>Устойчивое развитие</strong> — это такое развитие общества, которое удовлетворяет потребности нынешнего поколения, <strong>не лишая будущие поколения</strong> возможности удовлетворять их потребности.</p>
+
+    <p>Проще говоря: жить хорошо сегодня так, чтобы наши дети, внуки и правнуки тоже могли жить хорошо. Не съедать всё сразу, не забирать у будущего, не оставлять после себя пустыню.</p>
+
+    <h3>Три столпа устойчивого развития</h3>
+
+    <ul>
+        <li><strong>Экологический столп.</strong> Сохранение природы, бережное использование ресурсов, охрана видов и экосистем.</li>
+        <li><strong>Экономический столп.</strong> Разумное хозяйствование, ресурсосберегающие технологии, отказ от разрушительных производств.</li>
+        <li><strong>Социальный столп.</strong> Забота о людях, справедливость, доступность благ для всех, сохранение культурного наследия.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Запомни.</strong> Устойчивое развитие — это не только про заводы и парламенты. Это про каждого из нас. Когда ты <em>закрываешь кран</em>, <em>гасишь свет</em>, <em>сдаёшь батарейку</em> — ты уже участвуешь в устойчивом развитии. Маленькие дела миллионов людей вместе дают огромный результат.
+    </div>
+
+    <h2>👣 Экологический след: сколько «стоит» наша жизнь</h2>
+
+    <div class="footprint-card">
+        <div class="footprint-title">👣 Что такое экологический след?</div>
+        <p>Экологический след — это площадь земли и воды, которая нужна, чтобы обеспечить всем необходимым одного человека и «переработать» его отходы. Измеряется в гектарах на человека.</p>
+        <p>Чем больше человек потребляет — тем больше его экологический след. Чем больше след — тем сильнее давление на природу.</p>
+        <p><strong>Интересный факт.</strong> Если бы все люди на Земле жили так, как живёт средний житель США, нам понадобилось бы <strong>5 планет</strong>. А если бы все жили так, как в среднем в Африке, хватило бы одной планеты.</p>
+    </div>
+
+    <h3>Как уменьшить свой экологический след?</h3>
+
+    <div class="solution-grid">
+        <div class="solution-card">
+            <span class="sol-icon">💧</span>
+            <div class="sol-title">Экономить воду и свет</div>
+            <div class="sol-text">Закрывай кран, выключай свет, используй энергосберегающие лампы. Каждый киловатт и литр экономит природные ресурсы.</div>
+        </div>
+        <div class="solution-card">
+            <span class="sol-icon">♻️</span>
+            <div class="sol-title">Сортировать отходы</div>
+            <div class="sol-text">Бумага, пластик, стекло, металл — отдельно. Органические отходы — отдельно. Сдавай на переработку всё, что возможно.</div>
+        </div>
+        <div class="solution-card">
+            <span class="sol-icon">🚶</span>
+            <div class="sol-title">Меньше ездить на машине</div>
+            <div class="sol-text">Ходить пешком, ездить на велосипеде, пользоваться общественным транспортом — всё это снижает выбросы в атмосферу.</div>
+        </div>
+        <div class="solution-card">
+            <span class="sol-icon">🛒</span>
+            <div class="sol-title">Покупать разумно</div>
+            <div class="sol-text">Не покупать лишнего, выбирать товары многоразового использования, отказываться от лишней упаковки.</div>
+        </div>
+        <div class="solution-card">
+            <span class="sol-icon">🌱</span>
+            <div class="sol-title">Сажать растения</div>
+            <div class="sol-text">Каждое дерево или куст — это «лёгкие» планеты. Сажай деревья, ухаживай за растениями.</div>
+        </div>
+        <div class="solution-card">
+            <span class="sol-icon">📢</span>
+            <div class="sol-title">Рассказывать другим</div>
+            <div class="sol-text">Делись знаниями с друзьями и семьёй. Один человек может сделать много, а вместе — ещё больше.</div>
+        </div>
+    </div>
+
+    <h2>🌍 Что делает государство и мир</h2>
+
+    <p>Экологические проблемы нельзя решить только усилиями отдельного человека. Нужны <strong>совместные действия стран, государств, международных организаций</strong>. И такая работа ведётся.</p>
+
+    <ul>
+        <li><strong>В Республике Беларусь</strong> действует Закон «Об охране окружающей среды», создаются заповедники и заказники, строятся очистные сооружения, развивается система переработки отходов.</li>
+        <li><strong>В мире</strong> существуют международные соглашения: Парижское соглашение по климату, Конвенция о биологическом разнообразии, Киотский протокол.</li>
+        <li><strong>Организация Объединённых Наций</strong> разработала 17 Целей устойчивого развития, среди которых — чистые вода и энергия, сохранение экосистем, борьба с изменением климата.</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно понять.</strong> Даже самые хорошие законы работают только тогда, когда их поддерживают люди. Если каждый человек будет сортировать мусор, экономить воду, беречь природу — законы заработают в полную силу. А если нет — никакие законы не помогут. Вот почему <em>личная ответственность</em> так важна.
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Экологическая проблема</strong> — изменение в природе, вызванное деятельностью человека и наносящее вред экосистемам или самому человеку.</p>
+        <p><strong>Загрязнение</strong> — попадание в окружающую среду вредных веществ.</p>
+        <p><strong>Парниковый эффект</strong> — накопление в атмосфере газов, которые задерживают тепло и вызывают потепление климата.</p>
+        <p><strong>Иерархия отходов</strong> — система из пяти уровней обращения с мусором: предотвращение, повторное использование, переработка, сжигание, захоронение.</p>
+        <p><strong>Устойчивое развитие</strong> — развитие, удовлетворяющее потребности настоящего поколения без ущерба для будущих.</p>
+        <p><strong>Экологический след</strong> — площадь земли и воды, необходимая для обеспечения жизни одного человека.</p>
+    </div>
+
+    <h2>✏️ Задания для юного исследователя</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">⚠️ Задание 8.1. «Назови экологическую проблему»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини описание с названием экологической проблемы.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Описание</th>
+                    <th>Проблема</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>В воздух попадают выхлопные газы автомобилей</td><td>☐ Загрязнение воздуха ☐ Вырубка лесов ☐ Исчезновение видов</td></tr>
+                <tr><td>В реку сбрасывают стоки завода</td><td>☐ Загрязнение воды ☐ Изменение климата ☐ Мусор</td></tr>
+                <tr><td>Пластиковые бутылки не разлагаются в природе</td><td>☐ Загрязнение почвы ☐ Озоновые дыры ☐ Изменение климата</td></tr>
+                <tr><td>Из-за потепления тают ледники</td><td>☐ Изменение климата ☐ Загрязнение воды ☐ Мусор</td></tr>
+                <tr><td>Животные лишаются дома, потому что вырубают лес</td><td>☐ Вырубка лесов ☐ Загрязнение воздуха ☐ Мусор</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 8.2. «Причина — следствие»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь три свои причинно-следственные цепочки для экологических проблем. Каждая цепочка — минимум три звена.</p>
+        <p><strong>Цепочка 1:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Цепочка 2:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Цепочка 3:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🗑️ Задание 8.3. «Сколько живёт мусор?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Расставь виды мусора в порядке возрастания срока разложения — от самого «быстрого» к самому «долгому».</p>
+        <p><strong>Мусор для распределения:</strong> стеклянная бутылка, бумага, пищевые отходы, пластиковая бутылка, консервная банка, окурок.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Место</th>
+                    <th>Вид мусора</th>
+                    <th>Срок разложения</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1 (самый быстрый)</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>5</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>6 (самый долгий)</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">♻️ Задание 8.4. «Пять уровней обращения с отходами»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Расположи пять уровней обращения с отходами в порядке от самого полезного для природы к самому вредному. Дай каждому короткое объяснение.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Место</th>
+                    <th>Уровень</th>
+                    <th>Почему именно так?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1 (лучший)</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>5 (худший)</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👣 Задание 8.5. «Мой экологический след»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Оцени свой экологический след по пяти параметрам. Поставь галочку в нужной колонке.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Моя привычка</th>
+                    <th>Экономно</th>
+                    <th>Средне</th>
+                    <th>Расточительно</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>💧 Использование воды</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>💡 Использование электричества</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🗑️ Обращение с мусором</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🚶 Передвижение</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🛒 Покупки и упаковка</td><td>☐</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Что я хотел бы изменить, чтобы мой след стал меньше?</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌱 Задание 8.6. «Мои решения»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Выбери три экологические проблемы, которые тебя больше всего волнуют. Предложи конкретные решения, которые можешь сделать ты сам.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Проблема</th>
+                    <th>Что могу сделать я?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 8.7. «Плакат "Спасём природу!"»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй плакат, посвящённый одной из экологических проблем. Придумай короткий лозунг, который привлечёт внимание людей.</p>
+        <p><strong>Моя тема:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой лозунг:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой плакат:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 8.8. «Письмо в будущее»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши письмо самому себе через 10 лет. Расскажи, что ты обещал сделать для природы и что хотел бы, чтобы было сохранено. Какие экологические привычки ты хотел бы иметь к тому времени?</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>экологическая проблема</strong> и какие они бывают — локальные, региональные, глобальные.</li>
+            <li>Какие <strong>главные экологические проблемы</strong> волнуют сегодня всё человечество.</li>
+            <li>Как находить <strong>причину и следствие</strong> любой проблемы.</li>
+            <li>Сколько <strong>лет разлагается мусор</strong> разных видов и почему это важно.</li>
+            <li>Что такое <strong>иерархия обращения с отходами</strong> — от предотвращения до захоронения.</li>
+            <li>Что такое <strong>устойчивое развитие</strong> и его три столпа.</li>
+            <li>Что такое <strong>экологический след</strong> и как его уменьшить.</li>
+            <li>Что делают <strong>государство и мир</strong> для решения экологических проблем.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Что такое экологическая проблема?</li>
+            <li>Назови три главные экологические проблемы современности.</li>
+            <li>Сколько лет разлагается пластиковая бутылка?</li>
+            <li>Что такое иерархия обращения с отходами?</li>
+            <li>Что такое устойчивое развитие?</li>
+            <li>Что такое экологический след и как его уменьшить?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Экологические проблемы — это <strong>не повод для страха, а повод для действий</strong>. Каждый из нас может внести свой вклад в их решение. Учёные говорят: если каждый человек на планете изменит хотя бы несколько своих привычек, экологическая ситуация начнёт улучшаться. Настоящий знаток природы не закрывает глаза на проблемы — он <em>видит их, понимает и действует</em>. И именно так, шаг за шагом, мы вместе сохраняем наш общий дом — планету Земля.
+    </div>
+
+    <div class="quote">
+        «Мы не наследуем Землю у наших предков — мы берём её в долг у наших детей. И от того, что мы с ней сделаем сейчас, зависит, что мы им вернём».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section7.html" class="button">← Раздел 7. Экосистемы</a>
+        <a href="section9.html" class="button">📖 Перейти к разделу 9. «Красная книга» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

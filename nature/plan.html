@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структурный план рабочей тетради «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 2px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        p { margin: 10px 0; }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        ul, ol { margin: 10px 0 10px 25px; }
+        li { margin: 8px 0; }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Key-card — оригинальный компонент для «четырёх ключей» */
+        .key-card {
+            background: white;
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .key-card::before {
+            content: attr(data-key);
+            position: absolute;
+            top: -14px;
+            left: 26px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .key-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a2540;
+            margin-bottom: 8px;
+            margin-top: 6px;
+        }
+        .key-subtitle {
+            color: #5b6e8c;
+            font-size: 0.93rem;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+        .key-goal {
+            background: #f9fafb;
+            border-left: 4px solid #0969da;
+            padding: 10px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 14px;
+            font-size: 0.92rem;
+        }
+        .key-goal strong { color: #1e466e; }
+
+        /* Section-list — компактное представление разделов */
+        .section-list { list-style: none; margin: 0; padding: 0; }
+        .section-list li {
+            margin: 8px 0;
+            padding: 10px 14px;
+            background: #f8fafc;
+            border-left: 3px solid #cbd5e1;
+            border-radius: 0 10px 10px 0;
+            transition: border-color 0.15s;
+        }
+        .section-list li:hover {
+            border-left-color: #0969da;
+        }
+        .section-list li a {
+            font-weight: 700;
+            color: #1e466e;
+        }
+        .section-list li a:hover {
+            color: #0969da;
+        }
+        .section-desc {
+            display: block;
+            font-size: 0.88rem;
+            color: #5b6e8c;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        /* Сводная таблица */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.92rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+
+        /* Навигация */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .nav-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: #1a1e24;
+            transition: border-color 0.15s, background 0.15s;
+            display: block;
+        }
+        .nav-card:hover {
+            border-color: #0969da;
+            background: #eef2ff;
+        }
+        .nav-card .nav-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .nav-card .nav-desc {
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации и пояснительной записке</a>
+
+    <h1>🗝️ Рабочая тетрадь «Знатоки природы»: структурный план</h1>
+    <div class="chapter-meta">✍️ Компонент образовательно-методического комплекса эколого-биологического профиля для детей 8–11 лет | Преемник рабочей тетради «Друзья природы»</div>
+
+    <p>Если рабочая тетрадь «Друзья природы» формировала у ребёнка <strong>первоначальные представления</strong> о природе и учила её <em>видеть</em>, то тетрадь «Знатоки природы» учит природу <em>понимать</em>. Здесь ребёнок перестаёт быть просто наблюдателем и превращается в <strong>исследователя</strong>: он задаёт вопросы, ставит опыты, анализирует результаты, делает открытия и делится ими с другими.</p>
+
+    <p>Структура тетради построена не по линейному принципу «от темы к теме», а по принципу <strong>четырёх ключей</strong> — четырёх сторон исследовательской компетентности. Каждый ключ открывает свою дверь в мир природы, а вместе они превращают ребёнка в настоящего знатока.</p>
+
+    <div class="info-box">
+        <strong>🎯 Идея «четырёх ключей».</strong><br>
+        Знаток природы — это не тот, кто много знает, а тот, кто умеет <em>видеть, понимать, оценивать и действовать</em>. Эти четыре умения и есть четыре ключа к природе. Каждый ключ включает три раздела рабочей тетради, а все вместе они образуют <strong>целостный путь</strong> от первой встречи с природой до осознанного её сохранения.
+    </div>
+
+    <!-- КЛЮЧ I -->
+    <div class="key-card" data-key="КЛЮЧ I">
+        <div class="key-title">👁️ Глаз исследователя: учимся видеть природу</div>
+        <div class="key-subtitle">От наблюдения — к пониманию того, что природа живая, изменчивая и взаимосвязанная</div>
+        <div class="key-goal">
+            <strong>Педагогическая задача ключа:</strong> сформировать у ребёнка устойчивый интерес к природе, научить систематическому и осмысленному наблюдению, выработать привычку замечать детали и видеть красоту природных форм.
+        </div>
+
+        <ul class="section-list">
+            <li>
+                <a href="section1.html">Раздел 1. «Учимся видеть природу»</a>
+                <span class="section-desc">Вводный раздел. Что значит быть знатоком природы. Природа как единая система. Методы наблюдения: зрение, слух, осязание, обоняние. Первые исследовательские вопросы.</span>
+            </li>
+            <li>
+                <a href="section2.html">Раздел 2. «Календарь юного фенолога»</a>
+                <span class="section-desc">Фенология как наука. Дневник фенолога: структура, правила ведения, работа с условными обозначениями. Комплексные наблюдения за сезонными изменениями. Лента времени и фенологический спектр.</span>
+            </li>
+            <li>
+                <a href="section3.html">Раздел 3. «Погода и климат: дневник наблюдений»</a>
+                <span class="section-desc">Элементы погоды и приборы для их измерения. Метеорологические наблюдения. Климат и его отличия от погоды. Народные приметы и научные методы прогноза. Сводные таблицы наблюдений.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- КЛЮЧ II -->
+    <div class="key-card" data-key="КЛЮЧ II">
+        <div class="key-title">🧠 Ум исследователя: учимся понимать природу</div>
+        <div class="key-subtitle">От фактов — к закономерностям и взаимосвязям в живой и неживой природе</div>
+        <div class="key-goal">
+            <strong>Педагогическая задача ключа:</strong> развить умение устанавливать причинно-следственные связи, анализировать, сравнивать, обобщать; сформировать целостную картину природы как системы.
+        </div>
+
+        <ul class="section-list">
+            <li>
+                <a href="section4.html">Раздел 4. «Мир растений: как растения устроены»</a>
+                <span class="section-desc">Строение растений. Фотосинтез (в доступной форме). Разнообразие растений родного края. Приспособления растений к разным условиям. Растения-путешественники. Краснокнижные растения.</span>
+            </li>
+            <li>
+                <a href="section5.html">Раздел 5. «Мир животных: как животные живут»</a>
+                <span class="section-desc">Классификация животных по способу питания и среде обитания. Поведение и приспособления. Пищевые цепи и экологические ниши. Сезонные изменения в жизни животных. Охраняемые виды.</span>
+            </li>
+            <li>
+                <a href="section6.html">Раздел 6. «Тайны неживой природы: опыты и эксперименты»</a>
+                <span class="section-desc">Вода, воздух, почва: углублённые опыты и эксперименты. Круговорот веществ в природе. Физические и химические явления. Долгосрочные исследования свойств веществ.</span>
+            </li>
+            <li>
+                <a href="section7.html">Раздел 7. «Экосистемы: как всё связано в природе»</a>
+                <span class="section-desc">Экосистема как единое целое. Лес, луг, водоём, болото как типы экосистем. Компоненты экосистем. Взаимосвязи и круговороты. Экскурсии и наблюдения.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- КЛЮЧ III -->
+    <div class="key-card" data-key="КЛЮЧ III">
+        <div class="key-title">💚 Сердце исследователя: учимся оценивать и решать проблемы</div>
+        <div class="key-subtitle">От понимания — к осознанию ценности природы и готовности её защищать</div>
+        <div class="key-goal">
+            <strong>Педагогическая задача ключа:</strong> сформировать эмоционально-ценностное отношение к природе, понимание экологических проблем и путей их решения, готовность к исследовательской деятельности по улучшению окружающей среды.
+        </div>
+
+        <ul class="section-list">
+            <li>
+                <a href="section8.html">Раздел 8. «Экологические проблемы: причины и следствия»</a>
+                <span class="section-desc">Что такое экологические проблемы. Загрязнение воды, воздуха, почвы. Мусор и его судьба. Парниковый эффект. Устойчивое развитие как путь решения проблем. Экологический след человека.</span>
+            </li>
+            <li>
+                <a href="section9.html">Раздел 9. «Красная книга: редкость и охрана»</a>
+                <span class="section-desc">История и назначение Красной книги. Красная книга Республики Беларусь. Охраняемые виды растений и животных. Особо охраняемые природные территории. Роль каждого в сохранении биоразнообразия.</span>
+            </li>
+            <li>
+                <a href="section10.html">Раздел 10. «Исследовательский проект: от вопроса к открытию»</a>
+                <span class="section-desc">Структура исследовательского проекта: вопрос, гипотеза, методы, результат, вывод. Планирование и проведение собственного исследования. Оформление и презентация результатов. Критерии оценки проектов.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- КЛЮЧ IV -->
+    <div class="key-card" data-key="КЛЮЧ IV">
+        <div class="key-title">🌿 Руки исследователя: учимся действовать и защищать</div>
+        <div class="key-subtitle">От готовности — к реальным действиям по сохранению природы</div>
+        <div class="key-goal">
+            <strong>Педагогическая задача ключа:</strong> сформировать активную природоохранную позицию, навыки экологически устойчивого стиля жизни, развить творческие и коммуникативные способности в деле защиты природы.
+        </div>
+
+        <ul class="section-list">
+            <li>
+                <a href="section11.html">Раздел 11. «Мои добрые дела для природы»</a>
+                <span class="section-desc">Экологические акции и их виды. Практические дела: посадка деревьев, кормушки, сортировка мусора, энергосбережение. Участие в республиканских и международных экологических инициативах. Дневник добрых дел.</span>
+            </li>
+            <li>
+                <a href="section12.html">Раздел 12. «Я — знаток природы: портфолио и планы»</a>
+                <span class="section-desc">Итоговая рефлексия. Что я узнал, чему научился, что сделал. Мои экологические привычки. Портфолио исследователя. Письмо природе. Планы на будущее. Итоговое занятие-праздник.</span>
+            </li>
+        </ul>
+    </div>
+
+    <h2>📊 Сводная таблица структуры рабочей тетради</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ключ</th>
+                <th>Разделы</th>
+                <th>Основные типы заданий</th>
+                <th>Ориентировочное количество заданий</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>I. Глаз исследователя</strong></td>
+                <td>1. Учимся видеть природу<br>2. Календарь юного фенолога<br>3. Погода и климат</td>
+                <td>Карты наблюдений, дневники, работа с приборами, классификация, описания</td>
+                <td>~45</td>
+            </tr>
+            <tr>
+                <td><strong>II. Ум исследователя</strong></td>
+                <td>4. Мир растений<br>5. Мир животных<br>6. Тайны неживой природы<br>7. Экосистемы</td>
+                <td>Опыты, сравнения, схемы, таблицы, задачи на связи, экскурсии</td>
+                <td>~65</td>
+            </tr>
+            <tr>
+                <td><strong>III. Сердце исследователя</strong></td>
+                <td>8. Экологические проблемы<br>9. Красная книга<br>10. Исследовательский проект</td>
+                <td>Анализ ситуаций, дискуссии, проектные задания, работа с источниками</td>
+                <td>~50</td>
+            </tr>
+            <tr>
+                <td><strong>IV. Руки исследователя</strong></td>
+                <td>11. Мои добрые дела<br>12. Я — знаток природы</td>
+                <td>Практические работы, акции, творческие задания, рефлексия, портфолио</td>
+                <td>~35</td>
+            </tr>
+            <tr style="background:#f9fafb;font-weight:700;">
+                <td colspan="3">ИТОГО</td>
+                <td>~195 заданий</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📈 Диагностический инструментарий</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Вид диагностики</th>
+                <th>Где размещена</th>
+                <th>Что оценивается</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Входная диагностика</strong></td>
+                <td>Раздел 1</td>
+                <td>Исходный уровень экологических знаний, интересов, мотивации к исследовательской деятельности</td>
+            </tr>
+            <tr>
+                <td><strong>Текущая диагностика</strong></td>
+                <td>Во всех разделах</td>
+                <td>Освоение материала после каждой темы (наблюдение, беседа, анализ работ)</td>
+            </tr>
+            <tr>
+                <td><strong>Промежуточная диагностика</strong></td>
+                <td>Конец Ключа II</td>
+                <td>Продвижение за первое полугодие, сформированность исследовательских умений</td>
+            </tr>
+            <tr>
+                <td><strong>Итоговая диагностика</strong></td>
+                <td>Раздел 12</td>
+                <td>Уровень освоения программы за год, развитие исследовательских и природоохранных компетенций</td>
+            </tr>
+            <tr>
+                <td><strong>Графические и комплексные тесты</strong></td>
+                <td>В каждом ключе</td>
+                <td>Внимание, мелкая моторика, логическое мышление, умение работать по образцу</td>
+            </tr>
+            <tr>
+                <td><strong>Портфолио исследователя</strong></td>
+                <td>Раздел 12</td>
+                <td>Динамика индивидуального развития каждого ребёнка</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🎯 Ожидаемые результаты работы с рабочей тетрадью</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа результатов</th>
+                <th>Показатели</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Личностные</strong></td>
+                <td>Устойчивый интерес к природе и её исследованию; сформированность экологической этики и ценностного отношения к природе; проявление ответственности, бережливости, отзывчивости; активная гражданско-патриотическая позиция в деле сохранения природы родного края.</td>
+            </tr>
+            <tr>
+                <td><strong>Метапредметные</strong></td>
+                <td>Умение вести длительные наблюдения и фиксировать результаты; умение устанавливать причинно-следственные связи; умение планировать исследование и доводить его до результата; умение работать в команде, представлять и защищать результаты своей работы; умение анализировать и оценивать свою деятельность.</td>
+            </tr>
+            <tr>
+                <td><strong>Предметные</strong></td>
+                <td>Знание взаимосвязей в природе, разнообразия растений и животных родного края, типов экосистем, экологических проблем и путей их решения; знание охраняемых видов; владение методами наблюдения, опытов и экспериментов; умение выполнять творческие и проектные работы на экологическую тему.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🔗 Навигация по рабочей тетради «Знатоки природы»</h2>
+
+    <div class="nav-grid">
+        <a href="preface.html" class="nav-card">
+            <div class="nav-title">📋 Аннотация и пояснительная записка</div>
+            <div class="nav-desc">Назначение, цели, задачи, принципы построения тетради</div>
+        </a>
+
+        <a href="program.html" class="nav-card">
+            <div class="nav-title">📄 Программа «Знатоки природы»</div>
+            <div class="nav-desc">Программа объединения по интересам на 144 часа (4 часа в неделю)</div>
+        </a>
+
+        <a href="section1.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 1. Учимся видеть природу</div>
+            <div class="nav-desc">Вводный раздел. Что значит быть знатоком природы</div>
+        </a>
+
+        <a href="section2.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 2. Календарь юного фенолога</div>
+            <div class="nav-desc">Фенологические наблюдения и дневник исследователя</div>
+        </a>
+
+        <a href="section3.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 3. Погода и климат</div>
+            <div class="nav-desc">Метеорологические наблюдения и работа с приборами</div>
+        </a>
+
+        <a href="section4.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 4. Мир растений</div>
+            <div class="nav-desc">Разнообразие, приспособления и охрана растений</div>
+        </a>
+
+        <a href="section5.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 5. Мир животных</div>
+            <div class="nav-desc">Поведение, приспособления и охрана животных</div>
+        </a>
+
+        <a href="section6.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 6. Тайны неживой природы</div>
+            <div class="nav-desc">Опыты и эксперименты с водой, воздухом, почвой</div>
+        </a>
+
+        <a href="section7.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 7. Экосистемы</div>
+            <div class="nav-desc">Лес, луг, водоём, болото как экосистемы</div>
+        </a>
+
+        <a href="section8.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 8. Экологические проблемы</div>
+            <div class="nav-desc">Причины, следствия и пути решения</div>
+        </a>
+
+        <a href="section9.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 9. Красная книга</div>
+            <div class="nav-desc">Редкие и охраняемые виды Республики Беларусь</div>
+        </a>
+
+        <a href="section10.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 10. Исследовательский проект</div>
+            <div class="nav-desc">От вопроса к открытию: планирование и защита проекта</div>
+        </a>
+
+        <a href="section11.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 11. Мои добрые дела</div>
+            <div class="nav-desc">Экологические акции и практические дела</div>
+        </a>
+
+        <a href="section12.html" class="nav-card">
+            <div class="nav-title">📖 Раздел 12. Я — знаток природы</div>
+            <div class="nav-desc">Портфолио, рефлексия, планы на будущее</div>
+        </a>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Назначение плана.</strong> Структурный план служит <strong>навигатором</strong> по рабочей тетради «Знатоки природы». Он показывает, как содержание программы объединения по интересам разворачивается через четыре ключа исследовательской компетентности, как обеспечивается преемственность с тетрадью «Друзья природы» и как формируются у ребёнка целостные представления о природе и ответственном отношении к ней.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="preface.html" class="button">← К аннотации</a>
+        <a href="section1.html" class="button">📖 Начать с раздела 1 →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

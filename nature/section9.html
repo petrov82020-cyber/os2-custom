@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 9. Красная книга: редкость и охрана — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #dc2626;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #dc2626;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #fef2f2;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #991b1b;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #b91c1c;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #991b1b;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #dc2626;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #dc2626;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .red-note {
+            background: #fef2f2;
+            padding: 15px 20px;
+            border-left: 5px solid #dc2626;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #dc2626;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Категории редкости */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .category-card {
+            background: white;
+            border: 2px solid;
+            border-radius: 14px;
+            padding: 16px 20px;
+        }
+        .cat-1 { border-color: #dc2626; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); }
+        .cat-2 { border-color: #ea580c; background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); }
+        .cat-3 { border-color: #d97706; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); }
+        .cat-4 { border-color: #16a34a; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .category-card .cat-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .cat-1 .cat-title { color: #991b1b; }
+        .cat-2 .cat-title { color: #9a3412; }
+        .cat-3 .cat-title { color: #92400e; }
+        .cat-4 .cat-title { color: #166534; }
+        .category-card .cat-text {
+            font-size: 0.9rem;
+            color: #1a1e24;
+            line-height: 1.55;
+        }
+
+        /* Карточки редких видов */
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .species-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #dc2626;
+        }
+        .species-card .sp-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .species-card .sp-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .species-card .sp-text {
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Схема Красной книги */
+        .red-book-svg {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+        }
+
+        /* ООПТ — плитки */
+        .protected-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .protected-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 14px;
+            padding: 16px 20px;
+        }
+        .protected-card .pr-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .protected-card .pr-title {
+            font-weight: 700;
+            color: #065f46;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .protected-card .pr-text {
+            font-size: 0.88rem;
+            color: #064e3b;
+            line-height: 1.55;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #991b1b;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section8.html" class="back-link" style="margin-left: 15px;">← Раздел 8</a>
+
+    <h1>🔴 Раздел 9. Красная книга: редкость и охрана</h1>
+    <div class="section-meta">📖 Ключ III. Сердце исследователя | 🎯 Для детей 8–11 лет | ⏱ 12 часов</div>
+
+    <div class="intro-card">
+        <p>В предыдущем разделе мы говорили о том, как деятельность человека наносит вред природе. Мы узнали, что многие виды животных и растений исчезают из-за загрязнения, вырубки лесов, разрушения мест обитания. Но человек — это не только разрушитель. Человек способен и <strong>защищать природу</strong>. И для этого придуманы специальные документы, законы, территории и правила.</p>
+        <p>Самый известный из таких документов — <strong>Красная книга</strong>. Это список редких и исчезающих видов, которые нуждаются в особой заботе. Красная книга — это сигнал тревоги и одновременно книга надежды. Она напоминает: если мы вовремя спохватимся, многое можно спасти. В этом разделе мы узнаем, как устроена Красная книга, кто в неё попадает и что делает человек, чтобы сохранить редкие виды.</p>
+    </div>
+
+    <h2>📕 Что такое Красная книга и почему она красная</h2>
+
+    <p><strong>Красная книга</strong> — это официальный список редких и находящихся под угрозой исчезновения видов животных, растений и грибов. Красная книга — не просто перечень видов. Это <strong>инструмент охраны природы</strong>: вид, занесённый в Красную книгу, автоматически попадает под защиту закона. Его нельзя убивать, ловить, рвать, продавать. Любое действие, вредящее редкому виду, наказывается.</p>
+
+    <p>Почему именно красный цвет? Ещё в древности красный цвет символизировал <strong>тревогу и опасность</strong>. Красный сигнал светофора означает «стой!». Красная книга как бы говорит человечеству: «Стой! Остановись! Ещё немного — и этот вид исчезнет навсегда».</p>
+
+    <div class="info-box">
+        <strong>💡 Первая Красная книга.</strong> Международная Красная книга появилась в 1963 году по инициативе Международного союза охраны природы (МСОП). Тогда в неё вошли сотни видов животных и растений, которым грозило исчезновение. С тех пор многие страны создали свои национальные Красные книги — в том числе и Республика Беларусь.
+    </div>
+
+    <h2>🌍 Красная книга Республики Беларусь</h2>
+
+    <p>Красная книга Республики Беларусь была впервые издана в <strong>1981 году</strong>. С тех пор она переиздавалась несколько раз, дополнялась и уточнялась. В настоящее время действует <strong>четвёртое издание</strong> Красной книги Беларуси.</p>
+
+    <p>В Красную книгу Беларуси включены:</p>
+
+    <ul>
+        <li><strong>Более 200 видов животных</strong> — млекопитающие, птицы, рептилии, амфибии, рыбы, насекомые, моллюски.</li>
+        <li><strong>Более 300 видов растений</strong> — деревья, кустарники, травы, мхи, лишайники.</li>
+        <li><strong>Более 30 видов грибов</strong>.</li>
+    </ul>
+
+    <p>Каждый вид в Красной книге описан по определённой схеме: где он живёт, чем питается, как размножается, почему стал редким и что нужно делать для его сохранения. Есть также рисунки и фотографии, чтобы каждый человек мог узнать редкий вид «в лицо».</p>
+
+    <div class="note">
+        <strong>🎯 Интересно знать.</strong> Красная книга Беларуси — это не просто список. Каждый вид, включённый в неё, получает <strong>определённый охранный статус</strong>. Одни виды охраняются строго (например, зубр), другие — умеренно. Списки периодически пересматриваются: если вид восстановился, его могут исключить из книги, а если стал редким — наоборот, добавить.
+    </div>
+
+    <h2>📊 Категории редкости видов</h2>
+
+    <p>Не все редкие виды одинаково редки. Учёные разделили их на <strong>несколько категорий</strong> — по степени угрозы исчезновения. Чем выше категория, тем тревожнее ситуация.</p>
+
+    <div class="categories-grid">
+        <div class="category-card cat-1">
+            <div class="cat-title">🔴 I категория — виды на грани исчезновения</div>
+            <div class="cat-text">Самые редкие. Их осталось очень мало. Малейшее вмешательство человека может уничтожить их полностью. Пример: некоторые виды орхидей.</div>
+        </div>
+        <div class="category-card cat-2">
+            <div class="cat-title">🟠 II категория — исчезающие виды</div>
+            <div class="cat-text">Численность быстро сокращается. Если не принять мер, они перейдут в первую категорию. Пример: бурый медведь, филин.</div>
+        </div>
+        <div class="category-card cat-3">
+            <div class="cat-title">🟡 III категория — уязвимые виды</div>
+            <div class="cat-text">Ещё встречаются, но под угрозой. Численность небольшая, ареал сужается. Пример: серый журавль, осётр.</div>
+        </div>
+        <div class="category-card cat-4">
+            <div class="cat-title">🟢 IV категория — потенциально уязвимые</div>
+            <div class="cat-text">Пока не под прямой угрозой, но требуют наблюдения. Их численность может быстро упасть при изменении условий.</div>
+        </div>
+    </div>
+
+    <h3>Какие ещё статусы бывают в Красной книге?</h3>
+
+    <ul>
+        <li><strong>Исчезнувшие виды</strong> — те, которые уже не встречаются в нашей стране.</li>
+        <li><strong>Восстановленные виды</strong> — те, которым удалось помочь и которые уже могут быть исключены из Красной книги.</li>
+        <li><strong>Неопределённые виды</strong> — те, о состоянии которых данных недостаточно.</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно понять.</strong> Категория редкости — это не «оценка», а <strong>точный научный диагноз</strong>. Учёные многих стран обмениваются данными, чтобы следить за судьбой редких видов. Если вид попал в I категорию — это сигнал SOS, призыв о немедленной помощи.
+    </div>
+
+    <h2>🐾 Редкие животные Республики Беларусь</h2>
+
+    <p>В Красную книгу Беларуси входят удивительные животные. Среди них — великаны и крошки, хищники и вегетарианцы, лесные жители и обитатели болот. Познакомимся с самыми известными.</p>
+
+    <div class="species-grid">
+        <div class="species-card">
+            <span class="sp-icon">🦬</span>
+            <div class="sp-title">Зубр</div>
+            <div class="sp-text">Самый крупный зверь Европы. Живёт в Беловежской пуще. Единственное место в мире, где зубры сохранились в дикой природе. Символ Беларуси и главный объект охраны.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🐻</span>
+            <div class="sp-title">Бурый медведь</div>
+            <div class="sp-text">Крупный лесной хищник. В Беларуси сохранился только в глухих лесах на севере и востоке страны. Очень чувствителен к вырубке лесов.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🦉</span>
+            <div class="sp-title">Филин</div>
+            <div class="sp-text">Самая крупная сова Европы. Активен ночью. Гнездится в старых лесах у болот и водоёмов. Редкий вид, страдает от беспокойства и уменьшения мест обитания.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🦌</span>
+            <div class="sp-title">Благородный олень</div>
+            <div class="sp-text">Красивое животное с ветвистыми рогами. Встречается в нескольких регионах Беларуси. Страдает от браконьерства и потери среды обитания.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🦅</span>
+            <div class="sp-title">Орлан-белохвост</div>
+            <div class="sp-text">Крупная хищная птица с белым хвостом. Гнездится у больших водоёмов. Размах крыльев — до 2,5 метров. Очень редок, гнёзд в Беларуси немного.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🐦</span>
+            <div class="sp-title">Чёрный аист</div>
+            <div class="sp-text">Скрытная птица, живёт в глухих лесах. Гнездится в кронах старых деревьев. Гораздо реже белого аиста. Символ нетронутой природы.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🐟</span>
+            <div class="sp-title">Осётр</div>
+            <div class="sp-text">Древняя крупная рыба, ровесница динозавров. Живёт в реках. Исчезает из-за загрязнения воды и плотин. В Беларуси очень редок.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🦇</span>
+            <div class="sp-title">Летучие мыши</div>
+            <div class="sp-text">Несколько видов летучих мышей в Беларуси занесены в Красную книгу. Они страдают от уменьшения дуплистых деревьев и пещер — мест зимовки.</div>
+        </div>
+    </div>
+
+    <h2>🌿 Редкие растения Республики Беларусь</h2>
+
+    <p>Среди редких растений есть и деревья, и кустарники, и травы, и водные обитатели. Многие из них необыкновенно красивы и при этом хрупки.</p>
+
+    <div class="species-grid">
+        <div class="species-card">
+            <span class="sp-icon">🌷</span>
+            <div class="sp-title">Венерин башмачок</div>
+            <div class="sp-text">Лесная орхидея с цветком, похожим на туфельку. Растёт только в нетронутых лесах. Цветёт не каждый год. Страдает от сбора на букеты и разрушения лесов.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🌸</span>
+            <div class="sp-title">Сон-трава</div>
+            <div class="sp-text">Весенний первоцвет с пушистыми лепестками. Растёт на сухих солнечных склонах. Страдает от сбора весенних букетов.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">💧</span>
+            <div class="sp-title">Кувшинка белая</div>
+            <div class="sp-text">Водное растение с крупными белыми цветами. Украшение озёр. Занесена в Красную книгу из-за загрязнения водоёмов и сбора цветов.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🌿</span>
+            <div class="sp-title">Плаун булавовидный</div>
+            <div class="sp-text">Древнее споровое растение, похожее на ёлочку. Растёт в тенистых лесах. Ровесник папоротников и хвощей, живёт миллионы лет.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🌲</span>
+            <div class="sp-title">Пихта белая</div>
+            <div class="sp-text">Редкое хвойное дерево, уцелевшее в Беларуси только в Беловежской пуще. Символ древних лесов Европы.</div>
+        </div>
+        <div class="species-card">
+            <span class="sp-icon">🍀</span>
+            <div class="sp-title">Росянка</div>
+            <div class="sp-text">Растение-хищник, ловящее насекомых своими листьями. Растёт на сфагновых болотах. Очень чувствительна к осушению болот.</div>
+        </div>
+    </div>
+
+    <div class="red-note">
+        <strong>⚠️ Запомни.</strong> Если ты встретил в природе редкое растение — <strong>никогда не срывай его!</strong> Одна сорванная «на память» кувшинка или сон-трава — это потеря для всей природы. Лучше сделай <em>фотографию</em> — так ты сохранишь красоту навсегда и не причинишь вреда живому.
+    </div>
+
+    <h2>🛡️ Как человек защищает редкие виды</h2>
+
+    <p>Красная книга — это только первый шаг. Чтобы редкие виды действительно выжили, нужны <strong>конкретные действия</strong>. Учёные и государство используют несколько инструментов охраны природы.</p>
+
+    <h3>1. Охраняемые территории</h3>
+
+    <p>Самый действенный способ охраны редких видов — <strong>создать особые охраняемые природные территории</strong>, где природа сохраняется в неприкосновенности. Их называют сокращённо <strong>ООПТ</strong>.</p>
+
+    <div class="protected-grid">
+        <div class="protected-card">
+            <span class="pr-icon">🌲</span>
+            <div class="pr-title">Заповедник</div>
+            <div class="pr-text">Самая строгая форма охраны. Здесь запрещена любая хозяйственная деятельность. Природа сохраняется в естественном виде. В Беларуси — Березинский заповедник и Полесский радиационно-экологический заповедник.</div>
+        </div>
+        <div class="protected-card">
+            <span class="pr-icon">🦬</span>
+            <div class="pr-title">Национальный парк</div>
+            <div class="pr-text">Большая охраняемая территория, где природа сохраняется, но разрешён ограниченный туризм и экскурсии. В Беларуси — Беловежская пуща, Нарочанский, Припятский, Браславские озёра.</div>
+        </div>
+        <div class="protected-card">
+            <span class="pr-icon">🌿</span>
+            <div class="pr-title">Заказник</div>
+            <div class="pr-text">Территория, где охраняются отдельные виды или экосистемы. Хозяйственная деятельность ограничена, но не запрещена полностью. Например, заказник «Ельня».</div>
+        </div>
+        <div class="protected-card">
+            <span class="pr-icon">🌳</span>
+            <div class="pr-title">Памятник природы</div>
+            <div class="pr-text">Охраняемый природный объект: старое дерево, редкая роща, водопад, озеро. В Беларуси сотни таких объектов.</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Запомни.</strong> Беловежская пуща — <strong>старейший заповедник Европы</strong>. Она была взята под охрану ещё в XIV веке! Здесь сохранились последние в Европе дикие зубры, а также древние реликтовые леса, которым тысячи лет. Это — настоящая сокровищница природы Беларуси.
+    </div>
+
+    <h3>2. Законодательство</h3>
+
+    <p>Закон Республики Беларусь <strong>«Об охране окружающей среды»</strong> и другие нормативные акты устанавливают:</p>
+
+    <ul>
+        <li><strong>Запрет</strong> на уничтожение редких видов — любые действия, вредящие видам из Красной книги, наказываются.</li>
+        <li><strong>Ответственность</strong> за браконьерство, сбор редких растений, торговлю ими.</li>
+        <li><strong>Обязанность</strong> учреждений и организаций учитывать присутствие редких видов при планировании деятельности.</li>
+        <li><strong>Обязанность</strong> граждан сообщать о встрече с редким видом в природоохранные органы.</li>
+    </ul>
+
+    <h3>3. Научные исследования</h3>
+
+    <p>Учёные-биологи постоянно изучают редкие виды: считают численность, изучают повадки, определяют, что мешает их выживанию. На основе этих данных разрабатываются специальные <strong>программы восстановления</strong>.</p>
+
+    <p>Пример такой программы — <strong>восстановление зубра</strong> в Беларуси. В начале XX века зубров в мире осталось меньше 50 особей. Белорусские и польские учёные сумели восстановить популяцию: сейчас в Беловежской пуще живёт более 700 зубров, и вид уже не на грани исчезновения.</p>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Восстановление зубра — <strong>пример того, как человек может исправить свои ошибки</strong>. Когда-то люди уничтожили почти всех зубров. Но нашлись те, кто сумел их спасти — своими знаниями, терпением и заботой. Это урок надежды: если действовать сообща, можно восстановить даже то, что казалось потерянным.
+    </div>
+
+    <h2>🌍 Международная охрана природы</h2>
+
+    <p>Охрана редких видов не может быть только делом одной страны. Животные и растения не признают границ. Поэтому существуют <strong>международные организации и соглашения</strong>.</p>
+
+    <ul>
+        <li><strong>МСОП (IUCN)</strong> — Международный союз охраны природы. Ведёт Международную Красную книгу, координирует охрану природы во всём мире.</li>
+        <li><strong>Конвенция о биологическом разнообразии</strong> (1992 г.) — соглашение о сохранении всех видов живых организмов.</li>
+        <li><strong>Конвенция СИТЕС</strong> — запрещает торговлю редкими видами и изделиями из них.</li>
+        <li><strong>Рамсарская конвенция</strong> — охрана водно-болотных угодий — домов для множества редких видов.</li>
+    </ul>
+
+    <p>Республика Беларусь участвует во всех этих соглашениях. Наши болота, леса и озёра — часть мирового природного наследия.</p>
+
+    <h2>🎨 Красота редких видов: зачем охранять именно их</h2>
+
+    <p>Иногда спрашивают: «Зачем охранять редкие виды? Какая от них польза?» Но задавать такой вопрос — значит, не понимать главного. <strong>Редкие виды — это часть природы, а природа — не склад полезных вещей</strong>. Она ценна сама по себе. Каждый вид уникален, и его потеря — это потеря навсегда. Никакая наука не сможет воссоздать вид, который исчез.</p>
+
+    <p>И кроме того, редкие виды нередко удивительно красивы. Венерин башмачок похож на сказочный цветок. Филин — на мудрого старца леса. Зубр — на исполина древних времён. Сохраняя их, мы сохраняем <strong>красоту и разнообразие нашего мира</strong>.</p>
+
+    <div class="quote">
+        «Каждый вид — это целый мир, который мы можем потерять навсегда. И мы не вправе решать, кто из них заслуживает жизни, а кто нет».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Красная книга</strong> — официальный список редких и находящихся под угрозой исчезновения видов, подлежащих особой охране.</p>
+        <p><strong>Категории редкости</strong> — уровни угрозы исчезновения вида (I — на грани исчезновения, II — исчезающие, III — уязвимые, IV — потенциально уязвимые).</p>
+        <p><strong>ООПТ</strong> — особо охраняемые природные территории (заповедники, национальные парки, заказники, памятники природы).</p>
+        <p><strong>Браконьерство</strong> — незаконная охота, рыболовство или сбор редких видов.</p>
+        <p><strong>Восстановление вида</strong> — комплекс мер по увеличению численности редкого вида до безопасного уровня.</p>
+    </div>
+
+    <h2>✏️ Задания для юного защитника природы</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📕 Задание 9.1. «Зачем нужна Красная книга?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Своими словами объясни, зачем нужна Красная книга. Приведи три причины.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 9.2. «Категории редкости»</div>
+        <p><span class="signal">🔗 Соедини</span></p>
+        <p>Соедини категорию редкости с её характеристикой.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Категория</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🔴 I категория</td><td>☐ Виды на грани исчезновения ☐ Уязвимые виды ☐ Потенциально уязвимые</td></tr>
+                <tr><td>🟠 II категория</td><td>☐ Исчезающие виды ☐ Виды на грани исчезновения ☐ Потенциально уязвимые</td></tr>
+                <tr><td>🟡 III категория</td><td>☐ Уязвимые виды ☐ Восстановленные виды ☐ Исчезнувшие виды</td></tr>
+                <tr><td>🟢 IV категория</td><td>☐ Потенциально уязвимые ☐ Исчезающие ☐ Восстановленные</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🐾 Задание 9.3. «Редкие животные Беларуси»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Выбери трёх редких животных из Красной книги Беларуси. Заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Животное</th>
+                    <th>Где живёт?</th>
+                    <th>Почему стало редким?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌿 Задание 9.4. «Редкие растения Беларуси»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Выбери одно редкое растение из Красной книги Беларуси. Нарисуй его и опиши, где оно растёт и почему нуждается в охране.</p>
+        <p><strong>Название:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Где растёт:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Почему охраняется:</strong></p>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🛡️ Задание 9.5. «Охраняемые территории»</div>
+        <p><span class="signal">🔗 Соедини</span></p>
+        <p>Соедини тип охраняемой территории с её характеристикой.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Тип ООПТ</th>
+                    <th>Характеристика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🌲 Заповедник</td><td>☐ Строгая охрана, любая деятельность запрещена ☐ Ограниченный туризм ☐ Охрана отдельных видов</td></tr>
+                <tr><td>🦬 Национальный парк</td><td>☐ Ограниченный туризм ☐ Строгая охрана ☐ Охрана одного объекта</td></tr>
+                <tr><td>🌿 Заказник</td><td>☐ Охрана отдельных видов и экосистем ☐ Полный запрет деятельности ☐ Туризм</td></tr>
+                <tr><td>🌳 Памятник природы</td><td>☐ Охрана конкретного природного объекта ☐ Национальный парк ☐ Заповедник</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📖 Задание 9.6. «История спасения зубра»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Прочитай в разделе историю восстановления зубра. Ответь на вопросы:</p>
+        <ol>
+            <li>Почему зубр оказался на грани исчезновения?</li>
+            <li>Как учёным удалось его спасти?</li>
+            <li>Почему эта история важна для всех нас?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 9.7. «Плакат в защиту редких видов»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй плакат в защиту одного редкого вида (животного или растения). Придумай короткий лозунг, который обратит внимание людей на проблему.</p>
+        <p><strong>Мой редкий вид:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой лозунг:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Мой плакат:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌍 Задание 9.8. «Что я могу сделать для редких видов?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Составь список из 5 дел, которые ты можешь сделать, чтобы помочь редким видам. Постарайся, чтобы эти дела были по-настоящему выполнимыми.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Что я могу сделать?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>5</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">✉️ Задание 9.9. «Письмо редкому виду»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Напиши письмо одному редкому виду (например, зубру или венерину башмачку). Расскажи, что ты знаешь о нём, почему он важен и что ты сделаешь для его сохранения.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>Красная книга</strong> и почему она красного цвета.</li>
+            <li>Как устроена <strong>Красная книга Республики Беларусь</strong>.</li>
+            <li>Какие существуют <strong>категории редкости видов</strong>.</li>
+            <li>Какие <strong>животные и растения Беларуси</strong> занесены в Красную книгу.</li>
+            <li>Как человек защищает редкие виды: <strong>ООПТ, закон, наука</strong>.</li>
+            <li>Как была восстановлена <strong>популяция зубра</strong> — пример успешной охраны.</li>
+            <li>Что такое <strong>международные соглашения</strong> по охране природы.</li>
+            <li>Почему так важно сохранять <strong>редкие виды</strong>, даже если они «не приносят пользы».</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Что такое Красная книга?</li>
+            <li>Какие категории редкости видов существуют?</li>
+            <li>Назови три редких животных Беларуси.</li>
+            <li>Что такое ООПТ? Какие виды ООПТ ты знаешь?</li>
+            <li>Как человек спас зубра от исчезновения?</li>
+            <li>Почему важно охранять редкие виды, даже если они «не приносят пользы»?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Красная книга — это <strong>не список запретов, а список надежды</strong>. Каждый вид, попавший в неё, ещё можно спасти. И спасать его — дело всех нас. Настоящий знаток природы не просто знает редкие виды — он <em>защищает их</em>: не срывает редких цветов, не тревожит редких животных, рассказывает другим о Красной книге и участвует в природоохранных акциях. Сохраняя редкие виды, мы сохраняем наш общий дом — живую природу.
+    </div>
+
+    <div class="quote">
+        «Исчезнувшие виды не возвращаются. Но те, что ещё рядом с нами, — в наших руках. Сохранить их — значит сохранить часть себя».
+        <span class="quote-author">— из размышлений эколога</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section8.html" class="button">← Раздел 8. Экологические проблемы</a>
+        <a href="section10.html" class="button">📖 Перейти к разделу 10. «Исследовательский проект» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

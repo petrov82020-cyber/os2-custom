@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 4. Мир растений: как растения устроены — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #1e466e;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки частей растения */
+        .plant-parts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .part-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #16a34a;
+        }
+        .part-card .part-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .part-card .part-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .part-card .part-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Карточки приспособлений */
+        .adaptation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .adaptation-card {
+            background: #f8fafc;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+        }
+        .adaptation-card .adapt-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .adaptation-card .adapt-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section3.html" class="back-link" style="margin-left: 15px;">← Раздел 3</a>
+
+    <h1>🌿 Раздел 4. Мир растений: как растения устроены</h1>
+    <div class="section-meta">📖 Ключ II. Ум исследователя | 🎯 Для детей 8–11 лет | ⏱ 14 часов</div>
+
+    <div class="intro-card">
+        <p>Мы привыкли, что растения всегда рядом: деревья за окном, трава под ногами, цветы на клумбе, овощи на грядке. Но задумывался ли ты, что каждое растение — это <strong>удивительный живой механизм</strong>, который дышит, питается, растёт, добывает воду, защищается от врагов и заботится о потомстве?</p>
+        <p>В этом разделе мы заглянем внутрь растения — не глазами, а <strong>умом исследователя</strong>. Узнаем, как устроены корень и лист, как растение «готовит» себе еду из солнечного света, как оно путешествует по миру, не сходя с места, и почему одни растения выживают в пустыне, а другие — в северной тайге. И ещё узнаем, чему у растений может научиться человек.</p>
+    </div>
+
+    <h2>🌱 Растение — это живой организм</h2>
+
+    <p>Мы уже знаем, что растения — живые существа. Но что значит «живой организм»? Это значит, что растение способно к <strong>нескольким важным процессам</strong>, которых нет у камня или облака:</p>
+
+    <ul>
+        <li><strong>Дышит</strong> — поглощает кислород и выделяет углекислый газ (а на свету — наоборот).</li>
+        <li><strong>Питается</strong> — всасывает воду и минеральные вещества корнями, а на свету само «готовит» себе еду.</li>
+        <li><strong>Растёт</strong> — увеличивается в размерах на протяжении всей жизни.</li>
+        <li><strong>Размножается</strong> — оставляет потомство: семена, споры, отростки.</li>
+        <li><strong>Реагирует на среду</strong> — поворачивает листья к солнцу, закрывает цветы на ночь, сбрасывает листья осенью.</li>
+    </ul>
+
+    <p>Все эти процессы вместе и делают растение <strong>живым</strong>. Причём заметь: растение делает это без мозга, без мышц, без крови — а иногда лучше, чем человек!</p>
+
+    <h2>🏗️ Из чего состоит растение: пять главных частей</h2>
+
+    <p>Как дом состоит из фундамента, стен, окон, крыши и двери, так и растение состоит из нескольких частей. У каждой — своя «профессия». И вместе они образуют единый живой организм.</p>
+
+    <div class="plant-parts-grid">
+        <div class="part-card">
+            <span class="part-icon">🌱</span>
+            <div class="part-title">Корень</div>
+            <div class="part-text">Подземная часть растения. Держит растение в земле, всасывает воду и минеральные соли. У некоторых растений корни уходят в глубину на десятки метров.</div>
+        </div>
+        <div class="part-card">
+            <span class="part-icon">🌿</span>
+            <div class="part-title">Стебель</div>
+            <div class="part-text">«Транспортная система» растения. Проводит воду и питательные вещества от корней к листьям и обратно. Поддерживает листья и цветы.</div>
+        </div>
+        <div class="part-card">
+            <span class="part-icon">🍃</span>
+            <div class="part-title">Лист</div>
+            <div class="part-text">«Фабрика еды». Именно в листьях на свету происходит фотосинтез — превращение света, воды и воздуха в питательные вещества.</div>
+        </div>
+        <div class="part-card">
+            <span class="part-icon">🌸</span>
+            <div class="part-title">Цветок</div>
+            <div class="part-text">Орган размножения. Здесь образуются семена. Яркие лепестки и аромат привлекают насекомых-опылителей.</div>
+        </div>
+        <div class="part-card">
+            <span class="part-icon">🍎</span>
+            <div class="part-title">Плод и семена</div>
+            <div class="part-text">Дом для будущего потомства. Плод защищает семена и помогает им распространяться по свету. Из семени вырастает новое растение.</div>
+        </div>
+    </div>
+
+    <!-- SVG: строение растения -->
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:20px auto;max-width:100%;background:#f8fafc;border-radius:16px;padding:10px;border:1px solid #e2e8f0;" role="img" aria-label="Схема: строение растения">
+        <text x="300" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#166534">СТРОЕНИЕ РАСТЕНИЯ</text>
+
+        <!-- Цветок -->
+        <circle cx="300" cy="75" r="20" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="300" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18">🌸</text>
+        <text x="370" y="80" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Цветок</text>
+        <line x1="320" y1="75" x2="360" y2="75" stroke="#92400e" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <!-- Лист -->
+        <ellipse cx="255" cy="150" rx="30" ry="14" fill="#86efac" stroke="#16a34a" stroke-width="2" transform="rotate(-20 255 150)"/>
+        <text x="200" y="145" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">Лист</text>
+        <line x1="225" y1="148" x2="205" y2="145" stroke="#166534" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <ellipse cx="345" cy="185" rx="30" ry="14" fill="#86efac" stroke="#16a34a" stroke-width="2" transform="rotate(20 345 185)"/>
+        <text x="400" y="182" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">Лист</text>
+        <line x1="375" y1="185" x2="395" y2="182" stroke="#166534" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <!-- Стебель -->
+        <rect x="296" y="95" width="8" height="160" fill="#65a30d" stroke="#4d7c0f"/>
+        <text x="230" y="180" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#4d7c0f">Стебель</text>
+        <line x1="260" y1="178" x2="293" y2="178" stroke="#4d7c0f" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <!-- Почва -->
+        <line x1="120" y1="255" x2="480" y2="255" stroke="#92400e" stroke-width="2"/>
+        <rect x="120" y="255" width="360" height="40" fill="#fef3c7"/>
+        <text x="135" y="280" font-family="Segoe UI, sans-serif" font-size="11" fill="#78350f">почва</text>
+
+        <!-- Корень -->
+        <path d="M300 255 L300 290 M300 275 L280 290 M300 275 L320 290 M300 285 L290 300 M300 285 L312 300" stroke="#78350f" stroke-width="2.5" fill="none"/>
+        <text x="350" y="300" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#78350f">Корень</text>
+        <line x1="345" y1="298" x2="315" y2="290" stroke="#78350f" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <!-- Подписи -->
+        <text x="300" y="350" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-style="italic" fill="#64748b">Все части растения связаны в единое целое</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 4.1. Пять главных частей растения и их взаимосвязь.</p>
+
+    <div class="info-box">
+        <strong>💡 Подумай.</strong> Если удалить хотя бы одну часть растения — оно погибнет. Без корня не будет воды, без листа — еды, без стебля не будет связи между ними, без цветка не будет семян, без семян не будет новых растений. Растение — <strong>целостная система</strong>, в которой каждая часть важна. Это первый урок, который природа даёт исследователю: <em>всё в живом организме взаимосвязано.</em>
+    </div>
+
+    <h2>☀️ Фотосинтез: как растение готовит себе еду</h2>
+
+    <p>Знаешь ли ты, что растения — <strong>единственные на Земле существа</strong>, которые умеют готовить еду из света? Этот удивительный процесс называется <strong>фотосинтезом</strong>. Слово «фотосинтез» означает «создание при помощи света».</p>
+
+    <p>Вот что происходит в листе на свету:</p>
+
+    <ol>
+        <li><strong>Корень</strong> всасывает из почвы воду с растворёнными минеральными солями.</li>
+        <li><strong>Стебель</strong> поднимает воду к листьям.</li>
+        <li>В листе есть особое зелёное вещество — <strong>хлорофилл</strong>. Именно оно даёт листьям зелёный цвет.</li>
+        <li>Хлорофилл ловит <strong>солнечный свет</strong> и с его помощью соединяет воду с углекислым газом, который растение взяло из воздуха.</li>
+        <li>В результате получается <strong>сахар</strong> (питание для растения) и <strong>кислород</strong>, который растение отдаёт в воздух.</li>
+    </ol>
+
+    <p>Представь себе: лист — это маленькая солнечная электростанция и одновременно завод по производству еды. И работает он безостановочно — всё светлое время суток!</p>
+
+    <div class="green-note">
+        <strong>🌍 Значение фотосинтеза для всей планеты.</strong> Благодаря фотосинтезу на Земле есть кислород, которым дышат все живые существа. Благодаря ему появились залежи угля, нефти, торфа — ведь это остатки древних растений. И благодаря фотосинтезу существует вся пища, которую мы едим: и растительная, и животная (животные едят растения или других животных, которые ели растения). Каждый кусочек хлеба на твоём столе — это <em>превращённый солнечный свет</em>.
+    </div>
+
+    <div class="quote">
+        «Растения — это посредники между Солнцем и жизнью на Земле. Они переводят солнечный свет в еду, которой питается всё живое».
+        <span class="quote-author">— из научно-популярной литературы о природе</span>
+    </div>
+
+    <h2>🌍 Растения-путешественники: как семена покоряют мир</h2>
+
+    <p>Растения не могут ходить. Но это не мешает им <strong>расселяться по всей планете</strong>. Как же им это удаётся? Секрет — в семенах и плодах, которые умеют путешествовать самыми разными способами.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Способ распространения</th>
+                <th>Как это работает</th>
+                <th>Примеры растений</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🌬️ Ветром</strong></td>
+                <td>Семена лёгкие, имеют «крылышки» или «парашютики», которые подхватывает ветер</td>
+                <td>Одуванчик, клён, берёза, сосна</td>
+            </tr>
+            <tr>
+                <td><strong>🐦 Птицами и зверями</strong></td>
+                <td>Плоды съедаются животными, а семена выходят наружу вместе с помётом или переносятся на шерсти и перьях</td>
+                <td>Рябина, малина, черника, репейник</td>
+            </tr>
+            <tr>
+                <td><strong>💧 Водой</strong></td>
+                <td>Семена имеют «поплавки» и путешествуют по рекам и морям на большие расстояния</td>
+                <td>Кокос, кувшинка, ольха</td>
+            </tr>
+            <tr>
+                <td><strong>🌾 Саморазбрасыванием</strong></td>
+                <td>Плод «взрывается» и разбрасывает семена вокруг растения</td>
+                <td>Жёлтая акация, бешеный огурец, фиалка</td>
+            </tr>
+            <tr>
+                <td><strong>👣 Человеком</strong></td>
+                <td>Семена цепляются к одежде и обуви или специально переносятся человеком</td>
+                <td>Подорожник, лопух, культурные растения</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <strong>🎯 Интересно знать.</strong> Подорожник получил своё имя именно за то, что растёт вдоль дорог. Его семена прилипают к обуви путников и «путешествуют» вместе с ними. Так подорожник расселился по всему миру. А вот одуванчик — настоящий парашютист: один цветок может выпустить в воздух до 200 семян, и каждое может улететь на десятки километров!
+    </div>
+
+    <h2>🛡️ Как растения приспосабливаются к жизни</h2>
+
+    <p>Растения живут в самых разных условиях: в жаркой пустыне, во влажном тропическом лесу, в холодной тундре, на дне озера, на вершинах гор. И каждое из них <strong>приспосабливается</strong> к своей среде — по-своему, но всегда удивительно.</p>
+
+    <div class="adaptation-grid">
+        <div class="adaptation-card">
+            <div class="adapt-title">🌵 Кактусы: запас воды</div>
+            <div class="adapt-text">Вместо листьев у кактуса — колючки (они испаряют мало воды). Воды запасается в толстом стебле — иногда на сотни литров. Это позволяет кактусу выживать там, где годами не бывает дождя.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🌲 Хвойные: защита от холода</div>
+            <div class="adapt-text">У елей и сосен листья превратились в иголки с плотной кожицей. Они не боятся морозов и сохраняются всю зиму. Поэтому еловые леса растут даже далеко на севере.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🥕 Корнеплоды: кладовая под землёй</div>
+            <div class="adapt-text">Морковь, свёкла, редис запасают питательные вещества в утолщённом корне. Так растение может пережить зиму и весной дать новое потомство.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🍀 Теневыносливые: жизнь в тени</div>
+            <div class="adapt-text">Растения нижнего яруса леса (папоротники, кислица) приспособились к слабому свету. Их листья крупные, часто тёмно-зелёные — они ловят каждый лучик солнца.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🌺 Растения-хищники: охота на насекомых</div>
+            <div class="adapt-text">Росянка и венерина мухоловка растут на болотах, где почва бедна питательными веществами. Они «ловят» насекомых, чтобы получить нужные для жизни вещества.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🌾 Однолетники: быстрая жизнь</div>
+            <div class="adapt-text">Некоторые растения (василёк, ромашка) за одно лето успевают вырасти, зацвести и дать семена. Их семена зимуют в земле и прорастают весной.</div>
+        </div>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Растения учат нас <strong>приспосабливаться к обстоятельствам</strong>. Кактус не ропщет на жару — он запасает воду. Ель не жалуется на холод — она прячет тепло в иголках. И каждое растение находит свой способ жить там, где оно оказалось. Это урок терпения, изобретательности и жизненной силы.
+    </div>
+
+    <h2>🎨 Красота и гармония растительного мира</h2>
+
+    <p>Растительный мир — это не только польза, но и <strong>красота</strong>. Листья, цветы, плоды удивительно красивы. Учёные давно заметили: красота растений не случайна — она подчиняется строгим законам <strong>симметрии и пропорции</strong>.</p>
+
+    <ul>
+        <li><strong>Симметрия листьев.</strong> Если сложить лист вдоль центральной жилки — левая и правая половинки совпадут. Это зеркальная симметрия.</li>
+        <li><strong>Радиальная симметрия цветов.</strong> Ромашка, подсолнечник, василёк имеют лепестки, расположенные по кругу. Это радиальная (лучевая) симметрия.</li>
+        <li><strong>Спирали семян.</strong> Семена подсолнуха расположены по удивительным спиралям, в которых учёные видят закономерность чисел Фибоначчи.</li>
+        <li><strong>Пропорции стеблей и листьев.</strong> У многих растений отношение длины стебля к длине листа близко к «золотому сечению».</li>
+    </ul>
+
+    <p>Из этих законов родилось всё <strong>декоративное искусство человечества</strong>: узоры на посуде, вышивка, роспись, ковка. Художники и мастера веками учились у растений гармонии.</p>
+
+    <div class="quote">
+        «Художник не придумывает узор. Он лишь замечает тот, что природа уже создала в листе, в цветке, в снежинке».
+        <span class="quote-author">— из размышлений о народном творчестве</span>
+    </div>
+
+    <h2>🔴 Растения Красной книги: редкие и охраняемые</h2>
+
+    <p>К сожалению, некоторые растения стали <strong>очень редкими</strong>. Из-за вырубки лесов, осушения болот, сбора на букеты и разрушения мест обитания их осталось так мало, что они могут исчезнуть навсегда. Такие растения занесены в <strong>Красную книгу Республики Беларусь</strong>.</p>
+
+    <div class="plant-parts-grid">
+        <div class="part-card" style="border-top-color:#dc2626;">
+            <span class="part-icon">🌷</span>
+            <div class="part-title">Венерин башмачок</div>
+            <div class="part-text">Лесная орхидея с цветком, похожим на туфельку. Цветёт раз в несколько лет. Растёт только в нетронутых лесах.</div>
+        </div>
+        <div class="part-card" style="border-top-color:#dc2626;">
+            <span class="part-icon">🌸</span>
+            <div class="part-title">Сон-трава</div>
+            <div class="part-text">Весенний первоцвет с пушистыми лепестками. Страдает от сбора на букеты. Растёт на сухих солнечных склонах.</div>
+        </div>
+        <div class="part-card" style="border-top-color:#dc2626;">
+            <span class="part-icon">💧</span>
+            <div class="part-title">Кувшинка белая</div>
+            <div class="part-text">Водное растение с крупными белыми цветами. Украшение наших озёр. Занесена в Красную книгу из-за загрязнения водоёмов.</div>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Помни.</strong> Если ты встретил в лесу редкое растение — <strong>не срывай его!</strong> Полюбуйся и оставь расти. Одна сорванная «на память» кувшинка или сон-трава — это потеря для всей природы. Настоящий знаток природы умеет ценить красоту, не разрушая её.
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Корень, стебель, лист, цветок, плод</strong> — пять главных частей растения, каждая из которых выполняет свою функцию.</p>
+        <p><strong>Фотосинтез</strong> — процесс, при котором растение на свету создаёт питательные вещества из воды и углекислого газа.</p>
+        <p><strong>Хлорофилл</strong> — зелёное вещество в листьях, с помощью которого происходит фотосинтез.</p>
+        <p><strong>Приспособление</strong> — особенность строения или поведения, помогающая живому существу выживать в своей среде.</p>
+        <p><strong>Распространение семян</strong> — способы, которыми растения расселяются по миру.</p>
+        <p><strong>Симметрия</strong> — свойство природных форм, при котором одна часть повторяет другую.</p>
+    </div>
+
+    <h2>✏️ Задания для юного исследователя</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">🌱 Задание 4.1. «Пять частей растения»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини часть растения и то, что она делает.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Часть растения</th>
+                    <th>Что делает</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🌱 Корень</td><td>☐ Проводит воду и питательные вещества ☐ Всасывает воду и держит растение ☐ Готовит пищу</td></tr>
+                <tr><td>🌿 Стебель</td><td>☐ Всасывает воду ☐ Проводит воду и поддерживает листья ☐ Привлекает насекомых</td></tr>
+                <tr><td>🍃 Лист</td><td>☐ Готовит пищу на свету ☐ Держит растение в земле ☐ Образует семена</td></tr>
+                <tr><td>🌸 Цветок</td><td>☐ Всасывает воду ☐ Привлекает опылителей и образует семена ☐ Готовит пищу</td></tr>
+                <tr><td>🍎 Плод</td><td>☐ Защищает семена и помогает их распространению ☐ Проводит воду ☐ Дышит</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">☀️ Задание 4.2. «Как работает фотосинтез»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Дополни схему фотосинтеза: подпиши, что растение берёт из природы и что отдаёт обратно. Нарисуй стрелки.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Что растение берёт?</th>
+                    <th>Что растение отдаёт?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="line-for-writing" style="margin:0;"></span>
+                        <span class="line-for-writing" style="margin:0;"></span>
+                        <span class="line-for-writing" style="margin:0;"></span>
+                    </td>
+                    <td>
+                        <span class="line-for-writing" style="margin:0;"></span>
+                        <span class="line-for-writing" style="margin:0;"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> Что бы произошло на Земле, если бы все растения вдруг исчезли?</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌍 Задание 4.3. «Растения-путешественники»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини растение со способом распространения его семян.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Растение</th>
+                    <th>Способ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🌳 Клён</td><td>☐ Ветром ☐ Водой ☐ Животными</td></tr>
+                <tr><td>🌰 Кокос</td><td>☐ Ветром ☐ Водой ☐ Саморазбрасыванием</td></tr>
+                <tr><td>🌾 Репейник</td><td>☐ Ветром ☐ Животными ☐ Водой</td></tr>
+                <tr><td>🌸 Фиалка</td><td>☐ Саморазбрасыванием ☐ Ветром ☐ Водой</td></tr>
+                <tr><td>🌼 Одуванчик</td><td>☐ Ветром ☐ Животными ☐ Водой</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔍 Задание 4.4. «Исследование листа»</div>
+        <p><span class="signal">🔍 Исследуй</span> <span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Найди на прогулке 3 разных листа разных растений. Рассмотри каждый лист внимательно и заполни таблицу.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Лист</th>
+                    <th>Форма</th>
+                    <th>Край</th>
+                    <th>Симметричен?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td>☐ да ☐ нет</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td>☐ да ☐ нет</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td>☐ да ☐ нет</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> Все ли листья симметричны? Какие оказались несимметричными?</p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🛡️ Задание 4.5. «Как растения приспосабливаются»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Выбери одно растение (из таблицы или знакомое тебе) и опиши, как оно приспособилось к своей среде. В чём его «секрет выживания»?</p>
+        <p><strong>Название растения:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Где оно живёт:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Как приспособилось:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Чему это может научить человека:</strong></p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔴 Задание 4.6. «Моё редкое растение»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери одно редкое растение Республики Беларусь из Красной книги. Нарисуй его, расскажи, где оно растёт и почему нуждается в охране.</p>
+        <p><strong>Название:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Где растёт:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Почему охраняется:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что растение — <strong>живой организм</strong>, способный дышать, питаться, расти, размножаться и реагировать на среду.</li>
+            <li>Какие <strong>пять главных частей</strong> есть у растения и какую роль играет каждая.</li>
+            <li>Что такое <strong>фотосинтез</strong> и почему без него жизнь на Земле была бы невозможна.</li>
+            <li>Какими способами <strong>путешествуют семена</strong> и как растения расселяются по миру.</li>
+            <li>Какие <strong>приспособления</strong> помогают растениям выживать в разных условиях.</li>
+            <li>Что в растительном мире есть <strong>симметрия, гармония и красота</strong>.</li>
+            <li>Какие растения занесены в <strong>Красную книгу Беларуси</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Назови пять главных частей растения.</li>
+            <li>Какую роль играет корень?</li>
+            <li>Что такое фотосинтез?</li>
+            <li>Зачем растение образует плоды и семена?</li>
+            <li>Приведи примеры приспособлений растений к разным условиям.</li>
+            <li>Почему некоторые растения занесены в Красную книгу?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Каждое растение — это <strong>удивительный живой механизм</strong>, созданный природой за миллионы лет. Но растение — это ещё и <strong>наш учитель</strong>: оно учит терпению, приспособляемости, гармонии и умению жить в согласии с другими. Настоящий знаток природы не просто знает, как устроено растение, — он умеет <em>видеть в нём чудо</em> и относиться к нему с уважением.
+    </div>
+
+    <div class="quote">
+        «Растения — это посредники между Солнцем и жизнью. Изучая их, ты изучаешь саму жизнь».
+        <span class="quote-author">— из размышлений натуралиста</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section3.html" class="button">← Раздел 3. Погода и климат</a>
+        <a href="section5.html" class="button">📖 Перейти к разделу 5. «Мир животных» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

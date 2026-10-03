@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 3. Погода и климат: дневник наблюдений — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #1e466e;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки элементов погоды */
+        .element-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .element-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #0969da;
+        }
+        .element-card .el-icon {
+            font-size: 1.7rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .element-card .el-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .element-card .el-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Схема-станция */
+        .station-svg {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+
+        /* Календарь погоды-сетка */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin: 18px 0;
+        }
+        .weather-cell {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.82rem;
+            min-height: 70px;
+        }
+        .weather-cell .day-label {
+            font-weight: 700;
+            color: #1e466e;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+            .weather-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section2.html" class="back-link" style="margin-left: 15px;">← Раздел 2</a>
+
+    <h1>🌤️ Раздел 3. Погода и климат: дневник наблюдений</h1>
+    <div class="section-meta">📖 Ключ I. Глаз исследователя | 🎯 Для детей 8–11 лет | ⏱ 10 часов</div>
+
+    <div class="intro-card">
+        <p>Каждое утро, выходя из дома, ты первым делом смотришь на небо: сегодня тепло или холодно, солнечно или пасмурно, нужно ли взять зонтик. Погода — это то, что мы чувствуем каждый день. Но знаешь ли ты, из чего она складывается? Какие силы управляют ветром, облаками, дождём?</p>
+        <p>В этом разделе мы научимся <strong>разговаривать с небом на языке науки</strong>. Ты узнаешь, что такое метеорология и климатология, как работают настоящие метеостанции, чем погода отличается от климата. А главное — мы вместе построим <strong>твой собственный календарь погоды</strong>, который станет ещё одной страницей в дневнике юного фенолога.</p>
+    </div>
+
+    <h2>🌍 Что такое погода и что такое климат</h2>
+
+    <p>Эти два слова часто путают. Но между ними — принципиальная разница. Понять её проще всего через сравнение.</p>
+
+    <p><strong>Погода</strong> — это состояние атмосферы в конкретном месте в конкретный момент. Сегодня утром в Минске солнечно и +15 °C. Вечером может пойти дождь. Завтра может похолодать. Погода очень изменчива — она меняется каждый час, каждый день.</p>
+
+    <p><strong>Климат</strong> — это многолетний режим погоды, характерный для данной местности. Климат Беларуси — умеренно континентальный: тёплое лето, мягкая зима, достаточное количество осадков. Климат меняется очень медленно — на протяжении десятков и сотен лет.</p>
+
+    <div class="element-grid">
+        <div class="element-card">
+            <span class="el-icon">📅</span>
+            <div class="el-title">Погода</div>
+            <div class="el-text">Изменяется за часы и дни. «Сегодня дождь, а завтра будет солнце». То, что мы наблюдаем здесь и сейчас.</div>
+        </div>
+        <div class="element-card">
+            <span class="el-icon">🗓️</span>
+            <div class="el-title">Климат</div>
+            <div class="el-text">Формируется десятилетиями. «В Беларуси зимы обычно мягкие, а лето тёплое». То, что повторяется из года в год.</div>
+        </div>
+        <div class="element-card">
+            <span class="el-icon">🌡️</span>
+            <div class="el-title">Метеорология</div>
+            <div class="el-text">Наука о погоде. Изучает короткие изменения в атмосфере. Предсказывает погоду на завтра и на неделю вперёд.</div>
+        </div>
+        <div class="element-card">
+            <span class="el-icon">🌏</span>
+            <div class="el-title">Климатология</div>
+            <div class="el-text">Наука о климате. Изучает многолетние закономерности. Исследует, как меняется климат планеты.</div>
+        </div>
+    </div>
+
+    <div class="quote">
+        «Погода — это настроение природы. Климат — это её характер».
+        <span class="quote-author">— изречение метеорологов</span>
+    </div>
+
+    <h2>🔬 Из чего состоит погода: пять главных элементов</h2>
+
+    <p>Погода — сложное явление. Но её можно разложить на несколько простых составляющих, которые метеорологи называют <strong>элементами погоды</strong>. Именно их фиксируют на всех метеостанциях мира.</p>
+
+    <h3>1. Температура воздуха</h3>
+    <p>Самый знакомый нам элемент. Измеряется <strong>термометром</strong>. Температура воздуха зависит от высоты солнца над горизонтом, от времени суток, от облачности, от ветра. Летом в Беларуси температура может подниматься до +35 °C, зимой опускаться до −30 °C.</p>
+
+    <h3>2. Атмосферное давление</h3>
+    <p>Воздух имеет вес! Он давит на нас и на земную поверхность. Это давление измеряется <strong>барометром</strong>. Нормальное давление — около 760 мм ртутного столба. Если давление падает — жди дождя. Если растёт — будет ясно.</p>
+
+    <h3>3. Влажность воздуха</h3>
+    <p>Сколько воды содержится в воздухе в виде пара. Измеряется <strong>гигрометром</strong>. Высокая влажность летом делает жару тяжёлой, а зимой — мороз легче переносится. Именно влажность воздуха определяет, будет ли дождь, туман, роса.</p>
+
+    <h3>4. Ветер</h3>
+    <p>Движение воздуха. Характеризуется двумя параметрами: <strong>скоростью</strong> и <strong>направлением</strong>. Скорость измеряют <strong>анемометром</strong>, направление — <strong>флюгером</strong>. Ветер приносит нам тепло или холод, ясную погоду или тучи.</p>
+
+    <h3>5. Осадки и облачность</h3>
+    <p>Осадки — это дождь, снег, град, морось, роса, иней. Облачность — степень покрытия неба облаками. Эти элементы мы оцениваем визуально или с помощью простых приборов (<strong>осадкомер</strong>).</p>
+
+    <div class="info-box">
+        <strong>💡 Интересно знать.</strong> Настоящие метеостанции по всему миру фиксируют одни и те же элементы погоды в одно и то же время — каждые три часа. Благодаря этому учёные могут строить единую картину погоды для всей планеты. Твои наблюдения тоже имеют значение — из них можно увидеть местные особенности климата.
+    </div>
+
+    <h2>🏡 Как устроена метеостанция: путешествие по площадке наблюдений</h2>
+
+    <p>Настоящая метеостанция — это целый «городок» с приборами. Давай заглянем туда и познакомимся с ними.</p>
+
+    <!-- SVG метеостанции -->
+    <svg class="station-svg" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема метеорологической площадки">
+        <rect x="10" y="10" width="580" height="320" rx="16" fill="#f8fafc"/>
+        <text x="300" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1e466e">МЕТЕОРОЛОГИЧЕСКАЯ ПЛОЩАДКА</text>
+
+        <!-- Будка -->
+        <rect x="50" y="130" width="90" height="110" rx="6" fill="#dbeafe" stroke="#0969da" stroke-width="2"/>
+        <line x1="50" y1="160" x2="140" y2="160" stroke="#0969da" stroke-width="1.5"/>
+        <line x1="50" y1="190" x2="140" y2="190" stroke="#0969da" stroke-width="1.5"/>
+        <text x="95" y="255" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e466e">Психрометрическая</text>
+        <text x="95" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e466e">будка</text>
+
+        <!-- Термометр в будке -->
+        <text x="95" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">🌡️</text>
+
+        <!-- Флюгер (столб) -->
+        <line x1="220" y1="60" x2="220" y2="240" stroke="#475569" stroke-width="3"/>
+        <polygon points="220,55 235,65 220,75" fill="#ef4444"/>
+        <polygon points="220,55 205,65 220,75" fill="#94a3b8"/>
+        <text x="220" y="260" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e466e">Флюгер</text>
+
+        <!-- Анемометр -->
+        <line x1="340" y1="70" x2="340" y2="240" stroke="#475569" stroke-width="3"/>
+        <line x1="310" y1="90" x2="370" y2="90" stroke="#475569" stroke-width="2"/>
+        <circle cx="310" cy="90" r="6" fill="#0969da"/>
+        <circle cx="370" cy="90" r="6" fill="#0969da"/>
+        <circle cx="340" cy="75" r="5" fill="#0969da"/>
+        <text x="340" y="260" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e466e">Анемометр</text>
+
+        <!-- Осадкомер -->
+        <rect x="440" y="160" width="60" height="70" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+        <line x1="440" y1="180" x2="500" y2="180" stroke="#0284c7" stroke-width="1.5"/>
+        <text x="470" y="255" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e466e">Осадкомер</text>
+
+        <!-- Почва -->
+        <line x1="20" y1="245" x2="580" y2="245" stroke="#16a34a" stroke-width="2"/>
+        <text x="40" y="262" font-family="Segoe UI, sans-serif" font-size="11" fill="#166534">земля</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 3.1. Метеорологическая площадка и её главные приборы.</p>
+
+    <ul>
+        <li><strong>Психрометрическая будка.</strong> Домик, в котором размещают термометры и гигрометры. Стенки будки — жалюзийные, чтобы воздух свободно проходил внутрь, но солнце не нагревало приборы.</li>
+        <li><strong>Термометры</strong> — ртутные или спиртовые — показывают температуру воздуха. Существуют также максимальные и минимальные термометры, которые запоминают самую высокую и самую низкую температуру за сутки.</li>
+        <li><strong>Флюгер.</strong> Показывает направление ветра. Указатель всегда разворачивается «носом» против ветра.</li>
+        <li><strong>Анемометр.</strong> Вращающиеся чашечки измеряют скорость ветра.</li>
+        <li><strong>Осадкомер.</strong> Сосуд, в который собираются осадки. По его уровню определяют, сколько миллиметров дождя или снега выпало.</li>
+    </ul>
+
+    <div class="note">
+        <strong>🎯 А знаешь ли ты?</strong> Простая метеостанция может быть собрана даже школьником. Достаточно термометра, самодельного флюгера из бумаги и простого дождемера из пластиковой бутылки. Главное — вести наблюдения систематически.
+    </div>
+
+    <h2>📅 Мой календарь погоды: учимся наблюдать</h2>
+
+    <p>Календарь погоды — это таблица, в которой каждый день фиксируются основные элементы погоды. Он — продолжение дневника фенолога, только с акцентом на атмосферные явления.</p>
+
+    <p>Вот минимальный набор того, что стоит фиксировать каждый день:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Что наблюдаем</th>
+                <th>Как фиксируем</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Температура воздуха</td><td>Числом (°C) — например, +12 или −5</td></tr>
+            <tr><td>Облачность</td><td>Значком: ☀️ ясно, ⛅ переменная облачность, ☁️ пасмурно</td></tr>
+            <tr><td>Осадки</td><td>Значком: 🌧️ дождь, 🌨️ снег, ⛈️ гроза, — нет осадков</td></tr>
+            <tr><td>Ветер</td><td>Стрелкой направления и оценкой силы: ← слабый, ⇐ сильный</td></tr>
+            <tr><td>Особые явления</td><td>Туман, роса, иней, гололёд, радуга, град</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Пример календаря погоды на неделю</h3>
+
+    <div class="weather-grid">
+        <div class="weather-cell">
+            <span class="day-label">Пн</span>
+            ☀️<br>+15
+        </div>
+        <div class="weather-cell">
+            <span class="day-label">Вт</span>
+            ⛅<br>+12
+        </div>
+        <div class="weather-cell">
+            <span class="day-label">Ср</span>
+            🌧️<br>+8
+        </div>
+        <div class="weather-cell">
+            <span class="day-label">Чт</span>
+            ☁️<br>+7
+        </div>
+        <div class="weather-cell">
+            <span class="day-label">Пт</span>
+            ☀️<br>+14
+        </div>
+        <div class="weather-cell">
+            <span class="day-label">Сб</span>
+            🌧️<br>+11
+        </div>
+        <div class="weather-cell">
+            <span class="day-label">Вс</span>
+            ⛅<br>+13
+        </div>
+    </div>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 3.2. Пример заполнения календаря погоды на одну неделю.</p>
+
+    <h2>🌬️ Народные приметы о погоде: мудрость, проверенная веками</h2>
+
+    <p>Наши предки не имели барометров и спутников. Но они умели предсказывать погоду точнее, чем мы думаем. Секрет прост: они <strong>наблюдали за природой</strong> и замечали закономерности. Многие приметы сегодня получили научное объяснение.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Примета</th>
+                <th>Что предсказывает</th>
+                <th>Научное объяснение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>«Ласточки летают низко — к дождю»</td>
+                <td>Дождь</td>
+                <td>Перед дождём воздух влажный, насекомые опускаются ниже, а ласточки охотятся за ними</td>
+            </tr>
+            <tr>
+                <td>«Кошка сворачивается клубком — к морозу»</td>
+                <td>Похолодание</td>
+                <td>Животное чувствует падение температуры и инстинктивно сохраняет тепло</td>
+            </tr>
+            <tr>
+                <td>«Дым из трубы столбом — к морозу»</td>
+                <td>Мороз</td>
+                <td>В морозную погоду воздух плотный, дым поднимается прямо вверх</td>
+            </tr>
+            <tr>
+                <td>«Утром туман стелется по земле — к ясной погоде»</td>
+                <td>Ясно</td>
+                <td>Туман образуется в безветренную погоду и рассеивается с восходом солнца</td>
+            </tr>
+            <tr>
+                <td>«Звёзды ярко блестят — к морозу»</td>
+                <td>Мороз</td>
+                <td>В морозную ночь воздух прозрачен, звёзды видны ярче</td>
+            </tr>
+            <tr>
+                <td>«Солнце садится в тучу — завтра будет дождь»</td>
+                <td>Дождь</td>
+                <td>Закат в тучу означает приближение циклона — области низкого давления с осадками</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ Запомни.</strong> Народные приметы — это <strong>результат многовековых наблюдений</strong>, а не научные законы. Многие из них действительно «работают», но не на 100%. Настоящий знаток природы умеет <strong>и приметы знать, и проверять их наблюдениями</strong>. Только так рождается истинное понимание.
+    </div>
+
+    <h2>🎨 Погода и искусство: как небо вдохновляло художников</h2>
+
+    <p>Погода — источник вдохновения для художников, поэтов, композиторов. Один и тот же пейзаж в разную погоду выглядит совершенно по-разному. Именно поэтому художники-пейзажисты так любили изображать «состояния неба»:</p>
+
+    <ul>
+        <li><strong>Туман</strong> превращает знакомый пейзаж в загадочный, таинственный.</li>
+        <li><strong>Гроза</strong> придаёт картине драматизм и напряжение.</li>
+        <li><strong>Закат</strong> наполняет сцену тёплым, мечтательным светом.</li>
+        <li><strong>Первый снег</strong> делает мир чистым и праздничным.</li>
+        <li><strong>Радуга после дождя</strong> дарит ощущение радости и надежды.</li>
+    </ul>
+
+    <div class="quote">
+        «Нет плохой погоды — есть плохая одежда», — говорят скандинавы. А мы добавим: «Нет плохой погоды для настоящего наблюдателя — есть только разные состояния природы, каждое из которых по-своему прекрасно».
+        <span class="quote-author">— из наблюдений юных фенологов</span>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Погода</strong> — состояние атмосферы в конкретном месте в конкретный момент времени.</p>
+        <p><strong>Климат</strong> — многолетний режим погоды, характерный для данной местности.</p>
+        <p><strong>Метеорология</strong> — наука, изучающая погоду и методы её предсказания.</p>
+        <p><strong>Климатология</strong> — наука, изучающая климат и его изменения.</p>
+        <p><strong>Метеостанция</strong> — площадка с приборами для измерения элементов погоды.</p>
+        <p><strong>Термометр, барометр, гигрометр, анемометр, флюгер, осадкомер</strong> — приборы для измерения разных элементов погоды.</p>
+        <p><strong>Календарь погоды</strong> — таблица для ежедневной фиксации элементов погоды.</p>
+    </div>
+
+    <h2>✏️ Задания для юного метеоролога</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">🌡️ Задание 3.1. «Различай погоду и климат»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Прочитай утверждения и определи, о чём идёт речь — о погоде или о климате. Отметь правильную колонку галочкой.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Утверждение</th>
+                    <th>Погода</th>
+                    <th>Климат</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Сегодня утром было +8 °C</td><td>☐</td><td>☐</td></tr>
+                <tr><td>В Беларуси зимы обычно мягкие</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Вчера шёл сильный дождь</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Летом в среднем бывает около +20 °C</td><td>☐</td><td>☐</td></tr>
+                <tr><td>Завтра обещают похолодание</td><td>☐</td><td>☐</td></tr>
+                <tr><td>В нашей местности часто бывают туманы</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📅 Задание 3.2. «Мой календарь погоды»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Заполняй календарь погоды в течение недели. Каждый день фиксируй температуру, облачность, осадки, ветер и особые явления.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>t, °C</th>
+                    <th>Облачность</th>
+                    <th>Осадки</th>
+                    <th>Ветер</th>
+                    <th>Особые явления</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> Какой день недели оказался самым тёплым? Каким был самым холодным? Что это может значить?</p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔍 Задание 3.3. «Приборы метеоролога»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Соедини прибор и то, что он измеряет.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Прибор</th>
+                    <th>Что измеряет</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🌡️ Термометр</td><td>☐ Давление воздуха ☐ Температуру воздуха ☐ Влажность воздуха</td></tr>
+                <tr><td>⚖️ Барометр</td><td>☐ Давление воздуха ☐ Скорость ветра ☐ Осадки</td></tr>
+                <tr><td>💧 Гигрометр</td><td>☐ Влажность воздуха ☐ Направление ветра ☐ Облачность</td></tr>
+                <tr><td>🌀 Анемометр</td><td>☐ Скорость ветра ☐ Температуру ☐ Осадки</td></tr>
+                <tr><td>🧭 Флюгер</td><td>☐ Направление ветра ☐ Давление ☐ Влажность</td></tr>
+                <tr><td>🌧️ Осадкомер</td><td>☐ Количество осадков ☐ Температуру ☐ Ветер</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🌬️ Задание 3.4. «Проверь народную примету»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери одну народную примету из таблицы выше и проверь её в течение недели. Записывай свои наблюдения и сделай вывод: подтвердилась примета или нет?</p>
+        <p><strong>Моя примета:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Что я заметил в природе</th>
+                    <th>Сбылось ли предсказание?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 3.5. «Погода в красках»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Изобрази природу в разную погоду: солнечный день, пасмурный день, дождливый день, туманное утро. Раскрась рисунки. Какой цвет преобладает в каждом случае? Как меняется твоё настроение при разной погоде?</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>☀️ Солнечный день</th>
+                    <th>⛅ Облачный день</th>
+                    <th>🌧️ Дождливый день</th>
+                    <th>🌫️ Туманное утро</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="height:110px;"></td>
+                    <td style="height:110px;"></td>
+                    <td style="height:110px;"></td>
+                    <td style="height:110px;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Как погода влияет на моё настроение:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Чем <strong>погода</strong> отличается от <strong>климата</strong>.</li>
+            <li>Что изучают науки <strong>метеорология</strong> и <strong>климатология</strong>.</li>
+            <li>Какие <strong>пять главных элементов погоды</strong> существуют.</li>
+            <li>Как устроена <strong>метеорологическая площадка</strong> и какие приборы на ней стоят.</li>
+            <li>Как вести <strong>календарь погоды</strong> и почему это важно.</li>
+            <li>Как <strong>народные приметы</strong> связаны с научными наблюдениями.</li>
+            <li>Как погода и климат отражаются в <strong>искусстве</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>В чём разница между погодой и климатом?</li>
+            <li>Какие элементы погоды обязательно фиксируют на метеостанции?</li>
+            <li>Какие приборы используются для измерения температуры, давления, влажности и ветра?</li>
+            <li>Что такое календарь погоды и как его вести?</li>
+            <li>Почему народные приметы о погоде часто «работают»?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="note">
+        <strong>🌟 Запомни главное.</strong> Погода — это язык, на котором природа говорит с нами каждый день. Юный метеоролог умеет этот язык понимать: он видит в облаках движение воздуха, в тумане — влажность, в ветре — перемену. И каждый его день начинается не с «Что сегодня покажет погода?», а с вопроса: <em>«Что сегодня я смогу узнать у неба?»</em>
+    </div>
+
+    <div class="quote">
+        «Небо — это первая книга человечества. Прежде чем научиться читать, человек учился читать облака».
+        <span class="quote-author">— из размышлений метеоролога</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section2.html" class="button">← Раздел 2. Календарь юного фенолога</a>
+        <a href="section4.html" class="button">📖 Перейти к разделу 4. «Мир растений» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

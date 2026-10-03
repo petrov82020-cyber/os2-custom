@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 5. Мир животных: как животные живут — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #1e466e;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "МАЛЕНЬКОЕ ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки групп животных */
+        .animal-groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .animal-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-top: 4px solid #0969da;
+        }
+        .animal-card .animal-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .animal-card .animal-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .animal-card .animal-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        /* Карточки приспособлений */
+        .adaptation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .adaptation-card {
+            background: #f8fafc;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+        }
+        .adaptation-card .adapt-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .adaptation-card .adapt-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Пищевая цепочка */
+        .chain-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            text-align: center;
+        }
+        .chain-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .chain-item {
+            background: white;
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 600;
+            color: #166534;
+            min-width: 110px;
+            text-align: center;
+        }
+        .chain-item .chain-emoji {
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+        }
+        .chain-arrow {
+            font-size: 1.6rem;
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        /* Среда обитания — плитки */
+        .habitat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .habitat-card {
+            background: #f8fafc;
+            border: 2px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 16px 18px;
+            text-align: center;
+        }
+        .habitat-card .hab-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .habitat-card .hab-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .habitat-card .hab-desc {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section4.html" class="back-link" style="margin-left: 15px;">← Раздел 4</a>
+
+    <h1>🐾 Раздел 5. Мир животных: как животные живут</h1>
+    <div class="section-meta">📖 Ключ II. Ум исследователя | 🎯 Для детей 8–11 лет | ⏱ 14 часов</div>
+
+    <div class="intro-card">
+        <p>Растения прекрасны, но они неподвижны. Совсем другое дело — животные! Они бегают, летают, плавают, ползают, строят дома, воспитывают детёнышей, охотятся и прячутся. Мир животных — это мир движения, звуков, игр и удивительных приспособлений. Это мир, в котором каждый день происходит маленькая жизнь.</p>
+        <p>В этом разделе мы с тобой научимся смотреть на животных <strong>глазами исследователя</strong>. Мы разберёмся, на какие группы делятся все животные планеты, как они приспосабливаются к разным условиям, что такое <strong>пищевые цепи</strong>, почему одни животные спят всю зиму, а другие улетают в тёплые края. И, конечно, узнаем, какие удивительные животные живут рядом с нами в Беларуси — в лесах, на болотах, в реках и озёрах.</p>
+    </div>
+
+    <h2>🌍 Многообразие животного мира</h2>
+
+    <p>На нашей планете живёт около <strong>2 миллионов видов животных</strong>. Это в сотни раз больше, чем видов растений! Они обитают везде: в жарких пустынях и во льдах Арктики, на дне океанов и на вершинах гор, в почве и в воздухе, в горячих источниках и в ледяных пещерах.</p>
+
+    <p>Чтобы разобраться в этом многообразии, учёные разделили всех животных на <strong>несколько больших групп</strong>. Изучим главные из них.</p>
+
+    <div class="animal-groups-grid">
+        <div class="animal-card">
+            <span class="animal-icon">🦌</span>
+            <div class="animal-title">Млекопитающие (звери)</div>
+            <div class="animal-text">Тело покрыто шерстью. Есть четыре конечности. Детёнышей вскармливают молоком. Теплокровные.</div>
+        </div>
+        <div class="animal-card">
+            <span class="animal-icon">🐦</span>
+            <div class="animal-title">Птицы</div>
+            <div class="animal-text">Тело покрыто перьями. Есть крылья и клюв. Откладывают яйца. Большинство умеет летать.</div>
+        </div>
+        <div class="animal-card">
+            <span class="animal-icon">🐟</span>
+            <div class="animal-title">Рыбы</div>
+            <div class="animal-text">Живут в воде. Тело покрыто чешуёй. Дышат жабрами. Передвигаются с помощью плавников.</div>
+        </div>
+        <div class="animal-card">
+            <span class="animal-icon">🐸</span>
+            <div class="animal-title">Земноводные</div>
+            <div class="animal-text">Живут и в воде, и на земле. Кожа влажная, голая. Откладывают икру. Примеры: лягушки, жабы.</div>
+        </div>
+        <div class="animal-card">
+            <span class="animal-icon">🦎</span>
+            <div class="animal-title">Пресмыкающиеся</div>
+            <div class="animal-text">Тело покрыто чешуёй или панцирем. Ползают. Откладывают яйца. Примеры: ящерицы, змеи, черепахи.</div>
+        </div>
+        <div class="animal-card">
+            <span class="animal-icon">🦋</span>
+            <div class="animal-title">Насекомые</div>
+            <div class="animal-text">Шесть ног, тело из трёх частей. У многих есть крылья. Самая многочисленная группа животных.</div>
+        </div>
+        <div class="animal-card">
+            <span class="animal-icon">🕷️</span>
+            <div class="animal-title">Паукообразные</div>
+            <div class="animal-text">Восемь ног. Тело из двух частей. Примеры: пауки, клещи, скорпионы.</div>
+        </div>
+        <div class="animal-card">
+            <span class="animal-icon">🐌</span>
+            <div class="animal-title">Моллюски</div>
+            <div class="animal-text">Мягкое тело, часто есть раковина. Примеры: улитки, слизни, мидии, кальмары.</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Запомни.</strong> Каждая группа животных имеет <strong>свои характерные признаки</strong>. Учёные определяют принадлежность животного к группе по строению тела, способу размножения, покровам. Например, если у существа шесть ног и три части тела — это насекомое, а если восемь ног — это паук.
+    </div>
+
+    <h2>🏠 Среда обитания: где живут животные</h2>
+
+    <p>Каждое животное приспособлено к жизни в определённой среде. Одни живут в воде, другие — на земле, третьи — в воздухе, четвёртые — в почве. Но многие могут жить сразу в нескольких средах: например, лягушка — и в воде, и на суше.</p>
+
+    <div class="habitat-grid">
+        <div class="habitat-card">
+            <span class="hab-icon">💧</span>
+            <div class="hab-title">Водная среда</div>
+            <div class="hab-desc">Рыбы, дельфины, киты, водные насекомые, моллюски. Живут в реках, озёрах, морях, океанах.</div>
+        </div>
+        <div class="habitat-card">
+            <span class="hab-icon">🌳</span>
+            <div class="hab-title">Наземно-воздушная</div>
+            <div class="hab-desc">Большинство зверей, птиц, насекомых. Живут на земле и в воздухе, дышат кислородом.</div>
+        </div>
+        <div class="habitat-card">
+            <span class="hab-icon">🌱</span>
+            <div class="hab-title">Почвенная</div>
+            <div class="hab-desc">Дождевые черви, кроты, личинки насекомых. Живут под землёй, роют ходы и норы.</div>
+        </div>
+        <div class="habitat-card">
+            <span class="hab-icon">🐛</span>
+            <div class="hab-title">Организменная</div>
+            <div class="hab-desc">Паразиты — существа, живущие внутри других организмов. Примеры: глисты, вши, клещи.</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Интересно знать.</strong> Самая богатая среда по числу видов — <strong>тропические леса</strong>. В одном квадратном километре такого леса может жить больше видов насекомых, чем во всей Европе. А вот в пустынях и в Арктике жизнь бедна — там выживают только самые приспособленные.
+    </div>
+
+    <h2>🍽️ Кто что ест: классификация по способу питания</h2>
+
+    <p>Все животные нуждаются в еде. Но едят они по-разному. По способу питания всех животных делят на <strong>три большие группы</strong>.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа</th>
+                <th>Чем питаются</th>
+                <th>Примеры</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🌾 Растительноядные</strong></td>
+                <td>Только растениями: травой, листьями, плодами, корой</td>
+                <td>Заяц, лось, корова, овца, белка, гусеница</td>
+            </tr>
+            <tr>
+                <td><strong>🦁 Хищные</strong></td>
+                <td>Другими животными</td>
+                <td>Волк, лиса, сова, орёл, щука, паук</td>
+            </tr>
+            <tr>
+                <td><strong>🐻 Всеядные</strong></td>
+                <td>И растениями, и животными</td>
+                <td>Медведь, кабан, ворона, енот, человек</td>
+            </tr>
+            <tr>
+                <td><strong>🍄 Падальщики</strong></td>
+                <td>Остатками погибших животных</td>
+                <td>Ворон, гриф, жук-могильщик, гиены</td>
+            </tr>
+            <tr>
+                <td><strong>🗑️ Сапрофаги (мусорщики)</strong></td>
+                <td>Опавшими листьями, перегноем, навозом</td>
+                <td>Дождевой червь, мокрица, некоторые жуки</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> В природе <strong>нет «вредных» и «полезных»</strong> животных. Каждое существо занимает своё место в общем порядке. Хищник поедает слабых и больных — и тем самым оздоравливает популяцию. Падальщик убирает остатки — и тем самым не даёт распространяться болезням. Дождевой червь рыхлит почву — и тем самым помогает расти растениям. Всё в природе разумно и взаимосвязано.
+    </div>
+
+    <h2>🔗 Пищевые цепи: кто кого ест</h2>
+
+    <p>Животные и растения связаны между собой <strong>пищевыми цепями</strong>. Пищевая цепь — это путь передачи энергии от одного организма к другому. Она всегда начинается с растений (которые получают энергию от солнца) и заканчивается хищником или падальщиком.</p>
+
+    <div class="chain-card">
+        <strong>Пример простой пищевой цепи в лесу:</strong>
+        <div class="chain-flow">
+            <div class="chain-item"><span class="chain-emoji">🌿</span>Трава</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🐇</span>Заяц</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🦊</span>Лиса</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🦅</span>Беркут</div>
+        </div>
+        <p style="margin-top: 10px;font-size:0.9rem;color:#166534;">Трава — пища для зайца, заяц — пища для лисы, лиса — пища для крупной хищной птицы.</p>
+    </div>
+
+    <div class="chain-card">
+        <strong>Пример пищевой цепи в водоёме:</strong>
+        <div class="chain-flow">
+            <div class="chain-item"><span class="chain-emoji">🌱</span>Водоросли</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🐟</span>Мелкая рыба</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🦈</span>Крупная рыба</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🦅</span>Орлан</div>
+        </div>
+        <p style="margin-top: 10px;font-size:0.9rem;color:#166534;">Каждое звено цепи зависит от предыдущего. Исчезнет одно — пострадают все.</p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно понять.</strong> Если из пищевой цепи выпадает <strong>хотя бы одно звено</strong>, вся цепь нарушается. Например, если люди уничтожат всех зайцев в лесу, то лисам нечего будет есть — и они тоже уйдут или погибнут. А если исчезнут лисы, зайцы размножатся так сильно, что съедят всю траву. Вот почему так важно беречь <strong>все виды</strong> — и больших, и маленьких.
+    </div>
+
+    <h2>🛡️ Как животные приспосабливаются к жизни</h2>
+
+    <p>У каждого животного есть <strong>свои секреты выживания</strong>. Одни научились быстро бегать, другие — маскироваться, третьи — запасать еду на зиму. Эти секреты называют <strong>приспособлениями</strong>.</p>
+
+    <div class="adaptation-grid">
+        <div class="adaptation-card">
+            <div class="adapt-title">🏃 Скорость: бегство от врагов</div>
+            <div class="adapt-text">Заяц может бежать со скоростью до 60 км/ч. Гепард — до 110 км/ч. Быстрые ноги спасают от хищников и помогают догнать добычу.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🎨 Маскировка: спрятаться от врагов</div>
+            <div class="adapt-text">Зимой заяц-беляк становится белым, а летом — серым. Летом его не видно в траве, а зимой — на снегу. Так же маскируются и многие насекомые, и ящерицы, и рыбы.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">❄️ Зимняя спячка: пережить холод</div>
+            <div class="adapt-text">Медведь, ёж, барсук, летучие мыши впадают в зимнюю спячку. Их температура тела понижается, дыхание и пульс замедляются. Так они пережидают холодный сезон, когда нет еды.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🥜 Запасы еды: пережить голод</div>
+            <div class="adapt-text">Белка запасает орехи, жёлуди, грибы. Бурундук — семена. Мыши — зёрна. Летом они собирают, а зимой пользуются своими кладовыми.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🌊 Плавники и обтекаемая форма</div>
+            <div class="adapt-text">Рыбы и водные звери имеют обтекаемое тело и плавники — им легко двигаться в воде. Киты, дельфины, тюлени тоже приспособились к жизни в воде, хотя дышат воздухом.</div>
+        </div>
+        <div class="adaptation-card">
+            <div class="adapt-title">🛡️ Панцирь и колючки: защита от хищников</div>
+            <div class="adapt-text">Черепаха спрячется в панцире, ёж свернётся в клубок с иголками, а рыба-ёж раздувается в шар с шипами. Эти приспособления помогают выжить даже в опасных условиях.</div>
+        </div>
+    </div>
+
+    <div class="quote">
+        «Среди животных нет ленивых. Каждое существо добывает еду, строит дом, воспитывает потомство — и делает это так, как ему предназначено природой».
+        <span class="quote-author">— из наблюдений юного натуралиста</span>
+    </div>
+
+    <h2>🗓️ Сезонные изменения в жизни животных</h2>
+
+    <p>Природа меняется — и животные приспосабливаются к этим изменениям. Сезонные изменения в жизни животных происходят каждый год и всегда по одному и тому же «расписанию».</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Время года</th>
+                <th>Что происходит в жизни животных</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🌸 Весна</strong></td>
+                <td>Пробуждение от спячки, возвращение перелётных птиц, начало гнездования, рождение детёнышей, начало линьки</td>
+            </tr>
+            <tr>
+                <td><strong>☀️ Лето</strong></td>
+                <td>Активная жизнь, выращивание потомства, обучение детёнышей, запасание корма, рост молодняка</td>
+            </tr>
+            <tr>
+                <td><strong>🍂 Осень</strong></td>
+                <td>Запасы корма, линька (у некоторых), отлёт птиц на юг, подготовка убежищ на зиму, накопление жира</td>
+            </tr>
+            <tr>
+                <td><strong>❄️ Зима</strong></td>
+                <td>Спячка или зимний сон, активная жизнь для животных, приспособленных к холоду, миграции, жизнь вблизи жилья человека</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Животные не «планируют» свои дела, но их поведение удивительно согласовано с природными циклами. Птицам подсказывает внутренний «инстинкт миграции», медведю — снижение температуры и уменьшение корма. Природа — лучший диспетчер: всё происходит в свой срок и в своём порядке.
+    </div>
+
+    <h2>🔴 Животные Красной книги Беларуси</h2>
+
+    <p>К сожалению, некоторые животные стали <strong>очень редкими</strong> из-за изменения условий их обитания, охоты, загрязнения среды. Они занесены в <strong>Красную книгу Республики Беларусь</strong>. Знать их — обязанность настоящего знатока природы.</p>
+
+    <div class="animal-groups-grid">
+        <div class="animal-card" style="border-top-color: #dc2626;">
+            <span class="animal-icon">🦬</span>
+            <div class="animal-title">Зубр</div>
+            <div class="animal-text">Самый крупный зверь Европы. Живёт в Беловежской пуще. Охраняется во всём мире. Символ Беларуси.</div>
+        </div>
+        <div class="animal-card" style="border-top-color: #dc2626;">
+            <span class="animal-icon">🐻</span>
+            <div class="animal-title">Бурый медведь</div>
+            <div class="animal-text">Крупный хищник, обитатель глухих лесов. В Беларуси сохранился в небольшом количестве.</div>
+        </div>
+        <div class="animal-card" style="border-top-color: #dc2626;">
+            <span class="animal-icon">🦉</span>
+            <div class="animal-title">Филин</div>
+            <div class="animal-text">Крупная сова с «ушками». Активен ночью. Редкий вид, нуждается в охране.</div>
+        </div>
+        <div class="animal-card" style="border-top-color: #dc2626;">
+            <span class="animal-icon">🦌</span>
+            <div class="animal-title">Благородный олень</div>
+            <div class="animal-text">Красивое животное с ветвистыми рогами. Встречается в некоторых регионах Беларуси.</div>
+        </div>
+        <div class="animal-card" style="border-top-color: #dc2626;">
+            <span class="animal-icon">🦅</span>
+            <div class="animal-title">Орлан-белохвост</div>
+            <div class="animal-text">Крупная хищная птица с белым хвостом. Гнездится у больших водоёмов.</div>
+        </div>
+        <div class="animal-card" style="border-top-color: #dc2626;">
+            <span class="animal-icon">🐟</span>
+            <div class="animal-title">Осётр</div>
+            <div class="animal-text">Крупная древняя рыба. Встречается в реках Беларуси, но становится очень редкой.</div>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Помни.</strong> Красная книга — это список тревоги, а не список «запрещённых» животных. Мы не должны их ловить и обижать. Мы должны <strong>помогать им выжить</strong>: сохранять леса, не загрязнять реки, не тревожить гнёзда и норы. Каждый человек может внести вклад в сохранение редких видов.
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Группы животных</strong> — млекопитающие, птицы, рыбы, земноводные, пресмыкающиеся, насекомые, паукообразные, моллюски.</p>
+        <p><strong>Среда обитания</strong> — место, где живёт животное (водная, наземно-воздушная, почвенная, организменная).</p>
+        <p><strong>Растительноядные, хищные, всеядные</strong> — группы животных по способу питания.</p>
+        <p><strong>Пищевая цепь</strong> — последовательность живых существ, в которой каждое предыдущее служит пищей следующему.</p>
+        <p><strong>Приспособление</strong> — особенность строения или поведения, помогающая животному выжить.</p>
+        <p><strong>Сезонные изменения</strong> — перемены в жизни животных, связанные со временами года.</p>
+    </div>
+
+    <h2>✏️ Задания для юного исследователя</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">🐾 Задание 5.1. «Кто к какой группе?»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Запиши</span></p>
+        <p>Определи, к какой группе относится каждое животное. Поставь галочку в нужной колонке.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Животное</th>
+                    <th>Звери</th>
+                    <th>Птицы</th>
+                    <th>Рыбы</th>
+                    <th>Насекомые</th>
+                    <th>Земноводные</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🐦 Воробей</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🦊 Лиса</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐸 Лягушка</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐟 Окунь</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🦋 Бабочка</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐿 Белка</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🍽️ Задание 5.2. «Кто что ест?»</div>
+        <p><span class="signal">🔗 Соедини</span></p>
+        <p>Определи, к какой группе по способу питания относится каждое животное.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Животное</th>
+                    <th>Растительноядное</th>
+                    <th>Хищное</th>
+                    <th>Всеядное</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🐇 Заяц</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🦁 Лев</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐻 Медведь</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐺 Волк</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐄 Корова</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td>🐗 Кабан</td><td>☐</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 5.3. «Составь пищевую цепь»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Составь две пищевые цепи: одну — для леса, другую — для водоёма. Запиши их и нарисуй стрелками.</p>
+        <p><strong>Пищевая цепь в лесу:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Пищевая цепь в водоёме:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🛡️ Задание 5.4. «Секреты выживания»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Выбери одно животное и опиши, как оно приспосабливается к своей среде. Какие у него «секреты выживания»?</p>
+        <p><strong>Моё животное:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Где оно живёт:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Как оно приспособилось:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Что интересного я о нём узнал:</strong></p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">👁 Задание 5.5. «Наблюдения за птицами»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>В течение недели наблюдай за птицами у дома, в парке или во дворе. Заполняй таблицу наблюдений.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Каких птиц я видел?</th>
+                    <th>Что они делали?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой вывод:</strong> Что нового я узнал о поведении птиц?</p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🗓️ Задание 5.6. «Как животные готовятся к зиме»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Заполни таблицу: как разные животные готовятся к зиме?</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Животное</th>
+                    <th>Как готовится к зиме?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🐻 Медведь</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐿 Белка</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🦔 Ёж</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐇 Заяц</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🐦 Грач</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🦊 Лиса</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔴 Задание 5.7. «Моё редкое животное»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери одно редкое животное из Красной книги Беларуси. Нарисуй его, расскажи, где оно живёт и почему нуждается в охране.</p>
+        <p><strong>Название:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Где живёт:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Почему охраняется:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Мой рисунок:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>На какие <strong>группы делятся все животные</strong> и по каким признакам.</li>
+            <li>Какие бывают <strong>среды обитания</strong> и кто в них живёт.</li>
+            <li>На какие группы делятся животные по <strong>способу питания</strong>.</li>
+            <li>Что такое <strong>пищевая цепь</strong> и почему её нельзя нарушать.</li>
+            <li>Какие <strong>приспособления</strong> помогают животным выживать.</li>
+            <li>Как животные <strong>реагируют на смену времён года</strong>.</li>
+            <li>Какие животные занесены в <strong>Красную книгу Беларуси</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>По каким признакам животных объединяют в группы?</li>
+            <li>Чем отличаются растительноядные, хищные и всеядные животные?</li>
+            <li>Что такое пищевая цепь?</li>
+            <li>Приведи три примера приспособлений животных к жизни.</li>
+            <li>Как разные животные готовятся к зиме?</li>
+            <li>Почему важно охранять редких животных?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Мир животных — это удивительный мир, в котором <strong>каждое существо занимает своё место</strong> и играет свою роль. Настоящий знаток природы не делит животных на «полезных» и «вредных». Он понимает: <em>все они нужны природе</em>. Изучая их жизнь, мы учимся у природы мудрости, терпению и умению жить в согласии с другими.
+    </div>
+
+    <div class="quote">
+        «Мы не можем представить себе природу без животных. Они — её голос, её движение, её сердце. Беречь их — значит беречь саму жизнь».
+        <span class="quote-author">— из размышлений юного натуралиста</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section4.html" class="button">← Раздел 4. Мир растений</a>
+        <a href="section6.html" class="button">📖 Перейти к разделу 6. «Тайны неживой природы» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

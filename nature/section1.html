@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 1. Учимся видеть природу — Рабочая тетрадь «Знатоки природы»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0969da;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ОБРАЩЕНИЕ К ЮНОМУ ЗНАТОКУ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0969da;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0969da;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        /* Карточки "Чему учит природа" */
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .lesson-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-top: 4px solid #0969da;
+            transition: box-shadow 0.2s;
+        }
+        .lesson-card:hover {
+            box-shadow: 0 8px 20px -8px rgba(9, 105, 218, 0.25);
+        }
+        .lesson-card .lesson-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .lesson-card .lesson-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .lesson-card .lesson-text {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Карточки "Чему учились предки" */
+        .ancestor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .ancestor-card {
+            background: #fff7ed;
+            border-left: 5px solid #d97706;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+        }
+        .ancestor-card .ancestor-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        .ancestor-card .ancestor-text {
+            font-size: 0.9rem;
+            color: #451a03;
+            line-height: 1.6;
+        }
+
+        .key-terms {
+            background: #ffffcc;
+            padding: 14px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+        }
+        .key-terms strong { color: #78350f; }
+
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f8fafc;
+            color: #1e466e;
+            font-weight: 600;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0550ae; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации рабочей тетради</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+
+    <h1>👁️ Раздел 1. Учимся видеть природу</h1>
+    <div class="section-meta">📖 Ключ I. Глаз исследователя | 🎯 Для детей 8–11 лет | ⏱ Вводный раздел: 12 часов</div>
+
+    <div class="intro-card">
+        <p>Здравствуй, дорогой друг! Ты открыл первую страницу рабочей тетради «Знатоки природы». Возможно, ты уже знаком с природой по тетради «Друзья природы» — тогда ты знаешь, как много интересного скрывается в каждом листочке, в каждой травинке, в каждой капле росы.</p>
+        <p>Но сегодня мы сделаем следующий шаг. Мы научимся не просто <em>смотреть</em> на природу, а <em>видеть</em> её. Это не одно и то же. Смотреть может каждый — у кого есть глаза. А видеть — значит <strong>замечать детали, понимать связи, чувствовать красоту и задавать вопросы</strong>. Именно с этого умения начинается путь настоящего знатока природы.</p>
+    </div>
+
+    <p>Природа — самый великий учитель, который у нас есть. Она не ставит оценок и не задаёт домашних заданий, но каждый день она раскрывает перед нами свои тайны — нужно лишь научиться их замечать. В этом разделе ты узнаешь, чему природа может научить каждого человека, и почему люди испокон веков обращались к ней за мудростью.</p>
+
+    <h2>🌿 Чему учит природа</h2>
+
+    <p>Природа — это не просто «окружающая среда». Это <strong>живая книга мудрости</strong>, которая отвечает на самые важные вопросы человеческой жизни. Всмотрись в неё внимательно — и ты увидишь уроки, которые пригодятся тебе на всю жизнь.</p>
+
+    <div class="lesson-grid">
+        <div class="lesson-card">
+            <span class="lesson-icon">🌳</span>
+            <div class="lesson-title">Гармонии и соразмерности</div>
+            <div class="lesson-text">В природе всё соразмерно: крона дерева — его корням, крылья бабочки — её телу, лепестки цветка — его середине. Гармония — это не случайность, а закон природы.</div>
+        </div>
+        <div class="lesson-card">
+            <span class="lesson-icon">❄️</span>
+            <div class="lesson-title">Симметрии и красоте</div>
+            <div class="lesson-text">Снежинки, листья, цветы, крылья насекомых — всё это примеры удивительной симметрии. Красота природы не случайна — она следует строгим законам.</div>
+        </div>
+        <div class="lesson-card">
+            <span class="lesson-icon">🕸️</span>
+            <div class="lesson-title">Взаимосвязи и единству</div>
+            <div class="lesson-text">Ничто в природе не существует отдельно. Растение питается от почвы, животное — от растения, а человек — от всего живого. Всё связано в единую сеть жизни.</div>
+        </div>
+        <div class="lesson-card">
+            <span class="lesson-icon">🌱</span>
+            <div class="lesson-title">Терпению и целеустремлённости</div>
+            <div class="lesson-text">Из маленького семечка вырастает могучее дерево. Но для этого нужны годы. Природа учит нас не спешить и доводить начатое до конца.</div>
+        </div>
+        <div class="lesson-card">
+            <span class="lesson-icon">🍂</span>
+            <div class="lesson-title">Умению отпускать и обновляться</div>
+            <div class="lesson-text">Осенью дерево сбрасывает листья, чтобы весной вновь зазеленеть. Природа учит нас: не всё нужно удерживать — порой, чтобы обновиться, надо что-то отпустить.</div>
+        </div>
+        <div class="lesson-card">
+            <span class="lesson-icon">🐜</span>
+            <div class="lesson-title">Взаимопомощи и труду</div>
+            <div class="lesson-text">Муравьи строят общий дом сообща, а пчёлы собирают мёд на всю семью. Природа показывает: там, где работают вместе, — получается больше.</div>
+        </div>
+    </div>
+
+    <div class="quote">
+        «Изучение природы — это не просто получение знаний. Это путь к себе, к пониманию своего места в мире».
+        <span class="quote-author">— из размышлений педагогов-натуралистов</span>
+    </div>
+
+    <h2>📜 Чему наши предки учились у природы</h2>
+
+    <p>Тысячи лет человек жил в тесном единстве с природой. Он не «изучал» её — он <strong>жил рядом с ней</strong>. Наблюдая, замечая, размышляя, наши предки открывали для себя удивительные истины, которые стали основой народной мудрости, отражённой в сказках, пословицах, приметах и обычаях. Многие из этих уроков актуальны и сегодня — они учат нас не «покорять» природу, а жить с ней в согласии.</p>
+
+    <div class="ancestor-grid">
+        <div class="ancestor-card">
+            <div class="ancestor-title">🌾 Наблюдательности</div>
+            <div class="ancestor-text">Наши предки по поведению животных и состоянию растений предсказывали погоду: «Ласточки летают низко — к дождю», «Много рябины — к холодной зиме». Они учились читать природу, как книгу.</div>
+        </div>
+        <div class="ancestor-card">
+            <div class="ancestor-title">🌙 Ритмичности и цикличности</div>
+            <div class="ancestor-text">Утро сменяется вечером, весна — летом, полнолуние — новолунием. Из наблюдений за этими циклами родились календари, обычаи и земледельческие приметы. Природа научила человека жить в её ритме.</div>
+        </div>
+        <div class="ancestor-card">
+            <div class="ancestor-title">🕊️ Милосердию и щедрости</div>
+            <div class="ancestor-text">Земля отдаёт свои плоды, вода поит всех без исключения, солнце светит и добрым, и злым. Природа учит не быть жадным и делиться с другими.</div>
+        </div>
+        <div class="ancestor-card">
+            <div class="ancestor-title">🍞 Бережливости и уважению к труду</div>
+            <div class="ancestor-text">Каждый колосок, каждая ягода — результат труда и терпения. Отсюда родилось уважение к хлебу: «Хлеб — всему голова». Природа научила человека ценить то, что даётся трудом.</div>
+        </div>
+        <div class="ancestor-card">
+            <div class="ancestor-title">🌳 Стойкости и терпению</div>
+            <div class="ancestor-text">Дуб растёт веками, сосна выживает на скалах, берёза поднимается первой на пожарищах. Природа показала, что стойкость и терпение побеждают любые трудности.</div>
+        </div>
+        <div class="ancestor-card">
+            <div class="ancestor-title">🎨 Красоте и творчеству</div>
+            <div class="ancestor-text">Из наблюдений за природой родилось всё народное искусство: узоры вышивок повторяют цветы и листья, песни воспевают рассветы и реки, сказки рассказывают о животных-помощниках. Природа вдохновляла человека на творчество.</div>
+        </div>
+        <div class="ancestor-card">
+            <div class="ancestor-title">🙏 Благодарности и смирению</div>
+            <div class="ancestor-text">Наши предки благодарили землю за урожай, солнце — за тепло, дождь — за влагу. Они понимали: человек — часть природы, а не её хозяин. Это смирение перед её величием — основа настоящей мудрости.</div>
+        </div>
+        <div class="ancestor-card">
+            <div class="ancestor-title">🤝 Заботе о будущем</div>
+            <div class="ancestor-text">Сажая дерево, человек думал не о себе, а о своих внуках. «Посади дерево — и оно переживёт тебя». Природа научила человека заботиться о тех, кто придёт после.</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Подумай вместе с нами.</strong> Все эти уроки — не просто красивые слова. Они — основа <strong>экологической этики</strong>: системы нравственных правил отношения человека к природе. Если мы будем жить по этим правилам, наша планета сохранится для будущих поколений.
+    </div>
+
+    <h2>🎨 Гармония, красота и искусство</h2>
+
+    <p>Природа — первый художник на Земле. Задолго до того, как человек взял в руки кисть, природа уже создавала удивительные узоры, формы и краски. Всмотрись: <strong>симметрия крыльев бабочки</strong>, <strong>спираль раковины улитки</strong>, <strong>радиальные лепестки ромашки</strong>, <strong>шестилучевая форма снежинки</strong> — всё это не случайные совпадения, а проявления <strong>универсальных законов гармонии</strong>.</p>
+
+    <p>Человек во все времена <strong>учился у природы красоте</strong>. Художники рисовали пейзажи, поэты воспевали леса и реки, композиторы перекладывали на музыку пение птиц и шум дождя, архитекторы копировали формы деревьев и гор. Искусство — это <strong>разговор человека с природой на языке красоты</strong>.</p>
+
+    <div class="quote">
+        «Искусство не подражает природе — оно учится у неё. Природа — не образец, а источник бесконечного вдохновения».
+        <span class="quote-author">— размышление о связи искусства и природы</span>
+    </div>
+
+    <h3>Нравственность и природа</h3>
+
+    <p>Но природа учит не только красоте. Она учит <strong>нравственности</strong> — умению отличать добро от зла, заботиться о слабых, быть верным и честным. Вспомни народные сказки: в них животные помогают человеку в беде, растения подсказывают путь, а реки и леса защищают от врагов. Народная мудрость говорит: <em>«Кто с природой дружен — тот и людям друг»</em>.</p>
+
+    <p>Вот почему настоящий знаток природы — это не только <strong>наблюдатель и исследователь</strong>, но и <strong>человек с добрым сердцем</strong>. Тот, кто способен увидеть красоту в простом листке, — способен и на добрый поступок.</p>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="key-terms">
+        <p><strong>Природа</strong> — весь окружающий нас мир во всём его многообразии, не созданный руками человека.</p>
+        <p><strong>Наблюдение</strong> — целенаправленное, внимательное рассматривание объекта или явления для получения информации.</p>
+        <p><strong>Знаток природы</strong> — человек, который умеет видеть, понимать, оценивать и защищать природу.</p>
+        <p><strong>Гармония</strong> — соразмерность, согласованность частей в единое целое, которая делает предмет или явление красивым и устойчивым.</p>
+        <p><strong>Симметрия</strong> — свойство объекта, при котором одна его часть повторяет другую относительно некоторой оси или центра.</p>
+        <p><strong>Экологическая этика</strong> — система нравственных норм и правил отношения человека к природе.</p>
+        <p><strong>Исследователь</strong> — тот, кто задаёт вопросы, ищет ответы, ставит опыты, делает выводы.</p>
+    </div>
+
+    <h2>🖼️ Схема: дерево знатока природы</h2>
+
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:20px auto;max-width:100%;background:#f8fafc;border-radius:16px;padding:10px;border:1px solid #e2e8f0;" role="img" aria-label="Схема: четыре ключа знатока природы">
+        <text x="300" y="32" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1e466e">ДЕРЕВО ЗНАТОКА ПРИРОДЫ</text>
+
+        <!-- Ствол -->
+        <rect x="285" y="270" width="30" height="70" rx="4" fill="#92400e"/>
+        <text x="300" y="312" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#fff">Я</text>
+
+        <!-- Корни -->
+        <path d="M285 340 Q250 355 220 360" stroke="#92400e" stroke-width="3" fill="none"/>
+        <path d="M315 340 Q350 355 380 360" stroke="#92400e" stroke-width="3" fill="none"/>
+        <text x="180" y="375" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#78350f">интерес к природе</text>
+        <text x="420" y="375" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#78350f">любовь к родному краю</text>
+
+        <!-- Ветвь 1 -->
+        <line x1="285" y1="280" x2="140" y2="180" stroke="#0969da" stroke-width="3"/>
+        <circle cx="130" cy="170" r="42" fill="#dbeafe" stroke="#0969da" stroke-width="2"/>
+        <text x="130" y="160" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">👁️</text>
+        <text x="130" y="182" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e466e">Глаз</text>
+        <text x="130" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e466e">исследователя</text>
+
+        <!-- Ветвь 2 -->
+        <line x1="290" y1="270" x2="290" y2="140" stroke="#0969da" stroke-width="3"/>
+        <circle cx="290" cy="115" r="42" fill="#dbeafe" stroke="#0969da" stroke-width="2"/>
+        <text x="290" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🧠</text>
+        <text x="290" y="127" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e466e">Ум</text>
+        <text x="290" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e466e">исследователя</text>
+
+        <!-- Ветвь 3 -->
+        <line x1="315" y1="280" x2="460" y2="180" stroke="#0969da" stroke-width="3"/>
+        <circle cx="470" cy="170" r="42" fill="#dbeafe" stroke="#0969da" stroke-width="2"/>
+        <text x="470" y="160" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">💚</text>
+        <text x="470" y="182" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e466e">Сердце</text>
+        <text x="470" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e466e">исследователя</text>
+
+        <!-- Ветвь 4 — надстройка (руки на стволе) -->
+        <line x1="300" y1="270" x2="300" y2="240" stroke="#16a34a" stroke-width="3"/>
+        <circle cx="300" cy="220" r="20" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="300" y="227" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16">🌿</text>
+        <text x="300" y="255" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-weight="bold" fill="#166534">Руки исследователя</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 1. Четыре ключа знатока природы. Каждая ветвь — это способность, без которой невозможно настоящее понимание природы.</p>
+
+    <h2>✏️ Задания для юного знатока</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.1. «Природа вокруг меня»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Вспомни, какие уголки природы есть рядом с твоим домом. Нарисуй один из них — парк, двор, берег реки, лесную опушку. Подпиши, что на твоём рисунке изображено.</p>
+        <p><strong>Вопрос для размышления:</strong> Что в этом уголке природы тебе нравится больше всего? Почему?</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 1.2. «Чему учит природа?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Вспомни уроки природы, о которых ты прочитал в этом разделе. Выбери <strong>три самых важных для тебя</strong> и объясни, почему они тебе близки.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:40px;">№</th>
+                    <th>Урок природы</th>
+                    <th>Почему он важен для меня?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📖 Задание 1.3. «Мудрость предков»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🔗 Соедини</span></p>
+        <p>Прочитай народные пословицы и приметы. Соедини их с тем, чему они учат.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Пословица или примета</th>
+                    <th>Чему учит</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>«Ласточки летают низко — к дождю»</td><td>☐ Наблюдательности ☐ Бережливости ☐ Терпению</td></tr>
+                <tr><td>«Хлеб — всему голова»</td><td>☐ Уважению к труду ☐ Симметрии ☐ Красоте</td></tr>
+                <tr><td>«Вода камень точит»</td><td>☐ Терпению ☐ Наблюдательности ☐ Милосердию</td></tr>
+                <tr><td>«Посади дерево — и оно переживёт тебя»</td><td>☐ Заботе о будущем ☐ Красоте ☐ Творчеству</td></tr>
+                <tr><td>«Лес и вода — брат и сестра»</td><td>☐ Взаимосвязи ☐ Терпению ☐ Бережливости</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🔍 Задание 1.4. «Первое наблюдение знатока»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выйди на улицу (или подойди к окну) и в течение 10 минут внимательно понаблюдай за природой. Запиши в таблицу, что ты заметил с помощью каждого органа чувств.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Орган чувств</th>
+                    <th>Что я заметил?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>👁️ Зрение</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>👂 Слух</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>👃 Обоняние</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>✋ Осязание</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> Какой орган чувств дал тебе больше всего информации? Почему?</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.5. «Красота в простом»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Найди в природе самый простой предмет — травинку, листок, камешек, пёрышко. Рассмотри его внимательно. Опиши, что в нём красивого. Затем нарисуй его крупно, стараясь передать все детали.</p>
+        <p><strong>Что я нашёл:</strong> <span class="line-for-writing" style="margin:0;"></span></p>
+        <p><strong>Что в нём красивого:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что значит быть <strong>знатоком природы</strong> — видеть, понимать, оценивать и защищать её.</li>
+            <li>Чему учит природа: <strong>гармонии, симметрии, взаимосвязи, терпению, красоте, милосердию, заботе о будущем</strong>.</li>
+            <li>Чему наши <strong>предки учились у природы</strong>: наблюдательности, ритмичности, милосердию, бережливости, стойкости, творчеству, благодарности.</li>
+            <li>Что <strong>искусство и нравственность</strong> неразрывно связаны с природой.</li>
+            <li>Ключевые понятия раздела: природа, наблюдение, знаток природы, гармония, симметрия, экологическая этика, исследователь.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Чем отличается «смотреть» от «видеть»?</li>
+            <li>Какие три урока природы ты считаешь самыми важными?</li>
+            <li>Чему наши предки учились у природы?</li>
+            <li>Что такое гармония и симметрия? Приведи примеры из природы.</li>
+            <li>Почему настоящий знаток природы должен быть добрым?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="key-terms">
+        <strong>🌟 Запомни главное.</strong> Знаток природы — это не тот, кто много знает, а тот, кто умеет <strong>видеть красоту, понимать связи, ценить жизнь и действовать с добрым сердцем</strong>. Именно таким мы будем становиться на страницах этой рабочей тетради.
+    </div>
+
+    <div class="quote">
+        «Мы не наследуем природу у наших предков, мы берём её в долг у наших детей. И от того, как мы её изучаем и бережём, зависит, что мы им вернём».
+        <span class="quote-author">— народная мудрость, переданная через века</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="preface.html" class="button">← К аннотации</a>
+        <a href="section2.html" class="button">📖 Перейти к разделу 2. «Календарь юного фенолога» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Знатоки природы» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>
