@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ОМК «Знатоки природы» — Образовательно-методический комплекс эколого-биологического профиля</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 35px 40px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 8px;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 14px;
+        }
+        .subtitle {
+            font-size: 1.05rem;
+            color: #475569;
+            margin-bottom: 22px;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 36px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 26px 0 12px 0;
+            color: #15803d;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 10px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О КОМПЛЕКСЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .stage-section {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 26px 0 14px 0;
+            position: relative;
+        }
+        .stage-section::before {
+            content: attr(data-stage);
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #10b981;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .stage-section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #065f46;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+        .stage-section-desc {
+            font-size: 0.93rem;
+            color: #064e3b;
+            line-height: 1.6;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            margin: 20px 0;
+        }
+        .card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px 24px;
+            text-decoration: none;
+            color: #1a1e24;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+            display: block;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #16a34a;
+            box-shadow: 0 10px 22px -10px rgba(22, 163, 74, 0.35);
+        }
+        .card .card-num {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: #16a34a;
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .card .card-title {
+            font-weight: 700;
+            color: #0a2540;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+        .card .card-desc {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .section-list {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+        .section-list li {
+            background: #f8fafc;
+            border-left: 4px solid #16a34a;
+            border-radius: 0 12px 12px 0;
+            padding: 14px 20px;
+            margin: 10px 0;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .section-list li:hover {
+            background: #f0fdf4;
+            border-left-color: #15803d;
+        }
+        .section-list li a {
+            font-weight: 700;
+            color: #166534;
+            text-decoration: none;
+            font-size: 1.02rem;
+        }
+        .section-list li a:hover {
+            color: #15803d;
+            text-decoration: underline;
+        }
+        .section-list li .section-desc {
+            display: block;
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 5px;
+            font-weight: 400;
+            line-height: 1.55;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 22px 0;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #0969da;
+            border-radius: 14px;
+            padding: 16px 20px;
+        }
+        .feature-card .feature-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .feature-card .feature-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .feature-card .feature-text {
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 18px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+            line-height: 1.6;
+        }
+
+        .print-btn {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 8px;
+            margin-right: 8px;
+        }
+        .print-btn:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        @media (max-width: 760px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.55rem; }
+            h2 { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="../index.html" class="back-link">← На главную портала</a>
+
+    <h1>🌿 ОМК «Знатоки природы»</h1>
+    <p class="subtitle">Образовательно-методический комплекс эколого-биологического профиля для детей 6–10 лет</p>
+
+    <div class="intro-card">
+        <p>Образовательно-методический комплекс <strong>«Знатоки природы»</strong> — это целостная система учебно-методических материалов, обеспечивающая качественное дополнительное образование детей 6–10 лет в рамках эколого-биологического профиля. Комплекс разработан в соответствии с требованиями Кодекса Республики Беларусь об образовании (Раздел XIII, главы 46–47, статьи 228–235), типовой программы дополнительного образования детей и молодёжи (эколого-биологический профиль), утверждённой постановлением Министерства образования Республики Беларусь от 20.10.2023 № 325, и Методических указаний по разработке учебно-программной документации (приложение к письму Министерства образования Республики Беларусь от 11.06.2024 № 06-01-14/6880/дс).</p>
+        <p>Комплекс является <strong>логическим продолжением</strong> ОМК «Друзья природы» и обеспечивает <strong>преемственность</strong> экологического образования: если «Друзья природы» формировали первоначальные представления о природе, то «Знатоки природы» углубляют и систематизируют эти представления, развивают исследовательские умения и формируют целостную научную картину мира природы.</p>
+    </div>
+
+    <h2>🧭 Этапы познавательной деятельности</h2>
+
+    <p>Структура комплекса построена на основе <strong>четырёх последовательных этапов познавательной деятельности</strong>, отражающих логику научного познания природы: от наблюдения — к пониманию, от понимания — к оценке, от оценки — к практическому действию. Такая структура обеспечивает <strong>целостность</strong> образовательного процесса и последовательное формирование исследовательских компетенций.</p>
+
+    <div class="stage-section" data-stage="ЭТАП I">
+        <div class="stage-section-title">🔍 Наблюдение и фиксация</div>
+        <div class="stage-section-desc">Формирование умений систематического наблюдения за природными объектами и явлениями, ведение фенологических записей и дневников, регистрация сезонных изменений. Разделы 1–3: «Учимся видеть природу», «Календарь юного фенолога», «Погода и климат».</div>
+    </div>
+
+    <div class="stage-section" data-stage="ЭТАП II">
+        <div class="stage-section-title">🧪 Изучение и систематизация</div>
+        <div class="stage-section-desc">Освоение методов анализа и обобщения: установление причинно-следственных связей, классификация, сравнение, проведение опытов и экспериментов. Формирование целостной научной картины природы как единой взаимосвязанной системы. Разделы 4–7: «Мир растений», «Мир животных», «Тайны неживой природы», «Экосистемы».</div>
+    </div>
+
+    <div class="stage-section" data-stage="ЭТАП III">
+        <div class="stage-section-title">📊 Оценка и прогнозирование</div>
+        <div class="stage-section-desc">Развитие умений оценивать состояние окружающей среды, понимать экологические проблемы и их причины, прогнозировать последствия человеческой деятельности. Формирование экологического мышления и ценностного отношения к природе. Разделы 8–10: «Экологические проблемы», «Красная книга», «Исследовательский проект».</div>
+    </div>
+
+    <div class="stage-section" data-stage="ЭТАП IV">
+        <div class="stage-section-title">🌿 Практическая природоохранная деятельность</div>
+        <div class="stage-section-desc">Реализация полученных знаний в конкретных делах: участие в экологических акциях, посадка деревьев, изготовление кормушек, сбор батареек, исследовательская и проектная деятельность. Формирование экологически устойчивого стиля жизни. Разделы 11–12: «Мои добрые дела для природы», «Я — знаток природы: итоги».</div>
+    </div>
+
+    <h2>📚 Структура образовательно-методического комплекса</h2>
+
+    <div class="card-grid">
+        <a href="preface.html" class="card">
+            <span class="card-num">📋</span>
+            <div class="card-title">Аннотация и пояснительная записка</div>
+            <div class="card-desc">Назначение комплекса, актуальность, цель, задачи, структура, принципы построения, ожидаемые результаты.</div>
+        </a>
+
+        <a href="plan.html" class="card">
+            <span class="card-num">📚</span>
+            <div class="card-title">Структурный план рабочей тетради</div>
+            <div class="card-desc">Полный перечень разделов и тем рабочей тетради «Знатоки природы» с указанием типов заданий и диагностического инструментария.</div>
+        </a>
+
+        <a href="program.html" class="card">
+            <span class="card-num">📄</span>
+            <div class="card-title">Программа «Знатоки природы»</div>
+            <div class="card-desc">Программа объединения по интересам: 144 часа, 4 часа в неделю, один год обучения, базовый уровень.</div>
+        </a>
+    </div>
+
+    <h2>📖 Разделы рабочей тетради</h2>
+
+    <p>Рабочая тетрадь «Знатоки природы» включает <strong>двенадцать разделов</strong>, объединённых в четыре этапа познавательной деятельности. Каждый раздел соответствует определённому этапу образовательной деятельности и содержит теоретические материалы, практические задания, опыты, творческие работы и игры.</p>
+
+    <h3>Этап I. Наблюдение и фиксация</h3>
+
+    <ul class="section-list">
+        <li>
+            <a href="section1.html">Раздел 1. Учимся видеть природу</a>
+            <span class="section-desc">Вводный раздел. Что значит быть знатоком природы. Чему учит природа. Чему наши предки учились у природы. Гармония и симметрия. Красота природы и искусство. Методы наблюдения.</span>
+        </li>
+        <li>
+            <a href="section2.html">Раздел 2. Календарь юного фенолога</a>
+            <span class="section-desc">Фенология как наука. Природа как живой календарь. Фенологический спектр года. Дневник фенолога: структура, условные обозначения, практика ведения.</span>
+        </li>
+        <li>
+            <a href="section3.html">Раздел 3. Погода и климат: дневник наблюдений</a>
+            <span class="section-desc">Погода и климат. Пять элементов погоды. Метеостанция и приборы. Мой календарь погоды. Народные приметы и наука.</span>
+        </li>
+    </ul>
+
+    <h3>Этап II. Изучение и систематизация</h3>
+
+    <ul class="section-list">
+        <li>
+            <a href="section4.html">Раздел 4. Мир растений: как растения устроены</a>
+            <span class="section-desc">Растение как живой организм. Пять частей растения. Фотосинтез. Растения-путешественники. Приспособления растений. Симметрия и красота. Исследование листа.</span>
+        </li>
+        <li>
+            <a href="section5.html">Раздел 5. Мир животных: как животные живут</a>
+            <span class="section-desc">Многообразие животного мира. Среда обитания и группы животных. Способы питания. Пищевые цепи. Приспособления животных. Сезонные изменения. Наблюдения за птицами.</span>
+        </li>
+        <li>
+            <a href="section6.html">Раздел 6. Тайны неживой природы: опыты и эксперименты</a>
+            <span class="section-desc">Вода: три состояния и свойства. Круговорот воды. Воздух: состав и свойства. Опыты с воздухом. Почва: состав и плодородие. Физические и химические явления. Круговорот веществ.</span>
+        </li>
+        <li>
+            <a href="section7.html">Раздел 7. Экосистемы: как всё связано в природе</a>
+            <span class="section-desc">Что такое экосистема. Компоненты экосистемы. Четыре главные экосистемы Беларуси. Ярусность лесной экосистемы. Пищевые сети и поток энергии. Смена экосистем. Исследование своего уголка природы.</span>
+        </li>
+    </ul>
+
+    <h3>Этап III. Оценка и прогнозирование</h3>
+
+    <ul class="section-list">
+        <li>
+            <a href="section8.html">Раздел 8. Экологические проблемы: причины и следствия</a>
+            <span class="section-desc">Что такое экологическая проблема. Главные экологические проблемы современности. Мусор и иерархия отходов. Устойчивое развитие. Экологический след. Плакат «Спасём природу!».</span>
+        </li>
+        <li>
+            <a href="section9.html">Раздел 9. Красная книга: редкость и охрана</a>
+            <span class="section-desc">Что такое Красная книга. Категории редкости. Редкие животные Беларуси. Редкие растения Беларуси. Охраняемые территории. Плакат в защиту редких видов.</span>
+        </li>
+        <li>
+            <a href="section10.html">Раздел 10. Исследовательский проект: от вопроса к открытию</a>
+            <span class="section-desc">Что такое исследовательский проект. Семь этапов исследования. Дневник исследователя. Разработка собственного проекта. Защита проектов.</span>
+        </li>
+    </ul>
+
+    <h3>Этап IV. Практическая природоохранная деятельность</h3>
+
+    <ul class="section-list">
+        <li>
+            <a href="section11.html">Раздел 11. Мои добрые дела для природы</a>
+            <span class="section-desc">Кто такой настоящий друг природы. Календарь добрых дел. Практикумы: посадка деревьев, помощь птицам, сохранение первоцветов, сбор батареек.</span>
+        </li>
+        <li>
+            <a href="section12.html">Раздел 12. Я — знаток природы: портфолио и планы</a>
+            <span class="section-desc">Итоговая рефлексия. Что я узнал и чему научился. Мои экологические привычки. Письмо природе. Портфолио знатока природы. Итоговое занятие «Знатоки природы».</span>
+        </li>
+    </ul>
+
+    <h2>🎯 Что даёт комплекс</h2>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <span class="feature-icon">📖</span>
+            <div class="feature-title">Системность</div>
+            <div class="feature-text">Все компоненты комплекса — программа, рабочая тетрадь, диагностика — согласованы между собой и работают на достижение общей цели.</div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🔬</span>
+            <div class="feature-title">Исследовательский подход</div>
+            <div class="feature-text">Учащиеся осваивают научный метод познания: вопрос → гипотеза → опыт → наблюдение → вывод → защита.</div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🌿</span>
+            <div class="feature-title">Практико-ориентированность</div>
+            <div class="feature-text">Каждое занятие заканчивается конкретным результатом: рисунком, дневником, опытом, добрым делом, проектом.</div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">💚</span>
+            <div class="feature-title">Воспитательная направленность</div>
+            <div class="feature-text">Формирование экологической этики, ответственности, бережливости, патриотизма через любовь к родной природе.</div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🎨</span>
+            <div class="feature-title">Интеграция науки и искусства</div>
+            <div class="feature-text">Творческие задания, использование фольклора, интеграция с литературой, музыкой и изобразительным искусством.</div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🌟</span>
+            <div class="feature-title">Развитие личности</div>
+            <div class="feature-text">Формирование самостоятельности, коммуникативных навыков, творческих способностей, умения работать в команде.</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Преемственность с ОМК «Друзья природы».</strong> Если ОМК «Друзья природы» формировал первоначальные представления о природе и учил детей её наблюдать, то ОМК «Знатоки природы» углубляет и систематизирует эти представления, развивает исследовательские умения и формирует целостную научную картину мира природы. Вместе они образуют двухлетний курс непрерывного экологического образования.
+    </div>
+
+    <div class="note">
+        <strong>🎯 Ключевой результат.</strong> К концу освоения комплекса учащийся будет иметь <strong>целостную научную картину природы</strong>, владеть исследовательскими умениями, иметь сформированные экологические привычки, готовый портфолио достижений и опыт защиты собственного исследовательского проекта.
+    </div>
+
+    <div class="quote">
+        «Знаток природы — это не тот, кто много знает. Это тот, кто умеет видеть красоту, понимать связи, ценить жизнь и действовать ответственно».
+        <span class="quote-author">— концептуальная идея ОМК «Знатоки природы»</span>
+    </div>
+
+    <h2>🚀 Начните работу с комплексом</h2>
+
+    <p>Рекомендуется начать знакомство с комплексом с <strong>аннотации и пояснительной записки</strong>, затем изучить <strong>структурный план</strong>, а потом перейти к <strong>программе</strong> и <strong>разделам рабочей тетради</strong>. Такой порядок позволит увидеть комплекс в целом и понять логику его построения.</p>
+
+    <p>
+        <a href="preface.html" class="print-btn">📋 Начать с аннотации</a>
+        <a href="plan.html" class="print-btn">📚 Перейти к структурному плану</a>
+        <a href="program.html" class="print-btn">📄 Открыть программу</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Образовательно-методический комплекс «Знатоки природы»</p>
+        <p>Эколого-биологический профиль | Базовый уровень | Для детей 6–10 лет | 144 часа, 1 год обучения</p>
+        <p>Преемник ОМК «Друзья природы». Обеспечивает непрерывность экологического образования.</p>
+    </footer>
+
+</div>
+</body>
+</html>
