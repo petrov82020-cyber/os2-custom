@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введение: полное руководство по UpdraftPlus — резервное копирование и восстановление</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .danger-box {
+            background: #fee2e2;
+            border-left: 5px solid #dc2626;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .feature-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .feature-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .feature-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .folder-tree {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .folder-tree .folder {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        .folder-tree .file {
+            color: #f8f8f2;
+        }
+        .folder-tree .important {
+            color: #facc15;
+            font-weight: bold;
+        }
+        .folder-tree .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        .timeline {
+            position: relative;
+            margin: 25px 0;
+            padding-left: 35px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0969da;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #0969da;
+        }
+        .timeline-item strong {
+            display: block;
+            color: #1e466e;
+            margin-bottom: 4px;
+        }
+        .timeline-item span {
+            font-size: 0.92em;
+            color: #5b6e8c;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .folder-tree { font-size: 0.75em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>🛡️ Введение: полное руководство по UpdraftPlus</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить UpdraftPlus от установки до восстановления резервной копии на тестовом сайте</div>
+
+    <div class="info-box">
+        <strong>💡 Что вы узнаете:</strong><br>
+        Этот материал — практическое дополнение к курсу о восстановлении сайта. Здесь мы подробно, шаг за шагом, разберём самый популярный плагин для резервного копирования WordPress — <strong>UpdraftPlus</strong>. Вы научитесь делать правильные бэкапы, настраивать автоматическое расписание, хранить копии в облаке и — самое главное — восстанавливать сайт из копии. Каждый шаг проиллюстрирован и снабжён практическими советами.
+    </div>
+
+    <p>Сайт WordPress — это не только папка с файлами. Вся динамика хранится в базе данных MySQL: записи, страницы, комментарии, пользователи, заказы. Если сделать копию только файлов — при восстановлении вы получите «пустой» сайт с шаблоном, но без контента. Если сделать копию только базы — потеряете тему, плагины, изображения. Поэтому правильный бэкап всегда включает <strong>две части</strong>. UpdraftPlus — плагин, который делает это автоматически.</p>
+
+    <h2>Почему без резервных копий не обойтись</h2>
+
+    <p>Сайты «рушатся» по разным причинам. По статистике, каждый пятый владелец WordPress хотя бы раз в год терял сайт или данные. Вот основные сценарии:</p>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="icon">💥</div>
+            <strong>Сбой после обновления</strong>
+            <span>Обновление плагина, темы или WordPress «убило» сайт. Без бэкапа придётся вручную разбираться с ошибками.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔓</div>
+            <strong>Взлом сайта</strong>
+            <span>Хакеры удалили или изменили файлы. Восстановление возможно только из чистого бэкапа.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🖥️</div>
+            <strong>Сбой хостинга</strong>
+            <span>Сервер вышел из строя, произошла миграция. Без своей копии вы зависите от хостера.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">✋</div>
+            <strong>Случайное удаление</strong>
+            <span>Вы или сотрудник случайно удалили важную страницу, товар или всю базу данных.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🐛</div>
+            <strong>Ошибка в коде</strong>
+            <span>Одна опечатка в functions.php — и сайт показывает «белый экран». Бэкап вернёт всё за минуту.</span>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🌐</div>
+            <strong>Проблемы с доменом</strong>
+            <span>Истёк срок регистрации, изменились DNS. Даже после восстановления домена контент может быть повреждён.</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Главное правило веб-мастера:</strong><br>
+        <em>«Нет бэкапа — нет изменений».</em> Никогда не начинайте обновление, правку кода или установку плагина, если у вас нет свежей резервной копии. Это правило спасло тысячи сайтов.
+    </div>
+
+    <h2>Что такое UpdraftPlus и почему именно он</h2>
+
+    <p><strong>UpdraftPlus</strong> — самый популярный плагин для резервного копирования WordPress. Более 3 миллионов активных установок. Он делает полные копии сайта (файлы + база данных), хранит их в облаке и позволяет восстановить сайт в один клик.</p>
+
+    <div class="compare-grid">
+        <div class="compare-card good">
+            <h4>✅ Преимущества UpdraftPlus</h4>
+            <ul>
+                <li><strong>Бесплатный</strong> — все базовые функции доступны без оплаты.</li>
+                <li><strong>Автоматизация</strong> — бэкапы по расписанию без вашего участия.</li>
+                <li><strong>8 облачных хранилищ</strong> — Google Drive, Dropbox, OneDrive, S3, FTP, SFTP, WebDAV, email.</li>
+                <li><strong>Раздельные расписания</strong> — отдельно для файлов, отдельно для базы данных.</li>
+                <li><strong>Восстановление в один клик</strong> — без FTP и phpMyAdmin.</li>
+                <li><strong>Миграция сайта</strong> — можно перенести сайт на другой хостинг.</li>
+                <li><strong>Email-отчёты</strong> — уведомления о каждом бэкапе.</li>
+                <li><strong>Ограничение копий</strong> — старые удаляются автоматически.</li>
+            </ul>
+        </div>
+        <div class="compare-card bad">
+            <h4>⚠️ Ограничения бесплатной версии</h4>
+            <ul>
+                <li>Нет инкрементальных бэкапов (каждый раз копируется всё).</li>
+                <li>Нет бэкапов по событию (например, перед обновлением).</li>
+                <li>Нет шифрования резервных копий.</li>
+                <li>Нет восстановления отдельных файлов.</li>
+                <li>Нет приоритетной поддержки.</li>
+            </ul>
+            <p style="margin-top: 10px; font-size: 0.9em;">Для 95% сайтов бесплатной версии более чем достаточно.</p>
+        </div>
+    </div>
+
+    <h2>Шаг 1. Установка UpdraftPlus</h2>
+
+    <p>Установка плагина занимает 2 минуты и не требует специальных знаний.</p>
+
+    <ol class="steps">
+        <li><strong>Войдите в админ-панель WordPress.</strong> Откройте <code>https://ваш_домен/wp-admin</code>.</li>
+        <li><strong>Перейдите в «Плагины → Добавить новый».</strong></li>
+        <li><strong>В строке поиска введите</strong> <code>UpdraftPlus</code>.</li>
+        <li><strong>Найдите плагин «UpdraftPlus WordPress Backup Plugin».</strong> Убедитесь, что автор — UpdraftPlus.Com, DavidAnderson.</li>
+        <li><strong>Нажмите «Установить сейчас».</strong></li>
+        <li><strong>После установки нажмите «Активировать».</strong></li>
+        <li><strong>В левом меню появится пункт «UpdraftPlus».</strong> Плагин готов к работе.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> UpdraftPlus установлен и активирован. Теперь можно приступить к настройке.
+    </div>
+
+    <h2>Шаг 2. Первый бэкап: файлы и база данных</h2>
+
+    <p>Первый бэкап обязательно делайте <strong>вручную</strong> — так вы убедитесь, что всё работает. Автоматизацию настроим позже.</p>
+
+    <div class="info-box">
+        <strong>💡 Почему важно копировать и файлы, и базу:</strong><br>
+        <ul>
+            <li><strong>Файлы:</strong> тема, плагины, изображения, загрузки, <code>wp-config.php</code>.</li>
+            <li><strong>База данных:</strong> записи, страницы, настройки, пользователи, комментарии.</li>
+        </ul>
+        Обе части критически важны. Восстановление только одной из них даст неполный результат.
+    </div>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «UpdraftPlus → Резервное копирование / Восстановление» (Backup / Restore).</strong></li>
+        <li><strong>Нажмите большую кнопку «Резервное копирование сейчас» (Backup Now).</strong></li>
+        <li><strong>Откроется модальное окно с опциями.</strong> Убедитесь, что отмечены:
+            <ul>
+                <li>✅ <strong>Include your database in the backup</strong> (включить базу данных).</li>
+                <li>✅ <strong>Include your files in the backup</strong> (включить файлы).</li>
+            </ul>
+        </li>
+        <li><strong>Нажмите «Резервное копирование сейчас».</strong></li>
+        <li><strong>Наблюдайте за процессом.</strong> Прогресс-бар покажет этапы:
+            <ul>
+                <li>Создание дампа базы данных.</li>
+                <li>Копирование файлов.</li>
+                <li>Загрузка в облако (если настроено).</li>
+            </ul>
+        </li>
+        <li><strong>Дождитесь завершения.</strong> Обычно это занимает 2–10 минут в зависимости от размера сайта.</li>
+        <li><strong>Проверьте результат.</strong> Список существующих бэкапов появится внизу страницы.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Если бэкап завис или не завершился:</strong><br>
+        <ul>
+            <li>Проверьте, хватает ли места на хостинге.</li>
+            <li>Увеличьте лимит памяти PHP (<code>memory_limit</code>) до 256 МБ.</li>
+            <li>Увеличьте максимальное время выполнения скрипта (<code>max_execution_time</code>) до 300 секунд.</li>
+            <li>Разбейте бэкап: сначала только база, потом только файлы.</li>
+        </ul>
+    </div>
+
+    <h2>Шаг 3. Настройка отдельных расписаний</h2>
+
+    <p>База данных меняется гораздо чаще, чем файлы. Каждая публикация, комментарий, заказ или регистрация — это изменение в базе. Файлы (тема, плагины, изображения) обновляются реже. Поэтому разумно делать для них <strong>разные расписания</strong>.</p>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «UpdraftPlus → Настройки» (Settings).</strong></li>
+        <li><strong>Найдите раздел «Расписания резервного копирования файлов и базы данных»</strong> (Files and Database Backup Schedules).</li>
+        <li><strong>Настройте расписание для файлов:</strong>
+            <ul>
+                <li><strong>Files backup schedule:</strong> выберите частоту (например, Weekly — еженедельно).</li>
+                <li><strong>First backup:</strong> укажите, когда сделать первый бэкап.</li>
+            </ul>
+        </li>
+        <li><strong>Настройте расписание для базы данных:</strong>
+            <ul>
+                <li><strong>Database backup schedule:</strong> выберите частоту (например, Daily — ежедневно).</li>
+                <li><strong>First backup:</strong> укажите, когда сделать первый бэкап.</li>
+            </ul>
+        </li>
+        <li><strong>Нажмите «Сохранить изменения» (Save Changes).</strong></li>
+    </ol>
+
+    <h3>Рекомендации по частоте</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Тип сайта</th>
+            <th>База данных</th>
+            <th>Файлы</th>
+        </tr>
+        <tr>
+            <td>Портфолио или брошюра, редактируется ежемесячно</td>
+            <td>Еженедельно</td>
+            <td>Ежемесячно</td>
+        </tr>
+        <tr>
+            <td>Блог, одна-две записи в неделю</td>
+            <td>Ежедневно</td>
+            <td>Еженедельно</td>
+        </tr>
+        <tr>
+            <td>Бизнес-сайт, еженедельные правки, ежедневные запросы</td>
+            <td>Каждые 12 часов</td>
+            <td>Еженедельно</td>
+        </tr>
+        <tr>
+            <td>Магазин или сайт с членством, ежедневные заказы</td>
+            <td>Каждые 2 часа</td>
+            <td>Ежедневно</td>
+        </tr>
+        <tr>
+            <td>Новостной сайт, публикации несколько раз в час</td>
+            <td>Каждые 2 часа</td>
+            <td>Ежедневно</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Бонус:</strong> <em>Делайте ручную резервную копию перед каждым обновлением WordPress, темы или плагинов.</em> Это самая частая причина поломок. Если что-то пойдёт не так, вы сможете откатиться к состоянию «за минуту до обновления».
+    </div>
+
+    <h2>Шаг 4. Ограничение количества хранимых копий</h2>
+
+    <p>Если не ограничивать количество, резервные копии быстро займут всё доступное место. UpdraftPlus умеет автоматически удалять самые старые копии при появлении новых.</p>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «UpdraftPlus → Настройки».</strong></li>
+        <li><strong>Найдите раздел «Хранить столько запланированных резервных копий»</strong> (Retain this many scheduled backups).</li>
+        <li><strong>Укажите число.</strong> Рекомендую:
+            <ul>
+                <li><strong>Файлы:</strong> 4 копии.</li>
+                <li><strong>База данных:</strong> 8–14 копий (база меньше по размеру, можно хранить больше).</li>
+            </ul>
+        </li>
+        <li><strong>Нажмите «Сохранить изменения».</strong></li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Не ставьте слишком мало копий!</strong><br>
+        Не ограничивайтесь 1 копией. Лучше иметь 3–5 файловых и 8–14 базовых копий, чтобы была возможность откатиться на несколько шагов назад, если проблема обнаружится не сразу.
+    </div>
+
+    <h2>Шаг 5. Включение email-отчётов</h2>
+
+    <p>Автоматическое резервное копирование может незаметно сломаться. Например, закончится место, изменится пароль к облаку или произойдёт сбой на сервере. Email-отчёты позволяют вовремя заметить проблему.</p>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «UpdraftPlus → Настройки».</strong></li>
+        <li><strong>Найдите опцию «Получать уведомления о резервном копировании по email»</strong> (Get backup notification by email).</li>
+        <li><strong>Включите её.</strong></li>
+        <li><strong>Укажите email.</strong> По умолчанию — email администратора сайта.</li>
+        <li><strong>Нажмите «Сохранить изменения».</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Проверьте, что письма не попадают в спам. Добавьте адрес отправителя (<code>no-reply@ваш_домен</code>) в белый список вашей почты.
+    </div>
+
+    <h2>Шаг 6. Хранение копий вне сервера</h2>
+
+    <p>Если резервные копии лежат на том же сервере, что и сайт, вы потеряете и то, и другое при аварии сервера, взломе или отключении хостинга. <strong>Отправьте копию в облако.</strong></p>
+
+    <h3>Пошаговая инструкция (на примере Google Drive)</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «UpdraftPlus → Настройки».</strong></li>
+        <li><strong>Прокрутите до раздела «Удалённое хранилище»</strong> (Remote storage).</li>
+        <li><strong>В выпадающем списке выберите Google Drive.</strong></li>
+        <li><strong>Нажмите «Авторизоваться в Google Drive».</strong></li>
+        <li><strong>Войдите в свой Google-аккаунт.</strong> Разрешите доступ для UpdraftPlus.</li>
+        <li><strong>Скопируйте код авторизации</strong> и вставьте его в поле.</li>
+        <li><strong>Выберите папку</strong> для сохранения бэкапов. Рекомендую создать отдельную папку «Бэкапы сайта».</li>
+        <li><strong>Нажмите «Сохранить изменения».</strong></li>
+        <li><strong>Проверьте соединение:</strong> нажмите «Тест удалённого хранилища» (Test Remote Storage).</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> Теперь копии будут автоматически загружаться в Google Drive. Если сайт «упадёт» — у вас останется резервная копия в облаке.
+    </div>
+
+    <h3>Доступные бесплатные хранилища</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Сервис</th>
+            <th>Бесплатный объём</th>
+            <th>Особенности</th>
+        </tr>
+        <tr>
+            <td>Google Drive</td>
+            <td>15 ГБ</td>
+            <td>Простой для начинающих. Хорошо работает с UpdraftPlus.</td>
+        </tr>
+        <tr>
+            <td>Dropbox</td>
+            <td>2 ГБ</td>
+            <td>Меньше места, но отличная интеграция.</td>
+        </tr>
+        <tr>
+            <td>OneDrive</td>
+            <td>5 ГБ</td>
+            <td>Хорош для пользователей Microsoft.</td>
+        </tr>
+        <tr>
+            <td>Amazon S3</td>
+            <td>5 ГБ (12 мес.)</td>
+            <td>Профессиональный вариант, требует настройки.</td>
+        </tr>
+        <tr>
+            <td>FTP / SFTP</td>
+            <td>Зависит от сервера</td>
+            <td>Можно использовать другой хостинг.</td>
+        </tr>
+        <tr>
+            <td>WebDAV</td>
+            <td>Зависит от сервиса</td>
+            <td>Яндекс.Диск, Mail.ru и другие.</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>Зависит от ящика</td>
+            <td>Только для маленьких сайтов (лимит вложения 25 МБ).</td>
+        </tr>
+    </table>
+
+    <h2>Шаг 7. Проверка восстановления на тестовом сайте</h2>
+
+    <p>Резервная копия бесполезна, если её нельзя восстановить. Многие узнают об этом только в критический момент. Поэтому нужно <strong>заранее протестировать восстановление</strong> на отдельном сайте.</p>
+
+    <h3>Способ 1: Восстановление на локальном сайте</h3>
+
+    <p>Если у вас есть локальный WordPress (например, через Local by Flywheel или XAMPP), используйте его как тестовый.</p>
+
+    <ol class="steps">
+        <li><strong>Скачайте резервную копию</strong> из UpdraftPlus:
+            <ul>
+                <li>Откройте «UpdraftPlus → Резервное копирование / Восстановление».</li>
+                <li>Прокрутите до раздела «Существующие резервные копии» (Existing backups).</li>
+                <li>Найдите нужный бэкап.</li>
+                <li>Скачайте все компоненты: database, plugins, themes, uploads, others.</li>
+            </ul>
+        </li>
+        <li><strong>На локальном сайте установите чистый WordPress.</strong></li>
+        <li><strong>Установите и активируйте UpdraftPlus.</strong></li>
+        <li><strong>Загрузите скачанные файлы:</strong>
+            <ul>
+                <li>Откройте «UpdraftPlus → Резервное копирование / Восстановление».</li>
+                <li>Нажмите «Загрузить резервные копии» (Upload backup files).</li>
+                <li>Загрузите все скачанные файлы.</li>
+            </ul>
+        </li>
+        <li><strong>Восстановите сайт:</strong>
+            <ul>
+                <li>Рядом с загруженными файлами нажмите «Восстановить» (Restore).</li>
+                <li>Отметьте все компоненты для восстановления.</li>
+                <li>Нажмите «Восстановить».</li>
+            </ul>
+        </li>
+        <li><strong>Проверьте результат.</strong> Сайт должен открыться с тем же контентом, что был в момент бэкапа.</li>
+    </ol>
+
+    <h3>Способ 2: Восстановление на отдельном поддомене</h3>
+
+    <p>Если локального сайта нет, создайте поддомен на хостинге (например, <code>test.ваш_сайт.ru</code>) и используйте его как тестовый.</p>
+
+    <ol class="steps">
+        <li><strong>Создайте поддомен</strong> в панели хостинга.</li>
+        <li><strong>Установите на него чистый WordPress.</strong></li>
+        <li><strong>Установите UpdraftPlus.</strong></li>
+        <li><strong>Загрузите и восстановите бэкап</strong> по инструкции выше.</li>
+        <li><strong>Проверьте результат.</strong></li>
+        <li><strong>Удалите тестовый сайт</strong>, когда закончите.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Если бэкап не восстанавливается:</strong><br>
+        Возможные причины:
+        <ul>
+            <li>Архив повреждён — попробуйте другую копию.</li>
+            <li>Не хватает памяти — увеличьте <code>memory_limit</code>.</li>
+            <li>Таймаут выполнения — увеличьте <code>max_execution_time</code>.</li>
+            <li>Проблемы с правами доступа — установите <code>755</code> на папки.</li>
+        </ul>
+    </div>
+
+    <h2>Восстановление сайта из резервной копии: пошаговый алгоритм</h2>
+
+    <p>Когда сайт «упал» и нужна срочная реставрация, действуйте по этому алгоритму.</p>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <strong>Шаг 1: Определите, что сломалось</strong>
+            <span>Белый экран? Ошибка 500? Пустой сайт? Странный контент? Запишите симптом.</span>
+        </div>
+        <div class="timeline-item">
+            <strong>Шаг 2: Попробуйте войти в админку</strong>
+            <span>Открывается ли /wp-admin? Если да — восстановление через UpdraftPlus в один клик. Если нет — через FTP.</span>
+        </div>
+        <div class="timeline-item">
+            <strong>Шаг 3: Откройте UpdraftPlus → Резервное копирование / Восстановление</strong>
+            <span>Найдите самый свежий рабочий бэкап. Убедитесь, что в нём есть файлы и база данных.</span>
+        </div>
+        <div class="timeline-item">
+            <strong>Шаг 4: Нажмите «Восстановить» (Restore)</strong>
+            <span>Отметьте все компоненты: database, plugins, themes, uploads, others.</span>
+        </div>
+        <div class="timeline-item">
+            <strong>Шаг 5: Дождитесь завершения</strong>
+            <span>Процесс может занять 5–30 минут в зависимости от размера сайта.</span>
+        </div>
+        <div class="timeline-item">
+            <strong>Шаг 6: Проверьте сайт</strong>
+            <span>Откройте главную, страницы, записи, медиафайлы, формы. Убедитесь, что всё работает.</span>
+        </div>
+        <div class="timeline-item">
+            <strong>Шаг 7: Если что-то не работает</strong>
+            <span>Попробуйте более старый бэкап. Проверьте wp-config.php, .htaccess. Обратитесь в поддержку хостинга.</span>
+        </div>
+    </div>
+
+    <h2>Восстановление через FTP: если админка не работает</h2>
+
+    <p>Если сайт «упал» так, что админка недоступна, восстановление делается через FTP и phpMyAdmin.</p>
+
+    <ol class="steps">
+        <li><strong>Скачайте резервную копию из облака</strong> (Google Drive, Dropbox).</li>
+        <li><strong>Распакуйте архивы</strong> на компьютере:
+            <ul>
+                <li><code>uploads</code> — в <code>wp-content/uploads/</code>.</li>
+                <li><code>themes</code> — в <code>wp-content/themes/</code>.</li>
+                <li><code>plugins</code> — в <code>wp-content/plugins/</code>.</li>
+                <li><code>others</code> — <code>wp-config.php</code>, <code>.htaccess</code>.</li>
+                <li><code>database.sql</code> — дамп базы.</li>
+            </ul>
+        </li>
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Переименуйте текущую папку</strong> <code>wp-content</code> в <code>wp-content_broken</code>.</li>
+        <li><strong>Загрузите распакованную папку</strong> <code>wp-content</code> из бэкапа.</li>
+        <li><strong>Загрузите</strong> <code>wp-config.php</code> и <code>.htaccess</code> из бэкапа.</li>
+        <li><strong>Восстановите базу данных:</strong>
+            <ul>
+                <li>Откройте phpMyAdmin.</li>
+                <li>Выберите базу данных.</li>
+                <li>Вкладка «Импорт».</li>
+                <li>Загрузите <code>database.sql</code>.</li>
+                <li>Нажмите «Импорт».</li>
+            </ul>
+        </li>
+        <li><strong>Проверьте</strong> <code>wp-config.php</code>: DB_NAME, DB_USER, DB_PASSWORD, DB_HOST должны соответствовать текущей базе.</li>
+        <li><strong>Откройте сайт.</strong> Если всё в порядке — восстановление завершено.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Если база данных повреждена, но не утрачена:</strong><br>
+        В phpMyAdmin нажмите «Проверить» (Check) — увидите повреждённые таблицы. Затем «Восстановить» (Repair) — phpMyAdmin попробует их исправить.
+    </div>
+
+    <h2>Рекомендации по частоте резервного копирования</h2>
+
+    <p>Частота бэкапов зависит от активности сайта. Вот ориентиры для разных типов проектов.</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Тип сайта</th>
+            <th>База данных</th>
+            <th>Файлы</th>
+            <th>Хранение</th>
+        </tr>
+        <tr>
+            <td>Портфолио, брошюра</td>
+            <td>Еженедельно</td>
+            <td>Ежемесячно</td>
+            <td>4 копии</td>
+        </tr>
+        <tr>
+            <td>Блог (1–2 записи в неделю)</td>
+            <td>Ежедневно</td>
+            <td>Еженедельно</td>
+            <td>8 копий</td>
+        </tr>
+        <tr>
+            <td>Бизнес-сайт (ежедневные заявки)</td>
+            <td>Каждые 12 часов</td>
+            <td>Еженедельно</td>
+            <td>14 копий</td>
+        </tr>
+        <tr>
+            <td>Магазин (ежедневные заказы)</td>
+            <td>Каждые 2 часа</td>
+            <td>Ежедневно</td>
+            <td>30 копий</td>
+        </tr>
+        <tr>
+            <td>Новостной портал</td>
+            <td>Каждые 2 часа</td>
+            <td>Ежедневно</td>
+            <td>30 копий</td>
+        </tr>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ Бонус, который спасёт вас:</strong><br>
+        <strong>Делайте ручную резервную копию перед каждым обновлением.</strong> Обновления WordPress, тем и плагинов — самая частая причина поломок. Если что-то пойдёт не так, вы откатитесь к состоянию «за минуту до обновления», а не ждать следующего запланированного цикла.
+    </div>
+
+    <h2>Чек-лист правильной настройки UpdraftPlus</h2>
+
+    <div class="task-box">
+        <strong>✅ Проверьте, всё ли у вас настроено</strong><br><br>
+        <ul class="checklist">
+            <li>Плагин UpdraftPlus установлен и активирован.</li>
+            <li>Сделан первый ручной бэкап (файлы + база данных).</li>
+            <li>Настроены отдельные расписания для файлов и базы.</li>
+            <li>Ограничено количество хранимых копий (не менее 4).</li>
+            <li>Включены email-отчёты о бэкапах.</li>
+            <li>Настроено удалённое хранилище (Google Drive, Dropbox).</li>
+            <li>Проверено соединение с облаком (Test Remote Storage).</li>
+            <li>Скачан один из бэкапов на компьютер.</li>
+            <li>Протестировано восстановление на тестовом сайте (или хотя бы проверена целостность архива).</li>
+            <li>Настроена привычка делать ручной бэкап перед каждым обновлением.</li>
+        </ul>
+    </div>
+
+    <h2>Типичные проблемы UpdraftPlus и их решение</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Бэкап зависает на середине</td>
+            <td>Недостаточно памяти или времени выполнения</td>
+            <td>Увеличьте <code>memory_limit</code> до 256 МБ и <code>max_execution_time</code> до 300 сек.</td>
+        </tr>
+        <tr>
+            <td>Бэкап не загружается в Google Drive</td>
+            <td>Не авторизован аккаунт или истёк токен</td>
+            <td>Повторно авторизуйтесь в Google Drive через UpdraftPlus → Настройки</td>
+        </tr>
+        <tr>
+            <td>Ошибка «Checksum failed»</td>
+            <td>Архив повреждён при загрузке</td>
+            <td>Удалите повреждённую копию. Создайте новую</td>
+        </tr>
+        <tr>
+            <td>Место на хостинге заканчивается</td>
+            <td>Бэкапы хранятся на сервере</td>
+            <td>Настройте удалённое хранилище. Уменьшите количество хранимых копий</td>
+        </tr>
+        <tr>
+            <td>Восстановление не работает</td>
+            <td>Неполный бэкап или несовместимость версий</td>
+            <td>Проверьте, все ли компоненты скачаны. Попробуйте более старую копию</td>
+        </tr>
+        <tr>
+            <td>После восстановления сайт «пустой»</td>
+            <td>Восстановлены только файлы или только база</td>
+            <td>Восстановите обе части: сначала база, потом файлы (или наоборот)</td>
+        </tr>
+        <tr>
+            <td>Сайт показывает ошибку после восстановления</td>
+            <td>Неверные данные в wp-config.php</td>
+            <td>Проверьте DB_NAME, DB_USER, DB_PASSWORD, DB_HOST</td>
+        </tr>
+        <tr>
+            <td>Бэкап слишком долго создаётся</td>
+            <td>Большой сайт или медленный хостинг</td>
+            <td>Разбейте бэкап: отдельно база, отдельно файлы. Используйте инкрементальные копии (Pro)</td>
+        </tr>
+    </table>
+
+    <h2>Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание: настройте UpdraftPlus с нуля</strong><br><br>
+        <strong>Часть 1: Установка</strong><br>
+        1. Установите и активируйте UpdraftPlus.<br>
+        2. Откройте «UpdraftPlus → Резервное копирование / Восстановление».<br><br>
+        <strong>Часть 2: Первый бэкап</strong><br>
+        3. Нажмите «Резервное копирование сейчас».<br>
+        4. Убедитесь, что отмечены файлы и база данных.<br>
+        5. Дождитесь завершения.<br>
+        6. Проверьте, что бэкап создан.<br><br>
+        <strong>Часть 3: Настройка расписаний</strong><br>
+        7. Откройте «UpdraftPlus → Настройки».<br>
+        8. Настройте расписание для файлов (например, Weekly).<br>
+        9. Настройте расписание для базы (например, Daily).<br>
+        10. Ограничьте количество копий (4 файловых, 8 БД).<br>
+        11. Включите email-отчёты.<br>
+        12. Сохраните настройки.<br><br>
+        <strong>Часть 4: Облачное хранилище</strong><br>
+        13. В разделе «Удалённое хранилище» выберите Google Drive.<br>
+        14. Авторизуйте аккаунт.<br>
+        15. Выберите папку для бэкапов.<br>
+        16. Сохраните и проверьте соединение.<br>
+        17. Создайте новый бэкап — он должен загрузиться в облако.<br><br>
+        <strong>Часть 5: Проверка восстановления</strong><br>
+        18. Скачайте один из бэкапов на компьютер.<br>
+        19. Распакуйте архивы.<br>
+        20. Убедитесь, что внутри есть файлы и .sql-дамп базы.<br>
+        21. Если есть тестовый сайт — восстановите на нём бэкап.<br>
+        22. Если нет — проверьте целостность архивов.<br><br>
+        <strong>Часть 6: Создание привычки</strong><br>
+        23. Перед следующим обновлением WordPress сделайте ручной бэкап.<br>
+        24. Обновите WordPress.<br>
+        25. Если всё работает — удалите ручную копию через 2–3 дня.<br>
+        26. Если что-то сломалось — восстановите из неё.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Установку UpdraftPlus; создание ручных и автоматических бэкапов; настройку отдельных расписаний для файлов и базы данных; ограничение количества копий; email-отчёты; облачное хранение; проверку восстановления на тестовом сайте; восстановление сайта через админку и через FTP; частоту бэкапов для разных типов сайтов; решение типичных проблем.
+    </div>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        Теперь вы готовы к практическому применению. Переходите к <a href="chapter9.html">главе 9 — Резервное копирование</a> и <a href="chapter10.html">главе 10 — Восстановление сайта</a>, где эти навыки будут рассмотрены в контексте всего курса. И помните главное правило: <strong>нет бэкапа — нет изменений</strong>.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="index.html" class="button">🏠 Вернуться на главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
