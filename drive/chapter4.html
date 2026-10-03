@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 4: Редактор кода — инструменты и правила безопасности</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        pre .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        pre .keyword {
+            color: #c792ea;
+        }
+        pre .string {
+            color: #c3e88d;
+        }
+        pre .property {
+            color: #82aaff;
+        }
+        pre .value {
+            color: #f78c6c;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .editor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .editor-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+        }
+        .editor-card.recommended {
+            border: 2px solid #16a34a;
+            background: #f0fdf4;
+        }
+        .editor-card .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #16a34a;
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .editor-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .editor-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .editor-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .editor-card ul {
+            margin: 10px 0 0 18px;
+            font-size: 0.88em;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .shortcut-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .shortcut-table td {
+            padding: 8px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.92em;
+        }
+        .shortcut-table td:first-child {
+            font-family: 'Courier New', monospace;
+            background: #eef2ff;
+            color: #1e466e;
+            font-weight: 600;
+            width: 35%;
+        }
+        .shortcut-table tr:last-child td {
+            border-bottom: none;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .editor-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 4: Редактор кода — инструменты и правила безопасности</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~28 минут | 🎯 Цель: выбрать и настроить редактор кода, освоить безопасную работу с файлами и научиться редактировать код без риска для сайта</div>
+
+    <p>В предыдущих главах мы научились находить файлы и подключаться к ним по FTP. Но правка кода через встроенный редактор хостинга или FileZilla — это как ремонт часов молотком: возможно, но неудобно и опасно. Для серьёзной работы с кодом нужен <strong>правильный редактор</strong>. В этой главе мы выберем инструмент, настроим его под работу с WordPress и освоим правила безопасного редактирования.</p>
+
+    <div class="info-box">
+        <strong>💡 Почему важен редактор:</strong><br>
+        Правильный редактор кода:
+        <ul>
+            <li><strong>Подсвечивает синтаксис</strong> — вы сразу видите ошибки и структуру.</li>
+            <li><strong>Автодополняет код</strong> — меньше опечаток, быстрее работа.</li>
+            <li><strong>Находит парные скобки</strong> — не потеряете закрывающую скобку в большом файле.</li>
+            <li><strong>Показывает отступы</strong> — код остаётся читаемым.</li>
+            <li><strong>Интегрируется с FTP</strong> — можно править файлы прямо на сервере.</li>
+        </ul>
+        Блокнот этого не умеет. А одна опечатка в PHP-файле может обрушить весь сайт.
+    </div>
+
+    <h2>4.1 Обзор редакторов кода</h2>
+
+    <p>Существует четыре категории редакторов. Выбор зависит от вашего опыта и задач.</p>
+
+    <div class="editor-grid">
+        <div class="editor-card recommended">
+            <span class="badge">Рекомендуем</span>
+            <div class="icon">💙</div>
+            <strong>Visual Studio Code</strong>
+            <span>Бесплатный, кроссплатформенный, мощный. Миллионы расширений. Идеален для веб-разработки.</span>
+            <ul>
+                <li>Подсветка HTML, CSS, PHP, JS</li>
+                <li>Встроенный терминал</li>
+                <li>Расширение SFTP для работы с сервером</li>
+                <li>Поддержка Git «из коробки»</li>
+            </ul>
+        </div>
+        <div class="editor-card">
+            <div class="icon">📝</div>
+            <strong>Notepad++</strong>
+            <span>Лёгкий редактор для Windows. Простой, быстрый, бесплатный. Хорош для быстрых правок.</span>
+            <ul>
+                <li>Подсветка синтаксиса</li>
+                <li>Плагин NppFTP для работы с FTP</li>
+                <li>Не требует установки (портативный)</li>
+                <li>Минимум ресурсов</li>
+            </ul>
+        </div>
+        <div class="editor-card">
+            <div class="icon">⚡</div>
+            <strong>Sublime Text</strong>
+            <span>Быстрый и лёгкий редактор. Бесплатная версия с периодическим напоминанием о покупке.</span>
+            <ul>
+                <li>Мгновенный запуск</li>
+                <li>Отличная подсветка синтаксиса</li>
+                <li>Плагин SFTP</li>
+                <li>Минималистичный интерфейс</li>
+            </ul>
+        </div>
+        <div class="editor-card">
+            <div class="icon">🚀</div>
+            <strong>PhpStorm</strong>
+            <span>Профессиональная IDE для PHP. Платная, но мощная. Для серьёзной разработки.</span>
+            <ul>
+                <li>Глубокая поддержка PHP</li>
+                <li>Рефакторинг кода</li>
+                <li>Отладка</li>
+                <li>Интеграция с WordPress</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Наша рекомендация:</strong> Для курса используйте <strong>Visual Studio Code (VS Code)</strong>. Он бесплатный, работает на Windows, Mac и Linux, имеет все нужные расширения и подходит как новичкам, так и профессионалам.
+    </div>
+
+    <h2>4.2 Установка и настройка VS Code</h2>
+
+    <p>Установка VS Code занимает 5 минут. Давайте пройдём этот путь вместе.</p>
+
+    <h3>Шаг 1: Скачивание и установка</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте сайт</strong> <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a>.</li>
+        <li><strong>Нажмите «Download»</strong> — сайт определит вашу ОС автоматически.</li>
+        <li><strong>Скачайте установщик.</strong></li>
+        <li><strong>Запустите установщик.</strong> Примите лицензию.</li>
+        <li><strong>Отметьте галочки:</strong>
+            <ul>
+                <li>«Добавить в PATH» — важно для работы из терминала.</li>
+                <li>«Добавить в контекстное меню проводника» — удобно для быстрого открытия файлов.</li>
+                <li>«Зарегистрировать как редактор для поддерживаемых типов файлов».</li>
+            </ul>
+        </li>
+        <li><strong>Нажмите «Установить».</strong></li>
+        <li><strong>Запустите VS Code.</strong></li>
+    </ol>
+
+    <h3>Шаг 2: Установка полезных расширений</h3>
+
+    <p>Расширения — это «плагины» для VS Code. Они добавляют функции. Вот минимальный набор для работы с WordPress.</p>
+
+    <ol class="steps">
+        <li><strong>Откройте панель расширений:</strong> иконка квадратов в левой панели или <code>Ctrl+Shift+X</code>.</li>
+        <li><strong>Установите эти расширения:</strong>
+            <ul>
+                <li><strong>Russian Language Pack</strong> — русификация интерфейса.</li>
+                <li><strong>SFTP</strong> (автор Natizyskunk) — работа с файлами сайта по FTP/SFTP прямо из VS Code.</li>
+                <li><strong>WordPress Snippets</strong> — автодополнение функций WordPress.</li>
+                <li><strong>PHP Intelephense</strong> — интеллектуальная поддержка PHP.</li>
+                <li><strong>Prettier</strong> — автоформатирование кода.</li>
+                <li><strong>Auto Rename Tag</strong> — автоматическое переименование парных тегов.</li>
+                <li><strong>Bracket Pair Colorizer</strong> — цветные скобки для наглядности.</li>
+            </ul>
+        </li>
+        <li><strong>Для установки:</strong> найдите расширение в поиске и нажмите «Установить».</li>
+            </ol>
+
+    <h3>Шаг 3: Настройка внешнего вида</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте настройки:</strong> <code>Ctrl+,</code> или «Файл → Параметры → Параметры».</li>
+        <li><strong>Настройте шрифт:</strong> найдите «Font Family» и укажите <code>Consolas, 'Courier New', monospace</code>.</li>
+        <li><strong>Размер шрифта:</strong> 14–16 для комфортной работы.</li>
+        <li><strong>Размер табуляции:</strong> 4 пробела (стандарт WordPress).</li>
+        <li><strong>Автосохранение:</strong> включите «Auto Save» — файлы будут сохраняться автоматически.</li>
+        <li><strong>Тема:</strong> выберите удобную. «Dark+» — классика.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Горячие клавиши VS Code, которые сэкономят часы:</strong>
+        <table class="shortcut-table">
+            <tr><td>Ctrl + P</td><td>Быстрое открытие файла по имени</td></tr>
+            <tr><td>Ctrl + Shift + F</td><td>Поиск по всем файлам проекта</td></tr>
+            <tr><td>Ctrl + F</td><td>Поиск в текущем файле</td></tr>
+            <tr><td>Ctrl + H</td><td>Замена в текущем файле</td></tr>
+            <tr><td>Ctrl + /</td><td>Закомментировать/раскомментировать строку</td></tr>
+            <tr><td>Alt + ↑ / ↓</td><td>Переместить строку вверх/вниз</td></tr>
+            <tr><td>Shift + Alt + ↓</td><td>Дублировать строку</td></tr>
+            <tr><td>Ctrl + D</td><td>Выделить следующее вхождение слова</td></tr>
+            <tr><td>Ctrl + Shift + K</td><td>Удалить строку</td></tr>
+            <tr><td>Ctrl + S</td><td>Сохранить файл</td></tr>
+        </table>
+    </div>
+
+    <h2>4.3 Расширение SFTP — работа с файлами сайта прямо из редактора</h2>
+
+    <p>Это расширение — killer feature VS Code для работы с WordPress. Вы можете редактировать файлы сайта, не переключаясь между FTP-клиентом и редактором.</p>
+
+    <h3>Настройка SFTP</h3>
+
+    <ol class="steps">
+        <li><strong>Создайте локальную папку</strong> для проекта. Например, <code>D:\Сайты\мой-сайт\</code>.</li>
+        <li><strong>Откройте эту папку в VS Code:</strong> «Файл → Открыть папку».</li>
+        <li><strong>Откройте командную палитру:</strong> <code>Ctrl+Shift+P</code>.</li>
+        <li><strong>Введите</strong> <code>SFTP: Config</code> и выберите эту команду.</li>
+        <li><strong>В папке проекта появится файл</strong> <code>sftp.json</code>.</li>
+        <li><strong>Откройте его и заполните данными подключения:</strong></li>
+    </ol>
+
+    <pre>{
+    <span class="property">"name"</span>: <span class="string">"Мой сайт"</span>,
+    <span class="property">"host"</span>: <span class="string">"ftp.ваш_домен.ru"</span>,
+    <span class="property">"protocol"</span>: <span class="string">"ftp"</span>,
+    <span class="property">"port"</span>: <span class="value">21</span>,
+    <span class="property">"username"</span>: <span class="string">"ваш_логин"</span>,
+    <span class="property">"password"</span>: <span class="string">"ваш_пароль"</span>,
+    <span class="property">"remotePath"</span>: <span class="string">"/public_html"</span>,
+    <span class="property">"context"</span>: <span class="string">"./"</span>,
+    <span class="property">"uploadOnSave"</span>: <span class="value">true</span>,
+    <span class="property">"ignore"</span>: [
+        <span class="string">".vscode"</span>,
+        <span class="string">".git"</span>,
+        <span class="string">".DS_Store"</span>
+    ]
+}</pre>
+
+    <ol class="steps" start="7">
+        <li><strong>Сохраните файл</strong> <code>sftp.json</code>.</li>
+        <li><strong>Откройте командную палитру</strong> (<code>Ctrl+Shift+P</code>).</li>
+        <li><strong>Введите</strong> <code>SFTP: List All</code> — увидите подключение.</li>
+        <li><strong>Нажмите на подключение</strong> — VS Code подключится к серверу.</li>
+        <li><strong>Нажмите «Download Project»</strong> — скачаются все файлы сайта.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Осторожно с параметром <code>uploadOnSave</code>!</strong><br>
+        Если он включён (<code>true</code>), каждое сохранение файла на компьютере автоматически загружает его на сервер. Это удобно, но опасно: одна ошибка — и сайт «упадёт». Для новичков рекомендуем сначала <strong>выключить</strong> эту опцию (<code>false</code>) и загружать файлы вручную.
+    </div>
+
+    <h3>Как работать с SFTP-расширением</h3>
+
+    <ul>
+        <li><strong>Скачать файл с сервера:</strong> правый клик в панели SFTP → Download.</li>
+        <li><strong>Загрузить файл на сервер:</strong> правый клик на локальном файле → Upload.</li>
+        <li><strong>Синхронизировать всю папку:</strong> правый клик → Sync Local → Remote.</li>
+        <li><strong>Сравнить файлы:</strong> правый клик → Compare.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Скачайте проект целиком, работайте с файлами локально, а потом загружайте изменения. Это быстрее и безопаснее, чем править файлы прямо на сервере.
+    </div>
+
+    <h2>4.4 Правила безопасной работы с кодом</h2>
+
+    <p>Работа с кодом — это работа с «живым» сайтом. Одна ошибка может его обрушить. Соблюдайте эти правила — и вы сведёте риски к минимуму.</p>
+
+    <h3>Правило 1: Всегда делайте резервную копию перед правкой</h3>
+
+    <p>Перед правкой любого файла:</p>
+    <ol class="steps">
+        <li><strong>Скачайте оригинальный файл</strong> на компьютер.</li>
+        <li><strong>Сделайте его копию</strong> с расширением <code>.backup</code>. Например, <code>style.css</code> → <code>style.css.backup</code>.</li>
+        <li><strong>Только после этого</strong> начинайте редактирование.</li>
+    </ol>
+
+    <h3>Правило 2: Правьте по одному файлу за раз</h3>
+
+    <p>Не вносите изменения в 10 файлов одновременно. Если сайт «упадёт», вы не будете знать, из-за чего. Правьте один файл — проверяйте результат — переходите к следующему.</p>
+
+    <h3>Правило 3: Не трогайте ядро и чужие плагины</h3>
+
+    <p>Никогда не правьте файлы в <code>wp-admin/</code>, <code>wp-includes/</code> и в чужих плагинах. Их изменения будут перезаписаны при обновлении. Для кастомизации используйте <strong>дочерние темы</strong> или <strong>собственные плагины</strong>.</p>
+
+    <h3>Правило 4: Проверяйте код перед сохранением</h3>
+
+    <p>В VS Code есть встроенная проверка синтаксиса PHP. Если есть ошибка — редактор подсветит её <strong>красным</strong>. Не сохраняйте файл, если видите красные подчёркивания!</p>
+
+    <h3>Правило 5: Работайте на тестовой копии</h3>
+
+    <p>Если возможно, создайте тестовую копию сайта (на поддомене или локально). Все опасные эксперименты проводите на ней. Только после успешной проверки переносите на боевой сайт.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Золотое правило:</strong><br>
+        <em>«Нет бэкапа — нет правки».</em> Не начинайте редактирование, пока не сделали копию файла. Это займёт 10 секунд, но может спасти часы работы.
+    </div>
+
+    <h2>4.5 Практический пример: правим style.css темы безопасно</h2>
+
+    <p><strong>Ситуация:</strong> Нужно изменить цвет ссылок в теме на свой фирменный. Мы сделаем это через дочернюю тему (о ней подробно в главе 7), а пока — безопасно поправим файл <code>style.css</code>, чтобы понять процесс.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по SFTP</strong> через VS Code.</li>
+        <li><strong>Скачайте файл</strong> <code>wp-content/themes/active-theme/style.css</code> на компьютер.</li>
+        <li><strong>Сделайте копию файла:</strong> создайте <code>style.css.backup</code> рядом.</li>
+        <li><strong>Откройте</strong> <code>style.css</code> в VS Code.</li>
+        <li><strong>Найдите секцию для ссылок.</strong> Используйте поиск (<code>Ctrl+F</code>) по слову <code>a {</code>.</li>
+        <li><strong>Добавьте в конец файла новое правило:</strong></li>
+    </ol>
+
+    <pre><span class="comment">/* Кастомный цвет ссылок */</span>
+<span class="keyword">a</span>, <span class="keyword">a:visited</span> {
+    <span class="property">color</span>: <span class="value">#0969da</span>;
+    <span class="property">text-decoration</span>: <span class="value">none</span>;
+}
+
+<span class="keyword">a:hover</span>, <span class="keyword">a:focus</span> {
+    <span class="property">color</span>: <span class="value">#0550ae</span>;
+    <span class="property">text-decoration</span>: <span class="value">underline</span>;
+}</pre>
+
+    <ol class="steps" start="7">
+        <li><strong>Проверьте файл на ошибки.</strong> VS Code не должен подсвечивать красным.</li>
+        <li><strong>Сохраните файл</strong> (<code>Ctrl+S</code>).</li>
+        <li><strong>Загрузите файл на сервер</strong> через SFTP (правый клик → Upload).</li>
+        <li><strong>Обновите сайт в браузере.</strong> Ссылки должны измениться.</li>
+        <li><strong>Проверьте на телефоне.</strong></li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> Вы безопасно отредактировали файл темы, имея резервную копию. Если что-то пойдёт не так — просто вернёте <code>style.css.backup</code> обратно.
+    </div>
+
+    <h3>Что делать, если сайт «упал»</h3>
+
+    <ol class="steps">
+        <li><strong>Не паникуйте.</strong></li>
+        <li><strong>Верните файл из бэкапа:</strong> загрузите <code>style.css.backup</code> на сервер, переименовав его в <code>style.css</code>.</li>
+        <li><strong>Обновите сайт.</strong> Если он заработал — вы восстановили всё за 30 секунд.</li>
+        <li><strong>Проанализируйте ошибку</strong> — что вы сделали не так?</li>
+        <li><strong>Попробуйте снова</strong>, более внимательно.</li>
+    </ol>
+
+    <h2>4.6 Полезные функции VS Code для работы с WordPress</h2>
+
+    <h3>Поиск по проекту</h3>
+
+    <p>Одна из самых мощных функций. Нажмите <code>Ctrl+Shift+F</code> и введите любой текст — вы найдёте его во всех файлах проекта. Это незаменимо при поиске проблемной строки кода.</p>
+
+    <h3>Автодополнение WordPress</h3>
+
+    <p>С расширением <strong>WordPress Snippets</strong> VS Code автоматически дополняет функции WordPress. Начните вводить <code>wp_</code> — увидите список функций.</p>
+
+    <h3>Форматирование кода</h3>
+
+    <p>Расширение <strong>Prettier</strong> автоматически форматирует код. Нажмите <code>Shift+Alt+F</code> — код станет аккуратным и читаемым.</p>
+
+    <h3>Мини-карта файла</h3>
+
+    <p>Справа в VS Code есть мини-карта — уменьшенная копия файла. Она помогает быстро ориентироваться в больших файлах.</p>
+
+    <h3>Сравнение файлов</h3>
+
+    <p>Если вы не уверены, что изменилось в файле, откройте командную палитру (<code>Ctrl+Shift+P</code>) и введите <code>Compare Active File With...</code>. Выберите файл для сравнения — VS Code подсветит различия.</p>
+
+    <h2>4.7 Решение типичных проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>VS Code не открывает PHP-файлы с подсветкой</td>
+            <td>Не установлено расширение PHP</td>
+            <td>Установите «PHP Intelephense» через панель расширений</td>
+        </tr>
+        <tr>
+            <td>SFTP не подключается</td>
+            <td>Неверные данные или порт</td>
+            <td>Проверьте <code>sftp.json</code>: host, username, password, port, protocol</td>
+        </tr>
+        <tr>
+            <td>Файл не загружается на сервер</td>
+            <td>Недостаточно прав</td>
+            <td>Проверьте права на папку (должно быть 755) и файл (644)</td>
+        </tr>
+        <tr>
+            <td>Изменения не видны на сайте</td>
+            <td>Кэш браузера или сайта</td>
+            <td>Очистите кэш (Ctrl+F5) и кэш-плагина</td>
+        </tr>
+        <tr>
+            <td>Сайт «упал» после сохранения</td>
+            <td>Синтаксическая ошибка</td>
+            <td>Восстановите файл из резервной копии через SFTP</td>
+        </tr>
+        <tr>
+            <td>Кодировка «поехала» — кракозябры вместо русских букв</td>
+            <td>Файл сохранён в неправильной кодировке</td>
+            <td>В VS Code: «Вид → Палитра команд → Изменить кодировку файла» → UTF-8</td>
+        </tr>
+        <tr>
+            <td>VS Code тормозит</td>
+            <td>Слишком много расширений</td>
+            <td>Отключите неиспользуемые расширения</td>
+        </tr>
+        <tr>
+            <td>Случайно удалил файл через SFTP</td>
+            <td>Не было резервной копии</td>
+            <td>Восстановите файл из бэкапа сайта или скачайте оригинал из архива WordPress</td>
+        </tr>
+    </table>
+
+    <h2>4.8 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Установка VS Code</strong><br>
+        1. Скачайте VS Code с официального сайта.<br>
+        2. Установите программу.<br>
+        3. Запустите VS Code.<br>
+        4. Установите русский язык интерфейса.<br><br>
+        <strong>Часть 2: Установка расширений</strong><br>
+        5. Откройте панель расширений (<code>Ctrl+Shift+X</code>).<br>
+        6. Установите расширение SFTP (Natizyskunk).<br>
+        7. Установите PHP Intelephense.<br>
+        8. Установите WordPress Snippets.<br>
+        9. Установите Prettier.<br>
+        10. Установите Auto Rename Tag.<br><br>
+        <strong>Часть 3: Подключение к сайту</strong><br>
+        11. Создайте локальную папку для проекта.<br>
+        12. Откройте её в VS Code.<br>
+        13. Настройте <code>sftp.json</code> с данными вашего сайта.<br>
+        14. Подключитесь к серверу.<br>
+        15. Скачайте файл <code>wp-config.php</code> на компьютер.<br>
+        16. Откройте его в VS Code — проверьте подсветку синтаксиса.<br><br>
+        <strong>Часть 4: Безопасное редактирование</strong><br>
+        17. Скачайте файл <code>wp-content/themes/active-theme/style.css</code>.<br>
+        18. Создайте копию <code>style.css.backup</code>.<br>
+        19. Откройте оригинал в VS Code.<br>
+        20. Добавьте в конец файла правило:</li>
+        </ol>
+    </div>
+
+    <pre><span class="comment">/* Тестовое правило */</span>
+<span class="keyword">.test-class</span> {
+    <span class="property">color</span>: <span class="value">#0969da</span>;
+}</pre>
+
+    <ol class="steps" start="21">
+        <li><strong>Сохраните файл.</strong></li>
+        <li><strong>Загрузите его на сервер</strong> через SFTP.</li>
+        <li><strong>Проверьте сайт</strong> — ничего не должно сломаться.</li>
+        <li><strong>Удалите тестовое правило</strong> из файла.</li>
+        <li><strong>Сохраните и загрузите файл</strong> обратно.</li>
+        <li><strong>Проверьте сайт.</strong></li>
+    </ol>
+
+    <div class="task-box">
+        <strong>Часть 5: Восстановление</strong><br>
+        27. Откройте <code>style.css</code> в VS Code.<br>
+        28. Внесите намеренную ошибку — удалите закрывающую скобку <code>}</code>.<br>
+        29. Сохраните и загрузите файл на сервер.<br>
+        30. Проверьте сайт — он «упадёт».<br>
+        31. Вернитесь в VS Code и восстановите скобку.<br>
+        32. Сохраните и загрузите файл.<br>
+        33. Убедитесь, что сайт снова работает.<br><br>
+        <strong>Часть 6: Работа с резервной копией</strong><br>
+        34. Проверьте, что <code>style.css.backup</code> на месте.<br>
+        35. Откройте его в VS Code.<br>
+        36. Сравните с текущим <code>style.css</code> (команда Compare).<br>
+        37. Убедитесь, что все изменения корректны.<br>
+        38. Финально проверьте сайт на компьютере и телефоне.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Выбор редактора кода; установка и настройка VS Code; установка полезных расширений; настройка SFTP для работы с файлами сайта; горячие клавиши; правила безопасности при работе с кодом; практический пример правки <code>style.css</code>; работу с резервными копиями файлов; восстановление после ошибок.
+    </div>
+
+    <h2>4.9 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Можно ли использовать бесплатный Notepad++ вместо VS Code?</strong> Да, для простых правок его достаточно. Но для серьёзной работы VS Code удобнее: встроенный терминал, расширения, работа с FTP.</li>
+        <li><strong>Нужно ли знать программирование, чтобы пользоваться VS Code?</strong> Нет. VS Code — это текстовый редактор. Даже если вы просто копируете и вставляете готовый код, редактор с подсветкой синтаксиса снижает риск ошибок.</li>
+        <li><strong>Как быть, если я случайно удалил файл через SFTP?</strong> Если есть резервная копия — восстановите. Если нет — скачайте оригинал из архива WordPress (для файлов ядра) или из репозитория GitHub темы/плагина.</li>
+        <li><strong>Что делать, если VS Code не видит PHP-файлы как PHP?</strong> Проверьте, что установлено расширение PHP Intelephense. Если нет — установите.</li>
+        <li><strong>Можно ли редактировать файлы сайта прямо из VS Code без скачивания?</strong> Да, если у вас настроен SFTP и параметр <code>uploadOnSave: true</code>. Но для новичков это опасно — можно случайно испортить файл на сервере.</li>
+        <li><strong>Как сравнить два файла в VS Code?</strong> Откройте первый файл, нажмите <code>Ctrl+Shift+P</code>, введите <code>Compare Active File With...</code>, выберите второй файл.</li>
+        <li><strong>Что делать, если в коде появились «кракозябры»?</strong> Проверьте кодировку файла: должна быть UTF-8 без BOM. В VS Code: «Вид → Палитра команд → Изменить кодировку файла».</li>
+        <li><strong>Какое расширение выбрать для работы с FTP?</strong> «SFTP» от Natizyskunk — самое популярное и активное обновляемое.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы начнём изучать <strong>CSS с нуля</strong>: синтаксис, селекторы, свойства. Вы узнаете, как писать CSS-правила, находить нужные селекторы с помощью инструментов разработчика и применять стили к элементам сайта. Это основа всех визуальных кастомизаций. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter5.html" class="button">📖 Перейти к пятой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

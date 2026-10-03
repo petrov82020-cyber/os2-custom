@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 10: Восстановление сайта — алгоритм спасения после сбоя</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .danger-box {
+            background: #fee2e2;
+            border-left: 5px solid #dc2626;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        pre .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        pre .keyword {
+            color: #c792ea;
+        }
+        pre .string {
+            color: #c3e88d;
+        }
+        pre .variable {
+            color: #f78c6c;
+        }
+        pre .output {
+            color: #8b949e;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .problem-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .problem-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .problem-card strong {
+            display: block;
+            color: #dc2626;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .problem-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .problem-card ul {
+            margin: 10px 0 0 18px;
+            font-size: 0.88em;
+        }
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .flow-step {
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        .flow-step .num {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            line-height: 32px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .flow-step strong {
+            display: block;
+            color: #0a2540;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        .flow-step span {
+            font-size: 0.82em;
+            color: #5b6e8c;
+        }
+        .terminal {
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+            line-height: 1.7;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .terminal .prompt {
+            color: #7ee787;
+        }
+        .terminal .command {
+            color: #f8f8f2;
+        }
+        .terminal .output {
+            color: #8b949e;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .folder-tree {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .folder-tree .folder {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        .folder-tree .file {
+            color: #f8f8f2;
+        }
+        .folder-tree .important {
+            color: #facc15;
+            font-weight: bold;
+        }
+        .folder-tree .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        .chapter-recap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .recap-item {
+            background: #eef2ff;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.92em;
+        }
+        .recap-item strong {
+            color: #0969da;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .resource-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .resource-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 5px;
+        }
+        .resource-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .problem-grid { grid-template-columns: 1fr; }
+            .flow-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .resources-grid { grid-template-columns: 1fr; }
+            .chapter-recap { grid-template-columns: 1fr; }
+            .folder-tree { font-size: 0.75em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 10: Восстановление сайта — алгоритм спасения после сбоя</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~40 минут | 🎯 Цель: освоить пошаговый алгоритм восстановления сайта WordPress после любого сбоя и предотвратить будущие проблемы</div>
+
+    <div class="success-box">
+        <strong>🎉 Поздравляем!</strong> Вы прошли весь курс! Теперь вы умеете работать с кодом, добавлять стили, подключаться по FTP, править файлы темы, создавать дочерние темы, делать пакетную загрузку и резервные копии. Осталось освоить главный навык — <strong>восстанавливать сайт, если он «рухнул»</strong>. Именно это умение отличает уверенного веб-мастера от новичка.
+    </div>
+
+    <p>Сайты падают по разным причинам: неудачное обновление, конфликт плагинов, ошибка в коде, взлом, сбой хостинга, случайное удаление файла. Без навыка восстановления каждая такая ситуация — это паника, часы простоя и вызов специалиста. С правильным подходом — 15–30 минут спокойной работы. В этой главе мы разберём пошаговый алгоритм восстановления сайта в любой ситуации.</p>
+
+    <div class="info-box">
+        <strong>💡 Главный принцип:</strong><br>
+        <em>«Не паникуйте. Почти любой сбой обратим».</em> Даже если сайт полностью «лёг», даже если админка не открывается, даже если вы случайно удалили файлы — всё это решаемо, если у вас есть резервная копия. А если её нет — есть ещё несколько способов спасти сайт. Главное — действовать методично.
+    </div>
+
+    <h2>10.1 Итоги курса: что вы освоили</h2>
+
+    <p>Прежде чем перейти к финальной теме, вспомним путь, который мы прошли за девять глав.</p>
+
+    <div class="chapter-recap">
+        <div class="recap-item"><strong>Глава 1</strong> Зачем нужен код, четыре языка WordPress, правила безопасности</div>
+        <div class="recap-item"><strong>Глава 2</strong> Структура файлов: wp-content, wp-config.php, .htaccess</div>
+        <div class="recap-item"><strong>Глава 3</strong> Доступ к файлам: FTP, SFTP, SSH, файловый менеджер</div>
+        <div class="recap-item"><strong>Глава 4</strong> Редактор кода: VS Code, SFTP-расширение, безопасность</div>
+        <div class="recap-item"><strong>Глава 5</strong> Основы CSS: синтаксис, селекторы, свойства, DevTools</div>
+        <div class="recap-item"><strong>Глава 6</strong> Дополнительные CSS: Site Editor, классы, плагины</div>
+        <div class="recap-item"><strong>Глава 7</strong> Правка файлов темы и создание дочерней темы</div>
+        <div class="recap-item"><strong>Глава 8</strong> Пакетная загрузка: FTP, WP-CLI, Google Диск, ZIP</div>
+        <div class="recap-item"><strong>Глава 9</strong> Резервное копирование: файлы, база данных, облако</div>
+    </div>
+
+    <p>Теперь у вас есть все инструменты для управления сайтом. Осталось научиться применять их в критических ситуациях.</p>
+
+    <h2>10.2 Типичные причины «падения» сайта</h2>
+
+    <p>Прежде чем лечить — нужно понять болезнь. Вот десять самых частых причин сбоя WordPress.</p>
+
+    <div class="problem-grid">
+        <div class="problem-card">
+            <div class="icon">💥</div>
+            <strong>1. Ошибка в functions.php</strong>
+            <span>Синтаксическая ошибка в файле функций темы — самая частая причина «белого экрана». Одна пропущенная скобка — и сайт недоступен.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">🔌</div>
+            <strong>2. Конфликт плагинов</strong>
+            <span>После установки или обновления плагина сайт перестал работать. Два плагина «дерутся» за одни ресурсы.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">🎨</div>
+            <strong>3. Ошибка в теме</strong>
+            <span>Правка файлов темы, смена темы, неудачное обновление — и сайт «сломался».</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">⬆️</div>
+            <strong>4. Неудачное обновление</strong>
+            <span>Обновление WordPress, плагинов или темы прервалось на середине — файлы повреждены.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">🔓</div>
+            <strong>5. Взлом сайта</strong>
+            <span>Хакеры получили доступ, изменили файлы или внедрили вредоносный код. Сайт показывает странный контент.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">💾</div>
+            <strong>6. Переполнение диска</strong>
+            <span>Хостинг заблокировал сайт из-за превышения лимита места. Обычно из-за большого количества изображений или бэкапов.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">🗄️</div>
+            <strong>7. Ошибка базы данных</strong>
+            <span>Повреждение таблиц MySQL, неверные данные в wp-config.php, удаление базы хостингом.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">📉</div>
+            <strong>8. Сбой хостинга</strong>
+            <span>Сервер упал, произошла миграция, изменились настройки PHP — сайт недоступен.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">⚠️</div>
+            <strong>9. Ошибка 500</strong>
+            <span>Внутренняя ошибка сервера. Причины: .htaccess, нехватка памяти, конфликт PHP.</span>
+        </div>
+        <div class="problem-card">
+            <div class="icon">🌐</div>
+            <strong>10. Проблемы с доменом</strong>
+            <span>Истёк срок регистрации, изменились DNS-записи, проблемы у регистратора.</span>
+        </div>
+    </div>
+
+    <h2>10.3 Алгоритм диагностики: что делать в первые минуты</h2>
+
+    <p>Когда сайт «упал», главное — не паниковать и последовательно определить причину. Вот пошаговый алгоритм.</p>
+
+    <div class="flow-grid">
+        <div class="flow-step">
+            <span class="num">1</span>
+            <strong>Проверьте доступ</strong>
+            <span>Сайт вообще не открывается или показывает ошибку?</span>
+        </div>
+        <div class="flow-step">
+            <span class="num">2</span>
+            <strong>Проверьте админку</strong>
+            <span>Открывается ли /wp-admin?</span>
+        </div>
+        <div class="flow-step">
+            <span class="num">3</span>
+            <strong>Что видно</strong>
+            <span>Белый экран, ошибка, странный контент?</span>
+        </div>
+        <div class="flow-step">
+            <span class="num">4</span>
+            <strong>Что менялось</strong>
+            <span>Что вы делали перед сбоем?</span>
+        </div>
+        <div class="flow-step">
+            <span class="num">5</span>
+            <strong>Проверьте логи</strong>
+            <span>Логи хостинга и WordPress</span>
+        </div>
+        <div class="flow-step">
+            <span class="num">6</span>
+            <strong>Определите причину</strong>
+            <span>По симптомам найдите проблему</span>
+        </div>
+        <div class="flow-step">
+            <span class="num">7</span>
+            <strong>Выберите решение</strong>
+            <span>Отключение, восстановление, откат</span>
+        </div>
+        <div class="flow-step">
+            <span class="num">8</span>
+            <strong>Восстановите</strong>
+            <span>Примените решение и проверьте</span>
+        </div>
+    </div>
+
+    <h3>Диагностическая таблица по симптомам</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Симптом</th>
+            <th>Вероятная причина</th>
+            <th>Что делать</th>
+        </tr>
+        <tr>
+            <td>Белый экран</td>
+            <td>Ошибка в PHP (functions.php или плагин)</td>
+            <td>Отключить плагины через FTP, проверить functions.php</td>
+        </tr>
+        <tr>
+            <td>Ошибка 500</td>
+            <td>.htaccess, нехватка памяти, конфликт PHP</td>
+            <td>Переименовать .htaccess, увеличить memory_limit</td>
+        </tr>
+        <tr>
+            <td>Ошибка 404 на всех страницах</td>
+            <td>Проблемы с постоянными ссылками</td>
+            <td>Настройки → Постоянные ссылки → Сохранить</td>
+        </tr>
+        <tr>
+            <td>Ошибка «Error establishing database connection»</td>
+            <td>Неверные данные БД в wp-config.php</td>
+            <td>Проверить DB_NAME, DB_USER, DB_PASSWORD, DB_HOST</td>
+        </tr>
+        <tr>
+            <td>Админка не открывается, но сайт работает</td>
+            <td>Конфликт плагина или темы</td>
+            <td>Отключить плагины через FTP</td>
+        </tr>
+        <tr>
+            <td>Сайт перенаправляет на другой URL</td>
+            <td>Взлом или неверные настройки</td>
+            <td>Проверить wp-config.php, базу данных, .htaccess</td>
+        </tr>
+        <tr>
+            <td>Появился странный контент</td>
+            <td>Взлом</td>
+            <td>Срочно восстановить из бэкапа, сменить пароли</td>
+        </tr>
+        <tr>
+            <td>Сайт очень медленный</td>
+            <td>Перегрузка плагинами или хостингом</td>
+            <td>Отключить плагины, проверить нагрузку</td>
+        </tr>
+    </table>
+
+    <h2>10.4 Восстановление: три сценария</h2>
+
+    <p>В зависимости от ситуации, восстановление проходит по одному из трёх сценариев. Рассмотрим каждый.</p>
+
+    <h3>Сценарий A: Лёгкий сбой — отключение плагина</h3>
+
+    <p><strong>Ситуация:</strong> Сайт работал, после установки/обновления плагина появился белый экран. Админка тоже не открывается.</p>
+
+    <p><strong>Причина:</strong> Конфликт плагина или ошибка в его коде.</p>
+
+    <h4>Пошаговое решение</h4>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Перейдите в папку</strong> <code>/wp-content/plugins/</code>.</li>
+        <li><strong>Найдите папку проблемного плагина.</strong> Обычно это самый свежий по дате изменения. Или тот, который вы только что обновили.</li>
+        <li><strong>Переименуйте папку:</strong> добавьте <code>_off</code> в конце. Например: <code>my-plugin</code> → <code>my-plugin_off</code>.</li>
+        <li><strong>Обновите сайт.</strong> Если он заработал — вы нашли виновника.</li>
+        <li><strong>Если не заработал</strong> — переименуйте папку обратно и попробуйте другой плагин.</li>
+        <li><strong>Когда нашли виновника</strong> — оставьте его отключённым. Зайдите в админку.</li>
+        <li><strong>Удалите плагин</strong> или найдите ему замену.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Быстрый способ отключить ВСЕ плагины:</strong><br>
+        Если не знаете, какой плагин виноват, переименуйте папку <code>plugins</code> в <code>plugins_off</code> целиком. WordPress автоматически отключит все плагины. Затем зайдите в админку и включайте их по одному, чтобы найти проблемный.
+    </div>
+
+    <h3>Сценарий B: Средний сбой — ошибка в коде темы</h3>
+
+    <p><strong>Ситуация:</strong> После правки <code>functions.php</code> или <code>style.css</code> сайт показывает белый экран или ошибку.</p>
+
+    <p><strong>Причина:</strong> Синтаксическая ошибка в коде.</p>
+
+    <h4>Пошаговое решение</h4>
+
+    <ol class="steps">
+        <li><strong>Не паникуйте.</strong> Ваш сайт не потерян — просто файл повреждён.</li>
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Определите активную тему:</strong> посмотрите в <code>/wp-content/themes/</code> или в настройках сайта (если доступны).</li>
+        <li><strong>Перейдите в папку активной темы.</strong></li>
+        <li><strong>Скачайте файл</strong> <code>functions.php</code> на компьютер.</li>
+        <li><strong>Откройте в редакторе кода</strong> (VS Code, Notepad++).</li>
+        <li><strong>Найдите ошибку.</strong> Типичные проблемы:
+            <ul>
+                <li>Пропущена закрывающая скобка <code>}</code>.</li>
+                <li>Пропущена точка с запятой <code>;</code>.</li>
+                <li>Незакрытая кавычка <code>'</code> или <code>"</code>.</li>
+                <li>Лишняя или недостающая <code>(</code>.</li>
+            </ul>
+        </li>
+        <li><strong>Если не можете найти ошибку</strong> — восстановите файл из резервной копии.</li>
+        <li><strong>Если бэкапа нет</strong> — удалите весь ваш добавленный код, оставьте только исходные функции темы.</li>
+        <li><strong>Загрузите исправленный файл на сервер</strong> через FTP.</li>
+        <li><strong>Обновите сайт.</strong> Если он заработал — вы справились.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Как не попасть в эту ситуацию:</strong><br>
+        <ul>
+            <li>Всегда делайте копию <code>functions.php</code> перед правкой.</li>
+            <li>Используйте редактор с подсветкой синтаксиса (VS Code).</li>
+            <li>Включайте отладку PHP, чтобы видеть ошибки на экране.</li>
+            <li>Проверяйте код локально перед загрузкой на сервер.</li>
+        </ul>
+    </div>
+
+    <h3>Сценарий C: Тяжёлый сбой — полное восстановление из бэкапа</h3>
+
+    <p><strong>Ситуация:</strong> Сайт «упал» так, что отключение плагинов и правка кода не помогают. Или сайт взломали. Или вы случайно удалили важные файлы.</p>
+
+    <p><strong>Причина:</strong> Серьёзные повреждения файлов или базы данных.</p>
+
+    <h4>Пошаговое решение: полное восстановление</h4>
+
+    <ol class="steps">
+        <li><strong>Сделайте копию текущего состояния сайта</strong> (на всякий случай). Скачайте файлы по FTP, экспортируйте БД.</li>
+        <li><strong>Определите, какой бэкап использовать.</strong> Чем свежее, тем лучше. Но убедитесь, что он создан до сбоя.</li>
+        <li><strong>Скачайте бэкап на компьютер</strong> из облака или с локального диска.</li>
+        <li><strong>Восстановите файлы:</strong>
+            <ul>
+                <li>Подключитесь к сайту по FTP.</li>
+                <li>Удалите папку <code>wp-content</code> (или переименуйте её в <code>wp-content_old</code>).</li>
+                <li>Загрузите <code>wp-content</code> из бэкапа.</li>
+                <li>Загрузите <code>wp-config.php</code> и <code>.htaccess</code> из бэкапа.</li>
+            </ul>
+        </li>
+        <li><strong>Восстановите базу данных:</strong>
+            <ul>
+                <li>Откройте phpMyAdmin.</li>
+                <li>Выберите базу данных сайта.</li>
+                <li>Перейдите на вкладку «Импорт».</li>
+                <li>Загрузите SQL-файл из бэкапа.</li>
+                <li>Нажмите «Импорт».</li>
+            </ul>
+        </li>
+        <li><strong>Проверьте wp-config.php:</strong> убедитесь, что DB_NAME, DB_USER, DB_PASSWORD, DB_HOST соответствуют текущей базе данных.</li>
+        <li><strong>Откройте сайт.</strong> Он должен работать как в момент создания бэкапа.</li>
+        <li><strong>Проверьте админку, страницы, медиафайлы, формы.</strong></li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Если сайт заработал:</strong> Отлично! Теперь вы понимаете, как важно делать бэкапы. В следующий раз обязательно настройте автоматическое резервное копирование.
+    </div>
+
+    <h2>10.5 Восстановление без резервной копии</h2>
+
+    <p>А что делать, если бэкапа нет? Не всё потеряно. Есть несколько способов спасти сайт.</p>
+
+    <h3>Способ 1: Восстановление файлов из оригинальных источников</h3>
+
+    <p>Если повреждены файлы ядра WordPress, темы или плагина — их можно скачать заново.</p>
+
+    <ol class="steps">
+        <li><strong>Скачайте WordPress</strong> с <a href="https://wordpress.org/download/" target="_blank">wordpress.org</a>.</li>
+        <li><strong>Распакуйте архив.</strong></li>
+        <li><strong>Загрузите по FTP</strong> папки <code>wp-admin</code> и <code>wp-includes</code>, заменив повреждённые.</li>
+        <li><strong>Не загружайте</strong> <code>wp-config.php</code> из архива — он ваш!</li>
+        <li><strong>Для темы:</strong> скачайте её из репозитория WordPress или с сайта разработчика.</li>
+        <li><strong>Для плагинов:</strong> скачайте каждый из репозитория WordPress.</li>
+    </ol>
+
+    <h3>Способ 2: Восстановление базы данных</h3>
+
+    <p>Если база данных повреждена, но не утрачена полностью, её можно попробовать восстановить.</p>
+
+    <ol class="steps">
+        <li><strong>Откройте phpMyAdmin.</strong></li>
+        <li><strong>Выберите базу данных.</strong></li>
+        <li><strong>Нажмите «Проверить» (Check).</strong> Посмотрите, какие таблицы повреждены.</li>
+        <li><strong>Нажмите «Восстановить» (Repair).</strong> phpMyAdmin попробует исправить таблицы.</li>
+        <li><strong>Если не помогло</strong> — попробуйте восстановить из «Корзины» WordPress (записи удаляются в корзину на 30 дней).</li>
+        <li><strong>Если ничего не помогает</strong> — обратитесь в поддержку хостинга. Иногда у них есть бэкапы за последние дни.</li>
+    </ol>
+
+    <h3>Способ 3: Бэкапы хостинга</h3>
+
+    <p>Многие хостинги (Beget, Timeweb, cPanel) делают автоматические бэкапы. Проверьте в панели управления.</p>
+
+    <ol class="steps">
+        <li><strong>Войдите в панель хостинга.</strong></li>
+        <li><strong>Найдите раздел «Резервные копии» или «Backups».</strong></li>
+        <li><strong>Посмотрите доступные даты.</strong> Обычно за 7–30 дней.</li>
+        <li><strong>Выберите нужную и восстановите.</strong></li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Не надейтесь только на хостинг!</strong><br>
+        Автоматические бэкапы хостинга могут быть недоступны на бесплатных тарифах или храниться всего 7 дней. Регулярные собственные бэкапы — обязательны.
+    </div>
+
+    <h2>10.6 Восстановление после взлома</h2>
+
+    <p>Взлом — самый опасный сценарий. Хакеры могут изменить файлы, добавить вредоносный код, украсть данные, установить бэкдоры. Действовать нужно быстро и методично.</p>
+
+    <h3>Признаки взлома</h3>
+
+    <ul>
+        <li>Сайт показывает странный контент или перенаправляет на другой URL.</li>
+        <li>Появились новые администраторы, которых вы не создавали.</li>
+        <li>В коде страниц появились неизвестные скрипты.</li>
+        <li>В логах хостинга видны подозрительные запросы.</li>
+        <li>Поисковые системы помечают сайт как «опасный».</li>
+        <li>В файлах появились неизвестные PHP-файлы.</li>
+    </ul>
+
+    <h3>План действий при взломе</h3>
+
+    <ol class="steps">
+        <li><strong>Немедленно смените все пароли:</strong>
+            <ul>
+                <li>Пароль админки WordPress.</li>
+                <li>Пароль FTP/SFTP.</li>
+                <li>Пароль панели хостинга.</li>
+                <li>Пароль базы данных (в wp-config.php).</li>
+                <li>Пароль от облачных хранилищ.</li>
+            </ul>
+        </li>
+        <li><strong>Смените соли безопасности (Salts) в wp-config.php.</strong> Сгенерируйте новые на <a href="https://api.wordpress.org/secret-key/1.1/salt/" target="_blank">api.wordpress.org/secret-key/1.1/salt/</a>.</li>
+        <li><strong>Проверьте список администраторов.</strong> Удалите неизвестных пользователей.</li>
+        <li><strong>Удалите все файлы сайта.</strong> Полностью!</li>
+        <li><strong>Восстановите файлы из чистого бэкапа.</strong> Убедитесь, что бэкап создан ДО взлома.</li>
+        <li><strong>Восстановите базу данных из бэкапа.</strong> Тоже чистого.</li>
+        <li><strong>Обновите WordPress, темы, плагины</strong> до последних версий.</li>
+        <li><strong>Удалите все неиспользуемые плагины и темы.</strong></li>
+        <li><strong>Установите плагин безопасности</strong> (Wordfence, Sucuri, iThemes Security).</li>
+        <li><strong>Проверьте сайт</strong> на наличие вредоносного кода (через плагин безопасности).</li>
+        <li><strong>Сообщите в Google</strong> о том, что сайт очищен, через Search Console.</li>
+    </ol>
+
+    <div class="danger-box">
+        <strong>🚨 Если нет чистого бэкапа:</strong><br>
+        <ul>
+            <li>Скачайте свежий WordPress, темы и плагины с официальных источников.</li>
+            <li>Проверьте базу данных на наличие вредоносных записей (пользователей, опций, постов).</li>
+            <li>Проверьте файлы <code>.htaccess</code>, <code>index.php</code>, <code>functions.php</code> на наличие подозрительного кода.</li>
+            <li>При необходимости обратитесь к специалисту по безопасности — иногда взлом сложнее, чем кажется.</li>
+        </ul>
+    </div>
+
+    <h2>10.7 Практический пример: восстановление после ошибки в functions.php</h2>
+
+    <p>Разберём конкретный сценарий от начала до конца.</p>
+
+    <h3>Ситуация</h3>
+
+    <p>Вы добавили функцию в <code>functions.php</code> дочерней темы. После сохранения сайт показывает белый экран. Админка тоже не открывается.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Не паникуйте.</strong> Проблема в одной строке — вы её найдёте.</li>
+        <li><strong>Откройте FileZilla и подключитесь к сайту.</strong></li>
+        <li><strong>Перейдите в папку</strong> <code>/wp-content/themes/twentytwentyfive-child/</code>.</li>
+        <li><strong>Скачайте файл</strong> <code>functions.php</code> на компьютер.</li>
+        <li><strong>Откройте в VS Code.</strong> Редактор сразу подсветит ошибки красным.</li>
+        <li><strong>Найдите проблему.</strong> Допустим, вы забыли закрывающую скобку <code>}</code> в конце функции.</li>
+        <li><strong>Исправьте.</strong> Добавьте <code>}</code> в нужное место.</li>
+        <li><strong>Сохраните файл.</strong></li>
+        <li><strong>Загрузите его обратно на сервер</strong> через FileZilla.</li>
+        <li><strong>Обновите сайт в браузере.</strong> Белый экран исчез — сайт работает!</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> За 5 минут вы восстановили сайт. Всё, что нужно — доступ по FTP и базовые знания синтаксиса PHP.
+    </div>
+
+    <h3>Что делать, если не получается найти ошибку</h3>
+
+    <ol class="steps">
+        <li><strong>Восстановите файл из резервной копии.</strong> Если делали перед правкой — просто загрузите <code>functions.php.backup</code>.</li>
+        <li><strong>Если бэкапа нет</strong> — переименуйте папку дочерней темы в <code>twentytwentyfive-child_off</code>. WordPress переключится на родительскую тему, и сайт заработает.</li>
+        <li><strong>Создайте новый</strong> <code>functions.php</code> с нуля, добавив только проверенный код.</li>
+    </ol>
+
+    <h2>10.8 Практический пример: восстановление после неудачного обновления</h2>
+
+    <h3>Ситуация</h3>
+
+    <p>Вы обновили плагин, и сайт «упал». Админка тоже не открывается. Плагин был важный — удалять его нельзя.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь по FTP.</strong></li>
+        <li><strong>Перейдите в</strong> <code>/wp-content/plugins/</code>.</li>
+        <li><strong>Переименуйте папку плагина:</strong> <code>my-plugin</code> → <code>my-plugin_off</code>. Сайт должен заработать.</li>
+        <li><strong>Зайдите в админку.</strong> Плагин отключён.</li>
+        <li><strong>Скачайте старую версию плагина.</strong> С сайта разработчика или из репозитория WordPress (вкладка «Developers» → «Previous Versions»).</li>
+        <li><strong>Удалите папку</strong> <code>my-plugin_off</code> через FTP.</li>
+        <li><strong>Загрузите старую версию плагина</strong> через FTP в <code>/wp-content/plugins/my-plugin/</code>.</li>
+        <li><strong>Зайдите в админку → Плагины.</strong> Активируйте плагин.</li>
+        <li><strong>Проверьте сайт.</strong> Должно работать.</li>
+        <li><strong>Сообщите разработчику плагина</strong> о проблеме. Возможно, выйдет исправление.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Отключение автообновлений:</strong><br>
+        Если не хотите, чтобы плагин обновлялся автоматически (до проверки), добавьте в <code>wp-config.php</code>:
+        <pre>define('AUTOMATIC_UPDATER_DISABLED', true);</pre>
+        Это отключит все автообновления. Включайте их вручную после тестирования.
+    </div>
+
+    <h2>10.9 Практический пример: восстановление после сбоя базы данных</h2>
+
+    <h3>Ситуация</h3>
+
+    <p>Сайт показывает ошибку «Error establishing a database connection». Админка недоступна.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте</strong> <code>wp-config.php</code> через FTP.</li>
+        <li><strong>Проверьте данные подключения:</strong>
+            <ul>
+                <li><code>DB_NAME</code> — имя базы данных.</li>
+                <li><code>DB_USER</code> — пользователь БД.</li>
+                <li><code>DB_PASSWORD</code> — пароль БД.</li>
+                <li><code>DB_HOST</code> — хост (обычно <code>localhost</code>).</li>
+            </ul>
+        </li>
+        <li><strong>Проверьте в панели хостинга:</strong> существует ли база данных с таким именем? Существует ли пользователь? Совпадают ли пароли?</li>
+        <li><strong>Если база удалена</strong> — создайте новую с тем же именем.</li>
+        <li><strong>Восстановите базу данных из бэкапа</strong> через phpMyAdmin:
+            <ul>
+                <li>Откройте phpMyAdmin.</li>
+                <li>Выберите базу.</li>
+                <li>Вкладка «Импорт».</li>
+                <li>Загрузите SQL-файл.</li>
+                <li>Нажмите «Импорт».</li>
+            </ul>
+        </li>
+        <li><strong>Если бэкапа нет</strong> — проверьте, есть ли у хостинга автоматические бэкапы.</li>
+        <li><strong>Обновите сайт.</strong> Если ошибка исчезла — вы справились.</li>
+    </ol>
+
+    <h2>10.10 Профилактика: как предотвратить сбои</h2>
+
+    <p>Лучшее восстановление — то, которое не понадобилось. Вот правила, которые снизят риск сбоя до минимума.</p>
+
+    <div class="task-box">
+        <strong>✅ Правила профилактики сбоев</strong><br><br>
+        <strong>1. Всегда делайте бэкап перед изменениями</strong>
+        <ul class="checklist">
+            <li>Перед обновлением WordPress, темы, плагинов.</li>
+            <li>Перед правкой кода.</li>
+            <li>Перед установкой нового плагина.</li>
+            <li>Перед сменой темы.</li>
+        </ul>
+        <strong>2. Используйте дочернюю тему</strong>
+        <ul class="checklist">
+            <li>Не правьте файлы родительской темы.</li>
+            <li>Все изменения — в дочерней теме.</li>
+            <li>Тогда обновления темы не сломают ваш сайт.</li>
+        </ul>
+        <strong>3. Не устанавливайте плагины из ненадёжных источников</strong>
+        <ul class="checklist">
+            <li>Только официальный репозиторий WordPress.</li>
+            <li>Или проверенные маркетплейсы (ThemeForest, CodeCanyon).</li>
+            <li>Пиратские плагины — главная причина взломов.</li>
+        </ul>
+        <strong>4. Регулярно обновляйте всё</strong>
+        <ul class="checklist">
+            <li>WordPress — до последней версии.</li>
+            <li>Плагины и темы — до последних версий.</li>
+            <li>Перед обновлением — бэкап.</li>
+        </ul>
+        <strong>5. Установите плагин безопасности</strong>
+        <ul class="checklist">
+            <li>Wordfence, Sucuri или iThemes Security.</li>
+            <li>Настройте сканирование на вредоносный код.</li>
+            <li>Включите двухфакторную аутентификацию.</li>
+        </ul>
+        <strong>6. Используйте сложные пароли</strong>
+        <ul class="checklist">
+            <li>Минимум 12 символов.</li>
+            <li>Буквы, цифры, специальные символы.</li>
+            <li>Разные пароли для разных сервисов.</li>
+        </ul>
+        <strong>7. Ограничьте попытки входа</strong>
+        <ul class="checklist">
+            <li>Плагин Limit Login Attempts Reloaded.</li>
+            <li>Блокировка после 3–5 неудачных попыток.</li>
+        </ul>
+        <strong>8. Отключите редактирование файлов в админке</strong>
+        <ul class="checklist">
+            <li>В <code>wp-config.php</code> добавьте: <code>define('DISALLOW_FILE_EDIT', true);</code></li>
+            <li>Это защитит от правок через админку.</li>
+        </ul>
+        <strong>9. Следите за логами</strong>
+        <ul class="checklist">
+            <li>Регулярно проверяйте логи ошибок хостинга.</li>
+            <li>Обращайте внимание на подозрительные запросы.</li>
+        </ul>
+        <strong>10. Мониторьте доступность сайта</strong>
+        <ul class="checklist">
+            <li>UptimeRobot, Pingdom — сервисы мониторинга.</li>
+            <li>Уведомят, если сайт «упал».</li>
+        </ul>
+    </div>
+
+    <h2>10.11 Чек-лист восстановления сайта</h2>
+
+    <p>Распечатайте этот чек-лист или сохраните в закладки. Когда сайт «упадёт», действуйте по шагам.</p>
+
+    <div class="task-box">
+        <strong>🚑 Чек-лист восстановления сайта</strong><br><br>
+        <strong>Шаг 1: Диагностика (2 минуты)</strong>
+        <ul class="checklist">
+            <li>Определите симптом: белый экран, ошибка, странный контент.</li>
+            <li>Проверьте, открывается ли админка.</li>
+            <li>Вспомните, что вы делали перед сбоем.</li>
+            <li>Проверьте логи хостинга (если доступны).</li>
+        </ul>
+        <strong>Шаг 2: Быстрое решение (5 минут)</strong>
+        <ul class="checklist">
+            <li>Отключите последний установленный плагин через FTP.</li>
+            <li>Восстановите <code>functions.php</code> из резервной копии.</li>
+            <li>Проверьте <code>.htaccess</code> — переименуйте во временный файл.</li>
+            <li>Проверьте данные БД в <code>wp-config.php</code>.</li>
+        </ul>
+        <strong>Шаг 3: Полное восстановление (15–30 минут)</strong>
+        <ul class="checklist">
+            <li>Сделайте копию текущего состояния (для анализа).</li>
+            <li>Скачайте свежий бэкап.</li>
+            <li>Восстановите файлы через FTP.</li>
+            <li>Восстановите базу данных через phpMyAdmin.</li>
+            <li>Проверьте <code>wp-config.php</code>.</li>
+            <li>Откройте сайт — он должен работать.</li>
+        </ul>
+        <strong>Шаг 4: Проверка (5 минут)</strong>
+        <ul class="checklist">
+            <li>Проверьте главную страницу.</li>
+            <li>Откройте несколько страниц и записей.</li>
+            <li>Проверьте изображения и медиафайлы.</li>
+            <li>Проверьте формы и кнопки.</li>
+            <li>Проверьте админку.</li>
+        </ul>
+        <strong>Шаг 5: Профилактика</strong>
+        <ul class="checklist">
+            <li>Настройте автоматические бэкапы.</li>
+            <li>Обновите всё до последних версий.</li>
+            <li>Смените все пароли (если был взлом).</li>
+            <li>Установите плагин безопасности.</li>
+        </ul>
+    </div>
+
+    <h2>10.12 Что дальше: направления развития</h2>
+
+    <p>Курс закончился, но обучение — нет. Вот несколько направлений, куда можно двигаться.</p>
+
+    <h3>Уровень 1: Углубить WordPress</h3>
+    <ul>
+        <li><strong>Custom Post Types:</strong> создание своих типов записей.</li>
+        <li><strong>ACF (Advanced Custom Fields):</strong> добавление полей.</li>
+        <li><strong>WooCommerce:</strong> создание интернет-магазина.</li>
+        <li><strong>REST API:</strong> интеграция с внешними сервисами.</li>
+    </ul>
+
+    <h3>Уровень 2: Веб-разработка</h3>
+    <ul>
+        <li><strong>PHP:</strong> углублённое изучение — создание плагинов и тем.</li>
+        <li><strong>JavaScript:</strong> интерактивность на сайте.</li>
+        <li><strong>Git:</strong> версионирование кода.</li>
+        <li><strong>MySQL:</strong> работа с базой данных напрямую.</li>
+    </ul>
+
+    <h3>Уровень 3: Администрирование и безопасность</h3>
+    <ul>
+        <li><strong>Настройка сервера:</strong> Nginx, Apache, PHP-FPM.</li>
+        <li><strong>SSL и безопасность:</strong> Let's Encrypt, HTTP/2, CSP.</li>
+        <li><strong>Оптимизация скорости:</strong> кэширование, CDN, компрессия.</li>
+        <li><strong>Мониторинг:</strong> New Relic, UptimeRobot, Sentry.</li>
+    </ul>
+
+    <h3>Уровень 4: Профессиональные навыки</h3>
+    <ul>
+        <li><strong>DevOps:</strong> Docker, CI/CD, автоматизация.</li>
+        <li><strong>SEO:</strong> техническое SEO, аналитика.</li>
+        <li><strong>Дизайн:</strong> UX/UI, типографика, композиция.</li>
+        <li><strong>Фриланс:</strong> работа с клиентами, ценообразование, договоры.</li>
+    </ul>
+
+    <h2>10.13 Полезные ресурсы</h2>
+
+    <div class="resources-grid">
+        <div class="resource-card">
+            <strong>📘 Официальная документация WordPress</strong>
+            <span>wordpress.org/documentation — база знаний, статьи, видео.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎥 Learn WordPress</strong>
+            <span>learn.wordpress.org — бесплатные курсы и уроки.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🛡️ Wordfence</strong>
+            <span>wordfence.com — плагин безопасности и блог о защите сайтов.</span>
+        </div>
+        <div class="resource-card">
+            <strong>📰 WPBeginner</strong>
+            <span>wpbeginner.com — крупнейший блог для новичков.</span>
+        </div>
+        <div class="resource-card">
+            <strong>💬 Stack Overflow</strong>
+            <span>stackoverflow.com — ответы на технические вопросы.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🔌 Каталог плагинов</strong>
+            <span>wordpress.org/plugins — более 60 000 бесплатных плагинов.</span>
+        </div>
+        <div class="resource-card">
+            <strong>🎭 Каталог тем</strong>
+            <span>wordpress.org/themes — тысячи бесплатных тем.</span>
+        </div>
+        <div class="resource-card">
+            <strong>📦 Каталог паттернов</strong>
+            <span>wordpress.org/patterns — более 2300 паттернов.</span>
+        </div>
+    </div>
+
+    <h2>10.14 Финальное практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Финальное задание: смоделируйте и восстановите сбой</strong><br><br>
+        <strong>Часть 1: Подготовка</strong><br>
+        1. Сделайте полный бэкап сайта (файлы + БД).<br>
+        2. Сохраните его в облаке.<br>
+        3. Убедитесь, что бэкап рабочий.<br><br>
+        <strong>Часть 2: Моделирование сбоя</strong><br>
+        4. Создайте файл <code>wp-content/themes/active-theme/test.php</code> с ошибкой (например, без закрывающей скобки).<br>
+        5. Не подключайте его к functions.php — просто создайте.<br>
+        6. Если хотите смоделировать белый экран — добавьте код с ошибкой в <code>functions.php</code>.<br>
+        7. Убедитесь, что сайт «упал».<br><br>
+        <strong>Часть 3: Диагностика</strong><br>
+        8. Определите симптом (белый экран, ошибка).<br>
+        9. Проверьте, открывается ли админка.<br>
+        10. Вспомните, что вы делали перед сбоем.<br>
+        11. Проверьте, что изменилось через FTP (последний файл).<br><br>
+        <strong>Часть 4: Восстановление</strong><br>
+        12. Подключитесь по FTP.<br>
+        13. Найдите проблемный файл.<br>
+        14. Восстановите его из бэкапа или удалите.<br>
+        15. Обновите сайт — он должен заработать.<br><br>
+        <strong>Часть 5: Полное восстановление из бэкапа</strong><br>
+        16. Удалите папку <code>wp-content</code> через FTP.<br>
+        17. Восстановите её из бэкапа.<br>
+        18. Экспортируйте текущую базу данных.<br>
+        19. Импортируйте базу данных из бэкапа.<br>
+        20. Проверьте сайт — всё должно работать как в момент бэкапа.<br><br>
+        <strong>Часть 6: Профилактика</strong><br>
+        21. Установите плагин Wordfence.<br>
+        22. Настройте автоматическое сканирование.<br>
+        23. Настройте UpdraftPlus для ежедневных бэкапов.<br>
+        24. Отключите редактирование файлов в админке через <code>wp-config.php</code>.<br>
+        25. Включите двухфакторную аутентификацию.<br>
+        26. Проверьте сайт и убедитесь, что всё работает.
+    </div>
+
+    <div class="success-box">
+        <strong>🎉 Поздравляем с завершением курса!</strong><br>
+        Вы прошли путь от базового понимания кода до уверенного управления сайтом WordPress. Теперь вы умеете:
+        <ul>
+            <li>Работать с кодом и файлами темы.</li>
+            <li>Добавлять свои стили и функции.</li>
+            <li>Подключаться по FTP и управлять файлами.</li>
+            <li>Создавать дочерние темы.</li>
+            <li>Загружать сотни файлов.</li>
+            <li>Делать резервные копии.</li>
+            <li><strong>Восстанавливать сайт из любой ситуации.</strong></li>
+        </ul>
+        Это навыки, которые отличают уверенного веб-мастера от новичка. Используйте их с умом — и ваш сайт будет работать стабильно долгие годы.
+    </div>
+
+    <h2>10.15 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Что делать, если сайт не открывается, а бэкапа нет?</strong> Проверьте: логи хостинга, бэкапы хостинга, оригиналы файлов (WordPress, темы, плагины). Восстановите то, что можно. Для базы данных — обратитесь в поддержку хостинга.</li>
+        <li><strong>Можно ли восстановить сайт без FTP?</strong> Если админка работает — через плагин UpdraftPlus. Если админка недоступна — только через FTP или файловый менеджер хостинга.</li>
+        <li><strong>Сколько времени занимает восстановление?</strong> Лёгкий сбой (отключение плагина) — 5 минут. Восстановление из бэкапа — 15–30 минут. Взлом — от нескольких часов до дней (в зависимости от тяжести).</li>
+        <li><strong>Что если не помню данные БД в wp-config.php?</strong> Проверьте в панели хостинга — там есть список баз данных и их пользователей.</li>
+        <li><strong>Как узнать, что сайт взломан, а не сломан?</strong> Признаки взлома: перенаправления, странный контент, новые администраторы, вредоносные скрипты. Проверьте через плагин Wordfence.</li>
+        <li><strong>Можно ли восстановить удалённую запись?</strong> Да, если она в корзине (30 дней) или если есть бэкап. Также можно посмотреть «Ревизии» записи.</li>
+        <li><strong>Что делать, если после восстановления сайт показывает ошибку?</strong> Проверьте: 1) целостность файлов, 2) правильность импорта БД, 3) данные в wp-config.php. Если всё верно — обратитесь к специалисту.</li>
+        <li><strong>Обязательно ли устанавливать плагин безопасности?</strong> Да, особенно если сайт коммерческий или содержит пользовательские данные. Wordfence — бесплатный и мощный.</li>
+        <li><strong>Как часто проверять бэкапы на работоспособность?</strong> Раз в месяц восстанавливайте бэкап на тестовом сайте. Так вы будете уверены, что в критический момент восстановление сработает.</li>
+        <li><strong>Что делать, если восстанавливаю бэкап, а сайт всё равно не работает?</strong> Проверьте: 1) совпадают ли данные в wp-config.php с новой БД, 2) все ли файлы загружены, 3) не блокирует ли сайт хостинг. Если всё верно — обратитесь в поддержку хостинга.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💬 Обратная связь</strong><br>
+        Если у вас остались вопросы или вы хотите предложить улучшения для курса — создайте issue в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">репозитории на GitHub</a>. Мы всегда рады помочь и улучшить материалы.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="index.html" class="button">🏠 Вернуться на главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

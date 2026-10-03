@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 5: Основы CSS — синтаксис, селекторы, свойства</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        pre .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        pre .selector {
+            color: #c792ea;
+        }
+        pre .property {
+            color: #82aaff;
+        }
+        pre .value {
+            color: #f78c6c;
+        }
+        pre .important {
+            color: #facc15;
+            font-weight: bold;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .selector-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .selector-card .icon {
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+        .selector-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .selector-card code {
+            display: block;
+            background: #1e1e2e;
+            color: #c792ea;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin: 8px 0;
+            font-size: 0.88em;
+        }
+        .selector-card span {
+            font-size: 0.88em;
+            color: #5b6e8c;
+        }
+        .demo-box {
+            background: #f9fafb;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .demo-box .title {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .demo-button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95em;
+            box-shadow: 0 4px 12px rgba(9,105,218,0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .demo-button:hover {
+            background: #0550ae;
+            box-shadow: 0 8px 25px rgba(9,105,218,0.45);
+            transform: translateY(-2px);
+        }
+        .units-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .units-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.92em;
+        }
+        .units-table td:first-child {
+            font-family: 'Courier New', monospace;
+            background: #eef2ff;
+            color: #1e466e;
+            font-weight: 600;
+            width: 25%;
+        }
+        .units-table tr:last-child td {
+            border-bottom: none;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .selector-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 5: Основы CSS — синтаксис, селекторы, свойства</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить CSS с нуля и научиться применять стили к элементам сайта WordPress</div>
+
+    <p>Мы подошли к ключевой главе курса. <strong>CSS</strong> — это язык, который описывает внешний вид вашего сайта. Именно CSS определяет, какого цвета кнопки, какой шрифт у заголовков, какие отступы у блоков. Если HTML — это скелет страницы, то CSS — это её одежда и макияж. Без знания CSS вы не сможете тонко настроить дизайн сайта.</p>
+
+    <div class="info-box">
+        <strong>💡 Хорошая новость:</strong><br>
+        CSS — один из самых простых языков в веб-разработке. Он <strong>не программирование</strong>, а описание правил: «этот элемент должен быть красным», «у этого блока отступ 20 пикселей». За 2–3 часа практики вы освоите базу, которой хватит для 90% задач.
+    </div>
+
+    <h2>5.1 Что такое CSS и зачем он нужен</h2>
+
+    <p><strong>CSS</strong> (Cascading Style Sheets, каскадные таблицы стилей) — это язык описания внешнего вида документа. Он работает в связке с HTML: HTML создаёт структуру, CSS оформляет её.</p>
+
+    <p>Вот простой пример. HTML-код:</p>
+
+    <pre><span class="selector">&lt;button&gt;</span>Нажми меня<span class="selector">&lt;/button&gt;</span></pre>
+
+    <p>Без CSS кнопка будет выглядеть как стандартная серая кнопка браузера. С CSS мы можем превратить её в яркую кнопку с закруглёнными углами:</p>
+
+    <pre><span class="selector">button</span> {
+    <span class="property">background</span>: <span class="value">#0969da</span>;
+    <span class="property">color</span>: <span class="value">white</span>;
+    <span class="property">padding</span>: <span class="value">12px 30px</span>;
+    <span class="property">border-radius</span>: <span class="value">30px</span>;
+    <span class="property">border</span>: <span class="value">none</span>;
+    <span class="property">font-weight</span>: <span class="value">600</span>;
+}</pre>
+
+    <div class="demo-box">
+        <div class="title">Результат CSS</div>
+        <div class="demo-button">Нажми меня</div>
+    </div>
+
+    <p>Именно так работает CSS: вы пишете правила, а браузер применяет их к элементам на странице.</p>
+
+    <h3>Что можно настроить через CSS</h3>
+
+    <ul>
+        <li><strong>Цвета:</strong> текст, фон, границы, тени.</li>
+        <li><strong>Типографику:</strong> шрифты, размеры, интервалы.</li>
+        <li><strong>Отступы:</strong> внутренние и внешние.</li>
+        <li><strong>Размеры:</strong> ширина, высота.</li>
+        <li><strong>Положение:</strong> выравнивание, позиционирование, наложение.</li>
+        <li><strong>Эффекты:</strong> анимация, прозрачность, трансформации.</li>
+        <li><strong>Адаптивность:</strong> разное отображение на разных экранах.</li>
+    </ul>
+
+    <h2>5.2 Синтаксис CSS — структура правил</h2>
+
+    <p>CSS-правило состоит из трёх частей: <strong>селектор</strong>, <strong>свойство</strong> и <strong>значение</strong>.</p>
+
+    <pre><span class="selector">селектор</span> {
+    <span class="property">свойство</span>: <span class="value">значение</span>;
+    <span class="property">свойство</span>: <span class="value">значение</span>;
+}</pre>
+
+    <p>Разберём на примере:</p>
+
+    <pre><span class="selector">h1</span> {
+    <span class="property">color</span>: <span class="value">#0969da</span>;
+    <span class="property">font-size</span>: <span class="value">32px</span>;
+}</pre>
+
+    <ul>
+        <li><strong>Селектор <code>h1</code></strong> — указывает, к какому элементу применяется правило (все заголовки H1).</li>
+        <li><strong>Свойство <code>color</code></strong> — что мы меняем (цвет текста).</li>
+        <li><strong>Значение <code>#0969da</code></strong> — на что меняем (синий цвет).</li>
+        <li><strong>Точка с запятой <code>;</code></strong> — разделяет свойства.</li>
+        <li><strong>Фигурные скобки <code>{ }</code></strong> — обрамляют блок свойств.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 Синтаксические правила:</strong>
+        <ul>
+            <li>Каждое свойство заканчивается точкой с запятой (кроме последнего — но лучше ставить всегда).</li>
+            <li>Между свойством и значением — двоеточие.</li>
+            <li>Отступы и переносы строк необязательны, но делают код читаемым.</li>
+            <li>Комментарии: <code>/* это комментарий */</code> — браузер их игнорирует.</li>
+        </ul>
+    </div>
+
+    <h2>5.3 Селекторы — как выбрать нужный элемент</h2>
+
+    <p><strong>Селектор</strong> — это «адрес» элемента, к которому применяется правило. Понимание селекторов — ключ к работе с CSS. Рассмотрим основные типы.</p>
+
+    <div class="selector-grid">
+        <div class="selector-card">
+            <div class="icon">🏷️</div>
+            <strong>Селектор по тегу</strong>
+            <code>p { }</code>
+            <span>Выбирает все элементы с этим тегом. Например, <code>p</code> — все абзацы, <code>h1</code> — все заголовки первого уровня.</span>
+        </div>
+        <div class="selector-card">
+            <div class="icon">🎯</div>
+            <strong>Селектор по классу</strong>
+            <code>.my-class { }</code>
+            <span>Выбирает все элементы с классом <code>my-class</code>. Начинается с точки. Самый используемый тип селектора.</span>
+        </div>
+        <div class="selector-card">
+            <div class="icon">🆔</div>
+            <strong>Селектор по ID</strong>
+            <code>#my-id { }</code>
+            <span>Выбирает элемент с уникальным ID. Начинается с решётки. ID должен быть один на странице.</span>
+        </div>
+        <div class="selector-card">
+            <div class="icon">🌳</div>
+            <strong>Вложенный селектор</strong>
+            <code>.parent .child { }</code>
+            <span>Выбирает элементы <code>.child</code> внутри <code>.parent</code>. Пробел означает «внутри».</span>
+        </div>
+        <div class="selector-card">
+            <div class="icon">🎭</div>
+            <strong>Псевдоклассы</strong>
+            <code>a:hover { }</code>
+            <span>Выбирает элемент в определённом состоянии: <code>:hover</code> — при наведении, <code>:focus</code> — при фокусе, <code>:first-child</code> — первый элемент.</span>
+        </div>
+        <div class="selector-card">
+            <div class="icon">✳️</div>
+            <strong>Универсальный селектор</strong>
+            <code>* { }</code>
+            <span>Выбирает все элементы на странице. Используется осторожно — например, для сброса отступов.</span>
+        </div>
+        <div class="selector-card">
+            <div class="icon">➕</div>
+            <strong>Селектор по атрибуту</strong>
+            <code>[type="text"] { }</code>
+            <span>Выбирает элементы с определённым атрибутом. Например, все поля ввода с типом text.</span>
+        </div>
+        <div class="selector-card">
+            <div class="icon">👥</div>
+            <strong>Групповой селектор</strong>
+            <code>h1, h2, h3 { }</code>
+            <span>Применяет правило к нескольким селекторам сразу. Экономит место.</span>
+        </div>
+    </div>
+
+    <h3>Приоритет селекторов (специфичность)</h3>
+
+    <p>Если к элементу применяется несколько правил, браузер выбирает то, у которого <strong>выше специфичность</strong>. Правила приоритета (от низкого к высокому):</p>
+
+    <ol>
+        <li><strong>Селектор по тегу</strong> — <code>p { }</code>.</li>
+        <li><strong>Селектор по классу</strong> — <code>.my-class { }</code>.</li>
+        <li><strong>Селектор по ID</strong> — <code>#my-id { }</code>.</li>
+        <li><strong>Инлайн-стиль</strong> — <code>style="..."</code> в HTML.</li>
+        <li><strong>!important</strong> — <code>color: red !important;</code>.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Не используйте <code>!important</code> без необходимости!</strong><br>
+        Это «ядерная кнопка» CSS — она перебивает все остальные правила. Если вы используете <code>!important</code>, значит, вы не разобрались в специфичности. Прибегайте к нему только в крайнем случае.
+    </div>
+
+    <h2>5.4 Как найти нужный селектор — инструменты разработчика</h2>
+
+    <p>Как узнать, какой класс у кнопки или какое свойство отвечает за отступ? Ответ — <strong>инструменты разработчика браузера</strong> (DevTools).</p>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте сайт в браузере.</strong> Лучше всего Chrome, Firefox или Edge.</li>
+        <li><strong>Нажмите <code>F12</code></strong> или правой кнопкой → «Исследовать элемент» (Inspect).</li>
+        <li><strong>Откроется панель разработчика</strong> — обычно справа или снизу.</li>
+        <li><strong>Нажмите на иконку со стрелкой</strong> в верхнем левом углу панели (или <code>Ctrl+Shift+C</code>).</li>
+        <li><strong>Наведите курсор на нужный элемент</strong> на странице — он подсветится.</li>
+        <li><strong>Кликните на элемент</strong> — в панели откроется его HTML-код.</li>
+        <li><strong>Изучите классы элемента.</strong> Они указаны в атрибуте <code>class="..."</code>.</li>
+        <li><strong>Справа (или снизу) во вкладке Styles</strong> вы увидите все CSS-правила, которые применяются к элементу.</li>
+        <li><strong>Здесь же можно тестировать изменения:</strong> меняйте цвета, размеры — и сразу видите результат (без сохранения на сайте).</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Главный приём:</strong> Найдите элемент через DevTools, скопируйте его класс из атрибута <code>class</code> — и используйте этот класс в своём CSS. Например, вы видите <code>class="wp-block-button__link"</code> — значит, ваш селектор будет <code>.wp-block-button__link { }</code>.
+    </div>
+
+    <h3>Пример: находим селектор кнопки</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте сайт.</strong></li>
+        <li><strong>Нажмите F12.</strong></li>
+        <li><strong>Кликните на любую кнопку</strong> в режиме инспектора.</li>
+        <li><strong>Увидите HTML:</strong> <code>&lt;a class="wp-block-button__link"&gt;Связаться&lt;/a&gt;</code>.</li>
+        <li><strong>Значит, ваш селектор:</strong> <code>.wp-block-button__link</code>.</li>
+        <li><strong>Пишем правило:</strong> <code>.wp-block-button__link { background: red; }</code>.</li>
+        <li><strong>Вставляем в «Дополнительные CSS»</strong> — все кнопки на сайте станут красными.</li>
+    </ol>
+
+    <h2>5.5 Основные свойства CSS</h2>
+
+    <p>Свойств в CSS более 500, но для работы с WordPress достаточно знать около 30. Разберём ключевые категории.</p>
+
+    <h3>Цвет и фон</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Свойство</th>
+            <th>Что делает</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>color</code></td>
+            <td>Цвет текста</td>
+            <td><code>color: #0969da;</code></td>
+        </tr>
+        <tr>
+            <td><code>background-color</code></td>
+            <td>Цвет фона</td>
+            <td><code>background-color: #f8fafc;</code></td>
+        </tr>
+        <tr>
+            <td><code>background-image</code></td>
+            <td>Фоновое изображение</td>
+            <td><code>background-image: url('image.jpg');</code></td>
+        </tr>
+        <tr>
+            <td><code>background-size</code></td>
+            <td>Размер фонового изображения</td>
+            <td><code>background-size: cover;</code></td>
+        </tr>
+        <tr>
+            <td><code>opacity</code></td>
+            <td>Прозрачность (0–1)</td>
+            <td><code>opacity: 0.8;</code></td>
+        </tr>
+    </table>
+
+    <h3>Формат цвета в CSS</h3>
+
+    <ul>
+        <li><strong>HEX:</strong> <code>#0969da</code> — самый популярный.</li>
+        <li><strong>RGB:</strong> <code>rgb(9, 105, 218)</code>.</li>
+        <li><strong>RGBA:</strong> <code>rgba(9, 105, 218, 0.5)</code> — с прозрачностью.</li>
+        <li><strong>Именованные:</strong> <code>red</code>, <code>blue</code>, <code>white</code> — только базовые цвета.</li>
+        <li><strong>HSL:</strong> <code>hsl(210, 92%, 45%)</code> — оттенок, насыщенность, яркость.</li>
+    </ul>
+
+    <h3>Типографика</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Свойство</th>
+            <th>Что делает</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>font-family</code></td>
+            <td>Шрифт</td>
+            <td><code>font-family: 'Open Sans', sans-serif;</code></td>
+        </tr>
+        <tr>
+            <td><code>font-size</code></td>
+            <td>Размер шрифта</td>
+            <td><code>font-size: 16px;</code></td>
+        </tr>
+        <tr>
+            <td><code>font-weight</code></td>
+            <td>Насыщенность (100–900)</td>
+            <td><code>font-weight: 700;</code></td>
+        </tr>
+        <tr>
+            <td><code>font-style</code></td>
+            <td>Курсив</td>
+            <td><code>font-style: italic;</code></td>
+        </tr>
+        <tr>
+            <td><code>line-height</code></td>
+            <td>Межстрочный интервал</td>
+            <td><code>line-height: 1.6;</code></td>
+        </tr>
+        <tr>
+            <td><code>letter-spacing</code></td>
+            <td>Межбуквенное расстояние</td>
+            <td><code>letter-spacing: 1px;</code></td>
+        </tr>
+        <tr>
+            <td><code>text-align</code></td>
+            <td>Выравнивание текста</td>
+            <td><code>text-align: center;</code></td>
+        </tr>
+        <tr>
+            <td><code>text-decoration</code></td>
+            <td>Подчёркивание</td>
+            <td><code>text-decoration: none;</code></td>
+        </tr>
+        <tr>
+            <td><code>text-transform</code></td>
+            <td>Регистр</td>
+            <td><code>text-transform: uppercase;</code></td>
+        </tr>
+    </table>
+
+    <h3>Отступы и границы</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Свойство</th>
+            <th>Что делает</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>padding</code></td>
+            <td>Внутренний отступ</td>
+            <td><code>padding: 20px;</code></td>
+        </tr>
+        <tr>
+            <td><code>margin</code></td>
+            <td>Внешний отступ</td>
+            <td><code>margin: 10px 0;</code></td>
+        </tr>
+        <tr>
+            <td><code>border</code></td>
+            <td>Граница</td>
+            <td><code>border: 1px solid #e2e8f0;</code></td>
+        </tr>
+        <tr>
+            <td><code>border-radius</code></td>
+            <td>Скругление углов</td>
+            <td><code>border-radius: 8px;</code></td>
+        </tr>
+        <tr>
+            <td><code>box-shadow</code></td>
+            <td>Тень</td>
+            <td><code>box-shadow: 0 4px 12px rgba(0,0,0,0.1);</code></td>
+        </tr>
+    </table>
+
+    <h3>Размеры и положение</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Свойство</th>
+            <th>Что делает</th>
+            <th>Пример</th>
+        </tr>
+        <tr>
+            <td><code>width</code></td>
+            <td>Ширина</td>
+            <td><code>width: 100%;</code></td>
+        </tr>
+        <tr>
+            <td><code>height</code></td>
+            <td>Высота</td>
+            <td><code>height: 300px;</code></td>
+        </tr>
+        <tr>
+            <td><code>max-width</code></td>
+            <td>Максимальная ширина</td>
+            <td><code>max-width: 800px;</code></td>
+        </tr>
+        <tr>
+            <td><code>display</code></td>
+            <td>Тип отображения</td>
+            <td><code>display: flex;</code></td>
+        </tr>
+        <tr>
+            <td><code>position</code></td>
+            <td>Позиционирование</td>
+            <td><code>position: relative;</code></td>
+        </tr>
+        <tr>
+            <td><code>z-index</code></td>
+            <td>Порядок наложения</td>
+            <td><code>z-index: 999;</code></td>
+        </tr>
+    </table>
+
+    <h2>5.6 Единицы измерения в CSS</h2>
+
+    <p>При задании размеров важно понимать, какие единицы использовать. Вот основные.</p>
+
+    <table class="units-table">
+        <tr>
+            <td>px</td>
+            <td>Пиксели. Абсолютная единица. <code>16px</code> — всегда 16 пикселей. Используется для большинства размеров.</td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>Проценты. Относительно родительского элемента. <code>width: 50%</code> — половина ширины родителя.</td>
+        </tr>
+        <tr>
+            <td>em</td>
+            <td>Относительно размера шрифта родителя. <code>1.5em</code> — в 1.5 раза больше.</td>
+        </tr>
+        <tr>
+            <td>rem</td>
+            <td>Относительно размера шрифта <code>html</code>. <code>1rem</code> = 16px (по умолчанию). Предпочтителен для адаптивности.</td>
+        </tr>
+        <tr>
+            <td>vw</td>
+            <td>1% ширины окна браузера. <code>50vw</code> — половина ширины экрана.</td>
+        </tr>
+        <tr>
+            <td>vh</td>
+            <td>1% высоты окна. <code>100vh</code> — вся высота экрана.</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Рекомендация:</strong> Для шрифтов используйте <code>rem</code> (адаптивно), для отступов и размеров блоков — <code>px</code> или <code>%</code>. Для секций на всю высоту экрана — <code>vh</code>. Для резиновых макетов — <code>%</code> и <code>vw</code>.
+    </div>
+
+    <h2>5.7 Способы добавления CSS в WordPress</h2>
+
+    <p>В WordPress есть три основных способа добавить CSS. Выбор зависит от задачи.</p>
+
+    <h3>Способ 1: Дополнительные CSS в Site Editor (рекомендуется)</h3>
+
+    <p>Для блочных тем (Twenty Twenty-Five и другие) это самый безопасный способ. Изменения не затрагивают файлы темы и не пропадут при обновлении.</p>
+
+    <ol class="steps">
+        <li><strong>Откройте «Внешний вид → Редактор».</strong></li>
+        <li><strong>В левой панели нажмите на иконку «Стили» (чёрно-белый круг).</strong></li>
+        <li><strong>Нажмите на три точки (⋮) рядом с «Стили».</strong></li>
+        <li><strong>Выберите «Дополнительные CSS».</strong></li>
+        <li><strong>Введите CSS-правила.</strong></li>
+        <li><strong>Нажмите «Сохранить».</strong></li>
+    </ol>
+
+    <h3>Способ 2: Через дочернюю тему (для продвинутых)</h3>
+
+    <p>Если вы используете классическую тему или хотите полный контроль, создайте дочернюю тему и добавьте CSS в её файл <code>style.css</code>. Подробно разберём в главе 7.</p>
+
+    <h3>Способ 3: Через плагин</h3>
+
+    <p>Установите плагин <strong>Simple Custom CSS</strong> или <strong>WP Add Custom CSS</strong>. Они добавляют отдельную страницу для CSS-кода в админке. Удобно, если вы не хотите использовать Site Editor.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Не правьте style.css темы напрямую!</strong><br>
+        Если вы добавите CSS в <code>style.css</code> активной темы, при следующем обновлении темы все правки исчезнут. Используйте «Дополнительные CSS» или дочернюю тему.
+    </div>
+
+    <h2>5.8 Практический пример: оформляем кнопку</h2>
+
+    <p>Давайте применим знания на практике. Оформим все кнопки на сайте.</p>
+
+    <h3>Задача</h3>
+    <ul>
+        <li>Фон кнопки: синий (#0969da).</li>
+        <li>Текст: белый, жирный.</li>
+        <li>Отступы: 12px сверху и снизу, 30px слева и справа.</li>
+        <li>Скруглённые углы: 30px.</li>
+        <li>Без границы.</li>
+        <li>Тень: мягкая.</li>
+        <li>При наведении: тёмно-синий фон и усиленная тень.</li>
+    </ul>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Найдите класс кнопки через DevTools.</strong> Откройте сайт, нажмите F12, выберите кнопку. Класс обычно <code>wp-block-button__link</code>.</li>
+        <li><strong>Откройте «Дополнительные CSS»</strong> в Site Editor.</li>
+        <li><strong>Введите следующий код:</strong></li>
+    </ol>
+
+    <pre><span class="comment">/* Стили для всех кнопок WordPress */</span>
+<span class="selector">.wp-block-button__link</span> {
+    <span class="property">background-color</span>: <span class="value">#0969da</span>;
+    <span class="property">color</span>: <span class="value">#ffffff</span>;
+    <span class="property">font-weight</span>: <span class="value">600</span>;
+    <span class="property">padding</span>: <span class="value">12px 30px</span>;
+    <span class="property">border-radius</span>: <span class="value">30px</span>;
+    <span class="property">border</span>: <span class="value">none</span>;
+    <span class="property">box-shadow</span>: <span class="value">0 4px 12px rgba(9,105,218,0.3)</span>;
+    <span class="property">transition</span>: <span class="value">all 0.3s ease</span>;
+}
+
+<span class="comment">/* Состояние при наведении */</span>
+<span class="selector">.wp-block-button__link:hover</span> {
+    <span class="property">background-color</span>: <span class="value">#0550ae</span>;
+    <span class="property">box-shadow</span>: <span class="value">0 8px 25px rgba(9,105,218,0.45)</span>;
+    <span class="property">transform</span>: <span class="value">translateY(-2px)</span>;
+}</pre>
+
+    <ol class="steps" start="4">
+        <li><strong>Сохраните изменения.</strong></li>
+        <li><strong>Обновите сайт.</strong> Все кнопки должны стать синими с закруглёнными углами.</li>
+        <li><strong>Наведите курсор на кнопку.</strong> Она должна «приподниматься» и темнеть.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> Вы применили CSS ко всем кнопкам сайта одним правилом. Именно так работает CSS — одно правило, множество элементов.
+    </div>
+
+    <h3>Что делать, если стили не применились</h3>
+    <ol class="steps">
+        <li><strong>Очистите кэш браузера</strong> (Ctrl+F5).</li>
+        <li><strong>Очистите кэш плагина кэширования</strong> (если есть).</li>
+        <li><strong>Проверьте селектор через DevTools.</strong> Возможно, у кнопки другой класс.</li>
+        <li><strong>Проверьте синтаксис CSS.</strong> Пропущенная точка с запятой или скобка ломает всё правило.</li>
+        <li><strong>Убедитесь, что ваш CSS не переопределён более специфичным правилом.</strong> В DevTools видно, какое правило «побеждает».</li>
+    </ol>
+
+    <h2>5.9 Практический пример: адаптивность через медиазапросы</h2>
+
+    <p>CSS позволяет по-разному оформлять элементы на разных экранах. Это делается через <strong>медиазапросы</strong> (<code>@media</code>).</p>
+
+    <h3>Синтаксис медиазапроса</h3>
+
+    <pre><span class="keyword">@media</span> (<span class="property">max-width</span>: <span class="value">768px</span>) {
+    <span class="comment">/* Стили для экранов до 768px (телефоны и планшеты) */</span>
+    <span class="selector">.my-class</span> {
+        <span class="property">font-size</span>: <span class="value">14px</span>;
+    }
+}</pre>
+
+    <h3>Задача: уменьшить размер H1 на мобильных</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «Дополнительные CSS».</strong></li>
+        <li><strong>Введите код:</strong></li>
+    </ol>
+
+    <pre><span class="comment">/* Обычный H1 */</span>
+<span class="selector">h1</span> {
+    <span class="property">font-size</span>: <span class="value">48px</span>;
+}
+
+<span class="comment">/* H1 на планшетах */</span>
+<span class="keyword">@media</span> (<span class="property">max-width</span>: <span class="value">1024px</span>) {
+    <span class="selector">h1</span> {
+        <span class="property">font-size</span>: <span class="value">36px</span>;
+    }
+}
+
+<span class="comment">/* H1 на телефонах */</span>
+<span class="keyword">@media</span> (<span class="property">max-width</span>: <span class="value">768px</span>) {
+    <span class="selector">h1</span> {
+        <span class="property">font-size</span>: <span class="value">28px</span>;
+    }
+}</pre>
+
+    <ol class="steps" start="3">
+        <li><strong>Сохраните.</strong></li>
+        <li><strong>Проверьте сайт на компьютере.</strong> H1 — 48px.</li>
+        <li><strong>Уменьшите окно браузера</strong> — H1 уменьшится.</li>
+        <li><strong>Откройте на телефоне</strong> — H1 будет 28px.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Стандартные брейкпоинты:</strong>
+        <ul>
+            <li><code>@media (max-width: 1024px)</code> — планшеты.</li>
+            <li><code>@media (max-width: 768px)</code> — небольшие планшеты и телефоны.</li>
+            <li><code>@media (max-width: 480px)</code> — маленькие телефоны.</li>
+        </ul>
+    </div>
+
+    <h2>5.10 Решение типичных проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>CSS не применяется</td>
+            <td>Кэш браузера или сайта</td>
+            <td>Очистите кэш (Ctrl+F5) и кэш-плагина</td>
+        </tr>
+        <tr>
+            <td>Одно правило работает, другое — нет</td>
+            <td>Разная специфичность селекторов</td>
+            <td>Используйте более специфичный селектор. Проверьте в DevTools, какое правило «побеждает»</td>
+        </tr>
+        <tr>
+            <td>Стили «слетели» после обновления темы</td>
+            <td>CSS был в файлах темы</td>
+            <td>Используйте «Дополнительные CSS» или дочернюю тему</td>
+        </tr>
+        <tr>
+            <td>Селектор не находит элемент</td>
+            <td>Опечатка или неправильный класс</td>
+            <td>Проверьте через DevTools точное имя класса. Скопируйте его</td>
+        </tr>
+        <tr>
+            <td>Медиазапрос не срабатывает</td>
+            <td>Неверный брейкпоинт</td>
+            <td>Проверьте значение <code>max-width</code>. Используйте DevTools для эмуляции устройств</td>
+        </tr>
+        <tr>
+            <td>Сайт «упал» после добавления CSS</td>
+            <td>Синтаксическая ошибка</td>
+            <td>Удалите последнее правило. Проверьте парность скобок и точек с запятой</td>
+        </tr>
+        <tr>
+            <td>Вместо цвета отображается «кракозябра»</td>
+            <td>Кодировка файла</td>
+            <td>Убедитесь, что файл сохранён в UTF-8</td>
+        </tr>
+        <tr>
+            <td>Стили применяются не ко всем элементам</td>
+            <td>Селектор слишком узкий</td>
+            <td>Используйте более общий селектор или добавьте класс всем нужным элементам</td>
+        </tr>
+    </table>
+
+    <h2>5.11 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Подготовка</strong><br>
+        1. Сделайте резервную копию сайта.<br>
+        2. Откройте сайт в браузере.<br>
+        3. Нажмите F12 — откройте DevTools.<br>
+        4. Изучите несколько элементов: заголовок, кнопку, ссылку, параграф.<br>
+        5. Запишите их классы.<br><br>
+        <strong>Часть 2: Первые CSS-правила</strong><br>
+        6. Откройте «Дополнительные CSS» в Site Editor.<br>
+        7. Добавьте правило: изменить цвет всех ссылок на <code>#16a34a</code>.<br>
+        8. Сохраните и проверьте результат.<br>
+        9. Добавьте правило: убрать подчёркивание у ссылок в обычном состоянии.<br>
+        10. Сохраните и проверьте.<br>
+        11. Добавьте правило: при наведении ссылки подчёркивать и менять цвет на <code>#15803d</code>.<br>
+        12. Сохраните и проверьте.<br><br>
+        <strong>Часть 3: Стилизация кнопок</strong><br>
+        13. Найдите класс кнопки через DevTools.<br>
+        14. Добавьте правило: фон кнопки <code>#f97316</code>, текст белый.<br>
+        15. Добавьте скругление 20px.<br>
+        16. Добавьте тень.<br>
+        17. Добавьте эффект при наведении: тёмно-оранжевый фон и усиленная тень.<br>
+        18. Сохраните и проверьте.<br><br>
+        <strong>Часть 4: Типографика</strong><br>
+        19. Добавьте правило: все заголовки H2 — цвет <code>#0a2540</code>, размер 32px, вес 700.<br>
+        20. Сохраните и проверьте.<br>
+        21. Добавьте правило: основной текст — размер 17px, межстрочный интервал 1.7.<br>
+        22. Сохраните и проверьте.<br><br>
+        <strong>Часть 5: Адаптивность</strong><br>
+        23. Добавьте медиазапрос для экранов до 768px.<br>
+        24. Внутри уменьшите размер H1 до 28px.<br>
+        25. Уменьшите размер текста до 15px.<br>
+        26. Сохраните и проверьте на телефоне.<br><br>
+        <strong>Часть 6: Финальная проверка</strong><br>
+        27. Прокрутите сайт целиком — проверьте визуально.<br>
+        28. Откройте DevTools — убедитесь, что все правила применяются.<br>
+        29. Проверьте сайт на компьютере, планшете, телефоне.<br>
+        30. Если что-то не понравилось — вернитесь и исправьте.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Что такое CSS и зачем он нужен; синтаксис CSS (селектор, свойство, значение); основные типы селекторов и их специфичность; работу с DevTools для поиска селекторов; основные CSS-свойства (цвет, фон, типографика, отступы, границы, размеры); единицы измерения (px, %, em, rem, vw, vh); три способа добавления CSS в WordPress; практическую стилизацию кнопок; медиазапросы для адаптивности; решение типичных проблем.
+    </div>
+
+    <h2>5.12 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Нужно ли знать CSS наизусть?</strong> Нет. Основные свойства запоминаются с практикой. Для остального есть шпаргалки и DevTools.</li>
+        <li><strong>Чем класс отличается от ID?</strong> Класс может использоваться много раз на странице, ID — только один раз. В CSS класс — <code>.my-class</code>, ID — <code>#my-id</code>.</li>
+        <li><strong>Почему мой CSS не работает?</strong> Проверьте: кэш, специфичность, синтаксис, правильность селектора. DevTools покажет, какое правило «побеждает».</li>
+        <li><strong>Можно ли использовать несколько классов на одном элементе?</strong> Да, через пробел: <code>class="btn btn-primary large"</code>. В CSS селектор <code>.btn-primary</code> применится к этому элементу.</li>
+        <li><strong>Что такое <code>!important</code> и когда его использовать?</strong> Это директива, которая перебивает все другие правила. Используйте только в крайнем случае.</li>
+        <li><strong>Где хранится CSS, добавленный через «Дополнительные CSS»?</strong> В базе данных WordPress. Он не затрагивает файлы темы и сохраняется при обновлениях.</li>
+        <li><strong>Как проверить, работает ли CSS на мобильных?</strong> Откройте DevTools (F12), включите режим эмуляции мобильного устройства (иконка телефона) — и увидите, как выглядит сайт на разных экранах.</li>
+        <li><strong>Можно ли подключать внешние CSS-файлы?</strong> Да, через <code>functions.php</code> дочерней темы или через плагин. Но для простых задач достаточно «Дополнительных CSS».</li>
+        <li><strong>Как убрать CSS, если что-то сломалось?</strong> Удалите проблемное правило из «Дополнительных CSS» и сохраните. Если сайт «упал» полностью — восстановите из резервной копии.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы перейдём от теории к практике и разберём <strong>дополнительные стили в WordPress</strong> — как добавлять CSS через Site Editor, создавать CSS-классы для отдельных блоков, использовать инструменты разработчика для точной настройки. Вы научитесь применять стили не ко всем элементам сразу, а точечно — только там, где нужно. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter6.html" class="button">📖 Перейти к шестой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

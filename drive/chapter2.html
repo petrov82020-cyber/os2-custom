@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 2: Структура файлов WordPress — что где лежит</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .folder-tree {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .folder-tree .folder {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        .folder-tree .file {
+            color: #f8f8f2;
+        }
+        .folder-tree .important {
+            color: #facc15;
+            font-weight: bold;
+        }
+        .folder-tree .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        .folder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .folder-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .folder-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .folder-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .folder-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .folder-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .folder-tree { font-size: 0.75em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 2: Структура файлов WordPress — что где лежит</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~28 минут | 🎯 Цель: изучить файловую систему WordPress и научиться находить нужные файлы для правки, бэкапа и восстановления</div>
+
+    <p>Прежде чем править код, подключаться по FTP или восстанавливать сайт, нужно чётко понимать, <strong>где что лежит</strong>. WordPress имеет стройную файловую структуру, и знание её — основа всех дальнейших действий. В этой главе мы разберём каждую папку и каждый важный файл: что в них находится, за что они отвечают и когда их нужно трогать.</p>
+
+    <div class="info-box">
+        <strong>💡 Зачем это нужно:</strong><br>
+        Когда сайт «упадёт», вы будете знать, <strong>какой файл править</strong>. Когда нужно сделать бэкап — поймёте, <strong>что копировать</strong>. Когда нужно добавить стиль — найдёте <strong>куда вставить</strong>. Без знания структуры любая правка превращается в угадайку.
+    </div>
+
+    <h2>2.1 Общая картина файловой системы WordPress</h2>
+
+    <p>WordPress имеет модульную структуру. Файлы разделены на три большие группы:</p>
+
+    <ul>
+        <li><strong>Ядро WordPress</strong> — файлы самой системы. Их не трогают, они обновляются автоматически.</li>
+        <li><strong>Контент</strong> — темы, плагины, загруженные файлы. Это <strong>ваша зона ответственности</strong>.</li>
+        <li><strong>Конфигурация</strong> — файлы настроек, отвечающие за подключение к базе данных и работу сайта.</li>
+    </ul>
+
+    <p>Вот как выглядит типичная структура WordPress:</p>
+
+    <div class="folder-tree">
+<span class="folder">📁 public_html/</span> <span class="comment">← корень сайта (может называться htdocs, www и т. д.)</span>
+│
+├── <span class="folder">📁 wp-admin/</span> <span class="comment">← файлы админ-панели (не трогать)</span>
+├── <span class="folder">📁 wp-includes/</span> <span class="comment">← библиотеки ядра (не трогать)</span>
+│
+├── <span class="folder">📁 wp-content/</span> <span class="important">← ВАША ЗОНА: темы, плагины, загрузки</span>
+│   ├── <span class="folder">📁 themes/</span> <span class="comment">← установленные темы</span>
+│   │   ├── <span class="folder">📁 twenty-twenty-five/</span>
+│   │   ├── <span class="folder">📁 my-child-theme/</span>
+│   │   └── ...
+│   ├── <span class="folder">📁 plugins/</span> <span class="comment">← установленные плагины</span>
+│   │   ├── <span class="folder">📁 akismet/</span>
+│   │   ├── <span class="folder">📁 contact-form-7/</span>
+│   │   └── ...
+│   ├── <span class="folder">📁 uploads/</span> <span class="important">← все загруженные файлы (изображения, PDF)</span>
+│   │   └── <span class="folder">📁 2026/</span>
+│   │       └── <span class="folder">📁 10/</span>
+│   ├── <span class="folder">📁 mu-plugins/</span> <span class="comment">← обязательные плагины</span>
+│   ├── <span class="folder">📁 upgrade/</span> <span class="comment">← временные файлы обновлений</span>
+│   └── <span class="folder">📁 cache/</span> <span class="comment">← кэш (если есть)</span>
+│
+├── <span class="file important">📄 wp-config.php</span> <span class="important">← КРИТИЧЕСКИ ВАЖНЫЙ файл настроек</span>
+├── <span class="file important">📄 .htaccess</span> <span class="important">← правила сервера (ЧПУ, редиректы, безопасность)</span>
+├── <span class="file">📄 index.php</span> <span class="comment">← точка входа</span>
+├── <span class="file">📄 wp-load.php</span> <span class="comment">← загрузчик</span>
+├── <span class="file">📄 wp-settings.php</span> <span class="comment">← инициализация</span>
+└── ... <span class="comment">(другие файлы ядра)</span>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Главное правило:</strong> <strong>Никогда не правьте файлы в <code>wp-admin/</code> и <code>wp-includes/</code>.</strong> Это ядро WordPress. Любые изменения будут перезаписаны при следующем обновлении. Все правки делаются только в <code>wp-content/</code> или в конфигурационных файлах.
+    </div>
+
+    <h2>2.2 wp-content — ваша зона ответственности</h2>
+
+    <p>Папка <code>wp-content/</code> — это сердце вашего сайта. Здесь хранится всё, что вы создаёте и устанавливаете. Разберём её содержимое подробно.</p>
+
+    <div class="folder-grid">
+        <div class="folder-card">
+            <div class="icon">🎨</div>
+            <strong>themes/ — темы</strong>
+            <span>Все установленные темы. Активная тема определяет внешний вид сайта. Здесь правят CSS, шаблоны, функции.</span>
+        </div>
+        <div class="folder-card">
+            <div class="icon">🔌</div>
+            <strong>plugins/ — плагины</strong>
+            <span>Все установленные плагины. Каждый плагин — отдельная папка. Здесь можно найти проблемный плагин и отключить его.</span>
+        </div>
+        <div class="folder-card">
+            <div class="icon">🖼️</div>
+            <strong>uploads/ — загрузки</strong>
+            <span>Все загруженные файлы: изображения, PDF, видео. Файлы автоматически разбиваются по годам и месяцам.</span>
+        </div>
+        <div class="folder-card">
+            <div class="icon">📌</div>
+            <strong>mu-plugins/ — обязательные плагины</strong>
+            <span>Плагины из этой папки загружаются автоматически и не могут быть отключены через админку. Используются хостингами.</span>
+        </div>
+        <div class="folder-card">
+            <div class="icon">⚡</div>
+            <strong>cache/ — кэш</strong>
+            <span>Кэш-файлы, создаваемые плагинами кэширования. Можно безопасно очищать — они пересоздадутся автоматически.</span>
+        </div>
+        <div class="folder-card">
+            <div class="icon">⬆️</div>
+            <strong>upgrade/ — обновления</strong>
+            <span>Временная папка для обновлений. Если обновление зависло — можно очистить вручную.</span>
+        </div>
+    </div>
+
+    <h3>Папка themes/ — самое важное место для кастомизации</h3>
+
+    <p>Активная тема — это та, чьи файлы определяют внешний вид вашего сайта. Внутри папки темы есть ключевые файлы:</p>
+
+    <div class="folder-tree">
+<span class="folder">📁 twenty-twenty-five/</span> <span class="comment">← папка темы</span>
+│
+├── <span class="file important">📄 style.css</span> <span class="comment">← главный CSS-файл темы</span>
+├── <span class="file important">📄 functions.php</span> <span class="comment">← функции темы (сюда добавляют код)</span>
+├── <span class="file important">📄 theme.json</span> <span class="comment">← глобальные стили для блочных тем</span>
+├── <span class="file">📄 index.php</span> <span class="comment">← основной шаблон</span>
+├── <span class="file">📄 screenshot.png</span> <span class="comment">← превью темы в админке</span>
+│
+├── <span class="folder">📁 templates/</span> <span class="comment">← HTML-шаблоны (для блочных тем)</span>
+├── <span class="folder">📁 parts/</span> <span class="comment">← части шаблона (шапка, подвал)</span>
+├── <span class="folder">📁 patterns/</span> <span class="comment">← паттерны темы</span>
+├── <span class="folder">📁 styles/</span> <span class="comment">← стилевые вариации</span>
+├── <span class="folder">📁 assets/</span> <span class="comment">← изображения, шрифты, JS</span>
+└── <span class="folder">📁 inc/</span> <span class="comment">← дополнительные PHP-файлы</span>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Ключевые файлы темы:</strong>
+        <ul>
+            <li><code>style.css</code> — основной файл стилей. В нём содержится информация о теме (название, автор, версия) и все CSS-правила.</li>
+            <li><code>functions.php</code> — «мозг» темы. Здесь добавляют собственные функции, подключают скрипты, стили, регистрируют меню и виджеты.</li>
+            <li><code>theme.json</code> — конфигурация глобальных стилей для блочных тем. Здесь задаются цвета, шрифты, макет.</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Не правьте файлы темы напрямую!</strong> Любые изменения в <code>style.css</code> или <code>functions.php</code> исчезнут при обновлении темы. Используйте <strong>дочернюю тему</strong> (глава 7) или <strong>«Дополнительные CSS»</strong> (глава 6).
+    </div>
+
+    <h3>Папка plugins/ — где искать виновника проблем</h3>
+
+    <p>Каждый плагин — отдельная папка. Когда сайт «ломается» после установки плагина, вы можете найти его папку здесь и временно переименовать — это мгновенно отключит плагин.</p>
+
+    <p>Пример: если сайт упал после установки плагина <code>contact-form-7</code>, переименуйте папку:</p>
+
+    <pre>📁 plugins/contact-form-7/   →   📁 plugins/contact-form-7_off/</pre>
+
+    <p>Сайт сразу заработает — плагин отключится, потому что WordPress не найдёт его папку. Это спасает, когда админка недоступна.</p>
+
+    <h3>Папка uploads/ — все медиафайлы</h3>
+
+    <p>Здесь хранятся все файлы, загруженные через медиабиблиотеку. Структура автоматическая:</p>
+
+    <pre>📁 uploads/
+├── 📁 2024/
+│   ├── 📁 01/  (январь)
+│   ├── 📁 02/  (февраль)
+│   └── ...
+├── 📁 2025/
+│   └── ...
+└── 📁 2026/
+    └── 📁 10/
+        ├── image1.jpg
+        ├── image1-150x150.jpg  (миниатюра)
+        ├── image1-300x200.jpg  (средний размер)
+        └── image1-1024x768.jpg (большой размер)</pre>
+
+    <p>WordPress автоматически создаёт несколько версий каждого изображения (миниатюры, средние, большие). Это важно знать при резервном копировании: папка <code>uploads/</code> может занимать <strong>гигабайты</strong>.</p>
+
+    <h2>2.3 Конфигурационные файлы — самое важное</h2>
+
+    <p>Три файла в корне сайта критически важны. Понимание их роли спасёт вас при восстановлении.</p>
+
+    <h3>wp-config.php — мозг сайта</h3>
+
+    <p>Это <strong>самый важный файл</strong> WordPress. Здесь хранятся:</p>
+
+    <ul>
+        <li><strong>Данные подключения к базе данных:</strong> имя БД, пользователь, пароль, хост.</li>
+        <li><strong>Префикс таблиц</strong> (обычно <code>wp_</code>).</li>
+        <li><strong>Секретные ключи</strong> для шифрования cookie.</li>
+        <li><strong>Настройки отладки</strong> (режим debug).</li>
+        <li><strong>Память PHP:</strong> <code>WP_MEMORY_LIMIT</code>.</li>
+        <li><strong>URL сайта</strong> (иногда).</li>
+    </ul>
+
+    <p>Пример содержимого:</p>
+
+    <pre>&lt;?php
+define('DB_NAME', 'my_database');
+define('DB_USER', 'my_user');
+define('DB_PASSWORD', 'my_password');
+define('DB_HOST', 'localhost');
+define('DB_CHARSET', 'utf8mb4');
+define('DB_COLLATE', '');
+
+$table_prefix = 'wp_';
+
+define('WP_DEBUG', false);
+define('WP_MEMORY_LIMIT', '256M');
+
+/* ... секретные ключи ... */
+
+require_once ABSPATH . 'wp-settings.php';</pre>
+
+    <div class="warning-box">
+        <strong>⚠️ Осторожно с wp-config.php!</strong> Одна опечатка — и сайт перестанет открываться. Всегда делайте копию этого файла перед правкой. Если сайт «упал» после правки — восстановите файл из копии.
+    </div>
+
+    <h3>.htaccess — правила сервера</h3>
+
+    <p>Файл <code>.htaccess</code> — это конфигурация веб-сервера Apache. Здесь настраиваются:</p>
+
+    <ul>
+        <li><strong>Постоянные ссылки (ЧПУ):</strong> красивые URL вида <code>/o-nas/</code> вместо <code>/?page_id=2</code>.</li>
+        <li><strong>Редиректы:</strong> перенаправления с одной страницы на другую.</li>
+        <li><strong>Безопасность:</strong> блокировка доступа к определённым файлам.</li>
+        <li><strong>Кэширование:</strong> правила для браузера.</li>
+        <li><strong>Сжатие:</strong> gzip-сжатие для ускорения.</li>
+    </ul>
+
+    <p>Типичный <code>.htaccess</code> для WordPress:</p>
+
+    <pre># BEGIN WordPress
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+&lt;/IfModule&gt;
+# END WordPress</pre>
+
+    <div class="info-box">
+        <strong>💡 Важно:</strong> Файл <code>.htaccess</code> начинается с точки — это скрытый файл. В FTP-клиентах и файловых менеджерах включите «Показывать скрытые файлы», иначе вы его не увидите.
+    </div>
+
+    <h3>index.php — точка входа</h3>
+
+    <p>Корневой <code>index.php</code> — минимальный файл, который подключает WordPress:</p>
+
+    <pre>&lt;?php
+define('WP_USE_THEMES', true);
+require __DIR__ . '/wp-blog-header.php';</pre>
+
+    <p>Трогать его не нужно — он отвечает только за запуск системы.</p>
+
+    <h2>2.4 Три способа увидеть структуру файлов</h2>
+
+    <p>Прежде чем работать с файлами, нужно научиться их просматривать. Есть три способа.</p>
+
+    <h3>Способ 1: Файловый менеджер хостинга</h3>
+
+    <ol class="steps">
+        <li><strong>Войдите в панель управления хостингом</strong> (cPanel, ISPmanager, Beget).</li>
+        <li><strong>Найдите «Файловый менеджер»</strong> (File Manager).</li>
+        <li><strong>Откройте корневую папку сайта</strong> — обычно <code>public_html</code>, <code>www</code> или <code>htdocs</code>.</li>
+        <li><strong>Изучите структуру папок.</strong> Вы увидите все файлы WordPress.</li>
+        <li><strong>Включите показ скрытых файлов</strong> (в настройках файлового менеджера), чтобы увидеть <code>.htaccess</code>.</li>
+    </ol>
+
+    <h3>Способ 2: FTP-клиент (рекомендуется)</h3>
+    <p>FileZilla — бесплатный FTP-клиент. Подключение разберём подробно в главе 3. Сейчас важно знать, что после подключения вы увидите <strong>ту же структуру папок</strong>, что и в файловом менеджере.</p>
+
+    <h3>Способ 3: Встроенный редактор WordPress</h3>
+
+    <ol class="steps">
+        <li><strong>Войдите в админ-панель WordPress.</strong></li>
+        <li><strong>Перейдите в «Внешний вид → Редактор файлов».</strong></li>
+        <li><strong>Если пункта нет</strong> — значит, редактор отключён хостингом (это часто делают для безопасности).</li>
+        <li><strong>Если пункт есть</strong> — вы можете просматривать файлы темы и плагинов прямо в браузере.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Осторожно с редактором файлов в админке!</strong> Если в файле есть синтаксическая ошибка, сайт мгновенно «упадёт». При этом вы не сможете вернуться в редактор, потому что админка тоже перестанет открываться. Используйте FTP — он позволяет редактировать файлы без риска «заблокировать» себя.
+    </div>
+
+    <h2>2.5 Практический пример: находим проблемный плагин</h2>
+
+    <p>Давайте применим знания на практике. Ситуация: после установки нового плагина сайт перестал открываться.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP</strong> (или откройте файловый менеджер хостинга).</li>
+        <li><strong>Перейдите в папку</strong> <code>/wp-content/plugins/</code>.</li>
+        <li><strong>Найдите папку последнего установленного плагина.</strong> Обычно это папка с самым свежим «Дата изменения».</li>
+        <li><strong>Переименуйте папку:</strong> добавьте <code>_off</code> в конце. Например, <code>my-plugin</code> → <code>my-plugin_off</code>.</li>
+        <li><strong>Обновите сайт в браузере.</strong> Если он заработал — вы нашли виновника.</li>
+        <li><strong>Вернитесь в админку WordPress.</strong> Перейдите в «Плагины» — проблемный плагин будет отключён.</li>
+        <li><strong>Удалите плагин</strong> через админку или переименуйте папку обратно, если хотите попробовать его настроить.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Что вы сделали:</strong> за 2 минуты восстановили сайт без вызова специалиста. Именно для таких ситуаций нужно знать структуру файлов.
+    </div>
+
+    <h2>2.6 Практический пример: находим и правим .htaccess</h2>
+
+    <p>Ситуация: после смены хостинга страницы сайта стали открываться с ошибкой 404, хотя сами страницы на месте.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Включите показ скрытых файлов</strong> (в FileZilla: «Сервер → Показывать скрытые файлы»).</li>
+        <li><strong>Найдите файл</strong> <code>.htaccess</code> в корне сайта.</li>
+        <li><strong>Скачайте его на компьютер</strong> — сделайте резервную копию.</li>
+        <li><strong>Откройте файл в редакторе кода</strong> (VS Code, Notepad++).</li>
+        <li><strong>Проверьте содержимое.</strong> Скорее всего, он пустой или содержит неверные правила.</li>
+        <li><strong>Вставьте стандартные правила WordPress:</strong></li>
+    </ol>
+
+    <pre># BEGIN WordPress
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+&lt;/IfModule&gt;
+# END WordPress</pre>
+
+    <ol class="steps" start="8">
+        <li><strong>Сохраните файл.</strong></li>
+        <li><strong>Загрузите его обратно на сервер</strong>, перезаписав старый.</li>
+        <li><strong>Обновите сайт.</strong> Ошибка 404 должна исчезнуть.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Если не уверены в содержимом <code>.htaccess</code>, зайдите в админку → «Настройки → Постоянные ссылки» и просто нажмите «Сохранить». WordPress автоматически пересоздаст файл с правильными правилами.
+    </div>
+
+    <h2>2.7 Что копировать при резервном копировании</h2>
+
+    <p>Понимание структуры помогает правильно делать бэкапы. Вот что нужно копировать:</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Что копировать</th>
+            <th>Обязательно?</th>
+            <th>Зачем</th>
+        </tr>
+        <tr>
+            <td><code>wp-content/</code></td>
+            <td>✅ Да</td>
+            <td>Темы, плагины, загрузки — всё уникальное содержимое сайта.</td>
+        </tr>
+        <tr>
+            <td><code>wp-config.php</code></td>
+            <td>✅ Да</td>
+            <td>Настройки подключения к базе данных.</td>
+        </tr>
+        <tr>
+            <td><code>.htaccess</code></td>
+            <td>✅ Да</td>
+            <td>Правила сервера, ЧПУ, редиректы.</td>
+        </tr>
+        <tr>
+            <td>База данных</td>
+            <td>✅ Да</td>
+            <td>Записи, страницы, настройки, пользователи.</td>
+        </tr>
+        <tr>
+            <td>Ядро (<code>wp-admin/</code>, <code>wp-includes/</code>)</td>
+            <td>❌ Нет</td>
+            <td>Скачивается заново с wordpress.org. Нет смысла копировать.</td>
+        </tr>
+        <tr>
+            <td><code>wp-content/cache/</code></td>
+            <td>❌ Нет</td>
+            <td>Временные файлы, воссоздаются автоматически.</td>
+        </tr>
+        <tr>
+            <td><code>wp-content/upgrade/</code></td>
+            <td>❌ Нет</td>
+            <td>Временные файлы обновлений.</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Практическое правило:</strong> Копируйте <strong>всё, кроме ядра</strong>. Это займёт меньше места и времени, а сайт восстановится полностью. Ядро всегда можно скачать заново.
+    </div>
+
+    <h2>2.8 Решение типичных проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Не могу найти <code>.htaccess</code></td>
+            <td>Не включён показ скрытых файлов</td>
+            <td>В FileZilla: «Сервер → Показывать скрытые файлы». В файловом менеджере — настройки.</td>
+        </tr>
+        <tr>
+            <td>Не вижу пункт «Редактор файлов» в админке</td>
+            <td>Хостинг отключил редактор</td>
+            <td>Используйте FTP или файловый менеджер хостинга.</td>
+        </tr>
+        <tr>
+            <td>Папка <code>uploads/</code> занимает много места</td>
+            <td>Много изображений и их миниатюр</td>
+            <td>Оптимизируйте изображения, удалите неиспользуемые. Проверьте плагины, создающие лишние миниатюры.</td>
+        </tr>
+        <tr>
+            <td>Сайт «упал» после правки <code>wp-config.php</code></td>
+            <td>Синтаксическая ошибка</td>
+            <td>Восстановите файл из резервной копии через FTP.</td>
+        </tr>
+        <tr>
+            <td>Не вижу папку темы</td>
+            <td>Папка переименована или удалена</td>
+            <td>Проверьте папку <code>wp-content/themes/</code>. Переустановите тему, если она удалена.</td>
+        </tr>
+        <tr>
+            <td>После обновления темы пропали правки</td>
+            <td>Правки были в файлах темы</td>
+            <td>Используйте дочернюю тему (глава 7) или «Дополнительные CSS» (глава 6).</td>
+        </tr>
+        <tr>
+            <td>Плагин не удаляется через админку</td>
+            <td>Ошибка прав или повреждённая папка</td>
+            <td>Удалите папку плагина через FTP или файловый менеджер.</td>
+        </tr>
+        <tr>
+            <td>Не могу подключиться по FTP</td>
+            <td>Неверные данные или порт</td>
+            <td>Проверьте данные в панели хостинга. Иногда нужно использовать SFTP (порт 22) или другой порт.</td>
+        </tr>
+    </table>
+
+    <h2>2.9 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Изучение структуры</strong><br>
+        1. Войдите в панель управления вашим хостингом.<br>
+        2. Откройте файловый менеджер.<br>
+        3. Найдите корневую папку сайта (<code>public_html</code>, <code>www</code> или <code>htdocs</code>).<br>
+        4. Изучите структуру: найдите <code>wp-admin</code>, <code>wp-includes</code>, <code>wp-content</code>.<br>
+        5. Включите показ скрытых файлов.<br>
+        6. Найдите <code>wp-config.php</code> и <code>.htaccess</code>.<br>
+        7. Сделайте скриншот структуры (не открывайте содержимое важных файлов!).<br><br>
+        <strong>Часть 2: Изучение wp-content</strong><br>
+        8. Откройте папку <code>wp-content</code>.<br>
+        9. Найдите папку активной темы в <code>themes/</code>.<br>
+        10. Изучите файлы темы: <code>style.css</code>, <code>functions.php</code>, <code>theme.json</code>.<br>
+        11. Откройте папку <code>plugins/</code> — посмотрите, какие плагины установлены.<br>
+        12. Откройте папку <code>uploads/</code> — посмотрите структуру по годам и месяцам.<br><br>
+        <strong>Часть 3: Безопасное копирование</strong><br>
+        13. Скачайте файл <code>wp-config.php</code> на компьютер.<br>
+        14. Откройте его в редакторе кода (VS Code, Notepad++).<br>
+        15. Найдите строки с <code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_HOST</code>.<br>
+        16. Сохраните их в надёжном месте (в менеджере паролей).<br>
+        17. НЕ вносите никаких изменений.<br><br>
+        <strong>Часть 4: Диагностика</strong><br>
+        18. Откройте папку <code>plugins/</code>.<br>
+        19. Найдите плагин, который вы не используете.<br>
+        20. Если решите его удалить — сначала деактивируйте через админку.<br>
+        21. Только потом удаляйте папку.<br><br>
+        <strong>Часть 5: Финальная проверка</strong><br>
+        22. Убедитесь, что сайт работает.<br>
+        23. Проверьте, что резервная копия <code>wp-config.php</code> сохранена.<br>
+        24. Запишите структуру папок — она понадобится в следующих главах.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Общую структуру файловой системы WordPress; назначение каждой папки и ключевых файлов; разницу между ядром, контентом и конфигурацией; работу с <code>wp-config.php</code> и <code>.htaccess</code>; три способа просмотра файлов; поиск проблемного плагина; правила резервного копирования; решение типичных проблем.
+    </div>
+
+    <h2>2.10 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Можно ли удалить папки wp-admin и wp-includes?</strong> Нет. Это ядро WordPress. Без них сайт не будет работать.</li>
+        <li><strong>Что делать, если я случайно удалил файл из ядра?</strong> Скачайте WordPress заново с wordpress.org, распакуйте и загрузите отсутствующие файлы по FTP. Не загружайте <code>wp-config.php</code> из архива!</li>
+        <li><strong>Как узнать, какая тема активна?</strong> В админке: «Внешний вид → Темы». Активная тема помечена. Или по папке <code>wp-content/themes/</code> — там может быть несколько тем, но активна одна.</li>
+        <li><strong>Можно ли переименовать папку wp-content?</strong> Да, но для этого нужно изменить константу <code>WP_CONTENT_DIR</code> в <code>wp-config.php</code>. Обычно в этом нет необходимости.</li>
+        <li><strong>Как найти плагин, который нагружает сайт?</strong> Просмотрите список плагинов в админке. Отключайте по одному и проверяйте скорость. Или используйте плагин Query Monitor.</li>
+        <li><strong>Где хранится база данных?</strong> Не в файлах. База данных хранится на сервере MySQL и управляется через phpMyAdmin. Доступ к ней — через данные в <code>wp-config.php</code>.</li>
+        <li><strong>Как перенести сайт на другой хостинг?</strong> Скопируйте <code>wp-content/</code>, <code>wp-config.php</code>, <code>.htaccess</code> и экспортируйте базу данных. На новом хостинге загрузите файлы, создайте базу, импортируйте дамп, настройте <code>wp-config.php</code>.</li>
+        <li><strong>Что такое mu-plugins?</strong> Это «must-use» плагины — они загружаются автоматически и не могут быть отключены. Часто используются хостингами для служебных функций.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>доступ к файлам по FTP, SFTP и SSH</strong>. Вы научитесь настраивать FileZilla, подключаться к сайту, загружать и скачивать файлы, работать с правами доступа. Это основа для всех дальнейших операций с кодом. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter3.html" class="button">📖 Перейти к третьей главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

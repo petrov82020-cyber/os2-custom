@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 8: Пакетная загрузка файлов — FTP, WP-CLI, Google Диск, плагины</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        pre .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        pre .keyword {
+            color: #c792ea;
+        }
+        pre .string {
+            color: #c3e88d;
+        }
+        pre .variable {
+            color: #f78c6c;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .method-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+        }
+        .method-card.recommended {
+            border: 2px solid #16a34a;
+            background: #f0fdf4;
+        }
+        .method-card .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #16a34a;
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .method-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .method-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .method-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .method-card ul {
+            margin: 10px 0 0 18px;
+            font-size: 0.88em;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .terminal {
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+            line-height: 1.7;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .terminal .prompt {
+            color: #7ee787;
+        }
+        .terminal .command {
+            color: #f8f8f2;
+        }
+        .terminal .output {
+            color: #8b949e;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .method-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 8: Пакетная загрузка файлов — FTP, WP-CLI, Google Диск, плагины</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить все способы массовой загрузки файлов в WordPress и научиться выбирать подходящий метод для каждой задачи</div>
+
+    <p>Загрузить одну картинку через медиабиблиотеку — дело пяти секунд. Загрузить пятьсот картинок тем же способом — это несколько часов монотонной работы. В этой главе мы разберём <strong>пять способов пакетной загрузки файлов</strong> в WordPress: от простых (через FTP и плагины) до продвинутых (WP-CLI и скрипты). Вы научитесь выбирать подходящий метод для каждой задачи и экономить часы работы.</p>
+
+    <div class="info-box">
+        <strong>💡 Почему это важно:</strong><br>
+        Стандартная медиабиблиотека WordPress имеет <strong>лимит на размер файла</strong> (обычно 2–128 МБ в зависимости от хостинга) и <strong>не умеет загружать папки</strong>. Если вам нужно добавить 500 фотографий товаров, 200 изображений для блога или 50 видео — ручная загрузка превращается в пытку. Пакетные методы решают эту проблему.
+    </div>
+
+    <h2>8.1 Пять способов пакетной загрузки: сравнение</h2>
+
+    <p>Каждый способ имеет свои сильные стороны. Выбор зависит от количества файлов, их размера и вашего уровня подготовки.</p>
+
+    <div class="method-grid">
+        <div class="method-card">
+            <div class="icon">📡</div>
+            <strong>FTP + плагин импорта</strong>
+            <span>Загружаем файлы по FTP в папку uploads, затем регистрируем их через плагин. Универсальный способ, работает на любом хостинге.</span>
+            <ul>
+                <li>Нет лимита на размер файлов</li>
+                <li>Работает с любым количеством файлов</li>
+                <li>Требует FTP-доступа</li>
+                <li>Нужен плагин для регистрации</li>
+            </ul>
+        </div>
+        <div class="method-card recommended">
+            <span class="badge">Рекомендуем</span>
+            <div class="icon">⌨️</div>
+            <strong>WP-CLI (командная строка)</strong>
+            <span>Самый быстрый и мощный способ. Одна команда загружает сотни файлов. Идеален для больших объёмов.</span>
+            <ul>
+                <li>Максимальная скорость</li>
+                <li>Массовые операции в одну команду</li>
+                <li>Автоматизация через скрипты</li>
+                <li>Требует SSH-доступа</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">☁️</div>
+            <strong>Импорт из Google Диска</strong>
+            <span>Подключаем Google Drive и импортируем изображения прямо в медиатеку. Удобно, если файлы хранятся в облаке.</span>
+            <ul>
+                <li>Не нужно скачивать файлы</li>
+                <li>Импорт целых папок</li>
+                <li>Автоматический alt-текст</li>
+                <li>Требует плагин</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">📦</div>
+            <strong>ZIP-архив + плагин</strong>
+            <span>Упаковываем файлы в ZIP, загружаем через плагин, который распаковывает и добавляет всё в медиатеку.</span>
+            <ul>
+                <li>Просто и быстро</li>
+                <li>Не нужен FTP</li>
+                <li>Работает через админку</li>
+                <li>Ограничен размером архива</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">🔌</div>
+            <strong>Специализированные плагины</strong>
+            <span>Плагины для работы с FTP, Google Drive, ZIP и другими источниками. Широкий выбор решений.</span>
+            <ul>
+                <li>Не требуют командной строки</li>
+                <li>Работают через админку</li>
+                <li>Разный набор функций</li>
+                <li>Требуют установки</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Сравнительная таблица</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Способ</th>
+            <th>Скорость</th>
+            <th>Лимит файлов</th>
+            <th>Сложность</th>
+            <th>Лучше всего для</th>
+        </tr>
+        <tr>
+            <td>FTP + плагин</td>
+            <td>Высокая</td>
+            <td>Неограниченно</td>
+            <td>Средняя</td>
+            <td>Большие файлы, видео, RAW-фото</td>
+        </tr>
+        <tr>
+            <td>WP-CLI</td>
+            <td>Максимальная</td>
+            <td>Неограниченно</td>
+            <td>Высокая</td>
+            <td>Сотни и тысячи файлов</td>
+        </tr>
+        <tr>
+            <td>Google Диск</td>
+            <td>Средняя</td>
+            <td>Зависит от API</td>
+            <td>Низкая</td>
+            <td>Файлы в облаке, блогеры</td>
+        </tr>
+        <tr>
+            <td>ZIP-архив</td>
+            <td>Высокая</td>
+            <td>Ограничен памятью</td>
+            <td>Низкая</td>
+            <td>Быстрая загрузка десятков файлов</td>
+        </tr>
+        <tr>
+            <td>Плагины</td>
+            <td>Разная</td>
+            <td>Разный</td>
+            <td>Низкая</td>
+            <td>Разные задачи</td>
+        </tr>
+    </table>
+
+    <h2>8.2 Способ 1: FTP + плагин импорта (универсальный)</h2>
+
+    <p>Этот способ работает на любом хостинге и не имеет ограничений на размер файлов. Вы загружаете файлы по FTP прямо в папку <code>uploads</code>, а затем регистрируете их в медиатеке через плагин.</p>
+
+    <h3>Плагин Media Sync — пошаговая инструкция</h3>
+
+    <p><strong>Media Sync</strong> — простой и надёжный плагин для регистрации файлов, загруженных по FTP. Он сканирует папку <code>uploads</code> и показывает, какие файлы уже есть в медиатеке, а какие — нет.</p>
+
+    <ol class="steps">
+        <li><strong>Установите плагин Media Sync:</strong> «Плагины → Добавить новый → Media Sync».</li>
+        <li><strong>Активируйте плагин.</strong></li>
+        <li><strong>Подключитесь к сайту по FTP</strong> через FileZilla.</li>
+        <li><strong>Перейдите в папку</strong> <code>/wp-content/uploads/</code>.</li>
+        <li><strong>Создайте папку для новой партии файлов</strong>, например <code>2026/10/batch-1/</code>.</li>
+        <li><strong>Загрузите все файлы в эту папку</strong> через FTP (перетащите из левой панели в правую).</li>
+        <li><strong>Вернитесь в админку WordPress.</strong></li>
+        <li><strong>Перейдите в «Медиафайлы → Media Sync».</strong></li>
+        <li><strong>Нажмите «Scan» (Сканировать).</strong> Плагин покажет все файлы в папке uploads, которых нет в медиатеке.</li>
+        <li><strong>Выберите файлы для импорта</strong> (или нажмите «Select All»).</li>
+        <li><strong>Нажмите «Import Selected» (Импортировать выбранные).</strong></li>
+        <li><strong>Дождитесь завершения.</strong> Файлы появятся в медиатеке.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Преимущества Media Sync:</strong>
+        <ul>
+            <li>Показывает, какие файлы уже импортированы (не создаёт дубликатов).</li>
+            <li>Пропускает миниатюры и сгенерированные WordPress файлы.</li>
+            <li>Работает с большими объёмами.</li>
+            <li>Бесплатный и активно обновляется.</li>
+        </ul>
+    </div>
+
+    <h3>Плагин Add From Server Reloaded — для больших файлов</h3>
+
+    <p><strong>Add From Server Reloaded</strong> — более мощный плагин. Он позволяет загружать файлы любого размера (видео 4K, RAW-фото, большие PDF) без изменения настроек PHP.</p>
+
+    <ol class="steps">
+        <li><strong>Установите и активируйте</strong> плагин.</li>
+        <li><strong>Загрузите файлы по FTP</strong> в любую папку на сервере.</li>
+        <li><strong>В админке перейдите в «Медиафайлы → Add From Server».</strong></li>
+        <li><strong>Укажите корневую папку</strong> для сканирования.</li>
+        <li><strong>Выберите файлы или папки</strong> для импорта.</li>
+        <li><strong>Нажмите «Import».</strong> Плагин автоматически зарегистрирует файлы в медиатеке.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Add From Server Reloaded имеет защиту от опасных файлов (PHP, EXE) и защиту от directory traversal. Тем не менее, загружайте только те файлы, которые действительно являются медиафайлами (изображения, видео, PDF).
+    </div>
+
+    <h2>8.3 Способ 2: WP-CLI — самый быстрый и мощный</h2>
+
+    <p><strong>WP-CLI</strong> — это командная строка WordPress. Через неё можно загрузить сотни файлов одной командой. Это самый эффективный способ для больших объёмов.</p>
+
+    <h3>Что такое WP-CLI</h3>
+
+    <p>WP-CLI — это PHP-скрипт, который позволяет управлять WordPress из терминала. Он работает через SSH-подключение к серверу. Команда <code>wp media import</code> импортирует файлы в медиатеку.</p>
+
+    <h3>Установка WP-CLI</h3>
+
+    <p>WP-CLI обычно предустановлен на многих хостингах. Проверить просто:</p>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp --info</span>
+<span class="output">OS:     Linux ...
+Shell:  /bin/bash
+PHP binary:     /usr/bin/php
+PHP version:    8.1.2
+...</span>
+    </div>
+
+    <p>Если WP-CLI не установлен, его можно установить вручную:</p>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar</span>
+<span class="prompt">$</span> <span class="command">chmod +x wp-cli.phar</span>
+<span class="prompt">$</span> <span class="command">sudo mv wp-cli.phar /usr/local/bin/wp</span>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Для Windows:</strong> WP-CLI можно использовать через Git Bash или WSL (Windows Subsystem for Linux). Также есть возможность установить через Composer.
+    </div>
+
+    <h3>Базовые команды для загрузки файлов</h3>
+
+    <h4>Загрузка одного файла</h4>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp media import /path/to/image.jpg --title="Моё изображение" --alt="Описание"</span>
+    </div>
+
+    <h4>Загрузка всех JPG из папки</h4>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp media import /path/to/images/*.jpg --title="Bulk Upload"</span>
+    </div>
+
+    <p>Эта команда загрузит все JPG-файлы из указанной папки в медиатеку и присвоит им заголовок «Bulk Upload».</p>
+
+    <h4>Загрузка с привязкой к записи</h4>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp media import /path/to/image.jpg --post_id=123 --featured_image</span>
+    </div>
+
+    <p>Файл будет загружен и назначен как избранное изображение для записи с ID 123.</p>
+
+    <h4>Загрузка по URL</h4>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp media import https://example.com/image.jpg --title="Remote Image"</span>
+    </div>
+
+    <h4>Загрузка из CSV с метаданными</h4>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">while IFS=',' read -r filepath title alt caption; do</span>
+<span class="prompt">$</span> <span class="command">  wp media import "$filepath" --title="$title" --alt="$alt" --caption="$caption"</span>
+<span class="prompt">$</span> <span class="command">done < images.csv</span>
+    </div>
+
+    <p>Этот скрипт читает CSV-файл с путями и метаданными и загружает каждый файл с указанными заголовком, alt-текстом и подписью.</p>
+
+    <h3>Восстановление миниатюр после импорта</h3>
+
+    <p>Если вы загружали файлы через FTP и зарегистрировали их в медиатеке, WordPress может не создать миниатюры. Для их генерации используйте команду:</p>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp media regenerate --yes</span>
+<span class="output">Found 3 images to regenerate.
+1/3 Regenerated thumbnails for "Sydney Harbor Bridge" (ID 760).
+2/3 Regenerated thumbnails for "Boardwalk" (ID 757).
+3/3 Regenerated thumbnails for "Sunburst Over River" (ID 756).
+Success: Regenerated 3 of 3 images.</span>
+    </div>
+
+    <p>Команда <code>wp media regenerate</code> пересоздаёт все размеры изображений на основе настроек темы.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Перед использованием WP-CLI убедитесь, что вы находитесь в директории WordPress. Используйте флаг <code>--path=/path/to/wordpress</code>, если команда запускается из другой папки.
+    </div>
+
+    <h2>8.4 Способ 3: Импорт из Google Диска</h2>
+
+    <p>Если ваши изображения хранятся в Google Диске, их можно импортировать прямо в медиатеку WordPress без скачивания на компьютер.</p>
+
+    <h3>Плагин Michael Cloud Image Auto Importer</h3>
+
+    <p>Этот плагин подключается к Google Диску и импортирует изображения массово. Он поддерживает два метода аутентификации: облачный (через Cloudflare Worker) и традиционный (через Google API).</p>
+
+    <h3>Ключевые возможности</h3>
+
+    <ul>
+        <li><strong>Массовый импорт папок:</strong> выбрать целую папку и импортировать все изображения сразу.</li>
+        <li><strong>Обнаружение дубликатов:</strong> MD5-хеширование пропускает уже импортированные файлы.</li>
+        <li><strong>Автоматический alt-текст:</strong> генерируется из имени файла (например, <code>cat.jpg</code> → «Cat»).</li>
+        <li><strong>Сжатие изображений:</strong> опциональное сжатие JPEG/PNG/WebP с контролем качества.</li>
+        <li><strong>Прогресс в реальном времени:</strong> полоса прогресса и статистика.</li>
+    </ul>
+
+    <h3>Пошаговая инструкция (метод Cloudflare Worker)</h3>
+
+    <ol class="steps">
+        <li><strong>Установите плагин:</strong> «Плагины → Добавить новый → Michael Cloud Image Auto Importer».</li>
+        <li><strong>Активируйте.</strong></li>
+        <li><strong>Перейдите в настройки плагина.</strong></li>
+        <li><strong>Нажмите «Connect Google Drive».</strong></li>
+        <li><strong>Авторизуйте свой аккаунт Google.</strong> Плагин использует Cloudflare Worker — API-ключи не нужны!</li>
+        <li><strong>Вставьте ссылку на папку Google Диска.</strong></li>
+        <li><strong>Нажмите «Start Import».</strong></li>
+        <li><strong>Дождитесь завершения.</strong> Изображения появятся в медиатеке.</li>
+    </ol>
+
+    <h3>Плагин KFX Media Importer for Google Drive</h3>
+
+    <p>Альтернативный плагин с похожим функционалом. Использует Google Picker и требует собственные Google API-credentials.</p>
+
+    <h2>8.5 Способ 4: ZIP-архив + плагин</h2>
+
+    <p>Если у вас уже есть все файлы на компьютере, самый простой способ — упаковать их в ZIP-архив и загрузить через специальный плагин.</p>
+
+    <h3>Плагин Nifa Bulk Media Uploader</h3>
+
+    <p><strong>Nifa Bulk Media Uploader</strong> позволяет загружать ZIP-архивы с изображениями и видео. Плагин автоматически распаковывает архив и добавляет все файлы в медиатеку.</p>
+
+    <h3>Возможности</h3>
+
+    <ul>
+        <li><strong>Массовая загрузка:</strong> все файлы из ZIP-архива.</li>
+        <li><strong>Drag & Drop интерфейс:</strong> удобная загрузка.</li>
+        <li><strong>Отслеживание прогресса:</strong> в реальном времени.</li>
+        <li><strong>Настройки:</strong> максимальный размер файла, разрешённые типы, пакетная обработка.</li>
+    </ul>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Упакуйте все файлы в ZIP-архив</strong> на компьютере.</li>
+        <li><strong>Установите плагин</strong> Nifa Bulk Media Uploader.</li>
+        <li><strong>Активируйте.</strong></li>
+        <li><strong>Перейдите в «Bulk Media Uploader» в админ-меню.</strong></li>
+        <li><strong>Перетащите ZIP-файл</strong> в зону загрузки или нажмите для выбора.</li>
+        <li><strong>Нажмите «Upload and Process».</strong></li>
+        <li><strong>Дождитесь завершения.</strong> Все файлы из архива появятся в медиатеке.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Альтернатива:</strong> Плагин <strong>MediaNest Upload Manager</strong> — ещё один вариант для пакетной загрузки. Работает аналогично.
+    </div>
+
+    <h2>8.6 Способ 5: Плагин External Files in Media Library</h2>
+
+    <p><strong>External Files in Media Library</strong> — мощный плагин для подключения внешних источников файлов. Он поддерживает AWS S3, Dropbox, Google Drive, Google Cloud Storage, FTP, локальный хостинг и другие источники.</p>
+
+    <h3>Ключевые возможности</h3>
+
+    <ul>
+        <li><strong>Подключение внешних источников:</strong> FTP, SFTP, Google Drive, Dropbox, S3.</li>
+        <li><strong>Массовый импорт:</strong> импорт целых директорий через FTP/SFTP.</li>
+        <li><strong>Автоматическая синхронизация:</strong>定期 обновление внешних папок.</li>
+        <li><strong>Поддержка WP-CLI:</strong> для больших директорий.</li>
+        <li><strong>REST API:</strong> управление через API.</li>
+    </ul>
+
+    <h3>Поддерживаемые протоколы</h3>
+
+    <p>Плагин поддерживает следующие TCP-протоколы: HTTP, HTTPS, FTP, FTPS, SFTP, SSH, FILE.</p>
+
+    <h2>8.7 Практический пример: загрузка 500 фотографий товаров</h2>
+
+    <p><strong>Ситуация:</strong> Интернет-магазин получил новую партию из 500 товаров. Каждый товар — одна фотография. Нужно загрузить все фото в медиатеку.</p>
+
+    <h3>Решение через WP-CLI (рекомендуется)</h3>
+
+    <ol class="steps">
+        <li><strong>Подготовьте папку с фотографиями</strong> на компьютере.</li>
+        <li><strong>Загрузите папку на сервер по SFTP</strong> в директорию <code>/home/user/photos/</code>.</li>
+        <li><strong>Подключитесь к серверу по SSH.</strong></li>
+        <li><strong>Перейдите в директорию WordPress:</strong> <code>cd /var/www/html</code>.</li>
+        <li><strong>Выполните команду импорта:</strong></li>
+    </ol>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp media import /home/user/photos/*.jpg --title="Товар" --alt="Фото товара"</span>
+<span class="output">Success: Imported 500 of 500 items.</span>
+    </div>
+
+    <p>Все 500 фотографий загружены за одну команду. Время выполнения — 1–2 минуты.</p>
+
+    <h3>Решение через FTP + Media Sync (если нет SSH)</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Создайте папку</strong> <code>/wp-content/uploads/2026/10/products/</code>.</li>
+        <li><strong>Загрузите все 500 фото</strong> в эту папку (перетаскиванием).</li>
+        <li><strong>В админке перейдите в «Медиафайлы → Media Sync».</strong></li>
+        <li><strong>Нажмите «Scan».</strong> Плагин найдёт все 500 файлов.</li>
+        <li><strong>Нажмите «Select All» → «Import Selected».</strong></li>
+        <li><strong>Дождитесь завершения.</strong> Все файлы зарегистрированы.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> 500 фотографий загружены за 10–15 минут вместо 4–5 часов ручной работы.
+    </div>
+
+    <h2>8.8 Практический пример: массовое обновление alt-текста через WP-CLI</h2>
+
+    <p><strong>Ситуация:</strong> У вас 300 изображений в медиатеке, и всем нужно добавить alt-текст для SEO.</p>
+
+    <h3>Решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к серверу по SSH.</strong></li>
+        <li><strong>Создайте CSV-файл с ID и alt-текстом:</strong></li>
+    </ol>
+
+    <pre>ID,alt
+760,Сиднейский мост
+757,Набережная
+756,Закат над рекой</pre>
+
+    <ol class="steps" start="3">
+        <li><strong>Выполните команду для обновления каждого изображения:</strong></li>
+    </ol>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">while IFS=',' read -r id alt; do</span>
+<span class="prompt">$</span> <span class="command">  wp post meta update "$id" _wp_attachment_image_alt "$alt"</span>
+<span class="prompt">$</span> <span class="command">done < alt-texts.csv</span>
+    </div>
+
+    <p>Все alt-тексты обновлены одной командой.</p>
+
+    <h2>8.9 Решение типичных проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Файлы загружены по FTP, но не видны в медиатеке</td>
+            <td>Они не зарегистрированы в базе данных</td>
+            <td>Используйте Media Sync или Add From Server для регистрации</td>
+        </tr>
+        <tr>
+            <td>WP-CLI не найден</td>
+            <td>Не установлен или не в PATH</td>
+            <td>Установите WP-CLI через curl или обратитесь в поддержку хостинга</td>
+        </tr>
+        <tr>
+            <td>Ошибка «Image resize failed»</td>
+            <td>Недостаточно памяти PHP</td>
+            <td>Увеличьте memory_limit в php.ini или wp-config.php</td>
+        </tr>
+        <tr>
+            <td>ZIP-архив не загружается</td>
+            <td>Превышен лимит загрузки хостинга</td>
+            <td>Увеличьте upload_max_filesize или используйте FTP</td>
+        </tr>
+        <tr>
+            <td>Google Drive не подключается</td>
+            <td>Проблемы с аутентификацией</td>
+            <td>Используйте метод Cloudflare Worker (без API-ключей) или проверьте Google API credentials</td>
+        </tr>
+        <tr>
+            <td>Дубликаты изображений</td>
+            <td>Файлы импортированы дважды</td>
+            <td>Используйте плагины с обнаружением дубликатов (Michael Cloud, Add From Server)</td>
+        </tr>
+        <tr>
+            <td>Миниатюры не созданы</td>
+            <td>WordPress не обработал изображения</td>
+            <td>Выполните <code>wp media regenerate --yes</code></td>
+        </tr>
+        <tr>
+            <td>Скрипт WP-CLI «зависает» на большом количестве файлов</td>
+            <td>Таймаут выполнения</td>
+            <td>Разбейте импорт на партии по 100 файлов</td>
+        </tr>
+    </table>
+
+    <h2>8.10 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Подготовка</strong><br>
+        1. Сделайте резервную копию сайта.<br>
+        2. Подготовьте 5–10 тестовых изображений на компьютере.<br>
+        3. Упакуйте их в ZIP-архив.<br><br>
+        <strong>Часть 2: Загрузка через FTP + Media Sync</strong><br>
+        4. Подключитесь к сайту по FTP.<br>
+        5. Создайте папку <code>/wp-content/uploads/test-batch/</code>.<br>
+        6. Загрузите изображения в эту папку.<br>
+        7. Установите плагин Media Sync.<br>
+        8. Перейдите в «Медиафайлы → Media Sync».<br>
+        9. Нажмите «Scan» — найдите загруженные файлы.<br>
+        10. Импортируйте их в медиатеку.<br>
+        11. Проверьте, что файлы появились в «Медиафайлы → Библиотека».<br><br>
+        <strong>Часть 3: ZIP-загрузка через Nifa Bulk Media Uploader</strong><br>
+        12. Установите плагин Nifa Bulk Media Uploader.<br>
+        13. Перейдите в «Bulk Media Uploader».<br>
+        14. Загрузите ZIP-архив.<br>
+        15. Дождитесь завершения.<br>
+        16. Проверьте, что файлы появились в медиатеке.<br><br>
+        <strong>Часть 4: WP-CLI (если есть SSH)</strong><br>
+        17. Подключитесь к серверу по SSH.<br>
+        18. Проверьте, установлен ли WP-CLI: <code>wp --info</code>.<br>
+        19. Загрузите тестовые изображения на сервер по SFTP.<br>
+        20. Выполните команду: <code>wp media import /path/to/images/*.jpg --title="Test"</code>.<br>
+        21. Проверьте медиатеку.<br>
+        22. Выполните <code>wp media regenerate --yes</code> для создания миниатюр.<br><br>
+        <strong>Часть 5: Google Drive (опционально)</strong><br>
+        23. Установите Michael Cloud Image Auto Importer.<br>
+        24. Подключите Google Drive.<br>
+        25. Импортируйте папку с изображениями.<br>
+        26. Проверьте, что alt-текст сгенерировался автоматически.<br><br>
+        <strong>Часть 6: Финальная проверка</strong><br>
+        27. Проверьте, что все файлы в медиатеке.<br>
+        28. Проверьте, что миниатюры созданы.<br>
+        29. Убедитесь, что сайт работает корректно.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Пять способов пакетной загрузки файлов; работу с Media Sync и Add From Server; установку и использование WP-CLI; команды <code>wp media import</code> и <code>wp media regenerate</code>; импорт из Google Диска через Michael Cloud; ZIP-загрузку через Nifa Bulk Media Uploader; плагин External Files in Media Library; решение типичных проблем.
+    </div>
+
+    <h2>8.11 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Какой способ самый быстрый?</strong> WP-CLI. Одна команда загружает сотни файлов за секунды. Для 1000+ файлов это единственный разумный вариант.</li>
+        <li><strong>Что делать, если хостинг не поддерживает SSH?</strong> Используйте FTP + Media Sync или ZIP-архив через плагин. Эти способы работают на любом хостинге.</li>
+        <li><strong>Можно ли загружать файлы через Google Диск без API-ключей?</strong> Да, плагин Michael Cloud Image Auto Importer использует Cloudflare Worker — API-ключи не нужны.</li>
+        <li><strong>Почему файлы по FTP не видны в медиатеке?</strong> Потому что WordPress не знает о них. Нужно зарегистрировать их через плагин (Media Sync, Add From Server).</li>
+        <li><strong>Как избежать дубликатов при импорте?</strong> Используйте плагины с обнаружением дубликатов: Michael Cloud, Add From Server Reloaded, Media Sync.</li>
+        <li><strong>Что делать, если миниатюры не создались?</strong> Выполните <code>wp media regenerate --yes</code> или используйте плагин Regenerate Thumbnails.</li>
+        <li><strong>Можно ли загружать видео через WP-CLI?</strong> Да, <code>wp media import</code> работает с любыми типами файлов: изображения, видео, PDF, аудио.</li>
+        <li><strong>Сколько файлов можно загрузить за один раз?</strong> Через WP-CLI — неограниченно. Через ZIP — зависит от лимита памяти и размера архива. Через FTP — неограниченно, но медленнее.</li>
+        <li><strong>Что делать, если скрипт WP-CLI прерывается на середине?</strong> Разбейте импорт на партии по 50–100 файлов. Например: <code>wp media import /path/batch1/*.jpg</code>.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>резервное копирование</strong> — как правильно сохранить файлы и базу данных сайта, чтобы в случае сбоя восстановить его за минуты. Вы узнаете, какие плагины использовать, как делать ручные бэкапы и как хранить копии в облаке. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter9.html" class="button">📖 Перейти к девятой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

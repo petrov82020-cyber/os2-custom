@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 7: Правка файлов темы и дочерние темы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        pre .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        pre .keyword {
+            color: #c792ea;
+        }
+        pre .string {
+            color: #c3e88d;
+        }
+        pre .function {
+            color: #82aaff;
+        }
+        pre .variable {
+            color: #f78c6c;
+        }
+        pre .tag {
+            color: #c792ea;
+        }
+        pre .attr {
+            color: #82aaff;
+        }
+        pre .value {
+            color: #c3e88d;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .file-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .file-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .file-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .file-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .file-card ul {
+            margin: 10px 0 0 18px;
+            font-size: 0.88em;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .folder-tree {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .folder-tree .folder {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        .folder-tree .file {
+            color: #f8f8f2;
+        }
+        .folder-tree .important {
+            color: #facc15;
+            font-weight: bold;
+        }
+        .folder-tree .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .file-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .folder-tree { font-size: 0.75em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 7: Правка файлов темы и дочерние темы</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить безопасную работу с файлами темы и создать дочернюю тему для сохранения правок</div>
+
+    <p>Мы подошли к одному из самых важных навыков курса. До сих пор мы работали с CSS через «Дополнительные стили» — это безопасно, но ограниченно. Для более глубокой кастомизации нужно уметь <strong>править файлы темы</strong>: добавлять функции, подключать скрипты, изменять шаблоны. Но есть проблема: любые правки в файлах темы исчезнут при её обновлении. Решение — <strong>дочерняя тема</strong>. В этой главе мы разберём оба аспекта.</p>
+
+    <div class="info-box">
+        <strong>💡 Главная проблема, которую решает эта глава:</strong><br>
+        Вы добавили свою функцию в <code>functions.php</code> темы. Через месяц вышло обновление — тема обновилась, и все ваши правки исчезли. Это происходит потому, что WordPress <strong>полностью заменяет</strong> папку темы при обновлении. Дочерняя тема решает эту проблему: все ваши изменения хранятся отдельно и не затрагиваются при обновлении родительской темы.
+    </div>
+
+    <h2>7.1 Какие файлы темы можно править</h2>
+
+    <p>Не все файлы темы одинаковы. Некоторые предназначены для правки, другие — лучше не трогать. Разберём основные.</p>
+
+    <div class="file-grid">
+        <div class="file-card">
+            <div class="icon">⚙️</div>
+            <strong>functions.php</strong>
+            <span>«Мозг» темы. Здесь добавляют собственные функции, подключают скрипты и стили, регистрируют меню и виджеты. <strong>Основной файл для правки.</strong></span>
+        </div>
+        <div class="file-card">
+            <div class="icon">🎨</div>
+            <strong>style.css</strong>
+            <span>Основной файл стилей темы. Содержит информацию о теме (название, автор, версия) и CSS-правила. Правят осторожно.</span>
+        </div>
+        <div class="file-card">
+            <div class="icon">🧩</div>
+            <strong>theme.json</strong>
+            <span>Конфигурация глобальных стилей для блочных тем. Здесь задаются цвета, шрифты, макет. Используется для тонкой настройки FSE.</span>
+        </div>
+        <div class="file-card">
+            <div class="icon">📄</div>
+            <strong>Шаблоны (index.php, page.php, single.php)</strong>
+            <span>Структура страниц. Правят, чтобы изменить вывод контента. <strong>Не рекомендуется</strong> — используйте Редактор сайта.</span>
+        </div>
+        <div class="file-card">
+            <div class="icon">🔧</div>
+            <strong>inc/ или includes/</strong>
+            <span>Дополнительные PHP-файлы темы. Обычно содержат вспомогательные функции. Не рекомендуется править напрямую.</span>
+        </div>
+        <div class="file-card">
+            <div class="icon">📁</div>
+            <strong>templates/ и parts/</strong>
+            <span>HTML-шаблоны для блочных тем. Правятся через Site Editor, а не через FTP. Прямая правка не рекомендуется.</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Главное правило:</strong><br>
+        <strong>Никогда не правьте файлы темы напрямую</strong> — ни через FTP, ни через редактор WordPress. Любые изменения исчезнут при обновлении темы. Для правок используйте <strong>дочернюю тему</strong>. Единственное исключение — если вы уверены, что тема больше не будет обновляться (например, кастомная тема под конкретный проект).
+    </div>
+
+    <h2>7.2 Что такое functions.php и зачем он нужен</h2>
+
+    <p><code>functions.php</code> — это файл, который WordPress автоматически загружает при запуске темы. Он работает как «плагин темы»: здесь добавляют функции, которые изменяют поведение WordPress.</p>
+
+    <h3>Что можно делать через functions.php</h3>
+
+    <ul>
+        <li><strong>Подключать стили и скрипты:</strong> свои CSS и JS-файлы.</li>
+        <li><strong>Регистрировать меню:</strong> создавать места для навигации.</li>
+        <li><strong>Регистрировать виджеты:</strong> создавать области для виджетов.</li>
+        <li><strong>Добавлять поддержку функций:</strong> миниатюры, форматы записей, логотип.</li>
+        <li><strong>Изменять поведение WordPress:</strong> убирать лишние скрипты, менять админку, добавлять счётчики аналитики.</li>
+        <li><strong>Создавать шорткоды:</strong> собственные шорткоды для вставки контента.</li>
+        <li><strong>Добавлять пользовательские функции:</strong> любые PHP-функции для сайта.</li>
+    </ul>
+
+    <h3>Пример простой функции</h3>
+
+    <p>Вот типичный пример: функция, которая добавляет собственный CSS-файл к теме.</p>
+
+    <pre><span class="keyword">&lt;?php</span>
+<span class="comment">// Подключаем собственный CSS-файл</span>
+<span class="keyword">function</span> <span class="function">my_theme_styles</span>() {
+    <span class="function">wp_enqueue_style</span>(
+        <span class="string">'my-custom-styles'</span>,
+        <span class="function">get_stylesheet_directory_uri</span>() . <span class="string">'/css/custom.css'</span>,
+        <span class="keyword">array</span>(),
+        <span class="string">'1.0.0'</span>
+    );
+}
+<span class="function">add_action</span>(<span class="string">'wp_enqueue_scripts'</span>, <span class="string">'my_theme_styles'</span>);</pre>
+
+    <p>Эта функция подключает файл <code>custom.css</code> из папки <code>css/</code> вашей темы. WordPress сам вставит его в <code>&lt;head&gt;</code> сайта.</p>
+
+    <div class="info-box">
+        <strong>💡 Синтаксис PHP:</strong><br>
+        <ul>
+            <li>PHP-код начинается с <code>&lt;?php</code> и заканчивается <code>?&gt;</code> (закрывающий тег можно не ставить в конце файла).</li>
+            <li>Функции объявляются через <code>function имя() { ... }</code>.</li>
+            <li>Переменные начинаются с <code>$</code>: <code>$variable</code>.</li>
+            <li>Строки в кавычках: <code>'текст'</code> или <code>"текст"</code>.</li>
+            <li>Массивы: <code>array('значение1', 'значение2')</code>.</li>
+            <li>Точка с запятой обязательна в конце каждой строки.</li>
+        </ul>
+    </div>
+
+    <h2>7.3 Создание дочерней темы — пошаговая инструкция</h2>
+
+    <p>Дочерняя тема (Child Theme) — это тема, которая наследует все функции родительской темы, но позволяет безопасно добавлять свои правки. При обновлении родительской темы ваши изменения сохраняются.</p>
+
+    <h3>Как работает дочерняя тема</h3>
+
+    <div class="compare-grid">
+        <div class="compare-card bad">
+            <h4>❌ Правка родительской темы</h4>
+            <ul>
+                <li>Изменения в файлах темы</li>
+                <li>При обновлении темы — всё исчезает</li>
+                <li>Нужно каждый раз восстанавливать правки</li>
+                <li>Нет разделения между оригиналом и вашими изменениями</li>
+            </ul>
+        </div>
+        <div class="compare-card good">
+            <h4>✅ Дочерняя тема</h4>
+            <ul>
+                <li>Изменения в отдельной папке</li>
+                <li>При обновлении родительской темы — всё сохраняется</li>
+                <li>Один раз настроили — работает всегда</li>
+                <li>Чёткое разделение: родительская тема + ваши правки</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Что нужно для создания дочерней темы</h3>
+
+    <p>Дочерняя тема состоит минимум из двух файлов:</p>
+
+    <div class="folder-tree">
+<span class="folder">📁 my-child-theme/</span> <span class="comment">← папка дочерней темы</span>
+│
+├── <span class="file important">📄 style.css</span> <span class="comment">← обязательный файл с информацией о теме</span>
+└── <span class="file important">📄 functions.php</span> <span class="comment">← файл для ваших функций</span>
+    </div>
+
+    <h3>Пошаговое создание дочерней темы</h3>
+
+    <h4>Шаг 1: Узнайте имя папки родительской темы</h4>
+
+    <ol class="steps">
+        <li><strong>Откройте «Внешний вид → Темы».</strong></li>
+        <li><strong>Посмотрите, какая тема активна.</strong> Например, Twenty Twenty-Five.</li>
+        <li><strong>Определите имя папки.</strong> Обычно это <code>twentytwentyfive</code> (без пробелов и дефисов). Проверить можно через FTP: папка <code>/wp-content/themes/twentytwentyfive/</code>.</li>
+    </ol>
+
+    <h4>Шаг 2: Создайте папку дочерней темы</h4>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Перейдите в</strong> <code>/wp-content/themes/</code>.</li>
+        <li><strong>Создайте новую папку.</strong> Назовите её, например, <code>twentytwentyfive-child</code> (имя родительской темы + <code>-child</code>).</li>
+    </ol>
+
+    <h4>Шаг 3: Создайте файл style.css</h4>
+
+    <ol class="steps">
+        <li><strong>Откройте папку дочерней темы.</strong></li>
+        <li><strong>Создайте файл</strong> <code>style.css</code>.</li>
+        <li><strong>Откройте его в редакторе кода и вставьте:</strong></li>
+    </ol>
+
+    <pre><span class="comment">/*
+Theme Name: Twenty Twenty-Five Child
+Theme URI: https://ваш_сайт.ru/
+Description: Дочерняя тема для Twenty Twenty-Five
+Author: Ваше имя
+Author URI: https://ваш_сайт.ru/
+Template: twentytwentyfive
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentytwentyfive-child
+*/</span>
+
+<span class="comment">/* Здесь ваши собственные CSS-правила */</span></pre>
+
+    <div class="warning-box">
+        <strong>⚠️ Критически важно:</strong> Строка <code>Template: twentytwentyfive</code> должна содержать <strong>точное имя папки родительской темы</strong> (без пробелов и заглавных букв). Если имя указано неверно, дочерняя тема не активируется.
+    </div>
+
+    <h4>Шаг 4: Создайте файл functions.php</h4>
+
+    <ol class="steps">
+        <li><strong>В той же папке создайте файл</strong> <code>functions.php</code>.</li>
+        <li><strong>Вставьте следующий код:</strong></li>
+    </ol>
+
+    <pre><span class="keyword">&lt;?php</span>
+<span class="comment">/**
+ * Функции дочерней темы Twenty Twenty-Five Child
+ */</span>
+
+<span class="comment">// Подключаем стили родительской темы</span>
+<span class="keyword">function</span> <span class="function">twentytwentyfive_child_enqueue_styles</span>() {
+    <span class="function">wp_enqueue_style</span>(
+        <span class="string">'parent-style'</span>,
+        <span class="function">get_template_directory_uri</span>() . <span class="string">'/style.css'</span>
+    );
+    <span class="function">wp_enqueue_style</span>(
+        <span class="string">'child-style'</span>,
+        <span class="function">get_stylesheet_directory_uri</span>() . <span class="string">'/style.css'</span>,
+        <span class="keyword">array</span>(<span class="string">'parent-style'</span>),
+        <span class="string">'1.0.0'</span>
+    );
+}
+<span class="function">add_action</span>(<span class="string">'wp_enqueue_scripts'</span>, <span class="string">'twentytwentyfive_child_enqueue_styles'</span>);</pre>
+
+    <h4>Шаг 5: Активируйте дочернюю тему</h4>
+
+    <ol class="steps">
+        <li><strong>Вернитесь в админку WordPress.</strong></li>
+        <li><strong>Перейдите в «Внешний вид → Темы».</strong></li>
+        <li><strong>Найдите дочернюю тему.</strong> Она должна появиться в списке.</li>
+        <li><strong>Нажмите «Активировать».</strong></li>
+        <li><strong>Проверьте сайт.</strong> Он должен выглядеть так же, как с родительской темой.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> Дочерняя тема создана и активирована. Теперь все правки в <code>functions.php</code> и <code>style.css</code> дочерней темы сохранятся при обновлении родительской темы.
+    </div>
+
+    <h2>7.4 Добавление собственных функций в дочернюю тему</h2>
+
+    <p>Теперь, когда дочерняя тема создана, вы можете безопасно добавлять в неё свои функции. Разберём несколько практических примеров.</p>
+
+    <h3>Пример 1: Добавление счётчика Яндекс.Метрики</h3>
+
+    <p>Вставьте этот код в <code>functions.php</code> дочерней темы, заменив номер счётчика на свой.</p>
+
+    <pre><span class="comment">// Добавляем счётчик Яндекс.Метрики в футер сайта</span>
+<span class="keyword">function</span> <span class="function">add_yandex_metrika</span>() {
+    <span class="keyword">?&gt;</span>
+    <span class="comment">&lt;!-- Yandex.Metrika counter --&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attr">type</span>=<span class="value">"text/javascript"</span><span class="tag">&gt;</span>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j &lt; document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(12345678, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    <span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;noscript&gt;&lt;div&gt;&lt;img</span> <span class="attr">src</span>=<span class="value">"https://mc.yandex.ru/watch/12345678"</span> <span class="attr">style</span>=<span class="value">"position:absolute; left:-9999px;"</span> <span class="attr">alt</span>=<span class="value">""</span> <span class="tag">/&gt;&lt;/div&gt;&lt;/noscript&gt;</span>
+    <span class="comment">&lt;!-- /Yandex.Metrika counter --&gt;</span>
+    <span class="keyword">&lt;?php</span>
+}
+<span class="function">add_action</span>(<span class="string">'wp_footer'</span>, <span class="string">'add_yandex_metrika'</span>);</pre>
+
+    <h3>Пример 2: Собственный шорткод</h3>
+
+    <p>Шорткод — это короткий код, который вы вставляете в контент, и он превращается в HTML. Например, <code>[my_button]</code> может выводить стилизованную кнопку.</p>
+
+    <pre><span class="comment">// Создаём шорткод [my_button]</span>
+<span class="keyword">function</span> <span class="function">my_button_shortcode</span>(<span class="variable">$atts</span>) {
+    <span class="variable">$atts</span> = <span class="function">shortcode_atts</span>(<span class="keyword">array</span>(
+        <span class="string">'text'</span> => <span class="string">'Нажми меня'</span>,
+        <span class="string">'url'</span>  => <span class="string">'#'</span>,
+        <span class="string">'color'</span> => <span class="string">'#0969da'</span>
+    ), <span class="variable">$atts</span>);
+
+    <span class="keyword">return</span> <span class="string">'&lt;a href="'</span> . <span class="function">esc_url</span>(<span class="variable">$atts</span>[<span class="string">'url'</span>]) . <span class="string">'" class="my-shortcode-button" style="background-color:'</span> . <span class="function">esc_attr</span>(<span class="variable">$atts</span>[<span class="string">'color'</span>]) . <span class="string">'"&gt;'</span>
+        . <span class="function">esc_html</span>(<span class="variable">$atts</span>[<span class="string">'text'</span>])
+        . <span class="string">'&lt;/a&gt;'</span>;
+}
+<span class="function">add_shortcode</span>(<span class="string">'my_button'</span>, <span class="string">'my_button_shortcode'</span>);</pre>
+
+    <p>Использование в контенте:</p>
+
+    <pre>[my_button text="Купить" url="/shop" color="#f97316"]</pre>
+
+    <h3>Пример 3: Отключение лишних функций WordPress</h3>
+
+    <pre><span class="comment">// Отключаем эмодзи (ускоряет загрузку)</span>
+<span class="keyword">function</span> <span class="function">disable_emojis</span>() {
+    <span class="function">remove_action</span>(<span class="string">'wp_head'</span>, <span class="string">'print_emoji_detection_script'</span>, 7);
+    <span class="function">remove_action</span>(<span class="string">'wp_print_styles'</span>, <span class="string">'print_emoji_styles'</span>);
+}
+<span class="function">add_action</span>(<span class="string">'init'</span>, <span class="string">'disable_emojis'</span>);
+
+<span class="comment">// Убираем версию WordPress из кода (безопасность)</span>
+<span class="function">remove_action</span>(<span class="string">'wp_head'</span>, <span class="string">'wp_generator'</span>);
+
+<span class="comment">// Отключаем XML-RPC (защита от брутфорса)</span>
+<span class="function">add_filter</span>(<span class="string">'xmlrpc_enabled'</span>, <span class="string">'__return_false'</span>);</pre>
+
+    <div class="info-box">
+        <strong>💡 Как добавлять код в functions.php:</strong><br>
+        <ul>
+            <li>Всегда вставляйте код <strong>в конец файла</strong>, перед закрывающим тегом <code>?&gt;</code> (если он есть).</li>
+            <li>Не удаляйте существующий код — только добавляйте.</li>
+            <li>Каждую функцию предваряйте комментарием — что она делает.</li>
+            <li>После добавления кода проверьте сайт: если «белый экран» — восстановите файл.</li>
+        </ul>
+    </div>
+
+    <h2>7.5 Добавление собственных стилей в дочернюю тему</h2>
+
+    <p>Помимо «Дополнительных CSS», вы можете добавлять стили в <code>style.css</code> дочерней темы. Это удобно для больших проектов.</p>
+
+    <h3>Как это работает</h3>
+
+    <p>В <code>functions.php</code> дочерней темы мы подключаем два файла стилей: родительский и дочерний. Браузер загружает оба — и правила дочернего файла «перебивают» правила родительского (если у них одинаковая специфичность).</p>
+
+    <h3>Пример: переопределение стилей</h3>
+
+    <pre><span class="comment">/* В файле style.css дочерней темы */</span>
+
+<span class="comment">/* Изменяем цвет всех кнопок */</span>
+<span class="selector">.wp-block-button__link</span> {
+    <span class="property">background-color</span>: <span class="value">#f97316</span> <span class="important">!important</span>;
+    <span class="property">border-radius</span>: <span class="value">30px</span>;
+    <span class="property">padding</span>: <span class="value">15px 40px</span>;
+}
+
+<span class="comment">/* Меняем шрифт заголовков */</span>
+<span class="selector">h1, h2, h3</span> {
+    <span class="property">font-family</span>: <span class="value">'Montserrat', sans-serif</span>;
+    <span class="property">font-weight</span>: <span class="value">800</span>;
+}
+
+<span class="comment">/* Стилизуем определённый блок на главной */</span>
+<span class="selector">.home .hero-section</span> {
+    <span class="property">background</span>: <span class="value">linear-gradient(135deg, #0969da, #f97316)</span>;
+    <span class="property">padding</span>: <span class="value">100px 20px</span>;
+}</pre>
+
+    <h3>Подключение дополнительных CSS-файлов</h3>
+
+    <p>Если CSS-кода много, его удобно разбить на файлы. Создайте папку <code>css/</code> в дочерней теме и подключайте файлы через <code>functions.php</code>.</p>
+
+    <pre><span class="keyword">function</span> <span class="function">my_child_enqueue_custom_styles</span>() {
+    <span class="comment">// Основной файл дочерней темы</span>
+    <span class="function">wp_enqueue_style</span>(
+        <span class="string">'child-main'</span>,
+        <span class="function">get_stylesheet_directory_uri</span>() . <span class="string">'/css/main.css'</span>,
+        <span class="keyword">array</span>(<span class="string">'parent-style'</span>),
+        <span class="string">'1.0.0'</span>
+    );
+
+    <span class="comment">// Стили для отдельных страниц</span>
+    <span class="keyword">if</span> (<span class="function">is_front_page</span>()) {
+        <span class="function">wp_enqueue_style</span>(
+            <span class="string">'home-styles'</span>,
+            <span class="function">get_stylesheet_directory_uri</span>() . <span class="string">'/css/home.css'</span>,
+            <span class="keyword">array</span>(<span class="string">'child-main'</span>),
+            <span class="string">'1.0.0'</span>
+        );
+    }
+}
+<span class="function">add_action</span>(<span class="string">'wp_enqueue_scripts'</span>, <span class="string">'my_child_enqueue_custom_styles'</span>);</pre>
+
+    <h2>7.6 Практический пример: создаём дочернюю тему с нуля</h2>
+
+    <p>Давайте закрепим теорию практикой. Пройдём весь путь создания дочерней темы.</p>
+
+    <h3>Задача</h3>
+    <ul>
+        <li>Активная тема: Twenty Twenty-Five (<code>twentytwentyfive</code>).</li>
+        <li>Создать дочернюю тему <code>twentytwentyfive-child</code>.</li>
+        <li>Добавить кастомный стиль для кнопок.</li>
+        <li>Добавить функцию, которая убирает эмодзи.</li>
+    </ul>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Перейдите в папку</strong> <code>/wp-content/themes/</code>.</li>
+        <li><strong>Создайте папку</strong> <code>twentytwentyfive-child</code>.</li>
+        <li><strong>Создайте файл</strong> <code>style.css</code> с заголовком:</li>
+    </ol>
+
+    <pre><span class="comment">/*
+Theme Name: Twenty Twenty-Five Child
+Template: twentytwentyfive
+Version: 1.0.0
+*/</span>
+
+<span class="comment">/* Кастомные стили для кнопок */</span>
+<span class="selector">.wp-block-button__link</span> {
+    <span class="property">background-color</span>: <span class="value">#f97316</span> <span class="important">!important</span>;
+    <span class="property">border-radius</span>: <span class="value">30px</span>;
+    <span class="property">padding</span>: <span class="value">15px 35px</span>;
+    <span class="property">font-weight</span>: <span class="value">700</span>;
+    <span class="property">transition</span>: <span class="value">all 0.3s ease</span>;
+}
+
+<span class="selector">.wp-block-button__link:hover</span> {
+    <span class="property">background-color</span>: <span class="value">#ea580c</span> <span class="important">!important</span>;
+    <span class="property">transform</span>: <span class="value">translateY(-3px)</span>;
+    <span class="property">box-shadow</span>: <span class="value">0 6px 20px rgba(249,115,22,0.4)</span>;
+}</pre>
+
+    <ol class="steps" start="5">
+        <li><strong>Создайте файл</strong> <code>functions.php</code>:</li>
+    </ol>
+
+    <pre><span class="keyword">&lt;?php</span>
+<span class="comment">// Подключаем стили родительской и дочерней темы</span>
+<span class="keyword">function</span> <span class="function">child_enqueue_styles</span>() {
+    <span class="function">wp_enqueue_style</span>(
+        <span class="string">'parent-style'</span>,
+        <span class="function">get_template_directory_uri</span>() . <span class="string">'/style.css'</span>
+    );
+    <span class="function">wp_enqueue_style</span>(
+        <span class="string">'child-style'</span>,
+        <span class="function">get_stylesheet_directory_uri</span>() . <span class="string">'/style.css'</span>,
+        <span class="keyword">array</span>(<span class="string">'parent-style'</span>),
+        <span class="string">'1.0.0'</span>
+    );
+}
+<span class="function">add_action</span>(<span class="string">'wp_enqueue_scripts'</span>, <span class="string">'child_enqueue_styles'</span>);
+
+<span class="comment">// Отключаем эмодзи</span>
+<span class="keyword">function</span> <span class="function">disable_emojis</span>() {
+    <span class="function">remove_action</span>(<span class="string">'wp_head'</span>, <span class="string">'print_emoji_detection_script'</span>, 7);
+    <span class="function">remove_action</span>(<span class="string">'wp_print_styles'</span>, <span class="string">'print_emoji_styles'</span>);
+}
+<span class="function">add_action</span>(<span class="string">'init'</span>, <span class="string">'disable_emojis'</span>);</pre>
+
+    <ol class="steps" start="6">
+        <li><strong>Сохраните файлы.</strong></li>
+        <li><strong>Вернитесь в админку WordPress.</strong></li>
+        <li><strong>Перейдите в «Внешний вид → Темы».</strong></li>
+        <li><strong>Активируйте дочернюю тему.</strong></li>
+        <li><strong>Проверьте сайт.</strong> Кнопки стали оранжевыми, эмодзи отключены.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> Дочерняя тема создана и работает. Теперь при обновлении Twenty Twenty-Five все ваши правки сохранятся.
+    </div>
+
+    <h2>7.7 Что делать, если сайт «упал» после правки функций</h2>
+
+    <p>Ошибка в <code>functions.php</code> — самая частая причина «белого экрана». Разберём, что делать.</p>
+
+    <h3>Диагностика</h3>
+
+    <ol class="steps">
+        <li><strong>Не паникуйте.</strong> Ошибка в одной строке — не потеря всего сайта.</li>
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>Перейдите в папку активной темы</strong> (дочерней).</li>
+        <li><strong>Скачайте файл</strong> <code>functions.php</code> на компьютер.</li>
+        <li><strong>Откройте в редакторе кода</strong> (VS Code).</li>
+        <li><strong>Проверьте:</strong> парность фигурных скобок <code>{ }</code>, точки с запятой, закрывающие теги.</li>
+    </ol>
+
+    <h3>Быстрое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Через FTP переименуйте папку активной темы:</strong> <code>my-child-theme</code> → <code>my-child-theme_off</code>.</li>
+        <li><strong>WordPress автоматически активирует родительскую тему.</strong> Сайт заработает.</li>
+        <li><strong>Верните имя папки обратно:</strong> <code>my-child-theme_off</code> → <code>my-child-theme</code>.</li>
+        <li><strong>Исправьте ошибку в</strong> <code>functions.php</code> локально.</li>
+        <li><strong>Загрузите исправленный файл на сервер.</strong></li>
+        <li><strong>Активируйте дочернюю тему заново.</strong></li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важное правило:</strong><br>
+        Перед правкой <code>functions.php</code> <strong>всегда</strong> скачивайте его копию на компьютер. Если что-то пойдёт не так — просто вернёте файл через FTP.
+    </div>
+
+    <h2>7.8 Решение типичных проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Дочерняя тема не появляется в списке</td>
+            <td>Неверный <code>Template</code> в style.css</td>
+            <td>Проверьте точное имя папки родительской темы</td>
+        </tr>
+        <tr>
+            <td>Стили дочерней темы не применяются</td>
+            <td>Не подключены в functions.php</td>
+            <td>Добавьте <code>wp_enqueue_style</code> в functions.php дочерней темы</td>
+        </tr>
+        <tr>
+            <td>Белый экран после правки functions.php</td>
+            <td>Синтаксическая ошибка</td>
+            <td>Восстановите файл из бэкапа через FTP</td>
+        </tr>
+        <tr>
+            <td>Дочерняя тема наследует не все функции</td>
+            <td>Некоторые функции родительской темы вызываются через файлы, а не через actions</td>
+            <td>Скопируйте нужные файлы из родительской темы в дочернюю</td>
+        </tr>
+        <tr>
+            <td>Изменения не видны на сайте</td>
+            <td>Кэш браузера или сайта</td>
+            <td>Очистите кэш (Ctrl+F5)</td>
+        </tr>
+        <tr>
+            <td>Ошибка «The package could not be installed»</td>
+            <td>Нет прав на запись в папку</td>
+            <td>Установите права 755 на папку <code>themes</code></td>
+        </tr>
+        <tr>
+            <td>После активации дочерней темы пропали настройки</td>
+            <td>Настройки темы сохранены для родительской темы</td>
+            <td>Это нормально — дочерняя тема использует настройки родительской</td>
+        </tr>
+        <tr>
+            <td>Не работает <code>wp_enqueue_style</code></td>
+            <td>Опечатка в имени функции или файла</td>
+            <td>Проверьте путь к файлу и правильность имени</td>
+        </tr>
+    </table>
+
+    <h2>7.9 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Подготовка</strong><br>
+        1. Сделайте резервную копию сайта.<br>
+        2. Подключитесь к сайту по FTP.<br>
+        3. Определите точное имя папки активной темы.<br><br>
+        <strong>Часть 2: Создание дочерней темы</strong><br>
+        4. Создайте папку <code>ваша-тема-child</code> в <code>/wp-content/themes/</code>.<br>
+        5. Создайте файл <code>style.css</code> с заголовком темы.<br>
+        6. Убедитесь, что строка <code>Template:</code> содержит точное имя родительской темы.<br>
+        7. Создайте файл <code>functions.php</code>.<br>
+        8. Добавьте в него подключение стилей родительской и дочерней темы.<br>
+        9. Сохраните файлы.<br><br>
+        <strong>Часть 3: Активация</strong><br>
+        10. Откройте «Внешний вид → Темы».<br>
+        11. Найдите дочернюю тему.<br>
+        12. Активируйте её.<br>
+        13. Проверьте сайт — он должен выглядеть как прежде.<br><br>
+        <strong>Часть 4: Добавление стилей</strong><br>
+        14. Откройте <code>style.css</code> дочерней темы.<br>
+        15. Добавьте правило: все ссылки — <code>#16a34a</code>, без подчёркивания.<br>
+        16. Добавьте правило: при наведении — подчёркивание.<br>
+        17. Сохраните и загрузите на сервер.<br>
+        18. Проверьте сайт — ссылки должны измениться.<br><br>
+        <strong>Часть 5: Добавление функции</strong><br>
+        19. Откройте <code>functions.php</code> дочерней темы.<br>
+        20. Добавьте функцию отключения эмодзи.<br>
+        21. Сохраните и загрузите на сервер.<br>
+        22. Проверьте исходный код страницы — эмодзи-скрипты должны исчезнуть.<br><br>
+        <strong>Часть 6: Шорткод</strong><br>
+        23. Добавьте в <code>functions.php</code> шорткод <code>[my_button]</code>.<br>
+        24. Сохраните.<br>
+        25. Создайте новую страницу.<br>
+        26. Вставьте в контент <code>[my_button text="Тест" url="/"]</code>.<br>
+        27. Опубликуйте и проверьте.<br><br>
+        <strong>Часть 7: Финальная проверка</strong><br>
+        28. Проверьте, что все изменения сохранены.<br>
+        29. Убедитесь, что сайт работает корректно.<br>
+        30. Проверьте на компьютере и телефоне.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Какие файлы темы можно править и какие нельзя; что такое <code>functions.php</code> и зачем он нужен; создание дочерней темы с нуля; подключение стилей родительской и дочерней темы; добавление собственных функций (счётчик метрики, шорткод, отключение эмодзи); добавление CSS в дочернюю тему; восстановление сайта после ошибки в functions.php; решение типичных проблем.
+    </div>
+
+    <h2>7.10 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Обязательно ли создавать дочернюю тему?</strong> Если вы собираетесь править файлы темы (functions.php, style.css) — да, обязательно. Если используете только «Дополнительные CSS» — можно обойтись без неё.</li>
+        <li><strong>Что будет, если удалить дочернюю тему?</strong> Сайт вернётся к родительской теме. Все правки в дочерней теме исчезнут вместе с ней.</li>
+        <li><strong>Можно ли использовать дочернюю тему с классической темой?</strong> Да, принцип тот же. Разница только в структуре файлов.</li>
+        <li><strong>Нужно ли копировать все файлы родительской темы в дочернюю?</strong> Нет, только те, которые вы хотите изменить. Остальные наследуются автоматически.</li>
+        <li><strong>Как узнать, какие функции есть в functions.php родительской темы?</strong> Откройте файл через FTP или редактор. Прочитайте код, найдите функции и их назначение.</li>
+        <li><strong>Что делать, если я не знаю PHP?</strong> Начните с готовых примеров из этой главы. Копируйте код, меняйте значения. Со временем вы освоите базовый синтаксис.</li>
+        <li><strong>Можно ли добавить в дочернюю тему шаблоны страниц?</strong> Да, создайте файл с именем, соответствующим шаблону (например, <code>page-contacts.php</code>), и WordPress будет использовать его для страницы с соответствующим slug.</li>
+        <li><strong>Как проверить, что дочерняя тема работает?</strong> Активируйте её и проверьте, что сайт отображается корректно. Посмотрите в исходном коде страницы, что подключается <code>style.css</code> дочерней темы.</li>
+        <li><strong>Что делать, если после активации дочерней темы пропали стили?</strong> Проверьте, что в <code>functions.php</code> подключены оба файла: родительский <code>style.css</code> и дочерний.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>пакетную загрузку файлов</strong> — массовый импорт изображений через FTP, WP-CLI, Google Диск и специальные плагины. Вы узнаете, как загрузить сотни файлов за один раз, не тратя часы на ручную работу. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter8.html" class="button">📖 Перейти к восьмой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 9: Резервное копирование — файлы, база данных, полный бэкап</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        pre .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        pre .keyword {
+            color: #c792ea;
+        }
+        pre .string {
+            color: #c3e88d;
+        }
+        pre .variable {
+            color: #f78c6c;
+        }
+        pre .output {
+            color: #8b949e;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .method-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+        }
+        .method-card.recommended {
+            border: 2px solid #16a34a;
+            background: #f0fdf4;
+        }
+        .method-card .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #16a34a;
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .method-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .method-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .method-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .method-card ul {
+            margin: 10px 0 0 18px;
+            font-size: 0.88em;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .terminal {
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+            line-height: 1.7;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .terminal .prompt {
+            color: #7ee787;
+        }
+        .terminal .command {
+            color: #f8f8f2;
+        }
+        .terminal .output {
+            color: #8b949e;
+        }
+        .backup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .backup-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .backup-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .backup-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .backup-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .backup-card ul {
+            margin: 10px 0 0 18px;
+            font-size: 0.88em;
+        }
+        .folder-tree {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .folder-tree .folder {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        .folder-tree .file {
+            color: #f8f8f2;
+        }
+        .folder-tree .important {
+            color: #facc15;
+            font-weight: bold;
+        }
+        .folder-tree .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .method-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .backup-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .folder-tree { font-size: 0.75em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 9: Резервное копирование — файлы, база данных, полный бэкап</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить все способы резервного копирования сайта WordPress и научиться хранить бэкапы правильно</div>
+
+    <p>Мы подошли к одной из самых важных глав курса. <strong>Резервное копирование</strong> — это ваша страховка от любых катастроф: взлома, сбоя хостинга, ошибки в коде, случайного удаления файлов, неудачного обновления. Без бэкапа любая проблема превращается в трагедию. С бэкапом — в 15-минутную операцию восстановления. В этой главе мы разберём все способы сохранения сайта и правила хранения копий.</p>
+
+    <div class="info-box">
+        <strong>💡 Золотое правило веб-мастера:</strong><br>
+        <em>«Нет бэкапа — нет изменений».</em> Никогда не начинайте правку кода, обновление темы, установку плагина или любой другой рискованный шаг, если у вас нет свежей резервной копии. Это правило спасло тысячи сайтов.
+    </div>
+
+    <h2>9.1 Что входит в резервную копию WordPress</h2>
+
+    <p>Резервная копия WordPress состоит из <strong>двух частей</strong>, и обе критически важны. Многие новички копируют только файлы или только базу данных — и потом не могут восстановить сайт.</p>
+
+    <div class="compare-grid">
+        <div class="compare-card good">
+            <h4>📁 Файлы сайта</h4>
+            <p>Всё, что лежит в папке <code>wp-content/</code>, плюс <code>wp-config.php</code> и <code>.htaccess</code>.</p>
+            <ul>
+                <li><strong>themes/</strong> — установленные темы</li>
+                <li><strong>plugins/</strong> — установленные плагины</li>
+                <li><strong>uploads/</strong> — все медиафайлы (изображения, видео, PDF)</li>
+                <li><strong>mu-plugins/</strong> — обязательные плагины</li>
+                <li><strong>wp-config.php</strong> — настройки подключения к БД</li>
+                <li><strong>.htaccess</strong> — правила сервера</li>
+            </ul>
+        </div>
+        <div class="compare-card good">
+            <h4>🗄️ База данных</h4>
+            <p>Вся информация о контенте и настройках сайта, хранящаяся в MySQL.</p>
+            <ul>
+                <li><strong>Записи и страницы</strong> — весь текстовый контент</li>
+                <li><strong>Пользователи</strong> — логины, пароли, роли</li>
+                <li><strong>Настройки</strong> — параметры сайта, темы, плагинов</li>
+                <li><strong>Комментарии</strong> — все отзывы и обсуждения</li>
+                <li><strong>Метаданные</strong> — связи, таксономии, произвольные поля</li>
+                <li><strong>Меню и виджеты</strong> — структура навигации</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Критически важно:</strong><br>
+        Файлы и база данных — это <strong>две неразрывные части</strong>. Восстановление только файлов без базы данных не даст результата — сайт будет пустым. Восстановление только базы без файлов — тоже (например, не будет изображений). <strong>Всегда копируйте и то, и другое.</strong>
+    </div>
+
+    <h2>9.2 Три способа резервного копирования</h2>
+
+    <p>Существуют три основных подхода к резервному копированию. Каждый имеет свои преимущества.</p>
+
+    <div class="method-grid">
+        <div class="method-card recommended">
+            <span class="badge">Рекомендуем</span>
+            <div class="icon">🔌</div>
+            <strong>Плагин (автоматически)</strong>
+            <span>Плагин создаёт и сохраняет бэкапы автоматически по расписанию. Идеально для регулярного резервного копирования.</span>
+            <ul>
+                <li>Автоматизация по расписанию</li>
+                <li>Сохранение в облако</li>
+                <li>Не требует технических знаний</li>
+                <li>Восстановление в один клик</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">📁</div>
+            <strong>Вручную через FTP и phpMyAdmin</strong>
+            <span>Скачиваем файлы по FTP и экспортируем базу данных через phpMyAdmin. Полный контроль, но требует ручной работы.</span>
+            <ul>
+                <li>Полный контроль над процессом</li>
+                <li>Работает без плагинов</li>
+                <li>Не зависит от хостинга</li>
+                <li>Трудоёмко, но надёжно</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">⌨️</div>
+            <strong>WP-CLI (для продвинутых)</strong>
+            <span>Командная строка для автоматизации. Мощно, но требует SSH-доступа и знаний.</span>
+            <ul>
+                <li>Максимальная скорость</li>
+                <li>Автоматизация через скрипты</li>
+                <li>Работает с большими сайтами</li>
+                <li>Требует SSH</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">🛡️</div>
+            <strong>Бэкапы хостинга</strong>
+            <span>Многие хостинги делают автоматические бэкапы. Проверьте в панели управления. Дополнительная страховка.</span>
+            <ul>
+                <li>Не требует усилий</li>
+                <li>Хранится на стороне хостинга</li>
+                <li>Обычно за последние 7–30 дней</li>
+                <li>Не всегда доступно на бесплатных тарифах</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Оптимальная стратегия:</strong><br>
+        Используйте <strong>комбинацию</strong>: плагин для ежедневных автоматических бэкапов + ручной полный бэкап перед крупными изменениями + бэкапы хостинга как последняя линия защиты. Три уровня — максимальная надёжность.
+    </div>
+
+    <h2>9.3 Способ 1: Плагины для резервного копирования</h2>
+
+    <p>Плагины — самый удобный способ. Они делают бэкапы автоматически и хранят их в облаке.</p>
+
+    <h3>UpdraftPlus — самый популярный плагин</h3>
+
+    <p><strong>UpdraftPlus</strong> — бесплатный плагин с миллионами установок. Он копирует файлы и базу данных, хранит копии в облаке (Google Drive, Dropbox, Яндекс.Диск, S3 и других).</p>
+
+    <h4>Установка и первичная настройка</h4>
+
+    <ol class="steps">
+        <li><strong>Установите плагин:</strong> «Плагины → Добавить новый → UpdraftPlus».</li>
+        <li><strong>Активируйте.</strong></li>
+        <li><strong>Перейдите в «Настройки → UpdraftPlus Backups».</strong></li>
+        <li><strong>Откройте вкладку «Настройки» (Settings).</strong></li>
+        <li><strong>Настройте расписание:</strong>
+            <ul>
+                <li><strong>Files backup schedule (Резервное копирование файлов):</strong> ежедневно или еженедельно.</li>
+                <li><strong>Database backup schedule (Резервное копирование БД):</strong> ежедневно или дважды в день.</li>
+            </ul>
+        </li>
+        <li><strong>Укажите количество хранимых копий:</strong> обычно 4–8.</li>
+        <li><strong>Выберите облачное хранилище:</strong> Google Drive, Dropbox, Яндекс.Диск, S3 и другие.</li>
+        <li><strong>Авторизуйтесь в выбранном облаке.</strong></li>
+        <li><strong>Нажмите «Сохранить изменения».</strong></li>
+    </ol>
+
+    <h4>Создание первого бэкапа вручную</h4>
+
+    <ol class="steps">
+        <li><strong>Откройте вкладку «Резервные копии / Восстановление» (Backup / Restore).</strong></li>
+        <li><strong>Нажмите большую кнопку «Резервное копирование сейчас» (Backup Now).</strong></li>
+        <li><strong>Отметьте галочки:</strong> «Файлы» и «База данных».</li>
+        <li><strong>Нажмите «Резервное копирование сейчас».</strong></li>
+        <li><strong>Дождитесь завершения.</strong> Прогресс-бар покажет процесс.</li>
+        <li><strong>Проверьте, что бэкап создан.</strong> Список существующих копий появится внизу страницы.</li>
+    </ol>
+
+    <h4>Восстановление из бэкапа</h4>
+
+    <ol class="steps">
+        <li><strong>Найдите нужный бэкап</strong> в списке на вкладке «Резервные копии / Восстановление».</li>
+        <li><strong>Нажмите кнопку «Восстановить» (Restore) рядом с ним.</strong></li>
+        <li><strong>Отметьте компоненты для восстановления:</strong> «Файлы» и «База данных».</li>
+        <li><strong>Нажмите «Восстановить».</strong></li>
+        <li><strong>Дождитесь завершения.</strong> Сайт вернётся к состоянию на момент бэкапа.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Преимущества UpdraftPlus:</strong>
+        <ul>
+            <li>Бесплатный и мощный.</li>
+            <li>Автоматические бэкапы по расписанию.</li>
+            <li>Сохранение в облако — не занимает место на хостинге.</li>
+            <li>Восстановление в один клик.</li>
+            <li>Возможность миграции на другой сайт.</li>
+        </ul>
+    </div>
+
+    <h3>Альтернативные плагины</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Плагин</th>
+            <th>Особенности</th>
+        </tr>
+        <tr>
+            <td>BackWPup</td>
+            <td>Бесплатный, мощный. Поддерживает Dropbox, S3, FTP. Хорош для больших сайтов.</td>
+        </tr>
+        <tr>
+            <td>Duplicator</td>
+            <td>Специализируется на миграции и клонировании. Создаёт пакет «установщик + архив».</td>
+        </tr>
+        <tr>
+            <td>All-in-One WP Migration</td>
+            <td>Простой плагин для миграции и бэкапа. Экспортирует весь сайт в один файл.</td>
+        </tr>
+        <tr>
+            <td>Jetpack Backup</td>
+            <td>От Automattic (создатели WordPress). Платный, но с реальным временем восстановления.</td>
+        </tr>
+    </table>
+
+    <h2>9.4 Способ 2: Ручное резервное копирование через FTP и phpMyAdmin</h2>
+
+    <p>Ручной способ даёт полный контроль. Вы точно знаете, что и где сохраняется. Идеален перед крупными изменениями.</p>
+
+    <h3>Часть 1: Копирование файлов через FTP</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP</strong> через FileZilla.</li>
+        <li><strong>На левой панели выберите папку на компьютере</strong> для сохранения копии. Например, <code>D:\Бэкапы\мой-сайт-2026-10-03\</code>.</li>
+        <li><strong>На правой панели перейдите в корень сайта</strong> (<code>public_html</code> или <code>www</code>).</li>
+        <li><strong>Выделите папку</strong> <code>wp-content</code>.</li>
+        <li><strong>Правый клик → «Скачать» (Download).</strong></li>
+        <li><strong>Дождитесь завершения.</strong> Папка скачается со всеми файлами (темы, плагины, загрузки).</li>
+        <li><strong>Скачайте также:</strong>
+            <ul>
+                <li><code>wp-config.php</code> — настройки БД.</li>
+                <li><code>.htaccess</code> — правила сервера.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Экономия времени:</strong> Если папка <code>wp-content</code> очень большая (много изображений), скачайте только <code>wp-content/themes/</code>, <code>wp-content/plugins/</code> и <code>wp-config.php</code>. Папку <code>uploads/</code> можно скачать отдельно через файловый менеджер хостинга.
+    </div>
+
+    <h3>Часть 2: Экспорт базы данных через phpMyAdmin</h3>
+
+    <ol class="steps">
+        <li><strong>Войдите в панель управления хостингом</strong> (cPanel, ISPmanager).</li>
+        <li><strong>Найдите раздел «Базы данных» → «phpMyAdmin».</strong></li>
+        <li><strong>Авторизуйтесь в phpMyAdmin</strong> — обычно автоматически.</li>
+        <li><strong>В левой панели выберите базу данных вашего сайта.</strong> Имя базы указано в <code>wp-config.php</code> в строке <code>DB_NAME</code>.</li>
+        <li><strong>Перейдите на вкладку «Экспорт» (Export).</strong></li>
+        <li><strong>Выберите метод экспорта:</strong> «Быстрый» (Quick) — подходит для большинства случаев.</li>
+        <li><strong>Формат:</strong> SQL.</li>
+        <li><strong>Нажмите «Экспорт» (Export).</strong></li>
+        <li><strong>Сохраните файл</strong> на компьютер. Название будет вида <code>имя_базы.sql</code>.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong><br>
+        Если база данных большая (более 100 МБ), экспорт через phpMyAdmin может прерваться из-за таймаута. В этом случае используйте плагин UpdraftPlus или WP-CLI.
+    </div>
+
+    <h3>Часть 3: Структура полной ручной резервной копии</h3>
+
+    <p>В итоге у вас должно получиться что-то такое:</p>
+
+    <div class="folder-tree">
+<span class="folder">📁 Бэкап-мой-сайт-2026-10-03/</span>
+│
+├── <span class="folder">📁 wp-content/</span> <span class="comment">← все файлы сайта</span>
+│   ├── <span class="folder">📁 themes/</span>
+│   ├── <span class="folder">📁 plugins/</span>
+│   ├── <span class="folder">📁 uploads/</span>
+│   └── ...
+├── <span class="file important">📄 wp-config.php</span> <span class="comment">← настройки БД</span>
+├── <span class="file important">📄 .htaccess</span> <span class="comment">← правила сервера</span>
+└── <span class="file important">📄 database.sql</span> <span class="comment">← дамп базы данных</span>
+    </div>
+
+    <h2>9.5 Способ 3: Резервное копирование через WP-CLI</h2>
+
+    <p>Для тех, у кого есть SSH-доступ, WP-CLI предоставляет мощные команды для создания бэкапов.</p>
+
+    <h3>Экспорт базы данных через WP-CLI</h3>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">cd /var/www/html</span>
+<span class="prompt">$</span> <span class="command">wp db export /home/user/backup-$(date +%Y%m%d).sql</span>
+<span class="output">Success: Exported to '/home/user/backup-20261003.sql'.</span>
+    </div>
+
+    <p>Команда создаёт дамп базы данных с датой в имени файла. Это удобно для серии бэкапов.</p>
+
+    <h3>Экспорт с gzip-сжатием</h3>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">wp db export --add-drop-table | gzip > /home/user/backup-$(date +%Y%m%d).sql.gz</span>
+    </div>
+
+    <p>Gzip-сжатие уменьшает размер дампа в 3–5 раз. Для больших баз данных это критично.</p>
+
+    <h3>Копирование файлов через tar</h3>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">tar -czf /home/user/files-$(date +%Y%m%d).tar.gz wp-content/ wp-config.php .htaccess</span>
+    </div>
+
+    <p>Создаёт архив с файлами сайта в формате tar.gz. Быстро и удобно.</p>
+
+    <h3>Автоматизация через cron</h3>
+
+    <p>Создайте скрипт <code>backup.sh</code>:</p>
+
+    <pre><span class="comment">#!/bin/bash</span>
+<span class="variable">DATE</span>=$(date +%Y%m%d)
+<span class="variable">BACKUP_DIR</span>=/home/user/backups
+
+<span class="comment"># Создаём папку если её нет</span>
+mkdir -p <span class="variable">$BACKUP_DIR</span>
+
+<span class="comment"># Экспорт базы данных</span>
+wp db export <span class="variable">$BACKUP_DIR</span>/db-<span class="variable">$DATE</span>.sql --path=/var/www/html
+
+<span class="comment"># Архив файлов</span>
+tar -czf <span class="variable">$BACKUP_DIR</span>/files-<span class="variable">$DATE</span>.tar.gz -C /var/www/html wp-content wp-config.php .htaccess
+
+<span class="comment"># Удаляем бэкапы старше 30 дней</span>
+find <span class="variable">$BACKUP_DIR</span> -type f -mtime +30 -delete</pre>
+
+    <p>Добавьте задание в cron:</p>
+
+    <div class="terminal">
+<span class="prompt">$</span> <span class="command">crontab -e</span>
+<span class="output">0 3 * * * /home/user/backup.sh</span>
+    </div>
+
+    <p>Теперь бэкап создаётся ежедневно в 3 часа ночи, а старые копии удаляются через 30 дней.</p>
+
+    <h2>9.6 Где хранить резервные копии</h2>
+
+    <p>Правильное хранение бэкапов — это половина успеха. Неправильное хранение может свести на нет все усилия.</p>
+
+    <div class="backup-grid">
+        <div class="backup-card">
+            <div class="icon">☁️</div>
+            <strong>Облачные хранилища</strong>
+            <span>Google Drive, Dropbox, Яндекс.Диск, Amazon S3, Backblaze B2. Идеальное решение: копии защищены от сбоя хостинга.</span>
+        </div>
+        <div class="backup-card">
+            <div class="icon">💾</div>
+            <strong>Внешний жёсткий диск</strong>
+            <span>Для локальных копий. Защищает от проблем с интернетом и облаком, но менее удобно.</span>
+        </div>
+        <div class="backup-card">
+            <div class="icon">🖥️</div>
+            <strong>Другой хостинг</strong>
+            <span>Хранение копий на другом сервере. Максимальная защита от каскадных сбоев.</span>
+        </div>
+        <div class="backup-card">
+            <div class="icon">📀</div>
+            <strong>Флешка или DVD</strong>
+            <span>Для долговременного архивирования. Устаревший, но надёжный способ.</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Не храните бэкап только на том же хостинге!</strong><br>
+        Если сервер выйдет из строя или его взломают, вы потеряете и сайт, и резервную копию. Всегда храните бэкап <strong>в другом месте</strong>. Идеально: 2–3 копии в разных местах (правило «3-2-1»: 3 копии, 2 носителя, 1 вне офиса).
+    </div>
+
+    <h3>Стратегия 3-2-1</h3>
+
+    <p>Классическая стратегия надёжного резервного копирования:</p>
+
+    <ul>
+        <li><strong>3 копии данных</strong> — минимум три экземпляра.</li>
+        <li><strong>2 разных носителя</strong> — например, сервер и облако.</li>
+        <li><strong>1 копия вне основного места</strong> — облако, внешний диск, другой сервер.</li>
+    </ul>
+
+    <h2>9.7 Как часто делать резервные копии</h2>
+
+    <p>Частота бэкапов зависит от активности сайта.</p>
+
+    <table class="settings-table">
+        <tr>
+            <th>Тип сайта</th>
+            <th>Частота бэкапов</th>
+            <th>Хранение</th>
+        </tr>
+        <tr>
+            <td>Личный блог</td>
+            <td>Раз в неделю</td>
+            <td>4 последние копии</td>
+        </tr>
+        <tr>
+            <td>Сайт-визитка</td>
+            <td>Раз в неделю + перед изменениями</td>
+            <td>4 копии</td>
+        </tr>
+        <tr>
+            <td>Интернет-магазин</td>
+            <td>Ежедневно</td>
+            <td>14 копий</td>
+        </tr>
+        <tr>
+            <td>Новостной портал</td>
+            <td>2 раза в день</td>
+            <td>30 копий</td>
+        </tr>
+        <tr>
+            <td>Корпоративный сайт</td>
+            <td>Ежедневно</td>
+            <td>14 копий</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Всегда делайте дополнительный бэкап перед:</strong>
+        <ul>
+            <li>Обновлением WordPress, темы или плагинов.</li>
+            <li>Установкой нового плагина.</li>
+            <li>Сменой темы.</li>
+            <li>Правкой кода в functions.php.</li>
+            <li>Изменением настроек постоянных ссылок.</li>
+            <li>Любыми экспериментами с сайтом.</li>
+        </ul>
+    </div>
+
+    <h2>9.8 Практический пример: полный бэкап перед обновлением WordPress</h2>
+
+    <p><strong>Ситуация:</strong> Вышло крупное обновление WordPress. Вы хотите обновиться, но боитесь, что что-то сломается.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Сделайте бэкап базы данных через phpMyAdmin:</strong>
+            <ul>
+                <li>Откройте phpMyAdmin.</li>
+                <li>Выберите базу данных сайта.</li>
+                <li>Вкладка «Экспорт» → «Быстрый» → SQL.</li>
+                <li>Нажмите «Экспорт» и сохраните файл.</li>
+            </ul>
+        </li>
+        <li><strong>Скачайте файлы через FTP:</strong>
+            <ul>
+                <li>Подключитесь к сайту.</li>
+                <li>Скачайте папку <code>wp-content</code>.</li>
+                <li>Скачайте <code>wp-config.php</code> и <code>.htaccess</code>.</li>
+            </ul>
+        </li>
+        <li><strong>Загрузите обе копии в облако:</strong>
+            <ul>
+                <li>Папку с файлами → Google Drive или Яндекс.Диск.</li>
+                <li>Дамп базы данных → туда же.</li>
+            </ul>
+        </li>
+        <li><strong>Запишите версию WordPress и список плагинов:</strong>
+            <ul>
+                <li>Текущая версия WordPress.</li>
+                <li>Список плагинов и их версии.</li>
+                <li>Название и версия темы.</li>
+            </ul>
+        </li>
+        <li><strong>Только теперь обновляйтесь.</strong></li>
+        <li><strong>Проверьте сайт.</strong> Если всё работает — отлично. Если что-то сломалось — восстановите из бэкапа.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> Даже если обновление сломает сайт, вы сможете вернуть его к рабочему состоянию за 15 минут.
+    </div>
+
+    <h2>9.9 Практический пример: автоматизация бэкапов через UpdraftPlus</h2>
+
+    <p><strong>Ситуация:</strong> Вы не хотите каждый раз делать бэкапы вручную. Настройте автоматизацию.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Установите UpdraftPlus.</strong></li>
+        <li><strong>Перейдите в «Настройки → UpdraftPlus Backups → Настройки».</strong></li>
+        <li><strong>Настройте расписание:</strong>
+            <ul>
+                <li><strong>Files backup schedule:</strong> Weekly (еженедельно).</li>
+                <li><strong>Database backup schedule:</strong> Daily (ежедневно).</li>
+                <li><strong>Retain files backups:</strong> 4 (хранить 4 копии).</li>
+                <li><strong>Retain database backups:</strong> 8 (хранить 8 копий).</li>
+            </ul>
+        </li>
+        <li><strong>Выберите облачное хранилище:</strong> Google Drive.</li>
+        <li><strong>Нажмите «Авторизоваться в Google Drive».</strong></li>
+        <li><strong>Выберите папку для сохранения бэкапов.</strong></li>
+        <li><strong>Сохраните настройки.</strong></li>
+        <li><strong>Нажмите «Резервное копирование сейчас»</strong> для создания первого бэкапа вручную.</li>
+        <li><strong>Убедитесь, что бэкап создался и загрузился в Google Drive.</strong></li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Что это даёт:</strong>
+        <ul>
+            <li>Ежедневно обновляется база данных.</li>
+            <li>Еженедельно обновляются файлы.</li>
+            <li>Хранятся 4 файловых и 8 БД-копий.</li>
+            <li>Все копии — в Google Drive (не на хостинге!).</li>
+            <li>Если сайт «упадёт» — восстановление в один клик.</li>
+        </ul>
+    </div>
+
+    <h2>9.10 Решение типичных проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>Бэкап не создаётся</td>
+            <td>Недостаточно памяти или места на хостинге</td>
+            <td>Увеличьте memory_limit, освободите место, используйте облако</td>
+        </tr>
+        <tr>
+            <td>Экспорт БД прерывается</td>
+            <td>База данных большая, лимит времени</td>
+            <td>Используйте WP-CLI или UpdraftPlus (не через phpMyAdmin)</td>
+        </tr>
+        <tr>
+            <td>Скачивание файлов по FTP прерывается</td>
+            <td>Нестабильный интернет или большой размер</td>
+            <td>Скачивайте папки по частям. Используйте архивы</td>
+        </tr>
+        <tr>
+            <td>Восстановление из бэкапа не работает</td>
+            <td>Архив повреждён или неполный</td>
+            <td>Проверьте целостность архива. Используйте другой бэкап</td>
+        </tr>
+        <tr>
+            <td>После восстановления сайт пустой</td>
+            <td>Восстановили только файлы или только БД</td>
+            <td>Восстановите обе части: файлы и базу данных</td>
+        </tr>
+        <tr>
+            <td>Сайт после восстановления показывает ошибку БД</td>
+            <td>Неверные данные в wp-config.php</td>
+            <td>Проверьте DB_NAME, DB_USER, DB_PASSWORD, DB_HOST</td>
+        </tr>
+        <tr>
+            <td>UpdraftPlus не подключается к Google Drive</td>
+            <td>Не авторизован аккаунт Google</td>
+            <td>Пройдите авторизацию заново. Проверьте права доступа</td>
+        </tr>
+        <tr>
+            <td>Не хватает места на хостинге из-за бэкапов</td>
+            <td>Бэкапы хранятся на сервере</td>
+            <td>Настройте удалённое хранение (облако). Удалите старые копии</td>
+        </tr>
+    </table>
+
+    <h2>9.11 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Ручной бэкап</strong><br>
+        1. Подключитесь к сайту по FTP.<br>
+        2. Создайте локальную папку для бэкапа с текущей датой.<br>
+        3. Скачайте папку <code>wp-content</code>.<br>
+        4. Скачайте файлы <code>wp-config.php</code> и <code>.htaccess</code>.<br>
+        5. Откройте phpMyAdmin.<br>
+        6. Найдите базу данных сайта (по имени в <code>wp-config.php</code>).<br>
+        7. Экспортируйте её в SQL-файл.<br>
+        8. Сохраните файл в папку бэкапа.<br><br>
+        <strong>Часть 2: Загрузка в облако</strong><br>
+        9. Откройте Google Drive или Яндекс.Диск.<br>
+        10. Создайте папку «Бэкапы сайта».<br>
+        11. Загрузите туда папку с файлами.<br>
+        12. Загрузите SQL-файл.<br>
+        13. Убедитесь, что все файлы загружены.<br><br>
+        <strong>Часть 3: Автоматизация через UpdraftPlus</strong><br>
+        14. Установите и активируйте UpdraftPlus.<br>
+        15. Перейдите в настройки плагина.<br>
+        16. Настройте расписание: файлы — еженедельно, БД — ежедневно.<br>
+        17. Подключите облачное хранилище.<br>
+        18. Сохраните настройки.<br>
+        19. Запустите бэкап вручную.<br>
+        20. Проверьте, что бэкап создан и загружен в облако.<br><br>
+        <strong>Часть 4: Бэкап через WP-CLI (если есть SSH)</strong><br>
+        21. Подключитесь к серверу по SSH.<br>
+        22. Перейдите в директорию WordPress.<br>
+        23. Выполните <code>wp db export backup.sql</code>.<br>
+        24. Проверьте, что файл создан.<br>
+        25. Выполните <code>tar -czf files.tar.gz wp-content</code>.<br>
+        26. Скачайте оба архива на компьютер.<br><br>
+        <strong>Часть 5: Проверка восстановления</strong><br>
+        27. Создайте тестовую страницу на сайте.<br>
+        28. Запомните её URL.<br>
+        29. Восстановите бэкап из UpdraftPlus (только БД).<br>
+        30. Проверьте, что тестовая страница исчезла.<br>
+        31. Восстановите бэкап полностью.<br>
+        32. Убедитесь, что сайт работает корректно.<br><br>
+        <strong>Часть 6: Финальная проверка</strong><br>
+        33. Убедитесь, что у вас есть минимум 2 бэкапа: на компьютере и в облаке.<br>
+        34. Проверьте, что оба содержат файлы и БД.<br>
+        35. Запишите дату последнего бэкапа — она должна быть сегодня.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Что входит в резервную копию WordPress; три способа бэкапа (плагины, ручной, WP-CLI); работу с UpdraftPlus; ручное копирование файлов через FTP; экспорт базы данных через phpMyAdmin; команды WP-CLI для экспорта БД и файлов; автоматизацию через cron; стратегию хранения 3-2-1; частоту бэкапов; практические примеры (бэкап перед обновлением, автоматизация); решение типичных проблем.
+    </div>
+
+    <h2>9.12 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Можно ли восстановить сайт без бэкапа?</strong> Иногда да, но это сложно и не всегда возможно. Например, если удалили файл — можно скачать оригинал из архива WordPress или репозитория темы. Если удалили запись — её можно восстановить из корзины WordPress или из ревизий. Но если сайт взломали или удалили базу данных — без бэкапа не обойтись.</li>
+        <li><strong>Сколько места занимает бэкап?</strong> Зависит от размера сайта. Блог: 100–500 МБ. Интернет-магазин: 1–10 ГБ. Большие порталы: десятки ГБ. Поэтому важно хранить бэкапы в облаке, а не на хостинге.</li>
+        <li><strong>Можно ли хранить бэкапы только на хостинге?</strong> Нет. Если хостинг выйдет из строя, вы потеряете и сайт, и бэкапы. Храните минимум 1 копию в другом месте.</li>
+        <li><strong>Сколько бэкапов хранить?</strong> Минимум 4. Оптимально 8–14. Это позволит откатиться на 1–2 недели назад.</li>
+        <li><strong>Что делать, если бэкап создаётся слишком долго?</strong> Разделите его на части: отдельно файлы, отдельно БД. Используйте gzip-сжатие. Уменьшите количество хранимых копий.</li>
+        <li><strong>Что важнее: файлы или база данных?</strong> Обе части равнозначны. Без файлов не будет изображений и стилей. Без БД не будет контента и настроек.</li>
+        <li><strong>Можно ли восстановить сайт из бэкапа хостинга?</strong> Да, обычно через панель управления. Но копии хостинга могут быть устаревшими (например, за последнюю ночь). Лучше иметь свои бэкапы.</li>
+        <li><strong>Как проверить, что бэкап рабочий?</strong> Восстановите его на тестовом сайте или поддомене. Если сайт работает — бэкап качественный. Делайте такую проверку раз в месяц.</li>
+        <li><strong>Что делать, если восстанавливаю бэкап, а сайт не работает?</strong> Проверьте: 1) все ли файлы восстановлены, 2) правильно ли импортирована БД, 3) совпадают ли данные в wp-config.php с новой БД. Если всё верно, но сайт не работает — обратитесь к специалисту.</li>
+        <li><strong>Как защитить бэкапы от хакеров?</strong> Храните копии вне сайта (облако, внешний диск). Не давайте публичного доступа к папке бэкапов. Используйте сложные пароли на облачных хранилищах.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей, заключительной главе курса мы разберём <strong>восстановление сайта после сбоя</strong> — пошаговый алгоритм действий, когда сайт «рухнул». Вы узнаете, как диагностировать проблему, восстановить файлы и базу данных, вернуть доступ к админке и предотвратить будущие сбои. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter10.html" class="button">📖 Перейти к десятой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

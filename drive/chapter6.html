@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 6: Дополнительные стили WordPress — Site Editor, классы, плагины</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        pre .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        pre .selector {
+            color: #c792ea;
+        }
+        pre .property {
+            color: #82aaff;
+        }
+        pre .value {
+            color: #f78c6c;
+        }
+        pre .important {
+            color: #facc15;
+            font-weight: bold;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .method-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+        }
+        .method-card.recommended {
+            border: 2px solid #16a34a;
+            background: #f0fdf4;
+        }
+        .method-card .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #16a34a;
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .method-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .method-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .method-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .method-card ul {
+            margin: 10px 0 0 18px;
+            font-size: 0.88em;
+        }
+        .demo-box {
+            background: #f9fafb;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .demo-box .title {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .demo-alert {
+            background: #fff8e6;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 0.92em;
+        }
+        .demo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+        .demo-card h4 {
+            margin-top: 0;
+            color: #0a2540;
+        }
+        .demo-card p {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .class-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .class-card code {
+            display: block;
+            background: #1e1e2e;
+            color: #c792ea;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 0.85em;
+        }
+        .class-card span {
+            font-size: 0.88em;
+            color: #5b6e8c;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .method-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .class-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 6: Дополнительные стили WordPress — Site Editor, классы, плагины</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~32 минуты | 🎯 Цель: освоить все способы добавления CSS в WordPress и научиться точечно стилизовать отдельные блоки</div>
+
+    <p>В предыдущей главе мы изучили CSS как язык. Теперь пришло время узнать, <strong>как именно применять CSS в WordPress</strong>. В системе есть несколько способов добавить свои стили — от встроенного редактора до плагинов. Мы разберём каждый способ, научимся создавать CSS-классы для отдельных блоков и применять стили точечно, не затрагивая остальной сайт.</p>
+
+    <div class="info-box">
+        <strong>💡 Главный принцип:</strong><br>
+        В WordPress есть <strong>глобальные стили</strong> (действуют на весь сайт) и <strong>точечные стили</strong> (действуют на конкретный блок). Глобальные стили мы настраиваем через Site Editor → Стили. Точечные — через CSS-классы, которые назначаются отдельным блокам. Понимание этой разницы — ключ к аккуратному дизайну.
+    </div>
+
+    <h2>6.1 Три способа добавления CSS в WordPress</h2>
+
+    <p>В WordPress существует три основных способа добавить собственные стили. Каждый имеет свои преимущества и подходит для разных задач.</p>
+
+    <div class="method-grid">
+        <div class="method-card recommended">
+            <span class="badge">Рекомендуем</span>
+            <div class="icon">🎨</div>
+            <strong>Дополнительные CSS в Site Editor</strong>
+            <span>Встроенный редактор для блочных тем. Изменения не затрагивают файлы темы, сохраняются при обновлении. Самый безопасный способ.</span>
+            <ul>
+                <li>Работает для всех блочных тем</li>
+                <li>Простой интерфейс</li>
+                <li>Мгновенный результат</li>
+                <li>Не требует FTP</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">📁</div>
+            <strong>Дочерняя тема</strong>
+            <span>Создание отдельной темы-наследника. Для продвинутых пользователей. Полный контроль, но сложнее в настройке.</span>
+            <ul>
+                <li>Полный контроль над CSS</li>
+                <li>Работает для любых тем</li>
+                <li>Требует FTP или файловый менеджер</li>
+                <li>Нужны базовые знания PHP</li>
+            </ul>
+        </div>
+        <div class="method-card">
+            <div class="icon">🔌</div>
+            <strong>Плагины для CSS</strong>
+            <span>Дополнительные плагины, добавляющие отдельную страницу для CSS. Удобно, если не хотите использовать Site Editor.</span>
+            <ul>
+                <li>Simple Custom CSS</li>
+                <li>WP Add Custom CSS</li>
+                <li>Code Snippets (для CSS+PHP)</li>
+                <li>Работает с любыми темами</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Какой способ выбрать:</strong><br>
+        Для блочных тем (Twenty Twenty-Five и другие) используйте <strong>«Дополнительные CSS»</strong> — это самый простой и безопасный путь. Для классических тем или если нужен полный контроль — создайте <strong>дочернюю тему</strong>. Если не хотите разбираться с Site Editor — установите <strong>плагин</strong>.
+    </div>
+
+    <h2>6.2 Дополнительные CSS в Site Editor — пошаговый разбор</h2>
+
+    <p>Это основной способ для блочных тем. Изменения применяются ко всему сайту, но не затрагивают файлы темы.</p>
+
+    <h3>Как открыть «Дополнительные CSS»</h3>
+
+    <ol class="steps">
+        <li><strong>Войдите в админ-панель WordPress.</strong></li>
+        <li><strong>Перейдите в «Внешний вид → Редактор».</strong> Откроется Редактор сайта (Site Editor).</li>
+        <li><strong>В левой панели нажмите на иконку «Стили»</strong> (чёрно-белый круг).</li>
+        <li><strong>Нажмите на три точки (⋮) рядом с заголовком «Стили».</strong></li>
+        <li><strong>В выпадающем меню выберите «Дополнительные CSS».</strong></li>
+        <li><strong>Откроется окно редактора CSS.</strong></li>
+    </ol>
+
+    <h3>Интерфейс редактора CSS</h3>
+
+    <p>Редактор «Дополнительные CSS» прост:</p>
+    <ul>
+        <li><strong>Текстовое поле</strong> — здесь вы пишете CSS-правила.</li>
+        <li><strong>Кнопка «Сохранить»</strong> внизу — сохраняет изменения.</li>
+        <li><strong>Живой предпросмотр</strong> — изменения применяются мгновенно, но без сохранения.</li>
+    </ul>
+
+    <h3>Практический пример: изменение цвета всех ссылок</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «Дополнительные CSS».</strong></li>
+        <li><strong>Введите код:</strong></li>
+    </ol>
+
+    <pre><span class="comment">/* Меняем цвет всех ссылок на сайте */</span>
+<span class="selector">a</span> {
+    <span class="property">color</span>: <span class="value">#0969da</span>;
+    <span class="property">text-decoration</span>: <span class="value">none</span>;
+    <span class="property">transition</span>: <span class="value">color 0.3s ease</span>;
+}
+
+<span class="selector">a:hover</span> {
+    <span class="property">color</span>: <span class="value">#0550ae</span>;
+    <span class="property">text-decoration</span>: <span class="value">underline</span>;
+}</pre>
+
+    <ol class="steps" start="3">
+        <li><strong>Нажмите «Сохранить».</strong></li>
+        <li><strong>Откройте сайт в новой вкладке.</strong> Все ссылки стали синими, при наведении — темнеют и подчёркиваются.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Готово!</strong> Вы добавили глобальные стили для ссылок. Это изменение применится ко всем ссылкам на сайте — в меню, тексте, кнопках.
+    </div>
+
+    <h2>6.3 Создание CSS-классов для отдельных блоков</h2>
+
+    <p>Глобальные стили — это мощно, но иногда нужно изменить только <strong>один конкретный блок</strong>, не затрагивая остальные. Для этого используются CSS-классы.</p>
+
+    <h3>Как это работает</h3>
+
+    <ol>
+        <li>Вы создаёте CSS-правило с классом в «Дополнительных CSS».</li>
+        <li>Затем назначаете этот класс конкретному блоку в редакторе.</li>
+        <li>Стиль применяется только к этому блоку.</li>
+    </ol>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <h4>Шаг 1: Создайте CSS-класс</h4>
+
+    <ol class="steps">
+        <li><strong>Откройте «Дополнительные CSS».</strong></li>
+        <li><strong>Добавьте правило с уникальным классом.</strong> Название класса должно начинаться с точки. Используйте латиницу, без пробелов.</li>
+    </ol>
+
+    <pre><span class="comment">/* Стиль для блока с предупреждением */</span>
+<span class="selector">.my-warning-box</span> {
+    <span class="property">background-color</span>: <span class="value">#fff3e3</span>;
+    <span class="property">border-left</span>: <span class="value">5px solid #f97316</span>;
+    <span class="property">padding</span>: <span class="value">20px 25px</span>;
+    <span class="property">border-radius</span>: <span class="value">12px</span>;
+    <span class="property">font-size</span>: <span class="value">16px</span>;
+    <span class="property">color</span>: <span class="value">#78350f</span>;
+}</pre>
+
+    <h4>Шаг 2: Назначьте класс блоку</h4>
+
+    <ol class="steps">
+        <li><strong>Откройте страницу в редакторе</strong> (Страницы → нужная страница).</li>
+        <li><strong>Выделите блок</strong>, к которому хотите применить стиль.</li>
+        <li><strong>В правой панели перейдите на вкладку «Дополнительно».</strong></li>
+        <li><strong>Найдите поле «Дополнительный CSS-класс(ы)».</strong></li>
+        <li><strong>Введите название класса без точки:</strong> <code>my-warning-box</code>.</li>
+        <li><strong>Нажмите «Обновить».</strong></li>
+        <li><strong>Откройте страницу на сайте</strong> — блок получил свой уникальный стиль.</li>
+    </ol>
+
+    <div class="demo-box">
+        <div class="title">Результат применения класса</div>
+        <div class="demo-alert">
+            <strong>⚠️ Внимание!</strong> Это пример блока с классом <code>my-warning-box</code>. Стиль применён только к этому блоку, остальные блоки не изменились.
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Преимущество классов:</strong><br>
+        Один и тот же класс можно назначить нескольким блокам. Например, создайте класс <code>.my-cta-block</code> и назначьте его всем призывам к действию на сайте. Изменение стиля в CSS автоматически обновит все эти блоки.
+    </div>
+
+    <h2>6.4 Популярные CSS-классы WordPress</h2>
+
+    <p>WordPress автоматически добавляет классы к большинству элементов. Знание этих классов помогает стилизовать блоки без создания собственных.</p>
+
+    <h3>Классы блоков Gutenberg</h3>
+
+    <div class="class-grid">
+        <div class="class-card">
+            <code>.wp-block-button</code>
+            <span>Контейнер кнопки</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-button__link</code>
+            <span>Сама кнопка (ссылка)</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-heading</code>
+            <span>Все заголовки в блоках</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-paragraph</code>
+            <span>Абзацы</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-image</code>
+            <span>Контейнер изображения</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-columns</code>
+            <span>Блок колонок</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-column</code>
+            <span>Отдельная колонка</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-group</code>
+            <span>Группа блоков</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-quote</code>
+            <span>Цитата</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-list</code>
+            <span>Списки</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-table</code>
+            <span>Таблицы</span>
+        </div>
+        <div class="class-card">
+            <code>.wp-block-cover</code>
+            <span>Обложка с фоном</span>
+        </div>
+    </div>
+
+    <h3>Классы темы</h3>
+
+    <div class="class-grid">
+        <div class="class-card">
+            <code>.site-header</code>
+            <span>Шапка сайта</span>
+        </div>
+        <div class="class-card">
+            <code>.site-footer</code>
+            <span>Подвал сайта</span>
+        </div>
+        <div class="class-card">
+            <code>.site-title</code>
+            <span>Название сайта</span>
+        </div>
+        <div class="class-card">
+            <code>.main-navigation</code>
+            <span>Главное меню</span>
+        </div>
+        <div class="class-card">
+            <code>.entry-content</code>
+            <span>Содержимое записи/страницы</span>
+        </div>
+        <div class="class-card">
+            <code>.entry-title</code>
+            <span>Заголовок записи</span>
+        </div>
+        <div class="class-card">
+            <code>.post-thumbnail</code>
+            <span>Миниатюра записи</span>
+        </div>
+        <div class="class-card">
+            <code>.sidebar</code>
+            <span>Боковая панель</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Классы тем могут отличаться в разных темах. Всегда проверяйте конкретный класс через инструменты разработчика (F12). Ищите элемент и копируйте его классы из HTML.
+    </div>
+
+    <h2>6.5 Использование инструментов разработчика для точной настройки</h2>
+
+    <p>Как узнать, какой класс у конкретного блока или какой стиль применяется к элементу? Ответ — <strong>инструменты разработчика (DevTools)</strong>. Мы уже кратко касались их в главе 5, теперь разберём подробно.</p>
+
+    <h3>Пошаговая инструкция</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте сайт в браузере</strong> (Chrome, Firefox, Edge).</li>
+        <li><strong>Нажмите <code>F12</code></strong> или правой кнопкой → «Исследовать элемент».</li>
+        <li><strong>Нажмите на иконку со стрелкой</strong> в левом верхнем углу панели (или <code>Ctrl+Shift+C</code>).</li>
+        <li><strong>Наведите курсор на нужный элемент</strong> — он подсветится синим.</li>
+        <li><strong>Кликните на элемент.</strong> В панели откроется его HTML-код.</li>
+        <li><strong>Изучите классы элемента.</strong> Они указаны в атрибуте <code>class="..."</code>. Например, <code>class="wp-block-button__link my-custom-btn"</code>.</li>
+        <li><strong>Справа (или снизу) во вкладке Styles</strong> вы увидите все CSS-правила, которые применяются к элементу. Здесь можно увидеть, какое правило «побеждает».</li>
+        <li><strong>Здесь же можно тестировать изменения:</strong> меняйте цвета, размеры, отступы — и сразу видите результат. Это не сохраняется на сайте, но помогает подобрать нужные значения.</li>
+    </ol>
+
+    <div class="info-box">
+        <strong>💡 Практический приём:</strong> Найдите элемент, который хотите стилизовать. Скопируйте его классы через DevTools. Вернитесь в «Дополнительные CSS». Напишите правило с этими классами. Сохраните. Проверьте результат на сайте.
+    </div>
+
+    <h3>Пример: находим и стилизуем конкретную кнопку</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте страницу с кнопкой.</strong></li>
+        <li><strong>F12 → выберите кнопку.</strong></li>
+        <li><strong>Видите HTML:</strong> <code>&lt;a class="wp-block-button__link has-background" style="background-color:#f97316"&gt;Купить&lt;/a&gt;</code>.</li>
+        <li><strong>Обратите внимание:</strong> у кнопки есть класс <code>has-background</code> и инлайн-стиль.</li>
+        <li><strong>В «Дополнительных CSS»</strong> создайте правило с более специфичным селектором:</li>
+    </ol>
+
+    <pre><span class="comment">/* Стилизуем кнопки с классом has-background */</span>
+<span class="selector">.wp-block-button__link.has-background</span> {
+    <span class="property">box-shadow</span>: <span class="value">0 4px 15px rgba(249,115,22,0.4)</span>;
+    <span class="property">transition</span>: <span class="value">transform 0.3s ease</span>;
+}
+
+<span class="selector">.wp-block-button__link.has-background:hover</span> {
+    <span class="property">transform</span>: <span class="value">translateY(-3px)</span>;
+}</pre>
+
+    <ol class="steps" start="6">
+        <li><strong>Сохраните.</strong></li>
+        <li><strong>Проверьте на сайте.</strong> Кнопки с этим классом «приподнимаются» при наведении.</li>
+    </ol>
+
+    <h2>6.6 Плагины для дополнительных CSS</h2>
+
+    <p>Если вы не хотите использовать Site Editor или работаете с классической темой, установите плагин для CSS. Вот лучшие варианты.</p>
+
+    <h3>Simple Custom CSS</h3>
+
+    <p>Простой и надёжный плагин. Добавляет отдельную страницу «Внешний вид → Простой CSS» с редактором кода.</p>
+
+    <ol class="steps">
+        <li><strong>Установите плагин:</strong> «Плагины → Добавить новый → Simple Custom CSS».</li>
+        <li><strong>Активируйте.</strong></li>
+        <li><strong>Перейдите в «Внешний вид → Простой CSS».</strong></li>
+        <li><strong>Введите CSS-правила.</strong></li>
+        <li><strong>Нажмите «Обновить простой CSS».</strong></li>
+    </ol>
+
+    <h3>WP Add Custom CSS</h3>
+
+    <p>Более функциональный плагин. Позволяет добавлять CSS для отдельных страниц и записей.</p>
+
+    <h3>Code Snippets</h3>
+
+    <p>Плагин для добавления не только CSS, но и PHP, JavaScript. Мощный инструмент для продвинутых пользователей.</p>
+
+    <div class="info-box">
+        <strong>💡 Когда использовать плагин, а когда — «Дополнительные CSS»:</strong><br>
+        Для блочных тем — «Дополнительные CSS» (проще, безопаснее). Для классических тем — плагин или дочерняя тема. Если нужно много CSS-кода и организация по страницам — плагин.
+    </div>
+
+    <h2>6.7 Практический пример: создаём блок с предупреждением</h2>
+
+    <p>Давайте соберём всё вместе. Создадим кастомный блок с предупреждением, который можно вставлять на разные страницы.</p>
+
+    <h3>Задача</h3>
+    <ul>
+        <li>Фон: светло-жёлтый (#fff8e6).</li>
+        <li>Левая граница: оранжевая (#f97316), 5px.</li>
+        <li>Отступы: 20px.</li>
+        <li>Скругление: 12px.</li>
+        <li>Иконка в начале (эмодзи).</li>
+    </ul>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «Дополнительные CSS».</strong></li>
+        <li><strong>Создайте класс <code>.my-warning</code>:</strong></li>
+    </ol>
+
+    <pre><span class="selector">.my-warning</span> {
+    <span class="property">background-color</span>: <span class="value">#fff8e6</span>;
+    <span class="property">border-left</span>: <span class="value">5px solid #f97316</span>;
+    <span class="property">padding</span>: <span class="value">20px 25px</span>;
+    <span class="property">border-radius</span>: <span class="value">12px</span>;
+    <span class="property">font-size</span>: <span class="value">16px</span>;
+    <span class="property">color</span>: <span class="value">#78350f</span>;
+    <span class="property">margin</span>: <span class="value">20px 0</span>;
+}
+
+<span class="selector">.my-warning::before</span> {
+    <span class="property">content</span>: <span class="value">"⚠️ "</span>;
+    <span class="property">font-size</span>: <span class="value">1.2em</span>;
+    <span class="property">margin-right</span>: <span class="value">8px</span>;
+}</pre>
+
+    <ol class="steps" start="3">
+        <li><strong>Сохраните.</strong></li>
+        <li><strong>Откройте страницу в редакторе.</strong></li>
+        <li><strong>Создайте блок «Группа» или «Абзац».</strong></li>
+        <li><strong>Выделите блок → Дополнительно → «Дополнительный CSS-класс».</strong></li>
+        <li><strong>Введите:</strong> <code>my-warning</code>.</li>
+        <li><strong>Внутри блока напишите текст предупреждения.</strong></li>
+        <li><strong>Обновите страницу.</strong></li>
+        <li><strong>Откройте на сайте</strong> — блок выглядит как стилизованное предупреждение с иконкой.</li>
+    </ol>
+
+    <div class="demo-box">
+        <div class="title">Результат</div>
+        <div class="demo-alert">
+            ⚠️ <strong>Важное предупреждение!</strong> Этот блок стилизован через CSS-класс <code>.my-warning</code>. Такой подход позволяет вставлять одинаково оформленные блоки на разные страницы.
+        </div>
+    </div>
+
+    <h2>6.8 Практический пример: точечная стилизация кнопки на одной странице</h2>
+
+    <p><strong>Ситуация:</strong> Нужно изменить стиль кнопки только на одной странице, не затрагивая другие.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте «Дополнительные CSS».</strong></li>
+        <li><strong>Создайте класс <code>.btn-orange</code>:</strong></li>
+    </ol>
+
+    <pre><span class="selector">.btn-orange</span> {
+    <span class="property">background-color</span>: <span class="value">#f97316</span> !important;
+    <span class="property">color</span>: <span class="value">#ffffff</span> !important;
+    <span class="property">padding</span>: <span class="value">15px 40px</span> !important;
+    <span class="property">border-radius</span>: <span class="value">30px</span> !important;
+    <span class="property">font-weight</span>: <span class="value">700</span> !important;
+    <span class="property">box-shadow</span>: <span class="value">0 6px 20px rgba(249,115,22,0.4)</span> !important;
+}
+
+<span class="selector">.btn-orange:hover</span> {
+    <span class="property">background-color</span>: <span class="value">#ea580c</span> !important;
+    <span class="property">transform</span>: <span class="value">translateY(-3px)</span>;
+}</pre>
+
+    <ol class="steps" start="3">
+        <li><strong>Сохраните.</strong></li>
+        <li><strong>Откройте нужную страницу в редакторе.</strong></li>
+        <li><strong>Выделите кнопку.</strong></li>
+        <li><strong>В панели «Дополнительно» → «Дополнительный CSS-класс» введите:</strong> <code>btn-orange</code>.</li>
+        <li><strong>Обновите страницу.</strong></li>
+        <li><strong>Откройте страницу на сайте.</strong> Кнопка стала оранжевой и «приподнимается» при наведении.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ По поводу <code>!important</code>:</strong><br>
+        В этом примере мы использовали <code>!important</code>, потому что WordPress добавляет инлайн-стили к кнопкам (цвет фона из настроек блока). Чтобы перебить инлайн-стиль, нужен <code>!important</code>. Это один из немногих случаев, когда его использование оправдано.
+    </div>
+
+    <h2>6.9 Решение типичных проблем</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>CSS-класс не применяется к блоку</td>
+            <td>Опечатка в названии класса или он не назначен блоку</td>
+            <td>Проверьте название в «Дополнительных CSS» и в поле «Дополнительный CSS-класс». Они должны совпадать</td>
+        </tr>
+        <tr>
+            <td>Стиль применяется ко всем блокам, а не к одному</td>
+            <td>Селектор слишком общий</td>
+            <td>Используйте класс вместо тега. Например, <code>.my-btn</code> вместо <code>a</code></td>
+        </tr>
+        <tr>
+            <td>Стиль не перебивает стили темы</td>
+            <td>Специфичность ниже</td>
+            <td>Добавьте <code>!important</code> или используйте более специфичный селектор</td>
+        </tr>
+        <tr>
+            <td>Не вижу поле «Дополнительный CSS-класс»</td>
+            <td>Не открыта вкладка «Дополнительно»</td>
+            <td>Выделите блок → правая панель → вкладка «Дополнительно» → поле внизу</td>
+        </tr>
+        <tr>
+            <td>CSS «слетел» после обновления темы</td>
+            <td>CSS был в файлах темы</td>
+            <td>Перенесите правила в «Дополнительные CSS» или дочернюю тему</td>
+        </tr>
+        <tr>
+            <td>Изменения не видны на сайте</td>
+            <td>Кэш браузера или сайта</td>
+            <td>Очистите кэш (Ctrl+F5) и кэш-плагина</td>
+        </tr>
+        <tr>
+            <td>В Site Editor нет «Дополнительные CSS»</td>
+            <td>Тема не поддерживает FSE</td>
+            <td>Используйте плагин Simple Custom CSS или дочернюю тему</td>
+        </tr>
+        <tr>
+            <td>Класс не сохраняется в блоке</td>
+            <td>Поле пустое или содержит пробелы</td>
+            <td>Введите название класса без точки и пробелов. Для нескольких классов — через пробел</td>
+        </tr>
+    </table>
+
+    <h2>6.10 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Глобальные стили</strong><br>
+        1. Откройте «Дополнительные CSS» в Site Editor.<br>
+        2. Измените цвет всех ссылок на <code>#16a34a</code>.<br>
+        3. Уберите подчёркивание.<br>
+        4. Добавьте подчёркивание при наведении.<br>
+        5. Сохраните и проверьте.<br><br>
+        <strong>Часть 2: CSS-класс для блока</strong><br>
+        6. Создайте класс <code>.my-info-box</code>.<br>
+        7. Задайте: фон <code>#eef2ff</code>, границу слева <code>5px solid #3b82f6</code>, отступы 20px, скругление 12px.<br>
+        8. Сохраните.<br>
+        9. Создайте новую страницу.<br>
+        10. Добавьте блок «Абзац» с текстом «Это информационный блок».<br>
+        11. Выделите блок → Дополнительно → введите класс <code>my-info-box</code>.<br>
+        12. Обновите страницу и проверьте.<br><br>
+        <strong>Часть 3: Стилизация кнопки</strong><br>
+        13. Создайте класс <code>.my-cta-button</code>.<br>
+        14. Задайте: фон <code>#f97316</code>, белый текст, отступы 15px 35px, скругление 30px, тень.<br>
+        15. Добавьте эффект при наведении: фон темнее, кнопка «приподнимается».<br>
+        16. Сохраните.<br>
+        17. Добавьте на страницу кнопку с этим классом.<br>
+        18. Проверьте на компьютере и телефоне.<br><br>
+        <strong>Часть 4: Использование DevTools</strong><br>
+        19. Откройте сайт в браузере.<br>
+        20. Нажмите F12.<br>
+        21. Найдите любой блок «Группа» (<code>.wp-block-group</code>).<br>
+        22. Посмотрите, какие ещё классы у него есть.<br>
+        23. Напишите CSS-правило для одного из этих классов в «Дополнительных CSS».<br>
+        24. Проверьте результат.<br><br>
+        <strong>Часть 5: Финальная проверка</strong><br>
+        25. Убедитесь, что все стили сохранены.<br>
+        26. Проверьте сайт на компьютере, планшете, телефоне.<br>
+        27. Если что-то не понравилось — вернитесь и исправьте.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Три способа добавления CSS в WordPress; работу с «Дополнительными CSS» в Site Editor; создание CSS-классов и назначение их отдельным блокам; популярные классы WordPress; использование DevTools для точной настройки; плагины для CSS; практические примеры (блок с предупреждением, стилизация кнопки); решение типичных проблем.
+    </div>
+
+    <h2>6.11 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Чем отличается «Дополнительные CSS» от «Дополнительный CSS-класс»?</strong> «Дополнительные CSS» — это общий редактор стилей для всего сайта. «Дополнительный CSS-класс» — это поле в настройках блока, куда вы вписываете имя класса, чтобы применить к нему стиль.</li>
+        <li><strong>Можно ли назначить несколько классов одному блоку?</strong> Да, через пробел: <code>my-class another-class</code>. В CSS будут применяться правила обоих классов.</li>
+        <li><strong>Где хранятся CSS-классы?</strong> В «Дополнительных CSS» в базе данных WordPress. Они не затрагивают файлы темы.</li>
+        <li><strong>Что делать, если класс не работает?</strong> Проверьте через DevTools, есть ли класс в HTML-коде элемента. Возможно, вы не сохранили изменения или ошиблись в названии.</li>
+        <li><strong>Можно ли использовать CSS для скрытия элементов?</strong> Да. Например, <code>.my-class { display: none; }</code> скроет блок.</li>
+        <li><strong>Нужно ли использовать <code>!important</code>?</strong> Только в крайнем случае — когда нужно перебить инлайн-стиль или стиль с более высокой специфичностью.</li>
+        <li><strong>Как проверить, какие CSS-правила применяются к элементу?</strong> Откройте DevTools, выберите элемент, посмотрите вкладку Styles — там показаны все активные правила.</li>
+        <li><strong>Можно ли добавлять CSS через плагин, если используешь блочную тему?</strong> Да, но «Дополнительные CSS» удобнее — они встроены. Плагин нужен, если вы хотите организовать CSS по страницам или использовать дополнительный функционал.</li>
+        <li><strong>Что делать, если сайт «упал» после добавления CSS?</strong> Откройте «Дополнительные CSS» через админку (если она работает) или через FTP (файл темы). Удалите последнее правило и сохраните. Если админка не работает — восстановите сайт из бэкапа.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы перейдём к <strong>правке файлов темы</strong> — разберём <code>functions.php</code>, <code>style.css</code>, шаблоны и научимся безопасно добавлять собственные функции и стили. А также создадим <strong>дочернюю тему</strong> — это ключевой навык для безопасной кастомизации без потери правок при обновлении. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter7.html" class="button">📖 Перейти к седьмой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>

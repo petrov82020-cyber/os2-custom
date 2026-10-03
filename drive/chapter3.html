@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 3: Доступ к файлам — FTP, SFTP, SSH, файловый менеджер</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 12px 0;
+            color: #2c5282;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            color: #2c5282;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .task-box {
+            background: #e6f7e6;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #0550ae;
+        }
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+        .steps li {
+            position: relative;
+            padding-left: 45px;
+            margin: 18px 0;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #0969da;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .settings-table th {
+            background: #0969da;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .settings-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+        .settings-table td:first-child {
+            font-weight: 600;
+            color: #1e466e;
+            width: 30%;
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .method-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .method-card .icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        .method-card strong {
+            display: block;
+            color: #0969da;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .method-card span {
+            font-size: 0.9em;
+            color: #5b6e8c;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .compare-card h4 {
+            color: #0969da;
+            margin-bottom: 8px;
+        }
+        .compare-card.good h4 {
+            color: #16a34a;
+        }
+        .compare-card.bad h4 {
+            color: #f97316;
+        }
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .screenshot-mock {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.7;
+        }
+        .screenshot-mock .row {
+            display: flex;
+            padding: 5px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .screenshot-mock .row:last-child {
+            border-bottom: none;
+        }
+        .screenshot-mock .label {
+            width: 180px;
+            color: #5b6e8c;
+            font-weight: 600;
+        }
+        .screenshot-mock .value {
+            color: #1a1e24;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .method-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .settings-table td:first-child { width: 40%; }
+            .screenshot-mock .row { flex-direction: column; }
+            .screenshot-mock .label { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← На главную курса</a>
+
+    <h1>Глава 3: Доступ к файлам — FTP, SFTP, SSH, файловый менеджер</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~30 минут | 🎯 Цель: освоить все способы подключения к файлам сайта и научиться безопасно работать с ними</div>
+
+    <p>В предыдущей главе мы разобрались, что где лежит в файловой системе WordPress. Но знать структуру недостаточно — нужно уметь <strong>получить доступ к файлам</strong>. Именно от этого зависит, сможете ли вы быстро починить сайт, загрузить сотни изображений или восстановить бэкап. В этой главе мы разберём четыре способа доступа к файлам сайта и научимся выбирать подходящий в каждой ситуации.</p>
+
+    <div class="info-box">
+        <strong>💡 Зачем нужен доступ к файлам:</strong><br>
+        Когда сайт работает нормально, вы обходитесь админкой WordPress. Но как только что-то ломается — админка перестаёт открываться. Единственный способ попасть внутрь — подключиться к файлам напрямую. Без этого навыка любая ошибка превращается в многодневный простой и вызов специалиста.
+    </div>
+
+    <h2>3.1 Четыре способа доступа к файлам сайта</h2>
+
+    <p>Существуют четыре основных способа подключения к файлам WordPress. Каждый имеет свои преимущества и ограничения.</p>
+
+    <div class="method-grid">
+        <div class="method-card">
+            <div class="icon">📁</div>
+            <strong>Файловый менеджер хостинга</strong>
+            <span>Встроенный в панель управления. Работает через браузер. Простой, но медленный для больших файлов.</span>
+        </div>
+        <div class="method-card">
+            <div class="icon">📡</div>
+            <strong>FTP (File Transfer Protocol)</strong>
+            <span>Классический протокол передачи файлов. Работает через FTP-клиент (FileZilla). Универсальный, но незашифрованный.</span>
+        </div>
+        <div class="method-card">
+            <div class="icon">🔒</div>
+            <strong>SFTP (Secure FTP)</strong>
+            <span>Защищённая версия FTP. Работает через SSH-туннель. Рекомендуется современными хостингами.</span>
+        </div>
+        <div class="method-card">
+            <div class="icon">💻</div>
+            <strong>SSH (Secure Shell)</strong>
+            <span>Прямой доступ к командной строке сервера. Для продвинутых пользователей. Позволяет выполнять скрипты и WP-CLI.</span>
+        </div>
+    </div>
+
+    <h3>Сравнительная таблица способов доступа</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Способ</th>
+            <th>Безопасность</th>
+            <th>Скорость</th>
+            <th>Сложность</th>
+            <th>Что можно</th>
+        </tr>
+        <tr>
+            <td>Файловый менеджер</td>
+            <td>Средняя</td>
+            <td>Низкая</td>
+            <td>Низкая</td>
+            <td>Просмотр, правка, скачивание небольших файлов</td>
+        </tr>
+        <tr>
+            <td>FTP</td>
+            <td>Низкая (без шифрования)</td>
+            <td>Высокая</td>
+            <td>Средняя</td>
+            <td>Полный доступ, загрузка больших файлов</td>
+        </tr>
+        <tr>
+            <td>SFTP</td>
+            <td>Высокая</td>
+            <td>Высокая</td>
+            <td>Средняя</td>
+            <td>Полный доступ, всё то же, что и FTP</td>
+        </tr>
+        <tr>
+            <td>SSH</td>
+            <td>Очень высокая</td>
+            <td>Максимальная</td>
+            <td>Высокая</td>
+            <td>Полный доступ + командная строка, WP-CLI, скрипты</td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Что выбрать:</strong><br>
+        Для большинства задач подойдёт <strong>SFTP</strong> — он безопаснее FTP и проще SSH. Если хостинг поддерживает только FTP — используйте FTP. Файловый менеджер хорош для быстрых правок «на лету». SSH нужен только для продвинутых задач: массовая загрузка, скрипты, WP-CLI.
+    </div>
+
+    <h2>3.2 Файловый менеджер хостинга — быстрый способ</h2>
+
+    <p>Файловый менеджер — это веб-интерфейс для работы с файлами, встроенный в панель управления хостингом. Он есть у всех хостингов и работает прямо в браузере.</p>
+
+    <h3>Как открыть файловый менеджер</h3>
+
+    <p>Процесс зависит от хостинга. Рассмотрим популярные варианты.</p>
+
+    <h4>cPanel (самый распространённый)</h4>
+    <ol class="steps">
+        <li><strong>Войдите в cPanel</strong> через панель хостинга.</li>
+        <li><strong>Найдите раздел «Файлы» (Files).</strong></li>
+        <li><strong>Нажмите «Файловый менеджер» (File Manager).</strong></li>
+        <li><strong>Выберите директорию для открытия:</strong> обычно <code>public_html</code> или <code>www</code>.</li>
+        <li><strong>Нажмите «Перейти» (Go).</strong></li>
+    </ol>
+
+    <h4>ISPmanager</h4>
+    <ol class="steps">
+        <li><strong>Войдите в ISPmanager.</strong></li>
+        <li><strong>Перейдите в раздел «Сайты».</strong></li>
+        <li><strong>Найдите свой сайт и нажмите «Файлы».</strong></li>
+        <li><strong>Откроется файловый менеджер.</strong></li>
+    </ol>
+
+    <h4>Beget, Timeweb, Reg.ru</h4>
+    <p>В российских хостингах файловый менеджер обычно доступен через главное меню панели управления. Ищите раздел «Файлы», «Файловый менеджер» или «Менеджер файлов».</p>
+
+    <h3>Основные операции в файловом менеджере</h3>
+
+    <ul>
+        <li><strong>Просмотр:</strong> двойной клик на папку для входа, на файл — для просмотра.</li>
+        <li><strong>Редактирование:</strong> правый клик → «Редактировать» (Edit).</li>
+        <li><strong>Загрузка:</strong> кнопка «Загрузить» (Upload) в верхней панели.</li>
+        <li><strong>Скачивание:</strong> правый клик → «Скачать» (Download).</li>
+        <li><strong>Создание папки/файла:</strong> кнопки «Создать папку» и «Создать файл».</li>
+        <li><strong>Распаковка архивов:</strong> правый клик на ZIP → «Извлечь» (Extract).</li>
+        <li><strong>Удаление:</strong> выделить → кнопка «Удалить» или правый клик → Delete.</li>
+        <li><strong>Переименование:</strong> правый клик → «Переименовать» (Rename).</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ Ограничения файлового менеджера:</strong><br>
+        <ul>
+            <li>Медленная загрузка больших файлов через браузер.</li>
+            <li>Неудобно работать с сотнями файлов одновременно.</li>
+            <li>Редактор кода встроенный, но неудобный — нет подсветки синтаксиса.</li>
+            <li>При разрыве соединения загрузка прерывается.</li>
+        </ul>
+        Для массовой загрузки и серьёзной правки кода используйте FTP или SFTP.
+    </div>
+
+    <h3>Практический пример: правка .htaccess через файловый менеджер</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте файловый менеджер</strong> и перейдите в корневую папку сайта.</li>
+        <li><strong>Включите показ скрытых файлов.</strong> В cPanel: «Настройки» (Settings) → «Показывать скрытые файлы».</li>
+        <li><strong>Найдите файл</strong> <code>.htaccess</code>.</li>
+        <li><strong>Правый клик → «Редактировать».</strong></li>
+        <li><strong>Подтвердите открытие в редакторе.</strong></li>
+        <li><strong>Внесите изменения.</strong></li>
+        <li><strong>Нажмите «Сохранить изменения» (Save Changes).</strong></li>
+        <li><strong>Проверьте сайт</strong> в браузере.</li>
+    </ol>
+
+    <h2>3.3 FTP-доступ — классический способ</h2>
+
+    <p>FTP — протокол передачи файлов, работающий через специальные программы — FTP-клиенты. Самый популярный и бесплатный — <strong>FileZilla</strong>.</p>
+
+    <h3>Шаг 1: Получите данные для подключения</h3>
+
+    <p>Данные FTP хранятся в панели управления хостингом. Обычно в разделе «FTP-аккаунты» или «FTP-доступ».</p>
+
+    <div class="screenshot-mock">
+        <div class="row">
+            <span class="label">Хост (Host):</span>
+            <span class="value">ftp.ваш_домен.ru</span>
+        </div>
+        <div class="row">
+            <span class="label">Порт (Port):</span>
+            <span class="value">21 (по умолчанию для FTP)</span>
+        </div>
+        <div class="row">
+            <span class="label">Пользователь:</span>
+            <span class="value">ваш_логин_ftp</span>
+        </div>
+        <div class="row">
+            <span class="label">Пароль:</span>
+            <span class="value">ваш_пароль_ftp</span>
+        </div>
+    </div>
+
+    <p>Если FTP-аккаунт не создан — создайте его в панели хостинга. Обычно нужно указать:</p>
+    <ul>
+        <li><strong>Логин:</strong> например, <code>ftp_user</code>.</li>
+        <li><strong>Пароль:</strong> сложный, с буквами и цифрами.</li>
+        <li><strong>Директория:</strong> обычно <code>public_html</code> или <code>/</code>.</li>
+    </ul>
+
+    <h3>Шаг 2: Установите FileZilla</h3>
+
+    <ol class="steps">
+        <li><strong>Откройте сайт</strong> <a href="https://filezilla-project.org" target="_blank">filezilla-project.org</a>.</li>
+        <li><strong>Скачайте FileZilla Client</strong> для вашей операционной системы.</li>
+        <li><strong>Установите программу.</strong> При установке <strong>снимите галочки</strong> с предложений установить дополнительное ПО.</li>
+        <li><strong>Запустите FileZilla.</strong></li>
+    </ol>
+
+    <h3>Шаг 3: Подключитесь к сайту</h3>
+
+    <p>В верхней части FileZilla есть панель быстрого подключения:</p>
+
+    <div class="screenshot-mock">
+        <div class="row">
+            <span class="label">Хост:</span>
+            <span class="value">ftp.ваш_домен.ru</span>
+        </div>
+        <div class="row">
+            <span class="label">Имя пользователя:</span>
+            <span class="value">ваш_логин_ftp</span>
+        </div>
+        <div class="row">
+            <span class="label">Пароль:</span>
+            <span class="value">ваш_пароль_ftp</span>
+        </div>
+        <div class="row">
+            <span class="label">Порт:</span>
+            <span class="value">21</span>
+        </div>
+    </div>
+
+    <ol class="steps">
+        <li><strong>Введите данные подключения</strong> в поля.</li>
+        <li><strong>Нажмите «Быстрое соединение» (Quickconnect).</strong></li>
+        <li><strong>Если появится предупреждение о сертификате</strong> — примите его.</li>
+        <li><strong>Соединение установлено.</strong> Вы увидите файловую систему сайта.</li>
+    </ol>
+
+    <h3>Интерфейс FileZilla</h3>
+
+    <p>Окно FileZilla разделено на несколько областей:</p>
+
+    <ul>
+        <li><strong>Верхняя панель</strong> — данные подключения, статус соединения.</li>
+        <li><strong>Левая часть</strong> — локальная файловая система (ваш компьютер).</li>
+        <li><strong>Правая часть</strong> — удалённая файловая система (файлы сайта).</li>
+        <li><strong>Нижняя панель</strong> — очередь передачи (что загружается/скачивается).</li>
+    </ul>
+
+    <h3>Основные операции</h3>
+
+    <div class="compare-grid">
+        <div class="compare-card good">
+            <h4>✅ Что можно делать</h4>
+            <ul>
+                <li>Загружать файлы с компьютера на сайт (двойной клик).</li>
+                <li>Скачивать файлы с сайта на компьютер (двойной клик).</li>
+                <li>Редактировать файлы напрямую (правый клик → View/Edit).</li>
+                <li>Создавать папки, переименовывать, удалять.</li>
+                <li>Менять права доступа (правый клик → File Permissions).</li>
+                <li>Синхронизировать папки.</li>
+                <li>Работать с очередью — загружать десятки файлов за раз.</li>
+            </ul>
+        </div>
+        <div class="compare-card bad">
+            <h4>⚠️ Ограничения FTP</h4>
+            <ul>
+                <li>Данные передаются без шифрования.</li>
+                <li>Логин и пароль можно перехватить.</li>
+                <li>Не работает, если хостинг отключил FTP.</li>
+                <li>Медленнее, чем SFTP.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Совет по безопасности:</strong> Если хостинг поддерживает <strong>SFTP</strong>, используйте его вместо FTP. Данные передаются в зашифрованном виде — перехватить пароль невозможно. В FileZilla SFTP настраивается так же, только вместо порта 21 нужно указать порт <strong>22</strong>.
+    </div>
+
+    <h2>3.4 SFTP — безопасный FTP</h2>
+
+    <p>SFTP (SSH File Transfer Protocol) — это FTP через SSH-туннель. Все данные передаются в зашифрованном виде. Это современный стандарт для безопасной работы с файлами.</p>
+
+    <h3>Как подключиться по SFTP</h3>
+
+    <ol class="steps">
+        <li><strong>Проверьте, что хостинг поддерживает SFTP.</strong> Обычно указано в разделе «FTP-аккаунты».</li>
+        <li><strong>Получите данные:</strong> хост, порт <code>22</code>, логин, пароль.</li>
+        <li><strong>Откройте FileZilla.</strong></li>
+        <li><strong>В поле «Хост» введите</strong> <code>sftp://ваш_домен.ru</code>.</li>
+        <li><strong>Порт:</strong> <code>22</code>.</li>
+        <li><strong>Логин и пароль:</strong> как для FTP.</li>
+        <li><strong>Нажмите «Быстрое соединение».</strong></li>
+        <li><strong>Примите ключ сервера</strong> при первом подключении.</li>
+    </ol>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно:</strong> Если SFTP не работает — обратитесь в поддержку хостинга. Иногда нужно активировать SSH-доступ отдельно в панели управления. Некоторые бесплатные хостинги (например, InfinityFree) SFTP не поддерживают — там только FTP.
+    </div>
+
+    <h3>Ключи SSH вместо пароля</h3>
+
+    <p>Более безопасный способ — использовать SSH-ключи вместо пароля. Это защищает от подбора пароля.</p>
+
+    <ol class="steps">
+        <li><strong>Сгенерируйте SSH-ключ</strong> в панели хостинга.</li>
+        <li><strong>Скачайте приватный ключ</strong> на компьютер.</li>
+        <li><strong>В FileZilla:</strong> «Правка → Настройки → SFTP → Добавить файл ключа».</li>
+        <li><strong>Выберите скачанный ключ.</strong></li>
+        <li><strong>При подключении</strong> пароль вводить не нужно — используется ключ.</li>
+    </ol>
+
+    <h2>3.5 SSH — командная строка сервера</h2>
+
+    <p>SSH (Secure Shell) — это прямой доступ к командной строке сервера. Это самый мощный способ работы с файлами, но требует базовых знаний Linux-команд.</p>
+
+    <h3>Как подключиться по SSH</h3>
+
+    <h4>Через терминал (Mac/Linux)</h4>
+    <pre>ssh пользователь@ваш_домен.ru -p 22</pre>
+
+    <h4>Через PuTTY (Windows)</h4>
+    <ol class="steps">
+        <li><strong>Скачайте PuTTY</strong> с <a href="https://www.putty.org" target="_blank">putty.org</a>.</li>
+        <li><strong>Запустите PuTTY.</strong></li>
+        <li><strong>В поле Host Name введите</strong> <code>ваш_домен.ru</code>.</li>
+        <li><strong>Порт:</strong> <code>22</code>, тип — SSH.</li>
+        <li><strong>Нажмите Open.</strong></li>
+        <li><strong>Введите логин и пароль.</strong></li>
+    </ol>
+
+    <h3>Базовые команды для работы с файлами</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Команда</th>
+            <th>Что делает</th>
+        </tr>
+        <tr>
+            <td><code>ls</code></td>
+            <td>Показать файлы в текущей папке</td>
+        </tr>
+        <tr>
+            <td><code>ls -la</code></td>
+            <td>Показать все файлы, включая скрытые</td>
+        </tr>
+        <tr>
+            <td><code>cd имя_папки</code></td>
+            <td>Перейти в папку</td>
+        </tr>
+        <tr>
+            <td><code>cd ..</code></td>
+            <td>Выйти в родительскую папку</td>
+        </tr>
+        <tr>
+            <td><code>pwd</code></td>
+            <td>Показать текущий путь</td>
+        </tr>
+        <tr>
+            <td><code>cat имя_файла</code></td>
+            <td>Показать содержимое файла</td>
+        </tr>
+        <tr>
+            <td><code>nano имя_файла</code></td>
+            <td>Открыть файл в редакторе nano</td>
+        </tr>
+        <tr>
+            <td><code>cp файл1 файл2</code></td>
+            <td>Скопировать файл</td>
+        </tr>
+        <tr>
+            <td><code>mv файл1 файл2</code></td>
+            <td>Переместить/переименовать</td>
+        </tr>
+        <tr>
+            <td><code>rm имя_файла</code></td>
+            <td>Удалить файл</td>
+        </tr>
+        <tr>
+            <td><code>unzip архив.zip</code></td>
+            <td>Распаковать архив</td>
+        </tr>
+    </table>
+
+    <h3>Пример работы через SSH</h3>
+
+    <p>Допустим, нужно найти папку активной темы и отредактировать файл стилей:</p>
+
+    <pre>cd public_html
+cd wp-content/themes
+ls
+# Увидим список тем, например twenty-twenty-five
+cd twenty-twenty-five
+nano style.css
+# Вносим изменения, сохраняем (Ctrl+O, Enter, Ctrl+X)</pre>
+
+    <div class="info-box">
+        <strong>💡 Главное преимущество SSH:</strong> через SSH работает <strong>WP-CLI</strong> — командная строка WordPress. С её помощью можно делать массовые операции: загружать сотни файлов, обновлять плагины, создавать записи. Подробнее об этом — в главе 8.
+    </div>
+
+    <h2>3.6 Права доступа (Permissions) — что это и зачем</h2>
+
+    <p>Каждый файл и папка на сервере имеет <strong>права доступа</strong> — правила, кто может читать, писать и выполнять файл. Понимание прав критически важно для безопасности.</p>
+
+    <h3>Структура прав</h3>
+
+    <p>Права записываются в виде трёх цифр, например <code>755</code> или <code>644</code>. Каждая цифра — это набор прав:</p>
+
+    <ul>
+        <li><strong>Первая цифра</strong> — права владельца файла.</li>
+        <li><strong>Вторая цифра</strong> — права группы.</li>
+        <li><strong>Третья цифра</strong> — права всех остальных.</li>
+    </ul>
+
+    <p>Каждая цифра — сумма трёх значений:</p>
+    <ul>
+        <li><code>4</code> — чтение (read).</li>
+        <li><code>2</code> — запись (write).</li>
+        <li><code>1</code> — выполнение (execute).</li>
+    </ul>
+
+    <h3>Рекомендуемые права для WordPress</h3>
+
+    <table class="settings-table">
+        <tr>
+            <th>Что</th>
+            <th>Права</th>
+            <th>Расшифровка</th>
+        </tr>
+        <tr>
+            <td>Папки</td>
+            <td><code>755</code></td>
+            <td>Владелец: чтение+запись+выполнение. Остальные: чтение+выполнение.</td>
+        </tr>
+        <tr>
+            <td>Файлы</td>
+            <td><code>644</code></td>
+            <td>Владелец: чтение+запись. Остальные: только чтение.</td>
+        </tr>
+        <tr>
+            <td>wp-config.php</td>
+            <td><code>600</code> или <code>644</code></td>
+            <td>Владелец: чтение+запись. Остальные: без доступа (600).</td>
+        </tr>
+        <tr>
+            <td>.htaccess</td>
+            <td><code>644</code></td>
+            <td>Владелец: чтение+запись. Остальные: чтение.</td>
+        </tr>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ Никогда не ставьте 777!</strong><br>
+        Права <code>777</code> означают, что <strong>любой</strong> пользователь может читать, писать и выполнять файл. Это открывает дверь для взлома. Если плагин или инструкция требуют 777 — ищите альтернативу или обратитесь в поддержку хостинга.
+    </div>
+
+    <h3>Как изменить права в FileZilla</h3>
+
+    <ol class="steps">
+        <li><strong>Выделите файл или папку</strong> в правой части FileZilla.</li>
+        <li><strong>Правый клик → «Права доступа к файлу» (File Permissions).</strong></li>
+        <li><strong>Введите числовое значение</strong> в поле «Числовое значение»: <code>644</code> или <code>755</code>.</li>
+        <li><strong>Отметьте «Применить к подпапкам»</strong>, если хотите изменить права для всей папки.</li>
+        <li><strong>Нажмите «ОК».</strong></li>
+    </ol>
+
+    <h2>3.7 Практический пример: восстановление доступа к админке через FTP</h2>
+
+    <p><strong>Ситуация:</strong> После установки плагина сайт показывает белый экран. Админка тоже не открывается. Нужно срочно восстановить доступ.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP</strong> через FileZilla.</li>
+        <li><strong>Перейдите в папку</strong> <code>/wp-content/plugins/</code>.</li>
+        <li><strong>Отсортируйте папки по дате изменения.</strong> Верхняя папка — последний установленный плагин.</li>
+        <li><strong>Переименуйте папку плагина</strong> — добавьте <code>_off</code> в конце. Например: <code>my-plugin</code> → <code>my-plugin_off</code>.</li>
+        <li><strong>Обновите сайт в браузере.</strong></li>
+        <li><strong>Если сайт заработал</strong> — проблема была в этом плагине. Зайдите в админку и удалите его.</li>
+        <li><strong>Если сайт не заработал</strong> — верните папку обратно и ищите проблему в другом плагине.</li>
+        <li><strong>Если проблема не в плагинах</strong> — временно переключитесь на стандартную тему, переименовав папку активной темы.</li>
+    </ol>
+
+    <div class="success-box">
+        <strong>✅ Результат:</strong> Сайт восстановлен за 3 минуты. Именно для таких ситуаций нужен FTP-доступ.
+    </div>
+
+    <h2>3.8 Практический пример: загрузка файла через FTP</h2>
+
+    <p><strong>Ситуация:</strong> Нужно заменить логотип сайта. Новый файл уже готов на компьютере.</p>
+
+    <h3>Пошаговое решение</h3>
+
+    <ol class="steps">
+        <li><strong>Подключитесь к сайту по FTP.</strong></li>
+        <li><strong>В левой части (локальные файлы) найдите</strong> файл логотипа на компьютере.</li>
+        <li><strong>В правой части перейдите в</strong> <code>/wp-content/uploads/2026/10/</code> (актуальный месяц).</li>
+        <li><strong>Дважды кликните на файл слева</strong> — он автоматически загрузится на сервер.</li>
+        <li><strong>Дождитесь завершения загрузки</strong> — файл появится в правой части.</li>
+        <li><strong>Установите права</strong> <code>644</code> на загруженный файл.</li>
+        <li><strong>Обновите медиатеку в WordPress</strong> — файл появится в списке.</li>
+    </ol>
+
+    <h2>3.9 Решение типичных проблем с доступом</h2>
+
+    <table class="settings-table">
+        <tr>
+            <th>Проблема</th>
+            <th>Причина</th>
+            <th>Решение</th>
+        </tr>
+        <tr>
+            <td>FTP не подключается</td>
+            <td>Неверные данные или порт</td>
+            <td>Проверьте логин, пароль, хост. Попробуйте порт 21 для FTP или 22 для SFTP.</td>
+        </tr>
+        <tr>
+            <td>«Превышено время ожидания»</td>
+            <td>Firewall или блокировка хостинга</td>
+            <td>Проверьте, не блокирует ли ваш IP хостинг. Обратитесь в поддержку.</td>
+        </tr>
+        <tr>
+            <td>Не вижу скрытые файлы</td>
+            <td>Не включён показ</td>
+            <td>FileZilla: «Сервер → Показывать скрытые файлы».</td>
+        </tr>
+        <tr>
+            <td>Файлы не загружаются</td>
+            <td>Недостаточно прав</td>
+            <td>Проверьте права на папку. Должно быть 755.</td>
+        </tr>
+        <tr>
+            <td>Загрузка прерывается</td>
+            <td>Нестабильный интернет</td>
+            <td>Загружайте через архив или используйте файловый менеджер хостинга.</td>
+        </tr>
+        <tr>
+            <td>Не могу отредактировать файл в FileZilla</td>
+            <td>Не задан редактор по умолчанию</td>
+            <td>Настройки → Редактирование файлов → Указать редактор (VS Code, Notepad++).</td>
+        </tr>
+        <tr>
+            <td>Сайт перестал открываться после правки файла</td>
+            <td>Синтаксическая ошибка</td>
+            <td>Верните файл из резервной копии или отмените изменения.</td>
+        </tr>
+        <tr>
+            <td>FTP работает медленно</td>
+            <td>Много файлов или большой размер</td>
+            <td>Загружайте архивами. Ограничьте количество одновременных подключений.</td>
+        </tr>
+    </table>
+
+    <h2>3.10 Практическое задание</h2>
+
+    <div class="task-box">
+        <strong>📝 Задание для самопроверки</strong><br><br>
+        <strong>Часть 1: Файловый менеджер</strong><br>
+        1. Войдите в панель хостинга.<br>
+        2. Откройте файловый менеджер.<br>
+        3. Перейдите в корень сайта.<br>
+        4. Включите показ скрытых файлов.<br>
+        5. Найдите файл <code>.htaccess</code>.<br>
+        6. Скачайте его на компьютер.<br><br>
+        <strong>Часть 2: Установка FileZilla</strong><br>
+        7. Скачайте FileZilla Client с официального сайта.<br>
+        8. Установите (снимите галочки с дополнительного ПО).<br>
+        9. Запустите программу.<br>
+        10. Проверьте, что открывается главное окно.<br><br>
+        <strong>Часть 3: Подключение по FTP</strong><br>
+        11. Получите данные FTP в панели хостинга.<br>
+        12. Введите их в FileZilla.<br>
+        13. Подключитесь к серверу.<br>
+        14. Включите показ скрытых файлов (Сервер → Показывать скрытые).<br>
+        15. Проверьте, что видите структуру WordPress.<br>
+        16. Найдите папку <code>wp-content</code>.<br><br>
+        <strong>Часть 4: Работа с файлами</strong><br>
+        17. Скачайте файл <code>wp-config.php</code> на компьютер.<br>
+        18. Откройте его в редакторе кода.<br>
+        19. Запишите данные БД (DB_NAME, DB_USER, DB_HOST) в надёжное место.<br>
+        20. НЕ вносите изменения.<br>
+        21. Загрузите любой тестовый файл (например, картинку) в папку <code>uploads</code>.<br>
+        22. Проверьте, что файл появился.<br>
+        23. Установите на него права <code>644</code>.<br><br>
+        <strong>Часть 5: Права доступа</strong><br>
+        24. Выделите папку <code>wp-content</code>.<br>
+        25. Проверьте её права — должны быть 755.<br>
+        26. Выделите файл <code>wp-config.php</code>.<br>
+        27. Проверьте права — должны быть 644 или 600.<br>
+        28. Если права неверные — исправьте.<br><br>
+        <strong>Часть 6: Финальная проверка</strong><br>
+        29. Отключитесь от FTP.<br>
+        30. Проверьте, что сайт работает.<br>
+        31. Убедитесь, что скачанный <code>.htaccess</code> и данные БД сохранены.
+    </div>
+
+    <div class="success-box">
+        <strong>✅ Что вы освоили:</strong> Четыре способа доступа к файлам сайта; работу с файловым менеджером хостинга; настройку FileZilla; подключение по FTP и SFTP; базовые команды SSH; работу с правами доступа; практические сценарии восстановления доступа и загрузки файлов; решение типичных проблем.
+    </div>
+
+    <h2>3.11 Часто задаваемые вопросы</h2>
+    <ul>
+        <li><strong>Чем FTP отличается от SFTP?</strong> FTP передаёт данные без шифрования, SFTP — с шифрованием. SFTP безопаснее, но работает только если хостинг его поддерживает.</li>
+        <li><strong>Можно ли работать с файлами без FTP?</strong> Да, через файловый менеджер хостинга. Но для серьёзной работы FTP/SFTP удобнее.</li>
+        <li><strong>Что делать, если я забыл пароль FTP?</strong> Сбросьте его в панели хостинга. Если FTP-аккаунт создан по умолчанию — обратитесь в поддержку.</li>
+        <li><strong>Какой порт использовать для SFTP?</strong> Обычно 22. Уточните в документации хостинга.</li>
+        <li><strong>Безопасно ли редактировать файлы через FileZilla?</strong> Да, но всегда делайте резервную копию. И не оставляйте редактор открытым — сохраняйте и закрывайте файл.</li>
+        <li><strong>Что делать, если сайт «сломался» после правки файла через FTP?</strong> Восстановите файл из резервной копии. Если её нет — скачайте исходный файл из архива WordPress или с GitHub.</li>
+        <li><strong>Какие права доступа безопасны?</strong> Для папок — <code>755</code>, для файлов — <code>644</code>, для <code>wp-config.php</code> — <code>600</code> или <code>644</code>. Никогда не используйте <code>777</code>.</li>
+        <li><strong>Зачем нужен SSH?</strong> Для продвинутых задач: работы с WP-CLI, выполнения скриптов, массовых операций, отладки сервера.</li>
+        <li><strong>Можно ли восстановить сайт из бэкапа через FTP?</strong> Да, но только файлы. База данных восстанавливается отдельно — через phpMyAdmin. Полный разбор — в главе 10.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>🔜 Что дальше?</strong><br>
+        В следующей главе мы разберём <strong>редакторы кода</strong>: как выбрать подходящий, настроить подсветку синтаксиса, безопасно править файлы и не потерять свои изменения. Вы узнаете, какие редакторы используют профессионалы и как организовать свою работу с кодом. А пока закрепите пройденное — выполните практическое задание.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter4.html" class="button">📖 Перейти к четвёртой главе →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Экспресс-курс по WordPress | Вопросы можно задать в <a href="https://github.com/petrov82020-cyber/os2-custom/issues" target="_blank">Issues</a></p>
+    </footer>
+</div>
+</body>
+</html>
