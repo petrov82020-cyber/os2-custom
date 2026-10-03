@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 7. Художественная культура — Рабочая тетрадь «Гармония»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin: 30px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #5b21b6;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 24px 0 10px 0;
+            color: #6d28d9;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #5b21b6;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .theory-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 5px solid #3b82f6;
+            border-radius: 0 14px 14px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .practice-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 5px solid #16a34a;
+            border-radius: 0 14px 14px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .practice-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .art-box {
+            background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
+            border-left: 5px solid #eab308;
+            border-radius: 0 14px 14px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .art-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+        .story-box {
+            background: #fffbeb;
+            border: 2px dashed #f59e0b;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .story-box::before {
+            content: "📖 История";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #f59e0b;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .humor-box {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .humor-box::before {
+            content: "😄 Смешинка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quest-box {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .quest-box::before {
+            content: "🧩 Мини-квест";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quiz-box {
+            background: #eef2ff;
+            border: 2px solid #6366f1;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .quiz-box::before {
+            content: "❓ Викторина";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .riddle-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            border-radius: 0 10px 10px 0;
+            padding: 14px 20px;
+            margin: 14px 0;
+            font-style: italic;
+        }
+        .riddle-box strong { color: #0369a1; font-style: normal; }
+        .poem {
+            background: #fdf2f8;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 10px 10px 0;
+            padding: 14px 20px;
+            margin: 14px 0;
+            font-style: italic;
+            color: #831843;
+            line-height: 1.6;
+        }
+        .proverb {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 8px 16px;
+            border-radius: 10px;
+            margin: 6px 4px;
+            font-weight: 500;
+            font-size: 0.92rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 14px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.94rem;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+            font-size: 0.95rem;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .opori {
+            display: inline-block;
+            background: #f0fdf4;
+            color: #166534;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="plan.html" class="back-link">← К структурному плану</a>
+
+    <h1>🎭 Раздел 7. Художественная культура</h1>
+    <div class="chapter-meta">✍️ Рабочая тетрадь «Гармония» | Третья ступень непрерывного экологического образования | Дети 8–11 лет</div>
+
+    <p>Мы подошли к завершающему разделу нашей рабочей тетради. Здесь мы соберём всё, что узнали о красоте, гармонии, звуках и нравственности, и посмотрим на них через призму <strong>художественной культуры</strong>. Культура — это коллективная память человечества, то, что создаётся и передаётся из поколения в поколение. И природа — её важнейший источник.</p>
+
+    <div class="quote">
+        «Культура — это память человечества о самом себе. А природа — это память Земли о самой себе. Искусство — мост между ними».
+        <span class="quote-author">— концептуальная идея раздела</span>
+    </div>
+
+    <!-- ТЕМА 7.1 -->
+    <h2>🏛️ Тема 7.1. Ценности искусства и культуры</h2>
+
+    <div class="theory-box">
+        <h4>Культура как коллективная память общества</h4>
+        <p><strong>Культура</strong> — это совокупность знаний, навыков, ценностей и идеалов, которые создаются и передаются из поколения в поколение. Она включает в себя:</p>
+        <ul>
+            <li><strong>Материальную культуру:</strong> здания, предметы быта, орудия труда.</li>
+            <li><strong>Духовную культуру:</strong> знания, верования, искусство, мораль.</li>
+            <li><strong>Художественную культуру:</strong> произведения искусства, способы их создания и восприятия.</li>
+        </ul>
+        <p><strong>Искусство</strong> — часть культуры. Оно отражает мир через художественные образы, передаёт чувства и мысли, помогает понять красоту и гармонию.</p>
+        <p><strong>Цели и задачи художественного творчества:</strong></p>
+        <ul>
+            <li>выразить свои чувства и мысли;</li>
+            <li>поделиться красотой с другими;</li>
+            <li>сохранить мгновение;</li>
+            <li>заставить задуматься о важном.</li>
+        </ul>
+    </div>
+
+    <div class="art-box">
+        <div class="art-title">🎨 Практическая работа «Отражение красоты природы средствами искусства»</div>
+        <p><span class="opori">🎨</span> Рассмотри репродукции картин художников-пейзажистов (И. Левитан, И. Шишкин, В. Бялыницкий-Бируля). Ответь на вопросы:</p>
+        <ul>
+            <li>Что изобразил художник?</li>
+            <li>Какое время года, время суток?</li>
+            <li>Какие чувства вызывает картина?</li>
+            <li>Как художнику удалось передать красоту природы?</li>
+        </ul>
+        <p><span class="opori">🖼️</span> Нарисуй свой пейзаж — уголок природы, который тебе дорог.</p>
+    </div>
+
+    <div class="poem">
+        <p>Художник кистью водит по холсту,<br>
+        И оживает лес, и дождь идёт,<br>
+        И солнце светит, и цветут сады —<br>
+        Природа в красках оживает тут.</p>
+        <p>Поэт слова находит для души,<br>
+        И музыка рождается в тиши.<br>
+        Так человек природу бережёт,<br>
+        В искусстве красоту передаёт!</p>
+    </div>
+
+    <!-- ТЕМА 7.2 -->
+    <h2>💫 Тема 7.2. Общение с прекрасным</h2>
+
+    <div class="theory-box">
+        <h4>Прекрасное как элемент культуры</h4>
+        <p><strong>Прекрасное</strong> — это то, что вызывает у нас чувство восхищения, радости, гармонии. Оно может проявляться в разных формах:</p>
+        <ul>
+            <li><strong>как элемент культуры</strong> — произведения искусства, архитектура, музыка;</li>
+            <li><strong>как эстетический идеал</strong> — представление о совершенстве;</li>
+            <li><strong>как свойство совершенного</strong> — гармония, соразмерность, целесообразность.</li>
+        </ul>
+        <p><strong>Воздействие прекрасного на человека:</strong></p>
+        <ul>
+            <li>вызывает положительные эмоции;</li>
+            <li>успокаивает, вдохновляет;</li>
+            <li>развивает вкус и воображение;</li>
+            <li>помогает понять себя и мир.</li>
+        </ul>
+    </div>
+
+    <div class="practice-box">
+        <div class="practice-title">💚 Практическая работа «Прекрасные стремления»</div>
+        <p><span class="opori">📝</span> Продолжи предложения:</p>
+        <ul>
+            <li>Я считаю прекрасным...</li>
+            <li>Мне нравится любоваться...</li>
+            <li>Красота помогает мне...</li>
+            <li>Если бы я был художником, я бы нарисовал...</li>
+        </ul>
+        <p><span class="opori">🎨</span> Нарисуй то, что ты считаешь самым прекрасным в мире.</p>
+    </div>
+
+    <div class="story-box">
+        <p><strong>Притча «Три мудреца и слон»</strong></p>
+        <p>Три мудреца пришли к слону. Один потрогал хобот и сказал: «Слон — как змея». Второй потрогал ногу и сказал: «Слон — как столб». Третий потрогал ухо и сказал: «Слон — как веер».</p>
+        <p>Они начали спорить, доказывая друг другу свою правоту. Но каждый из них видел только часть истины.</p>
+        <p><em>Мораль: красота многогранна. То, что одному кажется прекрасным, другому может показаться обычным. Но если соединить разные взгляды, можно увидеть целое.</em></p>
+    </div>
+
+    <div class="humor-box">
+        <p><strong>«Ценитель искусства»</strong></p>
+        <p>В музее экскурсовод показывает картину:</p>
+        <p>— Это знаменитая картина «Чёрный квадрат» Казимира Малевича.</p>
+        <p>Посетитель долго смотрит и говорит:</p>
+        <p>— А я тоже так могу! Что тут сложного?</p>
+        <p>— А вы попробуйте, — улыбается экскурсовод.</p>
+        <p>Через час посетитель возвращается с чёрным квадратом.</p>
+        <p>— Вот! Готово!</p>
+        <p>— Хорошо, — кивает экскурсовод. — А теперь объясните, почему ваш квадрат — искусство, а не просто чёрный лист?</p>
+        <p>Посетитель задумался... и не смог ответить.</p>
+        <p><em>Мораль: искусство — это не просто «нарисовать квадрат». Это умение вложить в него мысль, чувство, идею. Настоящее искусство требует понимания и осмысления.</em></p>
+    </div>
+
+    <!-- ТЕМА 7.3 -->
+    <h2>💎 Тема 7.3. Свойства красоты</h2>
+
+    <div class="theory-box">
+        <h4>Признаки красоты</h4>
+        <p>Красота имеет свои <strong>признаки</strong>, по которым мы её узнаём:</p>
+        <ul>
+            <li><strong>Изящность</strong> — лёгкость, утончённость, грациозность.</li>
+            <li><strong>Неповторимость</strong> — уникальность, единственность в своём роде.</li>
+            <li><strong>Гармоничность</strong> — согласованность частей, соразмерность.</li>
+            <li><strong>Симметричность</strong> — упорядоченность, зеркальное отражение.</li>
+        </ul>
+        <p><strong>Симметрия</strong> — один из важнейших признаков красоты в природе. Она встречается повсюду:</p>
+        <ul>
+            <li>крылья бабочки;</li>
+            <li>снежинка;</li>
+            <li>лист дерева;</li>
+            <li>цветок.</li>
+        </ul>
+        <p><strong>Внутренняя мера предмета</strong> — это соответствие формы и содержания, целесообразность. Например, форма птичьего крыла идеально приспособлена для полёта.</p>
+    </div>
+
+    <div class="practice-box">
+        <div class="practice-title">🎨 Практическая работа «Симметрия и внутренняя мера предмета»</div>
+        <p><span class="opori">👁️</span> Рассмотри природные объекты (листья, цветы, бабочек, снежинки). Найди у них оси симметрии.</p>
+        <p><span class="opori">🎨</span> Нарисуй симметричный предмет природы. Например, бабочку или снежинку.</p>
+        <p><span class="opori">✏️</span> Дорисуй вторую половинку симметричного предмета:</p>
+        <p style="text-align:center;font-size:1.5rem;letter-spacing:8px;">🦋 &nbsp; 🦋 &nbsp; 🦋</p>
+        <p><span class="opori">📝</span> Напиши, что общего у всех красивых предметов? (Ответ: гармония, соразмерность, симметрия, целесообразность).</p>
+    </div>
+
+    <div class="riddle-box">
+        <strong>Загадки о красоте и симметрии:</strong><br><br>
+        <em>1.</em> Что за чудо-красота:<br>
+        Крылья есть, а нет хвоста.<br>
+        Утром оживает,<br>
+        Ночью засыпает.<br>
+        <em>(Бабочка)</em><br><br>
+        <em>2.</em> С неба звёздочка упала,<br>
+        На ладошку мне попала.<br>
+        А растаять не успела —<br>
+        Вмиг узором запестрела.<br>
+        <em>(Снежинка)</em><br><br>
+        <em>3.</em> Есть у дерева листок,<br>
+        Есть у дерева цветок.<br>
+        А ещё есть ствол и ветки,<br>
+        И всё вместе — это...<br>
+        <em>(Дерево — гармония!)</em>
+    </div>
+
+    <div class="art-box">
+        <div class="art-title">🖼️ «Галерея красоты»</div>
+        <p>Создай в тетради «Галерею красоты». Наклей или нарисуй фотографии, репродукции, рисунки того, что ты считаешь красивым:</p>
+        <ul>
+            <li>природные пейзажи;</li>
+            <li>животных и растения;</li>
+            <li>произведения искусства;</li>
+            <li>архитектурные сооружения.</li>
+        </ul>
+        <p>Подпиши, почему ты выбрал именно эти объекты.</p>
+    </div>
+
+    <!-- ТЕМА 7.4 -->
+    <h2>🌍 Тема 7.4. Обобщение. Художественная культура</h2>
+
+    <div class="theory-box">
+        <h4>Понятие о художественной культуре</h4>
+        <p><strong>Художественная культура</strong> — это часть общей культуры, которая включает:</p>
+        <ul>
+            <li>произведения искусства;</li>
+            <li>способы их создания и восприятия;</li>
+            <li>ценности и идеалы, которые они выражают.</li>
+        </ul>
+        <p><strong>Художественный стиль</strong> — это совокупность признаков, характерных для искусства определённого времени, направления или автора.</p>
+        <p><strong>Художественный образ</strong> — это способ отражения действительности в искусстве, создание особого мира, в котором соединяются реальность и воображение.</p>
+        <p><strong>Искусство и точные науки.</strong> Искусство и наука не противоположны — они дополняют друг друга. Наука изучает законы природы, искусство отражает её красоту. И то и другое помогает человеку понять мир.</p>
+        <p><strong>Искусство как познание мира.</strong> Через искусство мы узнаём о чувствах, мыслях, ценностях других людей, учимся понимать красоту и гармонию.</p>
+    </div>
+
+    <div class="practice-box">
+        <div class="practice-title">🎨 Практическая работа «Объёмные композиции»</div>
+        <p><span class="opori">🖼️</span> Создай объёмную композицию из природного материала (шишки, жёлуди, листья, веточки, камешки). Это может быть:</p>
+        <ul>
+            <li>лесная поляна;</li>
+            <li>морское дно;</li>
+            <li>цветочная клумба;</li>
+            <li>сказочный домик.</li>
+        </ul>
+        <p>Наклей или сфотографируй свою работу и вклей в тетрадь. Придумай ей название.</p>
+    </div>
+
+    <div class="quiz-box">
+        <p><strong>Итоговая викторина «Знатоки прекрасного»</strong></p>
+        <ol>
+            <li><strong>Что такое культура?</strong><br>
+            а) Только картины и музыка<br>
+            б) Совокупность знаний, ценностей и навыков, передаваемых из поколения в поколение<br>
+            в) Только книги</li>
+            <li><strong>Какие признаки красоты ты знаешь?</strong><br>
+            а) Изящность, неповторимость, гармоничность, симметричность<br>
+            б) Быстрота, громкость, яркость<br>
+            в) Дороговизна, редкость, сложность</li>
+            <li><strong>Что такое художественный образ?</strong><br>
+            а) Фотография<br>
+            б) Способ отражения действительности в искусстве<br>
+            в) Копия предмета</li>
+            <li><strong>Как искусство помогает познавать мир?</strong><br>
+            а) Через чувства и образы<br>
+            б) Через формулы и вычисления<br>
+            в) Никак не помогает</li>
+            <li><strong>Что объединяет искусство и науку?</strong><br>
+            а) Стремление понять мир<br>
+            б) Использование красок<br>
+            в) Ничего</li>
+        </ol>
+        <p><em>Ответы: 1 — б; 2 — а; 3 — б; 4 — а; 5 — а.</em></p>
+    </div>
+
+    <div class="quest-box">
+        <p><strong>Мини-квест «Путешествие в мир искусства»</strong></p>
+        <p>Представь, что ты — экскурсовод в музее. Проведи для своих друзей или родителей экскурсию по «Галерее красоты», которую ты создал в тетради. Расскажи:</p>
+        <ul>
+            <li>почему ты выбрал именно эти объекты;</li>
+            <li>какие чувства они у тебя вызывают;</li>
+            <li>что общего между ними;</li>
+            <li>чему они тебя научили.</li>
+        </ul>
+    </div>
+
+    <div class="story-box">
+        <p><strong>Притча «Художник и Природа»</strong></p>
+        <p>Однажды Художник решил нарисовать самую красивую картину в мире. Он взял кисти, краски и пошёл в лес.</p>
+        <p>— Что ты рисуешь? — спросил его Лес.</p>
+        <p>— Я хочу изобразить твою красоту, — ответил Художник.</p>
+        <p>Он рисовал деревья, цветы, птиц, ручей. Но каждый раз, когда он заканчивал, ему казалось, что чего-то не хватает.</p>
+        <p>— Почему у меня не получается передать всю красоту? — спросил он у Природы.</p>
+        <p>— Потому что красота — это не только то, что ты видишь, — ответила Природа. — Это ещё и то, что ты чувствуешь. Красота — в гармонии, в движении, в жизни. Её нельзя поймать, но можно почувствовать сердцем.</p>
+        <p>Художник закрыл глаза и прислушался. Он услышал пение птиц, шелест листьев, журчание ручья. Он почувствовал тепло солнца и свежесть ветра. И тогда он понял: <strong>настоящая красота — это сама жизнь</strong>.</p>
+        <p>Он открыл глаза и нарисовал... простое сердце. Потому что красота — в любви к миру.</p>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Итог раздела 7 и всей рабочей тетради «Гармония»:</strong> Мы прошли долгий путь — от первого удивления красотой природы до понимания её как источника мудрости, нравственности и искусства. Гармония — это единство истины, красоты и добра. Помни: <strong>красота спасёт мир, если мы научимся её видеть, чувствовать, понимать и беречь</strong>.
+    </div>
+
+    <div class="poem">
+        <p>Вот и закончился наш путь,<br>
+        Но это только лишь начало.<br>
+        Ведь красоту не позабыть,<br>
+        Она в нас навсегда звучала.</p>
+        <p>Смотри, слушай, чувствуй, твори,<br>
+        Природу всем сердцем люби.<br>
+        И гармонию в мире неси —<br>
+        Светом добра всех озари!</p>
+    </div>
+
+    <h2>📚 Навигация по рабочей тетради</h2>
+    <p style="margin-top:16px;">
+        <a href="section6.html" class="button">← Раздел 6. Путешествие в мир звуков природы</a>
+        <a href="preface.html" class="button">📋 К аннотации</a>
+        <a href="plan.html" class="button">📖 К структурному плану</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Гармония» к ОМК эколого-биологического профиля</p>
+        <p>Третья ступень непрерывного экологического образования (после «Друзей природы» и «Знатоков природы»)</p>
+    </footer>
+</div>
+</body>
+</html>

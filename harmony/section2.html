@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 2. Мир прекрасного — Рабочая тетрадь «Гармония»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ К РАЗДЕЛУ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            padding: 15px 20px;
+            border-left: 5px solid #a855f7;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        .poem {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+        .riddle-draw-area {
+            margin-top: 12px;
+            border: 1px dashed #d97706;
+            border-radius: 10px;
+            background: white;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a16207;
+            font-style: italic;
+            font-size: 0.88rem;
+        }
+
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .funny-card {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #ec4899;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .funny-title {
+            font-weight: 700;
+            color: #9d174d;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .funny-text {
+            font-size: 0.95rem;
+            color: #831843;
+            line-height: 1.7;
+        }
+        .funny-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #9d174d;
+            font-size: 0.92rem;
+        }
+
+        .quest-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quest-title {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quest-step {
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quiz-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #16a34a;
+        }
+        .quiz-variant {
+            margin: 4px 0 4px 20px;
+            font-size: 0.9rem;
+        }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-top: 4px solid #16a34a;
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.9rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .game-title {
+            font-weight: 700;
+            color: #155e75;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .game-text {
+            font-size: 0.95rem;
+            color: #164e63;
+            line-height: 1.7;
+        }
+
+        .craft-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .craft-title {
+            font-weight: 700;
+            color: #9a3412;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .craft-text {
+            font-size: 0.95rem;
+            color: #7c2d12;
+            line-height: 1.7;
+        }
+        .craft-list {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-top: 10px;
+        }
+        .craft-list li { margin: 6px 0; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации рабочей тетради</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section1.html" class="back-link" style="margin-left: 15px;">← Раздел 1</a>
+
+    <h1>🌸 Раздел 2. Мир прекрасного</h1>
+    <div class="section-meta">📖 Линия красоты | 🎯 Для детей 8–11 лет | ⏱ 8 часов</div>
+
+    <div class="intro-card">
+        <p>Дорогой друг! В первом разделе мы познакомились с понятием прекрасного, узнали, что красота живёт в природе, в искусстве, в человеке, в труде. Но прекрасное — это не только то, что мы видим. Это ещё и <strong>целый мир</strong>, который открывается перед нами, когда мы учимся смотреть внимательно.</p>
+        <p>В этом разделе мы сделаем следующий шаг: научимся различать <strong>формы проявления прекрасного</strong>, поймём, как красота связана с пользой, узнаем, что такое искусство и какие у него бывают виды. Мы будем разгадывать загадки, слушать поучительные истории, играть и творить. Пусть этот путь станет для тебя радостным и удивительным!</p>
+    </div>
+
+    <h2>🌸 2.1. Прекрасное в природе</h2>
+
+    <p>Природа — <strong>первый и главный художник</strong> на Земле. Задолго до того, как человек взял в руки кисть или перо, природа уже создавала удивительные картины: закаты над морем, снежные вершины гор, узоры на крыльях бабочек, разноцветные луга. Всё это — <strong>формы проявления прекрасного</strong>.</p>
+
+    <p>Прекрасное в природе проявляется <strong>по-разному</strong>. Иногда мы видим его в <em>величественном</em> (горы, океан, грозовое небо), иногда — в <em>малом</em> (капля росы, снежинка, травинка). Иногда оно <em>тихое</em> (утренний туман, зимняя тишина), а иногда — <em>бурное</em> (водопад, шторм, ливень).</p>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌅</span>
+            <div class="beauty-title">Прекрасное в великом</div>
+            <div class="beauty-text">Закаты и рассветы, горы и моря, грозовое небо, звёздные ночи. Всё это восхищает и заставляет остановиться.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">❄️</span>
+            <div class="beauty-title">Прекрасное в малом</div>
+            <div class="beauty-text">Капля росы, снежинка на ладони, травинка, узор на крыле бабочки. Малое часто удивительнее великого.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌫️</span>
+            <div class="beauty-title">Прекрасное в тихом</div>
+            <div class="beauty-text">Утренний туман, зимняя тишина, лунный свет. Тихая красота требует внимания и сосредоточенности.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌊</span>
+            <div class="beauty-title">Прекрасное в бурном</div>
+            <div class="beauty-text">Водопады, штормы, ливни, грозы. Бурная красота — это сила и мощь природы.</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 2.1.1. СОЕДИНИ ЛИНИЯМИ -->
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 2.1.1. «Формы прекрасного» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соедини линиями пример природного явления с формой проявления прекрасного, к которой он относится.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Пример</th>
+                    <th>Форма прекрасного</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Грозовое небо</td><td>1. Прекрасное в великом</td></tr>
+                <tr><td>Б. Капля росы на листке</td><td>2. Прекрасное в малом</td></tr>
+                <tr><td>В. Утренний туман над рекой</td><td>3. Прекрасное в тихом</td></tr>
+                <tr><td>Г. Водопад в горах</td><td>4. Прекрасное в бурном</td></tr>
+                <tr><td>Д. Снежинка на ладони</td><td>2. Прекрасное в малом</td></tr>
+                <tr><td>Е. Шторм на море</td><td>4. Прекрасное в бурном</td></tr>
+            </tbody>
+        </table>
+        <p><em>Подсказка: некоторые формы встречаются по два раза.</em></p>
+    </div>
+
+    <h3>Целесообразность прекрасного в природе</h3>
+
+    <p>Обрати внимание: <strong>в природе красиво то, что полезно</strong>. Это называется <strong>целесообразностью прекрасного</strong>. Обтекаемая форма рыбы позволяет ей быстро плавать. Густой мех зайца защищает его от холода. Яркая окраска цветка привлекает насекомых, которые опыляют растение. То есть красота в природе — не случайна, она служит жизни.</p>
+
+    <div class="green-note">
+        <strong>🌿 Подумай.</strong> Если бы крылья бабочки были не симметричны, она бы не смогла летать. Если бы у птицы не было гладких перьев, она бы не поднималась в воздух. Природа создаёт красивое, потому что красивое помогает выживать. И это — урок для человека: настоящее искусство тоже создаётся для жизни.
+    </div>
+
+    <!-- ЗАДАНИЕ 2.1.2. РАСКРАСЬ КОНТУР БАБОЧКИ -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 2.1.2. «Раскрась бабочку-симметрию» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Перед тобой контур бабочки. Раскрась её так, чтобы левое и правое крылья были <strong>симметричны</strong> — одинаковы по цвету и узору. Затем ответь на вопрос.</p>
+        <div class="draw-area">
+            <!-- Контур бабочки: только линии, без заливки, симметричный -->
+            <svg viewBox="0 0 300 200" width="100%" height="220" xmlns="http://www.w3.org/2000/svg">
+                <!-- Тело -->
+                <ellipse cx="150" cy="100" rx="6" ry="40" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Голова -->
+                <circle cx="150" cy="55" r="8" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Усики -->
+                <path d="M145,50 Q135,35 128,30" fill="none" stroke="#333" stroke-width="1.5"/>
+                <path d="M155,50 Q165,35 172,30" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="128" cy="30" r="2" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="172" cy="30" r="2" fill="none" stroke="#333" stroke-width="1.5"/>
+                <!-- Левое верхнее крыло -->
+                <path d="M145,70 Q90,40 60,70 Q40,100 70,120 Q100,130 145,110 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Правое верхнее крыло -->
+                <path d="M155,70 Q210,40 240,70 Q260,100 230,120 Q200,130 155,110 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Левое нижнее крыло -->
+                <path d="M145,115 Q100,120 80,150 Q90,180 130,175 Q150,165 145,140 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Правое нижнее крыло -->
+                <path d="M155,115 Q200,120 220,150 Q210,180 170,175 Q150,165 155,140 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Узор-кружки (симметричные) -->
+                <circle cx="105" cy="95" r="8" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="195" cy="95" r="8" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="120" cy="150" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="180" cy="150" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+            </svg>
+            <div class="draw-caption">Раскрась симметрично: левое крыло — как правое</div>
+        </div>
+        <p><strong>Вопрос:</strong> почему природа создаёт симметричные формы?</p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ЗАГАДКА С РИСУНКОМ -->
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадка. Отгадай и нарисуй отгадку</div>
+        <p>«Над цветком порхает, пляшет,<br>
+        Веерком узорным машет». </p>
+        <div class="riddle-draw-area">
+            🖼️ Нарисуй здесь свою отгадку
+        </div>
+        <p style="margin-top:10px;"><strong>Моя отгадка:</strong> <span class="line-for-writing" style="margin:0;width:200px;display:inline-block;"></span></p>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌿 Пословицы и поговорки о красоте природы:</strong>
+        <ul>
+            <li>«Весна красна цветами, а осень — снопами».</li>
+            <li>«Не всё то золото, что блестит, но красота природы всем видна».</li>
+            <li>«Лес и вода — красота земли».</li>
+            <li>«Красоту в природе не купишь, её увидеть нужно».</li>
+            <li>«Красота дерева — в его плодах, а человека — в его делах».</li>
+        </ul>
+    </div>
+
+    <h2>💚 2.2. Прекрасное и человек</h2>
+
+    <p>Природа прекрасна сама по себе. Но человек — <strong>единственное существо на Земле</strong>, которое способно <em>увидеть</em> красоту и <em>отозваться</em> на неё. Мы не просто смотрим на закат — мы восхищаемся. Мы не просто слышим пение птиц — мы радуемся. Это значит, что человек тоже <strong>носит в себе красоту</strong> — красоту чувства, мысли, поступка.</p>
+
+    <h3>Значение красоты для человека</h3>
+
+    <p>Красота — это не «бесполезное украшение» жизни. Она <strong>питает нашу душу</strong>, делает нас добрее, отзывчивее, внимательнее. Когда мы видим прекрасное, в нас просыпается желание <strong>творить добро</strong>. Именно поэтому так важно окружать себя красотой: она помогает нам расти.</p>
+
+    <p>Кроме того, красота <strong>лечит и вдохновляет</strong>. Многие люди, оказавшись в трудной ситуации, находили силы, глядя на природу, слушая музыку, читая стихи. Красота дарит нам надежду и радость.</p>
+
+    <div class="quote">
+        «Красота — это вечность, глядящая на себя в зеркало». — древняя мудрость
+        <span class="quote-author">Красота живёт не вовне, а в том, как мы смотрим на мир и как поступаем в нём.</span>
+    </div>
+
+    <h3>Взаимосвязь прекрасного и полезного</h3>
+
+    <p>Мы уже говорили, что <strong>в природе красивое полезно</strong>. Но и в жизни человека это правило работает. Красивая и ухоженная школа, аккуратный двор, опрятный внешний вид — это не только «для красоты». Это ещё и <strong>уважение к себе, к другим, к миру</strong>.</p>
+
+    <p>Однако бывает и наоборот: человек гонится за внешней красотой, а внутри — пусто. Тогда красота становится <em>фальшивой</em>. Настоящая красота всегда соединена с <strong>добротой, правдой, полезностью</strong>.</p>
+
+    <!-- ЗАДАНИЕ 2.2.1. ДОРИСУЙ КОНТУР -->
+    <div class="task-box">
+        <div class="task-box-title">🖍️ Задание 2.2.1. «Дорисуй цветок» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой половина цветка. Левая часть нарисована сплошной линией — это образец. Правая часть — только пунктирный контур. Обведи пунктир сплошной линией, а затем раскрась цветок.</p>
+        <div class="draw-area">
+            <!-- Половина цветка с осью симметрии -->
+            <svg viewBox="0 0 300 220" width="100%" height="220" xmlns="http://www.w3.org/2000/svg">
+                <!-- Ось симметрии (пунктир) -->
+                <line x1="150" y1="20" x2="150" y2="200" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,4"/>
+                <!-- Стебель -->
+                <line x1="150" y1="130" x2="150" y2="200" stroke="#333" stroke-width="2"/>
+                <!-- Левая часть цветка (сплошная) -->
+                <path d="M150,80 Q120,50 100,80 Q90,110 150,120" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M150,80 Q115,70 105,95" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M150,60 Q110,30 95,70" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Лепестки справа — пунктирные для дорисовки -->
+                <path d="M150,80 Q180,50 200,80 Q210,110 150,120" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M150,80 Q185,70 195,95" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M150,60 Q190,30 205,70" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <!-- Лист слева -->
+                <path d="M150,160 Q120,155 110,175 Q130,185 150,175" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Лист справа — пунктир -->
+                <path d="M150,160 Q180,155 190,175 Q170,185 150,175" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+            </svg>
+            <div class="draw-caption">Слева — образец. Справа — обведи пунктир и раскрась симметрично.</div>
+        </div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Пятиминутная красавица»</div>
+        <div class="funny-text">Одна девочка решила, что станет красивой, если наденет самое яркое платье, нарисует самые большие банты и наденет бусы. Она вышла во двор — и все на неё оглядывались. Но когда она стала помогать малышу, который упал с велосипеда, — бусы порвались, банты развязались, а платье испачкалось. Девочка расстроилась. А бабушка, которая всё видела, сказала: «Красота у тебя настоящая — это твоё доброе сердце. А платье — это только тряпочка. Не путай главное с пустяками».</div>
+        <div class="funny-moral">💡 Мораль: настоящая красота — в добрых делах, а не в ярких нарядах.</div>
+    </div>
+
+    <!-- ВЕСЁЛАЯ ИСТОРИЯ ПРО ЖАДНОСТЬ -->
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Жадный ёжик»</div>
+        <div class="funny-text">Ёжик нашёл в лесу красивое яблоко. «Какое красивое! — подумал он. — Никому не покажу, буду любоваться один!» Он спрятал яблоко под пень и сидел рядом. Пришла белочка: «Ёжик, угости яблочком!» — «Не дам, это моё!» Пришёл зайчик: «Ёжик, дай кусочек!» — «Не дам, самому нужно!» Прилетела птичка: «Ёжик, дай зёрнышко!» — «Не дам, уходи!» Сидел ёжик один, любовался яблоком, но радости не было. Яблоко лежало, а вокруг — тишина и пустота. Тогда понял ёжик: «Красивое яблоко, которое ни с кем не разделишь, — не приносит счастья. Счастье — в дружбе, а не в жадности».</div>
+        <div class="funny-moral">💡 Мораль: жадность и скупость лишают красоту её смысла. Настоящая красота — та, которой можно поделиться.</div>
+    </div>
+
+    <!-- ЗАДАНИЕ 2.2.2. РАЗДЕЛИ НА ГРУППЫ -->
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 2.2.2. «Красивое — полезное» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📊 Раздели на группы</span></p>
+        <p>Перед тобой список примеров. Раздели их на две группы: «Красивое и полезное вместе» и «Красивое, но бесполезное». Запиши номера в нужную колонку.</p>
+        <p><strong>Список:</strong> 1. Пчела, собирающая нектар. 2. Блестящая фольга. 3. Красивая кормушка для птиц. 4. Пластиковый пакет, который выбросили в лесу. 5. Ухоженная клумба у школы. 6. Вышитое полотенце. 7. Камень, который лежит на дороге. 8. Красивая поделка из природного материала.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Красивое и полезное вместе</th>
+                    <th>Красивое, но бесполезное</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🎨 2.3. Искусство</h2>
+
+    <p>Мы уже знаем, что красота живёт в природе. Но человек — существо творческое. Из наблюдений за природой родилось <strong>искусство</strong> — особый способ человека выразить свои чувства, мысли, представления о красоте.</p>
+
+    <p><strong>Искусство</strong> — это творческое отражение действительности в художественных образах. Оно помогает нам <em>глубже видеть</em> мир, <em>сильнее чувствовать</em>, <em>полнее понимать</em> себя и других. Искусство существует тысячелетиями: древние люди рисовали на стенах пещер, пели, танцевали, рассказывали истории.</p>
+
+    <h3>Роль искусства в жизни человека</h3>
+
+    <ul>
+        <li><strong>Познавательная.</strong> Искусство помогает нам узнавать мир — природу, людей, историю, культуру.</li>
+        <li><strong>Воспитательная.</strong> Искусство формирует наши чувства, учит добру, сочувствию, ответственности.</li>
+        <li><strong>Эстетическая.</strong> Искусство создаёт и передаёт красоту, учит нас видеть прекрасное.</li>
+        <li><strong>Коммуникативная.</strong> Искусство соединяет людей через общие переживания.</li>
+        <li><strong>Терапевтическая.</strong> Искусство успокаивает, лечит душу, помогает пережить трудности.</li>
+    </ul>
+
+    <h3>Виды искусства</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Вид искусства</th>
+                <th>Что использует?</th>
+                <th>Примеры</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🎨 Живопись</strong></td>
+                <td>Краски, цвет, линию</td>
+                <td>Пейзажи Левитана, портреты Репина</td>
+            </tr>
+            <tr>
+                <td><strong>🎵 Музыка</strong></td>
+                <td>Звук, ритм, мелодию</td>
+                <td>«Времена года» Чайковского и Вивальди</td>
+            </tr>
+            <tr>
+                <td><strong>📖 Литература</strong></td>
+                <td>Слово, образ</td>
+                <td>Стихи Пушкина, рассказы Пришвина</td>
+            </tr>
+            <tr>
+                <td><strong>🎭 Театр</strong></td>
+                <td>Игру, движение, речь</td>
+                <td>Спектакли, инсценировки</td>
+            </tr>
+            <tr>
+                <td><strong>💃 Танец</strong></td>
+                <td>Движение, пластику тела</td>
+                <td>Народные танцы, балет</td>
+            </tr>
+            <tr>
+                <td><strong>🏛️ Архитектура</strong></td>
+                <td>Форму, пространство, материал</td>
+                <td>Дворцы, храмы, старинные дома</td>
+            </tr>
+            <tr>
+                <td><strong>🎬 Кино</strong></td>
+                <td>Движение, звук, изображение</td>
+                <td>Фильмы о природе, мультфильмы</td>
+            </tr>
+            <tr>
+                <td><strong>🖌️ Декоративно-прикладное искусство</strong></td>
+                <td>Материал, форму, орнамент</td>
+                <td>Вышивка, керамика, резьба по дереву</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ЗАДАНИЕ 2.3.1. ПРОДОЛЖИ ПО ОБРАЗЦУ -->
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 2.3.1. «Продолжи орнамент» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">✏️ Продолжи</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой орнамент в народном стиле. Продолжи ряд, нарисовав ещё три элемента по образцу. Затем раскрась орнамент в цвета, которые встречаются в народных узорах.</p>
+        <div class="draw-area">
+            <!-- Орнамент: ромб + крест — образец + 3 пунктирных -->
+            <svg viewBox="0 0 500 100" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+                <!-- Образец 1 -->
+                <path d="M40,50 L60,30 L80,50 L60,70 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="60" y1="30" x2="60" y2="70" stroke="#333" stroke-width="1"/>
+                <line x1="40" y1="50" x2="80" y2="50" stroke="#333" stroke-width="1"/>
+                <!-- Образец 2 -->
+                <path d="M130,50 L150,30 L170,50 L150,70 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="150" y1="30" x2="150" y2="70" stroke="#333" stroke-width="1"/>
+                <line x1="130" y1="50" x2="170" y2="50" stroke="#333" stroke-width="1"/>
+                <!-- Продолжение (пунктир) -->
+                <path d="M220,50 L240,30 L260,50 L240,70 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M310,50 L330,30 L350,50 L330,70 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M400,50 L420,30 L440,50 L420,70 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <!-- Ось орнамента -->
+                <line x1="20" y1="50" x2="480" y2="50" stroke="#cbd5e1" stroke-width="0.5" stroke-dasharray="3,3"/>
+            </svg>
+            <div class="draw-caption">Два ромба — образец. Три пунктирных — нарисуй сам.</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 2.3.2. ОБВЕДИ И РАСКРАСЬ -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 2.3.2. «Обведи и раскрась солнце» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Обведи</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой контур солнца в народном стиле. Обведи пунктирные линии сплошными и раскрась в цвета, которые появятся в твоём узоре. Затем подпиши, что символизирует солнце в народном искусстве.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 250 250" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="125" cy="125" r="45" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+                <!-- Лучи -->
+                <g stroke="#333" stroke-width="2" stroke-dasharray="5,5">
+                    <line x1="125" y1="65" x2="125" y2="30"/>
+                    <line x1="125" y1="185" x2="125" y2="220"/>
+                    <line x1="65" y1="125" x2="30" y2="125"/>
+                    <line x1="185" y1="125" x2="220" y2="125"/>
+                    <line x1="82" y1="82" x2="58" y2="58"/>
+                    <line x1="168" y1="82" x2="192" y2="58"/>
+                    <line x1="82" y1="168" x2="58" y2="192"/>
+                    <line x1="168" y1="168" x2="192" y2="192"/>
+                </g>
+                <!-- Кружки на концах лучей -->
+                <circle cx="125" cy="30" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="125" cy="220" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="30" cy="125" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="220" cy="125" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="58" cy="58" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="192" cy="58" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="58" cy="192" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="192" cy="192" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+            </svg>
+            <div class="draw-caption">Обведи пунктирные линии и раскрась</div>
+        </div>
+        <p><strong>Что символизирует солнце в народном искусстве?</strong></p>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="poem">
+        «Стихи живут в любой травинке,<br>
+        в росе, в закате, в облаках.<br>
+        Поэт — тот, кто услышит тонко<br>
+        всю музыку в простых словах.<br><br>
+        Художник — тот, кто краски неба<br>
+        перенесёт на полотно.<br>
+        А музыкант — тот, кто сумеет<br>
+        вложить в аккорд одно — одно: <br><br>
+        Любовь к земле, к родной природе,<br>
+        к теплу, к добру, к мечте, к весне.<br>
+        Искусство — это разговор с природой,<br>
+        в котором мы находим песнь в себе».
+        <span class="poem-author">— из размышлений юного поэта</span>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🎨 Пословицы об искусстве и мастерстве:</strong>
+        <ul>
+            <li>«Каков мастер, такова и работа».</li>
+            <li>«С мастерством люди не родятся, а добытым мастерством гордятся».</li>
+            <li>«Кто любит труд, того люди чтут».</li>
+            <li>«Дело мастера боится».</li>
+            <li>«Хорошая работа два века живёт».</li>
+        </ul>
+    </div>
+
+    <!-- ЗАГАДКА -->
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадка. Отгадай и нарисуй отгадку</div>
+        <p>«Разноцветное коромысло<br>
+        Через реку повисло». </p>
+        <div class="riddle-draw-area">
+            🖼️ Нарисуй здесь свою отгадку
+        </div>
+        <p style="margin-top:10px;"><strong>Моя отгадка:</strong> <span class="line-for-writing" style="margin:0;width:200px;display:inline-block;"></span></p>
+    </div>
+
+    <!-- ИГРОВОЙ БЛОК -->
+    <div class="game-card">
+        <div class="game-title">🎭 Игра «Угадай вид искусства»</div>
+        <div class="game-text">
+            <p>Педагог загадывает одно из восьми видов искусства (живопись, музыка, литература, театр, танец, архитектура, кино, декоративно-прикладное искусство). Ребёнок должен пантомимой или звуками показать этот вид искусства, а остальные — угадать.</p>
+            <p><strong>Цель игры:</strong> закрепить знание видов искусства и научиться выражать их через движение и звук.</p>
+        </div>
+    </div>
+
+    <!-- ПРАКТИКУМ-ИЗГОТОВЛЕНИЕ -->
+    <div class="craft-card">
+        <div class="craft-title">🛠️ Практикум «Мой народный орнамент»</div>
+        <div class="craft-text">
+            <p>Народные мастера с давних времён украшали дома, посуду, одежду орнаментами. Давай и мы создадим свой орнамент — на бумаге или в тетради.</p>
+            <p><strong>Что понадобится:</strong></p>
+            <ul class="craft-list">
+                <li>плотная бумага или тетрадный лист;</li>
+                <li>цветные карандаши;</li>
+                <li>линейка (по желанию).</li>
+            </ul>
+            <p><strong>Как сделать:</strong></p>
+            <ol class="craft-list">
+                <li>Раздели лист на три горизонтальные полосы.</li>
+                <li>В каждой полосе нарисуй по 5–6 элементов орнамента (ромбы, кружки, волны, крестики).</li>
+                <li>Раскрась орнамент, используя 3–4 цвета.</li>
+                <li>Придумай название своему орнаменту (например, «Солнечный», «Лесной», «Весенний»).</li>
+            </ol>
+            <p><strong>Результат:</strong> у тебя получился собственный орнамент, который можно подарить близким или вклеить в портфолио.</p>
+        </div>
+    </div>
+
+    <h2>🌿 2.4. Обобщение по разделу «Мир прекрасного»</h2>
+
+    <p>Мы прошли большой путь: узнали, что такое прекрасное, где оно живёт, как проявляется в природе и в жизни человека, что такое искусство и какие у него виды. Пришло время <strong>обобщить знания</strong>.</p>
+
+    <h3>Свойства прекрасного</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Свойство</th>
+                <th>Что означает</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Гармония</strong></td><td>Согласованность, единство всех частей</td></tr>
+            <tr><td><strong>Симметрия</strong></td><td>Равенство частей относительно оси или центра</td></tr>
+            <tr><td><strong>Ритм</strong></td><td>Повторяемость элементов через промежутки</td></tr>
+            <tr><td><strong>Целесообразность</strong></td><td>Соответствие формы назначению</td></tr>
+            <tr><td><strong>Неповторимость</strong></td><td>Уникальность, невозможность повторить</td></tr>
+            <tr><td><strong>Изящность</strong></td><td>Лёгкость, тонкость, совершенство формы</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Критерии оценки прекрасного</h3>
+
+    <ul>
+        <li><strong>Внешняя форма.</strong> Насколько форма совершенна, гармонична, целесообразна?</li>
+        <li><strong>Содержание.</strong> Какой смысл заключён в предмете? Что он выражает?</li>
+        <li><strong>Воздействие на человека.</strong> Какие чувства он вызывает — радость, удивление, восхищение, спокойствие?</li>
+        <li><strong>Польза.</strong> Служит ли предмет или явление добру, помогает ли жизни?</li>
+        <li><strong>Уникальность.</strong> Есть ли в нём что-то неповторимое, авторское?</li>
+    </ul>
+
+    <!-- ЗАДАНИЕ 2.4.1. СОЕДИНИ ЛИНИЯМИ СВОЙСТВА И ПРИМЕРЫ -->
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 2.4.1. «Свойства прекрасного» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соедини линиями свойство прекрасного с примером, который его иллюстрирует.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Свойство</th>
+                    <th>Пример</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1. Гармония</td><td>А. Полосы на стволе берёзы</td></tr>
+                <tr><td>2. Симметрия</td><td>Б. Крона дерева и его корни</td></tr>
+                <tr><td>3. Ритм</td><td>В. Крылья бабочки</td></tr>
+                <tr><td>4. Целесообразность</td><td>Г. Обтекаемая форма рыбы</td></tr>
+                <tr><td>5. Неповторимость</td><td>Д. Каждый закат</td></tr>
+                <tr><td>6. Изящность</td><td>Е. Полёт ласточки</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки-размышления о прекрасном</div>
+        <ul>
+            <li>«Что можно увидеть с закрытыми глазами?» (сон, мечту, красоту в душе).</li>
+            <li>«Что нельзя купить ни за какие деньги, но можно потерять навсегда?» (совесть, доброту).</li>
+            <li>«Что растёт, когда его отдают, и умирает, когда его прячут?» (доброта).</li>
+            <li>«Что делает человека красивым изнутри?» (добрые поступки).</li>
+        </ul>
+        <div class="riddle-draw-area">
+            🖼️ Нарисуй символ доброты
+        </div>
+    </div>
+
+    <div class="quiz-card">
+        <div class="quiz-title">🎯 Викторина «Мир прекрасного»</div>
+        <div class="quiz-question">
+            1. Что такое прекрасное?
+            <div class="quiz-variant">а) То, что дорого стоит</div>
+            <div class="quiz-variant">б) То, что вызывает у нас восхищение и радость</div>
+            <div class="quiz-variant">в) То, что нравится только взрослым</div>
+        </div>
+        <div class="quiz-question">
+            2. Что такое целесообразность прекрасного в природе?
+            <div class="quiz-variant">а) Красота в природе случайна</div>
+            <div class="quiz-variant">б) Красивое в природе помогает выживать</div>
+            <div class="quiz-variant">в) Красивое в природе не имеет смысла</div>
+        </div>
+        <div class="quiz-question">
+            3. Что относится к видам искусства?
+            <div class="quiz-variant">а) Только живопись</div>
+            <div class="quiz-variant">б) Только музыка и литература</div>
+            <div class="quiz-variant">в) Живопись, музыка, литература, театр, танец и другие</div>
+        </div>
+        <div class="quiz-question">
+            4. Какое свойство прекрасного означает равенство частей относительно оси?
+            <div class="quiz-variant">а) Гармония</div>
+            <div class="quiz-variant">б) Симметрия</div>
+            <div class="quiz-variant">в) Ритм</div>
+        </div>
+        <div class="quiz-question">
+            5. В чём главный критерий настоящей красоты?
+            <div class="quiz-variant">а) Внешняя форма</div>
+            <div class="quiz-variant">б) Единство формы и содержания, доброта и польза</div>
+            <div class="quiz-variant">в) Высокая цена</div>
+        </div>
+        <div class="quiz-question">
+            6. Что общего между красивым и полезным?
+            <div class="quiz-variant">а) Они всегда вместе</div>
+            <div class="quiz-variant">б) Красивое может быть полезным, а может быть бесполезным</div>
+            <div class="quiz-variant">в) Красивое всегда бесполезно</div>
+        </div>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Охота за красотой»</div>
+        <p style="font-size:0.94rem;color:#3730a3;margin-bottom:10px;">Выполни пять заданий квеста и собери коллекцию примеров прекрасного.</p>
+        <div class="quest-step"><strong>Задание 1.</strong> Найди в природе симметричный объект. Зарисуй его или опиши.</div>
+        <div class="quest-step"><strong>Задание 2.</strong> Найди в природе объект с ритмом (повторяющиеся элементы). Например, полосы на коре, чешуйки на шишке.</div>
+        <div class="quest-step"><strong>Задание 3.</strong> Приведи пример прекрасного поступка человека, который ты видел сам или читал о нём.</div>
+        <div class="quest-step"><strong>Задание 4.</strong> Назови произведение искусства, в котором отражена природа. Кто автор?</div>
+        <div class="quest-step"><strong>Задание 5.</strong> Придумай собственную историю или стихотворение о красоте природы. Запиши или расскажи.</div>
+    </div>
+
+    <!-- ПОЛЕЗНАЯ ИСТОРИЯ -->
+    <div class="story-card">
+        <div class="story-title">📖 Поучительный рассказ «Ленивый художник»</div>
+        <div class="story-text">Жил-был мальчик, который очень хотел рисовать. Но каждый раз, когда ему предлагали потренироваться, он говорил: «Мне лень. Я и так умею. Вот подожду вдохновения — и сразу нарисую шедевр». Шли годы. Все его друзья рисовали, лепили, сочиняли — и постепенно становились настоящими мастерами. А мальчик всё ждал вдохновения. Однажды старый художник спросил его: «Ты уже нарисовал свой шедевр?» Мальчик вздохнул: «Нет. Вдохновение не приходит». Художник улыбнулся и ответил: «Вдохновение приходит к тому, кто трудится. Рисуй каждый день — и оно тебя догонит».</div>
+        <div class="story-moral">💡 Мораль: лень — враг творчества. Мастерство приходит не от вдохновения, а от труда. Вдохновение догоняет того, кто уже начал.</div>
+    </div>
+
+    <!-- ВЕСЁЛАЯ ИСТОРИЯ -->
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Забывчивый композитор»</div>
+        <div class="funny-text">Один мальчик решил стать композитором. Сидел-сидел, сочинял-сочинял и наконец придумал прекрасную мелодию. «Вот это шедевр! — воскликнул он. — Я её обязательно запишу... завтра». Утром он встал и... забыл мелодию. Пытался вспомнить — не мог. Решил сочинить новую. Сочинил и снова отложил запись. И снова забыл. Так продолжалось месяц. В конце месяца он расстроился и сказал маме: «Я — плохой композитор. Мне никогда ничего не удаётся». Мама посмотрела на его блокнот и увидела... пустые страницы. «Сынок, — сказала она, — ты не композитор. Ты мечтатель, который не записывает свои мечты. Возьми карандаш — и запиши то, что сейчас в голове. А потом ещё. И ещё. Тогда музыка останется с тобой».</div>
+        <div class="funny-moral">💡 Мораль: забывчивость и непостоянство губят любые начинания. Записывай и завершай начатое!</div>
+    </div>
+
+    <!-- ИТОГОВОЕ ЗАДАНИЕ -->
+    <div class="task-box">
+        <div class="task-box-title">✏️ Итоговое задание 2.4.2. «Отношение к прекрасному» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🖼️ Нарисуй</span></p>
+        <p>Ответь письменно на вопросы о твоём отношении к прекрасному. Затем нарисуй рисунок на тему «Прекрасное в моей жизни».</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Вопрос</th>
+                    <th>Мой ответ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Что для меня самое прекрасное в природе?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Какое произведение искусства произвело на меня впечатление?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Какой добрый поступок я считаю по-настоящему красивым?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Что я могу сделать, чтобы мир вокруг стал красивее?</td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок «Прекрасное в моей жизни»:</strong></p>
+        <div class="draw-area" style="height:200px;">
+            <div class="draw-caption" style="padding-top:80px;">🖼️ Нарисуй здесь своё прекрасное</div>
+        </div>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Формы проявления прекрасного</strong> — великое, малое, тихое, бурное; разнообразные способы, которыми красота проявляется в природе.</p>
+        <p><strong>Целесообразность прекрасного</strong> — свойство природы, при котором красивая форма служит сохранению жизни.</p>
+        <p><strong>Искусство</strong> — творческое отражение действительности в художественных образах.</p>
+        <p><strong>Виды искусства</strong> — живопись, музыка, литература, театр, танец, архитектура, кино, декоративно-прикладное искусство.</p>
+        <p><strong>Свойства прекрасного</strong> — гармония, симметрия, ритм, целесообразность, неповторимость, изящность.</p>
+        <p><strong>Критерии оценки прекрасного</strong> — форма, содержание, воздействие, польза, уникальность.</p>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Какие существуют <strong>формы проявления прекрасного</strong>: в великом, малом, тихом, бурном.</li>
+            <li>Что такое <strong>целесообразность прекрасного</strong> в природе.</li>
+            <li>Какова <strong>роль красоты в жизни человека</strong>.</li>
+            <li>Что такое <strong>искусство</strong> и какова его роль в жизни человека.</li>
+            <li>Какие бывают <strong>виды искусства</strong>.</li>
+            <li>Какие <strong>свойства прекрасного</strong> и <strong>критерии оценки</strong> существуют.</li>
+            <li>Что <strong>лень, забывчивость, жадность, неаккуратность</strong> мешают создавать красоту, а <strong>труд, доброта, ответственность</strong> — помогают.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Назови формы проявления прекрасного в природе. Приведи примеры.</li>
+            <li>Что такое целесообразность прекрасного?</li>
+            <li>Какие виды искусства ты знаешь?</li>
+            <li>Какие свойства прекрасного ты знаешь?</li>
+            <li>По каким критериям оценивается прекрасное?</li>
+            <li>Какой поучительный рассказ запомнился тебе больше всего и почему?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="quote">
+        «Прекрасное рядом с нами. Но чтобы его увидеть, нужно остановиться, всмотреться и вслушаться. И тогда мир откроет нам свою красоту».
+        <span class="quote-author">— из размышлений о прекрасном</span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Мир прекрасного бесконечен. Но красота — это не то, что можно просто купить или увидеть один раз. Это то, что нужно <strong>открывать каждый день заново</strong>: в природе, в искусстве, в человеке, в добром деле. И тогда ты станешь по-настоящему гармоничным человеком.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section1.html" class="button">← Раздел 1. Организация работы объединения</a>
+        <a href="section3.html" class="button">📖 Перейти к разделу 3. «Источники прекрасного» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Гармония» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

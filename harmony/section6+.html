@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 6. Путешествие в мир звуков природы — Рабочая тетрадь «Гармония»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin: 30px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #5b21b6;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 24px 0 10px 0;
+            color: #6d28d9;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #5b21b6;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .theory-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 5px solid #3b82f6;
+            border-radius: 0 14px 14px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .practice-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 5px solid #16a34a;
+            border-radius: 0 14px 14px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .practice-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .music-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            border-radius: 0 14px 14px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .music-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+        .story-box {
+            background: #fffbeb;
+            border: 2px dashed #f59e0b;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .story-box::before {
+            content: "📖 История";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #f59e0b;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .humor-box {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .humor-box::before {
+            content: "😄 Смешинка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quest-box {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .quest-box::before {
+            content: "🧩 Мини-квест";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quiz-box {
+            background: #eef2ff;
+            border: 2px solid #6366f1;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .quiz-box::before {
+            content: "❓ Викторина";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .riddle-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            border-radius: 0 10px 10px 0;
+            padding: 14px 20px;
+            margin: 14px 0;
+            font-style: italic;
+        }
+        .riddle-box strong { color: #0369a1; font-style: normal; }
+        .poem {
+            background: #fdf2f8;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 10px 10px 0;
+            padding: 14px 20px;
+            margin: 14px 0;
+            font-style: italic;
+            color: #831843;
+            line-height: 1.6;
+        }
+        .proverb {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 8px 16px;
+            border-radius: 10px;
+            margin: 6px 4px;
+            font-weight: 500;
+            font-size: 0.92rem;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 14px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.94rem;
+        }
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+            font-size: 0.95rem;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .opori {
+            display: inline-block;
+            background: #f0fdf4;
+            color: #166534;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="plan.html" class="back-link">← К структурному плану</a>
+
+    <h1>🎵 Раздел 6. Путешествие в мир звуков природы</h1>
+    <div class="chapter-meta">✍️ Рабочая тетрадь «Гармония» | Третья ступень непрерывного экологического образования | Дети 8–11 лет</div>
+
+    <p>Мир вокруг нас полон звуков. Шелест листьев, пение птиц, журчание ручья, раскаты грома — всё это <strong>музыка природы</strong>. В этом разделе мы отправимся в увлекательное путешествие по звуковой вселенной, научимся <strong>слушать</strong> и <strong>слышать</strong> природу, понимать её язык и создавать собственные звуковые образы.</p>
+
+    <div class="quote">
+        «Музыка природы — самая древняя и самая прекрасная музыка на Земле. Она звучит для тех, кто умеет слушать».
+        <span class="quote-author">— концептуальная идея раздела</span>
+    </div>
+
+    <!-- ТЕМА 6.1 -->
+    <h2>🔊 Тема 6.1. Источники звуков</h2>
+
+    <div class="theory-box">
+        <h4>Как возникает звук?</h4>
+        <p><strong>Звук</strong> — это колебания, которые распространяются в воздухе, воде или другой среде. Когда что-то колеблется (дрожит), оно создаёт звуковые волны. Наши уши улавливают эти волны, и мы слышим звук.</p>
+        <p>В природе источники звука — это:</p>
+        <ul>
+            <li><strong>Живые существа:</strong> птицы, насекомые, звери, люди.</li>
+            <li><strong>Природные явления:</strong> ветер, дождь, гром, волны, ручьи.</li>
+            <li><strong>Предметы:</strong> шуршание листвы, скрип дерева, падение камня.</li>
+        </ul>
+        <p><strong>Виды звуков в природе:</strong></p>
+        <ul>
+            <li><strong>Шумовые</strong> — не имеют определённой высоты (шум дождя, ветра, шелест листьев).</li>
+            <li><strong>Музыкальные</strong> — имеют определённую высоту и гармонию (пение птиц, звон капели).</li>
+        </ul>
+        <p>Интересно, что многие <strong>природные объекты похожи на музыкальные инструменты</strong>:</p>
+        <ul>
+            <li>дупло дерева — на барабан;</li>
+            <li>камыш — на дудочку;</li>
+            <li>ракушка — на трубу;</li>
+            <li>ручей — на арфу.</li>
+        </ul>
+    </div>
+
+    <div class="practice-box">
+        <div class="practice-title">🎵 Практическая работа «Свойства звуков»</div>
+        <p><span class="opori">👂</span> Послушай аудиозаписи звуков природы (лес, луг, водоём, дождь). Определи, какие звуки ты услышал. Заполни таблицу:</p>
+        <table>
+            <thead>
+                <tr><th>Звук</th><th>Источник</th><th>Шумовой или музыкальный</th><th>Какое настроение создаёт</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Пение птицы</td><td>Птица</td><td>Музыкальный</td><td>Радость, спокойствие</td></tr>
+                <tr><td>Шум дождя</td><td>Дождь</td><td>Шумовой</td><td>Умиротворение</td></tr>
+                <tr><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+            </tbody>
+        </table>
+        <p><span class="opori">📝</span> Придумай и запиши свои примеры шумовых и музыкальных звуков природы.</p>
+    </div>
+
+    <div class="riddle-box">
+        <strong>Загадки о звуках природы:</strong><br><br>
+        <em>1.</em> Кто всю ночь по крыше бьёт да постукивает,<br>
+        И бормочет, и поёт, убаюкивает?<br>
+        <em>(Дождь)</em><br><br>
+        <em>2.</em> Поёт да свищет, деревья гнёт,<br>
+        Листья срывает, всех пробирает.<br>
+        <em>(Ветер)</em><br><br>
+        <em>3.</em> Не живой, а говорит,<br>
+        Не человек, а всем нужен.<br>
+        <em>(Эхо)</em>
+    </div>
+
+    <div class="humor-box">
+        <p><strong>«Музыкальный кот»</strong></p>
+        <p>Кот Васька решил, что он — великий музыкант. Он сел на фортепиано и начал «играть» — прыгал по клавишам лапами.</p>
+        <p>— Что это за шум?! — возмутилась бабушка.</p>
+        <p>— Это не шум, — гордо ответил кот, — это современная музыка! Я называю её «Мяу-симфония №1».</p>
+        <p>— А почему тогда молоко в кувшине дрожит?</p>
+        <p>— Это не дрожь, это аплодисменты! — ответил Васька.</p>
+        <p><em>Мораль: не всякий шум — музыка. Но и в шуме можно найти красоту, если прислушаться.</em></p>
+    </div>
+
+    <!-- ТЕМА 6.2 -->
+    <h2>🏃 Тема 6.2. Движения и звуки в природе</h2>
+
+    <div class="theory-box">
+        <h4>Взаимосвязь звука и движения</h4>
+        <p>В природе <strong>звук и движение неразрывно связаны</strong>. Ветер дует — листья шелестят. Птица взмахивает крыльями — слышен свист. Ручей бежит — вода журчит.</p>
+        <p><strong>Виды движений в природе:</strong></p>
+        <ul>
+            <li><strong>Поступательные:</strong> ручей, река, ветер, лавина.</li>
+            <li><strong>Колебательные:</strong> качание деревьев, волны, дрожание листьев.</li>
+            <li><strong>Вращательные:</strong> кружение снежинок, водоворот.</li>
+            <li><strong>Живые:</strong> полёт птицы, прыжки зайца, бег оленя.</li>
+        </ul>
+        <p><strong>Эхо</strong> — это отражение звука от препятствий. В лесу, в горах, у реки эхо может повторять звук несколько раз.</p>
+    </div>
+
+    <div class="practice-box">
+        <div class="practice-title">🔊 Практическая работа «Распространение звука»</div>
+        <p><span class="opori">👂</span> Проведи опыт. Постучи по столу пальцем. Затем приложи ухо к столу и постучи снова. Что ты заметил? Звук стал громче и отчётливее, потому что через твёрдые предметы звук передаётся лучше, чем через воздух.</p>
+        <p><span class="opori">📝</span> Запиши вывод: <em>«Звук распространяется в разных средах по-разному: в твёрдых телах он передаётся лучше, чем в воздухе».</em></p>
+        <p><span class="opori">🎭</span> Игра «Угадай движение». Педагог называет движение, дети показывают его и озвучивают. Например: «лист падает» — дети плавно кружатся и шуршат.</p>
+    </div>
+
+    <div class="story-box">
+        <p><strong>Поучительная история «Эхо и Мальчик»</strong></p>
+        <p>Мальчик пришёл в лес и закричал:</p>
+        <p>— Эй! Кто здесь?</p>
+        <p>— Эй! Кто здесь? — ответило Эхо.</p>
+        <p>Мальчик рассердился:</p>
+        <p>— Ты что, дразнишься?</p>
+        <p>— Дразнишься! — ответило Эхо.</p>
+        <p>Мальчик закричал ещё громче:</p>
+        <p>— Ты глупое!</p>
+        <p>— Глупое! — согласилось Эхо.</p>
+        <p>Мальчик заплакал и побежал к дедушке. Дед выслушал его и сказал:</p>
+        <p>— Эхо всегда повторяет то, что ты ему говоришь. Если ты кричишь злые слова, оно отвечает злыми. Попробуй сказать доброе слово.</p>
+        <p>Мальчик вернулся в лес и ласково сказал:</p>
+        <p>— Здравствуй, лес!</p>
+        <p>— Здравствуй, лес! — ответило Эхо.</p>
+        <p>— Я тебя люблю!</p>
+        <p>— Я тебя люблю! — отозвалось Эхо.</p>
+        <p>Мальчик улыбнулся и понял: <strong>как ты к миру, так и мир к тебе</strong>.</p>
+    </div>
+
+    <div class="poem">
+        <p>Ветер листья шевелит,<br>
+        Дождик по стеклу стучит.<br>
+        Ручеёк бежит, журчит,<br>
+        Птица в небесах свистит.</p>
+        <p>Всё движется, звучит, живёт,<br>
+        Свою мелодию поёт.<br>
+        Прислушайся — и ты поймёшь,<br>
+        Как мир прекрасен и хорош!</p>
+    </div>
+
+    <!-- ТЕМА 6.3 -->
+    <h2>🎶 Тема 6.3. Музыка природы</h2>
+
+    <div class="theory-box">
+        <h4>Звуки разных природных сообществ</h4>
+        <p>Каждое природное сообщество имеет свой <strong>звуковой портрет</strong>:</p>
+        <ul>
+            <li><strong>Лес:</strong> пение дрозда, стук дятла, шорох листвы, скрип деревьев.</li>
+            <li><strong>Луг:</strong> жужжание пчёл, стрекотание кузнечиков, шелест трав.</li>
+            <li><strong>Водоём:</strong> кваканье лягушек, всплеск рыбы, журчание воды.</li>
+            <li><strong>Поле:</strong> шелест колосьев, свист ветра, крик перепела.</li>
+            <li><strong>Горы:</strong> гул ветра, падение камней, эхо.</li>
+        </ul>
+        <p><strong>Времена года</strong> тоже имеют свои звуки:</p>
+        <ul>
+            <li><strong>Весна:</strong> капель, пение птиц, журчание ручьёв.</li>
+            <li><strong>Лето:</strong> жужжание насекомых, гроза, стрекот кузнечиков.</li>
+            <li><strong>Осень:</strong> шелест опадающих листьев, крики улетающих птиц.</li>
+            <li><strong>Зима:</strong> скрип снега, завывание ветра, тишина.</li>
+        </ul>
+    </div>
+
+    <div class="music-box">
+        <div class="music-title">🎵 Практическая работа «Распознавание птиц по голосам»</div>
+        <p><span class="opori">👂</span> Послушай аудиозаписи голосов птиц. Попробуй угадать, кто поёт:</p>
+        <ul>
+            <li>Кто «ку-ку» кричит? <em>(Кукушка)</em></li>
+            <li>Кто «чик-чирик» поёт? <em>(Воробей)</em></li>
+            <li>Кто «кар-кар» громко каркает? <em>(Ворона)</em></li>
+            <li>Кто «свири-свири» свистит? <em>(Свиристель)</em></li>
+            <li>Кто «тень-тень» звенит? <em>(Синица)</em></li>
+        </ul>
+        <p><span class="opori">🎨</span> Нарисуй птицу, чей голос тебе понравился больше всего.</p>
+    </div>
+
+    <div class="riddle-box">
+        <strong>Загадки о птицах и их голосах:</strong><br><br>
+        <em>1.</em> Кто без нот и без свирели<br>
+        Лучше всех выводит трели?<br>
+        <em>(Соловей)</em><br><br>
+        <em>2.</em> Днём спит, ночью летает,<br>
+        Прохожих пугает.<br>
+        <em>(Сова)</em><br><br>
+        <em>3.</em> Всё время стучит, деревья долбит,<br>
+        Но их не калечит, а только лечит.<br>
+        <em>(Дятел)</em>
+    </div>
+
+    <div class="practice-box">
+        <div class="practice-title">🎨 Практическая работа «Сравнение шумовых и музыкальных звуков»</div>
+        <p><span class="opori">📊</span> Заполни таблицу. Распредели звуки по группам:</p>
+        <table>
+            <thead>
+                <tr><th>Звук</th><th>Шумовой</th><th>Музыкальный</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Гром</td><td>✓</td><td></td></tr>
+                <tr><td>Пение соловья</td><td></td><td>✓</td></tr>
+                <tr><td>Шелест листьев</td><td>✓</td><td></td></tr>
+                <tr><td>Звон капели</td><td></td><td>✓</td></tr>
+                <tr><td>Шум прибоя</td><td>✓</td><td></td></tr>
+                <tr><td>Стрекот кузнечика</td><td>✓</td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="humor-box">
+        <p><strong>«Концерт на болоте»</strong></p>
+        <p>Лягушки решили дать концерт. Они собрались на болоте и начали громко квакать.</p>
+        <p>— Ква-ква-ква! — пели одни.</p>
+        <p>— Ква-ква-ква! — вторили другие.</p>
+        <p>Прилетел Аист и спрашивает:</p>
+        <p>— Что это за шум?</p>
+        <p>— Это не шум, это музыка! — обиделись лягушки. — Мы исполняем «Болотную симфонию»!</p>
+        <p>— Понятно, — кивнул Аист. — А я думал, это обеденный перерыв. Приятного аппетита... то есть, я хотел сказать, удачного концерта!</p>
+        <p><em>Мораль: у каждого свой вкус. То, что для одного — музыка, для другого — просто шум. Но уважать чужое творчество нужно!</em></p>
+    </div>
+
+    <!-- ТЕМА 6.4 -->
+    <h2>🌿 Тема 6.4. Обобщение. Природа звука</h2>
+
+    <div class="theory-box">
+        <h4>Значение звуков в природе</h4>
+        <p>Звуки в природе играют огромную роль:</p>
+        <ul>
+            <li><strong>Общение:</strong> птицы поют, чтобы привлечь партнёра или предупредить об опасности.</li>
+            <li><strong>Ориентация:</strong> летучие мыши и дельфины используют эхолокацию.</li>
+            <li><strong>Защита:</strong> некоторые животные шипят или рычат, чтобы отпугнуть врага.</li>
+            <li><strong>Красота:</strong> звуки природы радуют нас, успокаивают, вдохновляют.</li>
+        </ul>
+        <p><strong>Различие между шумовыми и музыкальными звуками:</strong> шумовые не имеют определённой высоты, музыкальные — имеют. Но и те и другие важны для природы и для человека.</p>
+    </div>
+
+    <div class="quest-box">
+        <p><strong>Мини-квест «Звуковая карта леса»</strong></p>
+        <p>Представь, что ты идёшь по лесу. Составь «звуковую карту» — список звуков, которые ты можешь услышать в разных местах:</p>
+        <ul>
+            <li><strong>У опушки:</strong> пение птиц, шелест травы.</li>
+            <li><strong>В чаще:</strong> стук дятла, скрип деревьев.</li>
+            <li><strong>У ручья:</strong> журчание воды, кваканье лягушек.</li>
+            <li><strong>На поляне:</strong> жужжание пчёл, стрекот кузнечиков.</li>
+        </ul>
+        <p>Нарисуй карту и отметь на ней эти звуки символами.</p>
+    </div>
+
+    <div class="quiz-box">
+        <p><strong>Викторина «В мире звуков»</strong></p>
+        <ol>
+            <li><strong>Что такое звук?</strong><br>
+            а) Свет<br>
+            б) Колебания, которые мы слышим<br>
+            в) Цвет</li>
+            <li><strong>Какой звук называют музыкальным?</strong><br>
+            а) Шум дождя<br>
+            б) Пение соловья<br>
+            в) Гром</li>
+            <li><strong>Что такое эхо?</strong><br>
+            а) Отражение звука<br>
+            б) Громкий крик<br>
+            в) Тишина</li>
+            <li><strong>Какие звуки издаёт кукушка?</strong><br>
+            а) «Кар-кар»<br>
+            б) «Ку-ку»<br>
+            в) «Чик-чирик»</li>
+        </ol>
+        <p><em>Ответы: 1 — б; 2 — б; 3 — а; 4 — б.</em></p>
+    </div>
+
+    <div class="story-box">
+        <p><strong>Экскурсия «Природа весной» (заочная или реальная)</strong></p>
+        <p>Весна — самое звонкое время года. Природа просыпается, и воздух наполняется звуками:</p>
+        <ul>
+            <li>звонкая капель;</li>
+            <li>журчание ручьёв;</li>
+            <li>пение вернувшихся птиц;</li>
+            <li>первый гром.</li>
+        </ul>
+        <p>Во время экскурсии постарайся услышать как можно больше звуков. Запиши их в тетрадь. Сделай «звуковую фотографию» весны — опиши или нарисуй то, что услышал.</p>
+    </div>
+
+    <div class="note">
+        <strong>🎯 Итог раздела 6:</strong> Мир звуков — это удивительный мир. Научись слушать природу, и она расскажет тебе много интересного. Помни: тишина — это тоже звук, только особенный.
+    </div>
+
+    <h2>📚 Навигация по рабочей тетради</h2>
+    <p style="margin-top:16px;">
+        <a href="section5.html" class="button">← Раздел 5. Нравственность и красота</a>
+        <a href="section7.html" class="button">Раздел 7. Художественная культура →</a>
+        <a href="plan.html" class="button">📋 К структурному плану</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Гармония» к ОМК эколого-биологического профиля</p>
+        <p>Третья ступень непрерывного экологического образования</p>
+    </footer>
+</div>
+</body>
+</html>

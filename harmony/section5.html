@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 5. Нравственность и красота — Рабочая тетрадь «Гармония»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ К РАЗДЕЛУ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            padding: 15px 20px;
+            border-left: 5px solid #a855f7;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        .poem {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+        .riddle-draw-area {
+            margin-top: 12px;
+            border: 1px dashed #d97706;
+            border-radius: 10px;
+            background: white;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a16207;
+            font-style: italic;
+            font-size: 0.88rem;
+        }
+
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .funny-card {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #ec4899;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .funny-title {
+            font-weight: 700;
+            color: #9d174d;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .funny-text {
+            font-size: 0.95rem;
+            color: #831843;
+            line-height: 1.7;
+        }
+        .funny-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #9d174d;
+            font-size: 0.92rem;
+        }
+
+        .quest-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quest-title {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quest-step {
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quiz-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #16a34a;
+        }
+        .quiz-variant {
+            margin: 4px 0 4px 20px;
+            font-size: 0.9rem;
+        }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-top: 4px solid #16a34a;
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.9rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .game-title {
+            font-weight: 700;
+            color: #155e75;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .game-text {
+            font-size: 0.95rem;
+            color: #164e63;
+            line-height: 1.7;
+        }
+
+        .craft-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .craft-title {
+            font-weight: 700;
+            color: #9a3412;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .craft-text {
+            font-size: 0.95rem;
+            color: #7c2d12;
+            line-height: 1.7;
+        }
+        .craft-list {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-top: 10px;
+        }
+        .craft-list li { margin: 6px 0; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации рабочей тетради</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section4.html" class="back-link" style="margin-left: 15px;">← Раздел 4</a>
+
+    <h1>💚 Раздел 5. Нравственность и красота</h1>
+    <div class="section-meta">📖 Линия нравственности | 🎯 Для детей 8–11 лет | ⏱ 8 часов</div>
+
+    <div class="intro-card">
+        <p>Дорогой друг! Мы уже знаем, что такое прекрасное, где живут его истоки и как мы его воспринимаем. Но у красоты есть ещё одна важная сторона — <strong>нравственная</strong>. Настоящая красота не существует без доброты, честности и заботы. Нельзя восхищаться цветком и при этом обижать живое. Нельзя любоваться рекой и бросать в неё мусор.</p>
+        <p>В этом разделе мы поговорим о самом важном: о <strong>добре</strong>, <strong>отзывчивости</strong> и <strong>ответственности</strong>. Мы узнаем, как красота связана с нравственностью, и что каждый из нас может сделать, чтобы сохранить прекрасное в мире. Пусть этот раздел станет для тебя путешествием к самому себе — к своему доброму сердцу.</p>
+    </div>
+
+    <div class="quote">
+        «Красота без доброты — как цветок без запаха: вроде и красив, а радости не приносит».
+        <span class="quote-author">— народная мудрость</span>
+    </div>
+
+    <!-- ТЕМА 5.1 -->
+    <h2>🌸 5.1. Отзывчивость</h2>
+
+    <h3>Что такое отзывчивость?</h3>
+
+    <p><strong>Отзывчивость</strong> — это удивительное качество человеческой души. Это умение <em>чувствовать</em> настроение другого, <em>замечать</em>, когда кому-то нужна помощь, и <em>откликаться</em> на эту потребность. Отзывчивый человек не пройдёт мимо чужой беды — он способен поставить себя на место другого.</p>
+
+    <p>Отзывчивость — это <strong>сердечная доброта, которая проявляется в поступках</strong>. Отзывчивый человек:</p>
+
+    <ul>
+        <li>замечает, когда кому-то плохо;</li>
+        <li>сочувствует и сопереживает;</li>
+        <li>предлагает помощь, не дожидаясь просьбы;</li>
+        <li>радуется, когда может сделать доброе дело.</li>
+    </ul>
+
+    <p>В природе тоже есть отзывчивость. Солнце отдаёт свет, цветок отдаёт нектар, дерево отдаёт тень. Природа живёт по закону <strong>взаимности и заботы</strong> — и это урок для нас.</p>
+
+    <!-- ЗАДАНИЕ 5.1.1. РАСКРАСЬ СЕРДЦЕ -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 5.1.1. «Раскрась сердце отзывчивости» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Перед тобой контур сердца — символ отзывчивости. Внутри нарисованы небольшие кружки и ромб — оставь их пустыми или раскрась отдельно. Раскрась сердце тёплыми цветами и напиши внизу, что для тебя значит быть отзывчивым.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 300 280" width="100%" height="280" xmlns="http://www.w3.org/2000/svg">
+                <!-- Контур сердца -->
+                <path d="M150,250 
+                         C150,250 30,160 30,95 
+                         Q30,30 90,30 
+                         Q150,30 150,95 
+                         Q150,30 210,30 
+                         Q270,30 270,95 
+                         C270,160 150,250 150,250 Z" 
+                      fill="none" stroke="#333" stroke-width="2.5"/>
+                <!-- Внутренние элементы -->
+                <circle cx="105" cy="95" r="14" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="195" cy="95" r="14" fill="none" stroke="#333" stroke-width="1.5"/>
+                <path d="M125,155 L150,130 L175,155 L150,180 Z" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="150" cy="200" r="10" fill="none" stroke="#333" stroke-width="1.5"/>
+            </svg>
+            <div class="draw-caption">Раскрась сердце тёплыми цветами</div>
+        </div>
+        <p><strong>Быть отзывчивым — это значит:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.1.2. СОЕДИНИ ЛИНИЯМИ -->
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 5.1.2. «Отзывчивость или равнодушие?» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Перед тобой два столбца. Соедини линиями пример поведения с качеством, которое он показывает: «Отзывчивость» или «Равнодушие».</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Пример поведения</th>
+                    <th>Качество</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Мальчик уступил место старшему</td><td>1. Отзывчивость</td></tr>
+                <tr><td>Б. Девочка прошла мимо плачущего товарища</td><td>2. Равнодушие</td></tr>
+                <tr><td>В. Ребёнок заметил, что бабушке тяжело, и помог</td><td>1. Отзывчивость</td></tr>
+                <tr><td>Г. Ученик посмеялся над ошибкой другого</td><td>2. Равнодушие</td></tr>
+                <tr><td>Д. Ребята собрали корм для зимующих птиц</td><td>1. Отзывчивость</td></tr>
+                <tr><td>Е. Прохожий не помог человеку, которому стало плохо</td><td>2. Равнодушие</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ЗАГАДКА -->
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадка. Отгадай и нарисуй отгадку</div>
+        <p>«Кто всегда придёт на помощь,<br>
+        Не пройдёт в беде никак?<br>
+        Кто поделится конфетой<br>
+        И развеселит чудак?»</p>
+        <div class="riddle-draw-area">
+            🖼️ Нарисуй здесь свою отгадку — символ отзывчивости
+        </div>
+        <p style="margin-top:10px;"><strong>Моя отгадка:</strong> <span class="line-for-writing" style="margin:0;width:200px;display:inline-block;"></span></p>
+    </div>
+
+    <div class="poem">
+        «Отзывчивым быть — это просто и сложно,<br>
+        Ведь надо услышать, увидеть, понять.<br>
+        И сердце открыть, и помочь, если можно,<br>
+        И руку в беде никому не подать?..<br><br>
+        Нет, руку подать! И согреть, и спасти,<br>
+        И доброе слово в дорогу найти.<br>
+        Пусть мир станет лучше от наших шагов,<br>
+        От добрых поступков и тёплых слов!»
+        <span class="poem-author">— из размышлений о доброте</span>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">📖 Поучительный рассказ «Спасённый подснежник»</div>
+        <div class="story-text">Ранней весной в лесу распустился первый подснежник — нежный, хрупкий, красивый. Он радовался солнцу и не знал, что скоро может погибнуть: кто-то протоптал тропинку прямо через поляну. Однажды по этой тропинке шёл мальчик. Он увидел подснежник, остановился и подумал: «Если я пойду дальше, я раздавлю цветок. А если обойду — то не успею домой к ужину». Мальчик выбрал обойти. Он не пожалел о сэкономленном времени — он был рад, что сохранил красоту. Через год на этой поляне выросли десятки подснежников. И каждый раз, проходя мимо, мальчик вспоминал свой первый добрый поступок.</div>
+        <div class="story-moral">💡 Мораль: отзывчивость — это умение заметить чужую потребность и помочь, даже если это неудобно для тебя. Один маленький поступок может сохранить большую красоту.</div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Помощник»</div>
+        <div class="funny-text">Мама попросила Витю: «Сынок, помоги мне, пожалуйста, польём цветы». Витя важно кивнул, взял лейку, пошёл к цветам... и полил... ковёр! «Витя, что ты делаешь?!» — удивилась мама. «Как что? — ответил Витя. — Ты же сказала "польём цветы". Я и полил. У ковра цвет красивый, пусть растёт!» Мама вздохнула и сказала: «Помогать надо с умом, а не просто махать лейкой».</div>
+        <div class="funny-moral">💡 Мораль: отзывчивость — это не только желание помочь, но и умение понять, чего именно от тебя хотят. Иначе получится только хуже.</div>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.1.3. КОПИЛКА ДОБРЫХ ДЕЛ -->
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.1.3. «Копилка добрых дел» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой «копилка добрых дел» — таблица на неделю. Каждый раз, когда ты сделаешь доброе дело, отмечай его в нужном дне. К концу недели подсчитай, сколько добрых дел ты совершил. Раскрась клетки с самыми важными поступками.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>День недели</th>
+                    <th>Моё доброе дело</th>
+                    <th>Кому помог?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Понедельник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Вторник</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Среда</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Четверг</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Пятница</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Суббота</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Воскресенье</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Всего добрых дел за неделю:</strong> <span class="line-for-writing" style="margin:0;width:80px;display:inline-block;"></span></p>
+    </div>
+
+    <!-- ТЕМА 5.2 -->
+    <h2>🌳 5.2. Ответственность</h2>
+
+    <h3>Что такое ответственность?</h3>
+
+    <p><strong>Ответственность</strong> — это понимание того, что твои поступки имеют последствия, и готовность отвечать за них. Ответственный человек не перекладывает вину на других, держит слово и выполняет обещания.</p>
+
+    <p>Ответственность бывает <strong>разной</strong>:</p>
+
+    <ul>
+        <li><strong>за себя</strong> — за своё здоровье, учёбу, поведение;</li>
+        <li><strong>за других</strong> — за младших братьев и сестёр, за питомцев;</li>
+        <li><strong>за природу</strong> — за чистоту двора, за сохранение деревьев и цветов.</li>
+    </ul>
+
+    <p>Ответственность тесно связана с <strong>чувством долга</strong> — внутренним пониманием того, что нужно делать, даже если не хочется.</p>
+
+    <div class="proverb-list">
+        <strong>🌿 Пословицы и поговорки об ответственности:</strong>
+        <ul>
+            <li>«Не давши слова — крепись, а давши — держись».</li>
+            <li>«Слово — не воробей, вылетит — не поймаешь».</li>
+            <li>«Кто не отвечает за свои поступки, тому нельзя доверять».</li>
+            <li>«Обещал — сделай, дал слово — держи».</li>
+            <li>«За всё, что делаешь, отвечай».</li>
+            <li>«Сказано — сделано».</li>
+        </ul>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.2.1. РАСКРАСЬ ВЕСЫ -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 5.2.1. «Раскрась весы ответственности» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Перед тобой контур весов — символ ответственности. Раскрась их. На левой чаше напиши «Слово», на правой — «Дело». Это напоминание: ответственный человек держит слово и подтверждает его делом.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 400 300" width="100%" height="300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Стойка -->
+                <line x1="200" y1="50" x2="200" y2="240" stroke="#333" stroke-width="3"/>
+                <!-- Основание -->
+                <line x1="130" y1="250" x2="270" y2="250" stroke="#333" stroke-width="3"/>
+                <line x1="150" y1="240" x2="250" y2="240" stroke="#333" stroke-width="2"/>
+                <!-- Перекладина -->
+                <line x1="60" y1="90" x2="340" y2="90" stroke="#333" stroke-width="3"/>
+                <!-- Левая цепочка -->
+                <line x1="90" y1="90" x2="90" y2="160" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <!-- Левая чаша -->
+                <path d="M40,160 Q90,190 140,160" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="40" y1="160" x2="140" y2="160" stroke="#333" stroke-width="1"/>
+                <!-- Правая цепочка -->
+                <line x1="310" y1="90" x2="310" y2="160" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <!-- Правая чаша -->
+                <path d="M260,160 Q310,190 360,160" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="260" y1="160" x2="360" y2="160" stroke="#333" stroke-width="1"/>
+                <!-- Декоративный шар сверху -->
+                <circle cx="200" cy="45" r="10" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Линии для надписей -->
+                <line x1="55" y1="215" x2="125" y2="215" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="275" y1="215" x2="345" y2="215" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+            </svg>
+            <div class="draw-caption">Раскрась весы и подпиши: слева — «Слово», справа — «Дело»</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.2.2. ПРОДОЛЖИ УЗОР -->
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 5.2.2. «Продолжи узор из сердец» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">✏️ Продолжи</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой ряд сердец — каждое обозначает доброе дело. Три первых сердца нарисованы сплошной линией — это образец. Продолжи ряд, обводя пунктирные сердца, и раскрась все сердца.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 600 130" width="100%" height="130" xmlns="http://www.w3.org/2000/svg">
+                <!-- Образец 1 -->
+                <path d="M60,90 C60,90 30,65 30,50 Q30,35 45,35 Q60,35 60,50 Q60,35 75,35 Q90,35 90,50 C90,65 60,90 60,90 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Образец 2 -->
+                <path d="M160,90 C160,90 130,65 130,50 Q130,35 145,35 Q160,35 160,50 Q160,35 175,35 Q190,35 190,50 C190,65 160,90 160,90 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Образец 3 -->
+                <path d="M260,90 C260,90 230,65 230,50 Q230,35 245,35 Q260,35 260,50 Q260,35 275,35 Q290,35 290,50 C290,65 260,90 260,90 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Продолжение (пунктир) -->
+                <path d="M360,90 C360,90 330,65 330,50 Q330,35 345,35 Q360,35 360,50 Q360,35 375,35 Q390,35 390,50 C390,65 360,90 360,90 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M460,90 C460,90 430,65 430,50 Q430,35 445,35 Q460,35 460,50 Q460,35 475,35 Q490,35 490,50 C490,65 460,90 460,90 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M560,90 C560,90 530,65 530,50 Q530,35 545,35 Q560,35 560,50 Q560,35 575,35 Q590,35 590,50 C590,65 560,90 560,90 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+            </svg>
+            <div class="draw-caption">Три сплошных сердца — образец. Три пунктирных — обведи и раскрась</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.2.3. РАЗДЕЛИ НА ГРУППЫ -->
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 5.2.3. «Ответственный или безответственный?» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📊 Раздели на группы</span></p>
+        <p>Перед тобой список поступков. Распредели их по двум группам: «Ответственный поступок» и «Безответственный поступок».</p>
+        <p><strong>Список:</strong> 1. Полить цветы, как обещал маме. 2. Оставить мусор в лесу. 3. Сделать домашнее задание вовремя. 4. Пообещать и не сделать. 5. Помочь младшему брату собрать портфель. 6. Забыть покормить питомца. 7. Убрать за собой посуду. 8. Обмануть друга.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>💚 Ответственный поступок</th>
+                    <th>❌ Безответственный поступок</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ЗАГАДКА ОБ ОТВЕТСТВЕННОСТИ -->
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадка. Отгадай и нарисуй отгадку</div>
+        <p>«Дал слово — держи,<br>
+        Обещал — сделай.<br>
+        Что это за качество,<br>
+        Что ценится везде?»</p>
+        <div class="riddle-draw-area">
+            🖼️ Нарисуй символ ответственности
+        </div>
+        <p style="margin-top:10px;"><strong>Моя отгадка:</strong> <span class="line-for-writing" style="margin:0;width:200px;display:inline-block;"></span></p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">📖 Поучительная басня «Кузнечик и Муравей»</div>
+        <div class="story-text">Всё лето Кузнечик прыгал, пел и веселился. А Муравей всё лето трудился: носил зёрнышки, готовил запасы на зиму. «Зачем ты работаешь? — смеялся Кузнечик. — Лето такое прекрасное! Пой, танцуй, наслаждайся!» — «Скоро придёт зима, — отвечал Муравей. — Надо быть ответственным, думать о будущем». Но Кузнечик только махнул лапкой и продолжал веселиться. Пришла зима. Кузнечику стало холодно и голодно. Он пришёл к Муравью и попросил еды. Муравей накормил его, но сказал: «Летом ты не думал о зиме. Так поступают безответственные. Я помогу тебе. Только запомни: ответственность — это забота о будущем».</div>
+        <div class="story-moral">💡 Мораль: кто не думает о последствиях, тот рискует остаться ни с чем. Ответственность — основа жизни.</div>
+    </div>
+
+    <!-- ИГРОВОЙ БЛОК -->
+    <div class="game-card">
+        <div class="game-title">🎭 Игра «Дерево ответственности»</div>
+        <div class="game-text">
+            <p>Дети по очереди называют, за что они несут ответственность: за комнатные растения, за домашнего питомца, за порядок в комнате, за выполненные уроки, за данное обещание. Каждое названное дело — это «лист» на воображаемом «дереве ответственности». Чем больше листьев, тем сильнее дерево.</p>
+            <p><strong>Цель игры:</strong> осознать, что ответственность — это не тяжёлая ноша, а признак взросления и силы.</p>
+        </div>
+    </div>
+
+    <!-- ТЕМА 5.3 -->
+    <h2>🌍 5.3. Как сохранить прекрасное в природе?</h2>
+
+    <h3>Ответственное отношение к природе</h3>
+
+    <p>Природа дарит нам красоту каждый день. Но эта красота хрупка и нуждается в защите. <strong>Сохранить прекрасное в природе</strong> — значит бережно относиться к ней: не мусорить, не ломать деревья, экономить воду и энергию.</p>
+
+    <p>Существуют <strong>малозатратные меры энергосбережения</strong>, которые доступны каждому:</p>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">💡</span>
+            <div class="beauty-title">Экономия света</div>
+            <div class="beauty-text">Выключай свет, когда он не нужен. Это сохраняет энергию и природные ресурсы.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">💧</span>
+            <div class="beauty-title">Экономия воды</div>
+            <div class="beauty-text">Закрывай кран, когда чистишь зубы. Чистая вода — бесценный дар природы.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">♻️</span>
+            <div class="beauty-title">Сортировка отходов</div>
+            <div class="beauty-text">Разделяй мусор: бумага, пластик, стекло. Это помогает переработке.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🚶</span>
+            <div class="beauty-title">Экотранспорт</div>
+            <div class="beauty-text">Ходи пешком или езди на велосипеде. Это сохраняет чистый воздух.</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.3.1. РАСКРАСЬ ЛАМПОЧКУ -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 5.3.1. «Раскрась лампочку-экономку» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Перед тобой контур энергосберегающей лампочки. Раскрась её в цвет, который, по твоему мнению, символизирует экономию и заботу о природе. Внутри напиши три способа экономии энергии, которые ты можешь использовать дома.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 260 320" width="100%" height="300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Колба лампочки -->
+                <path d="M130,40 
+                         Q70,40 70,110 
+                         Q70,170 100,205 
+                         L100,240 L160,240 
+                         L160,205 Q190,170 190,110 
+                         Q190,40 130,40 Z" 
+                      fill="none" stroke="#333" stroke-width="2.5"/>
+                <!-- Цоколь -->
+                <line x1="100" y1="245" x2="160" y2="245" stroke="#333" stroke-width="2"/>
+                <line x1="100" y1="255" x2="160" y2="255" stroke="#333" stroke-width="2"/>
+                <line x1="105" y1="265" x2="155" y2="265" stroke="#333" stroke-width="2"/>
+                <line x1="110" y1="275" x2="150" y2="275" stroke="#333" stroke-width="2"/>
+                <!-- Нить накала -->
+                <path d="M115,150 Q130,120 130,170 Q130,120 145,150" fill="none" stroke="#333" stroke-width="1.5"/>
+                <!-- Лучики -->
+                <line x1="130" y1="20" x2="130" y2="5" stroke="#333" stroke-width="1.5"/>
+                <line x1="60" y1="60" x2="45" y2="50" stroke="#333" stroke-width="1.5"/>
+                <line x1="200" y1="60" x2="215" y2="50" stroke="#333" stroke-width="1.5"/>
+                <line x1="45" y1="110" x2="25" y2="110" stroke="#333" stroke-width="1.5"/>
+                <line x1="215" y1="110" x2="235" y2="110" stroke="#333" stroke-width="1.5"/>
+            </svg>
+            <div class="draw-caption">Раскрась лампочку и напиши внутри три способа экономии</div>
+        </div>
+        <p><strong>Три способа экономии энергии:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.3.2. СОЕДИНИ ЛИНИЯМИ -->
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 5.3.2. «Действие и польза» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соедини линиями действие и пользу, которую оно приносит природе.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Действие</th>
+                    <th>Польза для природы</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Выключить свет</td><td>1. Экономия электроэнергии и природных ресурсов</td></tr>
+                <tr><td>Б. Закрыть кран с водой</td><td>2. Сохранение чистой воды</td></tr>
+                <tr><td>В. Сортировать мусор</td><td>3. Уменьшение свалок и переработка отходов</td></tr>
+                <tr><td>Г. Ходить пешком</td><td>4. Снижение загрязнения воздуха</td></tr>
+                <tr><td>Д. Посадить дерево</td><td>5. Чистый воздух и дом для живых существ</td></tr>
+                <tr><td>Е. Использовать многоразовую сумку</td><td>6. Сокращение пластиковых отходов</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.3.3. ДОРИСУЙ БАБОЧКУ -->
+    <div class="task-box">
+        <div class="task-box-title">🖍️ Задание 5.3.3. «Дорисуй бабочку» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой левая половина бабочки — образец (сплошная линия). Правая половина — пунктирный контур. Обведи пунктир сплошной линией и раскрась бабочку симметрично. Бабочка — символ хрупкости и красоты природы, которую мы обязаны беречь.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 320 240" width="100%" height="240" xmlns="http://www.w3.org/2000/svg">
+                <!-- Ось симметрии -->
+                <line x1="160" y1="20" x2="160" y2="220" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="3,3"/>
+                <!-- Тело -->
+                <ellipse cx="160" cy="120" rx="5" ry="40" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Голова -->
+                <circle cx="160" cy="75" r="7" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Усики -->
+                <path d="M155,70 Q145,55 138,50" fill="none" stroke="#333" stroke-width="1.5"/>
+                <path d="M165,70 Q175,55 182,50" fill="none" stroke="#333" stroke-width="1.5"/>
+                <!-- Левое верхнее крыло (сплошное) -->
+                <path d="M155,90 Q100,60 75,90 Q55,120 85,140 Q115,150 155,130 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Левое нижнее крыло (сплошное) -->
+                <path d="M155,135 Q110,140 95,170 Q105,200 140,195 Q158,185 155,160 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Правое верхнее крыло (пунктир) -->
+                <path d="M165,90 Q220,60 245,90 Q265,120 235,140 Q205,150 165,130 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <!-- Правое нижнее крыло (пунктир) -->
+                <path d="M165,135 Q210,140 225,170 Q215,200 180,195 Q162,185 165,160 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <!-- Узор на левом крыле -->
+                <circle cx="115" cy="110" r="8" fill="none" stroke="#333" stroke-width="1.5"/>
+                <circle cx="125" cy="170" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                <!-- Узор на правом крыле (пунктир) -->
+                <circle cx="205" cy="110" r="8" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <circle cx="195" cy="170" r="5" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4"/>
+            </svg>
+            <div class="draw-caption">Слева — образец. Справа — обведи пунктир и раскрась симметрично</div>
+        </div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">📖 Поучительная история «Мусор в лесу»</div>
+        <div class="story-text">Однажды ребята пошли в лес на пикник. Они веселились, играли, ели. Когда пришло время уходить, Дима сказал: «Давайте уберём за собой. Мусор нельзя оставлять в лесу». «Да ладно! — махнул рукой Вова. — Кто увидит? Лес большой, мусор не заметят». И они ушли, оставив пакеты, бутылки и бумажки. Через год Дима снова пришёл в этот лес. На том месте, где они отдыхали, выросла свалка. Дима убрал мусор и сказал: «Лес — это дом для многих живых существ. Оставлять мусор — значит разрушать этот дом».</div>
+        <div class="story-moral">💡 Мораль: чисто не там, где убирают, а там, где не мусорят. Ответственность за природу начинается с малого.</div>
+    </div>
+
+    <!-- ПРАКТИКУМ -->
+    <div class="craft-card">
+        <div class="craft-title">🛠️ Практикум «Памятка "Сохраним прекрасное"»</div>
+        <div class="craft-text">
+            <p>Создай свою памятку о том, как сохранить красоту природы. Это может быть небольшой плакат, который ты повесишь дома или в классе.</p>
+            <p><strong>Что понадобится:</strong></p>
+            <ul class="craft-list">
+                <li>лист плотной бумаги формата А4;</li>
+                <li>цветные карандаши и фломастеры;</li>
+                <li>линейка (по желанию).</li>
+            </ul>
+            <p><strong>Как сделать:</strong></p>
+            <ol class="craft-list">
+                <li>Раздели лист на 4–6 секторов.</li>
+                <li>В каждом секторе нарисуй символ одного правила (например, закрытый кран — экономия воды).</li>
+                <li>Под каждым символом напиши короткое правило.</li>
+                <li>Дай памятке название («Сохраним прекрасное вместе!»).</li>
+                <li>Укрась памятку орнаментом или узором из листьев.</li>
+            </ol>
+            <p><strong>Результат:</strong> у тебя есть памятка, которую ты можешь подарить родителям, повесить дома или в классе. Так ты помогаешь другим беречь природу.</p>
+        </div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Экономный»</div>
+        <div class="funny-text">Мама говорит сыну: «Сынок, ты опять забыл выключить свет в комнате!» — «Мама, я экономлю!» — «Как это — экономишь?» — «Я не выключаю свет, чтобы лампочка не изнашивалась! Если её часто включать и выключать, она быстрее перегорит!» Мама вздохнула и ответила: «Сынок, иногда за "экономией" прячется обычная лень. Экономить надо с умом — выключать свет, когда он не нужен, а не когда тебе просто лень встать».</div>
+        <div class="funny-moral">💡 Мораль: за мнимой «экономией» часто скрывается лень. Настоящая забота о природе требует настоящих действий, а не отговорок.</div>
+    </div>
+
+    <!-- ТЕМА 5.4 -->
+    <h2>✨ 5.4. Обобщение. Система представлений о добре</h2>
+
+    <h3>Добро в народной мудрости</h3>
+
+    <p>С давних времён люди складывали пословицы и поговорки о добре, нравственности и бережном отношении к природе. Эти мудрые изречения передавались из поколения в поколение и дошли до нас.</p>
+
+    <div class="proverb-list">
+        <strong>💚 Пословицы и поговорки о добре:</strong>
+        <ul>
+            <li>«Доброе дело — правду говорить смело».</li>
+            <li>«Доброта без разума пуста».</li>
+            <li>«Кто добро творит, тому зло не вредит».</li>
+            <li>«Не хвались серебром, а хвались добром».</li>
+            <li>«Жизнь дана на добрые дела».</li>
+            <li>«Доброе слово и кошке приятно».</li>
+            <li>«Сделай добро — и оно к тебе вернётся».</li>
+        </ul>
+    </div>
+
+    <p><strong>Нравственность в современном обществе</strong> — это умение жить в согласии с собой, с другими людьми и с природой. Доброжелательность, внимательность, отзывчивость, ответственность — главные качества нравственного человека.</p>
+
+    <!-- ЗАДАНИЕ 5.4.1. РАСКРАСЬ ДЕРЕВО ДОБРА -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 5.4.1. «Дерево добра» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Перед тобой контур дерева с пятью пустыми кружками на кроне. Раскрась дерево. В каждом кружке напиши одно нравственное качество: «доброта», «отзывчивость», «ответственность», «честность», «забота». Это и будет твоё «дерево добра».</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 500 380" width="100%" height="360" xmlns="http://www.w3.org/2000/svg">
+                <!-- Ствол -->
+                <path d="M240,340 L240,220 Q240,200 230,180 L270,180 Q260,200 260,220 L260,340 Z" fill="none" stroke="#333" stroke-width="2.5"/>
+                <!-- Ветви -->
+                <line x1="240" y1="250" x2="170" y2="200" stroke="#333" stroke-width="2"/>
+                <line x1="260" y1="250" x2="330" y2="200" stroke="#333" stroke-width="2"/>
+                <line x1="240" y1="230" x2="190" y2="160" stroke="#333" stroke-width="2"/>
+                <line x1="260" y1="230" x2="310" y2="160" stroke="#333" stroke-width="2"/>
+                <!-- Крона: большой контур -->
+                <path d="M250,40 
+                         Q160,40 140,120 
+                         Q100,150 130,200 
+                         Q160,240 220,210 
+                         Q250,220 280,210 
+                         Q340,240 370,200 
+                         Q400,150 360,120 
+                         Q340,40 250,40 Z" 
+                      fill="none" stroke="#333" stroke-width="2.5"/>
+                <!-- Пять кружков для качеств -->
+                <circle cx="200" cy="100" r="22" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <circle cx="300" cy="100" r="22" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <circle cx="250" cy="70" r="22" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <circle cx="160" cy="160" r="22" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <circle cx="340" cy="160" r="22" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <!-- Земля -->
+                <line x1="100" y1="340" x2="400" y2="340" stroke="#333" stroke-width="2"/>
+                <!-- Корни -->
+                <path d="M240,340 Q210,355 190,365" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M260,340 Q290,355 310,365" fill="none" stroke="#333" stroke-width="2"/>
+            </svg>
+            <div class="draw-caption">Раскрась дерево и впиши в кружки пять нравственных качеств</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.4.2. СОЕДИНИ ЛИНИЯМИ -->
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 5.4.2. «Принципы нравственности» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соедини линиями нравственный принцип с его значением.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Принцип</th>
+                    <th>Значение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1. Не навреди</td><td>А. Делиться знаниями, добротой, вниманием</td></tr>
+                <tr><td>2. Помоги</td><td>Б. Не делать ничего, что вредит природе и людям</td></tr>
+                <tr><td>3. Сохрани</td><td>В. Помогать тому, кто нуждается</td></tr>
+                <tr><td>4. Поделись</td><td>Г. Беречь то, что создано природой и человеком</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ЗАДАНИЕ 5.4.3. РАЗДЕЛИ НА ГРУППЫ -->
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 5.4.3. «Добро и зло в поступках» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📊 Раздели на группы</span></p>
+        <p>Перед тобой список поступков. Распредели их по двум группам: «Добрые поступки» и «Плохие поступки».</p>
+        <p><strong>Список:</strong> 1. Уступить место старшему. 2. Сорвать редкий цветок в лесу. 3. Покормить птиц зимой. 4. Бросить мусор в реку. 5. Помочь другу в беде. 6. Обмануть родителей. 7. Посадить дерево. 8. Сломать ветку. 9. Утешить грустного. 10. Обидеть слабого.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>💚 Добрые поступки</th>
+                    <th>❌ Плохие поступки</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- МУЗЫКАЛЬНОЕ ЗАДАНИЕ -->
+    <div class="task-box">
+        <div class="task-box-title">🎵 Задание 5.4.4. «Музыка доброты» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎵 Послушай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Послушай спокойную классическую музыку (например, «Лунную сонату» Бетховена или «Аве Мария» Шуберта). Опиши, какие чувства она у тебя вызывает. Как ты думаешь, почему добрые дела и красивая музыка связаны между собой?</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ИТОГОВОЕ ЗАДАНИЕ -->
+    <div class="task-box">
+        <div class="task-box-title">🖼️ Итоговое задание 5.4.5. «Моё доброе дело» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">🖼️ Нарисуй</span> <span class="signal">📝 Запиши</span></p>
+        <p>Нарисуй своё самое важное доброе дело, которое ты совершил за последнее время. Не рисуй людей и животных (кроме бабочек). Используй символы и предметы: сердце, цветок, дерево, солнце, кормушку, книгу, чашку и т. п. Затем напиши небольшой рассказ об этом поступке.</p>
+        <div class="draw-area" style="height:240px;">
+            <div class="draw-caption" style="padding-top:100px;">🖼️ Нарисуй своё доброе дело</div>
+        </div>
+        <p><strong>Рассказ о моём поступке:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- КВЕСТ -->
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Дорогою добра»</div>
+        <p style="font-size:0.94rem;color:#3730a3;margin-bottom:10px;">Выполни пять заданий и пройди путь к доброму сердцу.</p>
+        <div class="quest-step"><strong>Шаг 1.</strong> Найди в тетради или книге одну пословицу о доброте и запиши её.</div>
+        <div class="quest-step"><strong>Шаг 2.</strong> Придумай и запиши одно доброе дело, которое ты можешь сделать завтра.</div>
+        <div class="quest-step"><strong>Шаг 3.</strong> Назови три способа сохранить красоту природы.</div>
+        <div class="quest-step"><strong>Шаг 4.</strong> Нарисуй символ отзывчивости.</div>
+        <div class="quest-step"><strong>Шаг 5.</strong> Расскажи родителям о том, что ты узнал о нравственности. Запиши их ответ.</div>
+    </div>
+
+    <div class="quiz-card">
+        <div class="quiz-title">🎯 Итоговая викторина «Что такое хорошо?»</div>
+        <div class="quiz-question">
+            1. Что такое отзывчивость?
+            <div class="quiz-variant">а) Умение красиво говорить</div>
+            <div class="quiz-variant">б) Умение чувствовать другого и помогать ему</div>
+            <div class="quiz-variant">в) Умение быстро бегать</div>
+        </div>
+        <div class="quiz-question">
+            2. Что значит быть ответственным?
+            <div class="quiz-variant">а) Делать только то, что хочется</div>
+            <div class="quiz-variant">б) Выполнять обещания и думать о последствиях</div>
+            <div class="quiz-variant">в) Никогда не признавать ошибок</div>
+        </div>
+        <div class="quiz-question">
+            3. Как сохранить прекрасное в природе?
+            <div class="quiz-variant">а) Никогда не выходить из дома</div>
+            <div class="quiz-variant">б) Бережно относиться к природе и экономить ресурсы</div>
+            <div class="quiz-variant">в) Сорвать все цветы и поставить дома в вазу</div>
+        </div>
+        <div class="quiz-question">
+            4. Что говорит пословица «Доброта без разума пуста»?
+            <div class="quiz-variant">а) Доброта не нужна</div>
+            <div class="quiz-variant">б) Доброта должна быть разумной</div>
+            <div class="quiz-variant">в) Добрым быть легко</div>
+        </div>
+        <div class="quiz-question">
+            5. Какое качество связанно с чувством долга?
+            <div class="quiz-variant">а) Лень</div>
+            <div class="quiz-variant">б) Ответственность</div>
+            <div class="quiz-variant">в) Жадность</div>
+        </div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">📖 Притча «Два волка»</div>
+        <div class="story-text">Однажды старый мудрец сказал внуку: «В каждом человеке борются два волка. Один волк — это зло: зависть, жадность, злость, лень, равнодушие. Другой волк — это добро: отзывчивость, ответственность, любовь, забота, бережность». — «А какой волк побеждает?» — спросил внук. — «Побеждает тот волк, которого ты кормишь», — ответил мудрец.</div>
+        <div class="story-moral">💡 Мораль: мы сами выбираем, каким волком быть. Кормите в себе доброту, отзывчивость и ответственность — и мир вокруг станет красивее.</div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Забывчивый добряк»</div>
+        <div class="funny-text">Мальчик Федя решил стать добрым. Он составил план: «В понедельник — помогу бабушке. Во вторник — покормлю птиц. В среду — полью цветы соседки. В четверг — уберу во дворе». Начался понедельник. Федя проснулся и... забыл про бабушку. Вторник — снова забыл. Среда, четверг — всё забыл. К концу недели Федя расстроился: «Я хотел стать добрым, а ничего не сделал!» Бабушка погладила его по голове: «Добрым не становятся по плану. Добрым становятся, когда делают добро каждый день, а не записывают его в блокнотик».</div>
+        <div class="funny-moral">💡 Мораль: доброта — это не список дел, а образ жизни. Забывчивость и непостоянство мешают делать добро, но внимание и постоянство — помогают.</div>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Отзывчивость</strong> — умение чувствовать другого и помогать ему от чистого сердца.</p>
+        <p><strong>Ответственность</strong> — понимание последствий своих поступков и готовность отвечать за них.</p>
+        <p><strong>Чувство долга</strong> — внутреннее понимание того, что нужно делать, даже если не хочется.</p>
+        <p><strong>Экологически устойчивый стиль жизни</strong> — образ жизни, при котором человек заботится о природе и сохраняет её для будущих поколений.</p>
+        <p><strong>Нравственность</strong> — система представлений о добре и зле, о том, как должно поступать.</p>
+        <p><strong>Добро</strong> — поступки, которые приносят пользу и радость другим, не вредя при этом никому.</p>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>отзывчивость</strong> и как она проявляется в поступках.</li>
+            <li>Что такое <strong>ответственность</strong> и почему она важна для каждого человека.</li>
+            <li>Что такое <strong>чувство долга</strong> и как оно связано с ответственностью.</li>
+            <li>Как <strong>сохранить прекрасное в природе</strong> через малозатратные меры.</li>
+            <li>Что такое <strong>малозатратные меры энергосбережения</strong>.</li>
+            <li>Какие <strong>нравственные принципы</strong> существуют: не навреди, помоги, сохрани, поделись.</li>
+            <li>Что <strong>лень, жадность, эгоизм, забывчивость, непостоянство</strong> мешают быть нравственным, а <strong>труд, доброта, внимание, ответственность</strong> — помогают.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Что такое отзывчивость? Приведи пример из жизни.</li>
+            <li>Что такое ответственность? За что ты несёшь ответственность?</li>
+            <li>Что такое чувство долга?</li>
+            <li>Какие малозатратные меры энергосбережения ты знаешь?</li>
+            <li>Какие нравственные принципы ты знаешь?</li>
+            <li>Какой поучительный рассказ запомнился тебе больше всего и почему?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="quote">
+        «Нравственность — это не свод запретов, а путь к гармонии с собой, с другими и с природой. И начинается этот путь с малого: с доброго слова, с заботы о ближнем, с ответственности за свои поступки».
+        <span class="quote-author">— из размышлений о нравственности и красоте</span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Нравственность и красота неразделимы. Настоящая красота проявляется в добрых делах, в заботе о природе, в ответственности за свои поступки. Каждый из нас может сделать мир чуточку прекраснее — начни с себя!
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section4.html" class="button">← Раздел 4. Восприятие прекрасного</a>
+        <a href="section6.html" class="button">📖 Перейти к разделу 6. «Путешествие в мир звуков природы» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Гармония» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

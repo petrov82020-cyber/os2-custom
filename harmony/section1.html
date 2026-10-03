@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вводное занятие и Раздел 1. Организация работы объединения — Рабочая тетрадь «Гармония»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВВОДНОЕ ЗАНЯТИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            padding: 15px 20px;
+            border-left: 5px solid #a855f7;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        .poem {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+        .riddle-draw-area {
+            margin-top: 12px;
+            border: 1px dashed #d97706;
+            border-radius: 10px;
+            background: white;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a16207;
+            font-style: italic;
+            font-size: 0.88rem;
+        }
+
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .funny-card {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #ec4899;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .funny-title {
+            font-weight: 700;
+            color: #9d174d;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .funny-text {
+            font-size: 0.95rem;
+            color: #831843;
+            line-height: 1.7;
+        }
+        .funny-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #9d174d;
+            font-size: 0.92rem;
+        }
+
+        .quest-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quest-title {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quest-step {
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quiz-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #16a34a;
+        }
+        .quiz-variant {
+            margin: 4px 0 4px 20px;
+            font-size: 0.9rem;
+        }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-top: 4px solid #16a34a;
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.9rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .promises-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .promises-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .promise-item {
+            background: white;
+            border-left: 5px solid #d97706;
+            border-radius: 0 12px 12px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .plan-card {
+            background: #f8fafc;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+        }
+        .plan-card .plan-title {
+            font-weight: 700;
+            color: #1e466e;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .plan-card .plan-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Контейнер для рисунка-раскраски (только контуры, белый фон) */
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        /* Цепочка «Пять ключей» */
+        .chain-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            text-align: center;
+        }
+        .chain-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .chain-item {
+            background: white;
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 600;
+            color: #166534;
+            min-width: 130px;
+            text-align: center;
+            font-size: 0.92rem;
+        }
+        .chain-item .chain-emoji {
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+        }
+        .chain-arrow {
+            font-size: 1.5rem;
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        /* Игровой блок */
+        .game-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .game-title {
+            font-weight: 700;
+            color: #155e75;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .game-text {
+            font-size: 0.95rem;
+            color: #164e63;
+            line-height: 1.7;
+        }
+
+        /* Практикум-изготовление */
+        .craft-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .craft-title {
+            font-weight: 700;
+            color: #9a3412;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .craft-text {
+            font-size: 0.95rem;
+            color: #7c2d12;
+            line-height: 1.7;
+        }
+        .craft-list {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-top: 10px;
+        }
+        .craft-list li { margin: 6px 0; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации рабочей тетради</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+
+    <h1>🌸 Вводное занятие и Раздел 1. Организация работы объединения</h1>
+    <div class="section-meta">📖 Ключ к гармонии | 🎯 Для детей 8–11 лет | ⏱ 6 часов</div>
+
+    <div class="intro-card">
+        <p>Здравствуй, дорогой друг! Ты открыл первую страницу рабочей тетради «Гармония». Возможно, ты уже прошёл вместе с нами две ступени непрерывного экологического образования — «Друзья природы» и «Знатоки природы». Тогда ты знаешь, как много интересного скрывается в природе, как важно её изучать, исследовать и защищать.</p>
+        <p>Но сегодня мы сделаем следующий шаг — самый важный. Мы поговорим о <strong>гармонии</strong>: о том, как красота природы связана с добротой человеческого сердца, как искусство помогает нам понимать мир, и почему настоящее знание всегда соединено с <strong>нравственностью</strong>. Природа — наш дом, но она ещё и наш <strong>учитель красоты и добра</strong>. Именно этому учит тетрадь «Гармония».</p>
+    </div>
+
+    <h2>🌅 Понятие о прекрасном</h2>
+
+    <p>Задумывался ли ты когда-нибудь: <strong>что такое красота?</strong> Почему закат над рекой заставляет нас замереть, а распустившийся подснежник вызывает улыбку? Почему птичья песня трогает нас, а старинная мелодия может заставить плакать? Ответ прост и сложен одновременно: потому что мы — <em>люди</em>, и потому что наша душа <strong>способна чувствовать прекрасное</strong>.</p>
+
+    <p><strong>Прекрасное</strong> — это то, что вызывает в нас радость, удивление, восхищение, желание остановиться и вглядеться внимательнее. Прекрасное живёт и в природе, и в искусстве, и в человеческих поступках. Оно не поддаётся точному измерению — и всё-таки каждый человек узнаёт его, когда встречает.</p>
+
+    <div class="quote">
+        «Красота спасёт мир». — Ф.М. Достоевский
+        <span class="quote-author">Эта фраза знакома каждому, но задумаемся: почему именно красота? Потому что красота — это не только внешнее. Настоящая красота всегда соединяется с добротой, правдой и гармонией.</span>
+    </div>
+
+    <p>Вот почему наш курс называется «Гармония». <strong>Гармония</strong> — это согласие, соразмерность, стройность всех частей целого. В природе гармония видна повсюду: в симметрии крыльев бабочки, в ритме морского прибоя, в смене времён года. В искусстве она проявляется в музыке, живописи, поэзии. А в человеческой жизни — в добрых делах, в заботе о других, в бережном отношении к природе.</p>
+
+    <!-- ЗАДАНИЕ 1.1. РАСКРАСЬ КОНТУР -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.1. «Раскрась гармонию» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Перед тобой контурный рисунок — символ гармонии. Раскрась его цветными карандашами так, как ты чувствуешь гармонию. Под рисунком напиши, какие цвета ты выбрал и почему.</p>
+        <div class="draw-area">
+            <!-- Контур: солнце с лучами и волна — только линии, без заливки -->
+            <svg viewBox="0 0 400 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Солнце -->
+                <circle cx="100" cy="90" r="38" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="100" y1="30" x2="100" y2="12" stroke="#333" stroke-width="2"/>
+                <line x1="100" y1="150" x2="100" y2="168" stroke="#333" stroke-width="2"/>
+                <line x1="40" y1="90" x2="22" y2="90" stroke="#333" stroke-width="2"/>
+                <line x1="160" y1="90" x2="178" y2="90" stroke="#333" stroke-width="2"/>
+                <line x1="58" y1="48" x2="45" y2="35" stroke="#333" stroke-width="2"/>
+                <line x1="142" y1="48" x2="155" y2="35" stroke="#333" stroke-width="2"/>
+                <line x1="58" y1="132" x2="45" y2="145" stroke="#333" stroke-width="2"/>
+                <line x1="142" y1="132" x2="155" y2="145" stroke="#333" stroke-width="2"/>
+                <!-- Волны -->
+                <path d="M200,180 Q220,150 240,180 T280,180 T320,180 T360,180 T400,180" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M200,200 Q220,170 240,200 T280,200 T320,200 T360,200 T400,200" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="6,4"/>
+                <!-- Дерево -->
+                <line x1="290" y1="140" x2="290" y2="110" stroke="#333" stroke-width="3"/>
+                <circle cx="290" cy="95" r="22" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Птица -->
+                <path d="M340,80 Q350,70 360,80 Q350,90 340,80 Z" fill="none" stroke="#333" stroke-width="1.5"/>
+                <path d="M355,80 Q365,70 375,80 Q365,90 355,80 Z" fill="none" stroke="#333" stroke-width="1.5"/>
+            </svg>
+            <div class="draw-caption">Раскрась солнце, волны, дерево и птицу — так, как ты чувствуешь гармонию</div>
+        </div>
+        <p><strong>Мои цвета и почему я их выбрал:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>🌿 Источники прекрасного</h2>
+
+    <p>Откуда же берётся красота? Где её искать? Прекрасное живёт повсюду — нужно лишь научиться его <strong>видеть, слышать и чувствовать</strong>. У прекрасного есть несколько главных источников.</p>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌄</span>
+            <div class="beauty-title">Природа</div>
+            <div class="beauty-text">Первый и главный источник прекрасного. Восходы и закаты, леса и луга, реки и озёра, цветы и птицы — всё это восхищало людей с древнейших времён и продолжает восхищать сегодня.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🎨</span>
+            <div class="beauty-title">Искусство</div>
+            <div class="beauty-text">Художник, поэт, композитор учатся у природы и передают её красоту людям. Живопись, музыка, поэзия, танец — все виды искусства рождаются из наблюдений за природой.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">👨‍👩‍👧</span>
+            <div class="beauty-title">Человек</div>
+            <div class="beauty-text">Красота живёт и в человеческих поступках: в доброте, заботе, отзывчивости, верности, мужестве. Красивое дело — это поступок, совершённый от чистого сердца.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🏡</span>
+            <div class="beauty-title">Труд</div>
+            <div class="beauty-text">Красота созданного своими руками: ухоженный сад, красивая поделка, испечённый хлеб. Труд украшает мир, и в этом его настоящая красота.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">📚</span>
+            <div class="beauty-title">Слово и мудрость</div>
+            <div class="beauty-text">Сказки, пословицы, песни, притчи народов мира хранят мудрость и красоту, накопленные веками. Читая их, мы прикасаемся к общечеловеческой красоте.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🕊️</span>
+            <div class="beauty-title">Нравственность</div>
+            <div class="beauty-text">Доброта, честность, отзывчивость, ответственность — это тоже красота, только красота души. Настоящий знаток природы — это человек с добрым и чутким сердцем.</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 1.2. СОЕДИНИ ЛИНИЯМИ -->
+    <div class="task-box">
+        <div class="task-box-title">🔗 Задание 1.2. «Где живёт красота?» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соедини линиями источник прекрасного с примером, который к нему относится.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Источник прекрасного</th>
+                    <th>Пример</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🌄 Природа</td><td>А. Картина И. Левитана «Золотая осень»</td></tr>
+                <tr><td>🎨 Искусство</td><td>Б. Радуга после дождя</td></tr>
+                <tr><td>👨‍👩‍👧 Человек</td><td>В. Ухоженный сад у дома</td></tr>
+                <tr><td>🏡 Труд</td><td>Г. Мальчик помог бабушке донести сумку</td></tr>
+                <tr><td>📚 Слово и мудрость</td><td>Д. Пословица «Не тот красив, кто лицом бел, а тот, кто душой добр»</td></tr>
+                <tr><td>🕊️ Нравственность</td><td>Е. Сказка «Морозко»</td></tr>
+            </tbody>
+        </table>
+        <p><em>Подсказка: примеров шесть, источников шесть — соедини каждый с одним.</em></p>
+    </div>
+
+    <!-- ЗАДАНИЕ 1.3. РАЗДЕЛИ НА ГРУППЫ -->
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание 1.3. «Раздели на группы» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📊 Раздели на группы</span> <span class="signal">🔗 Соедини линиями</span></p>
+        <p>Перед тобой список примеров прекрасного. Распредели их по трём группам: «Природа», «Искусство», «Человек и его дела». Запиши номера в нужную колонку.</p>
+        <p><strong>Список:</strong> 1. Закат над морем. 2. Песня жаворонка. 3. Картина «Утро в сосновом лесу». 4. Помощь товарищу в беде. 5. Стихотворение о зиме. 6. Ухоженная клумба у школы. 7. Снежинка на ладони. 8. Народная песня. 9. Честное слово, которое сдержали.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>🌄 Природа</th>
+                    <th>🎨 Искусство</th>
+                    <th>👨‍👩‍👧 Человек и его дела</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Подумай вместе с нами.</strong> Все источники прекрасного связаны между собой. Природа вдохновляет искусство, искусство воспитывает человека, человек своим трудом украшает природу и мир вокруг. И всё вместе это создаёт <strong>гармонию</strong>.
+    </div>
+
+    <h2>🌍 Экологически устойчивый стиль жизни</h2>
+
+    <p>Мы живём в удивительное время, когда человек особенно сильно влияет на природу. Чтобы сохранить её для будущих поколений, люди во всём мире учатся жить по принципам <strong>экологически устойчивого стиля жизни</strong>.</p>
+
+    <p><strong>Экологически устойчивый стиль жизни</strong> — это такой образ жизни, при котором человек удовлетворяет свои потребности, <em>не нанося вреда природе</em> и <em>не лишая будущие поколения возможности жить хорошо</em>. Это жизнь в гармонии с природой, с другими людьми и с самим собой.</p>
+
+    <p>Что значит жить экологически устойчиво? Это значит:</p>
+
+    <ul>
+        <li><strong>бережно относиться к воде, свету, теплу</strong> — не тратить их впустую;</li>
+        <li><strong>сортировать отходы</strong> и сдавать их на переработку;</li>
+        <li><strong>не мусорить в природе</strong> и убирать за собой;</li>
+        <li><strong>беречь растения и животных</strong>, особенно редкие виды;</li>
+        <li><strong>сажать деревья и ухаживать за растениями</strong>;</li>
+        <li><strong>разумно покупать</strong>, не приобретая лишнего;</li>
+        <li><strong>выбирать экологичные виды транспорта</strong> — ходить пешком, ездить на велосипеде;</li>
+        <li><strong>рассказывать другим</strong> о важности бережного отношения к природе.</li>
+    </ul>
+
+    <p>Экологически устойчивый стиль жизни — это не отказ от удобств, а <strong>разумный выбор</strong>. Это жизнь, в которой забота о природе становится частью заботы о себе, о своих близких и о будущем.</p>
+
+    <div class="purple-note">
+        <strong>🎨 Сравни понятия.</strong> <em>Художественный стиль</em> — это индивидуальный, узнаваемый способ творчества художника. <em>Экологически устойчивый стиль жизни</em> — это тоже индивидуальный, узнаваемый способ жизни человека. И в том, и в другом случае важна <strong>гармония</strong> — согласие между замыслом, средствами и результатом. Художник ищет гармонию в искусстве, а человек, живущий экологически устойчиво, — в отношениях с природой.
+    </div>
+
+    <!-- ЗАДАНИЕ 1.4. ДОРИСУЙ РИСУНОК -->
+    <div class="task-box">
+        <div class="task-box-title">🖍️ Задание 1.4. «Дорисуй дерево» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">📝 Запиши</span></p>
+        <p>Перед тобой половина дерева — символ жизни и гармонии. Дорисуй вторую половину по образцу, чтобы дерево стало симметричным. Затем ответь на вопрос.</p>
+        <div class="draw-area">
+            <!-- Половина дерева — вторая половина дана пунктиром для дорисовки -->
+            <svg viewBox="0 0 400 240" width="100%" height="220" xmlns="http://www.w3.org/2000/svg">
+                <!-- Ствол (центральная ось) -->
+                <line x1="200" y1="220" x2="200" y2="100" stroke="#333" stroke-width="3"/>
+                <!-- Левая половина кроны — сплошная -->
+                <path d="M200,100 Q160,60 130,90 Q110,120 140,140 Q160,150 200,140" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M200,90 Q170,50 140,70" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M200,120 Q150,100 130,120" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Правая половина — пунктиром для дорисовки -->
+                <path d="M200,100 Q240,60 270,90 Q290,120 260,140 Q240,150 200,140" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M200,90 Q230,50 260,70" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M200,120 Q250,100 270,120" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <!-- Земля -->
+                <line x1="40" y1="220" x2="360" y2="220" stroke="#333" stroke-width="2"/>
+            </svg>
+            <div class="draw-caption">Сплошная линия — образец. Пунктир — дорисуй по образцу.</div>
+        </div>
+        <p><strong>Вопрос:</strong> почему дерево является символом гармонии?</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <!-- ЗАДАНИЕ 1.5. ПРОДОЛЖИ ПО ОБРАЗЦУ -->
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 1.5. «Продолжи узор» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">✏️ Продолжи</span></p>
+        <p>Перед тобой ряд листьев. Продолжи ряд, нарисовав ещё три листа: каждый следующий должен быть похож на предыдущий по форме, но отличаться размером или расположением.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 500 120" width="100%" height="120" xmlns="http://www.w3.org/2000/svg">
+                <!-- Лист 1 -->
+                <path d="M40,60 Q60,20 80,60 Q60,100 40,60 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="40" y1="60" x2="80" y2="60" stroke="#333" stroke-width="1"/>
+                <!-- Лист 2 -->
+                <path d="M130,60 Q150,25 170,60 Q150,95 130,60 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="130" y1="60" x2="170" y2="60" stroke="#333" stroke-width="1"/>
+                <!-- Лист 3 -->
+                <path d="M220,60 Q240,20 260,60 Q240,100 220,60 Z" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="220" y1="60" x2="260" y2="60" stroke="#333" stroke-width="1"/>
+                <!-- Пунктирные места для продолжения -->
+                <path d="M310,60 Q330,20 350,60 Q330,100 310,60 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M400,60 Q420,20 440,60 Q420,100 400,60 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M490,60 Q510,20 530,60 Q510,100 490,60 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+            </svg>
+            <div class="draw-caption">Первые три листа — образец. Три пунктирных — нарисуй сам.</div>
+        </div>
+    </div>
+
+    <h2>🎨 Практическая работа «Свойства прекрасного»</h2>
+
+    <p>Прежде чем мы начнём изучать источники прекрасного более подробно, давай попробуем вместе <strong>определить свойства прекрасного</strong>. Что делает предмет, явление или поступок красивым? У прекрасного есть несколько основных признаков.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Свойство</th>
+                <th>Что оно означает?</th>
+                <th>Пример из природы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Гармония</strong></td>
+                <td>Согласованность, соразмерность частей целого</td>
+                <td>Крона дерева и его корни; крылья бабочки и её тело</td>
+            </tr>
+            <tr>
+                <td><strong>Симметрия</strong></td>
+                <td>Равенство частей относительно оси или центра</td>
+                <td>Снежинка; лист клёна; крылья стрекозы</td>
+            </tr>
+            <tr>
+                <td><strong>Ритм</strong></td>
+                <td>Повторяемость элементов через равные промежутки</td>
+                <td>Волны на море; полосы на стволе берёзы</td>
+            </tr>
+            <tr>
+                <td><strong>Целесообразность</strong></td>
+                <td>Соответствие формы назначению</td>
+                <td>Обтекаемая форма рыбы; пушистый мех зайца зимой</td>
+            </tr>
+            <tr>
+                <td><strong>Неповторимость</strong></td>
+                <td>Уникальность, невозможность повторить точно</td>
+                <td>Каждая снежинка; каждый закат</td>
+            </tr>
+            <tr>
+                <td><strong>Изящность</strong></td>
+                <td>Лёгкость, тонкость, совершенство формы</td>
+                <td>Полёт ласточки; лепестки ландыша</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ЗАДАНИЕ 1.6. ОБВЕДИ ПО КОНТУРУ -->
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 1.6. «Обведи снежинку» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">✏️ Обведи</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Перед тобой снежинка, нарисованная пунктирной линией. Обведи её по контуру цветным карандашом, а затем раскрась. Какая симметрия у снежинки? Посчитай лучи.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 200 200" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5">
+                    <line x1="100" y1="100" x2="100" y2="20"/>
+                    <line x1="100" y1="100" x2="100" y2="180"/>
+                    <line x1="100" y1="100" x2="20" y2="100"/>
+                    <line x1="100" y1="100" x2="180" y2="100"/>
+                    <line x1="100" y1="100" x2="45" y2="45"/>
+                    <line x1="100" y1="100" x2="155" y2="155"/>
+                    <line x1="100" y1="100" x2="155" y2="45"/>
+                    <line x1="100" y1="100" x2="45" y2="155"/>
+                </g>
+                <g fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5">
+                    <line x1="100" y1="40" x2="85" y2="55"/>
+                    <line x1="100" y1="40" x2="115" y2="55"/>
+                    <line x1="100" y1="160" x2="85" y2="145"/>
+                    <line x1="100" y1="160" x2="115" y2="145"/>
+                    <line x1="40" y1="100" x2="55" y2="85"/>
+                    <line x1="40" y1="100" x2="55" y2="115"/>
+                    <line x1="160" y1="100" x2="145" y2="85"/>
+                    <line x1="160" y1="100" x2="145" y2="115"/>
+                </g>
+                <circle cx="100" cy="100" r="6" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+            </svg>
+            <div class="draw-caption">Обведи снежинку по пунктиру и раскрась её</div>
+        </div>
+        <p><strong>Сколько лучей у снежинки?</strong> <span class="line-for-writing" style="margin:0;width:60px;display:inline-block;"></span></p>
+    </div>
+
+    <!-- ЗАГАДКА С РИСУНКОМ -->
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадка. Отгадай и нарисуй отгадку</div>
+        <p>«Кто всю ночь по крыше бьёт да постукивает,<br>
+        И бормочет, и поёт, убаюкивает?»</p>
+        <div class="riddle-draw-area">
+            🖼️ Нарисуй здесь свою отгадку
+        </div>
+        <p style="margin-top:10px;"><strong>Моя отгадка:</strong> <span class="line-for-writing" style="margin:0;width:200px;display:inline-block;"></span></p>
+    </div>
+
+    <!-- ЗАДАНИЕ 1.7. НАРИСУЙ ОТГАДКУ -->
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 1.7. «Придумай загадку» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Напиши</span> <span class="signal">🖼️ Нарисуй</span></p>
+        <p>Придумай свою загадку о каком-нибудь прекрасном природном явлении. Запиши загадку и нарисуй отгадку.</p>
+        <p><strong>Моя загадка:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <div class="draw-area" style="height:150px;">
+            <div class="draw-caption" style="padding-top:60px;">🖼️ Нарисуй свою отгадку</div>
+        </div>
+    </div>
+
+    <h2>📋 Раздел 1. Организация работы объединения</h2>
+
+    <h3>1.1. Организация занятий объединения</h3>
+
+    <p>Дорогой друг! Теперь, когда мы познакомились с понятием прекрасного, давай поговорим о том, как будет устроена наша работа. Наше объединение — это <strong>дружный творческий коллектив</strong>, в котором каждый ребёнок может раскрыть свои способности, научиться видеть красоту и делать добрые дела.</p>
+
+    <p><strong>Цели объединения «Гармония»:</strong></p>
+    <ul>
+        <li>научиться видеть, слышать и чувствовать красоту природы;</li>
+        <li>понять, как природа связана с искусством, нравственностью и трудом человека;</li>
+        <li>развить свои творческие способности через рисование, музыку, слово и труд;</li>
+        <li>сформировать привычку жить в согласии с природой и другими людьми;</li>
+        <li>стать человеком с добрым сердцем и чуткой душой.</li>
+    </ul>
+
+    <p><strong>Задачи объединения:</strong></p>
+    <ul>
+        <li>изучать источники прекрасного в природе, искусстве и жизни;</li>
+        <li>учиться замечать красоту в простом и обыденном;</li>
+        <li>овладевать разными видами творческой деятельности;</li>
+        <li>участвовать в экскурсиях, акциях, конкурсах и выставках;</li>
+        <li>вести дневник наблюдений и портфолио достижений.</li>
+    </ul>
+
+    <h3>1.2. План работы и порядок проведения занятий</h3>
+
+    <p>Наши занятия будут проходить <strong>два раза в неделю по два часа</strong>. Каждое занятие состоит из нескольких частей: беседа или рассказ педагога, практическая работа, обсуждение результатов, рефлексия.</p>
+
+    <div class="plan-grid">
+        <div class="plan-card">
+            <div class="plan-title">🌟 Вводная часть</div>
+            <div class="plan-text">Приветствие, настрой на работу, повторение пройденного, постановка задачи занятия.</div>
+        </div>
+        <div class="plan-card">
+            <div class="plan-title">📖 Теоретическая часть</div>
+            <div class="plan-text">Знакомство с новыми понятиями, беседы, чтение, обсуждение, просмотр иллюстраций и видеоматериалов.</div>
+        </div>
+        <div class="plan-card">
+            <div class="plan-title">🎨 Практическая часть</div>
+            <div class="plan-text">Творческие работы, опыты, наблюдения, экскурсии, игры, работа с рабочей тетрадью.</div>
+        </div>
+        <div class="plan-card">
+            <div class="plan-title">💚 Нравственная часть</div>
+            <div class="plan-text">Обсуждение нравственного смысла изученного, примеры из жизни, формулирование выводов.</div>
+        </div>
+        <div class="plan-card">
+            <div class="plan-title">📊 Рефлексия</div>
+            <div class="plan-text">Обсуждение результатов, самооценка, пожелания, планирование дальнейшей работы.</div>
+        </div>
+    </div>
+
+    <p><strong>Правила поведения в образовательном учреждении:</strong></p>
+
+    <div class="promises-card">
+        <div class="promises-title">🌸 Мои правила</div>
+        <div class="promise-item">🌟 Приходить на занятия вовремя, с хорошим настроением и готовностью учиться.</div>
+        <div class="promise-item">🤝 Уважать педагога и товарищей, слушать и слышать друг друга.</div>
+        <div class="promise-item">🎨 Бережно относиться к материалам и оборудованию, использовать их по назначению.</div>
+        <div class="promise-item">🌿 Соблюдать правила безопасности на занятиях и в природе.</div>
+        <div class="promise-item">💚 Помогать друг другу, поддерживать, радоваться успехам товарищей.</div>
+        <div class="promise-item">📝 Вести рабочую тетрадь аккуратно, выполнять задания старательно.</div>
+        <div class="promise-item">🌍 Беречь природу — и в объединении, и за его пределами.</div>
+    </div>
+
+    <h3>1.3. Выборы актива объединения</h3>
+
+    <p>Настоящее объединение — это не просто группа детей, а <strong>дружный коллектив</strong>, в котором каждый имеет своё дело и свою ответственность. Чтобы работа шла дружно и интересно, мы выберем <strong>актив объединения</strong>.</p>
+
+    <p><strong>Что такое актив объединения?</strong> Это группа ребят, которые помогают педагогу и всем участникам в организации работы. Актив избирается <strong>общим голосованием</strong> на первом занятии и обновляется в конце учебного года.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Роль в активе</th>
+                <th>Что делает?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🌟 Староста</strong></td>
+                <td>Помогает педагогу, ведёт список группы, отмечает посещаемость, отвечает за порядок.</td>
+            </tr>
+            <tr>
+                <td><strong>🎨 Художник-оформитель</strong></td>
+                <td>Помогает оформлять выставки, стенды, творческие работы, плакаты.</td>
+            </tr>
+            <tr>
+                <td><strong>📚 Библиотекарь</strong></td>
+                <td>Следит за книгами, журналами, энциклопедиями, помогает в подготовке сообщений.</td>
+            </tr>
+            <tr>
+                <td><strong>🌿 Эколог</strong></td>
+                <td>Организует экологические акции, следит за порядком в природе, ухаживает за растениями.</td>
+            </tr>
+            <tr>
+                <td><strong>🎵 Музыкант</strong></td>
+                <td>Подбирает музыку, звуки природы, помогает в проведении музыкальных минуток.</td>
+            </tr>
+            <tr>
+                <td><strong>📷 Фотограф</strong></td>
+                <td>Фотографирует интересные моменты занятий, помогает оформлять портфолио.</td>
+            </tr>
+            <tr>
+                <td><strong>💚 Доброе сердце</strong></td>
+                <td>Заботится о настроении в группе, помогает новичкам, поддерживает товарищей.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ЗАДАНИЕ 1.8. РАСКРАСЬ И ПОДПИШИ -->
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 1.8. «Раскрась и подпиши» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">✏️ Подпиши</span></p>
+        <p>Перед тобой значки семи ролей в активе объединения. Раскрась их и подпиши, что делает каждый участник актива.</p>
+        <div class="draw-area">
+            <svg viewBox="0 0 600 120" width="100%" height="140" xmlns="http://www.w3.org/2000/svg">
+                <!-- 7 кружков для раскраски -->
+                <circle cx="50" cy="50" r="30" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="140" cy="50" r="30" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="230" cy="50" r="30" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="320" cy="50" r="30" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="410" cy="50" r="30" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="500" cy="50" r="30" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="590" cy="50" r="30" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- Подписи-линии -->
+                <line x1="30" y1="95" x2="70" y2="95" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="120" y1="95" x2="160" y2="95" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="210" y1="95" x2="250" y2="95" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="300" y1="95" x2="340" y2="95" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="390" y1="95" x2="430" y2="95" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="480" y1="95" x2="520" y2="95" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="570" y1="95" x2="610" y2="95" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+            </svg>
+            <div class="draw-caption">Раскрась кружки и подпиши под каждым, что делает участник актива</div>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 1.9. ИГРА -->
+    <div class="game-card">
+        <div class="game-title">🎭 Игра «Кто я в активе?»</div>
+        <div class="game-text">
+            <p>Педагог раздаёт карточки с ролями (староста, художник, библиотекарь, эколог, музыкант, фотограф, доброе сердце). Каждый ребёнок, не показывая карточку, изображает жестами и мимикой, что делает его герой. Остальные угадывают. Кто угадал — становится следующим ведущим.</p>
+            <p><strong>Цель игры:</strong> лучше понять, что делает каждый участник актива, и выбрать себе роль по душе.</p>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 1.10. ИЗГОТОВЬ ПРЕДМЕТ -->
+    <div class="craft-card">
+        <div class="craft-title">🛠️ Практикум «Мой значок участника объединения»</div>
+        <div class="craft-text">
+            <p>Каждый участник нашего объединения — особенный. Давай изготовим значок, который будет напоминать о твоей роли в активе и о том, что ты — часть дружного коллектива.</p>
+            <p><strong>Что понадобится:</strong></p>
+            <ul class="craft-list">
+                <li>плотная бумага или картон;</li>
+                <li>цветные карандаши или фломастеры;</li>
+                <li>ножницы (работать осторожно!);</li>
+                <li>булавка или двусторонний скотч.</li>
+            </ul>
+            <p><strong>Как сделать:</strong></p>
+            <ol class="craft-list">
+                <li>Нарисуй на картоне круг диаметром около 6 см.</li>
+                <li>Внутри круга нарисуй символ своей роли в активе (например, сердечко — для «Доброго сердца», кисть — для художника).</li>
+                <li>Раскрась значок.</li>
+                <li>Вырежи круг по контуру (аккуратно, помогая педагогу).</li>
+                <li>Прикрепи булавку или скотч с обратной стороны.</li>
+            </ol>
+            <p><strong>Результат:</strong> у тебя есть собственный значок участника объединения «Гармония». Носи его на занятиях — он напоминает о твоей ответственности и о том, что ты — часть команды.</p>
+        </div>
+    </div>
+
+    <!-- ЗАДАНИЕ 1.11. ОБЕЩАНИЕ -->
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 1.11. «Моё обещание на год» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🖼️ Нарисуй</span></p>
+        <p>Напиши небольшое обещание самому себе на этот учебный год. Что ты хотел бы сделать, узнать, создать, чему научиться? Обещай быть внимательным к природе и добрым к людям. Рядом нарисуй свой символ — небольшой знак, который будет напоминать тебе об этом обещании.</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <div class="draw-area" style="height:120px;">
+            <div class="draw-caption" style="padding-top:45px;">🖼️ Нарисуй свой символ-напоминание</div>
+        </div>
+        <p><strong>Подпись:</strong> <span class="line-for-writing" style="margin:0;width:150px;display:inline-block;"></span></p>
+        <p><strong>Дата:</strong> <span class="line-for-writing" style="margin:0;width:150px;display:inline-block;"></span></p>
+    </div>
+
+    <h2>🌟 Пять ключей к гармонии</h2>
+
+    <p>Завершая первое занятие, давай сформулируем <strong>пять ключей к гармонии</strong> — пять важных правил, которые помогут тебе на протяжении всего курса.</p>
+
+    <div class="chain-card">
+        <div class="chain-flow">
+            <div class="chain-item"><span class="chain-emoji">👁️</span>Умей<br>видеть</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">👂</span>Умей<br>слушать</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">💚</span>Умей<br>чувствовать</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🎨</span>Умей<br>творить</div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-item"><span class="chain-emoji">🌿</span>Умей<br>беречь</div>
+        </div>
+        <p style="font-size:0.92rem;color:#166534;margin-top:8px;">Эти пять умений — путь к гармонии. На каждом занятии мы будем развивать их в себе.</p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Природа учит нас <strong>гармонии</strong> — согласию, соразмерности, единству. Мы будем учиться у неё этому всю жизнь. И если мы научимся видеть красоту, слышать музыку природы, чувствовать добро, творить красоту и беречь её, — мы станем по-настоящему <strong>гармоничными людьми</strong>.
+    </div>
+
+    <!-- ИСТОРИЯ ПОЛЕЗНАЯ -->
+    <div class="story-card">
+        <div class="story-title">📖 Поучительный рассказ «Три дерева и один мастер»</div>
+        <div class="story-text">Однажды три дерева поспорили, кто из них красивее. Первое дерево сказало: «Я самое красивое, потому что у меня самые высокие ветви!» Второе дерево сказало: «Нет, я самое красивое, потому что у меня самые густые листья!» Третье дерево промолчало. Мимо шёл старый мастер. Деревья спросили его: «Скажи, кто из нас красивее?» Мастер посмотрел на них и ответил: «Все вы красивы по-своему. Но настоящая красота — не в высоте и не в густоте. Настоящая красота — в том, что каждое из вас даёт тень уставшему путнику, дом птицам и чистый воздух всему живому. Вот что делает вас красивыми по-настоящему».</div>
+        <div class="story-moral">💡 Мораль: красота — это не только внешность. Настоящая красота — в пользе, которую ты приносишь другим.</div>
+    </div>
+
+    <!-- ВЕСЁЛАЯ ИСТОРИЯ -->
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Эгоистичный портфель»</div>
+        <div class="funny-text">Мальчик Витя пришёл в объединение с новым портфелем. Он всем показывал его и говорил: «Смотрите, какой у меня красивый портфель! Он дороже всех ваших!» Ребята сначала восхищались. Но потом заметили: Витя не делится карандашами, не помогает товарищам, не убирает за собой. Однажды девочка Маша спросила его: «Витя, а почему у тебя такой красивый портфель, а сам ты жадничаешь?» Витя обиделся: «При чём тут портфель? Портфель — это красота!» Маша ответила: «Красивый портфель не делает тебя красивым. Красивым человека делают добрые поступки».</div>
+        <div class="funny-moral">💡 Мораль: жадность и скупость не украшают даже самого красивого человека. Настоящая красота — в доброте и щедрости души.</div>
+    </div>
+
+    <!-- МИНИ-КВЕСТ -->
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Моё первое открытие»</div>
+        <p style="font-size:0.94rem;color:#3730a3;margin-bottom:10px;">Выполни пять заданий и собери «коллекцию первых открытий» этого учебного года.</p>
+        <div class="quest-step"><strong>Шаг 1.</strong> Найди дома или во дворе предмет, который кажется тебе красивым. Зарисуй его.</div>
+        <div class="quest-step"><strong>Шаг 2.</strong> Вспомни и запиши один добрый поступок, который ты совершил за последнюю неделю.</div>
+        <div class="quest-step"><strong>Шаг 3.</strong> Назови одно произведение искусства (картину, песню, сказку), которое тебе нравится. Кто его автор?</div>
+        <div class="quest-step"><strong>Шаг 4.</strong> Определи, какой из «пяти ключей к гармонии» тебе нужно развивать больше всего. Почему?</div>
+        <div class="quest-step"><strong>Шаг 5.</strong> Расскажи родителям о том, что ты узнал на первом занятии. Запиши их ответ.</div>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадка о гармонии</div>
+        <p>«Что связует воедино<br>
+        Небо, землю и цветы,<br>
+        И в одно сплетает тихо<br>
+        Всех живых — и я, и ты?»</p>
+        <div class="riddle-draw-area">
+            🖼️ Нарисуй свою отгадку
+        </div>
+        <p style="margin-top:10px;"><strong>Моя отгадка:</strong> <span class="line-for-writing" style="margin:0;width:200px;display:inline-block;"></span></p>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌿 Пословицы и поговорки о гармонии, красоте и добре:</strong>
+        <ul>
+            <li>«Красота без добра — пустая сума».</li>
+            <li>«Не тот красив, кто лицом бел, а тот, кто душой добр».</li>
+            <li>«Где лад, там и клад».</li>
+            <li>«В согласии и сила, и красота».</li>
+            <li>«Красота до вечера, а доброта — навек».</li>
+            <li>«Сделал дело — гуляй смело».</li>
+        </ul>
+    </div>
+
+    <div class="quiz-card">
+        <div class="quiz-title">🎯 Викторина «Что я знаю о гармонии?»</div>
+        <div class="quiz-question">
+            1. Что такое прекрасное?
+            <div class="quiz-variant">а) То, что дорого стоит</div>
+            <div class="quiz-variant">б) То, что вызывает у нас восхищение и радость</div>
+            <div class="quiz-variant">в) То, что нравится только взрослым</div>
+        </div>
+        <div class="quiz-question">
+            2. Что такое гармония?
+            <div class="quiz-variant">а) Беспорядок и суета</div>
+            <div class="quiz-variant">б) Согласие, соразмерность, единство</div>
+            <div class="quiz-variant">в) Что-то скучное</div>
+        </div>
+        <div class="quiz-question">
+            3. Какой источник прекрасного самый первый и главный?
+            <div class="quiz-variant">а) Искусство</div>
+            <div class="quiz-variant">б) Природа</div>
+            <div class="quiz-variant">в) Труд</div>
+        </div>
+        <div class="quiz-question">
+            4. Что означает экологически устойчивый стиль жизни?
+            <div class="quiz-variant">а) Жить в лесу</div>
+            <div class="quiz-variant">б) Удовлетворять свои потребности, не нанося вреда природе</div>
+            <div class="quiz-variant">в) Отказаться от всех удобств</div>
+        </div>
+        <div class="quiz-question">
+            5. Назови «пять ключей к гармонии».
+            <div class="quiz-variant">а) Умей видеть, слушать, чувствовать, творить, беречь</div>
+            <div class="quiz-variant">б) Умей бегать, прыгать, кричать, спорить, лениться</div>
+            <div class="quiz-variant">в) Умей есть, спать, играть, смотреть телевизор, гулять</div>
+        </div>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Прекрасное</strong> — то, что вызывает в нас радость, удивление, восхищение, желание остановиться и вглядеться внимательнее.</p>
+        <p><strong>Гармония</strong> — согласие, соразмерность, стройность всех частей целого.</p>
+        <p><strong>Источники прекрасного</strong> — природа, искусство, человек, труд, слово, нравственность.</p>
+        <p><strong>Экологически устойчивый стиль жизни</strong> — образ жизни, при котором человек удовлетворяет свои потребности, не нанося вреда природе и не лишая будущие поколения возможности жить хорошо.</p>
+        <p><strong>Свойства прекрасного</strong> — гармония, симметрия, ритм, целесообразность, неповторимость, изящность.</p>
+        <p><strong>Актив объединения</strong> — группа ребят, избранная общим голосованием для помощи педагогу и участникам в организации работы.</p>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Что такое <strong>прекрасное</strong> и почему важно его замечать.</li>
+            <li>Что такое <strong>гармония</strong> и как она проявляется в природе, искусстве и жизни человека.</li>
+            <li>Какие существуют <strong>источники прекрасного</strong>: природа, искусство, человек, труд, слово, нравственность.</li>
+            <li>Что такое <strong>экологически устойчивый стиль жизни</strong> и почему он важен.</li>
+            <li>Какие <strong>свойства прекрасного</strong> существуют: гармония, симметрия, ритм, целесообразность, неповторимость, изящность.</li>
+            <li>Как организована <strong>работа объединения</strong>: цели, задачи, план, порядок занятий, правила поведения.</li>
+            <li>Как выбирается <strong>актив объединения</strong> и какие роли в нём есть.</li>
+            <li>Что такое <strong>пять ключей к гармонии</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Что такое прекрасное? Приведи пример из природы и из жизни человека.</li>
+            <li>Что такое гармония? Как ты понимаешь это слово?</li>
+            <li>Назови три источника прекрасного.</li>
+            <li>Что такое экологически устойчивый стиль жизни?</li>
+            <li>Какие свойства прекрасного ты знаешь?</li>
+            <li>Какую роль в активе объединения ты хотел бы выполнять и почему?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="quote">
+        «Красота — это не то, что мы видим, а то, что мы чувствуем, когда смотрим на мир с добрым и внимательным сердцем».
+        <span class="quote-author">— из размышлений о гармонии</span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Гармония — это единство истины, красоты и добра. И мы начинаем наш путь к ней прямо сейчас — с умения замечать прекрасное вокруг себя, с добрых обещаний, с дружной работы в нашем объединении. Впереди нас ждут удивительные открытия!
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="preface.html" class="button">← К аннотации</a>
+        <a href="section2.html" class="button">📖 Перейти к разделу 2. «Мир прекрасного» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Гармония» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>

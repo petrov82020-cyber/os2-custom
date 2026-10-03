@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 3. Источники прекрасного — Рабочая тетрадь «Гармония»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .section-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 25px 0 12px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.08rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ К РАЗДЕЛУ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #10b981;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            padding: 15px 20px;
+            border-left: 5px solid #a855f7;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        .poem {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .riddle {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .funny-card {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #ec4899;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .funny-title {
+            font-weight: 700;
+            color: #9d174d;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+        .funny-text {
+            font-size: 0.95rem;
+            color: #831843;
+            line-height: 1.7;
+        }
+        .funny-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #9d174d;
+            font-size: 0.92rem;
+        }
+
+        .quest-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quest-title {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quest-step {
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+        }
+        .quiz-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #16a34a;
+        }
+        .quiz-variant {
+            margin: 4px 0 4px 20px;
+            font-size: 0.9rem;
+        }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-top: 4px solid #16a34a;
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.9rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .color-swatch {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            margin: 4px 6px 4px 0;
+            vertical-align: middle;
+            border: 2px solid #e2e8f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .harmony-svg {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .sound-wave {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            justify-content: center;
+            margin: 14px 0;
+            height: 60px;
+        }
+        .sound-wave span {
+            display: block;
+            width: 6px;
+            background: #16a34a;
+            border-radius: 3px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .sound-wave span:nth-child(2n) { animation-delay: 0.2s; }
+        .sound-wave span:nth-child(3n) { animation-delay: 0.4s; }
+        .sound-wave span:nth-child(5n) { animation-delay: 0.6s; }
+        @keyframes pulse {
+            0%, 100% { height: 20%; }
+            50% { height: 100%; }
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации рабочей тетради</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="section2.html" class="back-link" style="margin-left: 15px;">← Раздел 2</a>
+
+    <h1>🌿 Раздел 3. Источники прекрасного</h1>
+    <div class="section-meta">📖 Линия звука и цвета | 🎯 Для детей 8–11 лет | ⏱ 10 часов</div>
+
+    <div class="intro-card">
+        <p>Дорогой друг! Мы уже знаем, что прекрасное живёт повсюду: в природе, в искусстве, в человеке. Но откуда же оно берётся? Где его <strong>истоки</strong>? В этом разделе мы отправимся в увлекательное путешествие к <strong>истокам красоты</strong>: будем слушать звуки природы, рассматривать её краски, наблюдать за удивительными композициями, которые создаёт сама природа.</p>
+        <p>Ты узнаешь, что у природы есть <strong>свой язык</strong> — язык звуков и цвета. Научиться его понимать — значит научиться слышать и видеть <strong>саму жизнь</strong>. И, может быть, ты сам захочешь стать немного <em>композитором</em> или <em>художником природы</em>!</p>
+    </div>
+
+    <h2>🎵 3.1. Звуки природы. Музыка природы</h2>
+
+    <p>Закрой глаза. Что ты слышишь? Шелест листьев. Пение птиц. Журчание ручья. Далеко — шум машин. Близко — стук собственного сердца. Мир полон звуков! И самые удивительные из них — это <strong>звуки природы</strong>. Они — один из главных <strong>источников прекрасного</strong>.</p>
+
+    <div class="sound-wave">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <h3>Многообразие звуков в природе</h3>
+
+    <p>Звуки природы очень разные. Учёные делят их на несколько групп:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа звуков</th>
+                <th>Примеры</th>
+                <th>Характер звучания</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🌬️ Звуки неживой природы</strong></td>
+                <td>Ветер, дождь, гром, шум моря, журчание ручья</td>
+                <td>Монотонные, ритмичные или внезапные</td>
+            </tr>
+            <tr>
+                <td><strong>🐦 Звуки живой природы</strong></td>
+                <td>Пение птиц, стрекотание кузнечиков, жужжание пчёл, кваканье лягушек</td>
+                <td>Разнообразные, часто мелодичные</td>
+            </tr>
+            <tr>
+                <td><strong>🍃 Звуки движения</strong></td>
+                <td>Шелест листьев, скрип дерева, хруст снега, плеск воды</td>
+                <td>Короткие, повторяющиеся</td>
+            </tr>
+            <tr>
+                <td><strong>🌙 Звуки тишины</strong></td>
+                <td>Тишина леса, тишина ночи, тишина после снегопада</td>
+                <td>Отсутствие звука, пауза</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Воздействие природной музыки на человека</h3>
+
+    <p>Учёные доказали: звуки природы <strong>успокаивают, лечат, вдохновляют</strong>. Шум моря снимает усталость. Пение птиц поднимает настроение. Шелест листьев помогает сосредоточиться. Даже тишина зимнего леса обладает целительной силой — она даёт отдохнуть нашим мыслям.</p>
+
+    <div class="green-note">
+        <strong>🌿 Интересно знать.</strong> Настоящие композиторы часто используют звуки природы в своих произведениях. Пётр Ильич Чайковский написал цикл «Времена года» — двенадцать пьес, каждая из которых передаёт настроение одного из месяцев. А итальянский композитор Антонио Вивальди создал «Времена года» для оркестра, где музыка изображает пение птиц, грозу, жаркое лето.
+    </div>
+
+    <div class="poem">
+        «Как много звуков в мире этом!<br>
+        Поёт ручей, шумит листва.<br>
+        И даже тишина нам светит<br>
+        Сияньем вечного родства.<br><br>
+        Прислушайся — и мир откроет<br>
+        Свою мелодию тебе.<br>
+        И сердце тихо успокоит,<br>
+        И даст опору в трудной судьбе».
+        <span class="poem-author">— из размышлений юного натуралиста</span>
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о звуках природы</div>
+        <ul>
+            <li>«Без рук, без ног, а в лесу шумит, деревья гнёт» (ветер).</li>
+            <li>«Кто всю ночь по крыше бьёт да постукивает?» (дождь).</li>
+            <li>«Скачет по веткам, а не птица, стрекочет — не кузнечик» (белка — но не подходит). Лучше: «Тонкий, звонкий голосок, маленький, а певец великий» (соловей).</li>
+            <li>«Гремит, грохочет, всех напугать хочет» (гром).</li>
+            <li>«Зелёная скрипочка на лугу играет, песню лету посвящает» (кузнечик).</li>
+        </ul>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🎵 Пословицы и поговорки о звуках и слушании:</strong>
+        <ul>
+            <li>«У кого уши открыты, тому природа много скажет».</li>
+            <li>«Тишина — тоже музыка, но её надо уметь услышать».</li>
+            <li>«В лесу шуметь — ничего не услышать».</li>
+            <li>«Птицу слышно по голосу, а человека — по слову».</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 3.1.1. «Источники звуков»</div>
+        <p><span class="signal">👂 Послушай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выйди на улицу или открой окно. В течение 5 минут слушай звуки природы. Запиши, что ты услышал, и определи, к какой группе относится каждый звук.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Какой звук я услышал?</th>
+                    <th>К какой группе относится?</th>
+                    <th>Какое чувство вызвал?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>4</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>5</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> Какой звук тебе понравился больше всего? Почему?</p>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎵 Задание 3.1.2. «Музыкальные инструменты природы»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Многие музыкальные инструменты человек создал, подражая природе. Соедини природный звук и музыкальный инструмент, который ему подражает.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Природный звук</th>
+                    <th>Музыкальный инструмент</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🐦 Пение птиц</td><td>☐ Флейта ☐ Барабан ☐ Труба</td></tr>
+                <tr><td>🌧️ Раскаты грома</td><td>☐ Барабан ☐ Скрипка ☐ Арфа</td></tr>
+                <tr><td>💧 Журчание ручья</td><td>☐ Арфа ☐ Труба ☐ Гитара</td></tr>
+                <tr><td>🌬️ Свист ветра</td><td>☐ Свирель ☐ Пианино ☐ Орган</td></tr>
+                <tr><td>🐝 Жужжание пчёл</td><td>☐ Губная гармошка ☐ Виолончель ☐ Ксилофон</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Ленивый слушатель»</div>
+        <div class="funny-text">Мальчик Вова пошёл с классом на экскурсию в лес. Учительница сказала: «Тихо! Послушайте, как поют птицы!» Все ребята замерли и слушали. А Вова отвернулся, достал телефон и включил громкую музыку. «Вова, ты что делаешь?» — спросила учительница. «Я слушаю музыку! — ответил мальчик. — Зачем мне слушать этих птичек, когда у меня есть настоящая музыка?» Учительница вздохнула и сказала: «Вова, ты сейчас не музыку слушаешь. Ты её заглушаешь. А настоящую музыку природы ты уже не услышишь — соловей обиделся и улетел».</div>
+        <div class="funny-moral">💡 Мораль: чтобы услышать красоту природы, нужно уметь выключать лишнее и слушать сердцем. Лень и невнимательность лишают нас лучших моментов жизни.</div>
+    </div>
+
+    <h2>🎨 3.2. Краски природы</h2>
+
+    <p>Природа — <strong>величайший художник на Земле</strong>. У неё в распоряжении тысячи красок и оттенков, которые она щедро разливает повсюду: в небе, в траве, в цветах, в оперении птиц, в крыльях бабочек. <strong>Краски природы</strong> — это ещё один источник прекрасного.</p>
+
+    <h3>Природа цвета</h3>
+
+    <p>Откуда берётся цвет? Цвет — это то, что мы воспринимаем глазами, когда свет отражается от предмета. Солнечный свет кажется белым, но на самом деле он состоит из семи цветов — тех самых, что видны в радуге: красный, оранжевый, жёлтый, зелёный, голубой, синий, фиолетовый.</p>
+
+    <p>Когда свет падает на предмет, часть цветов поглощается, а часть — отражается. То, что отражается, мы и видим как цвет.</p>
+
+    <h3>Классификация цветов</h3>
+
+    <p>Художники делят все цвета на несколько групп:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа цветов</th>
+                <th>Примеры</th>
+                <th>Воздействие</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🔴 Тёплые цвета</strong></td>
+                <td>Красный, оранжевый, жёлтый</td>
+                <td>Создают ощущение тепла, радости, бодрости</td>
+            </tr>
+            <tr>
+                <td><strong>🔵 Холодные цвета</strong></td>
+                <td>Синий, голубой, фиолетовый</td>
+                <td>Создают ощущение прохлады, спокойствия, глубины</td>
+            </tr>
+            <tr>
+                <td><strong>🟢 Нейтральные цвета</strong></td>
+                <td>Зелёный, коричневый, серый, белый, чёрный</td>
+                <td>Уравновешивают, успокаивают, служат фоном</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Многообразие цветов в природе</h3>
+
+    <p>Посмотри на окружающий мир — и ты увидишь бесконечное множество цветов и оттенков:</p>
+
+    <ul>
+        <li><strong>Весной</strong> — нежно-зелёные, светло-голубые, розовые, белые.</li>
+        <li><strong>Летом</strong> — яркие, насыщенные, сочные: изумрудная зелень, золотое солнце, синее небо.</li>
+        <li><strong>Осенью</strong> — золотые, багряные, оранжевые, тёплые, приглушённые.</li>
+        <li><strong>Зимой</strong> — белые, синие, серебристые, серые.</li>
+    </ul>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌅</span>
+            <div class="beauty-title">Цвет неба</div>
+            <div class="beauty-text">От нежно-розового на рассвете до густо-фиолетового на закате, от ясного голубого до грозового серо-чёрного.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌿</span>
+            <div class="beauty-title">Цвет зелени</div>
+            <div class="beauty-text">Молодая зелень — нежно-салатовая. Летняя трава — насыщенно-изумрудная. Осенние листья — от жёлтого до багряного.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌸</span>
+            <div class="beauty-title">Цвет цветов</div>
+            <div class="beauty-text">Ромашка белая, василёк синий, мак красный, роза розовая, подсолнух золотой. У каждого цветка — свой цвет.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🦋</span>
+            <div class="beauty-title">Цвет окраски животных</div>
+            <div class="beauty-text">Крылья бабочек, перья птиц, мех зверей — всё это удивительное разнообразие красок и узоров.</div>
+        </div>
+    </div>
+
+    <h3>Виды окрасок живых организмов</h3>
+
+    <p>Окраска живых организмов — не случайна. Она служит <strong>определённой цели</strong>:</p>
+
+    <ul>
+        <li><strong>Маскировочная (покровительственная).</strong> Заяц зимой белый, летом серый. Кузнечик зелёный — в траве его не видно.</li>
+        <li><strong>Привлекающая.</strong> Яркие цветы привлекают насекомых. Красная грудка снегиря привлекает самку.</li>
+        <li><strong>Предупреждающая.</strong> Яркая окраска божьей коровки или осы — предупреждение: «Я несъедобен!».</li>
+        <li><strong>Отпугивающая.</strong> Некоторые бабочки имеют «глаза» на крыльях, чтобы пугать птиц.</li>
+    </ul>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Цвет в природе — это не «украшение». Это <strong>язык</strong>, на котором природа сообщает о себе: «я съедобен» или «я опасен», «я твой друг» или «я тебя не боюсь». Красота в природе всегда <em>целесообразна</em>. И это ещё раз напоминает нам: настоящая красота всегда соединена со смыслом.
+    </div>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки о красках природы</div>
+        <ul>
+            <li>«Разноцветное коромысло над рекой повисло» (радуга).</li>
+            <li>«Красная девица сидит в темнице, а коса — на улице» (морковь).</li>
+            <li>«Летом — зелёный, осенью — жёлтый, зимой — белый. Что это?» (лес, листья, снег).</li>
+            <li>«Золотое яблочко по небу катается, всем улыбается» (солнце).</li>
+            <li>«Белая вата на небе плывёт, а под ней синева поёт» (облако и небо).</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 3.2.1. «Значение цвета в природе»</div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Подбери примеры живых организмов с разными видами окраски. Нарисуй один из них.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Вид окраски</th>
+                    <th>Пример</th>
+                    <th>Зачем нужна?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🍃 Маскировочная</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>🌸 Привлекающая</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>⚠️ Предупреждающая</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>😱 Отпугивающая</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">🎨 Задание 3.2.2. «Палитра природы»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Запиши</span></p>
+        <p>Раскрась кружки теми цветами, которые ты видишь в природе в разное время года. Рядом запиши, что бывает такого цвета.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Время года</th>
+                    <th>Цвет</th>
+                    <th>Что бывает такого цвета?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🌸 Весна</td>
+                    <td><span class="color-swatch" style="background:#fce7f3;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>☀️ Лето</td>
+                    <td><span class="color-swatch" style="background:#86efac;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>🍂 Осень</td>
+                    <td><span class="color-swatch" style="background:#fed7aa;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td>❄️ Зима</td>
+                    <td><span class="color-swatch" style="background:#dbeafe;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">📖 Поучительный рассказ «Пёстрая сорока и скромный соловей»</div>
+        <div class="story-text">Жила-была пёстрая сорока. Она любила наряжаться во всё яркое, блестящее и всегда хвасталась: «Смотрите, какая я красивая! Какое у меня яркое оперение! Какие блестящие перья!». Однажды сорока встретила соловья — серенького, скромного. «А ты почему такой невзрачный? — спросила сорока. — Неужели тебе не хочется быть красивым?» Соловей улыбнулся и ответил: «Моя красота — в песне. Приходи вечером, послушай». Вечером сорока прилетела и услышала, как поёт соловей. Песня была такой прекрасной, что сорока замерла и забыла о своих перьях. Тогда она поняла: «Красота бывает разной. У кого-то — в оперении, у кого-то — в голосе. Но самая настоящая красота — та, что живёт внутри».</div>
+        <div class="story-moral">💡 Мораль: не хвастайся внешностью. Настоящая красота — в душе, в таланте, в доброте. И настоящее богатство не в блеске перьев, а в том, что ты умеешь делать хорошо.</div>
+    </div>
+
+    <h2>🌿 3.3. Природные композиции</h2>
+
+    <p>Мы узнали, что у природы есть свой язык звуков и красок. Но самое удивительное начинается, когда звуки, краски и пространство <strong>объединяются вместе</strong> — так рождаются <strong>природные композиции</strong>. Это единый образ, который складывается в нашем сознании, когда мы смотрим на природу.</p>
+
+    <h3>Виды природных композиций</h3>
+
+    <p>В зависимости от того, какие природные сообщества мы рассматриваем, рождаются разные композиции:</p>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌳</span>
+            <div class="beauty-title">Лесная композиция</div>
+            <div class="beauty-text">Шум листвы, пение птиц, тени и свет между деревьями. Многоголосая, глубокая, таинственная.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌾</span>
+            <div class="beauty-title">Луговая композиция</div>
+            <div class="beauty-text">Стрекотание кузнечиков, жужжание пчёл, яркие цветы и зелёные травы. Радостная, светлая, звонкая.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">💧</span>
+            <div class="beauty-title">Водная композиция</div>
+            <div class="beauty-text">Плеск воды, шум камышей, отражения неба и облаков. Спокойная, задумчивая, глубокая.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌻</span>
+            <div class="beauty-title">Полевая композиция</div>
+            <div class="beauty-text">Тихий шелест колосьев, пение жаворонка, простор и свет. Открытая, широкая, дышащая.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌊</span>
+            <div class="beauty-title">Морская композиция</div>
+            <div class="beauty-text">Шум прибоя, крики чаек, бескрайняя синева. Мощная, свободная, зовущая вдаль.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">⛰️</span>
+            <div class="beauty-title">Горная композиция</div>
+            <div class="beauty-text">Ветер на вершинах, эхо в ущельях, тишина и величие. Величавая, суровая, вдохновляющая.</div>
+        </div>
+    </div>
+
+    <h3>Понятие о взаимосвязи природных элементов</h3>
+
+    <p>В природной композиции <strong>всё связано со всем</strong>. Растения зависят от почвы, животные — от растений, звуки — от движения, краски — от света. Убери один элемент — и вся композиция изменится. Именно поэтому природа — это не «набор» отдельных предметов, а <strong>единое целое</strong>.</p>
+
+    <div class="green-note">
+        <strong>🌿 Подумай вместе с нами.</strong> Когда ты слушаешь лес, ты слышишь не просто птиц и ветер по отдельности. Ты слышишь <strong>единую симфонию леса</strong>. Когда ты любуешься лугом, ты видишь не отдельные цветы, а <strong>общую картину</strong>. Вот это и есть природная композиция — то, что складывается из множества элементов в одно гармоничное целое.
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 3.3.1. «Свойства природы»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Выбери одно природное сообщество (лес, луг, водоём, поле). Опиши его как единую композицию: какие звуки там можно услышать, какие краски увидеть, как связаны между собой его обитатели.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Что я выбрал?</th>
+                    <th>Какие звуки?</th>
+                    <th>Какие краски?</th>
+                    <th>Как связаны обитатели?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Вопрос для размышления:</strong> Что было бы с природным сообществом, если бы из него исчез один элемент?</p>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Композиция моего двора»</div>
+        <p style="font-size:0.94rem;color:#3730a3;margin-bottom:10px;">Выйди на улицу, во двор или в парк и составь собственную природную композицию.</p>
+        <div class="quest-step"><strong>Шаг 1.</strong> Выбери площадку (например, уголок парка, двор, берег реки).</div>
+        <div class="quest-step"><strong>Шаг 2.</strong> Послушай звуки — какие из них ты слышишь? Запиши 3–5.</div>
+        <div class="quest-step"><strong>Шаг 3.</strong> Определи 3–5 основных красок этой площадки.</div>
+        <div class="quest-step"><strong>Шаг 4.</strong> Заметь, как элементы связаны между собой (дерево — птицы — тень — трава).</div>
+        <div class="quest-step"><strong>Шаг 5.</strong> Нарисуй или опиши свою природную композицию так, чтобы другой человек мог её представить.</div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Непостоянный экскурсовод»</div>
+        <div class="funny-text">Мальчик Коля очень хотел стать экскурсоводом. Однажды он повёл друзей в лес и начал рассказывать: «Вот здесь слева — прекрасный дуб!» — но тут же отвернулся к берёзе: «Ой, нет, вот эта берёза — лучше!» — и побежал к ручью: «Или вот ручей — он самый красивый!» Так он метался по лесу, ни на чём не задерживаясь. Друзья рассердились и сказали: «Коля, ты не экскурсовод. Ты — флюгер. Настоящая красота открывается тому, кто умеет остановиться и посмотреть внимательно».</div>
+        <div class="funny-moral">💡 Мораль: непостоянство и суетливость мешают видеть красоту. Чтобы понять композицию, нужно остановиться и вглядеться.</div>
+    </div>
+
+    <h2>🍂 3.4. Обобщение по разделу «Источники прекрасного». Экскурсия «Природа осенью»</h2>
+
+    <p>Мы совершили большое путешествие к истокам красоты. Мы узнали, что источники прекрасного — это <strong>звуки, краски и композиции природы</strong>. И самое время теперь <strong>обобщить</strong> наши наблюдения.</p>
+
+    <h3>Природа как сложноорганизованная система</h3>
+
+    <p>Природа — это не просто «много предметов рядом». Это <strong>сложная система</strong>, в которой всё взаимосвязано. Растения зависят от почвы и воды. Животные зависят от растений и друг от друга. Звуки рождаются из движения. Краски рождаются из света. Убери одно звено — и вся система изменится.</p>
+
+    <h3>Прекрасное как свойство природы</h3>
+
+    <p>Одно из самых удивительных свойств природы — <strong>быть красивой</strong>. И эта красота — не случайная. Она вырастает из <em>целесообразности</em>, <em>гармонии</em> и <em>взаимосвязи</em> всех элементов. Именно поэтому природа — источник и образец настоящего прекрасного.</p>
+
+    <h3>Природное движение</h3>
+
+    <p>Всё в природе находится в <strong>движении</strong>. Плывут облака, летят птицы, шумят деревья, бегут ручьи, кружатся листья. Это движение и рождает <strong>звуки</strong>, и создаёт <strong>композиции</strong>. Движение — это жизнь.</p>
+
+    <h3>Способность природы к самообновлению</h3>
+
+    <p>Природа — удивительно <strong>живучая</strong>. После пожара вырастает новый лес. После зимы возвращается весна. Опавшие листья превращаются в перегной, который питает новые растения. Природа умеет <strong>восстанавливать себя</strong> — и в этом её великая мудрость.</p>
+
+    <div class="green-note">
+        <strong>🌿 Урок природы.</strong> Природа учит нас <strong>жизнестойкости</strong>. Если мы будем беречь её, она восстановится. Если мы будем помогать ей — она отблагодарит нас красотой и щедростью. И это — самый главный урок всех источников прекрасного.
+    </div>
+
+    <h3>Удивительные факты из жизни природы</h3>
+
+    <ul>
+        <li><strong>Одно дерево</strong> за год очищает воздух от 20 кг пыли.</li>
+        <li><strong>Один соловей</strong> может исполнить до 300 разных песен.</li>
+        <li><strong>Одна бабочка</strong> пробует пищу... ногами!</li>
+        <li><strong>Один грамм почвы</strong> содержит миллионы микроорганизмов.</li>
+        <li><strong>Одна капля воды</strong> может отражать целый мир.</li>
+        <li><strong>Одна снежинка</strong> может пролететь больше километра, прежде чем упадёт.</li>
+    </ul>
+
+    <div class="riddle">
+        <div class="riddle-title">❓ Загадки-размышления</div>
+        <ul>
+            <li>«Что можно услышать в полной тишине, если слушать внимательно?» (своё сердце, дыхание, мысли).</li>
+            <li>«Что есть у каждой капли воды, но нет ни у одной — одинакового?» (её узор).</li>
+            <li>«Что никогда не заканчивается, хотя всегда возвращается?» (времена года).</li>
+            <li>«Что может быть красивым, даже если оно невидимо?» (песня, мысль, доброта).</li>
+        </ul>
+    </div>
+
+    <div class="quiz-card">
+        <div class="quiz-title">🎯 Викторина «Источники прекрасного»</div>
+        <div class="quiz-question">
+            1. Какие звуки природы относятся к звукам живой природы?
+            <div class="quiz-variant">а) Шум ветра и дождя</div>
+            <div class="quiz-variant">б) Пение птиц и жужжание пчёл</div>
+            <div class="quiz-variant">в) Гром и шум моря</div>
+        </div>
+        <div class="quiz-question">
+            2. Какие цвета относятся к тёплым?
+            <div class="quiz-variant">а) Синий, голубой, фиолетовый</div>
+            <div class="quiz-variant">б) Красный, оранжевый, жёлтый</div>
+            <div class="quiz-variant">в) Зелёный, серый, коричневый</div>
+        </div>
+        <div class="quiz-question">
+            3. Какая окраска у божьей коровки?
+            <div class="quiz-variant">а) Маскировочная</div>
+            <div class="quiz-variant">б) Привлекающая</div>
+            <div class="quiz-variant">в) Предупреждающая</div>
+        </div>
+        <div class="quiz-question">
+            4. Что такое природная композиция?
+            <div class="quiz-variant">а) Отдельный предмет природы</div>
+            <div class="quiz-variant">б) Единое сочетание звуков, красок и пространства</div>
+            <div class="quiz-variant">в) Фотография природы</div>
+        </div>
+        <div class="quiz-question">
+            5. Какой урок даёт нам способность природы к самообновлению?
+            <div class="quiz-variant">а) Что всё нужно брать от природы</div>
+            <div class="quiz-variant">б) Что всё восстанавливается само, не нужно заботиться</div>
+            <div class="quiz-variant">в) Что природа жизнестойка и способна восстанавливаться, если ей помочь</div>
+        </div>
+    </div>
+
+    <h2>🍁 Экскурсия «Природа осенью»</h2>
+
+    <p>Осень — удивительное время года. Это пора, когда природа прощается с летом и готовится к зимнему сну. Именно осенью особенно ярко видны <strong>все источники прекрасного</strong>: звуки, краски, композиции.</p>
+
+    <h3>Что наблюдать на экскурсии</h3>
+
+    <ul>
+        <li><strong>Звуки осени.</strong> Шелест опадающих листьев. Крики улетающих птиц. Шум дождя. Скрип деревьев на ветру.</li>
+        <li><strong>Краски осени.</strong> Золотые, багряные, оранжевые, коричневые листья. Синее небо. Серебристый иней.</li>
+        <li><strong>Композиции осени.</strong> Осенний парк, осенний лес, осенний берег реки. Каждый уголок — целая картина.</li>
+        <li><strong>Осенние изменения.</strong> Птицы готовятся к отлёту. Белки запасают орехи. Листья опадают. Природа готовится к зиме.</li>
+    </ul>
+
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание 3.4.1. «Сезонные явления в природе»</div>
+        <p><span class="signal">👁 Понаблюдай</span> <span class="signal">📝 Запиши</span></p>
+        <p>Во время экскурсии или прогулки наблюдай за осенними явлениями. Заполни таблицу наблюдений.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Что наблюдаем?</th>
+                    <th>Мои наблюдения</th>
+                    <th>Какие звуки услышал?</th>
+                    <th>Какие краски увидел?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Листья на деревьях</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Птицы</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Трава и цветы</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Небо и погода</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>Животные</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+        <p><strong>Мой рисунок «Осень в моём краю»:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="poem">
+        «Осень — рыжая подружка,<br>
+        Ходит в парке не спеша.<br>
+        Под берёзою-резвушкой<br>
+        Пляшет листья, чуть дыша.<br><br>
+        Дождик тихо барабанит,<br>
+        Птицы в стаи собрались.<br>
+        Осень — добрая волшебница,<br>
+        Всем нам дарит свою кисть.<br><br>
+        Краски яркие, густые —<br>
+        От заката до зари.<br>
+        Осень, милая, спасибо,<br>
+        Что ты с нами говоришь».
+        <span class="poem-author">— из творчества юных поэтов</span>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🍂 Пословицы и поговорки об осени:</strong>
+        <ul>
+            <li>«Весна красна цветами, а осень — снопами».</li>
+            <li>«Осень — перемен восемь».</li>
+            <li>«Осень идёт — за собою дождь ведёт».</li>
+            <li>«Не тот урожай, что в поле, а тот, что в амбаре».</li>
+            <li>«Октябрь — ложка воды, а ведро грязи».</li>
+        </ul>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">📖 Поучительный рассказ «Эгоистичный муравей»</div>
+        <div class="story-text">Жил в муравейнике маленький муравей. Все муравьи трудились — носили веточки, запасали еду на зиму. А наш муравей ленился. «Зачем мне работать? — думал он. — Пусть другие запасаются, а я и так проживу». Пришла зима. Муравьи спрятались в тёплом муравейнике, у них были запасы. А наш муравей только теперь понял: чтобы пережить зиму, нужно было трудиться вместе со всеми. Он пошёл просить еду — но никто не дал ему ничего. И тогда он понял: <em>эгоист, который не думает о других, останется один, когда придёт время испытаний</em>. Весной муравей вернулся в муравейник, попросил прощения и стал самым трудолюбивым жителем. И его приняли.</div>
+        <div class="story-moral">💡 Мораль: эгоизм и лень отдаляют нас от других. Настоящее счастье — в труде вместе со всеми, в заботе о ближнем, в общем деле.</div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">😄 Весёлая история «Растрёпанная белочка»</div>
+        <div class="funny-text">Жила-была белка, которая всё время торопилась. Утром она не расчёсывала хвост — «некогда!». Днём не убирала в дупле — «успею!». Вечером бросала орехи куда попало — «потом сложу!». Пришла зима. Белка попыталась найти свои запасы — но они были разбросаны по всему лесу. Нашла она только три орешка — и то у чужих белок. Сидит она в холодном дупле, хвост растрёпанный, вокруг беспорядок, а в животе пусто. Тогда пришла она к старой мудрой белке и спросила: «Почему у меня ничего нет?» Мудрая белка ответила: «Потому что ты не умела завершать дела. Торопливость и неаккуратность — плохие помощники».</div>
+        <div class="funny-moral">💡 Мораль: неаккуратность и расхлябанность ведут к бедности и одиночеству. Умение доводить дело до конца, содержать всё в порядке и беречь добро — это не «мелочи», а основа жизни.</div>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Осенние сокровища природы»</div>
+        <p style="font-size:0.94rem;color:#3730a3;margin-bottom:10px;">Во время осенней экскурсии выполни пять заданий и собери «осеннюю коллекцию».</p>
+        <div class="quest-step"><strong>Задание 1.</strong> Найди и засуши один красивый осенний лист.</div>
+        <div class="quest-step"><strong>Задание 2.</strong> Запиши три звука, которые ты услышал в осеннем лесу.</div>
+        <div class="quest-step"><strong>Задание 3.</strong> Определи три цвета, которые преобладают в осенней природе.</div>
+        <div class="quest-step"><strong>Задание 4.</strong> Зарисуй один маленький осенний пейзаж.</div>
+        <div class="quest-step"><strong>Задание 5.</strong> Придумай одну строчку своего стихотворения об осени.</div>
+    </div>
+
+    <h2>📌 Ключевые понятия раздела</h2>
+
+    <div class="note">
+        <p><strong>Звуки природы</strong> — разнообразные звуки живой и неживой природы, один из источников прекрасного.</p>
+        <p><strong>Музыка природы</strong> — сочетание звуков природы, напоминающее музыкальное произведение.</p>
+        <p><strong>Краски природы</strong> — разнообразие цветов и оттенков, которые природа дарит человеку.</p>
+        <p><strong>Тёплые и холодные цвета</strong> — деление цветов по их эмоциональному воздействию.</p>
+        <p><strong>Окраска живых организмов</strong> — маскировочная, привлекающая, предупреждающая, отпугивающая.</p>
+        <p><strong>Природная композиция</strong> — единое сочетание звуков, красок и пространства определённого природного сообщества.</p>
+        <p><strong>Самообновление природы</strong> — способность природы восстанавливать себя после изменений.</p>
+    </div>
+
+    <h2>📝 Итоги раздела</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что ты узнал в этом разделе:</strong>
+        <ul>
+            <li>Какие бывают <strong>звуки природы</strong> и как они воздействуют на человека.</li>
+            <li>Что такое <strong>музыка природы</strong> и как она связана с искусством.</li>
+            <li>Какие бывают <strong>краски природы</strong> и как они классифицируются.</li>
+            <li>Что такое <strong>окраски живых организмов</strong> и зачем они нужны.</li>
+            <li>Что такое <strong>природные композиции</strong> и какие они бывают.</li>
+            <li>Что природа — это <strong>сложная система</strong> со взаимосвязями между всеми элементами.</li>
+            <li>Что природа способна к <strong>самообновлению</strong> — и это её великое свойство.</li>
+            <li>Что <strong>лень, эгоизм, непостоянство, неаккуратность</strong> мешают видеть красоту, а <strong>внимание, труд, забота</strong> — помогают.</li>
+        </ul>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📊 Задание для самопроверки. «Что я запомнил?»</div>
+        <p><span class="signal">📝 Запиши</span></p>
+        <p>Ответь на вопросы кратко:</p>
+        <ol>
+            <li>Какие бывают звуки природы? Приведи примеры из каждой группы.</li>
+            <li>Что такое краски природы? Какие цвета называются тёплыми, а какие — холодными?</li>
+            <li>Какие виды окрасок живых организмов ты знаешь?</li>
+            <li>Что такое природная композиция? Приведи пример.</li>
+            <li>Как связаны элементы в природе? Приведи примеры.</li>
+            <li>В чём заключается способность природы к самообновлению?</li>
+            <li>Какой поучительный рассказ тебе запомнился и почему?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="quote">
+        «Природа — это не просто то, что мы видим. Это то, что мы слышим, чувствуем и понимаем. Только тогда она открывает нам свою настоящую красоту».
+        <span class="quote-author">— из размышлений о природе и искусстве</span>
+    </div>
+
+    <div class="green-note">
+        <strong>🌟 Запомни главное.</strong> Источники прекрасного — это <strong>звуки, краски и композиции природы</strong>. Но чтобы их увидеть и услышать, нужно быть внимательным, терпеливым и трудолюбивым. Никогда не ленись слушать, смотреть, наблюдать и творить. И тогда мир вокруг зазвучит и засияет всеми красками!
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="section2.html" class="button">← Раздел 2. Мир прекрасного</a>
+        <a href="section4.html" class="button">📖 Перейти к разделу 4. «Восприятие прекрасного» →</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Рабочая тетрадь «Гармония» к ОМК эколого-биологического профиля</p>
+    </footer>
+
+</div>
+</body>
+</html>
