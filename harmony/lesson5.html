@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 5. Целесообразность прекрасного — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ЗАНЯТИИ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content {
+            flex: 1;
+        }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Речь педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Действия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🎭 Игра";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🪞 Рефлексия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border-top: 4px solid #16a34a;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .beauty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -6px rgba(22, 163, 74, 0.25);
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .riddle-box {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .poem-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Поучительная история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .funny-card {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #ec4899;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .funny-card::before {
+            content: "😄 Весёлая история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ec4899;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .funny-card p:first-child { margin-top: 8px; }
+        .funny-title {
+            font-weight: 700;
+            color: #9d174d;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .funny-text {
+            font-size: 0.95rem;
+            color: #831843;
+            line-height: 1.7;
+        }
+        .funny-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #9d174d;
+            font-size: 0.92rem;
+        }
+
+        .quest-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .quest-card::before {
+            content: "🧩 Мини-квест";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quest-card p:first-child { margin-top: 8px; }
+        .quest-title {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quest-step {
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .quiz-card::before {
+            content: "🎯 Викторина";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quiz-card p:first-child { margin-top: 8px; }
+        .quiz-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #16a34a;
+        }
+        .quiz-variant {
+            margin: 4px 0 4px 20px;
+            font-size: 0.9rem;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Методический анализ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .beauty-grid { grid-template-columns: 1fr; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- НАВИГАЦИЯ СВЕРХУ -->
+    <div class="nav-links-top">
+        <a href="lesson4.html" class="back-link">← Занятие 4. Формы проявления прекрасного</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson6.html" class="back-link">Занятие 6. Прекрасное и человек →</a>
+    </div>
+
+    <h1>🌸 Занятие 5. Целесообразность прекрасного</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Тип занятия:</strong> комбинированное (теория + практика).</p>
+        <p><strong>Цель занятия:</strong> сформировать у детей представление о целесообразности прекрасного в природе — о том, что в природе красиво то, что полезно; научить видеть единство красоты и пользы в природных объектах.</p>
+        <p><strong>Задачи занятия:</strong></p>
+        <ul>
+            <li><strong>Образовательные:</strong> раскрыть понятие «целесообразность прекрасного»; показать на примерах, что в природе красивая форма служит жизни; научить находить примеры целесообразности прекрасного в природе; сформировать представление о единстве красоты и пользы.</li>
+            <li><strong>Развивающие:</strong> развивать наблюдательность, логическое мышление, умение устанавливать причинно-следственные связи; развивать речь через объяснение и обсуждение; развивать умение работать с рабочей тетрадью и иллюстрациями.</li>
+            <li><strong>Воспитательные:</strong> воспитывать эмоционально-ценностное отношение к природе; формировать понимание мудрости природы и её целесообразности; воспитывать бережное отношение к природным объектам.</li>
+        </ul>
+        <p><strong>Оборудование и материалы:</strong> рабочая тетрадь «Гармония», цветные карандаши, фотографии и иллюстрации природных объектов (обтекаемая форма рыбы, густой мех зайца, яркий цветок, симметричные крылья бабочки, гладкие перья птицы, форма семян растений), репродукции картин художников-анималистов, карточки с примерами целесообразности прекрасного, мультимедийная презентация, аудиозаписи со звуками природы.</p>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу «Мир прекрасного»</strong>, подтема <strong>«Прекрасное в природе»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Раскрась бабочку-симметрию»</strong> — продолжение работы с симметрией, ответ на вопрос «Почему природа создаёт симметричные формы?».</li>
+            <li><strong>Задание «Взаимосвязь прекрасного и полезного»</strong> — разделение примеров на группы «Красивое и полезное вместе» и «Красивое, но бесполезное».</li>
+            <li><strong>Загадка «Над цветком порхает, пляшет, веерком узорным машет»</strong> — связь с темой целесообразности (почему бабочка так выглядит).</li>
+            <li><strong>Пословица «Красота дерева — в его плодах, а человека — в его делах»</strong> — иллюстрация единства красоты и пользы.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «В природе красиво то, что полезно. Это не случайность, а великая мудрость природы. Красивая форма помогает жить».
+        <span class="quote-author">— концептуальная идея занятия</span>
+    </div>
+
+    <h2>📋 Структура занятия (2 академических часа = 90 минут с перерывом)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:55%;">Этап занятия</th>
+                <th style="width:12%;">Время</th>
+                <th style="width:25%;">Методы и формы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td>Организационный момент. Приветствие. Повторение предыдущего занятия</td>
+                <td class="center">5 мин</td>
+                <td>Игра-приветствие, беседа</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td>Введение в тему. Почему в природе красиво то, что полезно?</td>
+                <td class="center">10 мин</td>
+                <td>Проблемный вопрос, вводная беседа</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td>Целесообразность прекрасного: примеры из мира животных</td>
+                <td class="center">12 мин</td>
+                <td>Рассказ педагога, демонстрация иллюстраций, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td>Целесообразность прекрасного: примеры из мира растений</td>
+                <td class="center">10 мин</td>
+                <td>Рассказ педагога, демонстрация иллюстраций, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Перерыв</strong></td>
+                <td class="center">10 мин</td>
+                <td>Динамическая пауза «Живые формы»</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td>Игра «Красиво и полезно»</td>
+                <td class="center">10 мин</td>
+                <td>Работа с карточками, сортировка</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td>Практическая работа «Взаимосвязь прекрасного и полезного» в тетради</td>
+                <td class="center">15 мин</td>
+                <td>Работа в тетради, разделение на группы</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td>Творческая работа «Придумай своё объяснение»</td>
+                <td class="center">10 мин</td>
+                <td>Творческое задание, рисование</td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td>Рефлексия. Подведение итогов</td>
+                <td class="center">8 мин</td>
+                <td>Беседа, самооценка</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ЭТАП 1 -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Организационный момент. Приветствие. Повторение <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Создание положительного эмоционального настроя. Повторение материала предыдущего занятия.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Здравствуйте, дорогие ребята! Я рада снова вас видеть. На прошлом занятии мы говорили о формах проявления прекрасного в природе. Давайте вспомним: какие формы прекрасного мы выделили?»</em></p>
+        <p><em>Дети отвечают: прекрасное в великом, в малом, в тихом, в бурном.</em></p>
+        <p><em>«Молодцы! А сегодня мы поговорим о том, почему природа создаёт красивое. И узнаем удивительную тайну: оказывается, в природе красиво то, что полезно! Это называется целесообразностью прекрасного».</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра-приветствие «Комплимент природе».</strong></p>
+        <p>Дети становятся в круг. Каждый ребёнок говорит комплимент природному объекту, который ему нравится. Например: «Солнышко, ты такое тёплое и яркое!», «Цветочек, ты такой красивый и нежный!», «Бабочка, ты такая лёгкая и изящная!». Игра создаёт доброжелательную атмосферу и настраивает на разговор о красоте.</p>
+    </div>
+
+    <!-- ЭТАП 2 -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Введение в тему. Почему в природе красиво то, что полезно? <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Постановка проблемы. Формирование понимания связи красоты и пользы в природе.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, задумывались ли вы, почему у рыбы такая гладкая и обтекаемая форма? Почему у зайца густой мех? Почему цветы такие яркие и ароматные? Неужели это просто случайность?</em></p>
+        <p><em>Оказывается, нет! В природе красиво то, что полезно. Это называется целесообразностью прекрасного. Целесообразность — значит, что всё в природе имеет свой смысл и своё назначение. Красивая форма помогает животным и растениям выживать.</em></p>
+        <p><em>Давайте посмотрим на несколько примеров и вместе подумаем: почему природа создала их именно такими?»</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Ставит проблемный вопрос: «Почему в природе красиво то, что полезно?»</li>
+            <li>Приводит примеры из природы.</li>
+            <li>Подводит детей к пониманию: красота в природе служит жизни.</li>
+            <li>Записывает на доске ключевое слово: «ЦЕЛЕСООБРАЗНОСТЬ».</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 3 -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Целесообразность прекрасного: примеры из мира животных <span class="stage-time">12 мин</span></div>
+            <div class="stage-desc">Раскрытие понятия целесообразности прекрасного через примеры животных.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, посмотрите на эти иллюстрации. Кто изображён на первой картинке? Рыба. Посмотрите, какая у неё гладкая, обтекаемая форма. Как вы думаете, почему? Правильно, чтобы быстро плавать! Гладкое тело легко скользит в воде, поэтому рыба может спасаться от врагов и добывать пищу.</em></p>
+        <p><em>А вот заяц. Посмотрите, какой у него густой мех. Почему? Чтобы не замёрзнуть зимой! Мех согревает зайца и защищает его от холода.</em></p>
+        <p><em>А теперь посмотрите на бабочку. У неё симметричные крылья. Как вы думаете, зачем? Если бы крылья были не симметричны, бабочка не смогла бы летать. Симметрия помогает ей держать равновесие в воздухе.</em></p>
+        <p><em>И ещё один пример — птица. У неё гладкие перья. Как вы думаете, зачем? Гладкие перья помогают птице подниматься в воздух, ведь они уменьшают сопротивление воздуха.</em></p>
+        <p><em>Вот видите: все эти красивые особенности животных имеют своё назначение. Красота в природе помогает им жить».</em></p>
+    </div>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🐟</span>
+            <div class="beauty-title">Обтекаемая форма рыбы</div>
+            <div class="beauty-text">Позволяет быстро плавать, спасаться от врагов, добывать пищу.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🐰</span>
+            <div class="beauty-title">Густой мех зайца</div>
+            <div class="beauty-text">Защищает от холода, помогает выжить зимой.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🦋</span>
+            <div class="beauty-title">Симметричные крылья бабочки</div>
+            <div class="beauty-text">Помогают держать равновесие в полёте.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🐦</span>
+            <div class="beauty-title">Гладкие перья птицы</div>
+            <div class="beauty-text">Уменьшают сопротивление воздуха, помогают летать.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Демонстрирует иллюстрации с изображениями животных.</li>
+            <li>Задаёт проблемные вопросы: «Почему у рыбы такая форма?», «Зачем зайцу густой мех?»</li>
+            <li>Подводит детей к выводу: каждая красивая особенность животного имеет своё назначение.</li>
+            <li>Обращает внимание на то, что красота и польза в природе неразделимы.</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 4 -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Целесообразность прекрасного: примеры из мира растений <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Раскрытие понятия целесообразности прекрасного через примеры растений.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«А теперь давайте посмотрим на растения. Посмотрите на этот цветок. Какой он яркий и ароматный! Как вы думаете, почему? Чтобы привлекать насекомых, которые опыляют растение. Если бы цветок был незаметным, насекомые не нашли бы его, и растение не смогло бы размножаться.</em></p>
+        <p><em>А вот семена одуванчика. Посмотрите, какие они лёгкие, с парашютиками. Почему? Чтобы ветер мог унести их далеко-далеко, и одуванчики выросли в новых местах.</em></p>
+        <p><em>А это лист клёна. Посмотрите, какой он красивый и симметричный. Но его форма тоже имеет назначение: она позволяет листу улавливать больше солнечного света и участвовать в фотосинтезе.</em></p>
+        <p><em>И ещё один пример — колючки кактуса. Они выглядят как красивые иголочки. Но на самом деле они защищают кактус от животных, которые хотели бы его съесть, и помогают удерживать влагу.</em></p>
+        <p><em>Вот видите: и в мире растений красота служит жизни. Целесообразность прекрасного — это удивительная мудрость природы».</em></p>
+    </div>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌸</span>
+            <div class="beauty-title">Яркий цветок</div>
+            <div class="beauty-text">Привлекает насекомых для опыления, помогает размножению.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌾</span>
+            <div class="beauty-title">Лёгкие семена одуванчика</div>
+            <div class="beauty-text">Разносятся ветром, помогают растению распространяться.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🍁</span>
+            <div class="beauty-title">Симметричный лист клёна</div>
+            <div class="beauty-text">Улавливает больше солнечного света для питания растения.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌵</span>
+            <div class="beauty-title">Колючки кактуса</div>
+            <div class="beauty-text">Защищают от животных и помогают удерживать влагу.</div>
+        </div>
+    </div>
+
+    <div class="poem-box">
+        <p>«В природе всё имеет смысл:<br>
+        И форма крыльев, и полёт,<br>
+        И яркий цвет, и лёгкий лист,<br>
+        И даже маленький росток.</p>
+        <p>Красиво то, что служит жизни,<br>
+        Что помогает выжить, жить.<br>
+        И в этой мудрости природы<br>
+        Нам всем есть чему учиться».</p>
+        <span class="poem-author">— из размышлений о мудрости природы</span>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Демонстрирует иллюстрации с изображениями растений.</li>
+            <li>Задаёт проблемные вопросы: «Почему цветок яркий?», «Зачем одуванчику парашютики?»</li>
+            <li>Подводит детей к выводу: и в мире растений красота служит жизни.</li>
+            <li>Обращает внимание на то, что природа — великий учитель, у которого можно многому научиться.</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Проблемный вопрос для обсуждения с детьми.</strong> Если бы цветок был неярким и без запаха, смогли бы насекомые найти его для опыления? Если бы семена одуванчика были тяжёлыми, смогли бы они разлетаться по ветру? Подведите детей к выводу: <em>в природе красота целесообразна, она помогает жить.</em>
+    </div>
+
+    <!-- ПЕРЕРЫВ -->
+    <div class="stage-card" style="background: #fef9c3;">
+        <div class="stage-num" style="color: #d97706;">⏸</div>
+        <div class="stage-content">
+            <div class="stage-title">Перерыв <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Динамическая пауза «Живые формы». Дети имитируют формы природных объектов: «рыба» — вытягивают руки вперёд и плавно «плывут»; «заяц» — показывают густой мех, обхватывая себя руками; «бабочка» — машут руками, как крыльями; «цветок» — раскрывают руки вверх, как лепестки; «кактус» — показывают колючки, растопыривая пальцы. Это помогает снять напряжение и переключиться.</div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 5 -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Игра «Красиво и полезно» <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Закрепление понимания целесообразности прекрасного через работу с карточками.</div>
+        </div>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра «Красиво и полезно».</strong></p>
+        <p>Педагог раздаёт детям карточки с изображениями природных объектов. На доске — два «домика» с надписями: «Красиво и полезно вместе» и «Красиво, но бесполезно». Дети должны определить, к какой группе относится каждый объект, и прикрепить карточку в нужный «домик».</p>
+        <p><strong>Примеры карточек:</strong></p>
+        <ul>
+            <li><strong>Красиво и полезно вместе:</strong> обтекаемая форма рыбы, густой мех зайца, симметричные крылья бабочки, яркий цветок, гладкие перья птицы, лёгкие семена одуванчика, колючки кактуса.</li>
+            <li><strong>Красиво, но бесполезно:</strong> блестящая фольга, пластиковый пакет, выброшенный в лесу, искусственный цветок без запаха.</li>
+        </ul>
+        <p>После выполнения задания педагог вместе с детьми проверяет правильность распределения и обсуждает, почему красивое в природе всегда полезно.</p>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет педагогу.</strong> Если карточки вызывают затруднения, попросите детей объяснить свой выбор: «Почему ты решил, что яркий цветок полезен?», «Что общего у обтекаемой формы рыбы и гладких перьев птицы?». Это развивает речь и логическое мышление.
+    </div>
+
+    <!-- ЭТАП 6 -->
+    <div class="stage-card">
+        <div class="stage-num">6</div>
+        <div class="stage-content">
+            <div class="stage-title">Практическая работа «Взаимосвязь прекрасного и полезного» в тетради <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Разделение примеров на группы «Красивое и полезное вместе» и «Красивое, но бесполезное».</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Ход практической работы:</strong></p>
+        <ol>
+            <li>Педагог раздаёт детям рабочую тетрадь «Гармония» и цветные карандаши.</li>
+            <li>Дети открывают страницу с заданием <strong>«Взаимосвязь прекрасного и полезного»</strong> в разделе «Мир прекрасного».</li>
+            <li>Педагог объясняет задание: «Перед тобой список примеров. Раздели их на две группы: "Красивое и полезное вместе" и "Красивое, но бесполезное". Запиши номера в нужную колонку».</li>
+            <li>Список примеров:</li>
+            <ul>
+                <li>Пчела, собирающая нектар.</li>
+                <li>Блестящая фольга.</li>
+                <li>Красивая кормушка для птиц.</li>
+                <li>Пластиковый пакет, который выбросили в лесу.</li>
+                <li>Ухоженная клумба у школы.</li>
+                <li>Вышитое полотенце.</li>
+                <li>Камень, который лежит на дороге.</li>
+                <li>Красивая поделка из природного материала.</li>
+            </ul>
+            <li>Дети выполняют задание, записывая номера в нужную колонку.</li>
+            <li>Педагог проверяет правильность выполнения и обсуждает с детьми: «Почему пчела — это красивое и полезное вместе?», «Почему блестящая фольга — красивая, но бесполезная?».</li>
+        </ol>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет педагогу.</strong> На этом этапе важно обсудить с детьми, что красивое в природе всегда полезно, а красивое, созданное человеком, может быть бесполезным. Подведите детей к выводу: настоящая красота всегда соединена с пользой и добром.
+    </div>
+
+    <!-- ЭТАП 7 -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Творческая работа «Придумай своё объяснение» <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Развитие творческих способностей и логического мышления через самостоятельное объяснение целесообразности природных объектов.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Ход творческой работы:</strong></p>
+        <ol>
+            <li>Педагог предлагает детям выбрать любой природный объект (животное или растение) и придумать своё объяснение, почему природа создала его именно таким.</li>
+            <li>Дети рисуют этот объект в тетради и записывают или рассказывают своё объяснение.</li>
+            <li>Несколько детей по желанию рассказывают о своём объекте и объясняют, в чём его красота и польза.</li>
+        </ol>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">📖 Нарисуй природный объект и объясни, в чём его красота и польза (см. рабочую тетрадь, раздел «Мир прекрасного»)</div>
+        <svg viewBox="0 0 500 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="460" height="160" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4" rx="10"/>
+            <text x="250" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#94a3b8" font-style="italic">Здесь твой рисунок</text>
+        </svg>
+    </div>
+
+    <div class="riddle-box">
+        <div class="riddle-title">❓ Загадка. Отгадай и нарисуй отгадку</div>
+        <p><em>«Над цветком порхает, пляшет,</em></p>
+        <p><em>Веерком узорным машет».</em></p>
+        <p><strong>Отгадка:</strong> бабочка.</p>
+        <p>Педагог предлагает детям нарисовать отгадку в рабочей тетради и ответить на вопрос: «Почему крылья бабочки симметричны?».</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">«Мудрая природа»</div>
+        <div class="story-text">
+            <p>Однажды юный художник гулял в лесу и увидел бабочку. Он долго любовался её красивыми крыльями и вдруг подумал: «Почему природа создала её такой красивой?»</p>
+            <p>Он спросил у старого мудреца, который жил на опушке леса. Мудрец улыбнулся и сказал: «Природа создала бабочку красивой не для того, чтобы мы любовались. Её крылья симметричны, потому что так она может летать. Её яркая окраска помогает ей находить пару. Всё в природе имеет своё назначение».</p>
+            <p>Художник задумался: «Значит, красота и польза — это одно и то же?» Мудрец ответил: «В природе — да. Но и человек должен стремиться к тому, чтобы его творения были не только красивыми, но и полезными. Настоящая красота всегда служит жизни».</p>
+        </div>
+        <div class="story-moral">💡 Мораль: красота в природе целесообразна, она помогает жить. А человек, создавая красоту, должен помнить о пользе и добре.</div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">«Хвастливый петух»</div>
+        <div class="funny-text">
+            <p>Жил-был петух. Он был очень красивый: яркий гребень, разноцветные перья, гордая походка. Но он был ужасно ленивый.</p>
+            <p>Каждое утро другие петухи будили людей своим пением, а наш петух говорил: «Зачем мне петь? Я и так самый красивый!»</p>
+            <p>Однажды хозяйка сказала: «Красивый петух, а пользы от тебя нет. Красота без дела — пустая». Петух задумался: «Значит, одного оперения мало? Нужно ещё и пользу приносить?»</p>
+            <p>С тех пор он стал петь громче всех по утрам. И все говорили: «Вот это петух! И красивый, и полезный!»</p>
+        </div>
+        <div class="funny-moral">💡 Мораль: красота без пользы — пустая. Настоящая красота проявляется в добрых делах и полезных поступках.</div>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Красивое и полезное вокруг нас»</div>
+        <p>Выполни пять заданий квеста и найди примеры целесообразности прекрасного.</p>
+        <div class="quest-step"><strong>Задание 1.</strong> Найди в природе объект, у которого красивая форма помогает ему двигаться. Опиши его.</div>
+        <div class="quest-step"><strong>Задание 2.</strong> Найди в природе объект, у которого яркая окраска помогает ему привлекать других. Опиши его.</div>
+        <div class="quest-step"><strong>Задание 3.</strong> Найди в природе объект, у которого красивый запах помогает ему. Опиши его.</div>
+        <div class="quest-step"><strong>Задание 4.</strong> Приведи пример красивого и полезного поступка человека. Объясни свой выбор.</div>
+        <div class="quest-step"><strong>Задание 5.</strong> Придумай и нарисуй свой природный объект, у которого красота и польза соединены вместе.</div>
+    </div>
+
+    <div class="quiz-card">
+        <div class="quiz-title">🎯 Викторина «Красиво и полезно»</div>
+        <div class="quiz-question">
+            1. Что такое целесообразность прекрасного?
+            <div class="quiz-variant">а) Красота в природе случайна</div>
+            <div class="quiz-variant">б) Красивое в природе помогает выживать</div>
+            <div class="quiz-variant">в) Красивое в природе не имеет смысла</div>
+        </div>
+        <div class="quiz-question">
+            2. Почему у рыбы обтекаемая форма?
+            <div class="quiz-variant">а) Чтобы её было легче поймать</div>
+            <div class="quiz-variant">б) Чтобы быстро плавать и спасаться от врагов</div>
+            <div class="quiz-variant">в) Чтобы она была красивой</div>
+        </div>
+        <div class="quiz-question">
+            3. Зачем зайцу густой мех?
+            <div class="quiz-variant">а) Чтобы его заметили</div>
+            <div class="quiz-variant">б) Чтобы защититься от холода</div>
+            <div class="quiz-variant">в) Чтобы было красиво</div>
+        </div>
+        <div class="quiz-question">
+            4. Почему цветы яркие и ароматные?
+            <div class="quiz-variant">а) Чтобы привлекать насекомых для опыления</div>
+            <div class="quiz-variant">б) Чтобы их срывали люди</div>
+            <div class="quiz-variant">в) Чтобы было красиво</div>
+        </div>
+        <div class="quiz-question">
+            5. Что общего между красотой и пользой в природе?
+            <div class="quiz-variant">а) Они всегда вместе</div>
+            <div class="quiz-variant">б) Они никогда не встречаются</div>
+            <div class="quiz-variant">в) Красота всегда бесполезна</div>
+        </div>
+    </div>
+
+    <div class="proverb-list">
+        <strong>🌿 Пословицы и поговорки о красоте и пользе:</strong>
+        <ul>
+            <li>«Красота дерева — в его плодах, а человека — в его делах».</li>
+            <li>«Мал золотник, да дорог».</li>
+            <li>«Красота без пользы — пустая сума».</li>
+            <li>«Не всё то золото, что блестит».</li>
+            <li>«Красивое — не всегда полезное, полезное — не всегда красивое».</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 8 -->
+    <div class="stage-card">
+        <div class="stage-num">8</div>
+        <div class="stage-content">
+            <div class="stage-title">Рефлексия. Подведение итогов <span class="stage-time">8 мин</span></div>
+            <div class="stage-desc">Осмысление детьми полученного опыта, самооценка, планирование следующего занятия.</div>
+        </div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Вопросы для рефлексии:</strong></p>
+        <ul>
+            <li>Что нового вы узнали сегодня на занятии?</li>
+            <li>Что такое целесообразность прекрасного?</li>
+            <li>Почему в природе красиво то, что полезно?</li>
+            <li>Какие примеры целесообразности прекрасного вы запомнили?</li>
+            <li>Согласны ли вы с тем, что «красота без пользы — пустая сума»? Почему?</li>
+            <li>Что вам больше всего понравилось на занятии?</li>
+        </ul>
+        <p><strong>Приём «Ладошка»:</strong> педагог предлагает детям обвести свою ладошку в тетради. На каждом пальчике дети пишут (или рисуют), что нового они узнали о целесообразности прекрасного. На большом пальце — самое главное, на указательном — что было интересно, на среднем — что было трудно, на безымянном — что хотелось бы узнать, на мизинце — что понравилось больше всего.</p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Итог занятия.</strong> Сегодня мы с вами узнали удивительную тайну природы: в природе красиво то, что полезно! Мы разобрали множество примеров целесообразности прекрасного у животных и растений. Мы поняли, что красота в природе не случайна, она служит жизни. И это очень важный урок для нас: настоящая красота всегда соединена со смыслом и пользой.
+    </div>
+
+    <h2>📚 Домашнее задание</h2>
+
+    <div class="info-box">
+        <p><strong>Задание для самостоятельной работы:</strong></p>
+        <ul>
+            <li>Наблюдать за природой в течение недели. Найти и записать в тетрадь три примера целесообразности прекрасного (например, у животного, у растения, в неживой природе).</li>
+            <li>Нарисовать дома один природный объект и подписать, в чём его красота и польза.</li>
+            <li>Придумать загадку о природном объекте, у которого красота и польза соединены вместе.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- МЕТОДИЧЕСКИЙ АНАЛИЗ -->
+    <!-- ============================================================ -->
+    <h2>🔍 Методический анализ занятия</h2>
+
+    <div class="analysis-block">
+        <p><strong>Анализ целей и задач занятия.</strong></p>
+        <p>Цель занятия — сформировать у детей представление о целесообразности прекрасного в природе — достигнута через последовательное решение образовательных, развивающих и воспитательных задач. Образовательные задачи реализованы через раскрытие понятия «целесообразность прекрасного» и знакомство с конкретными примерами. Развивающие задачи — через наблюдение, беседу, работу с иллюстрациями, игру, практическую работу, творческое задание. Воспитательные задачи — через формирование эмоционально-ценностного отношения к природе и понимания её мудрости.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ структуры занятия.</strong></p>
+        <p>Структура занятия логична и соответствует типу комбинированного занятия. Все этапы связаны между собой: от организационного момента и повторения — к введению в тему, затем к примерам целесообразности у животных и растений, перерыву, игре, практической работе, творческой работе, квесту, викторине и рефлексии. Соблюдён принцип постепенного усложнения материала и смены видов деятельности, что особенно важно для детей 6–10 лет. Занятие развивает и углубляет тему предыдущего занятия.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ методов и форм работы.</strong></p>
+        <p>На занятии использованы разнообразные методы и формы: вводная беседа, рассказ педагога, демонстрация иллюстраций, проблемные вопросы, игровые ситуации, игра «Красиво и полезно», загадка, практическая работа, творческая работа, квест, викторина, рефлексия. Такое разнообразие обеспечивает включённость каждого ребёнка, поддерживает интерес и мотивацию. Особенно ценным является сочетание словесных, наглядных и практических методов, а также использование проблемных вопросов и творческих заданий.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ содержания занятия.</strong></p>
+        <p>Содержание занятия соответствует возрастным особенностям детей 6–10 лет. Понятие «целесообразность прекрасного» раскрывается через доступные примеры из мира животных и растений. Особое внимание уделяется тому, что красота в природе служит жизни. Игра, практическая работа и творческое задание позволяют детям закрепить материал в деятельностной форме. Соблюдён принцип единства истины, красоты и добра.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ воспитательного потенциала занятия.</strong></p>
+        <p>Занятие имеет ярко выраженный воспитательный потенциал: формирует эмоционально-ценностное отношение к природе, понимание её мудрости, бережное отношение к природным объектам. Воспитательные задачи реализуются через вовлечение детей в обсуждение, наблюдение, игру, творчество. Особое значение имеет обсуждение того, что настоящая красота всегда соединена с пользой и добром, что важно и для человека.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ связи с рабочей тетрадью «Гармония».</strong></p>
+        <p>Занятие напрямую связано с материалами рабочей тетради «Гармония» (раздел «Мир прекрасного», подтема «Прекрасное в природе»). Использованы задания <strong>«Раскрась бабочку-симметрию»</strong>, <strong>«Взаимосвязь прекрасного и полезного»</strong>, загадка о бабочке, пословицы о красоте и пользе. Это обеспечивает единство теории и практики, позволяет детям закрепить полученные знания через продуктивную деятельность. На соответствующий раздел рабочей тетради дана ссылка в навигации занятия.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ межпредметных связей.</strong></p>
+        <p>Занятие имеет межпредметные связи с другими образовательными областями: <strong>биология и экология</strong> (наблюдения за животными и растениями), <strong>изобразительное искусство</strong> (работа с иллюстрациями, создание рисунка), <strong>литература</strong> (загадки, пословицы, стихи, истории), <strong>логика</strong> (установление причинно-следственных связей). Это способствует формированию у детей целостной картины мира.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Возможные затруднения и пути их преодоления.</strong></p>
+        <ul>
+            <li><em>Затруднение:</em> понятие «целесообразность» может быть сложным для детей 6–7 лет. <em>Путь преодоления:</em> объяснить через простые примеры (почему у рыбы обтекаемая форма, почему у бабочки симметричные крылья) и использовать игровые ситуации.</li>
+            <li><em>Затруднение:</em> дети могут не сразу понять, что красота и польза связаны. <em>Путь преодоления:</em> задавать наводящие вопросы, приводить конкретные примеры, использовать игру «Красиво и полезно».</li>
+            <li><em>Затруднение:</em> некоторые дети могут стесняться объяснять свой выбор. <em>Путь преодоления:</em> предложить обсудить в парах, а затем — по желанию перед классом.</li>
+            <li><em>Затруднение:</em> практическая работа может занять больше времени, чем планировалось. <em>Путь преодоления:</em> заранее подготовить шаблоны, упростить задание для младших детей.</li>
+        </ul>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Диагностическая ценность занятия.</strong></p>
+        <p>На занятии педагог может провести диагностику: наблюдение за логическим мышлением детей, их умением устанавливать причинно-следственные связи, уровнем развития речи. Результаты наблюдений заносятся в диагностическую карту учащегося (раздел «Экологическая культура» — когнитивный и эмоционально-ценностный компоненты; «Творческие способности» — воображение и творческие работы; «Культура речи» — связная речь).</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Соответствие требованиям типовой программы.</strong></p>
+        <p>Занятие соответствует требованиям типовой программы эколого-биологического профиля: формирует представления о природе как источнике красоты и мудрости, развивает эстетическое восприятие и логическое мышление, формирует основы экологической культуры. Содержание занятия направлено на достижение предметных, метапредметных и личностных результатов, заявленных в программе «Гармония».</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Вывод.</strong> Занятие выстроено методически грамотно, соответствует возрастным особенностям детей 6–10 лет, реализует принципы развивающего обучения, интеграции науки и искусства, практико-ориентированности. Содержание занятия направлено на формирование представления о целесообразности прекрасного, развитие логического мышления и эстетического восприятия. Занятие может быть рекомендовано к использованию в практике педагогов дополнительного образования эколого-биологического профиля.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson4.html" class="button">← Занятие 4</a>
+        <a href="section2.html" class="button secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson6.html" class="button">Занятие 6 →</a>
+    </p>
+
+    <!-- НАВИГАЦИЯ СНИЗУ -->
+    <div class="nav-links-bottom">
+        <a href="lesson4.html" class="back-link">← Занятие 4. Формы проявления прекрасного</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson6.html" class="back-link">Занятие 6. Прекрасное и человек →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 5 «Целесообразность прекрасного»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

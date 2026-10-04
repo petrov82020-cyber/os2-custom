@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 7. Значение красоты для человека — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ЗАНЯТИИ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content {
+            flex: 1;
+        }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Речь педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Действия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🎭 Игра";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🪞 Рефлексия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border-top: 4px solid #16a34a;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .beauty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -6px rgba(22, 163, 74, 0.25);
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .riddle-box {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .poem-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Поучительная история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .funny-card {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #ec4899;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .funny-card::before {
+            content: "😄 Весёлая история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ec4899;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .funny-card p:first-child { margin-top: 8px; }
+        .funny-title {
+            font-weight: 700;
+            color: #9d174d;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .funny-text {
+            font-size: 0.95rem;
+            color: #831843;
+            line-height: 1.7;
+        }
+        .funny-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #9d174d;
+            font-size: 0.92rem;
+        }
+
+        .quest-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .quest-card::before {
+            content: "🧩 Мини-квест";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quest-card p:first-child { margin-top: 8px; }
+        .quest-title {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quest-step {
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .quiz-card::before {
+            content: "🎯 Викторина";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quiz-card p:first-child { margin-top: 8px; }
+        .quiz-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #16a34a;
+        }
+        .quiz-variant {
+            margin: 4px 0 4px 20px;
+            font-size: 0.9rem;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Методический анализ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .beauty-grid { grid-template-columns: 1fr; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- НАВИГАЦИЯ СВЕРХУ -->
+    <div class="nav-links-top">
+        <a href="lesson6.html" class="back-link">← Занятие 6. Прекрасное и человек</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson8.html" class="back-link">Занятие 8. Взаимосвязь прекрасного и полезного →</a>
+    </div>
+
+    <h1>💚 Занятие 7. Значение красоты для человека</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Тип занятия:</strong> комбинированное (теория + практика).</p>
+        <p><strong>Цель занятия:</strong> углубить и расширить представления детей о значении красоты в жизни человека; показать, что красота питает душу, лечит, вдохновляет и помогает человеку стать лучше; научить детей находить красоту в повседневной жизни.</p>
+        <p><strong>Задачи занятия:</strong></p>
+        <ul>
+            <li><strong>Образовательные:</strong> раскрыть понятие «значение красоты для человека»; показать, как красота влияет на настроение, здоровье, поступки человека; сформировать представление о красоте как источнике вдохновения и творчества; научить находить примеры значения красоты в жизни.</li>
+            <li><strong>Развивающие:</strong> развивать эмоциональную отзывчивость, эстетическое восприятие, умение выражать свои чувства и мысли; развивать речь, память, воображение; развивать творческие способности через рисование и обсуждение.</li>
+            <li><strong>Воспитательные:</strong> воспитывать стремление окружать себя красотой, бережно относиться к ней; формировать понимание, что красота — это не только внешнее, но и внутреннее; воспитывать уважение к красоте, созданной природой и человеком.</li>
+        </ul>
+        <p><strong>Оборудование и материалы:</strong> рабочая тетрадь «Гармония», цветные карандаши, репродукции картин художников (пейзажи, портреты, натюрморты), фотографии красивых природных явлений, иллюстрации к сказкам и историям о силе красоты, аудиозаписи со спокойной музыкой (П.И. Чайковский «Времена года», А. Вивальди «Времена года»), карточки с примерами влияния красоты на человека, мультимедийная презентация.</p>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу «Мир прекрасного»</strong>, подтема <strong>«Прекрасное и человек»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Красивое — полезное»</strong> — продолжение работы с взаимосвязью красоты и пользы.</li>
+            <li><strong>Задание «Раскрась вазу-гармонию»</strong> — творческая работа, раскрашивание вазы и орнамента в цвета гармонии.</li>
+            <li><strong>Задание «Дорисуй вторую половину»</strong> — дорисовывание кувшина симметрично.</li>
+            <li><strong>Пословицы о значении красоты</strong> — «Красота — до вечера, а доброта — навек», «Красив тот, кто красиво поступает».</li>
+            <li><strong>Поучительная история о художнике</strong> — о том, как красота вдохновляет человека на творчество.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Красота — это не "бесполезное украшение" жизни. Она питает нашу душу, делает нас добрее, отзывчивее, внимательнее. Когда мы видим прекрасное, в нас просыпается желание творить добро. Именно поэтому так важно окружать себя красотой: она помогает нам расти».
+        <span class="quote-author">— концептуальная идея занятия</span>
+    </div>
+
+    <h2>📋 Структура занятия (2 академических часа = 90 минут с перерывом)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:55%;">Этап занятия</th>
+                <th style="width:12%;">Время</th>
+                <th style="width:25%;">Методы и формы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td>Организационный момент. Приветствие. Повторение предыдущего занятия</td>
+                <td class="center">5 мин</td>
+                <td>Игра-приветствие, беседа</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td>Введение в тему. Зачем человеку красота?</td>
+                <td class="center">8 мин</td>
+                <td>Проблемный вопрос, вводная беседа</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td>Красота питает душу и лечит</td>
+                <td class="center">12 мин</td>
+                <td>Рассказ педагога, демонстрация иллюстраций, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td>Красота вдохновляет на творчество</td>
+                <td class="center">12 мин</td>
+                <td>Рассказ педагога, прослушивание музыки, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Перерыв</strong></td>
+                <td class="center">10 мин</td>
+                <td>Динамическая пауза «Волшебные превращения»</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td>Игра «Где живёт красота?»</td>
+                <td class="center">10 мин</td>
+                <td>Работа с карточками, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td>Практическая работа «Раскрась вазу-гармонию» в тетради</td>
+                <td class="center">15 мин</td>
+                <td>Творческая работа, раскрашивание</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td>Творческая работа «Красота в моей жизни»</td>
+                <td class="center">10 мин</td>
+                <td>Рисование, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td>Рефлексия. Подведение итогов</td>
+                <td class="center">8 мин</td>
+                <td>Беседа, самооценка</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ЭТАП 1 -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Организационный момент. Приветствие. Повторение <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Создание положительного эмоционального настроя. Повторение материала предыдущего занятия.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Здравствуйте, дорогие ребята! Я рада снова вас видеть. На прошлом занятии мы говорили о том, что человек — единственное существо на Земле, способное видеть и ценить красоту. Давайте вспомним: что такое красота души?»</em></p>
+        <p><em>Дети отвечают: красота души — это добрые поступки, забота, отзывчивость, любовь.</em></p>
+        <p><em>«Молодцы! А сегодня мы поговорим о том, какое значение имеет красота в жизни человека. Зачем она нам нужна? Как она влияет на наше настроение, здоровье и поступки? Мы узнаем, что красота — это не просто украшение, а великая сила, которая помогает человеку жить».</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра-приветствие «Волшебный цветок».</strong></p>
+        <p>Педагог показывает детям красивый цветок (или его изображение) и предлагает передавать его по кругу. Каждый ребёнок, получая цветок, говорит, что красивого он заметил в природе за последнюю неделю. Игра создаёт доброжелательную атмосферу и настраивает на разговор о значении красоты.</p>
+    </div>
+
+    <!-- ЭТАП 2 -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Введение в тему. Зачем человеку красота? <span class="stage-time">8 мин</span></div>
+            <div class="stage-desc">Постановка проблемы. Формирование понимания, что красота имеет огромное значение в жизни человека.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, давайте задумаемся: зачем человеку красота? Может быть, это просто "бесполезное украшение" жизни? Нет, красота — это не украшение. Красота — это великая сила, которая помогает человеку жить.</em></p>
+        <p><em>Представьте себе человека, который живёт в серой, пустой комнате без окон, где нет ни одной красивой вещи, не слышно музыки, не видно природы. Что он будет чувствовать? Грусть, тоску, уныние.</em></p>
+        <p><em>А теперь представьте человека, который окружён красотой: цветы на подоконнике, картины на стенах, красивая музыка, вид на природу из окна. Что он чувствует? Радость, спокойствие, желание творить.</em></p>
+        <p><em>Сегодня мы с вами узнаем, что красота — это не просто то, что радует глаз. Это то, что питает душу, лечит, вдохновляет и помогает человеку становиться лучше».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Ставит проблемный вопрос: «Зачем человеку красота?»</li>
+            <li>Приводит примеры: жизнь без красоты и жизнь в окружении красоты.</li>
+            <li>Задаёт вопросы: «Что вы чувствуете, когда видите красоту?», «Почему красота важна для человека?»</li>
+            <li>Записывает на доске ключевое слово: «ЗНАЧЕНИЕ КРАСОТЫ».</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 3 -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Красота питает душу и лечит <span class="stage-time">12 мин</span></div>
+            <div class="stage-desc">Раскрытие значения красоты как источника радости, спокойствия и healing для души человека.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, красота — это удивительное лекарство для души. Когда мы любуемся закатом, слушаем пение птиц, смотрим на картины художников, наша душа отдыхает и радуется. Красота успокаивает, снимает усталость, дарит хорошее настроение.</em></p>
+        <p><em>Многие люди, оказавшись в трудной ситуации, находили силы, глядя на природу, слушая музыку, читая стихи. Красота дарит нам надежду и радость. Вот почему так важно окружать себя красотой: она помогает нам жить.</em></p>
+        <p><em>Посмотрите на эти иллюстрации. На них изображены люди, которые любуются природой, слушают музыку, рассматривают картины. Что вы видите на их лицах? Улыбки, спокойствие, радость. Это и есть сила красоты.</em></p>
+        <p><em>А теперь вспомните себя. Бывало ли у вас такое, что вы грустили, а потом увидели что-то красивое и вам стало легче? Поделитесь своими историями».</em></p>
+    </div>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌅</span>
+            <div class="beauty-title">Красота успокаивает</div>
+            <div class="beauty-text">Любуясь природой, мы отдыхаем от тревог и забот, наши мысли успокаиваются.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">💚</span>
+            <div class="beauty-title">Красота лечит</div>
+            <div class="beauty-text">Красивая музыка, картины и пейзажи помогают пережить трудности и находить надежду.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">😊</span>
+            <div class="beauty-title">Красота радует</div>
+            <div class="beauty-text">Красота дарит радость, улыбку, хорошее настроение и энергию для жизни.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌟</span>
+            <div class="beauty-title">Красота вдохновляет</div>
+            <div class="beauty-text">Красота пробуждает в нас желание творить, мечтать, делать что-то хорошее.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Демонстрирует иллюстрации, связанные с силой красоты.</li>
+            <li>Приводит примеры из жизни: как красота помогает человеку в трудные минуты.</li>
+            <li>Задаёт вопросы: «Что вы чувствуете, когда слышите красивую музыку?», «Как красота может помочь человеку?»</li>
+            <li>Предлагает детям поделиться своими историями о том, как красота помогла им.</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 4 -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Красота вдохновляет на творчество <span class="stage-time">12 мин</span></div>
+            <div class="stage-desc">Раскрытие значения красоты как источника вдохновения и творчества человека.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, а знаете ли вы, что всякое искусство рождается из красоты? Художники, поэты, композиторы смотрят на красоту природы и создают свои произведения. Красота природы вдохновляет их на творчество.</em></p>
+        <p><em>Вспомните Петра Ильича Чайковского. Он написал цикл "Времена года" — двенадцать пьес, каждая из которых передаёт настроение одного из месяцев. Композитор смотрел на красоту природы и передавал её в музыке.</em></p>
+        <p><em>А художник Исаак Левитан смотрел на красоту осени и создавал свои знаменитые картины. Поэт Сергей Есенин смотрел на красоту берёз и писал стихи.</em></p>
+        <p><em>Давайте послушаем музыку Петра Ильича Чайковского из цикла "Времена года". Что вы чувствуете, слушая её? Какие образы возникают в вашем воображении?»</em></p>
+    </div>
+
+    <div class="poem-box">
+        <p>«В любой травинке, в каждом звуке,<br>
+        В росе, в закате, в облаках —<br>
+        Живёт красота, что дарит муки,<br>
+        И радость, и полёт в мечтах.</p>
+        <p>Художник кистью, поэт словами,<br>
+        Композитор нотами поёт.<br>
+        И красота, что рядом с нами,<br>
+        В их творениях живёт».</p>
+        <span class="poem-author">— из размышлений о силе красоты</span>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Рассказывает о том, как красота вдохновляла известных художников, поэтов, композиторов.</li>
+            <li>Организует прослушивание музыки Чайковского.</li>
+            <li>Задаёт вопросы: «Какие образы возникли у вас при слушании музыки?», «Что бы вы нарисовали под эту музыку?»</li>
+            <li>Подводит к выводу: красота — это источник вдохновения и творчества.</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Проблемный вопрос для обсуждения с детьми.</strong> Представьте, что в мире не было бы красоты: не было бы ни закатов, ни цветов, ни музыки, ни картин. Смогли бы люди создавать искусство? Смогли бы они радоваться жизни? Подведите детей к выводу: <em>красота — это основа жизни и творчества человека.</em>
+    </div>
+
+    <!-- ПЕРЕРЫВ -->
+    <div class="stage-card" style="background: #fef9c3;">
+        <div class="stage-num" style="color: #d97706;">⏸</div>
+        <div class="stage-content">
+            <div class="stage-title">Перерыв <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Динамическая пауза «Волшебные превращения». Дети под музыку «превращаются» в различные красивые образы: «превращаюсь в красивый цветок» (раскрывают руки, тянутся вверх), «превращаюсь в лёгкую бабочку» (машут руками и кружатся), «превращаюсь в высокое дерево» (стоят прямо, руки вверх), «превращаюсь в быстрый ручей» (плавно двигаются по классу). Это помогает снять напряжение и почувствовать красоту движения.</div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 5 -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Игра «Где живёт красота?» <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Закрепление понимания значения красоты через работу с карточками.</div>
+        </div>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра «Где живёт красота?».</strong></p>
+        <p>Педагог раздаёт детям карточки с изображениями разных проявлений красоты. На доске — пять «домиков» с надписями: «Природа», «Искусство», «Творчество человека», «Поступки», «Слова». Дети должны определить, к какой группе относится каждая карточка, и прикрепить её в нужный «домик».</p>
+        <p><strong>Примеры карточек:</strong></p>
+        <ul>
+            <li><strong>Природа:</strong> закат, снежинка, радуга, цветущий луг.</li>
+            <li><strong>Искусство:</strong> картина, музыка, стихи, скульптура.</li>
+            <li><strong>Творчество человека:</strong> вышивка, красивая мебель, ухоженный сад.</li>
+            <li><strong>Поступки:</strong> помощь другу, забота о старших, защита слабого.</li>
+            <li><strong>Слова:</strong> доброе слово, стихотворение, пословица, сказка.</li>
+        </ul>
+        <p>После выполнения задания педагог вместе с детьми проверяет правильность распределения и обсуждает, как красота проявляется в каждой из этих сфер.</p>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет педагогу.</strong> Обратите внимание детей на то, что красота — это не только то, что мы видим. Красота — это и добрые поступки, и добрые слова. Это красота души. Спросите: «Где красота важнее — в природе или в поступках человека?» Подведите к выводу: красота есть везде, и она помогает нам жить.
+    </div>
+
+    <!-- ЭТАП 6 -->
+    <div class="stage-card">
+        <div class="stage-num">6</div>
+        <div class="stage-content">
+            <div class="stage-title">Практическая работа «Раскрась вазу-гармонию» в тетради <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Творческая работа, раскрашивание вазы и орнамента в цвета гармонии.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Ход практической работы:</strong></p>
+        <ol>
+            <li>Педагог раздаёт детям рабочую тетрадь «Гармония» и цветные карандаши.</li>
+            <li>Дети открывают страницу с заданием <strong>«Раскрась вазу-гармонию»</strong> в разделе «Мир прекрасного».</li>
+            <li>Педагог объясняет задание: «Перед тобой контур вазы с орнаментом. Раскрась вазу и орнамент в те цвета, которые, по твоему мнению, лучше всего передают гармонию».</li>
+            <li>Дети выполняют задание, используя цветные карандаши.</li>
+            <li>Под вазой дети пишут, какие чувства они хотели выразить этой работой.</li>
+            <li>После выполнения педагог задаёт вопрос: «Почему красивая ваза радует нас? Как красота вазы влияет на наше настроение?»</li>
+            <li>Дети отвечают: красивая ваза радует глаз, создаёт уют, поднимает настроение.</li>
+        </ol>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">📖 Раскрась вазу и орнамент в цвета гармонии (см. рабочую тетрадь, раздел «Мир прекрасного»)</div>
+        <svg viewBox="0 0 300 260" width="100%" height="240" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ваза -->
+            <path d="M100,40 L200,40 L200,60 Q220,80 220,140 Q220,220 150,230 Q80,220 80,140 Q80,80 100,60 Z" fill="none" stroke="#333" stroke-width="2"/>
+            <!-- Горлышко -->
+            <line x1="100" y1="40" x2="100" y2="25" stroke="#333" stroke-width="2"/>
+            <line x1="200" y1="40" x2="200" y2="25" stroke="#333" stroke-width="2"/>
+            <path d="M100,25 Q150,15 200,25" fill="none" stroke="#333" stroke-width="2"/>
+            <!-- Орнамент: горизонтальные полосы -->
+            <line x1="85" y1="90" x2="215" y2="90" stroke="#333" stroke-width="1.5"/>
+            <line x1="82" y1="100" x2="218" y2="100" stroke="#333" stroke-width="1"/>
+            <line x1="80" y1="190" x2="220" y2="190" stroke="#333" stroke-width="1.5"/>
+            <line x1="82" y1="200" x2="218" y2="200" stroke="#333" stroke-width="1"/>
+            <!-- Орнамент: ромбы -->
+            <path d="M130,130 L150,115 L170,130 L150,145 Z" fill="none" stroke="#333" stroke-width="1.5"/>
+            <path d="M110,160 L125,150 L140,160 L125,170 Z" fill="none" stroke="#333" stroke-width="1"/>
+            <path d="M160,160 L175,150 L190,160 L175,170 Z" fill="none" stroke="#333" stroke-width="1"/>
+        </svg>
+        <div class="draw-caption">Раскрась вазу и орнамент в цвета гармонии</div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">«Художник и красота»</div>
+        <div class="story-text">
+            <p>Однажды молодой художник пришёл к старому мастеру и сказал: «Я не знаю, что мне рисовать. Я потерял вдохновение».</p>
+            <p>Старый мастер улыбнулся и повёл его в сад. Там цвели прекрасные цветы, пели птицы, шелестели листья. «Смотри, — сказал мастер. — Красота повсюду. Просто открой глаза и сердце. Красота сама подскажет тебе, что рисовать».</p>
+            <p>Молодой художник долго смотрел на сад, слушал пение птиц, вдыхал аромат цветов. И вдруг его сердце наполнилось радостью. Он вернулся в мастерскую и создал свою лучшую картину — картину о красоте сада.</p>
+            <p>С тех пор он понял: красота — это источник вдохновения. Она всегда рядом, нужно лишь уметь её видеть.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: красота вдохновляет человека на творчество. Она рядом с нами, нужно лишь научиться её видеть.</div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">«Забывчивый композитор»</div>
+        <div class="funny-text">
+            <p>Один мальчик решил стать композитором. Сидел-сидел, сочинял-сочинял и наконец придумал прекрасную мелодию. «Вот это шедевр! — воскликнул он. — Я её обязательно запишу... завтра».</p>
+            <p>Утром он встал и... забыл мелодию. Пытался вспомнить — не мог. Решил сочинить новую. Сочинил и снова отложил запись. И снова забыл. Так продолжалось месяц. В конце месяца он расстроился и сказал маме: «Я — плохой композитор. Мне никогда ничего не удаётся».</p>
+            <p>Мама посмотрела на его блокнот и увидела... пустые страницы. «Сынок, — сказала она, — ты не композитор. Ты мечтатель, который не записывает свои мечты. Возьми карандаш — и запиши то, что сейчас в голове. А потом ещё. И ещё. Тогда музыка останется с тобой».</p>
+        </div>
+        <div class="funny-moral">💡 Мораль: забывчивость и непостоянство губят любые начинания. Красота вдохновляет, но её надо беречь и воплощать в жизнь.</div>
+    </div>
+
+    <div class="riddle-box">
+        <div class="riddle-title">❓ Загадки-размышления о значении красоты</div>
+        <ul>
+            <li>«Что помогает человеку жить, даже когда трудно?» (красота, надежда, любовь).</li>
+            <li>«Что вдохновляет художника, поэта, композитора?» (красота).</li>
+            <li>«Что делает нашу жизнь светлее и радостнее?» (красота).</li>
+            <li>«Что можно найти повсюду, если уметь смотреть?» (красоту).</li>
+        </ul>
+        <div class="draw-area" style="margin-top:12px;">
+            <div class="draw-caption">🖼️ Нарисуй то, что вдохновляет тебя на творчество</div>
+        </div>
+    </div>
+
+    <div class="proverb-list">
+        <strong>💚 Пословицы и поговорки о значении красоты:</strong>
+        <ul>
+            <li>«Красота — до вечера, а доброта — навек».</li>
+            <li>«Красив тот, кто красиво поступает».</li>
+            <li>«Где красота, там и радость».</li>
+            <li>«Красота без ума — пустая сума».</li>
+            <li>«Красота спасёт мир» — но только если её увидеть и сохранить.</li>
+            <li>«У кого душа красива, тот и мир делает красивым».</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 7 -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Творческая работа «Красота в моей жизни» <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Развитие творческих способностей через рисование того, что вдохновляет ребёнка.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Ход творческой работы:</strong></p>
+        <ol>
+            <li>Педагог предлагает детям нарисовать в тетради то, что вдохновляет их в жизни: красивый уголок природы, любимую картину, музыкальный инструмент, добрый поступок.</li>
+            <li>Дети выполняют рисунок, используя цветные карандаши.</li>
+            <li>Под рисунком дети подписывают, почему именно это вдохновляет их.</li>
+            <li>Несколько детей по желанию рассказывают о своём рисунке.</li>
+        </ol>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">📖 Нарисуй красоту, которая тебя вдохновляет (см. рабочую тетрадь, раздел «Мир прекрасного»)</div>
+        <svg viewBox="0 0 500 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="460" height="140" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4" rx="10"/>
+            <text x="250" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#94a3b8" font-style="italic">Здесь твой рисунок</text>
+        </svg>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Красота, которая помогает жить»</div>
+        <p>Выполни пять заданий квеста и найди красоту, которая помогает тебе жить.</p>
+        <div class="quest-step"><strong>Задание 1.</strong> Назови одно место в природе, где ты чувствуешь себя спокойно и радостно. Опиши его.</div>
+        <div class="quest-step"><strong>Задание 2.</strong> Назови произведение искусства (музыку, картину, стихотворение), которое улучшает твоё настроение.</div>
+        <div class="quest-step"><strong>Задание 3.</strong> Вспомни случай, когда красота помогла тебе справиться с грустью.</div>
+        <div class="quest-step"><strong>Задание 4.</strong> Нарисуй или опиши красивую вещь, которая есть в твоём доме. Как она влияет на настроение?</div>
+        <div class="quest-step"><strong>Задание 5.</strong> Расскажи, как ты можешь сделать свой дом, класс или двор красивее.</div>
+    </div>
+
+    <div class="quiz-card">
+        <div class="quiz-title">🎯 Викторина «Значение красоты»</div>
+        <div class="quiz-question">
+            1. Как красота влияет на человека?
+            <div class="quiz-variant">а) Никак не влияет</div>
+            <div class="quiz-variant">б) Питает душу, лечит, вдохновляет</div>
+            <div class="quiz-variant">в) Только портит настроение</div>
+        </div>
+        <div class="quiz-question">
+            2. Что рождается из красоты?
+            <div class="quiz-variant">а) Скука</div>
+            <div class="quiz-variant">б) Творчество и вдохновение</div>
+            <div class="quiz-variant">в) Грусть</div>
+        </div>
+        <div class="quiz-question">
+            3. Что чувствует человек, когда смотрит на красоту?
+            <div class="quiz-variant">а) Радость, спокойствие, восхищение</div>
+            <div class="quiz-variant">б) Страх</div>
+            <div class="quiz-variant">в) Ничего</div>
+        </div>
+        <div class="quiz-question">
+            4. Что нужно делать, чтобы красота помогала тебе жить?
+            <div class="quiz-variant">а) Закрывать на неё глаза</div>
+            <div class="quiz-variant">б) Замечать её, окружать себя красотой, творить красоту самому</div>
+            <div class="quiz-variant">в) Не обращать внимания</div>
+        </div>
+        <div class="quiz-question">
+            5. Какая красота важнее для человека?
+            <div class="quiz-variant">а) Только внешняя</div>
+            <div class="quiz-variant">б) Только внутренняя</div>
+            <div class="quiz-variant">в) Единство внешнего и внутреннего, доброта и польза</div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 8 -->
+    <div class="stage-card">
+        <div class="stage-num">8</div>
+        <div class="stage-content">
+            <div class="stage-title">Рефлексия. Подведение итогов <span class="stage-time">8 мин</span></div>
+            <div class="stage-desc">Осмысление детьми полученного опыта, самооценка, планирование следующего занятия.</div>
+        </div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Вопросы для рефлексии:</strong></p>
+        <ul>
+            <li>Что нового вы узнали сегодня на занятии?</li>
+            <li>Зачем человеку красота?</li>
+            <li>Как красота влияет на нашу душу?</li>
+            <li>Что рождается из красоты?</li>
+            <li>Как красота помогает человеку в трудные минуты?</li>
+            <li>Что вам больше всего понравилось на занятии?</li>
+        </ul>
+        <p><strong>Приём «Красивый букет»:</strong> на доске — изображение вазы. Педагог раздаёт детям цветные бумажные цветы. На каждом цветке дети пишут одно слово, которое описывает значение красоты для человека (например, «радость», «вдохновение», «спокойствие», «творчество», «надежда», «доброта»). Цветы прикрепляются к вазе. В итоге получается «букет значения красоты».</p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Итог занятия.</strong> Сегодня мы с вами узнали, что красота — это не просто украшение жизни, а великая сила. Красота питает душу, лечит, вдохновляет, помогает человеку стать лучше. Мы узнали, что всякое искусство рождается из красоты природы. Мы раскрасили красивую вазу и нарисовали красоту, которая вдохновляет нас. И самое главное — мы поняли: чтобы красота помогала нам жить, нужно её замечать, окружать себя красотой и творить красоту самому.
+    </div>
+
+    <h2>📚 Домашнее задание</h2>
+
+    <div class="info-box">
+        <p><strong>Задание для самостоятельной работы:</strong></p>
+        <ul>
+            <li>Вспомнить и записать три случая, когда красота помогала тебе: улучшала настроение, успокаивала, вдохновляла.</li>
+            <li>Нарисовать дома красивый предмет из твоего окружения и подписать, как он влияет на твоё настроение.</li>
+            <li>Подумать и записать, как ты можешь сделать свой дом, двор или класс красивее. Составить план на неделю.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- МЕТОДИЧЕСКИЙ АНАЛИЗ -->
+    <!-- ============================================================ -->
+    <h2>🔍 Методический анализ занятия</h2>
+
+    <div class="analysis-block">
+        <p><strong>Анализ целей и задач занятия.</strong></p>
+        <p>Цель занятия — углубить и расширить представления детей о значении красоты в жизни человека — достигнута через последовательное решение образовательных, развивающих и воспитательных задач. Образовательные задачи реализованы через раскрытие понятия «значение красоты», показ её влияния на душу, здоровье и поступки человека, знакомство с источниками вдохновения. Развивающие задачи — через беседу, наблюдение, прослушивание музыки, игру, практическую и творческую работы. Воспитательные задачи — через формирование стремления окружать себя красотой, бережно относиться к ней и понимать её истинное значение.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ структуры занятия.</strong></p>
+        <p>Структура занятия логична и соответствует типу комбинированного занятия. Все этапы связаны между собой: от организационного момента и повторения — к введению в тему, затем к раскрытию значения красоты как источника радости, healing и вдохновения, перерыву, игре, практической работе, творческой работе, квесту, викторине и рефлексии. Соблюдён принцип постепенного усложнения материала и смены видов деятельности, что особенно важно для детей 6–10 лет. Занятие продолжает и углубляет тему предыдущего занятия.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ методов и форм работы.</strong></p>
+        <p>На занятии использованы разнообразные методы и формы: вводная беседа, рассказ педагога, демонстрация иллюстраций, прослушивание музыки, проблемные вопросы, игровые ситуации, игра «Где живёт красота?», практическая работа «Раскрась вазу-гармонию», творческая работа, квест, викторина, рефлексия. Такое разнообразие обеспечивает включённость каждого ребёнка, поддерживает интерес и мотивацию. Особенно ценным является сочетание словесных, наглядных, аудиальных и практических методов, а также использование проблемных вопросов и творческих заданий.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ содержания занятия.</strong></p>
+        <p>Содержание занятия соответствует возрастным особенностям детей 6–10 лет. Понятие «значение красоты» раскрывается через три основных направления: красота питает душу и лечит, красота вдохновляет на творчество, красота помогает человеку жить. Особое внимание уделяется тому, что красота — это не только внешнее, но и внутреннее, что она рождает доброту и желание творить. Игра, практическая и творческая работы позволяют детям закрепить материал в деятельностной форме. Соблюдён принцип единства истины, красоты и добра.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ воспитательного потенциала занятия.</strong></p>
+        <p>Занятие имеет ярко выраженный воспитательный потенциал: формирует эмоционально-ценностное отношение к красоте, понимание её значения для человека, стремление окружать себя красотой и творить её. Воспитательные задачи реализуются через вовлечение детей в обсуждение, наблюдение, игру, творчество. Особое значение имеет обсуждение того, что настоящая красота всегда соединена с добротой и пользой, и что красота помогает человеку становиться лучше.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ связи с рабочей тетрадью «Гармония».</strong></p>
+        <p>Занятие напрямую связано с материалами рабочей тетради «Гармония» (раздел «Мир прекрасного», подтема «Прекрасное и человек»). Использованы задания <strong>«Красивое — полезное»</strong>, <strong>«Раскрась вазу-гармонию»</strong>, <strong>«Дорисуй вторую половину»</strong>, пословицы о значении красоты, поучительная история о художнике. Это обеспечивает единство теории и практики, позволяет детям закрепить полученные знания через продуктивную деятельность. На соответствующий раздел рабочей тетради дана ссылка в навигации занятия.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ межпредметных связей.</strong></p>
+        <p>Занятие имеет межпредметные связи с другими образовательными областями: <strong>изобразительное искусство</strong> (работа с иллюстрациями, раскрашивание вазы, рисование), <strong>музыка</strong> (прослушивание музыки Чайковского, обсуждение её влияния), <strong>литература</strong> (загадки, пословицы, стихи, истории), <strong>этика</strong> (обсуждение значения красоты для человека), <strong>логика</strong> (установление причинно-следственных связей). Это способствует формированию у детей целостной картины мира.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Возможные затруднения и пути их преодоления.</strong></p>
+        <ul>
+            <li><em>Затруднение:</em> понятие «значение красоты» может быть абстрактным для детей 6–7 лет. <em>Путь преодоления:</em> объяснить через конкретные примеры (красивая музыка улучшает настроение, красивый цветок радует глаз) и использовать игровые ситуации.</li>
+            <li><em>Затруднение:</em> дети могут не понять, как красота «лечит». <em>Путь преодоления:</em> привести простые примеры: когда грустно, можно послушать красивую музыку и станет легче.</li>
+            <li><em>Затруднение:</em> прослушивание музыки может занять больше времени, чем планировалось. <em>Путь преодоления:</em> заранее подобрать короткие фрагменты (1–2 минуты).</li>
+            <li><em>Затруднение:</em> некоторые дети могут стесняться рассказывать о своих чувствах. <em>Путь преодоления:</em> предложить обсудить в парах, а затем — по желанию перед классом.</li>
+        </ul>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Диагностическая ценность занятия.</strong></p>
+        <p>На занятии педагог может провести диагностику: наблюдение за эмоциональной отзывчивостью детей на музыку и красоту, их способностью выражать свои чувства, пониманием значения красоты, уровнем развития речи и творческих способностей. Результаты наблюдений заносятся в диагностическую карту учащегося (раздел «Экологическая культура» — эмоционально-ценностный компонент; «Творческие способности» — воображение и творческие работы; «Культура речи» — связная речь).</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Соответствие требованиям типовой программы.</strong></p>
+        <p>Занятие соответствует требованиям типовой программы эколого-биологического профиля: формирует представления о красоте как ценности для человека, развивает эстетическое восприятие и эмоциональную отзывчивость, формирует основы экологической культуры и нравственности. Содержание занятия направлено на достижение предметных, метапредметных и личностных результатов, заявленных в программе «Гармония».</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Вывод.</strong> Занятие выстроено методически грамотно, соответствует возрастным особенностям детей 6–10 лет, реализует принципы развивающего обучения, интеграции науки и искусства, практико-ориентированности. Содержание занятия направлено на формирование представления о значении красоты для человека, развитие эстетического восприятия, эмоциональной отзывчивости и понимания, что настоящая красота помогает человеку жить и творить. Занятие может быть рекомендовано к использованию в практике педагогов дополнительного образования эколого-биологического профиля.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson6.html" class="button">← Занятие 6</a>
+        <a href="section2.html" class="button secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson8.html" class="button">Занятие 8 →</a>
+    </p>
+
+    <!-- НАВИГАЦИЯ СНИЗУ -->
+    <div class="nav-links-bottom">
+        <a href="lesson6.html" class="back-link">← Занятие 6. Прекрасное и человек</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson8.html" class="back-link">Занятие 8. Взаимосвязь прекрасного и полезного →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 7 «Значение красоты для человека»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

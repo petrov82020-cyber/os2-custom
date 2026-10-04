@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 8. Взаимосвязь прекрасного и полезного — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ЗАНЯТИИ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content {
+            flex: 1;
+        }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Речь педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Действия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🎭 Игра";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🪞 Рефлексия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border-top: 4px solid #16a34a;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .beauty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -6px rgba(22, 163, 74, 0.25);
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .riddle-box {
+            background: #fef9c3;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #eab308;
+        }
+        .riddle-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+
+        .proverb-list {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 16px 0;
+            border-left: 4px solid #16a34a;
+        }
+        .proverb-list li {
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .poem-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Поучительная история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .funny-card {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 2px solid #ec4899;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .funny-card::before {
+            content: "😄 Весёлая история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ec4899;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .funny-card p:first-child { margin-top: 8px; }
+        .funny-title {
+            font-weight: 700;
+            color: #9d174d;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .funny-text {
+            font-size: 0.95rem;
+            color: #831843;
+            line-height: 1.7;
+        }
+        .funny-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #ec4899;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #9d174d;
+            font-size: 0.92rem;
+        }
+
+        .quest-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .quest-card::before {
+            content: "🧩 Мини-квест";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quest-card p:first-child { margin-top: 8px; }
+        .quest-title {
+            font-weight: 700;
+            color: #3730a3;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quest-step {
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.94rem;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .quiz-card::before {
+            content: "🎯 Викторина";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .quiz-card p:first-child { margin-top: 8px; }
+        .quiz-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #16a34a;
+        }
+        .quiz-variant {
+            margin: 4px 0 4px 20px;
+            font-size: 0.9rem;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Методический анализ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .beauty-grid { grid-template-columns: 1fr; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- НАВИГАЦИЯ СВЕРХУ -->
+    <div class="nav-links-top">
+        <a href="lesson7.html" class="back-link">← Занятие 7. Значение красоты для человека</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson9.html" class="back-link">Занятие 9. Искусство. Понятие об искусстве →</a>
+    </div>
+
+    <h1>💚 Занятие 8. Взаимосвязь прекрасного и полезного</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Тип занятия:</strong> комбинированное (теория + практика).</p>
+        <p><strong>Цель занятия:</strong> углубить и обобщить представления детей о взаимосвязи прекрасного и полезного в природе и жизни человека; научить различать красивое и полезное вместе и красивое, но бесполезное; сформировать понимание, что настоящая красота всегда соединена с пользой и добром.</p>
+        <p><strong>Задачи занятия:</strong></p>
+        <ul>
+            <li><strong>Образовательные:</strong> обобщить знания о целесообразности прекрасного в природе; раскрыть понятие «взаимосвязь прекрасного и полезного»; научить различать красивое и полезное вместе и красивое, но бесполезное; показать, что настоящая красота всегда соединена с пользой; сформировать представление о важности единства красоты и пользы в жизни человека.</li>
+            <li><strong>Развивающие:</strong> развивать логическое мышление, умение анализировать и сравнивать; развивать речь через обсуждение и аргументацию; развивать творческие способности через рисование и дорисовывание; развивать умение работать с рабочей тетрадью.</li>
+            <li><strong>Воспитательные:</strong> воспитывать стремление к настоящей красоте — соединённой с добром и пользой; формировать понимание, что бесполезная красота — неполноценна; воспитывать уважение к красоте, созданной природой и трудом человека.</li>
+        </ul>
+        <p><strong>Оборудование и материалы:</strong> рабочая тетрадь «Гармония», цветные карандаши, набор карточек с изображениями разных предметов и явлений (красивая кормушка для птиц, ухоженная клумба, вышитое полотенце, блестящая фольга, пластиковый пакет, искусственный цветок, красивая поделка из природного материала), репродукции картин художников-пейзажистов и мастеров декоративно-прикладного искусства, мультимедийная презентация, аудиозаписи со спокойной музыкой.</p>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу «Мир прекрасного»</strong>, подтема <strong>«Прекрасное и человек»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Красивое — полезное»</strong> — основное задание занятия: разделение примеров на две группы «Красивое и полезное вместе» и «Красивое, но бесполезное».</li>
+            <li><strong>Задание «Дорисуй вторую половину»</strong> — дорисовывание правой половины кувшина по пунктирному контуру и раскрашивание симметрично.</li>
+            <li><strong>Задание «Раскрась вазу-гармонию»</strong> — продолжение работы с симметрией и красотой предметов быта.</li>
+            <li><strong>Поучительный рассказ «Художник и жадный купец»</strong> — история о том, что настоящая красота не терпит жадности и скупости.</li>
+            <li><strong>Пословицы о красоте и пользе</strong> — «Красота дерева — в его плодах, а человека — в его делах», «Красота без ума — пустая сума».</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «В природе красиво то, что полезно. И в жизни человека настоящая красота всегда соединена с добротой, правдой и пользой. Всё остальное — только фальшивка».
+        <span class="quote-author">— концептуальная идея занятия</span>
+    </div>
+
+    <h2>📋 Структура занятия (2 академических часа = 90 минут с перерывом)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:55%;">Этап занятия</th>
+                <th style="width:12%;">Время</th>
+                <th style="width:25%;">Методы и формы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td>Организационный момент. Приветствие. Повторение предыдущего занятия</td>
+                <td class="center">5 мин</td>
+                <td>Игра-приветствие, беседа</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td>Введение в тему. Может ли красота быть бесполезной?</td>
+                <td class="center">10 мин</td>
+                <td>Проблемный вопрос, вводная беседа</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td>Красивое и полезное вместе: примеры из природы и жизни</td>
+                <td class="center">12 мин</td>
+                <td>Рассказ педагога, демонстрация иллюстраций, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td>Красивое, но бесполезное: как распознать фальшивую красоту</td>
+                <td class="center">10 мин</td>
+                <td>Рассказ педагога, обсуждение, проблемные вопросы</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Перерыв</strong></td>
+                <td class="center">10 мин</td>
+                <td>Динамическая пауза «Живые формы»</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td>Игра «Красивое и полезное вместе»</td>
+                <td class="center">10 мин</td>
+                <td>Работа с карточками, сортировка</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td>Практическая работа «Красивое — полезное» в тетради</td>
+                <td class="center">15 мин</td>
+                <td>Работа в тетради, разделение на группы</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td>Творческая работа «Моё красивое и полезное»</td>
+                <td class="center">10 мин</td>
+                <td>Рисование, обсуждение</td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td>Рефлексия. Подведение итогов</td>
+                <td class="center">8 мин</td>
+                <td>Беседа, самооценка</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ЭТАП 1 -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Организационный момент. Приветствие. Повторение <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Создание положительного эмоционального настроя. Повторение материала предыдущих занятий.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Здравствуйте, дорогие ребята! Я рада снова вас видеть. На прошлых занятиях мы говорили о значении красоты для человека, о том, что красота питает душу, лечит и вдохновляет. Давайте вспомним: почему красота важна для человека?»</em></p>
+        <p><em>Дети отвечают: красота радует, успокаивает, вдохновляет на творчество, помогает жить.</em></p>
+        <p><em>«Молодцы! А сегодня мы поговорим о том, что не всякая красота одинаково ценна. Настоящая красота всегда соединена с пользой и добром. Но бывает и так, что вещь красивая снаружи, а внутри — пустая. Сегодня мы научимся различать настоящую красоту от фальшивой».</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра-приветствие «Что красиво и полезно?».</strong></p>
+        <p>Дети становятся в круг. Каждый ребёнок называет один предмет или явление, которое, по его мнению, и красивое, и полезное одновременно. Например: «Кормушка для птиц — и красивая, и полезная», «Цветок на клумбе — и красивый, и полезный». Игра создаёт доброжелательную атмосферу и настраивает на разговор о единстве красоты и пользы.</p>
+    </div>
+
+    <!-- ЭТАП 2 -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Введение в тему. Может ли красота быть бесполезной? <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Постановка проблемы. Формирование понимания, что не всякая красота одинаково ценна.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, давайте задумаемся: может ли красота быть бесполезной? Может ли вещь быть красивой снаружи, но не приносить никакой пользы?</em></p>
+        <p><em>Посмотрите на этот пример. Блестящая фольга — она красивая? Да, она блестит и переливается. Но что она делает? Она не приносит пользы, а если её выбросить в лесу, она загрязняет природу. Значит, это красивое, но бесполезное.</em></p>
+        <p><em>А теперь посмотрите на этот пример. Красивая кормушка для птиц. Она красивая? Да! А полезная? Тоже да — она помогает птицам зимой. Значит, это красивое и полезное вместе.</em></p>
+        <p><em>Сегодня мы с вами научимся различать эти два вида красоты. И поймём, почему настоящая красота всегда соединена с пользой».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Ставит проблемный вопрос: «Может ли красота быть бесполезной?»</li>
+            <li>Приводит примеры: блестящая фольга (красивое, но бесполезное), кормушка для птиц (красивое и полезное).</li>
+            <li>Задаёт вопросы: «Что вы думаете об этих предметах?», «Что важнее — красота или польза?»</li>
+            <li>Подводит детей к выводу: настоящая красота всегда соединена с пользой.</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 3 -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Красивое и полезное вместе: примеры из природы и жизни <span class="stage-time">12 мин</span></div>
+            <div class="stage-desc">Раскрытие примеров, в которых красота и польза соединены вместе.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, мы уже знаем, что в природе красиво то, что полезно. Это называется целесообразностью прекрасного. Давайте вспомним примеры.</em></p>
+        <p><em>Пчела, собирающая нектар, — она красивая? Да! А полезная? Тоже да — она опыляет растения и делает мёд. Значит, это красивое и полезное вместе.</em></p>
+        <p><em>Яркий цветок — он красивый и полезный вместе? Да! Он радует глаз и привлекает насекомых для опыления.</em></p>
+        <p><em>А теперь посмотрим на жизнь человека. Вышитое полотенце — оно красивое? Да, на нём красивый узор. А полезное? Тоже да — им вытирают руки, оно служит человеку.</em></p>
+        <p><em>Ухоженная клумба у школы — красивая? Да! А полезная? Тоже да — она очищает воздух, радует людей, создаёт уют.</em></p>
+        <p><em>Красивая поделка из природного материала — красивая? Да! А полезная? Да — она украшает дом, напоминает о природе, развивает творчество.</em></p>
+        <p><em>Вот видите: и в природе, и в жизни человека красота и польза часто идут рука об руку. Такая красота — настоящая».</em></p>
+    </div>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🐝</span>
+            <div class="beauty-title">Пчела, собирающая нектар</div>
+            <div class="beauty-text">Красивая и полезная: опыляет растения, делает мёд, радует глаз.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌸</span>
+            <div class="beauty-title">Яркий цветок</div>
+            <div class="beauty-text">Красивый и полезный: привлекает насекомых, радует глаз, украшает мир.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🐦</span>
+            <div class="beauty-title">Красивая кормушка для птиц</div>
+            <div class="beauty-text">Красивая и полезная: помогает птицам зимой, украшает двор.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🧵</span>
+            <div class="beauty-title">Вышитое полотенце</div>
+            <div class="beauty-text">Красивое и полезное: украшает дом, служит человеку.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Демонстрирует иллюстрации с примерами «красивое и полезное вместе».</li>
+            <li>Задаёт вопросы: «Что делает этот предмет и красивым, и полезным?», «Есть ли у вас дома такие предметы?»</li>
+            <li>Подводит к выводу: настоящая красота всегда соединена с пользой.</li>
+            <li>Обращает внимание на то, что и в природе, и в жизни человека красота и польза идут рука об руку.</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 4 -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Красивое, но бесполезное: как распознать фальшивую красоту <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Раскрытие примеров, когда красота не соединена с пользой, и обсуждение их вреда.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, а теперь давайте посмотрим на противоположные примеры. Бывает так, что вещь красивая снаружи, но не приносит никакой пользы. А иногда она даже вредит.</em></p>
+        <p><em>Посмотрите на блестящую фольгу. Она красивая? Да, блестит и переливается. Но что она делает? Она не приносит пользы, а если её выбросить в лесу, она загрязняет природу. Значит, это красивое, но бесполезное. И даже вредное.</em></p>
+        <p><em>А вот пластиковый пакет, выброшенный в лесу. Он красивый? Не очень. Но если бы он был ярким и красивым, принёс бы он пользу? Нет, он только вредит природе — он не разлагается сотни лет, от него страдают животные.</em></p>
+        <p><em>Искусственный цветок без запаха — красивый? Да, он красивый. Но полезный? Нет — он не привлекает насекомых, не очищает воздух, не даёт семян. Это красивое, но бесполезное.</em></p>
+        <p><em>Вот видите: красивое, но бесполезное — это неполноценная красота. Настоящая красота всегда соединена с пользой. Всё остальное — только фальшивка».</em></p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Проблемный вопрос для обсуждения с детьми.</strong> Может ли быть красивым то, что вредит природе или людям? Может ли быть красивым злой поступок? Подведите детей к выводу: <em>настоящая красота всегда соединена с добром и пользой, а всё остальное — только видимость.</em>
+    </div>
+
+    <div class="poem-box">
+        <p>«Красиво то, что служит жизни,<br>
+        Что помогает, а не вредит.<br>
+        И в этом мудрость: красота<br>
+        С добром и пользой говорит.</p>
+        <p>Пусть будет всё вокруг красивым — <br>
+        И лес, и поле, и цветы.<br>
+        Но только красота без пользы — <br>
+        Как дом без крыши, без мечты».</p>
+        <span class="poem-author">— из размышлений о настоящей красоте</span>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Демонстрирует иллюстрации с примерами «красивое, но бесполезное».</li>
+            <li>Задаёт вопросы: «Что делает этот предмет бесполезным?», «Почему такая красота — не настоящая?»</li>
+            <li>Подводит к выводу: красивое, но бесполезное — это фальшивая красота.</li>
+            <li>Обращает внимание на то, что настоящая красота всегда соединена с добром и пользой.</li>
+        </ul>
+    </div>
+
+    <!-- ПЕРЕРЫВ -->
+    <div class="stage-card" style="background: #fef9c3;">
+        <div class="stage-num" style="color: #d97706;">⏸</div>
+        <div class="stage-content">
+            <div class="stage-title">Перерыв <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Динамическая пауза «Красивое и полезное». Дети под музыку выполняют движения, которые и красивы, и полезны для здоровья: «потягивание» (растяжка рук вверх), «наклоны» (к земле и обратно), «повороты» (влево и вправо), «прыжки» (лёгкие и ритмичные). Педагог обращает внимание: движения и красивые, и полезные. Это помогает снять напряжение и переключиться.</div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 5 -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Игра «Красивое и полезное вместе» <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Закрепление понимания взаимосвязи прекрасного и полезного через работу с карточками.</div>
+        </div>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра «Красивое и полезное вместе».</strong></p>
+        <p>Педагог раздаёт детям карточки с изображениями разных предметов и явлений. На доске — два «домика» с надписями: «Красивое и полезное вместе» и «Красивое, но бесполезное». Дети должны определить, к какой группе относится каждый объект, и прикрепить карточку в нужный «домик».</p>
+        <p><strong>Примеры карточек:</strong></p>
+        <ul>
+            <li><strong>Красивое и полезное вместе:</strong> красивая кормушка для птиц, вышитое полотенце, ухоженная клумба у школы, красивая поделка из природного материала, красивая и удобная мебель, пчела, собирающая нектар, яркий цветок.</li>
+            <li><strong>Красивое, но бесполезное:</strong> блестящая фольга, пластиковый пакет, выброшенный в лесу, искусственный цветок без запаха, сломанная игрушка, засохший букет.</li>
+        </ul>
+        <p>После выполнения задания педагог вместе с детьми проверяет правильность распределения и обсуждает, почему настоящая красота всегда полезна.</p>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет педагогу.</strong> Если карточки вызывают затруднения, попросите детей объяснить свой выбор: «Почему ты решил, что красивая кормушка — это красивое и полезное?», «Что общего у блестящей фольги и пластикового пакета?». Это развивает речь и логическое мышление.
+    </div>
+
+    <!-- ЭТАП 6 -->
+    <div class="stage-card">
+        <div class="stage-num">6</div>
+        <div class="stage-content">
+            <div class="stage-title">Практическая работа «Красивое — полезное» в тетради <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Разделение примеров на группы «Красивое и полезное вместе» и «Красивое, но бесполезное».</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Ход практической работы:</strong></p>
+        <ol>
+            <li>Педагог раздаёт детям рабочую тетрадь «Гармония» и цветные карандаши.</li>
+            <li>Дети открывают страницу с заданием <strong>«Красивое — полезное»</strong> в разделе «Мир прекрасного».</li>
+            <li>Педагог объясняет задание: «Перед тобой список примеров. Раздели их на две группы: "Красивое и полезное вместе" и "Красивое, но бесполезное". Запиши номера в нужную колонку».</li>
+            <li>Список примеров:</li>
+            <ul>
+                <li>Пчела, собирающая нектар.</li>
+                <li>Блестящая фольга.</li>
+                <li>Красивая кормушка для птиц.</li>
+                <li>Пластиковый пакет, который выбросили в лесу.</li>
+                <li>Ухоженная клумба у школы.</li>
+                <li>Вышитое полотенце.</li>
+                <li>Камень, который лежит на дороге.</li>
+                <li>Красивая поделка из природного материала.</li>
+            </ul>
+            <li>Дети выполняют задание, записывая номера в нужную колонку.</li>
+            <li>Педагог проверяет правильность выполнения и обсуждает с детьми: «Почему пчела — это красивое и полезное вместе?», «Почему блестящая фольга — красивая, но бесполезная?».</li>
+            <li>После проверки педагог предлагает детям найти в списке пример, который вызывает у них сомнения, и обсудить его.</li>
+        </ol>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет педагогу.</strong> Обратите внимание детей на пример «Камень, который лежит на дороге». Сам по себе камень не является ни красивым, ни полезным. Но если его использовать в качестве украшения для клумбы или как пресс для бумаг — он становится и красивым, и полезным. Подведите детей к выводу: польза и красота зависят от того, как мы используем предмет.
+    </div>
+
+    <!-- ЭТАП 7 -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Творческая работа «Моё красивое и полезное» <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Развитие творческих способностей через рисование предмета, который и красивый, и полезный.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Ход творческой работы:</strong></p>
+        <ol>
+            <li>Педагог предлагает детям придумать и нарисовать в тетради предмет, который был бы и красивым, и полезным одновременно.</li>
+            <li>Дети выполняют рисунок, используя цветные карандаши.</li>
+            <li>Под рисунком дети подписывают, в чём красота и в чём польза изображённого предмета.</li>
+            <li>Несколько детей по желанию рассказывают о своём рисунке.</li>
+        </ol>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">📖 Нарисуй предмет, который и красивый, и полезный (см. рабочую тетрадь, раздел «Мир прекрасного»)</div>
+        <svg viewBox="0 0 500 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="460" height="140" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4" rx="10"/>
+            <text x="250" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#94a3b8" font-style="italic">Здесь твой рисунок</text>
+        </svg>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">«Художник и жадный купец»</div>
+        <div class="story-text">
+            <p>Жил-был жадный купец. Он скопил много золота, но никому не помогал. Однажды он пригласил известного художника расписать стены своего дома.</p>
+            <p>Художник целый месяц работал, нарисовал прекрасные пейзажи: рассветы, леса, реки. Купец посмотрел и говорит: «Слишком много красоты! Слишком много красок! Это же дорого! Уберите половину, а мне заплатите меньше».</p>
+            <p>Художник молча кивнул, взял ведро серой краски и замазал половину фресок. А потом развернулся и ушёл, оставив купца одного в сером, тусклом доме.</p>
+            <p>С тех пор купец не мог никого пригласить в гости — в его доме было тоскливо и уныло. И тогда он понял: «Настоящая красота не терпит жадности. Она требует любви и щедрости».</p>
+        </div>
+        <div class="story-moral">💡 Мораль: жадность и скупость обедняют жизнь. Красота и доброта не терпят скаредности. Настоящая красота — щедрая.</div>
+    </div>
+
+    <div class="funny-card">
+        <div class="funny-title">«Полезный совет»</div>
+        <div class="funny-text">
+            <p>Мальчик пришёл к дедушке и сказал: «Дедушка, я хочу стать красивым! Что мне делать?»</p>
+            <p>Дедушка задумался и ответил: «А ты хочешь быть просто красивым или красивым и полезным?»</p>
+            <p>Мальчик удивился: «А разве можно быть и красивым, и полезным?»</p>
+            <p>«Конечно! — сказал дедушка. — Красивым быть просто: надень красивую рубашку — и ты красивый. А вот красивым и полезным быть сложнее: надо делать добрые дела, помогать другим, заботиться о природе. Тогда ты будешь и красивым снаружи, и красивым внутри».</p>
+            <p>Мальчик задумался и сказал: «Тогда я хочу быть красивым и полезным!»</p>
+        </div>
+        <div class="funny-moral">💡 Мораль: настоящая красота — это единство внешней привлекательности и полезных дел. Красивый человек — это тот, кто делает добро.</div>
+    </div>
+
+    <div class="riddle-box">
+        <div class="riddle-title">❓ Загадки-размышления о красоте и пользе</div>
+        <ul>
+            <li>«Что и радует глаз, и приносит пользу?» (красивое и полезное вместе).</li>
+            <li>«Что блестит, но никому не нужно?» (бесполезная красота).</li>
+            <li>«Что делает человека красивым и полезным одновременно?» (добрые дела).</li>
+            <li>«Что общего у пчелы, цветка и кормушки?» (все они красивые и полезные).</li>
+        </ul>
+        <div class="draw-area" style="margin-top:12px;">
+            <div class="draw-caption">🖼️ Нарисуй символ единства красоты и пользы</div>
+        </div>
+    </div>
+
+    <div class="proverb-list">
+        <strong>💚 Пословицы о красоте и пользе:</strong>
+        <ul>
+            <li>«Красота дерева — в его плодах, а человека — в его делах».</li>
+            <li>«Красота без ума — пустая сума».</li>
+            <li>«Красивое — не всегда полезное, полезное — не всегда красивое».</li>
+            <li>«Мал золотник, да дорог».</li>
+            <li>«Не всё то золото, что блестит».</li>
+            <li>«Красиво то, что служит жизни».</li>
+        </ul>
+    </div>
+
+    <div class="quest-card">
+        <div class="quest-title">🗺️ Мини-квест «Красивое и полезное вокруг нас»</div>
+        <p>Выполни пять заданий квеста и найди примеры единства красоты и пользы.</p>
+        <div class="quest-step"><strong>Задание 1.</strong> Найди дома предмет, который и красивый, и полезный. Опиши его.</div>
+        <div class="quest-step"><strong>Задание 2.</strong> Найди в природе объект, который и красивый, и полезный. Опиши его.</div>
+        <div class="quest-step"><strong>Задание 3.</strong> Назови красивый и полезный поступок, который ты совершил или видел.</div>
+        <div class="quest-step"><strong>Задание 4.</strong> Придумай и нарисуй предмет, который и красивый, и полезный.</div>
+        <div class="quest-step"><strong>Задание 5.</strong> Расскажи, как ты можешь сделать свой двор, класс или дом и красивее, и полезнее.</div>
+    </div>
+
+    <div class="quiz-card">
+        <div class="quiz-title">🎯 Викторина «Красивое и полезное»</div>
+        <div class="quiz-question">
+            1. Что значит «красивое и полезное вместе»?
+            <div class="quiz-variant">а) Предмет, который только красивый</div>
+            <div class="quiz-variant">б) Предмет, который и красивый, и приносит пользу</div>
+            <div class="quiz-variant">в) Предмет, который только полезный</div>
+        </div>
+        <div class="quiz-question">
+            2. Что такое «красивое, но бесполезное»?
+            <div class="quiz-variant">а) Предмет, который радует глаз, но не приносит пользы</div>
+            <div class="quiz-variant">б) Предмет, который приносит пользу, но некрасивый</div>
+            <div class="quiz-variant">в) Предмет, который и красивый, и полезный</div>
+        </div>
+        <div class="quiz-question">
+            3. Что общего у пчелы, цветка и кормушки?
+            <div class="quiz-variant">а) Они все некрасивые</div>
+            <div class="quiz-variant">б) Они все красивые и полезные вместе</div>
+            <div class="quiz-variant">в) Они все бесполезные</div>
+        </div>
+        <div class="quiz-question">
+            4. Что важнее для настоящей красоты?
+            <div class="quiz-variant">а) Только внешняя привлекательность</div>
+            <div class="quiz-variant">б) Только польза</div>
+            <div class="quiz-variant">в) Единство красоты и пользы</div>
+        </div>
+        <div class="quiz-question">
+            5. Что понял жадный купец из истории «Художник и жадный купец»?
+            <div class="quiz-variant">а) Что красота не терпит жадности</div>
+            <div class="quiz-variant">б) Что красота стоит дорого</div>
+            <div class="quiz-variant">в) Что красота не нужна</div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 8 -->
+    <div class="stage-card">
+        <div class="stage-num">8</div>
+        <div class="stage-content">
+            <div class="stage-title">Рефлексия. Подведение итогов <span class="stage-time">8 мин</span></div>
+            <div class="stage-desc">Осмысление детьми полученного опыта, самооценка, планирование следующего занятия.</div>
+        </div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Вопросы для рефлексии:</strong></p>
+        <ul>
+            <li>Что нового вы узнали сегодня на занятии?</li>
+            <li>Что такое «красивое и полезное вместе»?</li>
+            <li>Что такое «красивое, но бесполезное»?</li>
+            <li>Почему настоящая красота всегда соединена с пользой?</li>
+            <li>Какие примеры единства красоты и пользы вы запомнили?</li>
+            <li>Что вам больше всего понравилось на занятии?</li>
+        </ul>
+        <p><strong>Приём «Две ладошки»:</strong> педагог предлагает детям обвести в тетради две ладошки. На левой ладошке дети пишут (или рисуют) примеры «красивое и полезное вместе», на правой — примеры «красивое, но бесполезное». Под ладошками дети пишут вывод: «Настоящая красота — это единство красоты и пользы».</p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Итог занятия.</strong> Сегодня мы с вами узнали, что настоящая красота всегда соединена с пользой. Мы разобрали примеры «красивое и полезное вместе» (пчела, цветок, кормушка, вышитое полотенце) и «красивое, но бесполезное» (блестящая фольга, пластиковый пакет, искусственный цветок). Мы научились различать настоящую красоту от фальшивой. И самое главное — мы поняли: красота без пользы неполноценна, а настоящая красота всегда служит жизни и добру.
+    </div>
+
+    <h2>📚 Домашнее задание</h2>
+
+    <div class="info-box">
+        <p><strong>Задание для самостоятельной работы:</strong></p>
+        <ul>
+            <li>Найти дома и записать в тетрадь три предмета, которые и красивые, и полезные. Объяснить, в чём их красота и в чём польза.</li>
+            <li>Найти один предмет, который красивый, но бесполезный. Объяснить, почему он бесполезен.</li>
+            <li>Нарисовать дома свой «красивый и полезный» предмет и подписать, в чём его красота и польза.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- МЕТОДИЧЕСКИЙ АНАЛИЗ -->
+    <!-- ============================================================ -->
+    <h2>🔍 Методический анализ занятия</h2>
+
+    <div class="analysis-block">
+        <p><strong>Анализ целей и задач занятия.</strong></p>
+        <p>Цель занятия — углубить и обобщить представления детей о взаимосвязи прекрасного и полезного — достигнута через последовательное решение образовательных, развивающих и воспитательных задач. Образовательные задачи реализованы через раскрытие понятий «красивое и полезное вместе» и «красивое, но бесполезное», обучение различению настоящей красоты от фальшивой. Развивающие задачи — через беседу, наблюдение, игру, практическую и творческую работы. Воспитательные задачи — через формирование понимания, что настоящая красота всегда соединена с пользой, добром и служением жизни.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ структуры занятия.</strong></p>
+        <p>Структура занятия логична и соответствует типу комбинированного занятия. Все этапы связаны между собой: от организационного момента и повторения — к введению в тему, затем к раскрытию примеров «красивое и полезное вместе» и «красивое, но бесполезное», перерыву, игре, практической работе, творческой работе, квесту, викторине и рефлексии. Соблюдён принцип постепенного усложнения материала и смены видов деятельности, что особенно важно для детей 6–10 лет. Занятие обобщает и углубляет тему предыдущих занятий, подводит к переходу к теме «Искусство».</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ методов и форм работы.</strong></p>
+        <p>На занятии использованы разнообразные методы и формы: вводная беседа, рассказ педагога, демонстрация иллюстраций, проблемные вопросы, игровые ситуации, игра «Красивое и полезное вместе», практическая работа «Красивое — полезное», творческая работа, квест, викторина, рефлексия. Такое разнообразие обеспечивает включённость каждого ребёнка, поддерживает интерес и мотивацию. Особенно ценным является сочетание словесных, наглядных и практических методов, а также использование проблемных вопросов, историй и творческих заданий.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ содержания занятия.</strong></p>
+        <p>Содержание занятия соответствует возрастным особенностям детей 6–10 лет. Понятие «взаимосвязь прекрасного и полезного» раскрывается через контрастные примеры: «красивое и полезное вместе» (пчела, цветок, кормушка) и «красивое, но бесполезное» (блестящая фольга, пластиковый пакет, искусственный цветок). Особое внимание уделяется тому, что настоящая красота всегда соединена с добром и пользой. Игра, практическая и творческая работы позволяют детям закрепить материал в деятельностной форме. Соблюдён принцип единства истины, красоты и добра.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ воспитательного потенциала занятия.</strong></p>
+        <p>Занятие имеет ярко выраженный воспитательный потенциал: формирует стремление к настоящей красоте, соединённой с пользой и добром, понимание, что бесполезная красота неполноценна. Воспитательные задачи реализуются через вовлечение детей в обсуждение, наблюдение, игру, творчество. Особое значение имеет обсуждение того, что красота и польза должны идти рука об руку, что настоящая красота всегда служит жизни.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ связи с рабочей тетрадью «Гармония».</strong></p>
+        <p>Занятие напрямую связано с материалами рабочей тетради «Гармония» (раздел «Мир прекрасного», подтема «Прекрасное и человек»). Использованы задания <strong>«Красивое — полезное»</strong>, <strong>«Дорисуй вторую половину»</strong>, <strong>«Раскрась вазу-гармонию»</strong>, поучительный рассказ «Художник и жадный купец», пословицы о красоте и пользе. Это обеспечивает единство теории и практики, позволяет детям закрепить полученные знания через продуктивную деятельность. На соответствующий раздел рабочей тетради дана ссылка в навигации занятия.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ межпредметных связей.</strong></p>
+        <p>Занятие имеет межпредметные связи с другими образовательными областями: <strong>экология и биология</strong> (наблюдения за природными объектами, обсуждение пользы пчелы, цветка), <strong>изобразительное искусство</strong> (работа с иллюстрациями, рисование, дорисовывание), <strong>литература</strong> (загадки, пословицы, стихи, истории), <strong>этика</strong> (обсуждение единства красоты и пользы в жизни человека), <strong>логика</strong> (установление причинно-следственных связей, классификация). Это способствует формированию у детей целостной картины мира.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Возможные затруднения и пути их преодоления.</strong></p>
+        <ul>
+            <li><em>Затруднение:</em> дети могут путать «красивое и полезное вместе» и «красивое, но бесполезное». <em>Путь преодоления:</em> использовать контрастные примеры, задавать наводящие вопросы, обсуждать каждый пример.</li>
+            <li><em>Затруднение:</em> некоторые дети могут считать, что «полезное» — значит «некрасивое». <em>Путь преодоления:</em> привести множество примеров, когда полезное одновременно и красивое (пчела, цветок, кормушка).</li>
+            <li><em>Затруднение:</em> творческая работа может занять больше времени, чем планировалось. <em>Путь преодоления:</em> заранее подготовить шаблоны, упростить задание для младших детей.</li>
+            <li><em>Затруднение:</em> дети могут стесняться объяснять свой выбор. <em>Путь преодоления:</em> предложить обсудить в парах, а затем — по желанию перед классом.</li>
+        </ul>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Диагностическая ценность занятия.</strong></p>
+        <p>На занятии педагог может провести диагностику: наблюдение за логическим мышлением детей, их умением классифицировать, устанавливать причинно-следственные связи, пониманием единства красоты и пользы, уровнем развития речи и творческих способностей. Результаты наблюдений заносятся в диагностическую карту учащегося (раздел «Экологическая культура» — когнитивный и эмоционально-ценностный компоненты; «Творческие способности» — воображение и творческие работы; «Культура речи» — связная речь; «Нравственные качества» — понимание добра и пользы).</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Соответствие требованиям типовой программы.</strong></p>
+        <p>Занятие соответствует требованиям типовой программы эколого-биологического профиля: формирует представления о единстве красоты и пользы в природе и жизни человека, развивает логическое мышление и эстетическое восприятие, формирует основы экологической культуры и нравственности. Содержание занятия направлено на достижение предметных, метапредметных и личностных результатов, заявленных в программе «Гармония».</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Вывод.</strong> Занятие выстроено методически грамотно, соответствует возрастным особенностям детей 6–10 лет, реализует принципы развивающего обучения, интеграции науки и искусства, практико-ориентированности. Содержание занятия направлено на формирование понимания единства красоты и пользы, развитие логического мышления, эстетического восприятия и нравственных качеств. Занятие может быть рекомендовано к использованию в практике педагогов дополнительного образования эколого-биологического профиля.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson7.html" class="button">← Занятие 7</a>
+        <a href="section2.html" class="button secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson9.html" class="button">Занятие 9 →</a>
+    </p>
+
+    <!-- НАВИГАЦИЯ СНИЗУ -->
+    <div class="nav-links-bottom">
+        <a href="lesson7.html" class="back-link">← Занятие 7. Значение красоты для человека</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson9.html" class="back-link">Занятие 9. Искусство. Понятие об искусстве →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 8 «Взаимосвязь прекрасного и полезного»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>
