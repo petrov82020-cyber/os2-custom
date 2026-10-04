@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структурный план диагностики — Сборник диагностических материалов ОМК «Культура»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "НАЗНАЧЕНИЕ ПЛАНА";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.92rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Секция «Карта блоков» */
+        .block-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 18px;
+            padding: 22px 26px;
+            margin: 24px 0;
+            position: relative;
+            border: 2px solid #e2e8f0;
+        }
+        .block-section::before {
+            content: attr(data-block);
+            position: absolute;
+            top: -14px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .block-section.alt::before { background: #16a34a; }
+        .block-section.alt2::before { background: #d97706; }
+        .block-section.alt3::before { background: #a855f7; }
+        .block-section.alt4::before { background: #ef4444; }
+        .block-section.alt5::before { background: #3b82f6; }
+
+        .block-title-main {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #155e75;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+        .block-purpose {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.6;
+            margin: 10px 0;
+            padding: 10px 14px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #0891b2;
+        }
+        .block-methods {
+            margin: 12px 0;
+        }
+        .block-methods li {
+            font-size: 0.93rem;
+            color: #334155;
+            margin: 6px 0;
+        }
+        .block-footer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 14px;
+            align-items: center;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .tag-time { background: #fef3c7; color: #92400e; }
+        .tag-form { background: #dcfce7; color: #166534; }
+        .tag-link {
+            background: #cffafe;
+            color: #155e75;
+            text-decoration: none;
+        }
+        .tag-link:hover { background: #0891b2; color: white; }
+
+        /* Навигационные карточки */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .nav-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 20px 22px;
+            text-decoration: none;
+            color: #1a1e24;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+        }
+        .nav-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px rgba(8, 145, 178, 0.4);
+        }
+        .nav-card .nav-emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .nav-card .nav-title {
+            font-weight: 700;
+            color: #155e75;
+            font-size: 1.02rem;
+            margin-bottom: 8px;
+        }
+        .nav-card .nav-desc {
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f0f9ff;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-left: 5px solid #0ea5e9;
+        }
+        .stage-num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content {
+            font-size: 0.94rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .stage-content strong { color: #155e75; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px 10px; }
+            .nav-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации сборника</a>
+    <a href="index.html" class="back-link" style="margin-left: 15px;">← На главную курса</a>
+
+    <h1>📋 Структурный план диагностики — Сборник диагностических материалов ОМК «Культура»</h1>
+    <div class="chapter-meta">✍️ Компонент образовательно-методического комплекса эколого-биологического профиля для детей 6–10 лет | Навигатор по диагностическому инструментарию</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Перед вами — <strong>структурный план диагностики</strong>, который выполняет роль навигатора по всему сборнику диагностических материалов. Этот документ — не просто перечень тем и методик. Это <strong>логическая карта всей диагностической работы</strong>, которая показывает, как содержание программы объединения по интересам разворачивается в систему диагностических процедур — от простого к сложному, от входной диагностики к итоговой, от оценки знаний к оценке поступков и ценностей.</p>
+        <p>План помогает педагогу:</p>
+        <ul>
+            <li><strong>увидеть целостную картину</strong> диагностического сопровождения образовательного процесса;</li>
+            <li><strong>спланировать свою работу</strong> на учебный год;</li>
+            <li><strong>проверить полноту</strong> диагностических материалов;</li>
+            <li><strong>презентовать</strong> диагностический инструментарий коллегам и родителям;</li>
+            <li><strong>обеспечить преемственность</strong> между ступенями экологического образования.</li>
+        </ul>
+        <p>Используйте этот план как <em>рабочий инструмент</em>, возвращаясь к нему на разных этапах работы над диагностикой.</p>
+    </div>
+
+    <div class="quote">
+        «Структурный план — это не формальный документ, а карта пути. Если педагог не видит целостной картины, он не сможет помочь ребёнку пройти этот путь осознанно».
+        <span class="quote-author">— из размышлений о диагностическом сопровождении</span>
+    </div>
+
+    <h2>🎯 Цели и задачи диагностики</h2>
+
+    <p><strong>Цель диагностики</strong> — обеспечить обратную связь в образовательном процессе, позволяющую педагогу своевременно корректировать свою работу, а ребёнку — видеть свои достижения и понимать, над чем ещё нужно поработать.</p>
+
+    <p><strong>Задачи диагностики</strong> распределяются по шести группам:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа задач</th>
+                <th>Содержание задач</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Диагностические</strong></td>
+                <td>Определить исходный уровень развития ребёнка; выявить его сильные и слабые стороны; отследить динамику развития; определить зону ближайшего развития (по Л.С. Выготскому).</td>
+            </tr>
+            <tr>
+                <td><strong>Обучающие</strong></td>
+                <td>Закрепить пройденный материал через диагностические задания; показать ребёнку, что он уже умеет; мотивировать к дальнейшему обучению.</td>
+            </tr>
+            <tr>
+                <td><strong>Развивающие</strong></td>
+                <td>Развивать память, внимание, мышление, воображение через специальные задания; формировать навыки самоконтроля и самооценки.</td>
+            </tr>
+            <tr>
+                <td><strong>Воспитательные</strong></td>
+                <td>Формировать ответственность, аккуратность, честность; воспитывать уважение к результатам своего и чужого труда.</td>
+            </tr>
+            <tr>
+                <td><strong>Коррекционные</strong></td>
+                <td>Своевременно выявить затруднения и скорректировать образовательный маршрут; адаптировать задания под индивидуальные особенности ребёнка.</td>
+            </tr>
+            <tr>
+                <td><strong>Информационные</strong></td>
+                <td>Предоставить родителям объективную информацию о развитии ребёнка; документировать результаты для портфолио и аттестации.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📅 Этапы диагностики в течение учебного года</h2>
+
+    <p>Диагностика — это не «одноразовое мероприятие». Она распределена во времени и включает <strong>четыре этапа</strong>, каждый из которых решает свои задачи.</p>
+
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <strong>Входная диагностика (сентябрь).</strong> Определение исходного уровня знаний, интересов, мотивации, личностных особенностей. Формы: анкеты для родителей, беседы, игровые задания, рисуночные тесты. Результаты фиксируются в диагностических картах.
+        </div>
+    </div>
+
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <strong>Текущая диагностика (октябрь–апрель).</strong> Отслеживание динамики освоения материала и развития качеств. Формы: педагогическое наблюдение, анализ творческих работ, игровые упражнения, опорные конспекты. Результаты фиксируются в опорно-аналитических таблицах.
+        </div>
+    </div>
+
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <strong>Промежуточная диагностика (декабрь, март).</strong> Оценка продвижения за определённый период. Формы: контрольные игровые занятия, выставки, защита мини-проектов. Результаты фиксируются в диагностических картах (середина года).
+        </div>
+    </div>
+
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <strong>Итоговая диагностика (май).</strong> Определение уровня освоения программы за год. Формы: итоговые игровые занятия, викторины, выставки, портфолио. Результаты фиксируются в диагностических картах (конец года).
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно!</strong><br>
+        Диагностика для детей 6–10 лет должна быть <strong>игровой, ненавязчивой и творческой</strong>. Задача педагога — не «проверить», а «увидеть» ребёнка в естественной для него деятельности. Избегайте стрессовых формулировок типа «тест» или «проверка». Замените их на «игру», «путешествие», «открытие».
+    </div>
+
+    <h2>📊 Схема диагностических блоков</h2>
+
+    <p>Диагностический инструментарий включает <strong>шесть содержательных блоков</strong>, каждый из которых обеспечен конкретными методиками и инструментами. Каждый блок представлен отдельной страницей с подробным описанием методик, критериев оценки и форм фиксации результатов.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 750 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема шести диагностических блоков">
+        <text x="375" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">ШЕСТЬ СОДЕРЖАТЕЛЬНЫХ БЛОКОВ ДИАГНОСТИКИ</text>
+
+        <!-- Центральный круг -->
+        <circle cx="375" cy="280" r="70" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="375" y="270" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">ДИАГНОСТИКА</text>
+        <text x="375" y="290" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">6 БЛОКОВ</text>
+
+        <!-- Блок 1 -->
+        <rect x="30" y="70" width="200" height="55" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="130" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">🌿 БЛОК 1</text>
+        <text x="130" y="110" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">Экологическая культура</text>
+
+        <!-- Блок 2 -->
+        <rect x="520" y="70" width="200" height="55" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="620" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">💚 БЛОК 2</text>
+        <text x="620" y="110" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">Нравственные качества</text>
+
+        <!-- Блок 3 -->
+        <rect x="30" y="160" width="200" height="55" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="130" y="182" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">🗣️ БЛОК 3</text>
+        <text x="130" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">Культура речи</text>
+
+        <!-- Блок 4 -->
+        <rect x="520" y="160" width="200" height="55" rx="12" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="620" y="182" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">🌟 БЛОК 4</text>
+        <text x="620" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">Личностное развитие</text>
+
+        <!-- Блок 5 -->
+        <rect x="30" y="390" width="200" height="55" rx="12" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+        <text x="130" y="412" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#854d0e">🧠 БЛОК 5</text>
+        <text x="130" y="430" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">Творческие способности</text>
+
+        <!-- Блок 6 -->
+        <rect x="520" y="390" width="200" height="55" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+        <text x="620" y="412" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#991b1b">🎯 БЛОК 6</text>
+        <text x="620" y="430" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#991b1b">Мотивация и отношение к учёбе</text>
+
+        <!-- Стрелки к центру -->
+        <defs>
+            <marker id="arrP" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="230" y1="110" x2="310" y2="240" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrP)"/>
+        <line x1="520" y1="110" x2="440" y2="240" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrP)"/>
+        <line x1="230" y1="200" x2="310" y2="270" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrP)"/>
+        <line x1="520" y1="200" x2="440" y2="270" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrP)"/>
+        <line x1="230" y1="410" x2="310" y2="330" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrP)"/>
+        <line x1="520" y1="410" x2="440" y2="330" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrP)"/>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема П.1. Шесть содержательных блоков диагностики в составе сборника</p>
+
+    <h2>🗂️ Содержание диагностических блоков</h2>
+
+    <p>Ниже представлен подробный перечень всех шести содержательных блоков с указанием методик, целей, форм фиксации и ссылок на соответствующие страницы сборника.</p>
+
+    <!-- БЛОК 1 -->
+    <div class="block-section" data-block="🌿 БЛОК 1">
+        <div class="block-title-main">Диагностика уровня сформированности экологической культуры</div>
+        <div class="block-purpose">
+            <strong>Цель:</strong> определить уровень развития когнитивного, эмоционально-ценностного, деятельностного и рефлексивного компонентов экологической культуры детей 6–10 лет.
+        </div>
+        <div class="block-methods">
+            <strong>Методики и инструменты:</strong>
+            <ul>
+                <li><strong>Тест «Что я знаю о природе?»</strong> — диагностика когнитивного компонента (знания о природе).</li>
+                <li><strong>Методика оценки эмоционально-положительного отношения к природе (С.Н. Глазачев)</strong> — диагностика эмоционально-ценностного компонента.</li>
+                <li><strong>Анкета «Что я делаю по отношению к природе?»</strong> — диагностика деятельностного компонента (поступки).</li>
+                <li><strong>Методика «Экологические ситуации» (Е.К. Берюхова, Н.В. Груздева)</strong> — диагностика деятельностного и рефлексивного компонентов.</li>
+                <li><strong>Метод незаконченных предложений</strong> — диагностика рефлексивного компонента и ценностных ориентаций.</li>
+                <li><strong>Диагностика отношения ребёнка к деньгам</strong> — как одного из критериев экологической культуры.</li>
+            </ul>
+        </div>
+        <div class="block-footer">
+            <span class="tag tag-time">⏱ 25–30 минут</span>
+            <span class="tag tag-form">📊 Диагностическая карта</span>
+            <a href="block1.html" class="tag tag-link">Перейти к Блоку 1 →</a>
+        </div>
+    </div>
+
+    <!-- БЛОК 2 -->
+    <div class="block-section alt" data-block="💚 БЛОК 2">
+        <div class="block-title-main">Диагностика нравственных качеств и воспитанности личности</div>
+        <div class="block-purpose">
+            <strong>Цель:</strong> выявить уровень сформированности нравственных представлений, эмоционального отношения к моральным нормам и общей нравственной направленности личности.
+        </div>
+        <div class="block-methods">
+            <strong>Методики и инструменты:</strong>
+            <ul>
+                <li><strong>Методика «Что такое хорошо и что такое плохо?» (Г.М. Фридман)</strong> — диагностика нравственных представлений.</li>
+                <li><strong>Методика Р.Р. Калининой</strong> — диагностика эмоционального отношения к нравственным нормам.</li>
+                <li><strong>Диагностика уровня воспитанности (Н.П. Капустина)</strong> — комплексная оценка по нескольким критериям.</li>
+                <li><strong>Методика «Состояние духовно-нравственных качеств личности учащегося»</strong> — наблюдение в течение года.</li>
+                <li><strong>Методика «Если бы я был добрым волшебником»</strong> — выявление нравственных желаний ребёнка.</li>
+            </ul>
+        </div>
+        <div class="block-footer">
+            <span class="tag tag-time">⏱ 20–25 минут</span>
+            <span class="tag tag-form">📊 Диагностическая карта + Наблюдение</span>
+            <a href="block2.html" class="tag tag-link">Перейти к Блоку 2 →</a>
+        </div>
+    </div>
+
+    <!-- БЛОК 3 -->
+    <div class="block-section alt5" data-block="🗣️ БЛОК 3">
+        <div class="block-title-main">Диагностика культуры речи и коммуникативных навыков</div>
+        <div class="block-purpose">
+            <strong>Цель:</strong> оценить уровень развития произносительной, лексической, грамматической культуры и связной речи, а также коммуникативных навыков.
+        </div>
+        <div class="block-methods">
+            <strong>Методики и инструменты:</strong>
+            <ul>
+                <li><strong>Тестовая методика Т.А. Фотековой</strong> — комплексная диагностика речевого развития (сенсомоторный уровень, грамматический строй, словарь, связная речь).</li>
+                <li><strong>Наблюдение в процессе общения</strong> — оценка коммуникативной эстетики и стиля общения.</li>
+                <li><strong>Диагностика понимания и употребления омонимов, синонимов, антонимов</strong> — оценка лексической культуры.</li>
+                <li><strong>Составление рассказа по серии сюжетных картинок</strong> — диагностика связной речи.</li>
+                <li><strong>Пересказ текста</strong> — диагностика умения понимать и воспроизводить текст.</li>
+                <li><strong>Игровые задания на коммуникацию</strong> — «Собери картинку вместе», «Интервью», «Продолжи историю».</li>
+            </ul>
+        </div>
+        <div class="block-footer">
+            <span class="tag tag-time">⏱ 25–30 минут</span>
+            <span class="tag tag-form">📊 Диагностическая карта + Наблюдение</span>
+            <a href="block3.html" class="tag tag-link">Перейти к Блоку 3 →</a>
+        </div>
+    </div>
+
+    <!-- БЛОК 4 -->
+    <div class="block-section alt3" data-block="🌟 БЛОК 4">
+        <div class="block-title-main">Диагностика личностного развития и самооценки</div>
+        <div class="block-purpose">
+            <strong>Цель:</strong> выявить уровень самооценки, притязаний, эмоционального состояния и личностных особенностей ребёнка.
+        </div>
+        <div class="block-methods">
+            <strong>Методики и инструменты:</strong>
+            <ul>
+                <li><strong>Методика «Лесенка» (В.Г. Щур)</strong> — диагностика самооценки и уровня притязаний.</li>
+                <li><strong>Методика Дембо-Рубинштейн (адаптированная)</strong> — оценка самооценки по разным параметрам.</li>
+                <li><strong>Методика «Нарисуй рисунок» (Н.В. Шайдурова)</strong> — диагностика эмоционального состояния.</li>
+                <li><strong>Проективные рисуночные тесты</strong> — «Дом. Дерево», «Несуществующее животное», «Рисунок семьи» (в адаптированных вариантах без изображения людей и животных).</li>
+                <li><strong>Тест школьной тревожности Филлипса</strong> — диагностика уровня тревожности.</li>
+                <li><strong>Методика «Кактус» (адаптированная)</strong> — диагностика эмоционального состояния и агрессивности.</li>
+            </ul>
+        </div>
+        <div class="block-footer">
+            <span class="tag tag-time">⏱ 30–35 минут</span>
+            <span class="tag tag-form">📊 Диагностическая карта + Портфолио</span>
+            <a href="block4.html" class="tag tag-link">Перейти к Блоку 4 →</a>
+        </div>
+    </div>
+
+    <!-- БЛОК 5 -->
+    <div class="block-section alt2" data-block="🧠 БЛОК 5">
+        <div class="block-title-main">Диагностика творческих способностей и наглядно-действенного мышления</div>
+        <div class="block-purpose">
+            <strong>Цель:</strong> оценить уровень развития наглядно-действенного мышления, гибкости, оригинальности, воображения и творческих способностей.
+        </div>
+        <div class="block-methods">
+            <strong>Методики и инструменты:</strong>
+            <ul>
+                <li><strong>Методика «Кубик Рубика»</strong> — диагностика наглядно-действенного мышления (9 заданий возрастающей сложности).</li>
+                <li><strong>Тест дивергентного мышления Вильямса (адаптированный)</strong> — оценка гибкости, оригинальности, беглости и разработанности.</li>
+                <li><strong>Методика «Дорисовывание фигур» (О.М. Дьяченко)</strong> — диагностика воображения и творческих способностей.</li>
+                <li><strong>Анализ творческих работ</strong> — рисунков, аппликаций, поделок, орнаментов.</li>
+                <li><strong>Задания на развитие воображения</strong> — «На что похоже?», «Придумай историю».</li>
+            </ul>
+        </div>
+        <div class="block-footer">
+            <span class="tag tag-time">⏱ 35–40 минут</span>
+            <span class="tag tag-form">📊 Диагностическая карта + Портфолио</span>
+            <a href="block5.html" class="tag tag-link">Перейти к Блоку 5 →</a>
+        </div>
+    </div>
+
+    <!-- БЛОК 6 -->
+    <div class="block-section alt4" data-block="🎯 БЛОК 6">
+        <div class="block-title-main">Диагностика мотивации и отношения к обучению</div>
+        <div class="block-purpose">
+            <strong>Цель:</strong> выявить исходную мотивацию учения, отношение к занятиям, познавательную активность и интерес к эколого-биологической деятельности.
+        </div>
+        <div class="block-methods">
+            <strong>Методики и инструменты:</strong>
+            <ul>
+                <li><strong>Методика «Отношение ребенка к обучению в школе» (10 вопросов)</strong> — определение исходной мотивации учения.</li>
+                <li><strong>Анкета Н. Лускановой</strong> — диагностика уровня школьной мотивации.</li>
+                <li><strong>Наблюдение за познавательной активностью</strong> — фиксация частоты вопросов, включённости, инициативности.</li>
+                <li><strong>Диагностика интереса к эколого-биологической деятельности</strong> — беседа, анкетирование, наблюдение.</li>
+                <li><strong>Проективная методика «Моё любимое занятие»</strong> — выявление доминирующих мотивов.</li>
+            </ul>
+        </div>
+        <div class="block-footer">
+            <span class="tag tag-time">⏱ 20–25 минут</span>
+            <span class="tag tag-form">📊 Диагностическая карта + Наблюдение</span>
+            <a href="block6.html" class="tag tag-link">Перейти к Блоку 6 →</a>
+        </div>
+    </div>
+
+    <h2>🧩 Типы заданий, используемых в диагностике</h2>
+
+    <p>В сборнике представлены <strong>разнообразные типы заданий</strong>, которые делают диагностику интересной, развивающей и многосторонней. Комплексное использование разных типов заданий позволяет охватить все стороны развития ребёнка.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Тип задания</th>
+                <th>Что развивает / диагностирует</th>
+                <th>Примеры</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Устные задания</strong></td>
+                <td>Словарный запас, мышление, речь, знания</td>
+                <td>«Ответь на вопрос», «Отгадай загадку», «Продолжи фразу», «Закончи предложение»</td>
+            </tr>
+            <tr>
+                <td><strong>Конструкторские</strong></td>
+                <td>Пространственное мышление, наглядно-действенное мышление, моторика</td>
+                <td>«Собери картинку из частей», «Составь узор», «Собери цепочку»</td>
+            </tr>
+            <tr>
+                <td><strong>Комбинаторные</strong></td>
+                <td>Логическое мышление, гибкость ума</td>
+                <td>«Найди лишнее», «Раздели на группы», «Соедини линиями»</td>
+            </tr>
+            <tr>
+                <td><strong>На память и внимание</strong></td>
+                <td>Зрительная и слуховая память, объём внимания</td>
+                <td>«Запомни и повтори», «Найди отличия», «Продолжи ряд»</td>
+            </tr>
+            <tr>
+                <td><strong>На воображение</strong></td>
+                <td>Творческое воображение, ассоциативное мышление</td>
+                <td>«Дорисуй фигуру», «На что похоже?», «Придумай историю»</td>
+            </tr>
+            <tr>
+                <td><strong>На двигательные навыки</strong></td>
+                <td>Мелкая моторика, координация</td>
+                <td>«Обведи по контуру», «Сложи из бумаги», «Вырежи»</td>
+            </tr>
+            <tr>
+                <td><strong>На стиль общения</strong></td>
+                <td>Коммуникативные навыки, умение сотрудничать</td>
+                <td>«Работа в паре», «Интервью», «Презентация в паре»</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="green-note">
+        <strong>🌿 Совет по использованию.</strong> При проведении диагностики старайтесь <strong>чередовать типы заданий</strong> — это удерживает внимание детей и позволяет им проявить свои сильные стороны в разных видах деятельности. Если ребёнок плохо отвечает на устные вопросы, но прекрасно выполняет конструкторские задания — это ценная информация для понимания его индивидуальных особенностей.
+    </div>
+
+    <h2>📊 Формы фиксации результатов</h2>
+
+    <p>Результаты диагностики фиксируются в <strong>специальных формах</strong>, которые позволяют отслеживать динамику развития каждого ребёнка.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Форма</th>
+                <th>Назначение</th>
+                <th>Когда заполняется</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Диагностическая карта учащегося</strong></td>
+                <td>Основной инструмент фиксации результатов по трём группам (предметные, метапредметные, личностные)</td>
+                <td>3 раза в год: сентябрь, декабрь, май</td>
+            </tr>
+            <tr>
+                <td><strong>Опорно-аналитическая таблица</strong></td>
+                <td>Дневник педагогических наблюдений, фиксация достижений и проблем</td>
+                <td>После каждого опорного конспекта</td>
+            </tr>
+            <tr>
+                <td><strong>Карта успешности</strong></td>
+                <td>Наглядная форма самооценки для ребёнка (символы, баллы)</td>
+                <td>После каждого крупного раздела</td>
+            </tr>
+            <tr>
+                <td><strong>Портфолио достижений</strong></td>
+                <td>Папка с творческими работами и результатами диагностики</td>
+                <td>Пополняется в течение года</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🎯 Ожидаемые результаты диагностики</h2>
+
+    <p>В результате использования сборника диагностических материалов педагог сможет:</p>
+
+    <ul>
+        <li>получить <strong>объективную картину</strong> развития каждого ребёнка по шести содержательным блокам;</li>
+        <li>выявить <strong>сильные и слабые стороны</strong> развития каждого воспитанника;</li>
+        <li>определить <strong>динамику развития</strong> за определённый период;</li>
+        <li><strong>своевременно скорректировать</strong> образовательный маршрут;</li>
+        <li>предоставить <strong>родителям</strong> объективную информацию о развитии ребёнка;</li>
+        <li>сформировать <strong>портфолио достижений</strong> каждого воспитанника;</li>
+        <li>использовать результаты для <strong>аттестации</strong> и обобщения педагогического опыта.</li>
+    </ul>
+
+    <h2>🗺️ Навигация по сборнику</h2>
+
+    <p>Используйте приведённые ниже ссылки для перехода к нужному разделу сборника диагностических материалов.</p>
+
+    <div class="nav-grid">
+        <a href="preface.html" class="nav-card">
+            <span class="nav-emoji">📋</span>
+            <div class="nav-title">Аннотация и пояснительная записка</div>
+            <div class="nav-desc">Назначение сборника, актуальность, цели, задачи, структура, принципы построения, ожидаемые результаты, рекомендации для педагога и родителей.</div>
+        </a>
+
+        <a href="program.html" class="nav-card">
+            <span class="nav-emoji">📄</span>
+            <div class="nav-title">Программа диагностики</div>
+            <div class="nav-desc">Программа диагностики на учебный год: пояснительная записка, календарно-тематический план, описание методик, критерии оценки и список литературы.</div>
+        </a>
+
+        <a href="block1.html" class="nav-card">
+            <span class="nav-emoji">🌿</span>
+            <div class="nav-title">Блок 1. Экологическая культура</div>
+            <div class="nav-desc">Тест «Что я знаю о природе?», методика С.Н. Глазачева, анкета «Что я делаю по отношению к природе?», «Экологические ситуации», метод незаконченных предложений.</div>
+        </a>
+
+        <a href="block2.html" class="nav-card">
+            <span class="nav-emoji">💚</span>
+            <div class="nav-title">Блок 2. Нравственные качества</div>
+            <div class="nav-desc">Методика «Что такое хорошо и что такое плохо?» (Г.М. Фридман), методика Р.Р. Калининой, диагностика уровня воспитанности по Н.П. Капустиной.</div>
+        </a>
+
+        <a href="block3.html" class="nav-card">
+            <span class="nav-emoji">🗣️</span>
+            <div class="nav-title">Блок 3. Культура речи</div>
+            <div class="nav-desc">Тестовая методика Т.А. Фотековой, наблюдение в процессе общения, диагностика омонимов/синонимов/антонимов, составление рассказа по картинкам, пересказ текста.</div>
+        </a>
+
+        <a href="block4.html" class="nav-card">
+            <span class="nav-emoji">🌟</span>
+            <div class="nav-title">Блок 4. Личностное развитие</div>
+            <div class="nav-desc">Методика «Лесенка» (В.Г. Щур), Дембо-Рубинштейн (адаптированная), «Нарисуй рисунок», проективные рисуночные тесты, тест тревожности Филлипса.</div>
+        </a>
+
+        <a href="block5.html" class="nav-card">
+            <span class="nav-emoji">🧠</span>
+            <div class="nav-title">Блок 5. Творческие способности</div>
+            <div class="nav-desc">Методика «Кубик Рубика» (9 заданий), тест дивергентного мышления Вильямса (адаптированный), методика «Дорисовывание фигур» (О.М. Дьяченко).</div>
+        </a>
+
+        <a href="block6.html" class="nav-card">
+            <span class="nav-emoji">🎯</span>
+            <div class="nav-title">Блок 6. Мотивация и отношение к обучению</div>
+            <div class="nav-desc">Методика «Отношение ребенка к обучению в школе» (10 вопросов), анкета Н. Лускановой, наблюдение за познавательной активностью.</div>
+        </a>
+
+        <a href="card.html" class="nav-card">
+            <span class="nav-emoji">📊</span>
+            <div class="nav-title">Диагностическая карта учащегося</div>
+            <div class="nav-desc">Основной инструмент фиксации результатов по трём группам (предметные, метапредметные, личностные). Шаблон и пример заполнения.</div>
+        </a>
+    </div>
+
+    <h2>🚀 Начните прямо сейчас</h2>
+
+    <p>Структурный план — это <strong>отправная точка</strong> для вашей работы с диагностическим инструментарием. Изучите его внимательно, определите, какие блоки наиболее актуальны для вашей группы, спланируйте диагностические процедуры на учебный год.</p>
+
+    <p>Помните: диагностика — это не «проверка» ребёнка, а <strong>диалог с ним</strong>. Это инструмент помощи и поддержки, который позволяет педагогу увидеть реальную картину развития каждого воспитанника и своевременно скорректировать образовательный маршрут.</p>
+
+    <div class="quote">
+        «Каждый ребёнок — это целая вселенная. И наша задача — не судить его, а понять. Не изменить его, а помочь ему раскрыться. И диагностика — это первый шаг к такому пониманию».
+        <span class="quote-author">— из размышлений о диагностическом сопровождении</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="program.html" class="button">📄 Перейти к программе диагностики →</a>
+        <a href="block1.html" class="button secondary">🌿 Начать с Блока 1</a>
+        <a href="preface.html" class="button secondary">📋 К аннотации сборника</a>
+        <a href="index.html" class="button secondary">🏠 На главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Сборник диагностических материалов к ОМК «Культура» эколого-биологического профиля</p>
+        <p>Структурный план диагностики | Для детей 6–10 лет | Третья ступень непрерывного экологического образования</p>
+    </footer>
+
+</div>
+</body>
+</html>
