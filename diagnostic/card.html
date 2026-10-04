@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диагностическая карта учащегося — Сборник диагностических материалов ОМК «Культура»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "НАЗНАЧЕНИЕ КАРТЫ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+        td.center { text-align: center; }
+        tr.group-header {
+            background: #f0f9ff;
+            font-weight: 700;
+            color: #155e75;
+        }
+        tr.group-header td {
+            background: #cffafe;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .nav-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 20px 22px;
+            text-decoration: none;
+            color: #1a1e24;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+        }
+        .nav-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px rgba(8, 145, 178, 0.4);
+        }
+        .nav-card .nav-emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .nav-card .nav-title {
+            font-weight: 700;
+            color: #155e75;
+            font-size: 1.02rem;
+            margin-bottom: 8px;
+        }
+        .nav-card .nav-desc {
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .card-template {
+            border: 3px solid #0891b2;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 22px 0;
+            background: #f0f9ff;
+            position: relative;
+        }
+        .card-template::before {
+            content: "📋 ШАБЛОН КАРТЫ";
+            position: absolute;
+            top: -14px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .card-template p:first-child { margin-top: 8px; }
+
+        .level-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #0891b2;
+        }
+        .level-card .level-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 40px;
+            text-align: center;
+        }
+        .level-card .level-text {
+            font-size: 0.93rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .level-card.high { border-left-color: #16a34a; }
+        .level-card.high .level-num { color: #16a34a; }
+        .level-card.mid { border-left-color: #eab308; }
+        .level-card.mid .level-num { color: #eab308; }
+        .level-card.low { border-left-color: #ef4444; }
+        .level-card.low .level-num { color: #ef4444; }
+
+        .legend-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin: 18px 0;
+            border: 2px dashed #0891b2;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .legend-symbol {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .legend-symbol.high { background: #dcfce7; color: #166534; }
+        .legend-symbol.mid { background: #fef3c7; color: #92400e; }
+        .legend-symbol.low { background: #fef2f2; color: #991b1b; }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример заполнения";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f0f9ff;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-left: 5px solid #0ea5e9;
+        }
+        .step-num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .step-content {
+            font-size: 0.94rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .step-content strong { color: #155e75; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .nav-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="preface.html" class="back-link">← К аннотации сборника</a>
+    <a href="plan.html" class="back-link" style="margin-left: 15px;">← К структурному плану</a>
+    <a href="program.html" class="back-link" style="margin-left: 15px;">← К программе диагностики</a>
+
+    <h1>📊 Диагностическая карта учащегося — Сборник диагностических материалов ОМК «Культура»</h1>
+    <div class="chapter-meta">✍️ Компонент образовательно-методического комплекса эколого-биологического профиля для детей 6–10 лет | Универсальная форма фиксации результатов диагностики</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Перед вами — <strong>диагностическая карта учащегося</strong>, ключевой инструмент фиксации результатов диагностики в рамках ОМК «Культура». Эта карта — <strong>универсальная форма</strong>, в которой отражаются результаты по всем шести содержательным блокам и трём группам образовательных результатов (предметные, метапредметные, личностные).</p>
+        <p>Карта заполняется педагогом <strong>три раза в год</strong>: в сентябре (начало года), в декабре (середина года) и в мае (конец года). Такая периодичность позволяет отслеживать <strong>динамику развития</strong> каждого ребёнка и своевременно вносить коррективы в образовательный маршрут.</p>
+        <p>Диагностическая карта — это не «отметка» для ребёнка. Это <strong>инструмент для педагога</strong>, который помогает ему видеть реальную картину развития каждого воспитанника и принимать обоснованные педагогические решения. Карта хранится в портфолио ребёнка и является основанием для индивидуальной работы с ним и его семьёй.</p>
+    </div>
+
+    <div class="quote">
+        «Диагностическая карта — это не «ведомость с оценками», а <em>карта пути</em>. Она показывает, где ребёнок находится сейчас, куда он движется и что нужно сделать, чтобы помочь ему продолжить это движение».
+        <span class="quote-author">— из размышлений о педагогической диагностике</span>
+    </div>
+
+    <h2>🎯 Назначение диагностической карты</h2>
+
+    <p><strong>Диагностическая карта учащегося</strong> выполняет несколько ключевых функций в образовательном процессе:</p>
+
+    <ul>
+        <li><strong>Фиксирующая.</strong> Обеспечивает единую форму записи результатов диагностики по всем шести блокам и трём группам.</li>
+        <li><strong>Аналитическая.</strong> Позволяет увидеть целостную картину развития ребёнка и выявить его сильные и слабые стороны.</li>
+        <li><strong>Динамическая.</strong> Показывает динамику развития за определённый период (от начала к концу года).</li>
+        <li><strong>Коммуникативная.</strong> Служит основой для беседы с родителями о развитии их ребёнка.</li>
+        <li><strong>Прогностическая.</strong> Помогает определить зону ближайшего развития и спланировать индивидуальную работу.</li>
+        <li><strong>Документирующая.</strong> Фиксирует результаты для портфолио, аттестации и обобщения педагогического опыта.</li>
+    </ul>
+
+    <h2>🧩 Структура диагностической карты</h2>
+
+    <p>Диагностическая карта построена по <strong>трём группам образовательных результатов</strong>, каждая из которых раскрывается через <strong>шесть содержательных блоков</strong>. Такая структура обеспечивает комплексность и системность диагностики.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 750 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Структура диагностической карты">
+        <text x="375" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">СТРУКТУРА ДИАГНОСТИЧЕСКОЙ КАРТЫ</text>
+
+        <!-- Три группы результатов -->
+        <rect x="60" y="70" width="190" height="60" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="155" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">ПРЕДМЕТНЫЕ</text>
+        <text x="155" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">знания, умения, навыки</text>
+
+        <rect x="280" y="70" width="190" height="60" rx="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.5"/>
+        <text x="375" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#3730a3">МЕТАПРЕДМЕТНЫЕ</text>
+        <text x="375" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3730a3">УУД, коммуникация</text>
+
+        <rect x="500" y="70" width="190" height="60" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+        <text x="595" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#92400e">ЛИЧНОСТНЫЕ</text>
+        <text x="595" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">мотивация, ценности</text>
+
+        <!-- Стрелки вниз -->
+        <defs>
+            <marker id="arrCard" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="155" y1="130" x2="155" y2="170" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrCard)"/>
+        <line x1="375" y1="130" x2="375" y2="170" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrCard)"/>
+        <line x1="595" y1="130" x2="595" y2="170" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrCard)"/>
+
+        <!-- Шесть блоков -->
+        <rect x="30" y="180" width="110" height="60" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="85" y="203" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">🌿 Экология</text>
+        <text x="85" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">Блок 1</text>
+
+        <rect x="150" y="180" width="110" height="60" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="205" y="203" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#92400e">💚 Нравств.</text>
+        <text x="205" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">Блок 2</text>
+
+        <rect x="270" y="180" width="110" height="60" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="325" y="203" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">🗣️ Речь</text>
+        <text x="325" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">Блок 3</text>
+
+        <rect x="390" y="180" width="110" height="60" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="445" y="203" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">🌟 Личность</text>
+        <text x="445" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">Блок 4</text>
+
+        <rect x="510" y="180" width="110" height="60" rx="10" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="565" y="203" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#6b21a8">🧠 Творч.</text>
+        <text x="565" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#6b21a8">Блок 5</text>
+
+        <rect x="630" y="180" width="90" height="60" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+        <text x="675" y="203" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#991b1b">🎯 Мотив.</text>
+        <text x="675" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#991b1b">Блок 6</text>
+
+        <!-- Стрелки к результату -->
+        <line x1="85" y1="245" x2="200" y2="290" stroke="#0891b2" stroke-width="1.5" marker-end="url(#arrCard)"/>
+        <line x1="205" y1="245" x2="280" y2="290" stroke="#0891b2" stroke-width="1.5" marker-end="url(#arrCard)"/>
+        <line x1="325" y1="245" x2="360" y2="290" stroke="#0891b2" stroke-width="1.5" marker-end="url(#arrCard)"/>
+        <line x1="445" y1="245" x2="420" y2="290" stroke="#0891b2" stroke-width="1.5" marker-end="url(#arrCard)"/>
+        <line x1="565" y1="245" x2="490" y2="290" stroke="#0891b2" stroke-width="1.5" marker-end="url(#arrCard)"/>
+        <line x1="675" y1="245" x2="555" y2="290" stroke="#0891b2" stroke-width="1.5" marker-end="url(#arrCard)"/>
+
+        <!-- Результат -->
+        <rect x="150" y="295" width="450" height="65" rx="14" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="375" y="320" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">🎯 ЦЕЛОСТНАЯ КАРТИНА РАЗВИТИЯ РЕБЁНКА</text>
+        <text x="375" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#155e75">6 блоков × 3 группы результатов × 3 периода (начало / середина / конец года)</text>
+
+        <!-- Легенда -->
+        <rect x="230" y="390" width="290" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+        <text x="375" y="410" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#155e75">УРОВНИ РАЗВИТИЯ</text>
+        <text x="375" y="430" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">В — высокий</text>
+        <text x="375" y="443" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">С — средний</text>
+        <text x="375" y="456" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#991b1b">Н — низкий</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема К.1. Структура диагностической карты: 3 группы × 6 блоков × 3 периода</p>
+
+    <h2>📋 Шаблон диагностической карты учащегося</h2>
+
+    <p>Ниже представлен <strong>шаблон диагностической карты</strong>, который педагог заполняет на каждого ребёнка. Карта рассчитана на <strong>один учебный год</strong> и включает три периода: начало, середину и конец года.</p>
+
+    <div class="card-template">
+        <p style="font-weight:700;color:#155e75;font-size:1.05rem;margin-bottom:10px;">🎓 Диагностическая карта учащегося</p>
+
+        <table style="font-size:0.85rem;">
+            <tbody>
+                <tr>
+                    <td style="width:35%;background:#f0f9ff;font-weight:600;">Фамилия, имя ребёнка</td>
+                    <td colspan="3"><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td style="background:#f0f9ff;font-weight:600;">Возраст (лет)</td>
+                    <td style="width:15%;"><span class="line-for-writing" style="margin:0;"></span></td>
+                    <td style="width:20%;background:#f0f9ff;font-weight:600;">Год обучения</td>
+                    <td><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td style="background:#f0f9ff;font-weight:600;">Педагог</td>
+                    <td colspan="3"><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+                <tr>
+                    <td style="background:#f0f9ff;font-weight:600;">Учебный год</td>
+                    <td colspan="3"><span class="line-for-writing" style="margin:0;"></span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:16px;font-weight:700;color:#155e75;">📚 Результаты диагностики по блокам</p>
+
+        <table style="font-size:0.82rem;">
+            <thead>
+                <tr>
+                    <th style="width:6%;">№</th>
+                    <th style="width:38%;">Показатель (критерий)</th>
+                    <th style="width:12%;">Начало года</th>
+                    <th style="width:12%;">Середина года</th>
+                    <th style="width:12%;">Конец года</th>
+                    <th style="width:20%;">Комментарий педагога</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="group-header">
+                    <td colspan="6">🌿 Блок 1. ЭКОЛОГИЧЕСКАЯ КУЛЬТУРА</td>
+                </tr>
+                <tr>
+                    <td>1.1</td>
+                    <td>Знает названия растений и животных родного края</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td>Понимает взаимосвязи в природе</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1.3</td>
+                    <td>Эмоционально откликается на красоту природы</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1.4</td>
+                    <td>Ухаживает за растениями, бережёт природу</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+
+                <tr class="group-header">
+                    <td colspan="6">💚 Блок 2. НРАВСТВЕННЫЕ КАЧЕСТВА</td>
+                </tr>
+                <tr>
+                    <td>2.1</td>
+                    <td>Имеет нравственные представления (что хорошо, что плохо)</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2.2</td>
+                    <td>Эмоционально откликается на нарушение норм</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2.3</td>
+                    <td>Проявляет доброту, честность, ответственность</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+
+                <tr class="group-header">
+                    <td colspan="6">🗣️ Блок 3. КУЛЬТУРА РЕЧИ</td>
+                </tr>
+                <tr>
+                    <td>3.1</td>
+                    <td>Чёткая дикция, выразительная интонация</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3.2</td>
+                    <td>Богатый словарный запас</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3.3</td>
+                    <td>Умеет строить связный рассказ</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3.4</td>
+                    <td>Умеет договариваться, вежлив в общении</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+
+                <tr class="group-header">
+                    <td colspan="6">🌟 Блок 4. ЛИЧНОСТНОЕ РАЗВИТИЕ</td>
+                </tr>
+                <tr>
+                    <td>4.1</td>
+                    <td>Адекватная самооценка</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4.2</td>
+                    <td>Положительное эмоциональное состояние</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4.3</td>
+                    <td>Низкий уровень тревожности</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+
+                <tr class="group-header">
+                    <td colspan="6">🧠 Блок 5. ТВОРЧЕСКИЕ СПОСОБНОСТИ</td>
+                </tr>
+                <tr>
+                    <td>5.1</td>
+                    <td>Наглядно-действенное мышление</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5.2</td>
+                    <td>Гибкость и оригинальность мышления</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5.3</td>
+                    <td>Воображение, творческие работы</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+
+                <tr class="group-header">
+                    <td colspan="6">🎯 Блок 6. МОТИВАЦИЯ И ОТНОШЕНИЕ К ОБУЧЕНИЮ</td>
+                </tr>
+                <tr>
+                    <td>6.1</td>
+                    <td>Интерес к занятиям, желание посещать объединение</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6.2</td>
+                    <td>Познавательная активность (задаёт вопросы)</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6.3</td>
+                    <td>Интерес к эколого-биологической деятельности</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:16px;font-weight:700;color:#155e75;">📊 Итоговый вывод по трём группам результатов</p>
+
+        <table style="font-size:0.85rem;">
+            <thead>
+                <tr>
+                    <th>Группа результатов</th>
+                    <th>Начало года</th>
+                    <th>Середина года</th>
+                    <th>Конец года</th>
+                    <th>Динамика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Предметные результаты</strong></td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">↑ / → / ↓</td>
+                </tr>
+                <tr>
+                    <td><strong>Метапредметные результаты</strong></td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">↑ / → / ↓</td>
+                </tr>
+                <tr>
+                    <td><strong>Личностные результаты</strong></td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">Н / С / В</td>
+                    <td class="center">↑ / → / ↓</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:16px;font-weight:700;color:#155e75;">💬 Рекомендации педагога</p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+
+        <p style="margin-top:12px;"><strong>Подпись педагога:</strong> <span class="line-for-writing" style="margin:0;width:200px;display:inline-block;"></span> &nbsp;&nbsp; <strong>Дата:</strong> <span class="line-for-writing" style="margin:0;width:120px;display:inline-block;"></span></p>
+    </div>
+
+    <div class="legend-box">
+        <strong style="color:#155e75;width:100%;">📋 Условные обозначения:</strong>
+        <div class="legend-item"><span class="legend-symbol high">В</span> Высокий уровень</div>
+        <div class="legend-item"><span class="legend-symbol mid">С</span> Средний уровень</div>
+        <div class="legend-item"><span class="legend-symbol low">Н</span> Низкий уровень</div>
+        <div class="legend-item" style="width:100%;margin-top:8px;"><strong>↑</strong> — положительная динамика; &nbsp; <strong>→</strong> — без изменений; &nbsp; <strong>↓</strong> — отрицательная динамика</div>
+    </div>
+
+    <h2>📝 Пример заполнения диагностической карты</h2>
+
+    <p>Для того чтобы вы могли увидеть, как заполняется карта на практике, приводим <strong>пример заполнения</strong> по одному из воспитанников — Иванова Ивана, 7 лет, первый год обучения.</p>
+
+    <div class="example-card">
+        <div class="example-title">🎓 Диагностическая карта учащегося — пример</div>
+
+        <table style="font-size:0.83rem;">
+            <tbody>
+                <tr>
+                    <td style="width:35%;background:#f0f9ff;font-weight:600;">Фамилия, имя ребёнка</td>
+                    <td colspan="3">Иванов Иван</td>
+                </tr>
+                <tr>
+                    <td style="background:#f0f9ff;font-weight:600;">Возраст (лет)</td>
+                    <td style="width:15%;">7</td>
+                    <td style="width:20%;background:#f0f9ff;font-weight:600;">Год обучения</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td style="background:#f0f9ff;font-weight:600;">Педагог</td>
+                    <td colspan="3">Петрова А.С.</td>
+                </tr>
+                <tr>
+                    <td style="background:#f0f9ff;font-weight:600;">Учебный год</td>
+                    <td colspan="3">2025–2026</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table style="font-size:0.8rem;margin-top:12px;">
+            <thead>
+                <tr>
+                    <th style="width:5%;">№</th>
+                    <th style="width:35%;">Показатель (критерий)</th>
+                    <th style="width:10%;">Начало</th>
+                    <th style="width:10%;">Середина</th>
+                    <th style="width:10%;">Конец</th>
+                    <th style="width:30%;">Комментарий педагога</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="group-header"><td colspan="6">🌿 Блок 1. Экологическая культура</td></tr>
+                <tr>
+                    <td>1.1</td>
+                    <td>Знает названия растений и животных родного края</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Знает много растений, активно делится знаниями</td>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td>Понимает взаимосвязи в природе</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Стал лучше понимать связи в природе</td>
+                </tr>
+                <tr>
+                    <td>1.3</td>
+                    <td>Эмоционально откликается на красоту природы</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Стал замечать красоту, делиться впечатлениями</td>
+                </tr>
+                <tr>
+                    <td>1.4</td>
+                    <td>Ухаживает за растениями, бережёт природу</td>
+                    <td class="center" style="background:#fef2f2;">Н</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td>Нужна поддержка в уходе за растениями</td>
+                </tr>
+
+                <tr class="group-header"><td colspan="6">💚 Блок 2. Нравственные качества</td></tr>
+                <tr>
+                    <td>2.1</td>
+                    <td>Нравственные представления</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Хорошо различает добро и зло</td>
+                </tr>
+                <tr>
+                    <td>2.2</td>
+                    <td>Эмоциональный отклик на нарушение норм</td>
+                    <td class="center" style="background:#fef2f2;">Н</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td>Стоит развивать эмпатию</td>
+                </tr>
+                <tr>
+                    <td>2.3</td>
+                    <td>Доброта, честность, ответственность</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Добрый, отзывчивый, помогает товарищам</td>
+                </tr>
+
+                <tr class="group-header"><td colspan="6">🗣️ Блок 3. Культура речи</td></tr>
+                <tr>
+                    <td>3.1</td>
+                    <td>Дикция, интонация</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Речь стала выразительнее</td>
+                </tr>
+                <tr>
+                    <td>3.2</td>
+                    <td>Словарный запас</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Заметно обогатился словарный запас</td>
+                </tr>
+                <tr>
+                    <td>3.3</td>
+                    <td>Связная речь (рассказ)</td>
+                    <td class="center" style="background:#fef2f2;">Н</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td>Нужно развивать связную речь</td>
+                </tr>
+                <tr>
+                    <td>3.4</td>
+                    <td>Коммуникативные навыки</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Легко договаривается, вежлив</td>
+                </tr>
+
+                <tr class="group-header"><td colspan="6">🌟 Блок 4. Личностное развитие</td></tr>
+                <tr>
+                    <td>4.1</td>
+                    <td>Самооценка</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Адекватная самооценка, уверен в себе</td>
+                </tr>
+                <tr>
+                    <td>4.2</td>
+                    <td>Эмоциональное состояние</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Преобладает хорошее настроение</td>
+                </tr>
+                <tr>
+                    <td>4.3</td>
+                    <td>Уровень тревожности</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Тревожность снизилась</td>
+                </tr>
+
+                <tr class="group-header"><td colspan="6">🧠 Блок 5. Творческие способности</td></tr>
+                <tr>
+                    <td>5.1</td>
+                    <td>Наглядно-действенное мышление</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Хорошо решает практические задачи</td>
+                </tr>
+                <tr>
+                    <td>5.2</td>
+                    <td>Гибкость, оригинальность</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Предлагает оригинальные идеи</td>
+                </tr>
+                <tr>
+                    <td>5.3</td>
+                    <td>Воображение</td>
+                    <td class="center" style="background:#fef2f2;">Н</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td>Стоит развивать воображение</td>
+                </tr>
+
+                <tr class="group-header"><td colspan="6">🎯 Блок 6. Мотивация</td></tr>
+                <tr>
+                    <td>6.1</td>
+                    <td>Интерес к занятиям</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>С радостью посещает занятия</td>
+                </tr>
+                <tr>
+                    <td>6.2</td>
+                    <td>Познавательная активность</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Задаёт много вопросов</td>
+                </tr>
+                <tr>
+                    <td>6.3</td>
+                    <td>Интерес к эколого-биологической деятельности</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td>Активно участвует в экологических акциях</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:14px;font-weight:700;color:#155e75;">📊 Итоговый вывод:</p>
+        <table style="font-size:0.85rem;">
+            <thead>
+                <tr>
+                    <th>Группа результатов</th>
+                    <th>Начало</th>
+                    <th>Середина</th>
+                    <th>Конец</th>
+                    <th>Динамика</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Предметные</strong></td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="color:#16a34a;font-weight:700;">↑</td>
+                </tr>
+                <tr>
+                    <td><strong>Метапредметные</strong></td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="color:#16a34a;font-weight:700;">↑</td>
+                </tr>
+                <tr>
+                    <td><strong>Личностные</strong></td>
+                    <td class="center" style="background:#fef3c7;">С</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="background:#dcfce7;">В</td>
+                    <td class="center" style="color:#16a34a;font-weight:700;">↑</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:14px;font-weight:700;color:#155e75;">💬 Рекомендации педагога:</p>
+        <p style="font-size:0.9rem;color:#334155;line-height:1.6;">Иван успешно осваивает программу. Сильные стороны: экологические знания, нравственные качества, мотивация. Точки роста: связная речь, воображение, эмпатия. Рекомендуется включать в занятия больше заданий на составление рассказов, творческих заданий. Продолжить работу по развитию эмоционального отклика через чтение и обсуждение историй о природе.</p>
+
+        <p style="margin-top:12px;font-size:0.9rem;"><strong>Подпись педагога:</strong> Петрова А.С. &nbsp;&nbsp; <strong>Дата:</strong> 28.05.2026</p>
+    </div>
+
+    <h2>📖 Как заполнять диагностическую карту</h2>
+
+    <p>Заполнение диагностической карты — это <strong>не формальность</strong>, а важный аналитический процесс. Предлагаем пошаговый алгоритм.</p>
+
+    <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>Подготовьте карту заранее.</strong> Заполните «шапку»: ФИО ребёнка, возраст, год обучения, педагог, учебный год. Заведите отдельные карты на каждого воспитанника.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>Проведите диагностику по каждому блоку.</strong> Используйте методики, описанные в соответствующих блоках сборника. Соблюдайте возрастные особенности детей, не перегружайте их.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>Определите уровень по каждому критерию.</strong> Используйте критерии оценки из соответствующего блока. Уровень определяется на основе выполненных заданий, наблюдений и анализа работ.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>Зафиксируйте результат в карте.</strong> Поставьте в нужной ячейке уровень (В, С или Н). При необходимости добавьте комментарий.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-content"><strong>Обобщите результат по трём группам.</strong> Определите итоговый уровень по каждой группе результатов (предметные, метапредметные, личностные).</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-content"><strong>Зафиксируйте динамику.</strong> Сравните результат с предыдущим периодом. Определите динамику: положительная (↑), без изменений (→), отрицательная (↓).</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">7</div>
+        <div class="step-content"><strong>Сформулируйте рекомендации.</strong> Запишите, что нужно сделать для дальнейшего развития ребёнка. Рекомендации должны быть конкретными и практическими.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">8</div>
+        <div class="step-content"><strong>Подпишите и датируйте карту.</strong> Поставьте подпись педагога и дату заполнения. Карта хранится в портфолио ребёнка.</div>
+    </div>
+
+    <h2>🔍 Критерии определения уровней</h2>
+
+    <p>Для определения уровня развития по каждому критерию используйте следующие <strong>общие критерии</strong>:</p>
+
+    <div class="level-card high">
+        <div class="level-num">В</div>
+        <div class="level-text">
+            <strong>Высокий уровень.</strong> Ребёнок демонстрирует ярко выраженные результаты по данному критерию: выполняет задания самостоятельно, без помощи педагога, проявляет инициативу, интерес, творческий подход. Результаты устойчивы и проявляются в разных ситуациях.
+        </div>
+    </div>
+
+    <div class="level-card mid">
+        <div class="level-num">С</div>
+        <div class="level-text">
+            <strong>Средний уровень.</strong> Ребёнок справляется с большинством заданий, но нуждается в поддержке педагога. Интерес ситуативный. Результаты проявляются не всегда и не во всех ситуациях. Требуется регулярное внимание педагога.
+        </div>
+    </div>
+
+    <div class="level-card low">
+        <div class="level-num">Н</div>
+        <div class="level-text">
+            <strong>Низкий уровень.</strong> Ребёнок испытывает значительные затруднения при выполнении заданий, требуется постоянная помощь педагога. Интерес слабый или отсутствует. Требуется специальная работа по данному направлению.
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно помнить!</strong><br>
+        <ul>
+            <li>Уровень «Н» (низкий) <strong>не является негативной оценкой ребёнка</strong>. Это сигнал педагогу о том, что данному ребёнку нужна дополнительная поддержка в этой области.</li>
+            <li>Уровни — это <strong>ориентиры для работы</strong>, а не «клеймо».</li>
+            <li>Особенно важно отслеживать <strong>динамику</strong>, а не абсолютный уровень. Даже переход с «Н» на «С» — это большое достижение.</li>
+            <li>Диагностическая карта — <strong>конфиденциальный документ</strong>. Не обсуждайте её содержание с посторонними.</li>
+        </ul>
+    </div>
+
+    <h2>📊 Сводная таблица по группе</h2>
+
+    <p>Помимо индивидуальных карт, педагогу полезно вести <strong>сводную таблицу по группе</strong>. Она позволяет увидеть общую картину развития всех детей и выявить типичные затруднения.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>ФИО ребёнка</th>
+                <th>Блок 1</th>
+                <th>Блок 2</th>
+                <th>Блок 3</th>
+                <th>Блок 4</th>
+                <th>Блок 5</th>
+                <th>Блок 6</th>
+                <th>Итог</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><span class="line-for-writing" style="margin:0;"></span></td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><span class="line-for-writing" style="margin:0;"></span></td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><span class="line-for-writing" style="margin:0;"></span></td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+                <td class="center">Н/С/В</td>
+            </tr>
+            <tr>
+                <td>...</td>
+                <td><span class="line-for-writing" style="margin:0;"></span></td>
+                <td class="center">...</td>
+                <td class="center">...</td>
+                <td class="center">...</td>
+                <td class="center">...</td>
+                <td class="center">...</td>
+                <td class="center">...</td>
+                <td class="center">...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Сводная таблица заполняется <strong>по итогам года</strong> после заполнения индивидуальных карт. Она позволяет:</p>
+
+    <ul>
+        <li>увидеть <strong>общий уровень развития группы</strong> по каждому блоку;</li>
+        <li>выявить <strong>типичные затруднения</strong> и скорректировать программу на следующий год;</li>
+        <li>определить <strong>детей, нуждающихся в особой поддержке</strong>;</li>
+        <li>подготовить <strong>отчёт</strong> о результатах работы для администрации и родителей.</li>
+    </ul>
+
+    <h2>📖 Из практики: как карта помогает педагогу</h2>
+
+    <div class="story-card" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #d97706; border-radius: 16px; padding: 22px 26px; margin: 22px 0; position: relative;">
+        <div style="position: absolute; top: -13px; left: 24px; background: #d97706; color: white; padding: 2px 14px; border-radius: 10px; font-size: 0.78rem; font-weight: 700;">📖 Из практики</div>
+        <p style="margin-top: 8px; font-weight: 700; color: #92400e; font-size: 1.05rem; margin-bottom: 8px;">«Карта, которая открыла глаза»</p>
+        <p style="font-size: 0.95rem; color: #78350f; line-height: 1.7;">
+            Педагог Светлана Николаевна работала с группой детей второй год. Она считала, что хорошо знает каждого ребёнка. Но когда она впервые заполнила диагностические карты по всем шести блокам, то <em>увидела</em> то, чего раньше не замечала.
+        </p>
+        <p style="font-size: 0.95rem; color: #78350f; line-height: 1.7;">
+            Например, Ваня, который казался ей «средним» ребёнком, по результатам диагностики показал <strong>высокий уровень</strong> по блоку «Творческие способности» и <strong>низкий</strong> — по блоку «Культура речи». А Маша, тихая и незаметная, оказалась <strong>лидером</strong> по нравственным качествам и экологической культуре.
+        </p>
+        <p style="font-size: 0.95rem; color: #78350f; line-height: 1.7;">
+            Раньше Светлана Николаевна работала с группой «в среднем». Теперь она <em>видела</em> каждого ребёнка в отдельности. Это позволило ей точнее планировать занятия, давать индивидуальные задания, поддерживать сильные стороны и развивать слабые.
+        </p>
+        <div style="margin-top: 12px; padding: 10px 16px; background: white; border-left: 4px solid #d97706; border-radius: 0 8px 8px 0; font-style: italic; color: #7c2d12; font-size: 0.92rem;">
+            💡 Мораль: диагностическая карта — это не «формальность». Это <strong>инструмент, который помогает педагогу увидеть каждого ребёнка в отдельности</strong> и выстроить индивидуальную работу.
+        </div>
+    </div>
+
+    <h2>📋 Рекомендации по использованию карты</h2>
+
+    <div class="info-box">
+        <strong>💡 Рекомендации для педагога:</strong>
+        <ul>
+            <li>Заполняйте карту <strong>своевременно</strong> — сразу после проведения диагностики, а не откладывайте «на потом».</li>
+            <li>Используйте <strong>единые критерии</strong> для всех детей — это обеспечивает объективность.</li>
+            <li>Обращайте внимание не только на <strong>абсолютный уровень</strong>, но и на <strong>динамику</strong>.</li>
+            <li>Комментарии пишите <strong>конкретно и по существу</strong>, избегая общих фраз.</li>
+            <li>Регулярно <strong>пересматривайте</strong> карту, обновляйте данные.</li>
+            <li>Используйте карту для <strong>индивидуальных бесед</strong> с родителями.</li>
+            <li>Храните карты в <strong>портфолио</strong> каждого ребёнка.</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Рекомендации для родителей:</strong>
+        <ul>
+            <li>Интересуйтесь результатами диагностики, которые педагог доводит до вашего сведения.</li>
+            <li>Обсуждайте с ребёнком его <strong>достижения</strong>, а не только «слабые места».</li>
+            <li>Поддерживайте ребёнка в тех областях, где он испытывает затруднения.</li>
+            <li>Помогайте ребёнку <strong>вести портфолио</strong> достижений.</li>
+            <li>Помните: уровень «Н» — это не «плохо», а «нужна поддержка».</li>
+        </ul>
+    </div>
+
+    <h2>🗺️ Навигация по сборнику</h2>
+
+    <div class="nav-grid">
+        <a href="preface.html" class="nav-card">
+            <span class="nav-emoji">📋</span>
+            <div class="nav-title">Аннотация и пояснительная записка</div>
+            <div class="nav-desc">Назначение сборника, актуальность, цели, задачи, структура, принципы построения, ожидаемые результаты.</div>
+        </a>
+
+        <a href="plan.html" class="nav-card">
+            <span class="nav-emoji">📋</span>
+            <div class="nav-title">Структурный план диагностики</div>
+            <div class="nav-desc">Полный перечень диагностических блоков, методик и инструментов с указанием этапов, форм фиксации и ожидаемых результатов.</div>
+        </a>
+
+        <a href="program.html" class="nav-card">
+            <span class="nav-emoji">📄</span>
+            <div class="nav-title">Программа диагностики</div>
+            <div class="nav-desc">Программа диагностики на учебный год: пояснительная записка, календарно-тематический план, описание методик, критерии оценки.</div>
+        </a>
+
+        <a href="block1.html" class="nav-card">
+            <span class="nav-emoji">🌿</span>
+            <div class="nav-title">Блок 1. Экологическая культура</div>
+            <div class="nav-desc">Тест «Что я знаю о природе?», методика С.Н. Глазачева, «Экологические ситуации», метод незаконченных предложений.</div>
+        </a>
+
+        <a href="block2.html" class="nav-card">
+            <span class="nav-emoji">💚</span>
+            <div class="nav-title">Блок 2. Нравственные качества</div>
+            <div class="nav-desc">Методика Г.М. Фридмана, методика Р.Р. Калининой, диагностика уровня воспитанности по Н.П. Капустиной.</div>
+        </a>
+
+        <a href="block3.html" class="nav-card">
+            <span class="nav-emoji">🗣️</span>
+            <div class="nav-title">Блок 3. Культура речи</div>
+            <div class="nav-desc">Тестовая методика Т.А. Фотековой, наблюдение, диагностика лексики, составление рассказа, пересказ.</div>
+        </a>
+
+        <a href="block4.html" class="nav-card">
+            <span class="nav-emoji">🌟</span>
+            <div class="nav-title">Блок 4. Личностное развитие</div>
+            <div class="nav-desc">Методика «Лесенка» (В.Г. Щур), Дембо-Рубинштейн, «Нарисуй рисунок», проективные методики, тест Филлипса.</div>
+        </a>
+
+        <a href="block5.html" class="nav-card">
+            <span class="nav-emoji">🧠</span>
+            <div class="nav-title">Блок 5. Творческие способности</div>
+            <div class="nav-desc">Методика «Кубик Рубика», тест Вильямса, «Дорисовывание фигур» (О.М. Дьяченко), анализ работ.</div>
+        </a>
+
+        <a href="block6.html" class="nav-card">
+            <span class="nav-emoji">🎯</span>
+            <div class="nav-title">Блок 6. Мотивация</div>
+            <div class="nav-desc">Методика «Отношение ребенка к обучению в школе», анкета Н. Лускановой, наблюдение за познавательной активностью.</div>
+        </a>
+    </div>
+
+    <h2>🚀 Начните работу с картой</h2>
+
+    <p>Диагностическая карта — это <strong>рабочий инструмент педагога</strong>, который можно и нужно адаптировать под свои условия. Изучите её внимательно, распечатайте шаблон на каждого ребёнка, заполняйте своевременно и регулярно анализируйте.</p>
+
+    <p>Помните: системная диагностика — это <strong>основа качественного образования</strong>. Она позволяет педагогу видеть реальную картину развития каждого ребёнка, своевременно оказывать поддержку и добиваться высоких результатов.</p>
+
+    <div class="quote">
+        «Карта — это не клетка, а окно. Она открывает педагогу вид на каждого ребёнка. И тот, кто умеет смотреть в это окно, видит гораздо больше, чем тот, кто полагается только на память и интуицию».
+        <span class="quote-author">— из размышлений о педагогической диагностике</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="block1.html" class="button">🌿 Перейти к Блоку 1 →</a>
+        <a href="program.html" class="button secondary">📄 К программе диагностики</a>
+        <a href="plan.html" class="button secondary">📋 К структурному плану</a>
+        <a href="preface.html" class="button secondary">📋 К аннотации сборника</a>
+        <a href="index.html" class="button secondary">🏠 На главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Сборник диагностических материалов к ОМК «Культура» эколого-биологического профиля</p>
+        <p>Диагностическая карта учащегося | Для детей 6–10 лет | Третья ступень непрерывного экологического образования</p>
+    </footer>
+
+</div>
+</body>
+</html>
