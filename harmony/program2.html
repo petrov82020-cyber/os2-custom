@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программа объединения по интересам «Гармония» — 2-й год обучения (144 часа)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ПРОГРАММЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.88rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+        tr.section-header td {
+            background: #dcfce7;
+            color: #166534;
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+        tr.section-header-2 td {
+            background: #ecfccb;
+            color: #3f6212;
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .section-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+            border: 2px solid #e2e8f0;
+            border-left: 5px solid #16a34a;
+        }
+        .section-card::before {
+            content: attr(data-section);
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .section-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.1rem;
+            margin-top: 6px;
+            margin-bottom: 10px;
+        }
+        .section-content {
+            font-size: 0.93rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .section-content strong { color: #166534; }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .method-group {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border-top: 4px solid #16a34a;
+        }
+        .method-group .method-group-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.97rem;
+            margin-bottom: 8px;
+        }
+        .method-group ul {
+            margin-left: 18px;
+            font-size: 0.88rem;
+            color: #475569;
+        }
+        .method-group li { margin: 4px 0; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .methods-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="program.html" class="back-link">← К программе 1-го года обучения</a>
+    <a href="index.html" class="back-link" style="margin-left: 15px;">← На главную курса</a>
+
+    <h1>🌿 Программа объединения по интересам «Гармония» — 2-й год обучения</h1>
+    <div class="chapter-meta">✍️ Эколого-биологический профиль | Образовательная область «Экология» | Базовый уровень | 144 часа (4 часа в неделю) | Для детей 7–11 лет | Очная форма обучения</div>
+
+    <div class="intro-card">
+        <p>Программа второго года обучения «Гармония» — это <strong>вторая ступень непрерывного экологического образования</strong> в системе дополнительного образования детей и молодёжи Республики Беларусь. Если первый год открывал детям природу как источник красоты, добра и вдохновения, то второй год <strong>углубляет и расширяет</strong> это понимание через призму науки эстетики, истории искусства, культуры слова и ответственного отношения к окружающей среде.</p>
+        <p>Программа разработана в соответствии с <strong>типовой программой дополнительного образования детей и молодёжи (эколого-биологический профиль)</strong>, утверждённой постановлением Министерства образования Республики Беларусь № 325 от 20.10.2023, и продолжает линию авторского образовательно-методического комплекса «Культура».</p>
+        <p>Программа второго года обучения <strong>не дублирует</strong> содержание первого года, а <strong>развивает</strong> его: от восприятия красоты — к пониманию её законов, от наблюдения — к творчеству, от личного опыта — к культурному наследию человечества.</p>
+    </div>
+
+    <div class="quote">
+        «Красота спасёт мир. Но чтобы красота спасла мир, нужно понять её законы, научиться её создавать и беречь. Второй год обучения — это путь к такому пониманию».
+        <span class="quote-author">— концептуальная идея программы 2-го года обучения</span>
+    </div>
+
+    <h2>📋 Пояснительная записка</h2>
+
+    <h3>1. Актуальность программы</h3>
+
+    <p>Второй год обучения по программе «Гармония» продолжает формирование <strong>гармонично развитой личности</strong> ребёнка 7–11 лет в системе дополнительного образования Республики Беларусь. Если первый год был посвящён <em>открытию</em> красоты природы и искусства, то второй год направлен на <strong>осмысление</strong> красоты как культурного и нравственного феномена.</p>
+
+    <p>Возраст 7–11 лет — это период, когда у ребёнка формируется <strong>понятийное мышление</strong>, способность к <strong>рефлексии</strong>, интерес к <strong>культурному наследию</strong> человечества. Именно в этот период важно не только показать красоту, но и помочь понять её <em>законы</em>, научить <em>создавать</em> её и <em>беречь</em>.</p>
+
+    <p>Актуальность программы 2-го года обучения обусловлена необходимостью:
+    <ul>
+        <li>углубления знаний детей о красоте как эстетической и культурной ценности;</li>
+        <li>знакомства с основами науки эстетики и историей искусства;</li>
+        <li>развития культуры слова и культуры поведения;</li>
+        <li>формирования ответственного отношения к природе и обществу;</li>
+        <li>освоения идей устойчивого развития и энергосбережения.</li>
+    </ul>
+    </p>
+
+    <h3>2. Нормативно-правовые основания</h3>
+
+    <p>Программа разработана в соответствии со следующими нормативными правовыми документами:</p>
+
+    <ul>
+        <li><strong>Кодекс Республики Беларусь об образовании</strong> (Раздел XIII, главы 46–47, статьи 228, 229, 235).</li>
+        <li><strong>Постановление Министерства образования Республики Беларусь от 20 октября 2023 года № 325</strong> «О типовых программах дополнительного образования детей и молодёжи».</li>
+        <li><strong>Закон Республики Беларусь от 26 ноября 1992 г. № 1982-XII «Об охране окружающей среды»</strong>.</li>
+        <li><strong>Концепция непрерывного экологического образования</strong> в Республике Беларусь.</li>
+        <li><strong>Методические рекомендации Национального центра художественного творчества детей и молодёжи</strong>.</li>
+        <li><strong>Методические материалы Республиканского центра экологии и краеведения</strong>.</li>
+    </ul>
+
+    <h3>3. Цель и задачи программы</h3>
+
+    <p><strong>Цель программы</strong> — углубление и расширение основ экологической культуры детей 7–11 лет через осмысление красоты как эстетической, культурной и нравственной ценности, развитие культуры слова и ответственного отношения к природе и обществу.</p>
+
+    <p><strong>Задачи программы</strong> распределяются по трём группам:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа задач</th>
+                <th>Содержание задач</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Образовательные (предметные)</strong></td>
+                <td>Познакомить с основами эстетики как науки о прекрасном; сформировать представления об истории искусства, видах и функциях искусства; расширить знания о народной мудрости и культуре слова; сформировать представления о нравственности, культуре поведения, устойчивом развитии и энергосбережении; познакомить с основами экодизайна и рационального природопользования.</td>
+            </tr>
+            <tr>
+                <td><strong>Развивающие (метапредметные)</strong></td>
+                <td>Развивать эстетическое сознание, эстетическое чувство, эстетический вкус; развивать творческое мышление и творческие способности; развивать культуру речи, культуру мышления, культуру общения; развивать умение анализировать произведения искусства и явления природы; развивать способность к рефлексии и самооценке.</td>
+            </tr>
+            <tr>
+                <td><strong>Воспитательные (личностные)</strong></td>
+                <td>Воспитывать нравственные качества: честность, добросовестность, ответственность, бережливость, патриотизм; формировать активную гражданскую позицию через ответственное отношение к природе и обществу; формировать основы экологически устойчивого стиля жизни; воспитывать уважение к культурному наследию человечества.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>4. Отличительные особенности программы 2-го года</h3>
+
+    <ul>
+        <li><strong>Переход от восприятия к осмыслению:</strong> программа направлена на понимание <em>законов</em> красоты, а не только на её наблюдение.</li>
+        <li><strong>Знакомство с наукой эстетикой:</strong> дети впервые получают систематические представления об эстетике как науке о прекрасном.</li>
+        <li><strong>Углубление в историю искусства:</strong> от первых наскальных рисунков до современного искусства.</li>
+        <li><strong>Развитие культуры слова:</strong> работа с загадками, сказками, пословицами, приметами как сокровищницей народной мудрости.</li>
+        <li><strong>Формирование экологической ответственности:</strong> изучение проблем загрязнения окружающей среды, устойчивого развития, энергосбережения.</li>
+        <li><strong>Практическая направленность:</strong> экологические проекты, энергосберегающие решения, озеленение территории.</li>
+        <li><strong>Преемственность:</strong> программа продолжает и развивает содержание первого года обучения.</li>
+    </ul>
+
+    <h3>5. Организационные условия реализации программы</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Профиль</strong></td><td>Эколого-биологический</td></tr>
+            <tr><td><strong>Образовательная область</strong></td><td>Экология</td></tr>
+            <tr><td><strong>Уровень изучения</strong></td><td>Базовый</td></tr>
+            <tr><td><strong>Возраст воспитанников</strong></td><td>7–11 лет</td></tr>
+            <tr><td><strong>Срок реализации</strong></td><td>1 год (2-й год обучения)</td></tr>
+            <tr><td><strong>Общее количество часов</strong></td><td>144 часа</td></tr>
+            <tr><td><strong>Количество часов в неделю</strong></td><td>4 часа (2 занятия по 2 часа)</td></tr>
+            <tr><td><strong>Продолжительность одного занятия</strong></td><td>2 академических часа (с перерывом)</td></tr>
+            <tr><td><strong>Форма обучения</strong></td><td>Очная</td></tr>
+            <tr><td><strong>Наполняемость группы</strong></td><td>10–15 человек</td></tr>
+            <tr><td><strong>Количество занятий</strong></td><td>72 занятия</td></tr>
+        </tbody>
+    </table>
+
+    <h3>6. Принципы построения программы</h3>
+
+    <ol>
+        <li><strong>Принцип преемственности.</strong> Программа 2-го года продолжает линию 1-го года, углубляя и расширяя её содержание.</li>
+        <li><strong>Принцип единства истины, красоты и добра.</strong> Все разделы объединены идеей гармонии как единства познания, эстетики и нравственности.</li>
+        <li><strong>Принцип системности.</strong> Программа выстроена как система взаимосвязанных разделов — от эстетики к искусству, от искусства к культуре, от культуры к ответственному поведению.</li>
+        <li><strong>Принцип развивающего обучения.</strong> Задания ориентированы на «зону ближайшего развития» ребёнка.</li>
+        <li><strong>Принцип практико-ориентированности.</strong> Значительная часть занятий — практические работы, проекты, экскурсии, прогулки.</li>
+        <li><strong>Принцип интеграции науки и искусства.</strong> Программа объединяет эстетику, экологию, искусство и культуру слова.</li>
+        <li><strong>Принцип вариативности.</strong> Задания разного уровня сложности и разной формы.</li>
+        <li><strong>Принцип связи с жизнью.</strong> Задания связаны с реальной жизнью ребёнка, его семьёй, родным краем.</li>
+        <li><strong>Принцип эмоциональной насыщенности.</strong> Задания вызывают эмоциональный отклик.</li>
+        <li><strong>Принцип природосообразности.</strong> Содержание и формы соответствуют возрасту 7–11 лет.</li>
+    </ol>
+
+    <h2>📅 Учебно-тематический план</h2>
+
+    <p>Учебно-тематический план рассчитан на <strong>72 занятия</strong> (144 часа). Каждое занятие продолжительностью 2 академических часа.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:6%;">№</th>
+                <th style="width:70%;">Тема занятия</th>
+                <th style="width:8%;">Всего</th>
+                <th style="width:8%;">Теория</th>
+                <th style="width:8%;">Практика</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ВВОДНОЕ ЗАНЯТИЕ -->
+            <tr class="section-header"><td colspan="5">ВВОДНОЕ ЗАНЯТИЕ</td></tr>
+            <tr>
+                <td class="num">1</td>
+                <td>Вводное занятие. Гармония вокруг нас</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 1 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 1. ГАРМОНИЯ И КРАСОТА (16 ч)</td></tr>
+            <tr>
+                <td class="num">2</td>
+                <td>Наука о прекрасном. Эстетика</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td>Эстетическое отношение и ценность</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td>Эстетический идеал. Экодизайн</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td>Отношение к прекрасному</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td>Эстетика быта</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td>Признаки гармонии и красоты</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td>Свойства гармонии и красоты</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td>Обобщение по разделу «Гармония и красота»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 2 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 2. ИСКУССТВО В ЖИЗНИ ЧЕЛОВЕКА (16 ч)</td></tr>
+            <tr>
+                <td class="num">10</td>
+                <td>История искусства. Возникновение искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">11</td>
+                <td>Признаки и закономерности искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">12</td>
+                <td>Произведения искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">13</td>
+                <td>Форма и содержание произведения</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">14</td>
+                <td>Восприятие произведений искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">15</td>
+                <td>Нравственность искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">16</td>
+                <td>Искусство как средство воспитания</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">17</td>
+                <td>Обобщение по разделу «Искусство в жизни человека»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 3 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 3. ПРИРОДА И ИСКУССТВО (16 ч)</td></tr>
+            <tr>
+                <td class="num">18</td>
+                <td>Тема природы в искусстве</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">19</td>
+                <td>Классификация видов искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">20</td>
+                <td>Язык искусства о природе</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">21</td>
+                <td>Природа как источник вдохновения</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">22</td>
+                <td>Красота природы в разные времена года</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">23</td>
+                <td>Учимся у природы</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">24</td>
+                <td>Роль природы в развитии личности</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">25</td>
+                <td>Обобщение по разделу «Природа и искусство». Экскурсия</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 4 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 4. ПРЕКРАСНОЕ В СИСТЕМЕ КУЛЬТУРЫ (16 ч)</td></tr>
+            <tr>
+                <td class="num">26</td>
+                <td>Способы отражения прекрасного</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">27</td>
+                <td>История представлений о прекрасном</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">28</td>
+                <td>Прекрасное и точные науки</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">29</td>
+                <td>Научное и художественное познание</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">30</td>
+                <td>Культурные достижения человечества</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">31</td>
+                <td>Значение ценностей искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">32</td>
+                <td>Взаимосвязь видов искусства</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">33</td>
+                <td>Обобщение по разделу «Прекрасное в системе культуры»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 5 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 5. ТВОРЧЕСКИЕ СПОСОБНОСТИ (12 ч)</td></tr>
+            <tr>
+                <td class="num">34</td>
+                <td>Виды творчества. Признаки творчества</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">35</td>
+                <td>Закономерности художественного творчества</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">36</td>
+                <td>Творческое мышление</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">37</td>
+                <td>Развитие творческих способностей</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">38</td>
+                <td>Художественное творчество</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">39</td>
+                <td>Обобщение по разделу «Творческие способности»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 6 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 6. КУЛЬТУРА ПОВЕДЕНИЯ (12 ч)</td></tr>
+            <tr>
+                <td class="num">40</td>
+                <td>Наука о нравственности. Мораль</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">41</td>
+                <td>Источники морального знания</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">42</td>
+                <td>Нравственность в обществе</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">43</td>
+                <td>Принципы нравственности</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">44</td>
+                <td>Нравственная культура личности</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">45</td>
+                <td>Обобщение по разделу «Культура поведения»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 7 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 7. ЯЗЫК И КУЛЬТУРА (12 ч)</td></tr>
+            <tr>
+                <td class="num">46</td>
+                <td>Понятие о языке</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">47</td>
+                <td>Функции языка в обществе</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">48</td>
+                <td>Язык и мышление</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">49</td>
+                <td>Литературный язык</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">50</td>
+                <td>Структура литературного языка</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">51</td>
+                <td>Обобщение по разделу «Язык и культура»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 8 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 8. ТЕМА ПРИРОДЫ В ХУДОЖЕСТВЕННОЙ ЛИТЕРАТУРЕ (12 ч)</td></tr>
+            <tr>
+                <td class="num">52</td>
+                <td>Природа в устном народном творчестве</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">53</td>
+                <td>Поэты о природе</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">54</td>
+                <td>Экологическая тема у писателей</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">55</td>
+                <td>Анализ отношения человека к природе</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">56</td>
+                <td>Разработка энергосберегающего проекта</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+            <tr>
+                <td class="num">57</td>
+                <td>Обобщение по разделу «Тема природы в литературе»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 9 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 9. НАРОДНАЯ МУДРОСТЬ И КУЛЬТУРА СЛОВА (12 ч)</td></tr>
+            <tr>
+                <td class="num">58</td>
+                <td>Загадки. Виды загадок</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">59</td>
+                <td>Сказки. Виды сказок</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">60</td>
+                <td>Пословицы, поговорки, приметы</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">61</td>
+                <td>Что такое слово? Слово как единица языка</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">62</td>
+                <td>Добрые слова. Правила общения</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">63</td>
+                <td>Обобщение по разделу «Народная мудрость и культура слова»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 10 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 10. ЧЕЛОВЕК И ПРИРОДА (12 ч)</td></tr>
+            <tr>
+                <td class="num">64</td>
+                <td>Природа как общечеловеческая ценность</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">65</td>
+                <td>Рациональное природопользование</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">66</td>
+                <td>Отношение к природе в современном обществе</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">67</td>
+                <td>Источники загрязнения окружающей среды</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">68</td>
+                <td>Охрана природы — долг каждого</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">69</td>
+                <td>Обобщение по разделу «Человек и природа»</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- РАЗДЕЛ 11 -->
+            <tr class="section-header"><td colspan="5">РАЗДЕЛ 11. ТРУД И ОБЩЕНИЕ (2 ч)</td></tr>
+            <tr>
+                <td class="num">70</td>
+                <td>Культура труда и общения</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+
+            <!-- ИТОГОВОЕ -->
+            <tr class="section-header"><td colspan="5">ИТОГОВЫЕ ЗАНЯТИЯ (4 ч)</td></tr>
+            <tr>
+                <td class="num">71</td>
+                <td>Права и обязанности. Нравственное сознание</td>
+                <td class="center">2</td><td class="center">1</td><td class="center">1</td>
+            </tr>
+            <tr>
+                <td class="num">72</td>
+                <td>Итоговое занятие. Конкурс и выставка</td>
+                <td class="center">2</td><td class="center">—</td><td class="center">2</td>
+            </tr>
+
+            <!-- ИТОГО -->
+            <tr style="background:#f0fdf4;font-weight:700;color:#166534;">
+                <td colspan="2">ИТОГО</td>
+                <td class="center">144</td>
+                <td class="center">55</td>
+                <td class="center">89</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="green-note">
+        <strong>🌿 Соотношение теории и практики.</strong> Программа построена с преобладанием <strong>практической деятельности</strong> (62% практики, 38% теории), что соответствует возрастным особенностям детей 7–11 лет и требованиям к дополнительному образованию. Практические работы, экскурсии, экологические прогулки, творческие и проектные задания занимают центральное место в каждом занятии.
+    </div>
+
+    <h2>📖 Содержание программы</h2>
+
+    <div class="section-card" data-section="ВВОДНОЕ ЗАНЯТИЕ">
+        <div class="section-title">Вводное занятие (2 ч)</div>
+        <div class="section-content">
+            <p><strong>Занятие 1. Вводное занятие. Гармония вокруг нас.</strong></p>
+            <p><em>Содержание:</em> Знакомство с планом работы объединения «Гармония» второго года обучения. Вводный инструктаж по охране труда и технике безопасности. Воздействие человека на природу. Биологический круговорот веществ как образец безотходной природной технологии. Ответственность за состояние окружающей среды. Практическая работа «Переработка и вторичное использование материалов и оборудования».</p>
+            <p><em>Формы и методы:</em> вводная беседа, рассказ педагога, обсуждение, практическая работа, инструктаж.</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 1">
+        <div class="section-title">Раздел 1. Гармония и красота (16 ч)</div>
+        <div class="section-content">
+            <p><strong>1.1. Наука о прекрасном. Эстетика.</strong></p>
+            <p><em>Занятия 2–4:</em> Предмет эстетики. Эстетическое отношение, эстетическая ценность. Эстетический идеал. Эстетика и познание окружающего мира. Экодизайн. Практическая работа «Эстетическая организация среды».</p>
+
+            <p><strong>1.2. Отношение к прекрасному.</strong></p>
+            <p><em>Занятия 5–6:</em> Общение с прекрасным. Эстетическое отношение человека к миру и к самому себе. Эстетическая деятельность. Эстетическое сознание. Эстетическое чувство. Эстетика быта. Практическая работа «Озеленение территории, прилегающей к образовательному учреждению».</p>
+
+            <p><strong>1.3. Признаки гармонии и красоты.</strong></p>
+            <p><em>Занятия 7–8:</em> Гармония и красота в системе эстетических ценностей. История развития представлений о гармонии и красоте. Примеры, иллюстрирующие природную гармонию и красоту. Практическая работа «Свойства гармонии и красоты».</p>
+
+            <p><strong>1.4. Обобщение знаний, умений и навыков по разделу «Гармония и красота».</strong></p>
+            <p><em>Занятие 9:</em> Основные свойства гармонии: соразмерность, согласованность отдельных сторон предметов и явлений, органическая взаимосвязь всех компонентов художественного произведения. Основные свойства красоты: совершенство, гармоничность, выразительность, завершённость. Практическая работа «Принципы экодизайна».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 2">
+        <div class="section-title">Раздел 2. Искусство в жизни человека (16 ч)</div>
+        <div class="section-content">
+            <p><strong>2.1. История искусства.</strong></p>
+            <p><em>Занятия 10–11:</em> Возникновение искусства. Искусство как социальное явление. Признаки искусства. Закономерности развития искусства. Практическая работа «Искусство в прошлом и настоящем».</p>
+
+            <p><strong>2.2. Произведения искусства.</strong></p>
+            <p><em>Занятия 12–14:</em> Форма, структура и содержание художественного произведения. Восприятие произведений искусства. Практическая работа «Выразительные средства искусства».</p>
+
+            <p><strong>2.3. Нравственность искусства.</strong></p>
+            <p><em>Занятия 15–16:</em> Искусство как средство воспитания. Нравственно-эстетическое развитие личности человека. Нравственные качества, формируемые в ходе занятий различными видами искусства. Практическая работа «Идея добра в искусстве».</p>
+
+            <p><strong>2.4. Обобщение знаний, умений и навыков по разделу «Искусство в жизни человека».</strong></p>
+            <p><em>Занятие 17:</em> Понятие о функциях художественной деятельности. Создание и восприятие художественных ценностей. Практическая работа «Времена года в искусстве».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 3">
+        <div class="section-title">Раздел 3. Природа и искусство (16 ч)</div>
+        <div class="section-content">
+            <p><strong>3.1. Тема природы в искусстве.</strong></p>
+            <p><em>Занятия 18–20:</em> Классификация видов искусства. Примеры, иллюстрирующие отдельные виды искусства и их роль в жизни человека. Язык искусства, отражающий природные явления и объекты. Практическая работа «Времена года в музыке».</p>
+
+            <p><strong>3.2. Природа как источник вдохновения.</strong></p>
+            <p><em>Занятия 21–22:</em> Красота природы в различные поры года. Способы отражения красоты природы средствами искусства. Практическая работа «Источники вдохновения».</p>
+
+            <p><strong>3.3. Учимся у природы.</strong></p>
+            <p><em>Занятия 23–24:</em> Формы проявления прекрасного. Иллюстрация прекрасных природных объектов и явлений. Роль природы и искусства в развитии личности человека. Воспитательный потенциал природы и искусства. Практическая работа «Культура здорового образа жизни».</p>
+
+            <p><strong>3.4. Обобщение знаний, умений и навыков по разделу «Природа и искусство».</strong></p>
+            <p><em>Занятие 25:</em> Характеристика прекрасного в природе и искусстве. Примеры, иллюстрирующие природные художественные образы. Искусство как целостная система. Понятие о творческой личности. Создание произведений искусства. Искусство как форма общественного сознания. Практическая работа «Система искусства». Экскурсия «Подготовка природы к зиме».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 4">
+        <div class="section-title">Раздел 4. Прекрасное в системе культуры (16 ч)</div>
+        <div class="section-content">
+            <p><strong>4.1. Способы отражения прекрасного.</strong></p>
+            <p><em>Занятия 26–27:</em> История развития представлений о прекрасном. Прекрасное и точные науки. Научное и художественное познание. Практическая работа «Восприятие прекрасного».</p>
+
+            <p><strong>4.2. Культурные достижения человечества.</strong></p>
+            <p><em>Занятия 28–30:</em> Классификация культурных достижений человечества. Примеры, иллюстрирующие величайшие изобретения человечества. Примеры, иллюстрирующие особенности эстетического освоения действительности. Практическая работа «История письма».</p>
+
+            <p><strong>4.3. Значение ценностей искусства и культуры.</strong></p>
+            <p><em>Занятия 31–32:</em> Роль искусства в современном обществе. Восприятие ценностей искусства и культуры. Практическая работа «Творчество».</p>
+
+            <p><strong>4.4. Обобщение знаний, умений и навыков по разделу «Прекрасное в системе культуры».</strong></p>
+            <p><em>Занятие 33:</em> История искусства и культуры. Взаимосвязь отдельных видов искусства. Ориентация в мире художественных ценностей. Практическая работа «Использование возобновляемой энергии». Экскурсия «Природа зимой».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 5">
+        <div class="section-title">Раздел 5. Творческие способности (12 ч)</div>
+        <div class="section-content">
+            <p><strong>5.1. Виды творчества.</strong></p>
+            <p><em>Занятия 34–35:</em> Признаки творчества. Закономерности художественного творчества. Практическая работа «Творческая инновация».</p>
+
+            <p><strong>5.2. Творческое мышление.</strong></p>
+            <p><em>Занятия 36–37:</em> Сравнение творческих и исполнительских способностей. Пути развития творческого мышления и творческих способностей. Практическая работа «Анализ художественных произведений».</p>
+
+            <p><strong>5.3. Художественное творчество.</strong></p>
+            <p><em>Занятие 38:</em> Классификация видов художественного творчества. Восприятие художественных произведений. Практическая работа «Художественная композиция».</p>
+
+            <p><strong>5.4. Обобщение знаний, умений и навыков по разделу «Творческие способности».</strong></p>
+            <p><em>Занятие 39:</em> Примеры оригинальных творческих решений художников, музыкантов, писателей, актёров и режиссёров. Неповторимость произведений искусства. Практическая работа «Художественная ценность прекрасного».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 6">
+        <div class="section-title">Раздел 6. Культура поведения (12 ч)</div>
+        <div class="section-content">
+            <p><strong>6.1. Наука о нравственности.</strong></p>
+            <p><em>Занятия 40–41:</em> Мораль. Источники морального знания. Средства выражения моральных требований. Регуляция взаимоотношений между людьми в обществе. Практическая работа «Правила взаимодействия в различных сферах общественной жизни».</p>
+
+            <p><strong>6.2. Нравственность в обществе.</strong></p>
+            <p><em>Занятия 42–43:</em> Принципы нравственности. Воспитание нравственного поведения. Система правил поведения. Практическая работа «Нравственная оценка поступков».</p>
+
+            <p><strong>6.3. Нравственная культура личности.</strong></p>
+            <p><em>Занятие 44:</em> Примеры, иллюстрирующие проявление нравственных качеств. Роль искусства и спорта в формировании нравственно-волевых качеств личности. Практическая работа «Система нравственных качеств».</p>
+
+            <p><strong>6.4. Обобщение знаний, умений и навыков по разделу «Культура поведения».</strong></p>
+            <p><em>Занятие 45:</em> История развития нравственных представлений. Народная мудрость о взаимоотношениях между людьми в обществе. Культура поведения. Нормы поведения. Идеалы поведения. Общественная значимость нравственного поведения. Практическая работа «Правила поведения в природе».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 7">
+        <div class="section-title">Раздел 7. Язык и культура (12 ч)</div>
+        <div class="section-content">
+            <p><strong>7.1. Понятие о языке.</strong></p>
+            <p><em>Занятия 46–47:</em> Язык как величайшее достояние человечества. Функции языка в обществе. Примеры, иллюстрирующие основные виды языков и их функции. Практическая работа «Язык как средство общения».</p>
+
+            <p><strong>7.2. Язык и мышление.</strong></p>
+            <p><em>Занятие 48:</em> Понятие о мышлении. Признаки творческого и научного мышления. Народная мудрость о мышлении. Художественное и научное познание окружающего мира. Практическая работа «Культура мышления».</p>
+
+            <p><strong>7.3. Литературный язык.</strong></p>
+            <p><em>Занятия 49–50:</em> Понятие о литературном творчестве. Основные этапы формирования литературного языка. Структура литературного языка. Роль литературного языка в воспитании личности. Практическая работа «Классификация структурных элементов литературного языка».</p>
+
+            <p><strong>7.4. Обобщение знаний, умений и навыков по разделу «Язык и культура».</strong></p>
+            <p><em>Занятие 51:</em> История формирования представлений о языке. Система знаний о языке. Структура языка. Язык как инструмент мышления. Язык и нравственность. Красота природы, переданная средствами литературного языка. Практическая работа «Язык и искусство».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 8">
+        <div class="section-title">Раздел 8. Тема природы в художественной литературе (12 ч)</div>
+        <div class="section-content">
+            <p><strong>8.1. Природа в устном народном творчестве.</strong></p>
+            <p><em>Занятие 52:</em> Народные сказки, песни, загадки, пословицы и поговорки о природе. Народные приметы. Практическая работа «Сочинение сказок и загадок о природе».</p>
+
+            <p><strong>8.2. Поэты о природе.</strong></p>
+            <p><em>Занятие 53:</em> Тема природы в творчестве отечественных и зарубежных поэтов. Песни на тему охраны природы. Практическая работа «Формирование навыков выразительного чтения стихотворений о природе».</p>
+
+            <p><strong>8.3. Экологическая тема у писателей.</strong></p>
+            <p><em>Занятия 54–55:</em> Роль чтения в формировании личности человека. Виды экологических проблем, поднятых писателями. Первые упоминания о безответственном отношении к природе в художественных произведениях. Практическая работа «Анализ отношения человека к природе с момента появления первых цивилизаций и до настоящего времени».</p>
+
+            <p><strong>8.4. Обобщение знаний, умений и навыков по разделу «Тема природы в художественной литературе».</strong></p>
+            <p><em>Занятия 56–57:</em> Художественная литература о природе и о характере отношения человека к окружающей среде. Отражение красоты природы средствами художественного слова. Практические шаги, предпринимаемые в целях перехода от обсуждения экологических проблем к реально выполнимым в школе и дома мерам ресурсо- и энергосбережения. Практическая работа «Разработка стратегии энергосберегающего проекта».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 9">
+        <div class="section-title">Раздел 9. Народная мудрость и культура слова (12 ч)</div>
+        <div class="section-content">
+            <p><strong>9.1. Загадки.</strong></p>
+            <p><em>Занятие 58:</em> Виды загадок. Тематика народных загадок. Литературная форма загадок. Практическая работа «Составление и отгадывание загадок».</p>
+
+            <p><strong>9.2. Сказки.</strong></p>
+            <p><em>Занятие 59:</em> Виды сказок. Тематика народных сказок. Представления народа о природе и общественной нравственности, выраженные в сказках. Язык сказок. Практическая работа «Составление сказок».</p>
+
+            <p><strong>9.3. Пословицы, поговорки и народные приметы.</strong></p>
+            <p><em>Занятие 60:</em> Опыт народа, выраженный в пословицах, поговорках и народных приметах. Основные виды пословиц и поговорок. Связь народных примет с трудовой деятельностью крестьянина. Воспитательное значение пословиц и поговорок. Практическая работа «Народные высказывания».</p>
+
+            <p><strong>9.4. Что такое слово?</strong></p>
+            <p><em>Занятие 61:</em> Слово как основная единица языка. Основные функции слова. О чём может рассказать название природного явления или объекта? Народные и научные названия объектов природы. Словарный состав языка. Виды словарей. Практическая работа «Звук и смысл».</p>
+
+            <p><strong>9.5. Добрые слова. Правила общения.</strong></p>
+            <p><em>Занятие 62:</em> Почему мы говорим добрые слова? Культура слова как составляющая общей культуры личности. Роль чтения в формировании культуры слова. Культура устного и письменного слова. Умение слушать. Культура вежливого тона. Практическая работа «Правила вежливости».</p>
+
+            <p><strong>9.6. Обобщение знаний, умений и навыков по разделу «Народная мудрость и культура слова».</strong></p>
+            <p><em>Занятие 63:</em> Значение устного народного творчества. Примеры, иллюстрирующие представления народа о природе, человеке и обществе. Народная мудрость о добре. Краткость и точность народных высказываний. Научная терминология в природоведении. Практическая работа «Классификация форм народной мудрости». Экскурсия «Природа нашего края».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 10">
+        <div class="section-title">Раздел 10. Человек и природа (12 ч)</div>
+        <div class="section-content">
+            <p><strong>10.1. Природа как общечеловеческая ценность.</strong></p>
+            <p><em>Занятие 64:</em> Понятие о природопользовании. Природные ресурсы. Характеристика рационального и нерационального природопользования. Теория и практика ответственного отношения к природе. Понятие о бережливости, ответственности и патриотизме. Конкурсная программа «Азбука бережливости».</p>
+
+            <p><strong>10.2. Отношение к природе.</strong></p>
+            <p><em>Занятие 65:</em> История взаимодействия человека и природы. Виды отношений к природе. Понятие об экологической культуре. Тема бережного отношения к природе в устном народном творчестве. Экологическое мышление. Причинно-следственные связи природы. Экологический проект «Время действовать: экономия, бережливость и ответственность».</p>
+
+            <p><strong>10.3. Отношение к природе в современном обществе.</strong></p>
+            <p><em>Занятие 66:</em> Современные экологические проблемы как следствие потребительского отношения к природе. Понятие об устойчивом развитии общества. Принципы устойчивого развития. Деловая игра «Устойчивый регион».</p>
+
+            <p><strong>10.4. Источники загрязнения окружающей среды.</strong></p>
+            <p><em>Занятие 67:</em> Воздействие хозяйственной деятельности человека на окружающую среду. Экологические проблемы городов. Меры, предпринимаемые в целях снижения вредных выбросов в окружающую среду. Интеллектуальная игра «Бумеранг устойчивости: причинно-следственные связи устойчивости».</p>
+
+            <p><strong>10.5. Охрана природы — долг каждого.</strong></p>
+            <p><em>Занятие 68:</em> Понятие об охране природы. Задачи охраны природы. Принципы охраны природы. Примеры, иллюстрирующие природоохранные мероприятия. Правила поведения в природе. Взаимосвязь нравственной и экологической культуры. Тренинг «Не навреди природе и себе». Дискуссионная программа «"Устойчивое" использование товаров потребления».</p>
+
+            <p><strong>10.6. Обобщение знаний, умений и навыков по разделу «Человек и природа».</strong></p>
+            <p><em>Занятие 69:</em> Экологическая культура. Рациональное природопользование. Пути решения экологических проблем. Устойчивое развитие и замкнутые циклы производства. Энергосбережение и охрана природы. Бережливость, ответственность, гуманность и патриотизм. Практическая работа «Принципы устойчивого развития общества». Экологические прогулки «Зелёными маршрутами природы» (1 ч), «Природные взаимосвязи» (1 ч).</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="РАЗДЕЛ 11">
+        <div class="section-title">Раздел 11. Труд и общение (2 ч)</div>
+        <div class="section-content">
+            <p><strong>11.1. Культура труда и общения.</strong></p>
+            <p><em>Занятие 70:</em> Народная мудрость о труде. Значение труда для человека. Отношение к труду. Воспитывающая роль труда. Характер трудовой деятельности человека. Правила безопасного труда. Дружба и взаимопомощь. Честь и достоинство. Честность и добросовестность. Нравственная красота человека. Моральные идеалы и моральные ценности. Нравственная оценка мыслей и поступков. Практическая работа «Пословицы и поговорки различных народов о дружбе, взаимопомощи и труде».</p>
+        </div>
+    </div>
+
+    <div class="section-card" data-section="ИТОГОВЫЕ ЗАНЯТИЯ">
+        <div class="section-title">Итоговые занятия (4 ч)</div>
+        <div class="section-content">
+            <p><strong>Занятие 71. Права и обязанности. Нравственное сознание.</strong></p>
+            <p><em>Содержание:</em> Права и обязанности человека и гражданина. Понятие о нравственном сознании. Нравственные отношения и нравственные чувства. Роль труда в формировании личности человека. Ответственное отношение к природе, к себе и к окружающим людям. Практическая работа «Можно ли улучшить природу?».</p>
+
+            <p><strong>Занятие 72. Итоговое занятие. Конкурс и выставка.</strong></p>
+            <p><em>Содержание:</em> Демонстрация результатов, полученных учащимися при реализации энерго- и ресурсосберегающих технологий. Конкурс практических энергетических решений. Выставка творческих работ детей. Рефлексия состоявшегося взаимодействия. Награждение по номинациям. Подведение итогов года.</p>
+        </div>
+    </div>
+
+    <h2>🎯 Ожидаемые результаты</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа результатов</th>
+                <th>Показатели</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Личностные</strong></td>
+                <td>
+                    <ul>
+                        <li>сформированность эстетического сознания, эстетического чувства, эстетического вкуса;</li>
+                        <li>проявление нравственных качеств: честности, добросовестности, ответственности, бережливости, патриотизма;</li>
+                        <li>устойчивый интерес к искусству, культуре, природе;</li>
+                        <li>основы экологически устойчивого стиля жизни;</li>
+                        <li>потребность в творческой деятельности и общении с прекрасным.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Метапредметные</strong></td>
+                <td>
+                    <ul>
+                        <li>умение анализировать произведения искусства и явления природы;</li>
+                        <li>умение выражать свои чувства и мысли через художественную деятельность;</li>
+                        <li>умение работать с различными источниками информации;</li>
+                        <li>умение работать в группе, обсуждать, представлять результаты проектов;</li>
+                        <li>умение применять знания в творческой и практической деятельности.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Предметные</strong></td>
+                <td>
+                    <ul>
+                        <li>знание основ эстетики как науки о прекрасном;</li>
+                        <li>знание истории искусства, видов и функций искусства;</li>
+                        <li>знание народной мудрости и культуры слова;</li>
+                        <li>знание основ нравственности и культуры поведения;</li>
+                        <li>знание основ устойчивого развития и энергосбережения;</li>
+                        <li>умение выполнять творческие и проектные работы.</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📊 Формы подведения итогов</h2>
+
+    <ul>
+        <li><strong>Входная диагностика (сентябрь)</strong> — определение исходного уровня.</li>
+        <li><strong>Текущая диагностика (в течение года)</strong> — педагогическое наблюдение, анализ творческих работ, опорно-аналитические таблицы.</li>
+        <li><strong>Промежуточная диагностика (декабрь)</strong> — контрольные игровые занятия, выставки, защита проектов.</li>
+        <li><strong>Итоговая диагностика (май)</strong> — конкурс практических энергетических решений, выставка творческих работ, портфолио.</li>
+    </ul>
+
+    <h2>🛠️ Формы и методы реализации программы</h2>
+
+    <div class="methods-grid">
+        <div class="method-group">
+            <div class="method-group-title">📖 Словесные методы</div>
+            <ul>
+                <li>рассказ педагога</li>
+                <li>беседа (вводная, эвристическая, обобщающая)</li>
+                <li>объяснение</li>
+                <li>чтение художественных текстов</li>
+                <li>обсуждение, дискуссия</li>
+            </ul>
+        </div>
+        <div class="method-group">
+            <div class="method-group-title">👁️ Наглядные методы</div>
+            <ul>
+                <li>демонстрация иллюстраций, репродукций</li>
+                <li>показ видеофрагментов, презентаций</li>
+                <li>наблюдение в природе</li>
+                <li>экскурсии, экологические прогулки</li>
+                <li>работа с картами, схемами, таблицами</li>
+            </ul>
+        </div>
+        <div class="method-group">
+            <div class="method-group-title">✋ Практические методы</div>
+            <ul>
+                <li>практические работы</li>
+                <li>творческие работы (рисование, лепка, аппликация)</li>
+                <li>изготовление поделок из природного материала</li>
+                <li>эксперименты и опыты</li>
+                <li>экологические проекты</li>
+            </ul>
+        </div>
+        <div class="method-group">
+            <div class="method-group-title">🎭 Игровые методы</div>
+            <ul>
+                <li>дидактические игры</li>
+                <li>подвижные игры</li>
+                <li>сюжетно-ролевые игры</li>
+                <li>деловые игры</li>
+                <li>интеллектуальные игры</li>
+                <li>игровые конкурсные программы</li>
+            </ul>
+        </div>
+        <div class="method-group">
+            <div class="method-group-title">🤝 Методы взаимодействия</div>
+            <ul>
+                <li>работа в парах</li>
+                <li>работа в малых группах</li>
+                <li>коллективное творческое дело</li>
+                <li>метод проектов</li>
+                <li>взаимообучение</li>
+            </ul>
+        </div>
+        <div class="method-group">
+            <div class="method-group-title">🎯 Методы стимулирования</div>
+            <ul>
+                <li>поощрение</li>
+                <li>создание ситуации успеха</li>
+                <li>познавательная игра</li>
+                <li>соревнование</li>
+                <li>эмоциональное воздействие</li>
+            </ul>
+        </div>
+    </div>
+
+    <p><strong>Формы организации занятий:</strong></p>
+
+    <ul>
+        <li><strong>Теоретические:</strong> лекция, семинар, беседа, объяснение, рассказ, демонстрация.</li>
+        <li><strong>Практические:</strong> тренинг, игра, экскурсия, творческая мастерская, турнир, соревнование, выставка, защита проекта.</li>
+        <li><strong>Комбинированные:</strong> сочетание теоретической и практической частей в рамках одного занятия.</li>
+        <li><strong>Интегрированные:</strong> занятия на стыке экологии и искусства (музыка, живопись, литература, театр).</li>
+        <li><strong>Проектные:</strong> разработка и защита экологических и энергосберегающих проектов.</li>
+    </ul>
+
+    <h2>📚 Литература и информационные ресурсы</h2>
+
+    <h3>Нормативные документы</h3>
+
+    <ol>
+        <li>Кодекс Республики Беларусь об образовании : с изм. и доп. — Минск : Национальный центр правовой информации Республики Беларусь, 2025.</li>
+        <li>Постановление Министерства образования Республики Беларусь от 20 октября 2023 года № 325 «О типовых программах дополнительного образования детей и молодёжи».</li>
+        <li>Закон Республики Беларусь от 26 ноября 1992 г. № 1982-XII «Об охране окружающей среды».</li>
+        <li>Концепция непрерывного экологического образования в Республике Беларусь.</li>
+    </ol>
+
+    <h3>Методические материалы</h3>
+
+    <ol start="5">
+        <li>Методические рекомендации по разработке образовательно-методических комплексов / Национальный центр художественного творчества детей и молодёжи. — Минск, 2023.</li>
+        <li>Методические материалы по организации эколого-биологической деятельности детей / Республиканский центр экологии и краеведения. — Минск, 2024.</li>
+        <li>Воспитание экологической культуры детей и молодёжи : сборник методических материалов. — Минск : НИО, 2023.</li>
+    </ol>
+
+    <h3>Психолого-педагогическая литература</h3>
+
+    <ol start="8">
+        <li>Выготский, Л.С. Психология развития человека / Л.С. Выготский. — М. : Смысл, 2005.</li>
+        <li>Николаева, С.Н. Юный эколог : программа экологического воспитания детей / С.Н. Николаева. — М. : Мозаика-Синтез, 2019.</li>
+        <li>Глазачев, С.Н. Экологическая культура и образование / С.Н. Глазачев. — М. : Горизонт, 2019.</li>
+        <li>Берюхова, Е.К. Экологические ситуации в работе с детьми / Е.К. Берюхова, Н.В. Груздева. — М. : Просвещение, 2018.</li>
+    </ol>
+
+    <h3>Литература по искусству, эстетике, культуре</h3>
+
+    <ol start="12">
+        <li>Неменский, Б.М. Мудрость красоты : о проблемах эстетического воспитания / Б.М. Неменский. — М. : Просвещение, 2018.</li>
+        <li>Левин, С.Д. Ваш ребёнок рисует / С.Д. Левин. — М. : Педагогика, 2019.</li>
+        <li>Рылова, Н.Т. Изобразительное искусство и экология / Н.Т. Рылова. — СПб. : Питер, 2020.</li>
+        <li>Борев, Ю.Б. Эстетика / Ю.Б. Борев. — М. : Политиздат, 2018.</li>
+        <li>Каган, М.С. Философия культуры / М.С. Каган. — СПб. : Петрополис, 2019.</li>
+    </ol>
+
+    <h3>Литература по устойчивому развитию и энергосбережению</h3>
+
+    <ol start="17">
+        <li>Моисеев, Н.Н. Судьба цивилизации. Путь Разума / Н.Н. Моисеев. — М. : МНЭПУ, 2018.</li>
+        <li>Данилов-Данильян, В.И. Устойчивое развитие / В.И. Данилов-Данильян. — М. : Прогресс, 2019.</li>
+        <li>Энергосбережение в школе и дома : методические материалы. — Минск : НИО, 2023.</li>
+    </ol>
+
+    <h3>Литература для воспитанников</h3>
+
+    <ol start="20">
+        <li>Сладков, Н.И. Лесные тайнички / Н.И. Сладков. — М. : Детская литература, 2018.</li>
+        <li>Бианки, В.В. Лесная газета / В.В. Бианки. — М. : Детская литература, 2019.</li>
+        <li>Пришвин, М.М. Кладовая солнца / М.М. Пришвин. — М. : Детская литература, 2018.</li>
+        <li>Паустовский, К.Г. Рассказы о природе / К.Г. Паустовский. — М. : Детская литература, 2019.</li>
+        <li>Сборники русских и белорусских народных сказок, пословиц, загадок, примет о природе.</li>
+    </ol>
+
+    <h3>Информационные ресурсы</h3>
+
+    <ol start="25">
+        <li>Официальный сайт Министерства образования Республики Беларусь — edu.gov.by</li>
+        <li>Национальный центр художественного творчества детей и молодёжи — method.nchtdm.by</li>
+        <li>Республиканский центр экологии и краеведения — rcek.by</li>
+        <li>Национальный образовательный портал — adu.by</li>
+        <li>Национальный правовой интернет-портал — pravo.by</li>
+    </ol>
+
+    <div class="green-note">
+        <strong>🌿 Учебно-методическое обеспечение программы:</strong>
+        <ul>
+            <li>Рабочая тетрадь «Гармония» (вторая часть заданий).</li>
+            <li>Сборник диагностических материалов к ОМК «Культура».</li>
+            <li>Опорные конспекты по темам программы.</li>
+            <li>Наборы дидактических карточек, схем, раздаточного материала.</li>
+            <li>Аудиозаписи звуков природы, музыкальные фрагменты.</li>
+            <li>Репродукции картин художников-пейзажистов.</li>
+            <li>Комплект для практических работ (краски, карандаши, пластилин, природный материал).</li>
+            <li>Материалы для экологических проектов и энергосберегающих решений.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Понять красоту — значит понять язык, на котором говорит с нами мир. Научиться создавать красоту — значит научиться отвечать миру. А научиться беречь красоту — значит научиться жить в согласии с ним».
+        <span class="quote-author">— из концепции программы 2-го года обучения «Гармония»</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="program.html" class="button">← К программе 1-го года обучения</a>
+        <a href="preface.html" class="button secondary">📋 К аннотации ОМК «Культура»</a>
+        <a href="plan.html" class="button secondary">📋 К структурному плану диагностики</a>
+        <a href="index.html" class="button secondary">🏠 На главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Программа объединения по интересам «Гармония» (2-й год обучения)</p>
+        <p>Эколого-биологический профиль | Образовательная область «Экология» | Для детей 7–11 лет | 144 часа</p>
+    </footer>
+
+</div>
+</body>
+</html>
