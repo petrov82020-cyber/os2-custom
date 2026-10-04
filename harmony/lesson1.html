@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 1. Вводное занятие. Понятие о прекрасном — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ЗАНЯТИИ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content {
+            flex: 1;
+        }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Речь педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Действия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🎭 Игра";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .safety-block {
+            background: #fff3e3;
+            border: 2px solid #f97316;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .safety-block::before {
+            content: "⚠️ Охрана труда";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #f97316;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .safety-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🪞 Рефлексия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px 16px;
+            border-top: 4px solid #16a34a;
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.85rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Методический анализ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .beauty-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="program.html" class="back-link">← К программе «Гармония» (1-й год)</a>
+    <a href="section1.html" class="back-link" style="margin-left: 15px;">← К разделу 1 рабочей тетради</a>
+    <a href="index.html" class="back-link" style="margin-left: 15px;">← На главную курса</a>
+
+    <h1>🌸 Занятие 1. Вводное занятие. Понятие о прекрасном</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Тип занятия:</strong> вводное, комбинированное (теория + практика).</p>
+        <p><strong>Цель занятия:</strong> сформировать у детей первоначальное представление о прекрасном, познакомить с источниками прекрасного, раскрыть понятие экологически устойчивого стиля жизни, провести вводный инструктаж по охране труда и технике безопасности.</p>
+        <p><strong>Задачи занятия:</strong></p>
+        <ul>
+            <li><strong>Образовательные:</strong> познакомить с понятием «прекрасное», «источники прекрасного», «экологически устойчивый стиль жизни»; сформировать умение определять свойства прекрасного на примерах природных объектов.</li>
+            <li><strong>Развивающие:</strong> развивать эстетическое восприятие, наблюдательность, речь, умение выражать свои мысли и чувства; развивать навыки работы в группе.</li>
+            <li><strong>Воспитательные:</strong> воспитывать эмоционально-ценностное отношение к природе и искусству; формировать основы экологической культуры и экологически устойчивого стиля жизни.</li>
+        </ul>
+        <p><strong>Оборудование и материалы:</strong> рабочая тетрадь «Гармония», цветные карандаши, иллюстрации с изображениями природы (пейзажи, растения, животные), репродукции картин художников-пейзажистов, аудиозапись со звуками природы, карточки с источниками прекрасного, демонстрационные плакаты по технике безопасности.</p>
+    </div>
+
+    <div class="quote">
+        «Красота спасёт мир». — Ф.М. Достоевский
+        <span class="quote-author">Эта фраза станет ключевой идеей всего курса «Гармония». На первом занятии мы попробуем понять: почему красота так важна для человека и какое отношение она имеет к природе?</span>
+    </div>
+
+    <h2>📋 Структура занятия (2 академических часа = 90 минут с перерывом)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:55%;">Этап занятия</th>
+                <th style="width:12%;">Время</th>
+                <th style="width:25%;">Методы и формы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td>Организационный момент. Приветствие. Знакомство</td>
+                <td class="center">5 мин</td>
+                <td>Игра-приветствие, беседа</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td>Вводный инструктаж по охране труда и технике безопасности</td>
+                <td class="center">10 мин</td>
+                <td>Рассказ педагога, демонстрация, беседа</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td>Введение в тему. Что такое красота?</td>
+                <td class="center">10 мин</td>
+                <td>Вводная беседа, демонстрация иллюстраций</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td>Источники прекрасного. Природа — первый источник</td>
+                <td class="center">15 мин</td>
+                <td>Рассказ педагога, работа с карточками, игра</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td>Искусство, человек, труд, слово, нравственность как источники прекрасного</td>
+                <td class="center">15 мин</td>
+                <td>Рассказ педагога, обсуждение, демонстрация</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><strong>Перерыв</strong></td>
+                <td class="center">10 мин</td>
+                <td>Динамическая пауза</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td>Экологически устойчивый стиль жизни</td>
+                <td class="center">10 мин</td>
+                <td>Беседа, игровые ситуации</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td>Практическая работа «Свойства прекрасного»</td>
+                <td class="center">15 мин</td>
+                <td>Практическая работа, работа в тетради</td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td>Рефлексия. Подведение итогов</td>
+                <td class="center">5 мин</td>
+                <td>Беседа, самооценка</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ЭТАП 1 -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Организационный момент. Приветствие. Знакомство <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Создание положительного эмоционального настроя. Знакомство с детьми. Установление контакта.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Здравствуйте, дорогие ребята! Я рада приветствовать вас в нашем объединении, которое называется "Гармония". Меня зовут [имя педагога]. Сегодня у нас с вами первое занятие, и я хочу, чтобы оно запомнилось вам надолго.</em></p>
+        <p><em>Давайте сначала познакомимся. Я предлагаю каждому из вас назвать своё имя и сказать одно слово о том, что вам больше всего нравится в природе. Например: "Меня зовут Маша, и мне нравится, когда светит солнце"».</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра-приветствие «Моё любимое в природе».</strong></p>
+        <p>Дети по кругу называют своё имя и говорят, что им больше всего нравится в природе (солнце, цветы, бабочки, река, лес, дождь и т.д.). Педагог записывает ответы на доске, чтобы показать разнообразие детских предпочтений.</p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Приветствует детей, создаёт доброжелательную атмосферу.</li>
+            <li>Организует игру-знакомство.</li>
+            <li>Фиксирует ответы детей на доске, показывая разнообразие.</li>
+            <li>Подводит итог: «Как много красивого в природе, и у каждого оно своё!»</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 2 -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Вводный инструктаж по охране труда и технике безопасности <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Ознакомление детей с правилами безопасного поведения на занятиях, в образовательном учреждении и в природе.</div>
+        </div>
+    </div>
+
+    <div class="safety-block">
+        <p><strong>Что нужно рассказать детям:</strong></p>
+        <ul>
+            <li>Правила поведения в учебном кабинете: не бегать, не толкаться, не трогать без разрешения оборудование.</li>
+            <li>Правила работы с материалами и инструментами (карандаши, краски, ножницы, клей): использовать по назначению, не направлять на себя и других, после работы убирать на место.</li>
+            <li>Правила поведения на экскурсиях и прогулках: слушать педагога, не уходить с маршрута, не срывать незнакомые растения, не трогать животных, не пробовать ничего на вкус.</li>
+            <li>Правила безопасного поведения в природе: не разжигать костёр без взрослых, не оставлять мусор, не шуметь, соблюдать правила экологической этики.</li>
+            <li>Правила личной гигиены: мыть руки после работы с природным материалом, содержать рабочее место в чистоте.</li>
+        </ul>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, прежде чем мы отправимся в увлекательное путешествие по миру красоты, нам нужно запомнить несколько важных правил. Эти правила помогут нам сохранить здоровье и безопасность.</em></p>
+        <p><em>Первое правило: на занятиях мы работаем дружно, не толкаемся и не мешаем друг другу. Второе: все материалы и инструменты мы используем только по назначению. Третье: на прогулках и экскурсиях мы идём вместе с педагогом, не убегаем и не шумим. Четвёртое: в природе мы — гости, поэтому ведём себя тихо, не мусорим, не рвём растения и не обижаем животных. Пятое: после занятия мы всегда убираем своё рабочее место».</em></p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно!</strong> Проведите инструктаж в доступной для детей форме, используя наглядные плакаты и примеры. В конце инструктажа задайте детям 2–3 контрольных вопроса, чтобы убедиться, что они усвоили правила. Например: «Можно ли на занятии направлять ножницы на соседа?», «Что нужно сделать после работы с природным материалом?».
+    </div>
+
+    <!-- ЭТАП 3 -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Введение в тему. Что такое красота? <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Формирование первоначального представления о прекрасном через чувственное восприятие и беседу.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, закройте на минуту глаза и представьте себе что-то очень красивое. Что вы увидели? Может быть, закат над рекой? Или бабочку на цветке? Или улыбку мамы? Каждый из вас увидел что-то своё.</em></p>
+        <p><em>А что такое красота? Почему один и тот же предмет один человек считает красивым, а другой — нет? Почему закат над морем заставляет нас замолчать и любоваться, а первая капель весной вызывает улыбку?</em></p>
+        <p><em>Красота — это то, что вызывает в нас радость, удивление, восхищение. Красота не поддаётся измерению линейкой, но каждый человек узнаёт её, когда встречает. Красота живёт в природе, в искусстве, в человеке, в труде, в слове и в нравственности. Сегодня мы поговорим о том, где живёт красота и почему она так важна для человека».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Просит детей закрыть глаза и представить что-то красивое.</li>
+            <li>Задаёт вопросы: «Что вы представили?», «Какие чувства вы испытали?»</li>
+            <li>Подводит детей к определению: красота — это то, что вызывает радость, удивление, восхищение.</li>
+            <li>Записывает на доске ключевое слово: «ПРЕКРАСНОЕ».</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет педагогу.</strong> На этом этапе важно не давать готовых определений, а подвести детей к ним через вопросы и размышления. Используйте приём «мозгового штурма»: дети предлагают свои варианты, педагог обобщает.
+    </div>
+
+    <!-- ЭТАП 4 -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Источники прекрасного. Природа — первый источник <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Знакомство детей с источниками прекрасного, акцент на природе как главном источнике.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Откуда же берётся красота? Где её искать? У прекрасного есть несколько главных источников. Первый и самый важный — это ПРИРОДА.</em></p>
+        <p><em>Посмотрите на эти иллюстрации. Что вы видите? Закаты и рассветы, леса и луга, реки и озёра, цветы и птицы — всё это восхищало людей с древнейших времён. Природа — первый и главный художник на Земле. Задолго до того, как человек взял в руки кисть, природа уже создавала удивительные картины.</em></p>
+        <p><em>Но красота природы бывает разной. Иногда она величественная — это горы, океан, грозовое небо. Иногда — маленькая и тихая: капля росы, снежинка, травинка. А иногда — бурная: водопад, шторм, ливень. Вся эта красота — источник вдохновения для человека».</em></p>
+    </div>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌅</span>
+            <div class="beauty-title">Природа в великом</div>
+            <div class="beauty-text">Закаты, рассветы, горы, моря, звёздное небо. Это восхищает и заставляет остановиться.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">❄️</span>
+            <div class="beauty-title">Природа в малом</div>
+            <div class="beauty-text">Капля росы, снежинка, травинка, узор на крыле бабочки. Малое часто удивительнее великого.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌫️</span>
+            <div class="beauty-title">Природа в тихом</div>
+            <div class="beauty-text">Утренний туман, зимняя тишина, лунный свет. Тихая красота требует внимания.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🌊</span>
+            <div class="beauty-title">Природа в бурном</div>
+            <div class="beauty-text">Водопады, штормы, ливни, грозы. Бурная красота — это сила и мощь природы.</div>
+        </div>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра «Угадай, где красота?»</strong></p>
+        <p>Педагог показывает детям карточки с изображениями природных объектов (закат, снежинка, водопад, туман, радуга, капля росы) и просит определить, к какой форме проявления прекрасного относится каждый объект: в великом, в малом, в тихом, в бурном.</p>
+        <p><em>Например: «Закат — это прекрасное в великом. Снежинка — прекрасное в малом. Туман — прекрасное в тихом. Водопад — прекрасное в бурном».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Показывает иллюстрации с изображениями природы.</li>
+            <li>Рассказывает о разнообразии красоты природы.</li>
+            <li>Организует игру с карточками.</li>
+            <li>Подводит итог: «Природа — первый и главный источник прекрасного».</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 5 -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Искусство, человек, труд, слово, нравственность как источники прекрасного <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Расширение представлений детей о других источниках прекрасного.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Природа — главный источник красоты. Но не единственный. Давайте посмотрим, какие ещё источники прекрасного существуют.</em></p>
+        <p><em>Второй источник — это ИСКУССТВО. Художник, поэт, композитор учатся у природы и передают её красоту людям. Живопись, музыка, поэзия, танец — все виды искусства рождаются из наблюдений за природой.</em></p>
+        <p><em>Третий источник — это ЧЕЛОВЕК. Красота живёт и в человеческих поступках: в доброте, заботе, отзывчивости, верности, мужестве. Красивое дело — это поступок, совершённый от чистого сердца.</em></p>
+        <p><em>Четвёртый источник — это ТРУД. Красота созданного своими руками: ухоженный сад, красивая поделка, испечённый хлеб. Труд украшает мир, и в этом его настоящая красота.</em></p>
+        <p><em>Пятый источник — это СЛОВО И МУДРОСТЬ. Сказки, пословицы, песни, притчи народов мира хранят мудрость и красоту, накопленные веками. Читая их, мы прикасаемся к общечеловеческой красоте.</em></p>
+        <p><em>И шестой источник — это НРАВСТВЕННОСТЬ. Доброта, честность, отзывчивость, ответственность — это тоже красота, только красота души. Настоящий знаток природы — это человек с добрым и чутким сердцем.</em></p>
+        <p><em>Все эти источники связаны между собой. Природа вдохновляет искусство, искусство воспитывает человека, человек своим трудом украшает природу и мир вокруг. И всё вместе это создаёт ГАРМОНИЮ».</em></p>
+    </div>
+
+    <div class="beauty-grid">
+        <div class="beauty-card">
+            <span class="beauty-icon">🌄</span>
+            <div class="beauty-title">Природа</div>
+            <div class="beauty-text">Первый и главный источник прекрасного.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🎨</span>
+            <div class="beauty-title">Искусство</div>
+            <div class="beauty-text">Художник, поэт, композитор передают красоту природы людям.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">👨‍👩‍👧</span>
+            <div class="beauty-title">Человек</div>
+            <div class="beauty-text">Красота в добрых поступках, заботе, отзывчивости.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🏡</span>
+            <div class="beauty-title">Труд</div>
+            <div class="beauty-text">Красота созданного своими руками.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">📚</span>
+            <div class="beauty-title">Слово и мудрость</div>
+            <div class="beauty-text">Сказки, пословицы, песни хранят красоту веков.</div>
+        </div>
+        <div class="beauty-card">
+            <span class="beauty-icon">🕊️</span>
+            <div class="beauty-title">Нравственность</div>
+            <div class="beauty-text">Доброта, честность, отзывчивость — красота души.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Рассказывает о каждом источнике прекрасного, показывая соответствующие иллюстрации.</li>
+            <li>Задаёт детям вопросы: «Какой источник вам ближе? Почему?»</li>
+            <li>Подводит итог: «Все источники прекрасного связаны между собой и создают гармонию».</li>
+        </ul>
+    </div>
+
+    <!-- ПЕРЕРЫВ -->
+    <div class="stage-card" style="background: #fef9c3;">
+        <div class="stage-num" style="color: #d97706;">⏸</div>
+        <div class="stage-content">
+            <div class="stage-title">Перерыв <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Динамическая пауза. Игра «Найди красоту вокруг». Дети встают, потягиваются, делают несколько простых упражнений. Педагог предлагает найти в кабинете что-то красивое и показать это другим.</div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 6 -->
+    <div class="stage-card">
+        <div class="stage-num">6</div>
+        <div class="stage-content">
+            <div class="stage-title">Экологически устойчивый стиль жизни <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Формирование первоначального представления об экологически устойчивом стиле жизни.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, мы с вами узнали, что природа — источник красоты. Но красота природы хрупка. Чтобы сохранить её, нужно жить по особым правилам. Это называется экологически устойчивым стилем жизни.</em></p>
+        <p><em>Что это значит? Это такой образ жизни, при котором человек удовлетворяет свои потребности, не нанося вреда природе и не лишая будущие поколения возможности жить хорошо. Жить экологически устойчиво — это значит:</em></p>
+        <ul>
+            <li><em>бережно относиться к воде, свету, теплу;</em></li>
+            <li><em>не мусорить в природе и убирать за собой;</em></li>
+            <li><em>беречь растения и животных;</em></li>
+            <li><em>сажать деревья и ухаживать за растениями;</em></li>
+            <li><em>сортировать отходы и сдавать их на переработку;</em></li>
+            <li><em>рассказывать другим о важности бережного отношения к природе».</em></li>
+        </ul>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игровые ситуации «Что я сделаю?»</strong></p>
+        <p>Педагог предлагает детям несколько ситуаций, в которых нужно выбрать правильный экологически устойчивый вариант поведения:</p>
+        <ul>
+            <li>Ты видишь мусор в лесу. Что ты сделаешь?</li>
+            <li>Ты почистил зубы. Что нужно сделать с краном?</li>
+            <li>Ты уходишь из комнаты. Нужно ли выключать свет?</li>
+            <li>Ты нашёл красивый цветок в лесу. Сорвёшь ли ты его?</li>
+        </ul>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Важно понять.</strong> Экологически устойчивый стиль жизни — это не отказ от удобств, а разумный выбор. Это жизнь, в которой забота о природе становится частью заботы о себе и о будущем.
+    </div>
+
+    <!-- ЭТАП 7 -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Практическая работа «Свойства прекрасного» <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Определение свойств прекрасного на примерах природных объектов. Работа в рабочей тетради.</div>
+        </div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Ход практической работы:</strong></p>
+        <ol>
+            <li>Педагог раздаёт детям рабочую тетрадь «Гармония» и цветные карандаши.</li>
+            <li>Дети открывают страницу с заданием «Свойства прекрасного» (раздел 1, задание 1.1).</li>
+            <li>Педагог предлагает рассмотреть контурный рисунок (солнце, волны, дерево, птица).</li>
+            <li>Дети раскрашивают рисунок так, как чувствуют гармонию.</li>
+            <li>Затем педагог просит детей определить, какие свойства прекрасного проявляются в этом рисунке (гармония, симметрия, ритм, целесообразность).</li>
+            <li>Дети записывают свои мысли в тетради.</li>
+        </ol>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«А теперь давайте попробуем определить свойства прекрасного на примере природы. Посмотрите на этот рисунок. Что вы видите? Солнце, волны, дерево, птицу. Раскрасьте их так, как вы чувствуете гармонию.</em></p>
+        <p><em>Подумайте: какие свойства прекрасного здесь проявляются? Симметрия — когда части одинаковы относительно оси. Ритм — когда элементы повторяются. Гармония — когда все части согласованы. Целесообразность — когда форма соответствует назначению.</em></p>
+        <p><em>Запишите свои мысли в тетради».</em></p>
+    </div>
+
+    <div class="note">
+        <strong>💡 Совет педагогу.</strong> На этом этапе важно не просто дать детям раскрасить рисунок, а помочь им <em>осознать</em>, какие свойства прекрасного они видят. Задавайте наводящие вопросы: «Посмотри на волны. Что ты замечаешь?», «Почему у дерева симметричная крона?».
+    </div>
+
+    <!-- ЭТАП 8 -->
+    <div class="stage-card">
+        <div class="stage-num">8</div>
+        <div class="stage-content">
+            <div class="stage-title">Рефлексия. Подведение итогов <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Осмысление детьми полученного опыта, самооценка, планирование следующего занятия.</div>
+        </div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Вопросы для рефлексии:</strong></p>
+        <ul>
+            <li>Что нового вы узнали сегодня на занятии?</li>
+            <li>Что такое прекрасное?</li>
+            <li>Какие источники прекрасного вы запомнили?</li>
+            <li>Что такое экологически устойчивый стиль жизни?</li>
+            <li>Какие правила безопасности мы вспомнили?</li>
+            <li>Что вам больше всего понравилось на занятии?</li>
+        </ul>
+        <p><strong>Приём «Букет настроения»:</strong> педагог предлагает детям выбрать цветок определённого цвета, который соответствует их настроению после занятия (красный — радость, жёлтый — спокойствие, синий — задумчивость). Дети прикрепляют цветы к доске, создавая общий «букет настроения».</p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Итог занятия.</strong> Сегодня мы с вами сделали первый шаг в удивительный мир гармонии. Мы узнали, что такое прекрасное, где живут его источники, что такое экологически устойчивый стиль жизни. Мы раскрасили рисунок, определили свойства прекрасного. И самое главное — мы запомнили правила безопасности, которые помогут нам учиться интересно и безопасно.
+    </div>
+
+    <h2>📚 Домашнее задание</h2>
+
+    <div class="info-box">
+        <p><strong>Задание для самостоятельной работы:</strong></p>
+        <ul>
+            <li>Найти дома или во дворе предмет, который кажется тебе красивым. Зарисовать его в тетради.</li>
+            <li>Вспомнить и записать один пример доброго поступка, который ты совершил за последнюю неделю.</li>
+            <li>Приготовить рассказ о том, какой источник прекрасного тебе ближе всего и почему.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- МЕТОДИЧЕСКИЙ АНАЛИЗ -->
+    <!-- ============================================================ -->
+    <h2>🔍 Методический анализ занятия</h2>
+
+    <div class="analysis-block">
+        <p><strong>Анализ целей и задач занятия.</strong></p>
+        <p>Цель занятия — сформировать первоначальное представление о прекрасном — достигнута через последовательное решение образовательных, развивающих и воспитательных задач. Все три группы задач реализованы в течение занятия: образовательные — через знакомство с понятиями «прекрасное», «источники прекрасного», «экологически устойчивый стиль жизни»; развивающие — через игру, беседу, работу с иллюстрациями, практическую работу; воспитательные — через формирование эмоционально-ценностного отношения к природе и основы экологической культуры.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ структуры занятия.</strong></p>
+        <p>Структура занятия логична и соответствует типу комбинированного занятия. Все этапы связаны между собой: от организационного момента и инструктажа — к введению в тему, затем к раскрытию источников прекрасного, перерыву, экологически устойчивому стилю жизни, практической работе и рефлексии. Соблюдён принцип постепенного усложнения материала и смены видов деятельности, что особенно важно для детей 6–10 лет.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ методов и форм работы.</strong></p>
+        <p>На занятии использованы разнообразные методы и формы: вводная беседа, рассказ педагога, демонстрация иллюстраций, игровые ситуации, практическая работа с элементами творчества, рефлексия. Такое разнообразие обеспечивает включённость каждого ребёнка, поддерживает интерес и мотивацию. Особенно ценным является сочетание словесных, наглядных и практических методов.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ содержания занятия.</strong></p>
+        <p>Содержание занятия соответствует возрасту детей 6–10 лет. Понятия «прекрасное», «источники прекрасного» раскрываются через доступные примеры и иллюстрации. Понятие «экологически устойчивый стиль жизни» вводится в игровой форме. Практическая работа «Свойства прекрасного» позволяет детям применить полученные знания и проявить творческие способности. Соблюдён принцип единства истины, красоты и добра.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ воспитательного потенциала занятия.</strong></p>
+        <p>Занятие имеет ярко выраженный воспитательный потенциал: формирует эмоционально-ценностное отношение к природе, эстетическое восприятие, основы экологической культуры. Воспитательные задачи реализуются не через нравоучения, а через вовлечение детей в обсуждение, игру, творчество. Особое значение имеет инструктаж по технике безопасности, который формирует ответственность и культуру безопасного поведения.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Возможные затруднения и пути их преодоления.</strong></p>
+        <ul>
+            <li><em>Затруднение:</em> дети могут не сразу понять абстрактное понятие «прекрасное». <em>Путь преодоления:</em> использовать больше конкретных примеров, иллюстраций, игровых ситуаций.</li>
+            <li><em>Затруднение:</em> инструктаж по технике безопасности может показаться скучным. <em>Путь преодоления:</em> провести инструктаж в форме игры «Можно — нельзя», использовать наглядные плакаты.</li>
+            <li><em>Затруднение:</em> дети 6–7 лет могут устать к середине занятия. <em>Путь преодоления:</em> использовать динамические паузы, чередовать виды деятельности.</li>
+            <li><em>Затруднение:</em> практическая работа может занять больше времени, чем планировалось. <em>Путь преодоления:</em> заранее подготовить шаблоны, упростить задание для младших детей.</li>
+        </ul>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Связь с рабочей тетрадью «Гармония».</strong></p>
+        <p>Занятие напрямую связано с материалами рабочей тетради «Гармония» (раздел 1, задание 1.1 «Свойства прекрасного»; раздел 3, задание 3.1.1 «Продолжи звуковую волну»; раздел 7, задание 7.1.1 «Раскрась золотую раму»). Использование тетради обеспечивает единство теории и практики, позволяет детям закрепить полученные знания через продуктивную деятельность.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Диагностическая ценность занятия.</strong></p>
+        <p>На занятии педагог может провести начальную диагностику: наблюдение за реакцией детей, их активностью, эмоциональным откликом, уровнем развития речи. Результаты наблюдений заносятся в диагностическую карту учащегося (раздел «Блок 1. Экологическая культура»; «Блок 6. Мотивация»).</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Вывод.</strong> Занятие выстроено методически грамотно, соответствует возрастным особенностям детей 6–10 лет, реализует принципы развивающего обучения, интеграции науки и искусства, практико-ориентированности. Содержание занятия направлено на формирование основ экологической культуры и эстетического восприятия мира. Занятие может быть рекомендовано к использованию в практике педагогов дополнительного образования эколого-биологического профиля.
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="program.html" class="button">📘 К программе «Гармония»</a>
+        <a href="section1.html" class="button secondary">🌸 К разделу 1 рабочей тетради</a>
+        <a href="plan.html" class="button secondary">📋 К структурному плану</a>
+        <a href="index.html" class="button secondary">🏠 На главную курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Конспект занятия 1 «Вводное занятие. Понятие о прекрасном»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

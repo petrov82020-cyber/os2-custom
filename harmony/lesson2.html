@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 2. Организация работы объединения — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ЗАНЯТИИ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content {
+            flex: 1;
+        }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Речь педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Действия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🎭 Игра";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🪞 Рефлексия";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .role-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 14px;
+            padding: 14px 16px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .role-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -6px rgba(22, 163, 74, 0.3);
+        }
+        .role-card .role-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .role-card .role-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .role-card .role-desc {
+            font-size: 0.83rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Методический анализ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .roles-grid { grid-template-columns: 1fr; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- НАВИГАЦИЯ СВЕРХУ -->
+    <div class="nav-links-top">
+        <a href="lesson1.html" class="back-link">← Занятие 1. Вводное занятие. Понятие о прекрасном</a>
+        <a href="lesson3.html" class="back-link">Занятие 3. Прекрасное в природе →</a>
+        <a href="program.html" class="back-link secondary">📘 К программе «Гармония»</a>
+    </div>
+
+    <h1>🌸 Занятие 2. Организация работы объединения</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Тип занятия:</strong> организационное, комбинированное (теория + практика).</p>
+        <p><strong>Цель занятия:</strong> познакомить детей с целями и задачами объединения «Гармония», обсудить план работы на год, определить правила поведения в образовательном учреждении, провести выборы актива объединения и организовать коллективное планирование.</p>
+        <p><strong>Задачи занятия:</strong></p>
+        <ul>
+            <li><strong>Образовательные:</strong> познакомить с целями, задачами и планом работы объединения «Гармония»; сформировать представление о правилах поведения в образовательном учреждении; познакомить с ролями актива объединения.</li>
+            <li><strong>Развивающие:</strong> развивать коммуникативные навыки, умение работать в коллективе, принимать совместные решения; развивать ответственность и самостоятельность.</li>
+            <li><strong>Воспитательные:</strong> воспитывать уважение к правилам и нормам поведения, чувство коллективизма, ответственность за общее дело; формировать активную жизненную позицию.</li>
+        </ul>
+        <p><strong>Оборудование и материалы:</strong> рабочая тетрадь «Гармония», цветные карандаши, ватман или большой лист бумаги для коллективного планирования, маркеры, карточки с ролями актива, карточки с правилами поведения, клейкие стикеры для голосования, урна для голосования (коробка), медали или значки для активистов.</p>
+    </div>
+
+    <div class="quote">
+        «Один в поле не воин, а вместе — мы сила. Наше объединение — это команда, где каждый важен и каждый может найти своё дело».
+        <span class="quote-author">— концептуальная идея занятия</span>
+    </div>
+
+    <h2>📋 Структура занятия (2 академических часа = 90 минут с перерывом)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:55%;">Этап занятия</th>
+                <th style="width:12%;">Время</th>
+                <th style="width:25%;">Методы и формы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td>Организационный момент. Приветствие. Повторение предыдущего занятия</td>
+                <td class="center">5 мин</td>
+                <td>Игра-приветствие, беседа</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td>Знакомство с целями и задачами объединения «Гармония»</td>
+                <td class="center">10 мин</td>
+                <td>Рассказ педагога, коллективная беседа</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td>Обсуждение плана работы на год</td>
+                <td class="center">15 мин</td>
+                <td>Коллективная беседа, работа с планом</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td>Правила поведения в образовательном учреждении</td>
+                <td class="center">10 мин</td>
+                <td>Беседа, игровые ситуации, работа с карточками</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Перерыв</strong></td>
+                <td class="center">10 мин</td>
+                <td>Динамическая пауза</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td>Знакомство с ролями актива объединения</td>
+                <td class="center">10 мин</td>
+                <td>Рассказ педагога, демонстрация карточек</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td>Выборы актива объединения</td>
+                <td class="center">15 мин</td>
+                <td>Голосование, игра-выборы</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td>Коллективное планирование работы на год</td>
+                <td class="center">10 мин</td>
+                <td>Мозговой штурм, работа на ватмане</td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td>Рефлексия. Подведение итогов</td>
+                <td class="center">5 мин</td>
+                <td>Беседа, самооценка</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ЭТАП 1 -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Организационный момент. Приветствие. Повторение <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Создание положительного эмоционального настроя. Повторение материала предыдущего занятия.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Здравствуйте, дорогие ребята! Я очень рада снова вас видеть. На прошлом занятии мы говорили о прекрасном и его источниках. Давайте вспомним: что такое прекрасное? Какие источники прекрасного вы запомнили?»</em></p>
+        <p><em>Дети отвечают. Педагог выслушивает ответы, хвалит за активность.</em></p>
+        <p><em>«Молодцы! Сегодня у нас очень важное занятие — мы будем организовывать работу нашего объединения. Мы поговорим о том, зачем мы здесь собираемся, что будем делать в течение года, и выберем наш актив — тех, кто поможет нам в работе».</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра-приветствие «Передай улыбку».</strong></p>
+        <p>Дети становятся в круг. Педагог «передаёт» улыбку первому ребёнку, тот — следующему, и так по кругу. Последний ребёнок возвращает улыбку педагогу. Игра создаёт доброжелательную атмосферу и настраивает на сотрудничество.</p>
+    </div>
+
+    <!-- ЭТАП 2 -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Знакомство с целями и задачами объединения «Гармония» <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Раскрытие целей и задач объединения. Формирование понимания, зачем дети приходят на занятия.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, как вы думаете, зачем мы с вами здесь собрались? Что такое объединение? Объединение — это группа ребят, которые объединены общим интересом и общим делом. Наше объединение называется "Гармония".</em></p>
+        <p><em>Почему именно "Гармония"? Потому что мы будем учиться видеть красоту в природе, понимать её законы, творить красоту своими руками и жить в согласии с природой, с другими людьми и с самими собой.</em></p>
+        <p><em>Какие же цели у нашего объединения?</em></p>
+        <ul>
+            <li><em>Научиться видеть, слышать и чувствовать красоту природы.</em></li>
+            <li><em>Понять, как природа связана с искусством, нравственностью и трудом человека.</em></li>
+            <li><em>Развить свои творческие способности через рисование, музыку, слово и труд.</em></li>
+            <li><em>Сформировать привычку жить в согласии с природой и другими людьми.</em></li>
+            <li><em>Стать человеком с добрым сердцем и чуткой душой».</em></li>
+        </ul>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Записывает цели на доске в виде коротких формулировок.</li>
+            <li>Спрашивает детей: «Что из этого вам кажется самым важным?», «Что вы уже умеете?»</li>
+            <li>Подводит итог: «Все вместе мы будем двигаться к этим целям весь год».</li>
+        </ul>
+    </div>
+
+    <!-- ЭТАП 3 -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Обсуждение плана работы на год <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Знакомство детей с планом работы объединения на учебный год, обсуждение предстоящих тем и мероприятий.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, у нас с вами будет очень интересный год. Мы будем заниматься два раза в неделю по два часа. За год у нас будет 72 занятия, и каждое занятие — это новое открытие.</em></p>
+        <p><em>Давайте посмотрим, что нас ждёт в этом году».</em></p>
+    </div>
+
+    <svg class="svg-diagram" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="План работы объединения на год">
+        <text x="400" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#166534">ПЛАН РАБОТЫ ОБЪЕДИНЕНИЯ «ГАРМОНИЯ» НА ГОД</text>
+
+        <!-- Раздел 2 -->
+        <rect x="40" y="70" width="150" height="70" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="115" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">🌸 Раздел 2</text>
+        <text x="115" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">Мир прекрасного</text>
+        <text x="115" y="127" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">22 ч</text>
+
+        <!-- Раздел 3 -->
+        <rect x="210" y="70" width="150" height="70" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="285" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e40af">🌿 Раздел 3</text>
+        <text x="285" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">Источники прекрасного</text>
+        <text x="285" y="127" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">24 ч</text>
+
+        <!-- Раздел 4 -->
+        <rect x="380" y="70" width="150" height="70" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="455" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#92400e">👁️ Раздел 4</text>
+        <text x="455" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">Восприятие прекрасного</text>
+        <text x="455" y="127" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">22 ч</text>
+
+        <!-- Раздел 5 -->
+        <rect x="550" y="70" width="150" height="70" rx="12" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="625" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#6b21a8">💚 Раздел 5</text>
+        <text x="625" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#6b21a8">Нравственность и красота</text>
+        <text x="625" y="127" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#6b21a8">22 ч</text>
+
+        <!-- Раздел 6 -->
+        <rect x="120" y="180" width="150" height="70" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="195" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e40af">🎵 Раздел 6</text>
+        <text x="195" y="222" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">Мир звуков природы</text>
+        <text x="195" y="237" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">24 ч</text>
+
+        <!-- Раздел 7 -->
+        <rect x="300" y="180" width="150" height="70" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="375" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#92400e">🎭 Раздел 7</text>
+        <text x="375" y="222" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">Художественная</text>
+        <text x="375" y="237" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">культура | 22 ч</text>
+
+        <!-- Раздел 8 -->
+        <rect x="480" y="180" width="150" height="70" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="555" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">✨ Раздел 8</text>
+        <text x="555" y="222" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">Итоги работы</text>
+        <text x="555" y="237" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">4 ч</text>
+
+        <!-- Вводное и Раздел 1 -->
+        <rect x="250" y="290" width="300" height="60" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="400" y="315" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">ВВОДНОЕ + РАЗДЕЛ 1. ОРГАНИЗАЦИЯ РАБОТЫ</text>
+        <text x="400" y="335" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">4 ч | Занятия 1–2</text>
+
+        <!-- Итог -->
+        <text x="400" y="380" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#16a34a">ВСЕГО: 144 часа | 72 занятия</text>
+    </svg>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Показывает детям схему плана работы на год.</li>
+            <li>Кратко рассказывает о каждом разделе программы: какие темы будут изучаться, какие практические работы и экскурсии предстоят.</li>
+            <li>Задаёт вопросы: «Что из этого вам кажется самым интересным?», «О чём вы хотели бы узнать больше?»</li>
+            <li>Фиксирует интересы и пожелания детей на доске, чтобы учитывать их в работе.</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Совет педагогу.</strong> На этом этапе важно заинтересовать детей предстоящей работой. Рассказывайте эмоционально, используя примеры: «Мы будем слушать музыку природы, рисовать, лепить, разгадывать загадки, ходить на экскурсии и даже создавать свои собственные сказки!». Подчёркивайте, что каждый ребёнок сможет проявить себя.
+    </div>
+
+    <!-- ЭТАП 4 -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Правила поведения в образовательном учреждении <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Определение правил поведения на занятиях, формирование ответственного отношения к соблюдению правил.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, чтобы наша работа была дружной и безопасной, нам нужно договориться о правилах поведения. Правила — это не то, что придумали взрослые, чтобы вас ограничивать. Правила — это то, что помогает нам всем вместе чувствовать себя комфортно и безопасно.</em></p>
+        <p><em>Давайте вместе придумаем наши правила. Что важно, чтобы всем было хорошо на занятиях?»</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра «Собери правила».</strong></p>
+        <p>Педагог раздаёт детям карточки с правилами (или с их символическими изображениями). Дети должны определить, что можно делать на занятии, а что — нельзя.</p>
+        <p><strong>Примеры правил:</strong></p>
+        <ul>
+            <li>Приходить на занятия вовремя, с хорошим настроением.</li>
+            <li>Уважать педагога и товарищей, слушать и слышать друг друга.</li>
+            <li>Бережно относиться к материалам и оборудованию.</li>
+            <li>Соблюдать правила безопасности на занятиях и в природе.</li>
+            <li>Помогать друг другу, поддерживать, радоваться успехам товарищей.</li>
+            <li>Вести рабочую тетрадь аккуратно, выполнять задания старательно.</li>
+            <li>Беречь природу — и в объединении, и за его пределами.</li>
+        </ul>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Предлагает детям самим сформулировать правила, а не просто зачитывает готовые.</li>
+            <li>Записывает правила на большом листе и вывешивает его в кабинете.</li>
+            <li>Подчёркивает, что правила — это договор, который все вместе готовы соблюдать.</li>
+        </ul>
+    </div>
+
+    <!-- ПЕРЕРЫВ -->
+    <div class="stage-card" style="background: #fef9c3;">
+        <div class="stage-num" style="color: #d97706;">⏸</div>
+        <div class="stage-content">
+            <div class="stage-title">Перерыв <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Динамическая пауза. Игра «Найди своё место в кругу». Дети двигаются по кабинету под музыку, а по сигналу педагога быстро находят своё место в кругу. Это помогает снять напряжение и переключиться.</div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 5 -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Знакомство с ролями актива объединения <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Раскрытие понятия «актив объединения», знакомство с ролями и их функциями.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, наше объединение — это не просто группа детей. Это настоящий коллектив, где у каждого может быть своё дело и своя ответственность. Чтобы наша работа была дружной и интересной, мы выберем наш актив.</em></p>
+        <p><em>Что такое актив? Это группа ребят, которые помогают педагогу и всем участникам в организации работы. Актив избирается общим голосованием и обновляется в конце учебного года.</em></p>
+        <p><em>Давайте посмотрим, какие роли могут быть в нашем активе».</em></p>
+    </div>
+
+    <div class="roles-grid">
+        <div class="role-card">
+            <span class="role-icon">🌟</span>
+            <div class="role-title">Староста</div>
+            <div class="role-desc">Помогает педагогу, ведёт список группы, отмечает посещаемость, отвечает за порядок.</div>
+        </div>
+        <div class="role-card">
+            <span class="role-icon">🎨</span>
+            <div class="role-title">Художник-оформитель</div>
+            <div class="role-desc">Помогает оформлять выставки, стенды, творческие работы, плакаты.</div>
+        </div>
+        <div class="role-card">
+            <span class="role-icon">📚</span>
+            <div class="role-title">Библиотекарь</div>
+            <div class="role-desc">Следит за книгами, журналами, энциклопедиями, помогает в подготовке сообщений.</div>
+        </div>
+        <div class="role-card">
+            <span class="role-icon">🌿</span>
+            <div class="role-title">Эколог</div>
+            <div class="role-desc">Организует экологические акции, следит за порядком в природе, ухаживает за растениями.</div>
+        </div>
+        <div class="role-card">
+            <span class="role-icon">🎵</span>
+            <div class="role-title">Музыкант</div>
+            <div class="role-desc">Подбирает музыку, звуки природы, помогает в проведении музыкальных минуток.</div>
+        </div>
+        <div class="role-card">
+            <span class="role-icon">📷</span>
+            <div class="role-title">Фотограф</div>
+            <div class="role-desc">Фотографирует интересные моменты занятий, помогает оформлять портфолио.</div>
+        </div>
+        <div class="role-card">
+            <span class="role-icon">💚</span>
+            <div class="role-title">Доброе сердце</div>
+            <div class="role-desc">Заботится о настроении в группе, помогает новичкам, поддерживает товарищей.</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>💡 Важно!</strong> Подчеркните, что каждая роль важна и почётна. Нет «главных» и «второстепенных» ролей — все вместе создают дружный коллектив.
+    </div>
+
+    <!-- ЭТАП 6 -->
+    <div class="stage-card">
+        <div class="stage-num">6</div>
+        <div class="stage-content">
+            <div class="stage-title">Выборы актива объединения <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Проведение выборов актива объединения через голосование.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«А теперь настало время выборов. Сейчас каждый из вас подумает и решит, какую роль он хотел бы выполнять. Помните: это не только почётно, но и ответственно. Выбирайте то дело, которое вам по-настоящему интересно.</em></p>
+        <p><em>Как будут проходить выборы? Каждый из вас напишет на листочке своё имя и ту роль, которую хотел бы получить. Затем мы вместе посчитаем голоса. Помните: выборы — это серьёзно и честно».</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Игра-выборы «Наш актив».</strong></p>
+        <p><strong>Ход выборов:</strong></p>
+        <ol>
+            <li>Педагог раздаёт детям листочки и ручки.</li>
+            <li>Каждый ребёнок пишет своё имя и одну-две роли, которые он хотел бы выполнять.</li>
+            <li>Дети опускают листочки в «урну для голосования» (коробку).</li>
+            <li>Педагог подсчитывает голоса вместе с детьми и объявляет результаты.</li>
+            <li>Выбранные активисты получают значки или медали с символикой своей роли.</li>
+            <li>Педагог поздравляет актив и напоминает, что выборы можно повторить в конце года.</li>
+        </ol>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Объясняет порядок голосования и правила честности.</li>
+            <li>Помогает детям написать свои пожелания (особенно младшим).</li>
+            <li>Подсчитывает голоса вместе с детьми, чтобы все видели честность.</li>
+            <li>Объявляет результаты и поздравляет выбранных активистов.</li>
+            <li>Благодарит всех за участие.</li>
+        </ul>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Рекомендация.</strong> Если на одну роль претендует несколько детей, можно предложить им выполнять роль по очереди (например, меняться каждый месяц). Это позволит всем попробовать себя в разных делах.
+    </div>
+
+    <!-- ЭТАП 7 -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Коллективное планирование работы на год <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Совместная разработка плана интересных дел и мероприятий на год.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ребята, а теперь давайте вместе подумаем, чем бы мы хотели заниматься в этом году. Что вам было бы интересно? Может быть, экскурсия в лес? Или конкурс рисунков? Или создание собственной книги сказок о природе?</em></p>
+        <p><em>Сейчас каждый из вас придумает и напишет на стикере одно дело, которое он хотел бы сделать вместе с нашим объединением. Затем мы приклеим стикеры на большой лист и посмотрим, что у нас получится».</em></p>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Мозговой штурм «Наши планы».</strong></p>
+        <p><strong>Ход работы:</strong></p>
+        <ol>
+            <li>Педагог раздаёт детям клейкие стикеры.</li>
+            <li>Каждый ребёнок пишет или рисует на стикере одно дело, которое хотел бы сделать в объединении.</li>
+            <li>Дети по очереди приклеивают стикеры на большой лист ватмана.</li>
+            <li>Педагог вместе с детьми группирует идеи по темам: экскурсии, творческие работы, игры, конкурсы, проекты.</li>
+            <li>Получившийся «план» вывешивается в кабинете как наглядный ориентир на год.</li>
+        </ol>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делает педагог:</strong></p>
+        <ul>
+            <li>Поощряет любые идеи детей, даже самые неожиданные.</li>
+            <li>Помогает сформулировать идеи и записать их.</li>
+            <li>Группирует идеи, чтобы получилась структура.</li>
+            <li>Подводит итог: «Вот сколько интересного нас ждёт! Мы обязательно постараемся воплотить ваши идеи».</li>
+        </ul>
+    </div>
+
+    <div class="purple-note">
+        <strong>💡 Важно!</strong> Коллективное планирование формирует у детей чувство причастности к общему делу и ответственности за результат. Обязательно возвращайтесь к этому плану в течение года, чтобы дети видели, что их идеи были услышаны и реализованы.
+    </div>
+
+    <!-- ЭТАП 8 -->
+    <div class="stage-card">
+        <div class="stage-num">8</div>
+        <div class="stage-content">
+            <div class="stage-title">Рефлексия. Подведение итогов <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Осмысление детьми полученного опыта, самооценка, планирование следующего занятия.</div>
+        </div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Вопросы для рефлексии:</strong></p>
+        <ul>
+            <li>Что нового вы узнали сегодня на занятии?</li>
+            <li>Какие цели и задачи у нашего объединения?</li>
+            <li>Какие правила поведения мы приняли?</li>
+            <li>Какой актив мы выбрали?</li>
+            <li>Какие дела вы предложили для нашего плана?</li>
+            <li>Что вам больше всего понравилось на занятии?</li>
+        </ul>
+        <p><strong>Приём «Светофор»:</strong> педагог предлагает детям оценить занятие с помощью цветных карточек:
+        <ul>
+            <li><strong>Зелёный</strong> — «Мне всё понравилось, было интересно».</li>
+            <li><strong>Жёлтый</strong> — «Было интересно, но не всё понятно».</li>
+            <li><strong>Красный</strong> — «Мне было трудно или неинтересно».</li>
+        </ul>
+        </p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Итог занятия.</strong> Сегодня мы с вами организовали работу нашего объединения. Мы узнали, какие цели и задачи стоят перед нами, обсудили план работы на год, определили правила поведения, выбрали актив и вместе составили план интересных дел. Теперь мы — настоящий коллектив, и у нас есть всё, чтобы учиться интересно и дружно.
+    </div>
+
+    <h2>📚 Домашнее задание</h2>
+
+    <div class="info-box">
+        <p><strong>Задание для самостоятельной работы:</strong></p>
+        <ul>
+            <li>Рассказать родителям о нашем объединении «Гармония», о его целях и задачах.</li>
+            <li>Подумать и записать в тетради одно доброе дело, которое ты можешь сделать для природы или для других людей.</li>
+            <li>Приготовить небольшой рассказ о том, какую роль в активе ты хотел бы выполнять в следующий раз.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- МЕТОДИЧЕСКИЙ АНАЛИЗ -->
+    <!-- ============================================================ -->
+    <h2>🔍 Методический анализ занятия</h2>
+
+    <div class="analysis-block">
+        <p><strong>Анализ целей и задач занятия.</strong></p>
+        <p>Цель занятия — познакомить детей с целями и задачами объединения «Гармония» и организовать работу коллектива — достигнута через последовательное решение образовательных, развивающих и воспитательных задач. Все три группы задач реализованы в течение занятия: образовательные — через знакомство с целями, планом, правилами, ролями актива; развивающие — через коллективное обсуждение, выборы, мозговой штурм; воспитательные — через формирование чувства коллективизма, ответственности и активной жизненной позиции.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ структуры занятия.</strong></p>
+        <p>Структура занятия логична и соответствует типу организационного занятия. Все этапы связаны между собой: от организационного момента и повторения — к знакомству с целями и задачами, затем к обсуждению плана работы, правилам поведения, перерыву, знакомству с ролями актива, выборам, коллективному планированию и рефлексии. Соблюдён принцип постепенного усложнения и смены видов деятельности, что особенно важно для детей 6–10 лет.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ методов и форм работы.</strong></p>
+        <p>На занятии использованы разнообразные методы и формы: коллективная беседа, рассказ педагога, игровые ситуации, игра-знакомство, игра-выборы, мозговой штурм, работа с карточками, рефлексия. Такое разнообразие обеспечивает включённость каждого ребёнка, поддерживает интерес и мотивацию. Особенно ценным является сочетание словесных, наглядных и практических методов, а также активное вовлечение детей в принятие решений.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ содержания занятия.</strong></p>
+        <p>Содержание занятия соответствует возрастным особенностям детей 6–10 лет. Понятия «объединение», «цели», «задачи», «план работы», «актив» раскрываются через доступные примеры и игровые ситуации. Процедура выборов организована в форме игры, что делает её понятной и увлекательной для детей. Коллективное планирование позволяет детям почувствовать свою причастность к общему делу. Соблюдён принцип практико-ориентированности и коллективного взаимодействия.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Анализ воспитательного потенциала занятия.</strong></p>
+        <p>Занятие имеет ярко выраженный воспитательный потенциал: формирует чувство коллективизма, ответственности, уважения к правилам, активную жизненную позицию. Воспитательные задачи реализуются через вовлечение детей в обсуждение, выборы, коллективное планирование. Особое значение имеет процедура выборов, которая формирует у детей понимание честности, ответственности и уважения к выбору других.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Возможные затруднения и пути их преодоления.</strong></p>
+        <ul>
+            <li><em>Затруднение:</em> дети могут не сразу понять процедуру выборов. <em>Путь преодоления:</em> провести выборы в игровой форме, объяснить каждый шаг, показать пример.</li>
+            <li><em>Затруднение:</em> некоторые дети могут стесняться выдвигать себя на роли. <em>Путь преодоления:</em> подбадривать, напоминать, что каждая роль важна.</li>
+            <li><em>Затруднение:</em> мозговой штурм может превратиться в шумное мероприятие. <em>Путь преодоления:</em> установить правило «один говорит — все слушают», использовать сигнал тишины.</li>
+            <li><em>Затруднение:</em> дети 6–7 лет могут устать к середине занятия. <em>Путь преодоления:</em> использовать динамические паузы, чередовать виды деятельности.</li>
+        </ul>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Связь с рабочей тетрадью «Гармония».</strong></p>
+        <p>Занятие связано с материалами рабочей тетради «Гармония» (раздел 1, задание 1.2 «Где живёт красота?»; задание 1.8 «Раскрась и подпиши»; задание 1.11 «Моё обещание на год»). После выборов дети могут вклеить в тетрадь список актива и свои обещания на год, что сделает результаты занятия наглядными и памятными.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>Диагностическая ценность занятия.</strong></p>
+        <p>На занятии педагог может провести начальную диагностику: наблюдение за активностью детей, их коммуникативными навыками, умением работать в группе, лидерскими качествами. Результаты наблюдений заносятся в диагностическую карту учащегося (раздел «Блок 2. Нравственные качества»; «Блок 4. Личностное развитие»; «Блок 6. Мотивация»).</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Вывод.</strong> Занятие выстроено методически грамотно, соответствует возрастным особенностям детей 6–10 лет, реализует принципы развивающего обучения, коллективного взаимодействия, практико-ориентированности. Содержание занятия направлено на формирование чувства коллективизма, ответственности и активной жизненной позиции. Занятие может быть рекомендовано к использованию в практике педагогов дополнительного образования эколого-биологического профиля.
+    </div>
+
+    <!-- НАВИГАЦИЯ СНИЗУ -->
+    <div class="nav-links-bottom">
+        <a href="lesson1.html" class="back-link">← Занятие 1. Вводное занятие. Понятие о прекрасном</a>
+        <a href="lesson3.html" class="back-link">Занятие 3. Прекрасное в природе →</a>
+        <a href="program.html" class="back-link secondary">📘 К программе «Гармония»</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 2 «Организация работы объединения»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>
