@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 16. Воздействие природной музыки — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        /* ЗАГОЛОВОК ВСТУПЛЕНИЯ — СВЕТЛО-СИНИЙ, КАК КНОПКА */
+        .intro-card {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ОПОРА ЗАНЯТИЯ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .andryusha-box {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px dashed #a855f7;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .andryusha-box::before {
+            content: "🪞 ЛИЧНОСТНО-ОРИЕНТИРОВАННАЯ ТЕХНОЛОГИЯ «АНДРЮША»";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .andryusha-box p:first-child { margin-top: 8px; }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Блок главы сказки — серо-синий */
+        .tale-block {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 3px solid #475569;
+            border-radius: 18px;
+            padding: 26px 30px;
+            margin: 26px 0;
+            position: relative;
+            box-shadow: 0 8px 20px -8px rgba(71, 85, 105, 0.25);
+        }
+        .tale-block::before {
+            content: attr(data-chapter);
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            background: #475569;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .tale-block .tale-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        .tale-block .tale-text {
+            font-size: 1rem;
+            color: #334155;
+            line-height: 1.85;
+            font-style: italic;
+        }
+        .tale-block .tale-text strong {
+            font-style: normal;
+            color: #1e293b;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Вставная история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.75;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .riddles-block {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #eab308;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .riddles-block::before {
+            content: "❓ Загадки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #eab308;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .riddles-block p:first-child { margin-top: 8px; }
+        .riddles-block ol { margin-left: 26px; }
+        .riddles-block ol li { margin: 8px 0; font-style: italic; }
+
+        .proverbs-block {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .proverbs-block::before {
+            content: "🌿 Поговорки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .proverbs-block p:first-child { margin-top: 8px; }
+
+        .task-block {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .task-block::before {
+            content: "🧠 Интеллектуальные задачи";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .task-block p:first-child { margin-top: 8px; }
+
+        .craft-block {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .craft-block::before {
+            content: "🛠️ Продуктивная деятельность";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ea580c;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .craft-block p:first-child { margin-top: 8px; }
+
+        .music-block {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .music-block::before {
+            content: "🎵 Рисунок под музыку";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .music-block p:first-child { margin-top: 8px; }
+
+        .focus-block {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .focus-block::before {
+            content: "✨ Фокус";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .focus-block p:first-child { margin-top: 8px; }
+
+        .move-block {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .move-block::before {
+            content: "💫 Двигательный этюд";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .move-block p:first-child { margin-top: 8px; }
+
+        .apothecary-block {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 3px solid #334155;
+            border-radius: 18px;
+            padding: 26px 30px;
+            margin: 26px 0;
+            position: relative;
+        }
+        .apothecary-block::before {
+            content: "🏠 ЗВУКОВАЯ АПТЕКА";
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            background: #334155;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .apothecary-block p:first-child { margin-top: 8px; }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson15.html" class="back-link">← Занятие 15. Многообразие звуков в природе</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson17.html" class="back-link">Занятие 17. Краски природы →</a>
+    </div>
+
+    <h1>🏠 Занятие 16. Воздействие природной музыки</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Что делают дети на этом занятии.</strong> Мы продолжаем слушать мир — но теперь по-другому. Раньше дети <em>искали</em> звуки и <em>различали</em> их. Сегодня они узнают главное: <strong>у каждого звука есть своя работа</strong>. Один звук успокаивает, другой бодрит, третий лечит от грусти. Кузнечик, который прошёл путь по четырём королевствам, теперь открывает <strong>Звуковую аптеку</strong>. В ней — лекарства для разных состояний души. Дети становятся его помощниками: собирают рецепты и создают «Книгу звуковых лекарств».</p>
+        <p><strong>Как устроено занятие:</strong></p>
+        <ul>
+            <li>Одна сказка «Как кузнечик открыл звуковую аптеку» проходит через всё занятие в <strong>пяти главах</strong>.</li>
+            <li>После каждой главы — <em>продуктивная деятельность</em>: схема-рецепт, аппликация-коробочка, ритмический рисунок, «карта тишины».</li>
+            <li>Все остальные материалы — <em>загадки, поговорки, интеллектуальные задачи, фокусы, двигательные этюды, рисунок под музыку</em> — вплетены в ткань сказки.</li>
+            <li>Животных и человека не изображаем. Только флора, неживая природа, предметы, схемы и бабочки.</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу 3. Источники прекрасного</strong>, подтема <strong>«Воздействие природной музыки»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Воздействие природной музыки»</strong> — соединение природного звука и его воздействия на человека.</li>
+            <li><strong>Задание «Создай рецепт»</strong> — придумывание звукового лекарства для разных состояний.</li>
+            <li><strong>Задание «Раздели звуки по действию»</strong> — классификация: успокаивающие, бодрящие, лечащие.</li>
+            <li><strong>Загадки о тишине и звуке</strong> — отгадывание и рисование отгадок.</li>
+            <li><strong>Рассказ «Тихий колокольчик»</strong> — о том, что тихий звук сильнее громкого.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула занятия: пять звуковых лекарств</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Формула занятия">
+        <text x="440" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#334155">ЗВУКОВАЯ АПТЕКА КУЗНЕЧИКА</text>
+
+        <!-- Лекарство 1 -->
+        <rect x="20" y="60" width="160" height="140" rx="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.5"/>
+        <text x="100" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">ОТ ГРУСТИ</text>
+        <text x="100" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌧️</text>
+        <text x="100" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e40af">шум дождя</text>
+        <text x="100" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">пение птиц</text>
+        <text x="100" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#1e40af">схема-рецепт</text>
+
+        <text x="195" y="135" text-anchor="middle" font-size="16" fill="#475569">→</text>
+
+        <!-- Лекарство 2 -->
+        <rect x="210" y="60" width="160" height="140" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="290" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#155e75">ОТ УСТАЛОСТИ</text>
+        <text x="290" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">💧</text>
+        <text x="290" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#155e75">журчание ручья</text>
+        <text x="290" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#155e75">шелест листвы</text>
+        <text x="290" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#155e75">коробочка-лекарство</text>
+
+        <text x="385" y="135" text-anchor="middle" font-size="16" fill="#475569">→</text>
+
+        <!-- Лекарство 3 -->
+        <rect x="400" y="60" width="160" height="140" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="480" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">ОТ ТРЕВОГИ</text>
+        <text x="480" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌙</text>
+        <text x="480" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">тишина</text>
+        <text x="480" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">спокойный ветер</text>
+        <text x="480" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#166534">карта тишины</text>
+
+        <text x="575" y="135" text-anchor="middle" font-size="16" fill="#475569">→</text>
+
+        <!-- Лекарство 4 -->
+        <rect x="590" y="60" width="130" height="140" rx="14" fill="#fef9c3" stroke="#eab308" stroke-width="2.5"/>
+        <text x="655" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#854d0e">ОТ СКУКИ</text>
+        <text x="655" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🔔</text>
+        <text x="655" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#854d0e">звон капели</text>
+        <text x="655" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#854d0e">ритмические точки</text>
+        <text x="655" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#854d0e">ритм-рецепт</text>
+
+        <text x="735" y="135" text-anchor="middle" font-size="16" fill="#475569">→</text>
+
+        <!-- Лекарство 5 -->
+        <rect x="750" y="60" width="110" height="140" rx="14" fill="#ffe4e6" stroke="#ec4899" stroke-width="2.5"/>
+        <text x="805" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#9d174d">ОТ ЗЛОСТИ</text>
+        <text x="805" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌊</text>
+        <text x="805" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#9d174d">шум моря</text>
+        <text x="805" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#9d174d">гром</text>
+        <text x="805" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#9d174d">схема-волна</text>
+
+        <!-- Итог -->
+        <rect x="180" y="235" width="520" height="48" rx="14" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+        <text x="440" y="258" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="white">ИТОГ: «КНИГА ЗВУКОВЫХ ЛЕКАРСТВ»</text>
+        <text x="440" y="276" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#cbd5e1">пять рецептов собраны в одну общую книгу</text>
+    </svg>
+
+    <div class="quote">
+        «У природы есть лекарство от каждого состояния души. Только нужно знать, какой звук — от чего. Это и есть настоящая звуковая грамотность».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: пять глав и финал</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:44%;">Этап</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:38%;">Продукт ребёнка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><strong>Вступление. Вывеска на дверях</strong></td>
+                <td class="center">5 мин</td>
+                <td>Рисунок вывески «Звуковая аптека»</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>Глава 1. Лекарство от грусти</strong></td>
+                <td class="center">14 мин</td>
+                <td>Схема-рецепт «От грусти»</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>Глава 2. Лекарство от усталости</strong></td>
+                <td class="center">14 мин</td>
+                <td>Коробочка-лекарство с ритмическим рисунком</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><strong>Глава 3. Лекарство от тревоги</strong></td>
+                <td class="center">13 мин</td>
+                <td>«Карта тишины» — почти пустой лист</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Глава 4. Лекарства от скуки и злости</strong></td>
+                <td class="center">14 мин</td>
+                <td>Ритм-рецепт и схема-волна</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><strong>Глава 5. Сборка «Книги рецептов»</strong></td>
+                <td class="center">10 мин</td>
+                <td>Общая книга звуковых лекарств</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td><strong>Финал. Точка тишины и вызов</strong></td>
+                <td class="center">10 мин</td>
+                <td>Финальная история + рефлексия</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Материалы для занятия.</strong> Большой лист для общей книги; цветные карандаши, фломастеры, краски; цветная бумага и клей для коробочки; сухие листья; аудиозаписи звуков природы (дождь, ручей, тишина леса, звон капели, море, гром); музыкальные инструменты по возможности; камертон или стеклянные стаканы с водой.
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- ЭТАП 1. ВСТУПЛЕНИЕ. ВЫВЕСКА НА ДВЕРЯХ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Вывеска на дверях <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Педагог входит с большой деревянной вывеской (или картонной). На вывеске — надпись «ЗВУКОВАЯ АПТЕКА». Он молча вешает её на стену.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>(Тихо.) «Ребята, смотрите, что я принесла. Кузнечик открыл свою аптеку. Только это не простая аптека. Здесь не продают таблетки. Здесь — звуки. Каждый звук — лекарство. Только вот беда: кузнечик не знает, какое лекарство от чего. Он просит нас помочь. Поможем?»</em></p>
+    </div>
+
+    <div class="child-voice">«Поможем!»</div>
+    <div class="child-voice">«А от чего бывают лекарства?»</div>
+    <div class="child-voice">«А мы будем слушать?»</div>
+
+    <div class="speech-block">
+        <p><em>«Будем. И лечить будем не людей, а состояния. Их пять. И на каждом — своя дверь в аптеке. Пойдём по дверям по очереди. А пока — нарисуем вывеску. Чтобы все, кто устал или грустит, знали: здесь им помогут».</em></p>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность. Рисунок вывески.</strong></p>
+        <p>Дети получают листы и рисуют вывеску «Звуковая аптека». Можно изобразить: полочки с баночками, листья, капли, волны, ноты. <em>Никаких животных и человека.</em> В центре — название.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🏠 Образец вывески аптеки — нарисуй свою</div>
+        <svg viewBox="0 0 520 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="160" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+            <text x="260" y="55" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">ЗВУКОВАЯ АПТЕКА</text>
+            <line x1="120" y1="65" x2="400" y2="65" stroke="#94a3b8" stroke-width="1"/>
+            <!-- Полочки и баночки — схемы -->
+            <line x1="60" y1="100" x2="200" y2="100" stroke="#334155" stroke-width="1.5"/>
+            <rect x="70" y="80" width="20" height="20" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="100" y="80" width="20" height="20" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="130" y="80" width="20" height="20" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="160" y="80" width="20" height="20" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <!-- Вторая полочка -->
+            <line x1="60" y1="140" x2="200" y2="140" stroke="#334155" stroke-width="1.5"/>
+            <rect x="70" y="120" width="20" height="20" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="100" y="120" width="20" height="20" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="130" y="120" width="20" height="20" rx="3" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <!-- Капли — символы звуков -->
+            <circle cx="290" cy="105" r="4" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+            <circle cx="310" cy="105" r="4" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+            <circle cx="330" cy="105" r="4" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+            <!-- Волны -->
+            <path d="M280,130 Q295,120 310,130 T340,130 T370,130 T400,130" fill="none" stroke="#0891b2" stroke-width="2"/>
+            <path d="M280,145 Q295,135 310,145 T340,145 T370,145 T400,145" fill="none" stroke="#0891b2" stroke-width="2"/>
+            <!-- Ноты-схемы -->
+            <ellipse cx="430" cy="105" rx="7" ry="5" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <line x1="437" y1="105" x2="437" y2="80" stroke="#334155" stroke-width="1.5"/>
+            <ellipse cx="470" cy="120" rx="7" ry="5" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <line x1="477" y1="120" x2="477" y2="95" stroke="#334155" stroke-width="1.5"/>
+        </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 1. ЛЕКАРСТВО ОТ ГРУСТИ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЕРВАЯ · ОТ ГРУСТИ">
+        <div class="tale-title">Как лечили печаль</div>
+        <div class="tale-text">
+            <p>В первый день в аптеку пришла <strong>Грусть</strong>. Она вошла тихо, опустив плечи. Ей было печально, и она не знала почему. Кузнечик задумался: какое лекарство ей дать?</p>
+            <p>Он перебрал свои запасы. Взял <strong>пение птиц</strong> — и Грусть улыбнулась. Взял <strong>шелест листвы</strong> — и Грусть глубоко вздохнула. Взял <strong>журчание ручья</strong> — и Грусть закрыла глаза и замерла.</p>
+            <p>Он смешал эти три звука, добавил капельку <strong>тишины</strong> — и Грусть растворилась. Исчезла. А на её месте осталось <strong>спокойствие</strong>.</p>
+            <p>«Вот как это работает, — понял кузнечик. — От грусти помогает не громкое, а тихое. Что-то нежное. Что-то, что напоминает о доме».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 1. Схема-рецепт «От грусти».</strong></p>
+        <p>Дети рисуют <em>рецепт</em>. Это лист, на котором в виде схемы показано, из каких звуков состоит лекарство от грусти:</p>
+        <ul>
+            <li>Волнистые линии — пение птиц.</li>
+            <li>Мелкие точки-листочки — шелест.</li>
+            <li>Пунктирные линии — ручей.</li>
+            <li>Пустое место внизу — тишина.</li>
+        </ul>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">📜 Образец схемы-рецепта «От грусти»</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="140" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+            <text x="260" y="45" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">РЕЦЕПТ: ОТ ГРУСТИ</text>
+            <line x1="40" y1="55" x2="480" y2="55" stroke="#94a3b8" stroke-width="1"/>
+            <!-- Волнистые линии — пение -->
+            <path d="M50,80 Q70,65 90,80 T130,80 T170,80 T210,80" fill="none" stroke="#3b82f6" stroke-width="2"/>
+            <text x="130" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">пение птиц</text>
+            <!-- Точки-листочки — шелест -->
+            <g fill="#16a34a">
+                <circle cx="280" cy="78" r="2"/>
+                <circle cx="295" cy="82" r="2"/>
+                <circle cx="310" cy="78" r="2"/>
+                <circle cx="325" cy="82" r="2"/>
+                <circle cx="340" cy="78" r="2"/>
+                <circle cx="355" cy="82" r="2"/>
+                <circle cx="370" cy="78" r="2"/>
+                <circle cx="385" cy="82" r="2"/>
+            </g>
+            <text x="330" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">шелест листвы</text>
+            <!-- Пунктир — ручей -->
+            <path d="M50,125 Q80,115 110,125 T170,125 T230,125" fill="none" stroke="#0891b2" stroke-width="2" stroke-dasharray="6,4"/>
+            <text x="140" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#155e75">ручей</text>
+            <!-- Пустое место — тишина -->
+            <text x="350" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#64748b">+ тишина</text>
+        </svg>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Первые загадки — о состоянии грусти и лекарствах:</strong></p>
+        <ol>
+            <li>«Что приходит без спроса и уходит без следа?» <em>(грусть)</em>.</li>
+            <li>«Какое лекарство тише всех, но лечит лучше всех?» <em>(тишина)</em>.</li>
+            <li>«Что успокаивает, не касаясь руками?» <em>(музыка, звук)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Вставная история 1. «Скрипка и тишина»</div>
+        <div class="story-text">Жила-была скрипка. Её все хвалили. «Какая красивая музыка! — говорили люди. — Она лечит душу». Скрипка гордилась. Она старалась играть как можно громче — чтобы её слышали все. Но однажды она играла в большом зале, и никто не слушал. Все разговаривали, шумели. Тогда скрипка замолчала. И в этой тишине кто-то сказал: «Как тихо! Это тоже красиво». Скрипка поняла: иногда молчание сильнее звука. Настоящая музыка — не только в звуке, но и в паузе.</div>
+        <div class="story-moral">💡 Мораль: тишина — тоже лекарство. Тот, кто умеет молчать, слышит больше, чем тот, кто играет громко.</div>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Первые поговорки — о тишине и грусти:</strong></p>
+        <ul>
+            <li>«Тишина — тоже музыка, но её надо уметь услышать».</li>
+            <li>«Слово — серебро, а молчание — золото».</li>
+            <li>«Кто молчит, тот двух научит».</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 2. ЛЕКАРСТВО ОТ УСТАЛОСТИ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ВТОРАЯ · ОТ УСТАЛОСТИ">
+        <div class="tale-title">Как лечили усталость</div>
+        <div class="tale-text">
+            <p>На второй день пришла <strong>Усталость</strong>. Она еле шла. Ноги у неё были тяжёлые, глаза слипались. Она проработала весь день и не могла отдохнуть.</p>
+            <p>Кузнечик задумался. Какое лекарство от усталости?</p>
+            <p>Он взял <strong>шум дождя</strong> — и Усталость прислушалась. Взял <strong>журчание ручья</strong> — и Усталость задышала глубже. Добавил <strong>лёгкий шелест трав</strong> — и Усталость расслабилась. И добавил капельку <strong>тихого ветра</strong>.</p>
+            <p>Усталость закрыла глаза. Через минуту она уснула. А когда проснулась — почувствовала себя свежей, будто и не было тяжёлого дня.</p>
+            <p>«От усталости лечат медленные звуки, — записал кузнечик в свою тетрадь. — Те, что не спешат. Те, что убаюкивают».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 2. Коробочка-лекарство с ритмическим рисунком.</strong></p>
+        <p>Дети складывают из бумаги маленькую коробочку (оригами). На стенках коробочки — <em>ритмический рисунок</em> лекарства от усталости. Внутрь — маленький листок с надписью «От усталости» (или символ).</p>
+        <ul>
+            <li>На одной стороне — горизонтальные медленные волны.</li>
+            <li>На другой — тихие точки.</li>
+            <li>На третьей — плавные линии.</li>
+            <li>На четвёртой — маленькое пустое место («пауза»).</li>
+        </ul>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">📦 Образец развёртки коробочки-лекарства</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Схема развёртки: крест из 4 квадратов -->
+            <rect x="180" y="20" width="60" height="60" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="120" y="80" width="60" height="60" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="180" y="80" width="60" height="60" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="240" y="80" width="60" height="60" fill="none" stroke="#334155" stroke-width="1.5"/>
+            <rect x="180" y="140" width="60" height="60" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+            <!-- Содержимое квадратов -->
+            <!-- Медленные волны -->
+            <path d="M190,110 Q200,100 210,110 T230,110" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+            <path d="M190,125 Q200,115 210,125 T230,125" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+
+            <!-- Тихие точки -->
+            <g fill="#16a34a">
+                <circle cx="135" cy="100" r="1.5"/>
+                <circle cx="150" cy="105" r="1.5"/>
+                <circle cx="165" cy="100" r="1.5"/>
+                <circle cx="135" cy="120" r="1.5"/>
+                <circle cx="150" cy="125" r="1.5"/>
+                <circle cx="165" cy="120" r="1.5"/>
+            </g>
+
+            <!-- Плавные линии -->
+            <path d="M255,110 Q265,100 275,110 T295,110" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+
+            <!-- Пустое место -->
+            <text x="210" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" font-style="italic" fill="#64748b">пауза</text>
+
+            <!-- Подпись -->
+            <text x="400" y="110" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e293b">От усталости</text>
+            <text x="400" y="130" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#64748b">медленные · тихие · плавные</text>
+        </svg>
+    </div>
+
+    <div class="music-block">
+        <p><strong>Рисунок под музыку «Дождь и покой».</strong> Педагог включает фрагмент со звуком дождя и журчанием ручья. Дети рисуют то, что слышат — медленные линии, точки, волны. Через 4 минуты работы откладываются в коробочки.</p>
+    </div>
+
+    <div class="move-block">
+        <p><strong>Двигательный этюд «Отдых у ручья».</strong> Дети ложатся на коврики или садятся удобно, закрывают глаза. Педагог тихо включает звук ручья. Дети «слушают» 1 минуту. Затем медленно «просыпаются». «Как вы себя чувствуете? Что изменилось?»</p>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о воде и отдыхе:</strong></p>
+        <ol start="4">
+            <li>«Что всегда куда-то идёт, но никуда не уходит?» <em>(время, вода)</em>.</li>
+            <li>«Без чего человек не может жить больше трёх дней?» <em>(вода)</em>.</li>
+            <li>«Что может быть мягким и твёрдым, холодным и горячим?» <em>(вода)</em>.</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 3. ЛЕКАРСТВО ОТ ТРЕВОГИ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ТРЕТЬЯ · ОТ ТРЕВОГИ">
+        <div class="tale-title">Как лечили тревогу</div>
+        <div class="tale-text">
+            <p>На третий день в аптеку пришла <strong>Тревога</strong>. Она не могла усидеть на месте. Она всё время думала: «А вдруг что-то случится? А вдруг будет плохо?» Она не могла успокоиться.</p>
+            <p>Кузнечик задумался. Какое лекарство от тревоги?</p>
+            <p>Он взял <strong>тишину</strong> — и Тревога замолчала. Взял <strong>спокойный ветер</strong> — и Тревога затихла. Добавил <strong>ровный шум леса</strong> — и Тревога замерла. И ничего больше не добавлял. Только тишина, ветер и лес.</p>
+            <p>Тревога посидела в тишине полчаса. Когда она встала — её уже не было. Осталась <strong>уверенность</strong>: «Всё будет так, как должно быть».</p>
+            <p>«От тревоги не надо много звуков, — записал кузнечик. — Наоборот. Надо тихо. Чем тише — тем лучше».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 3. «Карта тишины».</strong></p>
+        <p>Дети получают белый лист. Задание: нарисовать тишину. Но не пустой лист. На нём должно быть <em>две-три крошечные детали</em> — знаки того, что в тишине всё-таки слышно что-то. Например: одна маленькая точка, один лёгкий завиток, одна короткая чёрточка. Всё остальное — белое.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🌙 Образец «карты тишины»</div>
+        <svg viewBox="0 0 520 160" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="120" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+            <circle cx="200" cy="80" r="2" fill="#334155"/>
+            <path d="M320,80 Q330,70 340,80 Q350,90 340,100" fill="none" stroke="#334155" stroke-width="1.5" opacity="0.6"/>
+            <line x1="420" y1="80" x2="430" y2="80" stroke="#334155" stroke-width="1.5" opacity="0.6"/>
+            <text x="260" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#64748b">Тишина — почти пустой лист. Но не совсем</text>
+        </svg>
+    </div>
+
+    <div class="focus-block">
+        <p><strong>Фокус «Поющие стаканы».</strong> Педагог проводит пальцем по краю стеклянных стаканов с разным количеством воды. Каждый стакан звучит на своей высоте. Дети слушают.</p>
+        <p><em>«Заметьте: чтобы зазвучало — нужно совсем маленькое движение. И тогда тишина превращается в звук. Так же и с тревогой: чтобы успокоиться, нужно совсем немного тишины».</em></p>
+        <p><strong>Безопасность:</strong> стаканы устойчиво стоят, не трогаем по краю ногтем, только подушечкой пальца.</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Вставная история 2. «Тихая лампа»</div>
+        <div class="story-text">Однажды вечером в комнате погас свет. Девочка испугалась: в темноте всё казалось страшным. Она хотела закричать — но мама сказала: «Тише. Послушай». Девочка прислушалась. За окном шумел дождь. В доме тихо тикали часы. Ветер качал ветки дерева за окном. Девочка перестала бояться. Она поняла: в темноте есть звуки. И эти звуки говорят: «Всё спокойно. Всё хорошо». Мама зажгла маленькую лампу. И в этой лампе, и в этих звуках девочка почувствовала — ей ничего не грозит.</div>
+        <div class="story-moral">💡 Мораль: тишина и спокойные звуки лечат тревогу. Тот, кто слушает мир вокруг, перестаёт бояться.</div>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о спокойствии:</strong></p>
+        <ul>
+            <li>«В тихом омуте черти водятся» — но тихая вода тоже успокаивает.</li>
+            <li>«Не тот страшен, кто громко кричит, а тот, кто молчит».</li>
+            <li>«Спокойный ум — крепкий сон».</li>
+        </ul>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 1. «Что лишнее?»</strong></p>
+        <p>Шум моря, пение птиц, <em>грохот грома</em>, журчание ручья. Лишнее — грохот грома: он возбуждает, а не успокаивает. Остальные — успокаивающие.</p>
+        <p><strong>Интеллектуальная задача 2. «Найди пару».</strong> Усталость — шум дождя. Тревога — тишина. Грусть — пение птиц. Скука — звон капели. Злость — шум моря.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 4. ЛЕКАРСТВА ОТ СКУКИ И ЗЛОСТИ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ЧЕТВЁРТАЯ · ОТ СКУКИ И ЗЛОСТИ">
+        <div class="tale-title">Как лечили скуку и злость</div>
+        <div class="tale-text">
+            <p>На четвёртый день в аптеку пришли сразу двое. <strong>Скука</strong> — вялая, унылая, ей всё было неинтересно. И <strong>Злость</strong> — надутая, красная, готовая всех обидеть.</p>
+            <p>Кузнечик задумался. Скука и Злость — это противоположные вещи. Но у них есть общее: и той, и другой нужен сильный звук.</p>
+            <p>Для Скуки он взял <strong>звон капели</strong> и <strong>стрекот кузнечиков</strong> — быстрые, весёлые, ритмичные. Скука встрепенулась: «Ой! Как интересно!» — и убежала играть.</p>
+            <p>Для Злости он взял <strong>шум моря</strong> и <strong>далёкий гром</strong>. Злость сначала сопротивлялась, но постепенно её дыхание выровнялось. Море убаюкало её, гром выпустил пар. И Злость стала <strong>Силой</strong> — спокойной и уверенной.</p>
+            <p>«Вот как интересно, — записал кузнечик. — Скука лечится ритмом. А злость — грозой. Каждому своё».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 4. Две схемы: «От скуки» и «От злости».</strong></p>
+        <p>Дети делятся на две группы. Одна группа рисует <em>рецепт от скуки</em>: ритмические точки, чёрточки, звёздочки. Другая — <em>рецепт от злости</em>: большие волны, зигзаги, длинные линии.</p>
+        <p>Через 6 минут группы обмениваются работами и добавляют что-то своё.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🎵 Слева — рецепт от скуки, справа — рецепт от злости</div>
+        <svg viewBox="0 0 520 160" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+            <!-- От скуки -->
+            <text x="140" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#854d0e">ОТ СКУКИ</text>
+            <!-- Ритмические точки -->
+            <circle cx="50" cy="55" r="3" fill="#eab308"/>
+            <circle cx="75" cy="55" r="3" fill="#eab308"/>
+            <circle cx="100" cy="55" r="3" fill="#eab308"/>
+            <circle cx="125" cy="55" r="3" fill="#eab308"/>
+            <circle cx="150" cy="55" r="3" fill="#eab308"/>
+            <circle cx="175" cy="55" r="3" fill="#eab308"/>
+            <circle cx="200" cy="55" r="3" fill="#eab308"/>
+            <circle cx="225" cy="55" r="3" fill="#eab308"/>
+            <!-- Чёрточки -->
+            <g stroke="#eab308" stroke-width="2">
+                <line x1="50" y1="80" x2="50" y2="95"/>
+                <line x1="75" y1="80" x2="75" y2="95"/>
+                <line x1="100" y1="80" x2="100" y2="95"/>
+                <line x1="125" y1="80" x2="125" y2="95"/>
+                <line x1="150" y1="80" x2="150" y2="95"/>
+                <line x1="175" y1="80" x2="175" y2="95"/>
+                <line x1="200" y1="80" x2="200" y2="95"/>
+            </g>
+            <!-- Звёздочки -->
+            <text x="60" y="130" font-family="Segoe UI, sans-serif" font-size="16" fill="#eab308">✻</text>
+            <text x="100" y="130" font-family="Segoe UI, sans-serif" font-size="16" fill="#eab308">✻</text>
+            <text x="140" y="130" font-family="Segoe UI, sans-serif" font-size="16" fill="#eab308">✻</text>
+            <text x="180" y="130" font-family="Segoe UI, sans-serif" font-size="16" fill="#eab308">✻</text>
+
+            <!-- Разделитель -->
+            <line x1="260" y1="20" x2="260" y2="150" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+
+            <!-- От злости -->
+            <text x="390" y="25" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#9d174d">ОТ ЗЛОСТИ</text>
+            <!-- Волны -->
+            <path d="M280,60 Q300,35 320,60 T360,60 T400,60 T440,60 T480,60" fill="none" stroke="#ec4899" stroke-width="2"/>
+            <path d="M280,80 Q300,55 320,80 T360,80 T400,80 T440,80 T480,80" fill="none" stroke="#ec4899" stroke-width="2"/>
+            <!-- Зигзаги -->
+            <path d="M280,105 L310,95 L300,115 L330,105 L320,125 L350,115" fill="none" stroke="#ec4899" stroke-width="2.5"/>
+            <path d="M400,105 L430,95 L420,115 L450,105 L440,125 L470,115" fill="none" stroke="#ec4899" stroke-width="2.5"/>
+            <!-- Длинные линии -->
+            <line x1="280" y1="140" x2="500" y2="140" stroke="#ec4899" stroke-width="1.5"/>
+        </svg>
+    </div>
+
+    <div class="focus-block">
+        <p><strong>Фокус «Шум в стакане».</strong> Педагог наливает в стеклянный стакан немного воды, ставит на стол и стучит по столу рядом. Дети слушают. Затем наливает больше воды — стук становится ниже. <em>«Чем больше воды — тем ниже звук. Так же и с чувствами: чем больше спокойствия внутри — тем тише звук»</em>.</p>
+    </div>
+
+    <div class="move-block">
+        <p><strong>Двигательный этюд «От скуки к злости и обратно».</strong> Дети сначала «скучают»: медленно ходят, зевают. Потом «злятся»: топают ногами, машут руками. Потом «успокаиваются»: делают глубокий вдох, медленно выдыхают, плавно покачиваются. Упражнение повторяется 2 раза.</p>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Финальные загадки:</strong></p>
+        <ol start="7">
+            <li>«Что громче всех, а лечит тише всех?» <em>(море, гром)</em>.</li>
+            <li>«Кто приходит без приглашения, а уходит, когда его развеселят?» <em>(скука)</em>.</li>
+            <li>«Что делает человека сильнее, если с ним справиться?» <em>(злость)</em>.</li>
+            <li>«Что соединяет всех, кто слушает?» <em>(звук, музыка)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о чувствах:</strong></p>
+        <ul>
+            <li>«Не злись — а то лопнешь».</li>
+            <li>«Скука — мать всех пороков».</li>
+            <li>«Тише едешь — дальше будешь».</li>
+        </ul>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 3. «Сгруппируй по действию».</strong></p>
+        <p>Дети распределяют звуки на четыре группы:</p>
+        <ul>
+            <li><strong>Успокаивают:</strong> шум дождя, журчание ручья, тишина.</li>
+            <li><strong>Бодрят:</strong> звон капели, стрекот, ритмичный стук.</li>
+            <li><strong>Очищают:</strong> гром, шум моря, шторм.</li>
+            <li><strong>Лечат:</strong> пение птиц, шелест листвы.</li>
+        </ul>
+        <p><strong>Интеллектуальная задача 4. «Что изменится?»</strong> Если бы в аптеке не было тишины — что бы произошло? <em>Мы не смогли бы лечить тревогу</em>.</p>
+        <p><strong>Интеллектуальная задача 5. «Составь рецепт».</strong> Дети получают задание: придумать свой рецепт от «состояния, которое не названо». Например, от «спешки». Ответ: шум дождя + тишина = «остановка».</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 5. СБОРКА КНИГИ РЕЦЕПТОВ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЯТАЯ · КНИГА РЕЦЕПТОВ">
+        <div class="tale-title">Кузнечик собирает книгу</div>
+        <div class="tale-text">
+            <p>Прошло пять дней. Кузнечик собрал все рецепты, которые придумал вместе с ребятами. У него были:</p>
+            <p>Рецепт <strong>от грусти</strong> — пение птиц, шелест листвы, ручей, тишина.</p>
+            <p>Рецепт <strong>от усталости</strong> — шум дождя, журчание ручья, шелест трав, тихий ветер.</p>
+            <p>Рецепт <strong>от тревоги</strong> — тишина, спокойный ветер, шум леса.</p>
+            <p>Рецепт <strong>от скуки</strong> — звон капели, стрекот, ритмичный стук.</p>
+            <p>Рецепт <strong>от злости</strong> — шум моря, далёкий гром.</p>
+            <p>Он сложил их все в одну книгу. И назвал её — <strong>«Книга звуковых лекарств»</strong>.</p>
+            <p>Теперь каждый, кто устал или грустит, может прийти в аптеку, открыть книгу — и найти своё лекарство. Потому что природа уже давно всё придумала. Осталось только услышать.</p>
+        </div>
+    </div>
+
+    <div class="apothecary-block">
+        <p><strong>Продуктивная деятельность 5. Общая «Книга звуковых лекарств».</strong></p>
+        <p>Дети собирают все свои листы-рецепты в одну большую книгу.</p>
+        <ul>
+            <li>Страница 1: вывеска аптеки.</li>
+            <li>Страница 2: рецепт от грусти.</li>
+            <li>Страница 3: коробочка-лекарство от усталости.</li>
+            <li>Страница 4: карта тишины — от тревоги.</li>
+            <li>Страница 5: рецепт от скуки.</li>
+            <li>Страница 6: рецепт от злости.</li>
+            <li>Обложка: «Книга звуковых лекарств».</li>
+        </ul>
+        <p>Книга скрепляется лентой или скотчем и выставляется на видном месте в классе.</p>
+    </div>
+
+    <div class="music-block">
+        <p><strong>Рисунок под музыку «Море» (Дебюсси).</strong> Педагог включает фрагмент. Дети рисуют волны. Через 4 минуты работы добавляются в книгу как последняя страница — «Свободная страница».</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФИНАЛ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Финал. Точка тишины и вызов <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Финальная история, один вопрос рефлексии, вызов на дом.</div>
+        </div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Финальная история. «Как звук лечит»</div>
+        <div class="story-text">Однажды девочка тяжело заболела. Врачи давали ей лекарства, но они не помогали. Тогда пришёл старый музыкант. Он сел рядом с её кроватью и начал играть на флейте. Он играл тихо-тихо. Он играл долго-долго. Девочка сначала слушала, потом закрыла глаза, потом задышала ровно. Через три дня она встала. «Что ты играл?» — спросила она. Музыкант улыбнулся: «Я играл то, что слышал. Ветер за окном. Птиц. Дождь. Я просто повторял за природой». Девочка поняла: не лекарства её вылечили. Её вылечили звуки, которые она слышала каждый день — но раньше не замечала.</div>
+        <div class="story-moral">💡 Мораль: природа лечит звуком. Только нужно уметь слушать. И тот, кто научился — никогда не останется без лекарства.</div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Точка тишины.</strong> Педагог просит детей сесть в круг. Все молчат 30 секунд. Затем — один вопрос:</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«Какое лекарство — твоё? От какого состояния ты бы его взял?»</p>
+        <p>Ответы — короткие. По желанию. Кто-то скажет: «От усталости — шум дождя». Кто-то: «От тревоги — тишина». Кто-то промолчит — и это тоже ответ.</p>
+        <p>Педагог благодарит каждого кивком.</p>
+    </div>
+
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Сегодня мы открыли звуковую аптеку. А теперь — маленькое дело для души.</em></p>
+        <p><em>Понаблюдайте за собой дома в течение недели. Когда вы грустите, устали, тревожитесь — прислушайтесь к себе. Какой звук вам хочется услышать? Запишите это в тетрадь и нарисуйте маленький символ своего лекарства.</em></p>
+        <p><em>И ещё: спросите маму или папу, какой звук их успокаивает. Принесите их ответ — мы добавим в нашу книгу новую страницу "Что помогает нашим близким"».</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ЛИЧНОСТНО-ОРИЕНТИРОВАННАЯ ТЕХНОЛОГИЯ -->
+    <!-- ============================================================ -->
+    <h2>🪞 Личностно-ориентированная технология «Андрюша»</h2>
+
+    <p>Педагог реализует технологию «Андрюша» — <strong>незаметно для класса</strong> уделяет одному ребёнку (условно — Максим) в три раза больше внимания, чем обычно.</p>
+
+    <div class="andryusha-box">
+        <p><strong>15 блоков технологии, вплетённых в занятие:</strong></p>
+        <p><strong>1. «Ты молодец».</strong> При рисовании вывески педагог подходит к Максиму первым: «Максим, ты уже начал. Молодец».</p>
+        <p><strong>2. «Кубик».</strong> В главе 1 педагог садится рядом с Максимом и вместе с ним рисует волнистые линии. Между делом разбирает кубик Рубика: «Тут повернуть эту грань — что получится?»</p>
+        <p><strong>3. «Фокус».</strong> В главе 2 педагог показывает Максиму поющие стаканы отдельно: «Приложи ухо — слышишь? Каждый стакан — свой голос».</p>
+        <p><strong>4. «Медведь».</strong> В двигательном этюде «От скуки к злости» педагог даёт Максиму роль ведущего: «Ты покажешь, как злятся. Начинай».</p>
+        <p><strong>5. «Лес и парк».</strong> В главе 3, когда дети рисуют карту тишины, педагог тихо спрашивает Максима: «А где тебе бывает тихо — дома или на улице?» Максим отвечает. Педагог: «Нарисуй эту тишину».</p>
+        <p><strong>6. «Ошибочное суждение».</strong> После карты тишины педагог показывает Максиму его старые серые работы и говорит: «Смотри, что ты рисовал раньше. А вот что нарисовал сегодня. Сегодня — лучше. Молодец».</p>
+        <p><strong>7. «Правила поведения в обществе».</strong> В главе 5 педагог напоминает классу: «Мы уважаем работы друг друга. Не сравниваем — любуемся».</p>
+        <p><strong>8. «Рисунок под музыку».</strong> В финале педагог отдельно подчёркивает Максиму: «Ты сегодня нарисовал море по-своему. Это твоё».</p>
+        <p><strong>9. «Лодочка».</strong> При сборке книги педагог даёт Максиму особую роль: «Ты положишь первую страницу. Ты — хранитель книги».</p>
+        <p><strong>10. «Музыкальная пауза».</strong> В финале педагог включает музыку и даёт Максиму первым приклеить страницу: «Ты — первый автор. Начинай».</p>
+        <p><strong>11. «Этика гражданственности».</strong> Перед точкой тишины педагог: «Книга, которую мы сделали — вклад в общее дело. Она останется в классе, чтобы другие ребята учились лечить себя звуками».</p>
+        <p><strong>12. «Листок-книжка на букву "л"».</strong> Максим получает особое задание — сделать маленькую книжку на букву «Л»: «лес», «луг», «лист», «лень». Слова нарисовать по представлению.</p>
+        <p><strong>13. «Мотивированный выбор».</strong> В финале Максим выбирает, где в книге будет его страница. «Ты — автор. Ты решаешь».</p>
+        <p><strong>14. «Рефлексия и коррекция».</strong> После занятия педагог отдельно разговаривает с Максимом: «Ты сегодня справился со всем. Ты был настоящим помощником кузнечика. Молодец. А в следующий раз попробуем ещё что-нибудь новое».</p>
+        <p><strong>15. Индивидуальный отзыв.</strong> На общей рефлексии педагог скажет Максиму: «Твоя карта тишины — самая тонкая сегодня. Хорошо получилось».</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- КОММЕНТАРИЙ МЕТОДИСТА -->
+    <!-- ============================================================ -->
+    <h2>🔍 Комментарий методиста</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Продолжение линии кузнечика.</strong> Третье занятие с одним героем — эффект «сериала». Дети с нетерпением ждут, что ещё придумает кузнечик. Это удерживает интерес без выговоров.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Пять состояний — пять рецептов.</strong> Дети не «заучивают» виды воздействия. Они <em>лечат</em> состояния через звуки. Знание становится <em>прожитым</em>.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Продуктивная деятельность — на каждом шагу.</strong> Пять продуктов: вывеска, схема-рецепт, коробочка-лекарство, карта тишины, ритм-рецепты. Каждый — свой вид деятельности.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. «Карта тишины» — снова в центре занятия.</strong> Приём из занятия 15 работает и здесь — но с новым смыслом: тишина как лекарство от тревоги.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Загадки — о состояниях души.</strong> Не «о природе», а о <em>внутреннем мире</em>. Это делает занятие глубже и ближе к ребёнку.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Четыре истории.</strong> Одна большая сказка + 3 вставных. Каждая — о лечении через звук.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>7. Шесть поговорок.</strong> О тишине, спокойствии, чувствах.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>8. Пять интеллектуальных задач.</strong> Классификация, «что лишнее?», «найди пару», «составь рецепт».</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>9. Два фокуса.</strong> «Поющие стаканы» (о звуке воды) и «Шум в стакане» (о высоте звука).</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>10. Три двигательных этюда.</strong> «Отдых у ручья», «От скуки к злости», дыхательные упражнения.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>11. Рисунок под музыку — два раза.</strong> Один раз в главе 2 (дождь и покой) и один в финале (море).</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>12. Точка тишины — один вопрос.</strong> «Какое лекарство — твоё?» — вопрос <em>самоопределения</em>. Ребёнок задумывается о своём состоянии и о том, что ему помогает.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг занятия.</strong> Если занятие 14 давало <em>опыт слушания</em>, занятие 15 — <em>систематику звуков</em>, то занятие 16 даёт <strong>знание о действии</strong>: каждый звук лечит что-то своё. Ребёнок получает не просто «звуки природы», а <em>инструменты помощи самому себе</em>. Это — практическое знание, которое работает всю жизнь.
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1.</strong> Сказка — стержень. Не торопите. Паузы работают сильнее слов.</p>
+        <p><strong>2.</strong> После каждой главы — продуктивная деятельность, а не вопросы.</p>
+        <p><strong>3. «Карта тишины»</strong> — не пустой лист. Две-три детали делают её осмысленной.</p>
+        <p><strong>4.</strong> Животных не изображаем. Даже «сверчка» — только называем, не рисуем.</p>
+        <p><strong>5.</strong> Двигательные этюды — часть сказки, не перерыв.</p>
+        <p><strong>6.</strong> Фокусы — для понимания, а не для развлечения.</p>
+        <p><strong>7.</strong> Точка тишины — обязательна. 30 секунд молчания.</p>
+        <p><strong>8.</strong> Технология «Андрюша» — незаметно для класса.</p>
+        <p><strong>9.</strong> Если что-то пошло не по плану — следуйте за детьми.</p>
+        <p><strong>10. «Книга звуковых лекарств»</strong> — итог. Она остаётся в классе надолго.</p>
+    </div>
+
+    <div class="quote">
+        «Природа — это аптека, которая всегда открыта. И у неё есть лекарство от всего. Надо только знать, где искать».
+        <span class="quote-author">— из размышлений о звуковой грамотности</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson15.html" class="button">← Занятие 15</a>
+        <a href="section3.html" class="button secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson17.html" class="button">Занятие 17 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson15.html" class="back-link">← Занятие 15. Многообразие звуков в природе</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson17.html" class="back-link">Занятие 17. Краски природы →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 16 «Воздействие природной музыки»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Сказка «Как кузнечик открыл звуковую аптеку» в пяти главах</em></p>
+    </footer>
+
+</div>
+</body>
+</html>

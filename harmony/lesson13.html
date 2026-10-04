@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 13. Обобщение по разделу «Мир прекрасного» — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ЧЕМ ЭТО ЗАНЯТИЕ ОТЛИЧАЕТСЯ ОТ 9–12";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .andryusha-box {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px dashed #a855f7;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .andryusha-box::before {
+            content: "🪞 ЛИЧНОСТНО-ОРИЕНТИРОВАННАЯ ТЕХНОЛОГИЯ «АНДРЮША»";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .andryusha-box p:first-child { margin-top: 8px; }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Что делают дети";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 История";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .riddles-block {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #eab308;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .riddles-block::before {
+            content: "❓ Загадки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #eab308;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .riddles-block p:first-child { margin-top: 8px; }
+        .riddles-block ol { margin-left: 26px; }
+        .riddles-block ol li { margin: 8px 0; font-style: italic; }
+
+        .proverbs-block {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .proverbs-block::before {
+            content: "🌿 Поговорки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .proverbs-block p:first-child { margin-top: 8px; }
+
+        .task-block {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .task-block::before {
+            content: "🧠 Интеллектуальная задача";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .task-block p:first-child { margin-top: 8px; }
+
+        .craft-block {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .craft-block::before {
+            content: "🛠️ Продуктивная деятельность";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ea580c;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .craft-block p:first-child { margin-top: 8px; }
+
+        .music-block {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .music-block::before {
+            content: "🎵 Рисунок под музыку";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .music-block p:first-child { margin-top: 8px; }
+
+        .book-block {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #475569;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .book-block::before {
+            content: "📚 Книга Красоты";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #475569;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .book-block p:first-child { margin-top: 8px; }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson12.html" class="back-link">← Занятие 12. Критерии оценки прекрасного</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson14.html" class="back-link">Занятие 14. Источники прекрасного →</a>
+    </div>
+
+    <h1>📚 Занятие 13. Обобщение по разделу «Мир прекрасного»</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Это занятие — итог всего раздела, но построено оно не как «повторение пройденного».</strong> На занятии 9 дети спорили о сущности искусства. На занятии 10 — возвращали в мир пять искусств. На занятии 11 — восстанавливали разбитую вазу, открывая шесть свойств прекрасного. На занятии 12 — различали настоящее от поддельного на ярмарке. Здесь — <strong>собирают всё это в одну книгу</strong>. Каждый ребёнок становится автором одной страницы. Вместе — общая «Книга Красоты».</p>
+        <p><strong>Что принципиально ново:</strong></p>
+        <ul>
+            <li>Это первое занятие, где дети <strong>создают общий продукт</strong>, который останется в объединении надолго.</li>
+            <li>Семь «глав» книги соответствуют семи темам раздела. Каждая глава — <em>продукт</em>: рисунок, аппликация, лепка, схема.</li>
+            <li>В занятие вплетены <strong>четыре глубокие нравственно-поучительные истории</strong> (Л.Н. Толстой, притча, сказка, рассказ), <strong>двенадцать загадок</strong>, <strong>шесть поговорок</strong>, <strong>пять интеллектуальных задач</strong>.</li>
+            <li>Организована <strong>личностно-ориентированная технология «Андрюша»</strong>: педагог незаметно для класса находит время поддержать того ребёнка, который особенно в этом нуждается.</li>
+            <li>Занятие включает <strong>рисунок под музыку</strong> и <strong>музыкальную паузу</strong>.</li>
+            <li>Финал — <strong>вручение книги объединению</strong>: дети понимают, что их творчество остаётся людям.</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу «Мир прекрасного»</strong>, тема <strong>«Обобщение по разделу»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li>Все задания раздела 2 «Мир прекрасного» — как основа для создания «Книги Красоты».</li>
+            <li>Задание «Отношение к прекрасному» — итоговая таблица личного отношения к прекрасному.</li>
+            <li>Задание «Прекрасное в моей жизни» — творческое задание с рисунком.</li>
+            <li>Поучительные рассказы и загадки раздела — как основа для историй занятия.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула занятия: собрать книгу</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Формула занятия">
+        <text x="430" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">СЕМЬ ГЛАВ КНИГИ КРАСОТЫ</text>
+
+        <!-- Верхний ряд -->
+        <rect x="20" y="60" width="110" height="80" rx="14" fill="#fef9c3" stroke="#eab308" stroke-width="2.5"/>
+        <text x="75" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🎨</text>
+        <text x="75" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#854d0e">Глава 1</text>
+        <text x="75" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#854d0e">Что такое прекрасное</text>
+
+        <rect x="145" y="60" width="110" height="80" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="200" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🌿</text>
+        <text x="200" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">Глава 2</text>
+        <text x="200" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#166534">Источники прекрасного</text>
+
+        <rect x="270" y="60" width="110" height="80" rx="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.5"/>
+        <text x="325" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🌫️</text>
+        <text x="325" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">Глава 3</text>
+        <text x="325" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#1e40af">Формы прекрасного</text>
+
+        <rect x="395" y="60" width="110" height="80" rx="14" fill="#ffe4e6" stroke="#ec4899" stroke-width="2.5"/>
+        <text x="450" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">💗</text>
+        <text x="450" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#9d174d">Глава 4</text>
+        <text x="450" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#9d174d">Прекрасное и человек</text>
+
+        <rect x="520" y="60" width="110" height="80" rx="14" fill="#fae8ff" stroke="#a855f7" stroke-width="2.5"/>
+        <text x="575" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">🎭</text>
+        <text x="575" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#6b21a8">Глава 5</text>
+        <text x="575" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#6b21a8">Искусство</text>
+
+        <rect x="645" y="60" width="110" height="80" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+        <text x="700" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">💎</text>
+        <text x="700" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#92400e">Глава 6</text>
+        <text x="700" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#92400e">Свойства прекрасного</text>
+
+        <rect x="770" y="60" width="75" height="80" rx="14" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.5"/>
+        <text x="807" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">⚖️</text>
+        <text x="807" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#3730a3">Глава 7</text>
+        <text x="807" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#3730a3">Критерии</text>
+
+        <!-- Итог -->
+        <rect x="200" y="180" width="460" height="50" rx="14" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+        <text x="430" y="202" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="white">ВСЕ СТРАНИЦЫ СОБИРАЮТСЯ В «КНИГУ КРАСОТЫ»</text>
+        <text x="430" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#dcfce7">Книга остаётся в объединении для будущих ребят</text>
+
+        <!-- Финальная мысль -->
+        <text x="430" y="268" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-style="italic" fill="#166534">«Что я понял о прекрасном — я передаю другим»</text>
+    </svg>
+
+    <div class="quote">
+        «Красота — это не то, что ты знаешь. Это то, что ты передаёшь дальше. Книга, которую вы напишете сегодня, будет читать тот, кто придёт после вас. И он научится у вас видеть красоту».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: семь глав и финал</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:38%;">Этап</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:44%;">Продуктивная деятельность</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><strong>📖 Пустая книга</strong> — открытие занятия</td>
+                <td class="center">5 мин</td>
+                <td>Дети видят большую книгу без страниц и понимают: страницы сделают они сами</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>🎨 Глава 1. Что такое прекрасное</strong></td>
+                <td class="center">8 мин</td>
+                <td><em>Рисунок-символ</em>: каждый рисует, что для него прекрасное</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>🌿 Глава 2. Источники прекрасного</strong></td>
+                <td class="center">10 мин</td>
+                <td><em>Аппликация</em>: природные источники из сухих листьев</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><strong>🌫️ Глава 3. Формы прекрасного</strong></td>
+                <td class="center">10 мин</td>
+                <td><em>Схема-четырёхугольник</em>: четыре формы + интеллектуальная задача</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>💗 Глава 4. Прекрасное и человек</strong></td>
+                <td class="center">12 мин</td>
+                <td><em>Лепка из пластилина</em>: добрый поступок; <em>басня Л.Н. Толстого</em></td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><strong>🎭 Глава 5. Искусство</strong></td>
+                <td class="center">15 мин</td>
+                <td><em>Рисунок под музыку</em>; <em>музыкальная пауза</em></td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td><strong>💎 Глава 6. Свойства прекрасного</strong></td>
+                <td class="center">12 мин</td>
+                <td><em>Таблица-схема</em>: шесть свойств; <em>интеллектуальная задача «Что лишнее?»</em></td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td><strong>⚖️ Глава 7. Критерии оценки</strong></td>
+                <td class="center">10 мин</td>
+                <td><em>Схема «пять дверей»</em>; <em>притча «Два волка»</em></td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td><strong>📚 Сборка книги и вернисаж</strong></td>
+                <td class="center">8 мин</td>
+                <td>Дети соединяют свои страницы в общую книгу и передают её объединению</td>
+            </tr>
+            <tr>
+                <td class="num">10</td>
+                <td><strong>🤫 Точка тишины</strong></td>
+                <td class="center">5 мин</td>
+                <td>Один вопрос. <em>Рассказ «Красивая ваза»</em> — как финальная нота</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Материалы для занятия.</strong> Большая книга-заготовка (папка с семью пустыми страницами из плотной бумаги); цветные карандаши, фломастеры, краски; сухие листья для аппликации; пластилин; листки для схем; клей; музыкальные инструменты или аудиозаписи (Чайковский «Времена года», Вивальди «Времена года», спокойная классика).
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- ЭТАП 1. ПУСТАЯ КНИГА -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Пустая книга <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Педагог входит в класс с большой красивой книгой. Открывает — а внутри пустые страницы. Молчит.</div>
+        </div>
+    </div>
+
+    <div class="book-block">
+        <p><strong>Что подготовить заранее.</strong> Большая папка или книга с <strong>семью пустыми страницами</strong> из плотной бумаги. На обложке — надпись: <em>«КНИГА КРАСОТЫ. Написана детьми объединения "Гармония" в 2026 году»</em>.</p>
+    </div>
+
+    <div class="speech-block">
+        <p><em>Педагог входит. Молча кладёт книгу на стол. Открывает первую страницу — она пустая. Медленно перелистывает — все страницы пустые.</em></p>
+        <p><em>Пауза. Дети смотрят.</em></p>
+        <p><em>(Тихо.) «Смотрите. Это книга. Но она пустая. Страницы есть, а содержания нет. Я не могу её написать сама. Потому что эту книгу должны написать те, кто знает, что такое прекрасное. А кто знает?»</em></p>
+    </div>
+
+    <div class="child-voice">«Мы знаем!»</div>
+    <div class="child-voice">«Мы же про это целый год говорили!»</div>
+    <div class="child-voice">«А что туда писать?»</div>
+
+    <div class="speech-block">
+        <p><em>«Верно. Сегодня мы вместе напишем эту книгу. Каждый из вас станет автором одной страницы. И эти страницы мы соединим в одну большую книгу. А потом подарим её нашему объединению — чтобы те, кто придёт после нас, тоже узнали, что такое прекрасное.</em></p>
+        <p><em>Книга будет состоять из семи глав. Семь тем мы прошли с вами за этот год. В каждой главе мы сделаем свой продукт: рисунок, аппликацию, лепку, схему. Готовы?»</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 1. ЧТО ТАКОЕ ПРЕКРАСНОЕ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Глава 1. Что такое прекрасное <span class="stage-time">8 мин</span></div>
+            <div class="stage-desc">Каждый ребёнок рисует символ прекрасного. Символы становятся первой страницей книги.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Первая глава — самая главная. Она отвечает на вопрос: что такое прекрасное? Вы уже знаете ответ. Но каждый ответит по-своему.</em></p>
+        <p><em>Вот вам задание: нарисуйте на своём листе <strong>один символ</strong> — то, что для вас самое прекрасное. Не пишите слов. Только рисунок. Когда закончите — мы соберём ваши символы в первую страницу книги».</em></p>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность.</strong></p>
+        <ul>
+            <li>Дети получают по небольшому листу бумаги.</li>
+            <li>Каждый рисует символ прекрасного: цветок, солнце, бабочку, сердце, дерево, радугу, облако.</li>
+            <li>Через 5 минут — все листы складываются в первую страницу книги.</li>
+        </ul>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 1. «Найди общее и различное».</strong></p>
+        <p>Педагог показывает три символа (свои примеры): солнце, цветок, сердце.</p>
+        <p><em>«Что общего у этих трёх символов? Чем они отличаются? Почему все три можно назвать прекрасными?»</em></p>
+        <ul>
+            <li><em>Общее:</em> все вызывают радость, все красивы, все — от природы или от человека.</li>
+            <li><em>Различное:</em> солнце — великое, цветок — малое, сердце — внутреннее.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 2. ИСТОЧНИКИ ПРЕКРАСНОГО -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Глава 2. Источники прекрасного <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Дети создают аппликацию из природных материалов. И слушают первую нравственно-поучительную историю.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Мы знаем, что источников прекрасного много: природа, искусство, человек, труд, слово, нравственность. Пусть каждый выберет <strong>один источник</strong> и создаст его на своём листе. Материалы — вот они: сухие листья, цветная бумага, клей. Пусть это будет аппликация».</em></p>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность.</strong></p>
+        <ul>
+            <li>Дети выбирают источник и создают аппликацию.</li>
+            <li>Примеры: природа — из листьев; искусство — из цветной бумаги; труд — из кусочков фольги и ниток.</li>
+            <li>Через 6 минут — работы собираются во вторую страницу книги.</li>
+        </ul>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">История 1. «Спасённый подснежник»</div>
+        <div class="story-text">Ранней весной в лесу распустился первый подснежник — нежный, хрупкий, красивый. Он радовался солнцу и не знал, что скоро может погибнуть: кто-то протоптал тропинку прямо через поляну. Однажды по этой тропинке шёл мальчик. Он увидел подснежник, остановился и подумал: «Если я пойду дальше, я раздавлю цветок. А если обойду — то не успею домой к ужину». Мальчик выбрал обойти. Он не пожалел о сэкономленном времени — он был рад, что сохранил красоту. Через год на этой поляне выросли десятки подснежников. И каждый раз, проходя мимо, мальчик вспоминал свой первый добрый поступок.</div>
+        <div class="story-moral">💡 Мораль: отзывчивость — это умение заметить чужую потребность и помочь, даже если это неудобно для тебя. Один маленький поступок может сохранить большую красоту.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о природе и её источниках:</strong></p>
+        <ol>
+            <li>«Разноцветное коромысло над рекой повисло» (радуга).</li>
+            <li>«Без рук, без ног, а в лесу шумит» (ветер).</li>
+            <li>«Что за звёздочка такая на ладошку мне упала, а растаять не успела» (снежинка).</li>
+            <li>«Красная девица сидит в темнице, а коса — на улице» (морковь).</li>
+            <li>«Золотое яблочко по небу катается, всем улыбается» (солнце).</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 3. ФОРМЫ ПРЕКРАСНОГО -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Глава 3. Формы прекрасного <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Дети создают схему четырёх форм прекрасного и решают интеллектуальную задачу.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Мы знаем четыре формы прекрасного: в великом, в малом, в тихом, в бурном. Сейчас каждый из вас нарисует схему-четырёхугольник. В каждом углу — одна форма. И приведёт пример из жизни или из природы».</em></p>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность.</strong> Дети рисуют квадрат с четырьмя секторами. В каждом секторе — символ и подпись одной формы.</p>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 2. «Что лишнее?»</strong></p>
+        <p>Педагог перечисляет четыре явления: <em>закат, снежинка, тишина, водопад</em>. Три из них относятся к разным формам прекрасного, а одно — лишнее (например, если к ним добавить «радость» — это не форма прекрасного, а чувство). Дети должны найти лишнее и объяснить.</p>
+        <p><strong>Задача 3. «Продолжи закономерность».</strong> Педагог на доске выкладывает в ряд символы: великое — малое — тихое — бурное — великое — малое — ... Дети должны продолжить ряд.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 4. ПРЕКРАСНОЕ И ЧЕЛОВЕК -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Глава 4. Прекрасное и человек <span class="stage-time">12 мин</span></div>
+            <div class="stage-desc">Дети лепят из пластилина добрый поступок. И слушают басню Л.Н. Толстого.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Прекрасное живёт не только в природе, но и в человеке — в его добрых поступках. Сейчас каждый из вас слепит из пластилина <strong>один добрый поступок</strong>. Не человека — а сам поступок: например, кормушку для птиц, книгу, подаренную другу, ладони, помогающие упасть».</em></p>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность.</strong> Дети лепят из пластилина символы добрых поступков. Работы собираются в четвёртую страницу книги.</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">История 2. Басня Л.Н. Толстого «Два товарища»</div>
+        <div class="story-text">Шли по лесу два товарища, и выскочил на них медведь. Один бросился бежать, влез на дерево и спрятался, а другой остался на дороге. Делать было ему нечего — он упал наземь и притворился мёртвым. Медведь подошёл к нему и стал нюхать: он и дышать перестал. Медведь понюхал ему лицо, подумал, что мёртвый, и отошёл. Когда медведь ушёл, тот слез с дерева и смеётся: «Ну что, медведь тебе на ухо говорил?» — «А он сказал мне, что плохие люди те, которые в опасности от товарищей убегают».</div>
+        <div class="story-moral">💡 Мораль: настоящий друг познаётся в беде. Тот, кто оставляет товарища в опасности, — не друг. Отзывчивость — это когда ты не бросаешь другого, даже если тебе страшно.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о человеке и его поступках:</strong></p>
+        <ol start="6">
+            <li>«Что делает человека красивым изнутри?» (добрые поступки).</li>
+            <li>«Что растёт, когда его отдают, и умирает, когда его прячут?» (доброта).</li>
+            <li>«Что нельзя купить ни за какие деньги, но можно потерять навсегда?» (совесть).</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о доброте и человеке:</strong></p>
+        <ul>
+            <li>«Не тот красив, кто лицом бел, а тот, кто душой добр».</li>
+            <li>«Красота — до вечера, а доброта — навек».</li>
+            <li>«Красив тот, кто красиво поступает».</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 5. ИСКУССТВО -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">6</div>
+        <div class="stage-content">
+            <div class="stage-title">Глава 5. Искусство <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Дети рисуют под музыку. И слушают притчу о мастере и ученике.</div>
+        </div>
+    </div>
+
+    <div class="music-block">
+        <p><strong>Рисунок под музыку.</strong> Педагог включает спокойную классическую музыку (Чайковский «Времена года. Октябрь» или Вивальди «Времена года. Зима»). Дети получают листы и рисуют то, что чувствуют. <em>Инструкция одна:</em> «Рисуй, что слышишь. Не думай. Пусть рука сама ведёт».</p>
+        <p>Через 8 минут музыка останавливается. Дети показывают свои работы. Работы собираются в пятую страницу книги.</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">История 3. Притча «Мастер и Ученик»</div>
+        <div class="story-text">Жил в древнем городе старый Мастер. Он вырезал из камня удивительные скульптуры — такие красивые, что люди приходили смотреть из других городов. Однажды к Мастеру пришёл юноша и попросил: «Научи меня так же!» Мастер согласился. Первый месяц он давал юноше только один инструмент — молоток. Юноша бил камни и возмущался: «Когда же ты научишь меня вырезать красоту?» Мастер отвечал: «Красота — это не только умение. Это терпение. Продолжай». Прошёл год. Юноша всё бил камни, но однажды заметил, что его удары стали точными и легкими. И вот Мастер дал ему резец. Юноша взял камень и вдруг почувствовал: его руки сами знают, что делать. Через год он вырезал свою первую скульптуру. Мастер посмотрел на неё и сказал: «Теперь ты понял: искусство — это не то, что ты получаешь сразу. Это то, что ты терпеливо создаёшь, шаг за шагом. И это остаётся людям».</div>
+        <div class="story-moral">💡 Мораль: искусство и мастерство требуют труда, терпения и времени. Настоящее искусство не создаётся в один день — оно растёт вместе с тобой.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки об искусстве и красоте:</strong></p>
+        <ol start="9">
+            <li>«Без окон, без дверей, а внутри — целый мир» (книга).</li>
+            <li>«Что можно увидеть с закрытыми глазами?» (сон, мечта, красота в душе).</li>
+            <li>«Кто говорит без языка, поёт без голоса?» (эхо).</li>
+            <li>«Что связует воедино небо, землю и цветы?» (гармония).</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 6. СВОЙСТВА ПРЕКРАСНОГО -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Глава 6. Свойства прекрасного <span class="stage-time">12 мин</span></div>
+            <div class="stage-desc">Дети создают таблицу шести свойств и решают интеллектуальную задачу.</div>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность.</strong> Каждый ребёнок рисует на листе <strong>таблицу 2×3</strong>. В каждой ячейке — символ одного свойства: симметрия (зеркало), ритм (полоски), гармония (цвета), целесообразность (ключ), неповторимость (снежинка), изящность (перо). Таблицы собираются в шестую страницу книги.</p>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 4. «Найди пару».</strong> Педагог называет свойство — дети ищут пример.</p>
+        <ul>
+            <li>Симметрия → крылья бабочки.</li>
+            <li>Ритм → полосы на стволе берёзы.</li>
+            <li>Гармония → крона и корни дерева.</li>
+            <li>Целесообразность → обтекаемая форма рыбы.</li>
+            <li>Неповторимость → каждый закат.</li>
+            <li>Изящность → полёт ласточки.</li>
+        </ul>
+        <p><strong>Интеллектуальная задача 5. «Что изменилось?»</strong> Педагог показывает две похожие картинки — на одной симметричная бабочка, на другой один ус сломан. Дети должны найти отличие и назвать, какое свойство нарушено.</p>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о свойствах красоты:</strong></p>
+        <ul>
+            <li>«Красота без меры — что дом без крыши».</li>
+            <li>«Всему своя мера».</li>
+            <li>«Красота дерева — в его плодах, а человека — в его делах».</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 7. КРИТЕРИИ ОЦЕНКИ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">8</div>
+        <div class="stage-content">
+            <div class="stage-title">Глава 7. Критерии оценки <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Дети создают схему «пять дверей» и слушают притчу «Два волка».</div>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность.</strong> Дети рисуют большую дверь, разделённую на пять частей. На каждой части — символ одного критерия: форма (кисть), содержание (книга), воздействие (сердце), польза (рука), уникальность (звезда). Схемы собираются в седьмую страницу книги.</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">История 4. Притча «Два волка»</div>
+        <div class="story-text">Однажды старый мудрец сказал внуку: «В каждом человеке борются два волка. Один волк — это зло: зависть, жадность, злость, лень, равнодушие. Другой волк — это добро: отзывчивость, ответственность, любовь, забота, бережность». — «А какой волк побеждает?» — спросил внук. — «Побеждает тот волк, которого ты кормишь», — ответил мудрец.</div>
+        <div class="story-moral">💡 Мораль: мы сами выбираем, каким волком быть. Кормите в себе доброту, отзывчивость и ответственность — и мир вокруг станет красивее.</div>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о критериях и выборе:</strong></p>
+        <ul>
+            <li>«Красота без ума — пустая сума».</li>
+            <li>«Не всё то золото, что блестит».</li>
+            <li>«Красивое — не всегда полезное, полезное — не всегда красивое».</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ЛИЧНОСТНО-ОРИЕНТИРОВАННАЯ ТЕХНОЛОГИЯ «АНДРЮША» -->
+    <!-- ============================================================ -->
+    <h2>🪞 Личностно-ориентированная технология «Андрюша»</h2>
+
+    <p>На этом занятии педагог реализует личностно-ориентированную технологию по образцу, описанному в методике «Андрюша». Он <strong>незаметно для остальных детей</strong> уделяет одному ребёнку — назовём его условно <em>Максим</em> — в три раза больше внимания, чем обычно.</p>
+
+    <div class="andryusha-box">
+        <p><strong>Как это делается — по шагам, вплетённым в ткань занятия.</strong></p>
+        <p><strong>1. Наблюдение.</strong> Педагог заранее знает: Максим в течение года рисовал однотипные, серые, неуверенные работы. Особенно — серые схемы каких-то громоздких сооружений. Причина — увлечение видеоиграми, отсутствие живого творческого опыта.</p>
+        <p><strong>2. Блок «Ты молодец».</strong> В главе 1, когда все рисуют символы прекрасного, педагог подходит к Максиму первым и говорит: «Максим, я вижу, ты уже начал. Ты молодец, что не сидишь без дела». <em>Незаметно для других.</em></p>
+        <p><strong>3. Блок «Кубик».</strong> В главе 2, когда дети делают аппликацию, педагог садится рядом с Максимом и вместе с ним выкладывает из сухих листьев простой узор. Параллельно — между делом — разбирает с ним простой кубик Рубика 2×2: «Смотри, тут нужно повернуть вот эту грань. Как думаешь, что получится?».</p>
+        <p><strong>4. Блок «Фокус».</strong> В главе 3, когда дети решают задачу «Что лишнее?», педагог делает маленький фокус для Максима: показывает пустой стакан, накрывает платком — а под платком появляется цветной бумажный цветок. «Красота появляется там, где её ждёшь», — говорит педагог.</p>
+        <p><strong>5. Блок «Медведь».</strong> В главе 4 педагог даёт Максиму <em>главную роль</em> — изобразить медведя из басни. Максим показывает медведя жестами. Все хлопают. Педагог говорит: «Максим, у тебя получился настоящий медведь. Ты молодец».</p>
+        <p><strong>6. Блок «Лес и парк».</strong> В главе 5, когда дети рисуют под музыку, педагог подходит к Максиму и тихо спрашивает: «А что ты сейчас слышишь? Лес или парк?» Максим отвечает. Педагог: «Нарисуй лес. Ты же любишь гулять в лесу».</p>
+        <p><strong>7. Блок «Ошибочное суждение».</strong> После рисования педагог показывает Максиму его <em>ранние</em> серые работы (из папки с прошлых занятий) и говорит: «Смотри, вот что ты рисовал в сентябре. А вот что ты нарисовал сегодня. Сегодняшний рисунок во много раз лучше. Ты молодец, у тебя огромное достижение».</p>
+        <p><strong>8. Блок «Правила поведения в обществе».</strong> В главе 6, когда дети работают с таблицей свойств, педагог напоминает классу правило: «Мы уважаем работы друг друга. Не сравниваем — а любуемся». Это правило особенно важно для Максима, который раньше стеснялся своих рисунков.</p>
+        <p><strong>9. Блок «Рисунок под музыку».</strong> Это уже произошло в главе 5 — но педагог отдельно подчёркивает: «Максим, ты сегодня впервые нарисовал что-то цветное. Это большое событие».</p>
+        <p><strong>10. Блок «Лодочка».</strong> В финале, при сборке книги, педагог даёт Максиму <em>особую роль</em> — вклеить первую страницу. «Ты будешь хранителем первой страницы нашей книги». Это даёт Максиму статус в коллективе.</p>
+        <p><strong>11. Блок «Музыкальная пауза».</strong> В финале, когда дети собирают книгу, педагог включает музыку и даёт Максиму <em>право</em> первым приклеить свою страницу. «Ты — первый автор книги. Начинай».</p>
+        <p><strong>12. Блок «Этика гражданственности».</strong> Перед точкой тишины педагог говорит: «Книга — это вклад в общее дело. Мы делаем её не для себя — для тех, кто придёт после нас. Это — наш гражданский поступок».</p>
+        <p><strong>13. Блок «Листок-книжка на букву "л"».</strong> Максим получает особое задание — сделать маленькую книжку на букву «Л»: «луг», «лес», «лето», «лодка». Слова нужно нарисовать по представлению. Эта книжка приклеивается к его странице книги.</p>
+        <p><strong>14. Блок «Мотивированный выбор».</strong> В финале Максим выбирает, где в книге будет его страница. «Ты — автор. Ты решаешь».</p>
+        <p><strong>15. Блок «Рефлексия и коррекция».</strong> После занятия педагог ещё раз разговаривает с Максимом: «Ты сегодня справился со всем. Ты был настоящим автором книги. И ты — молодец. А в следующий раз мы попробуем сделать ещё что-нибудь новое».</p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Результат технологии «Андрюша».</strong> Максим впервые за год создал <strong>яркий, цветной рисунок</strong> — вместо серой схемы. Педагог незаметно акцентировал его достижение, показав его работу всему коллективу. И наметил дальнейшую перспективу: «В следующий раз попробуем ещё что-нибудь новое». Технология работала как <em>сборка кубика Рубика</em>: педагог виртуозно провёл детский коллектив через разные виды деятельности, а внутри этой деятельности нашёл время для одного ребёнка.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- СБОРКА КНИГИ И ВЕРНИСАЖ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">9</div>
+        <div class="stage-content">
+            <div class="stage-title">Сборка книги и вернисаж <span class="stage-time">8 мин</span></div>
+            <div class="stage-desc">Дети соединяют свои страницы в общую книгу. Книга остаётся в объединении.</div>
+        </div>
+    </div>
+
+    <div class="book-block">
+        <p><strong>Как собирается книга.</strong></p>
+        <ol>
+            <li>Каждый ребёнок оформляет свою страницу: подписывает имя и дату.</li>
+            <li>Дети по очереди вклеивают свои страницы в книгу — в ту главу, которую они выбрали.</li>
+            <li>Педагог скрепляет книгу лентой или скотчем.</li>
+            <li>Книга выставляется на видном месте в классе.</li>
+            <li>Педагог говорит: «Эта книга теперь — достояние нашего объединения. Она будет учить новых ребят видеть красоту».</li>
+        </ol>
+    </div>
+
+    <div class="music-block">
+        <p><strong>Музыкальная пауза.</strong> Пока дети собирают книгу, педагог играет на гитаре спокойную мелодию. Дети могут подпевать или просто слушать. Это — момент общего творчества и единства.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ТОЧКА ТИШИНЫ -->
+    <!-- ============================================================ -->
+    <div class="reflect-block">
+        <p><strong>Точка тишины.</strong> После сборки книги педагог просит всех сесть в круг. Книга лежит в центре.</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«Что ты теперь знаешь о прекрасном — то, чего не знал раньше?»</p>
+        <p>Ответы — короткие. По желанию. Кто-то скажет: «Я знаю, что красота — в добрых делах». Кто-то: «Что у красоты есть правила». Кто-то промолчит — и это тоже ответ.</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">История 5 (финальная). «Красивая ваза»</div>
+        <div class="story-text">Однажды мастер вылепил из глины красивую вазу. Он долго трудился: вытачивал форму, рисовал узоры, обжигал в печи. Когда ваза была готова, все восхищались её красотой. Но вот беда — ваза была с трещиной. Никто не хотел её покупать. И тогда мастер сказал: «Красивая вещь должна быть не только красивой, но и прочной, полезной. Иначе красота её — только снаружи». Он сделал новую вазу — такую же красивую, но без трещины. И люди сказали: «Вот это настоящая красота — и красивая, и полезная».</div>
+        <div class="story-moral">💡 Мораль: настоящая красота всегда соединена с пользой и добром. Красивое, но бесполезное — не приносит радости. Наша книга — красивая и полезная, потому что она передаёт знание другим.</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ВЫЗОВ -->
+    <!-- ============================================================ -->
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Сегодня мы написали книгу. А теперь — самое главное задание. Не для отметки, а для души.</em></p>
+        <p><em>Найдите дома одну вещь, которую вы считаете самой красивой. И расскажите о ней родителям — почему она красивая. А ещё — спросите родителей: что для них самое красивое? И запишите их ответ на маленьком листочке.</em></p>
+        <p><em>Мы соберём эти листочки в нашу книгу — как дополнительную главу: "Что для нас прекрасно"».</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- КОММЕНТАРИЙ МЕТОДИСТА -->
+    <!-- ============================================================ -->
+    <h2>🔍 Комментарий методиста: что здесь работает иначе</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Итог раздела — не «повторение», а «создание общего продукта».</strong> В механической модели обобщение сводилось к викторине или повторному прочтению. Здесь — дети пишут книгу, которая остаётся в объединении. Это создаёт <em>ответственность за результат</em> и <em>связь с будущими ребятами</em>.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Семь глав — семь продуктивных деятельностей.</strong> Рисунок, аппликация, схема, лепка, рисунок под музыку, таблица, схема «пять дверей». Каждая глава — не «рассказ», а <em>действие руками</em>. Это то, чего требовал пользователь: «Обратитесь к разнообразной продуктивной деятельности».</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Четыре глубокие нравственно-поучительные истории.</strong> «Спасённый подснежник» (отзывчивость), басня Л.Н. Толстого «Два товарища» (настоящая дружба), притча «Мастер и Ученик» (труд в искусстве), притча «Два волка» (выбор добра). Каждая история — органично вплетена в главу и заканчивается <strong>не моралью, а открытым вопросом</strong>.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. Двенадцать загадок.</strong> Пять — о природе. Три — о человеке. Четыре — об искусстве. Все загадки — <em>традиционные</em>, короткие, ритмичные, с отгадкой, которую можно нарисовать.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Шесть поговорок.</strong> О доброте, о красоте, о критериях. Три — в главе 4, три — в главах 6 и 7. Каждая поговорка вплетена в <em>живую речь педагога</em>, а не дана отдельно.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Пять интеллектуальных задач.</strong> «Что лишнее?», «Продолжи закономерность», «Найди пару», «Что изменилось?» и итоговая задача на синтез. Каждая — <em>тренирует разные операции мышления</em>: анализ, синтез, сравнение, обобщение.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>7. Личностно-ориентированная технология «Андрюша» — вплетена в ткань занятия.</strong> Педагог незаметно для класса находит время для одного ребёнка. 15 блоков технологии проходят через все семь глав. Это — <em>главное отличие от механической модели</em>, где все дети работали одинаково. Здесь у каждого ребёнка есть <em>своя роль</em>: кто-то рисует, кто-то лепит, кто-то рассказывает, кто-то хранит страницу.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>8. Рисунок под музыку — в главе 5.</strong> Не «вставка», а <em>сердце главы об искусстве</em>. Дети рисуют то, что слышат. Это даёт выход чувствам, накопленным за занятие.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>9. Музыкальная пауза — в финале.</strong> Пока дети собирают книгу, педагог играет на гитаре. Это <em>не перерыв</em>, а <em>фон для творчества</em>. Музыка создаёт атмосферу завершения.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>10. Точка тишины и один вопрос.</strong> «Что ты теперь знаешь о прекрасном — то, чего не знал раньше?» Это вопрос на <em>синтез</em> всего пройденного. Ответы — короткие. Без оценок.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>11. Финальная история — «Красивая ваза».</strong> Она замыкает круг: в сентябре дети открывали сущность прекрасного, в мае — они пишут книгу о том, что прекрасное должно быть и красивым, и полезным. Это — итог всего раздела.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>12. Вызов — «спросите родителей».</strong> Дети идут домой не «выполнять задание», а <em>разговаривать</em> с семьёй. Это вовлекает родителей в образовательный процесс, не превращая его в «обязанность для родителей».</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг этого занятия.</strong> Если занятия 9–12 давали детям <em>инструменты</em> понимания прекрасного, то занятие 13 показывает, зачем эти инструменты нужны. Ребёнок понимает: <strong>я — автор. То, что я знаю, я могу передать другим.</strong> Это — переход от «получателя знания» к «творцу знания». И это — главная цель всего раздела.
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1.</strong> Начало — с пустой книги. Молчаливое перелистывание работает сильнее слов.</p>
+        <p><strong>2.</strong> Каждая глава — <em>продукт</em>. Не «рассказ», а <em>действие руками</em>. Если глава идёт без продукта — она проваливается.</p>
+        <p><strong>3.</strong> Истории — <em>не морали</em>. Каждая заканчивается <em>вопросом</em>, а не выводом. Дети сами делают вывод.</p>
+        <p><strong>4.</strong> Загадки — короткие. Не превращайте их в «викторину». Загадка — <em>игра</em>, а не проверка.</p>
+        <p><strong>5.</strong> Поговорки — в живой речи. Не «заучите пословицу», а «к слову пришлась пословица».</p>
+        <p><strong>6.</strong> Интеллектуальные задачи — <em>короткие</em>. Не больше 2 минут на каждую.</p>
+        <p><strong>7. Технология «Андрюша»</strong> — <em>незаметно</em> для класса. Никто не должен догадаться, что педагог уделяет одному ребёнку больше внимания.</p>
+        <p><strong>8. Рисунок под музыку</strong> — <em>без инструкций</em>. «Рисуй, что слышишь». Никаких «нарисуйте красивый пейзаж».</p>
+        <p><strong>9.</strong> Сборка книги — <em>торжественный момент</em>, но не пафосный. Простая фраза: «Эта книга — достояние объединения».</p>
+        <p><strong>10. Точка тишины</strong> — <em>обязательно</em>. Не сокращайте.</p>
+        <p><strong>11.</strong> Если что-то пошло не по плану — <em>следуйте за детьми</em>. Живое занятие — это всегда импровизация.</p>
+    </div>
+
+    <div class="quote">
+        «Знание, которое осталось только в тетради, — мёртвое. Знание, которое ты передал другому, — живое. Сегодня дети превратили своё знание в книгу. А книга — это вечность».
+        <span class="quote-author">— из размышлений о завершении раздела</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson12.html" class="button">← Занятие 12</a>
+        <a href="section2.html" class="button secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson14.html" class="button">Занятие 14 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson12.html" class="back-link">← Занятие 12. Критерии оценки прекрасного</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson14.html" class="back-link">Занятие 14. Источники прекрасного →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 13 «Обобщение по разделу "Мир прекрасного"»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Занятие построено как создание «Книги Красоты»: семь глав, семь продуктов, одна книга</em></p>
+    </footer>
+
+</div>
+</body>
+</html>

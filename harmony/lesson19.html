@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 19. Природные композиции — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ЧЁМ ЭТО ЗАНЯТИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .tale-block {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 3px solid #475569;
+            border-radius: 18px;
+            padding: 26px 30px;
+            margin: 26px 0;
+            position: relative;
+            box-shadow: 0 8px 20px -8px rgba(71, 85, 105, 0.25);
+        }
+        .tale-block::before {
+            content: attr(data-chapter);
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            background: #475569;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .tale-block .tale-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        .tale-block .tale-text {
+            font-size: 1rem;
+            color: #334155;
+            line-height: 1.85;
+            font-style: italic;
+        }
+        .tale-block .tale-text strong {
+            font-style: normal;
+            color: #1e293b;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Легенда";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.75;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .riddles-block {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #eab308;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .riddles-block::before {
+            content: "❓ Загадки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #eab308;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .riddles-block p:first-child { margin-top: 8px; }
+        .riddles-block ol { margin-left: 26px; }
+        .riddles-block ol li { margin: 8px 0; font-style: italic; }
+
+        .proverbs-block {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .proverbs-block::before {
+            content: "🌿 Поговорки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .proverbs-block p:first-child { margin-top: 8px; }
+
+        .task-block {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .task-block::before {
+            content: "🧠 Интеллектуальные задачи";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .task-block p:first-child { margin-top: 8px; }
+
+        .craft-block {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .craft-block::before {
+            content: "🛠️ Продуктивная деятельность";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ea580c;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .craft-block p:first-child { margin-top: 8px; }
+
+        .music-block {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .music-block::before {
+            content: "🎵 Рисунок под музыку";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .music-block p:first-child { margin-top: 8px; }
+
+        .focus-block {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .focus-block::before {
+            content: "✨ Фокус";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .focus-block p:first-child { margin-top: 8px; }
+
+        .move-block {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .move-block::before {
+            content: "💫 Двигательный этюд";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .move-block p:first-child { margin-top: 8px; }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson18.html" class="back-link">← Занятие 18. Значение цвета в природе</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson20.html" class="back-link">Занятие 20. Свойства природы →</a>
+    </div>
+
+    <h1>🌄 Занятие 19. Природные композиции</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>О чём это занятие.</strong> Мы уже знаем, что у природы есть звуки, краски и цвет. Но самый главный секрет природы — в том, что всё это соединено в одно. Лес — это не просто деревья. Это звуки, краски, свет, тень, дыхание, движение — и всё это вместе. Это и называется <em>композиция</em> — единое целое из разных элементов. Сегодня дети услышат сказку о том, как старая Капля воды, много лет странствовавшая по миру, рассказала юной Снежинке о пяти природных композициях: лесе, луге, реке, поле и море. Каждая композиция — свой характер, свой ритм, своя красота. И вместе они — единая природа.</p>
+        <p><strong>Как устроено занятие:</strong></p>
+        <ul>
+            <li>Сказка «О чём рассказала Капля» проходит через всё занятие в <strong>пяти главах</strong>.</li>
+            <li>После каждой главы — <em>продуктивная деятельность</em>: рисунок композиции, аппликация, схема, общая панорама.</li>
+            <li>Четыре легенды о растениях вплетены как вставные истории: легенда о дубе, о васильке, о вербе, о пшенице.</li>
+            <li>10 загадок, 6 поговорок, 5 интеллектуальных задач, фокус, двигательный этюд, рисунок под музыку.</li>
+            <li>Животных и человека не изображаем. Только флора, неживая природа, схемы и бабочки.</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу 3. Источники прекрасного</strong>, подтема <strong>«Природные композиции»</strong>. Материалы занятия опираются на страницы рабочей тетради:</p>
+        <ul>
+            <li><strong>Задание «Виды природных композиций»</strong> — соединение композиции с её характером.</li>
+            <li><strong>Задание «Свойства природы»</strong> — рисование четырёх композиций в одном пейзаже.</li>
+            <li><strong>Задание «Композиция моего двора»</strong> — творческий проект.</li>
+            <li><strong>Легенды о дубе, васильке, вербе, пшенице</strong> — вставные истории занятия.</li>
+            <li><strong>Загадки о природных сообществах</strong> — отгадывание и рисование отгадок.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула занятия: пять композиций — один мир</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Формула занятия">
+        <text x="440" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#334155">ПЯТЬ КОМПОЗИЦИЙ, УВИДЕННЫХ КАПЛЕЙ</text>
+
+        <rect x="15" y="60" width="160" height="140" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="95" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#14532d">ГЛАВА 1</text>
+        <text x="95" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌳</text>
+        <text x="95" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#14532d">Лес</text>
+        <text x="95" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#14532d">вертикали · тень · свет</text>
+        <text x="95" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#14532d">продукт: рисунок леса</text>
+
+        <text x="190" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="205" y="60" width="160" height="140" rx="14" fill="#fef9c3" stroke="#eab308" stroke-width="2.5"/>
+        <text x="285" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#713f12">ГЛАВА 2</text>
+        <text x="285" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌾</text>
+        <text x="285" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#713f12">Луг</text>
+        <text x="285" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#713f12">горизонтали · цветы</text>
+        <text x="285" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#713f12">продукт: рисунок луга</text>
+
+        <text x="380" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="395" y="60" width="160" height="140" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+        <text x="475" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e3a8a">ГЛАВА 3</text>
+        <text x="475" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">💧</text>
+        <text x="475" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e3a8a">Река</text>
+        <text x="475" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e3a8a">диагонали · отражение</text>
+        <text x="475" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#1e3a8a">продукт: рисунок реки</text>
+
+        <text x="570" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="585" y="60" width="150" height="140" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+        <text x="660" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#92400e">ГЛАВА 4</text>
+        <text x="660" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌻</text>
+        <text x="660" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#92400e">Поле</text>
+        <text x="660" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">параллели · простор</text>
+        <text x="660" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#92400e">продукт: рисунок поля</text>
+
+        <text x="750" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="765" y="60" width="100" height="140" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="815" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#155e75">ГЛАВА 5</text>
+        <text x="815" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌊</text>
+        <text x="815" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#155e75">Море</text>
+        <text x="815" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#155e75">бесконечность</text>
+
+        <rect x="180" y="235" width="520" height="48" rx="14" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+        <text x="440" y="258" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="white">ИТОГ: ОБЩАЯ ПАНОРАМА ПРИРОДЫ</text>
+        <text x="440" y="276" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#cbd5e1">пять композиций соединяются в одну</text>
+    </svg>
+
+    <div class="quote">
+        «Природа — это не набор отдельных мест. Это единый мир, где лес продолжается лугом, луг — рекой, река — полем, а поле — морем. И тот, кто видит это целое, видит настоящую красоту».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: пять глав и финал</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:44%;">Этап</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:38%;">Продукт ребёнка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><strong>Вступление. Разговор Капли и Снежинки</strong></td>
+                <td class="center">5 мин</td>
+                <td>Рисунок-открытие: две капли</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>Глава 1. Лес — вертикали и свет</strong></td>
+                <td class="center">14 мин</td>
+                <td>Рисунок лесной композиции + легенда о дубе</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>Глава 2. Луг — горизонтали и цвет</strong></td>
+                <td class="center">14 мин</td>
+                <td>Рисунок луговой композиции + легенда о васильке</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><strong>Глава 3. Река — диагонали и отражение</strong></td>
+                <td class="center">14 мин</td>
+                <td>Рисунок речной композиции + легенда о вербе</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Глава 4. Поле — параллели и простор</strong></td>
+                <td class="center">14 мин</td>
+                <td>Рисунок полевой композиции + легенда о пшенице</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><strong>Глава 5. Море — бесконечность</strong></td>
+                <td class="center">10 мин</td>
+                <td>Рисунок морской композиции + сборка общей панорамы</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td><strong>Финал. Точка тишины и вызов</strong></td>
+                <td class="center">9 мин</td>
+                <td>Финальная история + рефлексия</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Материалы для занятия.</strong> Большой лист для общей панорамы; акварель, гуашь, цветные карандаши, фломастеры; цветная бумага и клей для аппликаций; сухие листья; стаканы с водой для фокуса; аудиозаписи спокойной музыки — Дебюсси «Море», Чайковский «Времена года», Вивальди «Времена года».
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- ЭТАП 1. ВСТУПЛЕНИЕ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Разговор Капли и Снежинки <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Педагог входит. На столе — большая стеклянная чаша с водой и рядом — маленькая снежинка, вырезанная из бумаги. Педагог молча показывает на них.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>(Тихо.) «Ребята, у нас сегодня необычные гости. Это старая Капля воды — она живёт на свете очень давно. И это юная Снежинка — она только что родилась в облаке. Снежинка спросила Каплю: "Скажи, что ты видела в своей долгой жизни?" И Капля начала рассказывать. Слушайте её рассказ».</em></p>
+    </div>
+
+    <div class="child-voice">«А что Капля успела повидать?»</div>
+    <div class="child-voice">«А она была в лесу?»</div>
+    <div class="child-voice">«А в море?»</div>
+
+    <div class="speech-block">
+        <p><em>«Она была везде. Она путешествовала по всему миру — падала дождём, текла ручьём, плыла рекой, поднималась паром в небо, снова падала. И она видела всё. Слушайте».</em></p>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность. Открытка-приглашение.</strong></p>
+        <p>Дети получают маленькие листки. Задание: нарисовать Каплю и Снежинку — <em>простыми линиями и одной-двумя красками</em>. Не раскрашивать полностью. Достаточно силуэта. Это — открытка к сказке.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">💧💧 Образец: Капля и Снежинка простыми линиями</div>
+        <svg viewBox="0 0 520 160" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="120" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+            <!-- Капля -->
+            <path d="M160,80 Q160,50 190,80 Q190,110 160,110 Q130,110 130,80 Q130,50 160,80 Z" fill="none" stroke="#0891b2" stroke-width="2"/>
+            <text x="160" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#0891b2">Капля</text>
+            <!-- Снежинка -->
+            <line x1="360" y1="60" x2="360" y2="120" stroke="#3b82f6" stroke-width="1.5"/>
+            <line x1="330" y1="90" x2="390" y2="90" stroke="#3b82f6" stroke-width="1.5"/>
+            <line x1="340" y1="70" x2="380" y2="110" stroke="#3b82f6" stroke-width="1.5"/>
+            <line x1="380" y1="70" x2="340" y2="110" stroke="#3b82f6" stroke-width="1.5"/>
+            <text x="360" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3b82f6">Снежинка</text>
+            <!-- Точки-капельки между ними -->
+            <circle cx="260" cy="90" r="2" fill="#0891b2" opacity="0.6"/>
+            <circle cx="275" cy="90" r="2" fill="#0891b2" opacity="0.6"/>
+            <circle cx="290" cy="90" r="2" fill="#0891b2" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 1. ЛЕС -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЕРВАЯ · ЛЕС">
+        <div class="tale-title">Композиция леса — вертикали и свет</div>
+        <div class="tale-text">
+            <p>«Сначала я попала в лес, — начала Капля. — Я упала туда дождём. И первое, что я почувствовала, — это <strong>высота</strong>. Всё в лесу поднималось вверх: стволы, ветви, кроны. Я падала долго-долго, пока не упала на мягкий мох».</p>
+            <p>«В лесу свой особый порядок. Внизу — тёмный мох, папоротники, грибы. Чуть выше — кусты. Ещё выше — стволы. А на самом верху — кроны, которые ловят свет. Это называется <strong>ярусами</strong> — как этажи, но живые».</p>
+            <p>«Свет в лесу не такой, как на открытом месте. Он проходит через листья и становится зелёным, тёплым, пятнистым. Иногда светлое пятно упадёт на ствол — и вспыхнет золотом. Иногда тень ляжет на тропинку — и станет таинственно».</p>
+            <p>«В лесу все элементы держатся друг за друга. Деревья поддерживают мхи. Мхи держат влагу. Влага поит деревья. Вот почему лес — это не просто много деревьев. Лес — это композиция, где всё связано».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 1. Рисунок лесной композиции.</strong></p>
+        <p>Дети получают листы. Задание: нарисовать лес как композицию — <strong>вертикали стволов, ярусы кроны, тени и световые пятна</strong>. Никаких животных. Только деревья, трава, мох, свет.</p>
+        <p>Работы откладываются — они станут частью общей панорамы.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🌳 Образец: лес как композиция — вертикали, ярусы, световые пятна</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="140" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+            <!-- Дальние деревья (светлее) -->
+            <line x1="120" y1="160" x2="120" y2="80" stroke="#86efac" stroke-width="2"/>
+            <circle cx="120" cy="70" r="18" fill="#bbf7d0" opacity="0.5"/>
+            <line x1="200" y1="160" x2="200" y2="75" stroke="#86efac" stroke-width="2"/>
+            <circle cx="200" cy="65" r="20" fill="#bbf7d0" opacity="0.5"/>
+            <line x1="380" y1="160" x2="380" y2="85" stroke="#86efac" stroke-width="2"/>
+            <circle cx="380" cy="75" r="18" fill="#bbf7d0" opacity="0.5"/>
+            <!-- Средний план -->
+            <line x1="260" y1="160" x2="260" y2="55" stroke="#16a34a" stroke-width="3"/>
+            <circle cx="260" cy="45" r="25" fill="#86efac" opacity="0.7"/>
+            <!-- Передний план -->
+            <line x1="80" y1="160" x2="80" y2="40" stroke="#15803d" stroke-width="4"/>
+            <circle cx="80" cy="30" r="30" fill="#4ade80" opacity="0.8"/>
+            <line x1="440" y1="160" x2="440" y2="45" stroke="#15803d" stroke-width="4"/>
+            <circle cx="440" cy="35" r="28" fill="#4ade80" opacity="0.8"/>
+            <!-- Земля с ярусами травы -->
+            <path d="M20,160 Q160,150 260,158 Q380,165 500,155" fill="none" stroke="#15803d" stroke-width="1.5"/>
+            <!-- Световое пятно -->
+            <ellipse cx="330" cy="150" rx="40" ry="10" fill="#fef9c3" opacity="0.6"/>
+            <!-- Подпись -->
+            <text x="260" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#14532d">Вертикали стволов · ярусы · световые пятна</text>
+        </svg>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о дубе</div>
+        <div class="story-text">Давным-давно на краю большого леса рос могучий дуб. Он был такой старый, что помнил времена, когда лес был ещё маленьким. Каждую весну к нему слетались птицы, а летом под его кроной находили тень усталые путники. Однажды путник спросил дуба: «Почему ты такой крепкий?» Дуб ответил: «Потому что я не спешу. Я расту медленно. За год я прибавляю всего несколько сантиметров. Но за сто лет я становлюсь огромным. Терпение — вот моя сила». Путник задумался. И с тех пор он тоже не спешил делать добрые дела — зная, что понемногу, но каждый день, можно вырастить целый лес.</div>
+        <div class="story-moral">💡 Мораль: большие дела растут медленно. Тот, кто торопится, теряет корни. Тот, кто терпелив, становится опорой для других.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о лесе:</strong></p>
+        <ol>
+            <li>«Весной веселит, летом холодит, осенью питает, зимой согревает» <em>(лес)</em>.</li>
+            <li>«На горе шумит, а под горой молчит» <em>(лес)</em>.</li>
+            <li>«Никто не пугает, а вся дрожит» <em>(осина)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о лесе:</strong></p>
+        <ul>
+            <li>«Лес — богатство и краса, береги свои леса».</li>
+            <li>«Возле леса жить — голодному не быть».</li>
+            <li>«Лес и вода — брат и сестра».</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 2. ЛУГ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ВТОРАЯ · ЛУГ">
+        <div class="tale-title">Композиция луга — горизонтали и цвет</div>
+        <div class="tale-text">
+            <p>«Потом я попала на луг, — продолжила Капля. — Это было совсем другое место. Здесь не было высоких стен из деревьев. Здесь всё <strong>расстилалось</strong> — во все стороны, сколько хватает глаз. И я почувствовала <strong>простор</strong>».</p>
+            <p>«На лугу всё движется по горизонтали. Травы качаются вправо и влево. Цветы наклоняются по ветру. Воздух течёт. Всё — как одно большое дыхание. Здесь нет ярусов, как в лесу. Всё — на одном уровне: цветы, травы, земля. Но именно поэтому луг кажется таким <strong>широким</strong>».</p>
+            <p>«А ещё на лугу — цвет. Много разных цветов, и каждый — на своём месте. Вот жёлтый одуванчик. Вот синий василёк. Вот белая ромашка. Они не спорят — они соединяются. Так и получается луговая композиция: горизонтали трав, пятна цветов, свет и воздух».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 2. Рисунок луговой композиции.</strong></p>
+        <p>Дети получают листы. Задание: нарисовать луг как композицию — <strong>горизонтальные линии, качающиеся травы, цветочные пятна, много света</strong>. Никаких животных. Только растения, воздух, свет.</p>
+        <p>Работы откладываются.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🌾 Образец: луг как композиция — горизонтали, цветы, воздух</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="140" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+            <!-- Небо -->
+            <line x1="20" y1="80" x2="500" y2="80" stroke="#cbd5e1" stroke-width="1"/>
+            <!-- Травяные линии внизу -->
+            <path d="M30,120 Q80,110 130,120 T230,120 T330,120 T430,120 T500,120" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+            <path d="M30,140 Q80,130 130,140 T230,140 T330,140 T430,140 T500,140" fill="none" stroke="#15803d" stroke-width="1.5"/>
+            <path d="M30,160 Q80,150 130,160 T230,160 T330,160 T430,160 T500,160" fill="none" stroke="#14532d" stroke-width="1.5"/>
+            <!-- Цветы (пятна) -->
+            <g fill="#facc15" opacity="0.8">
+                <circle cx="90" cy="110" r="5"/>
+                <circle cx="180" cy="115" r="5"/>
+                <circle cx="280" cy="112" r="5"/>
+                <circle cx="390" cy="118" r="5"/>
+                <circle cx="470" cy="112" r="5"/>
+            </g>
+            <g fill="#3b82f6" opacity="0.7">
+                <circle cx="140" cy="130" r="4"/>
+                <circle cx="230" cy="135" r="4"/>
+                <circle cx="330" cy="128" r="4"/>
+                <circle cx="440" cy="135" r="4"/>
+            </g>
+            <g fill="#f8fafc" stroke="#94a3b8" stroke-width="0.5" opacity="0.9">
+                <circle cx="60" cy="125" r="4"/>
+                <circle cx="200" cy="120" r="4"/>
+                <circle cx="360" cy="122" r="4"/>
+                <circle cx="490" cy="128" r="4"/>
+            </g>
+            <!-- Стрелки горизонталей -->
+            <path d="M30,100 L60,100 M460,100 L490,100" stroke="#64748b" stroke-width="0.5" stroke-dasharray="2,2"/>
+            <!-- Подпись -->
+            <text x="260" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#14532d">Горизонтали трав · цветочные пятна · простор</text>
+        </svg>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о васильке</div>
+        <div class="story-text">В давние времена у одной белорусской деревни росла пшеница. И среди колосьев однажды поселился юноша по имени Василёк. Он был простым парнем, но очень любил свою землю. Однажды на деревню напала беда, и Василёк вышел защищать поле. Он погиб, но там, где упали его капли крови, выросли синие цветы с резными лепестками. Их так и назвали — васильки. С тех пор василёк — цветок, который всегда растёт рядом с пшеницей. Это память о том, что настоящая любовь к родной земле остаётся жить даже после человека.</div>
+        <div class="story-moral">💡 Мораль: любовь к своей земле не умирает. Она возвращается в цветах, в травах, в самом воздухе родного края.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о луге:</strong></p>
+        <ol start="4">
+            <li>«Вырос в поле дом, полон дом зерном» <em>(колос)</em>.</li>
+            <li>«На зелёном шнурочке — белые звоночки» <em>(ландыш)</em>.</li>
+            <li>«Синий цветочек, резной листочек, живёт среди пшеницы» <em>(василёк)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о луге:</strong></p>
+        <ul>
+            <li>«Луг — зелёная рубашка земли».</li>
+            <li>«Хорош луг — хорош и сенокос».</li>
+            <li>«Где цветок — там и медок».</li>
+        </ul>
+    </div>
+
+    <div class="move-block">
+        <p><strong>Двигательный этюд «Травы на ветру».</strong> Дети встают. Педагог говорит: «Вы — травы на лугу. Подул лёгкий ветер — вы качаетесь медленно вправо-влево. Ветер усилился — качаетесь сильнее, но не отрываясь от земли. Ветер утих — вы замерли. А теперь поднимите руки вверх, как цветы к солнцу. И мягко наклонитесь в стороны».</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 3. РЕКА -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ТРЕТЬЯ · РЕКА">
+        <div class="tale-title">Композиция реки — диагонали и отражение</div>
+        <div class="tale-text">
+            <p>«Дальше я попала в реку, — продолжила Капля. — Это было самое движение. Река не стояла — она бежала. И она бежала <strong>по диагонали</strong>: то вправо, то влево, то вперёд. Прямых линий в реке нет. Всё — изгибы и повороты».</p>
+            <p>«Река — это композиция <strong>отражений</strong>. В ней отражается небо, облака, деревья на берегу. И получается двойной мир: один — над водой, другой — в воде. Я видела, как в реке плывёт облако, а рядом — настоящее. И не понять, где настоящее, а где отражение».</p>
+            <p>«Ещё у реки есть звук — журчание. Он никогда не повторяется. Каждая струйка журчит по-своему. И вместе — это речная композиция: диагонали течения, зеркало воды, изгибы берегов».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 3. Рисунок речной композиции.</strong></p>
+        <p>Дети получают листы. Задание: нарисовать реку как композицию — <strong>диагонали течения, отражение неба, изгибы берегов, деревья на берегу</strong>. Никаких животных.</p>
+        <p>Работы откладываются.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🌊 Образец: река как композиция — диагонали, отражения, берега</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="140" rx="10" fill="#f0f9ff" stroke="#0891b2" stroke-width="1"/>
+            <!-- Небо -->
+            <rect x="20" y="20" width="480" height="60" fill="#e0f2fe" opacity="0.6"/>
+            <!-- Облако в небе -->
+            <path d="M80,50 Q100,35 120,50 Q140,40 155,50 Q165,60 155,65 L80,65 Q70,60 80,50 Z" fill="none" stroke="#64748b" stroke-width="1"/>
+            <!-- Линия берега -->
+            <path d="M20,80 Q120,75 220,85 Q320,95 420,88 Q470,85 500,90" fill="none" stroke="#16a34a" stroke-width="2"/>
+            <!-- Вода -->
+            <rect x="20" y="80" width="480" height="80" fill="#dbeafe" opacity="0.5"/>
+            <!-- Диагонали течения -->
+            <path d="M20,100 Q100,95 180,105 T340,100 T500,110" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+            <path d="M20,120 Q100,115 180,125 T340,120 T500,130" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+            <path d="M20,140 Q100,135 180,145 T340,140 T500,150" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+            <!-- Отражение облака в воде (пунктиром) -->
+            <path d="M80,90 Q100,75 120,90 Q140,80 155,90 Q165,100 155,105 L80,105 Q70,100 80,90 Z" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
+            <!-- Деревья на берегу -->
+            <line x1="380" y1="80" x2="380" y2="40" stroke="#15803d" stroke-width="2.5"/>
+            <circle cx="380" cy="32" r="15" fill="none" stroke="#15803d" stroke-width="1.5"/>
+            <line x1="440" y1="85" x2="440" y2="50" stroke="#15803d" stroke-width="2"/>
+            <circle cx="440" cy="42" r="12" fill="none" stroke="#15803d" stroke-width="1.5"/>
+            <!-- Подпись -->
+            <text x="260" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#155e75">Диагонали течения · отражения · берега</text>
+        </svg>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о вербе</div>
+        <div class="story-text">Одна женщина посадила у реки тонкий прутик. Она ухаживала за ним каждый день: поливала, укрывала от ветра. Прутик превратился в дерево — вербу. Однажды случилось наводнение, и вода подступила к дому женщины. Верба склонилась над рекой и своими ветвями задержала воду. Так она спасла дом. С тех пор верба растёт у воды и всегда склоняется над ней — в благодарность за то, что река поит её, и в память о том, что однажды она спасла человека.</div>
+        <div class="story-moral">💡 Мораль: добро, которое ты делаешь, всегда возвращается — иногда в другом обличии. Дерево, посаженное у воды, становится её защитой.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о реке:</strong></p>
+        <ol start="7">
+            <li>«Не конь, а бежит, не лес, а шумит» <em>(река)</em>.</li>
+            <li>«Течёт, течёт — не вытечет, бежит, бежит — не выбежит» <em>(река)</em>.</li>
+            <li>«Кто всю ночь по крыше бьёт да постукивает?» <em>(дождь)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о реке:</strong></p>
+        <ul>
+            <li>«Река — не море, а всё ж вода».</li>
+            <li>«Тихая вода берега подмывает».</li>
+            <li>«Не плюй в колодец — пригодится воды напиться».</li>
+        </ul>
+    </div>
+
+    <div class="focus-block">
+        <p><strong>Фокус «Отражение».</strong> Педагог ставит на стол миску с водой. Опускает в неё зеркальце — и дети видят, как в воде отражается потолок. <em>«Река — это зеркало неба. Она не просто течёт — она отражает мир. Поэтому говорят: "Смотреть в воду — как смотреть в небо"»</em>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 4. ПОЛЕ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ЧЕТВЁРТАЯ · ПОЛЕ">
+        <div class="tale-title">Композиция поля — параллели и простор</div>
+        <div class="tale-text">
+            <p>«А потом я попала в поле, — продолжила Капля. — Это было очень светлое место. Поле — как большой золотой ковёр. Всё в нём было <strong>по линиям</strong>: борозды — параллельно, колосья — в ряд, дорожки — рядом друг с другом».</p>
+            <p>«На поле — простор и покой. Здесь нет леса, который бы заслонял свет. Здесь нет реки, которая бы бежала. Здесь всё стоит на месте и <strong>дышит</strong>. И вдруг — лёгкий ветер. И все колосья наклоняются в одну сторону. И кажется, что поле — как одно живое существо».</p>
+            <p>«Поле — это композиция <strong>параллелей</strong>. Всё выстроено, всё на своих местах. И в этой стройности — своя красота. Красота порядка».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 4. Рисунок полевой композиции.</strong></p>
+        <p>Дети получают листы. Задание: нарисовать поле как композицию — <strong>параллельные линии борозд, ряды колосьев, простор, свет</strong>. Никаких животных.</p>
+        <p>Работы откладываются.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🌻 Образец: поле как композиция — параллели, простор, свет</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="140" rx="10" fill="#fef9c3" stroke="#d97706" stroke-width="1"/>
+            <!-- Небо -->
+            <rect x="20" y="20" width="480" height="50" fill="#e0f2fe" opacity="0.5"/>
+            <!-- Солнце -->
+            <circle cx="420" cy="45" r="15" fill="none" stroke="#d97706" stroke-width="1.5"/>
+            <!-- Линия горизонта -->
+            <line x1="20" y1="70" x2="500" y2="70" stroke="#d97706" stroke-width="1.5"/>
+            <!-- Поле: ряды колосьев в параллель -->
+            <g stroke="#a16207" stroke-width="1.2" fill="none">
+                <path d="M40,110 Q45,95 50,80"/>
+                <path d="M55,110 Q60,95 65,80"/>
+                <path d="M70,110 Q75,95 80,80"/>
+                <path d="M85,110 Q90,95 95,80"/>
+                <path d="M100,110 Q105,95 110,80"/>
+                <path d="M115,110 Q120,95 125,80"/>
+                <path d="M130,110 Q135,95 140,80"/>
+                <path d="M145,110 Q150,95 155,80"/>
+                <path d="M160,110 Q165,95 170,80"/>
+                <path d="M175,110 Q180,95 185,80"/>
+                <path d="M190,110 Q195,95 200,80"/>
+                <path d="M205,110 Q210,95 215,80"/>
+                <path d="M220,110 Q225,95 230,80"/>
+                <path d="M235,110 Q240,95 245,80"/>
+                <path d="M250,110 Q255,95 260,80"/>
+                <path d="M265,110 Q270,95 275,80"/>
+                <path d="M280,110 Q285,95 290,80"/>
+                <path d="M295,110 Q300,95 305,80"/>
+                <path d="M310,110 Q315,95 320,80"/>
+                <path d="M325,110 Q330,95 335,80"/>
+                <path d="M340,110 Q345,95 350,80"/>
+                <path d="M355,110 Q360,95 365,80"/>
+                <path d="M370,110 Q375,95 380,80"/>
+                <path d="M385,110 Q390,95 395,80"/>
+                <path d="M400,110 Q405,95 410,80"/>
+                <path d="M415,110 Q420,95 425,80"/>
+                <path d="M430,110 Q435,95 440,80"/>
+                <path d="M445,110 Q450,95 455,80"/>
+                <path d="M460,110 Q465,95 470,80"/>
+                <path d="M475,110 Q480,95 485,80"/>
+            </g>
+            <!-- Нижние линии — борозды -->
+            <line x1="30" y1="125" x2="495" y2="125" stroke="#a16207" stroke-width="1"/>
+            <line x1="30" y1="140" x2="495" y2="140" stroke="#a16207" stroke-width="1"/>
+            <line x1="30" y1="155" x2="495" y2="155" stroke="#a16207" stroke-width="1"/>
+            <!-- Подпись -->
+            <text x="260" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#92400e">Параллели колосьев · борозды · простор</text>
+        </svg>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о пшенице</div>
+        <div class="story-text">Однажды весной на поле выпал холодный дождь. Молодые ростки пшеницы замёрзли бы — но старая женщина, жившая на краю поля, укрыла их своим плащом. Она сидела всю ночь под холодным дождём, чтобы спасти посевы. Утром она умерла. Но там, где упал её плащ, пшеница поднялась и заколосилась — густая, золотая, крепкая. С тех пор люди говорят: «Хлеб — это труд и доброта. Он вырастает там, где кто-то отдал ему своё тепло».</div>
+        <div class="story-moral">💡 Мораль: хлеб — это не просто еда. Это память о тех, кто его растил. И каждый колосок — благодарность за доброе сердце.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о поле:</strong></p>
+        <ol start="10">
+            <li>«Вырос в поле дом, полон дом зерном, стены позолочены, ставни заколочены» <em>(колос)</em>.</li>
+            <li>«Без рук, без ног, а в поле воин» <em>(колос)</em>.</li>
+            <li>«Стоит поп низок, на нём сорок ризок» <em>(капуста)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о поле:</strong></p>
+        <ul>
+            <li>«Хлеб — всему голова».</li>
+            <li>«Что посеешь, то и пожнёшь».</li>
+            <li>«Кто землю лелеет — того земля жалеет».</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 5. МОРЕ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЯТАЯ · МОРЕ">
+        <div class="tale-title">Композиция моря — бесконечность</div>
+        <div class="tale-text">
+            <p>«И вот наконец я попала в море, — сказала Капля и вздохнула. — Это было самое большое из всего, что я видела. Море — это <strong>бесконечность</strong>. Смотришь в одну сторону — и не видишь конца. Смотришь в другую — снова нет конца. Только вода, вода и вода».</p>
+            <p>«Море — это композиция <strong>повторов</strong>. Волна за волной. И каждая волна похожа на предыдущую — и всё же не такая. Так рождается море: из повторений, из ритма, из бесконечного движения. А над водой — облака, солнце, чайки. И всё вместе — как одно большое дыхание мира».</p>
+            <p>«Когда я смотрела на море, я поняла: все композиции, которые я видела, — лес, луг, река, поле, — вливаются в него. Река приносит воду. Поле — запахи трав. Лес — тени и звуки. А море — собирает всё. Так и получается <strong>единая композиция природы</strong>».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 5. Рисунок морской композиции + сборка общей панорамы.</strong></p>
+        <ul>
+            <li>Дети рисуют море как композицию — <strong>повторяющиеся волны, бесконечная линия горизонта, простор</strong>.</li>
+            <li>Затем все работы глав 1–5 собираются в единую панораму на большом листе: слева — лес, потом — луг, река, поле, а справа — море.</li>
+            <li>В центре — маленькая Капля, которая соединяет всё.</li>
+        </ul>
+        <p>Общая панорама вывешивается в классе.</p>
+    </div>
+
+    <div class="music-block">
+        <p><strong>Рисунок под музыку «Море» (Дебюсси).</strong> Педагог включает фрагмент. Дети рисуют волны. Инструкция: <em>«Рисуй, что слышишь. Пусть рука сама ведёт»</em>. Через 5 минут работы добавляются к общей панораме.</p>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальные задачи:</strong></p>
+        <p><strong>Задача 1. «Что лишнее?»</strong> Вертикали, диагонали, параллели, квадраты. Лишнее — <em>квадраты</em>: остальные — приёмы композиции.</p>
+        <p><strong>Задача 2. «Найди пару».</strong> Лес — вертикали. Луг — горизонтали. Река — диагонали. Поле — параллели. Море — бесконечность.</p>
+        <p><strong>Задача 3. «Продолжи цепочку».</strong> Лес — тень. Луг — свет. Река — отражение. Поле — простор. Море — <em>бесконечность</em>.</p>
+        <p><strong>Задача 4. «Что изменится?»</strong> Если бы в мире был только лес — что было бы? <em>Не было бы поля, луга, реки, моря. Мир был бы однообразным.</em></p>
+        <p><strong>Задача 5. «Составь композицию».</strong> Педагог называет три элемента: дерево, трава, вода. Дети думают: где они могли бы встретиться вместе? <em>На берегу реки в лесу.</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФИНАЛ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Финал. Точка тишины и вызов <span class="stage-time">9 мин</span></div>
+            <div class="stage-desc">Финальная история, один вопрос рефлексии, вызов на дом.</div>
+        </div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Финальная история. «Как старый художник писал природу»</div>
+        <div class="story-text">Старый художник всю жизнь рисовал природу. Он начал с деревьев — рисовал только их. Потом перешёл к цветам. Потом — к воде. Потом — к полям и морю. И вот в конце жизни он собрал все свои картины вместе — и вдруг понял: ни одна из них не была полной. На каждой было что-то одно, но не было целого. Тогда он взял большой лист и нарисовал всё вместе: лес вдалеке, луг на переднем плане, реку посередине, поле слева, а за ним — море. И получилась картина, в которой было всё. Он долго смотрел на неё и сказал: «Вот это и есть природа. Не одна её часть, а все вместе». И повесил картину напротив своей кровати. И каждое утро, просыпаясь, он видел единый мир, где ничто не существует в одиночку.</div>
+        <div class="story-moral">💡 Мораль: красота природы — не в отдельных её частях, а в их единстве. Понять природу — значит увидеть, как всё связано со всем.</div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Точка тишины.</strong> Педагог просит детей сесть в круг. Все молчат 30 секунд. Затем — один вопрос:</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«В какой композиции — часть природы ты бы хотел жить? Почему?»</p>
+        <p>Ответы — короткие. По желанию. Кто-то скажет: «У реки — там отражается небо». Кто-то: «На лугу — там светло и просторно». Кто-то промолчит — и это тоже ответ.</p>
+    </div>
+
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Сегодня мы увидели пять композиций. А теперь — маленькое дело для души.</em></p>
+        <p><em>Понаблюдайте дома и во дворе: какие композиции есть рядом с вами? Может быть, ваш двор — это композиция. Или парк. Или берег реки. Нарисуйте одну из них и подумайте: какие элементы её образуют? Деревья? Трава? Вода? Свет?</em></p>
+        <p><em>И ещё: спросите родителей — где в природе они чувствуют себя особенно хорошо? Запишите ответ — мы добавим его в нашу панораму».</em></p>
+    </div>
+
+    <h2>🔍 Комментарий методиста</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Сказка-«объяснение» в форме рассказа Капли.</strong> Не «спор», не «путь», не «аптека», а <em>воспоминание</em>. Такой формат даёт сказке спокойный, глубокий тон — не приключенческий, а созерцательный.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Четыре легенды — о разных растениях.</strong> Дуб (сила и терпение), василёк (верность земле), верба (добро возвращается), пшеница (труд и память). Каждая — на свой лад.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Пять продуктов — пять композиций.</strong> Каждая глава даёт свой продукт. Затем все соединяются в одну общую панораму — это и есть настоящая природная композиция: целое из частей.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. Композиция как понятие раскрывается через линии.</strong> Лес — вертикали. Луг — горизонтали. Река — диагонали. Поле — параллели. Море — повторы. Дети осваивают эту идею через руку, а не через ум.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Загадки — 12.</strong> По три на лес, луг, реку, поле. Все — короткие, ритмичные.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Поговорки — 12.</strong> По три на каждую композицию.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>7. Пять интеллектуальных задач.</strong> На синтез, на классификацию, на «продолжи цепочку», на «составь композицию».</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>8. Фокус, двигательный этюд, рисунок под музыку.</strong> Все три — о композиции. Фокус «Отражение» — о реке. Этюд «Травы на ветру» — о луге. Рисунок под музыку — о море.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>9. Никакой формальной «технологии Андрюша».</strong> Поддержка каждого ребёнка вплетена в работу: педагог ходит по классу и тихо помогает каждому — не по заранее написанному плану, а по ситуации.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг занятия.</strong> Если предыдущие занятия работали с элементами природы (звуки, цвета, значения), то занятие 19 даёт детям <strong>понимание композиции</strong> — того, как из элементов рождается целое. Это — переход от «что?» к «как?». И завершается этот переход общей панорамой, в которой каждый ребёнок видит свою работу в большом мире.
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1.</strong> Сказка — стержень. Читайте медленно, с паузами — как воспоминание.</p>
+        <p><strong>2.</strong> После каждой главы — продуктивная деятельность, а не вопросы.</p>
+        <p><strong>3.</strong> Легенды — короткие. Они не заменяют сказку, а дополняют её.</p>
+        <p><strong>4.</strong> Композиция — через линии, а не через слова. Пусть дети рисуют, чувствуют рукой.</p>
+        <p><strong>5.</strong> Загадки и поговорки — в живом диалоге, а не списком.</p>
+        <p><strong>6.</strong> Фокус — для понимания. Этюд — для переживания. Музыка — для завершения.</p>
+        <p><strong>7.</strong> Точка тишины — обязательна. 30 секунд.</p>
+        <p><strong>8. Общая панорама</strong> — итог. Она остаётся в классе надолго.</p>
+        <p><strong>9.</strong> Если что-то пошло не по плану — следуйте за детьми.</p>
+    </div>
+
+    <div class="quote">
+        «Природа не делится на части. Это мы делим её — для удобства. А она — одна. И тот, кто это понял, видит красоту везде».
+        <span class="quote-author">— из размышлений о природных композициях</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson18.html" class="button">← Занятие 18</a>
+        <a href="section3.html" class="button secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson20.html" class="button">Занятие 20 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson18.html" class="back-link">← Занятие 18. Значение цвета в природе</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson20.html" class="back-link">Занятие 20. Свойства природы →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 19 «Природные композиции»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Сказка «О чём рассказала Капля» в пяти главах</em></p>
+    </footer>
+
+</div>
+</body>
+</html>

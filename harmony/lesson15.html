@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 15. Многообразие звуков в природе — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        /* НЕЙТРАЛЬНАЯ РАМКА — БЕЗ ОРАНЖЕВО-ПЕСОЧНОГО */
+        .intro-card {
+            background: #f8fafc;
+            border: 2px solid #64748b;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ОПОРА ЗАНЯТИЯ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #64748b;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .andryusha-box {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px dashed #a855f7;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .andryusha-box::before {
+            content: "🪞 ЛИЧНОСТНО-ОРИЕНТИРОВАННАЯ ТЕХНОЛОГИЯ «АНДРЮША»";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .andryusha-box p:first-child { margin-top: 8px; }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Блок главы сказки — нейтральные цвета */
+        .tale-block {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 3px solid #475569;
+            border-radius: 18px;
+            padding: 26px 30px;
+            margin: 26px 0;
+            position: relative;
+            box-shadow: 0 8px 20px -8px rgba(71, 85, 105, 0.25);
+        }
+        .tale-block::before {
+            content: attr(data-chapter);
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            background: #475569;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .tale-block .tale-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        .tale-block .tale-text {
+            font-size: 1rem;
+            color: #334155;
+            line-height: 1.85;
+            font-style: italic;
+        }
+        .tale-block .tale-text strong {
+            font-style: normal;
+            color: #1e293b;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Вставная история";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.75;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .riddles-block {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #eab308;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .riddles-block::before {
+            content: "❓ Загадки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #eab308;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .riddles-block p:first-child { margin-top: 8px; }
+        .riddles-block ol { margin-left: 26px; }
+        .riddles-block ol li { margin: 8px 0; font-style: italic; }
+
+        .proverbs-block {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .proverbs-block::before {
+            content: "🌿 Поговорки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .proverbs-block p:first-child { margin-top: 8px; }
+
+        .task-block {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .task-block::before {
+            content: "🧠 Интеллектуальные задачи";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .task-block p:first-child { margin-top: 8px; }
+
+        .craft-block {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .craft-block::before {
+            content: "🛠️ Продуктивная деятельность";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ea580c;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .craft-block p:first-child { margin-top: 8px; }
+
+        .music-block {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .music-block::before {
+            content: "🎵 Рисунок под музыку";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .music-block p:first-child { margin-top: 8px; }
+
+        .focus-block {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .focus-block::before {
+            content: "✨ Фокус";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .focus-block p:first-child { margin-top: 8px; }
+
+        .move-block {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .move-block::before {
+            content: "💫 Двигательный этюд";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .move-block p:first-child { margin-top: 8px; }
+
+        .map-block {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 3px solid #334155;
+            border-radius: 18px;
+            padding: 26px 30px;
+            margin: 26px 0;
+            position: relative;
+        }
+        .map-block::before {
+            content: "🗺️ ЗВУКОВАЯ КАРТА ПРИРОДЫ";
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            background: #334155;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .map-block p:first-child { margin-top: 8px; }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson14.html" class="back-link">← Занятие 14. Звуки природы. Музыка природы</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson16.html" class="back-link">Занятие 16. Воздействие природной музыки →</a>
+    </div>
+
+    <h1>🎵 Занятие 15. Многообразие звуков в природе</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Что делают дети на этом занятии.</strong> Мы продолжаем слушать мир. Если на прошлом занятии дети искали свою «песню» вместе с кузнечиком, то сегодня они отправятся в <strong>путешествие по четырём королевствам звуков</strong>. Кузнечик уже нашёл свою песню — а теперь он хочет понять, из каких голосов она состоит. Каждое королевство имеет свой характер. Каждое — свой продукт. В конце путешествия дети соберут <strong>общую Звуковую карту природы</strong>.</p>
+        <p><strong>Как устроено занятие:</strong></p>
+        <ul>
+            <li>Одна сказка «Как кузнечик собирал звуки» проходит через всё занятие в <strong>пяти главах</strong>.</li>
+            <li>После каждой главы — <em>продуктивная деятельность</em>: схема, аппликация, ритмический рисунок, «карта тишины».</li>
+            <li>Все остальные материалы — <em>загадки, поговорки, интеллектуальные задачи, фокусы, двигательные этюды, рисунок под музыку</em> — вплетены в ткань сказки.</li>
+            <li>Животных и человека не изображаем. Только флора, неживая природа, предметы, схемы и бабочки.</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу 3. Источники прекрасного</strong>, подтема <strong>«Многообразие звуков в природе»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Источники звуков»</strong> — соединение природного звука и его источника.</li>
+            <li><strong>Задание «Продолжи звуковую волну»</strong> — продолжение ряда по образцу.</li>
+            <li><strong>Задание «Раздели звуки на группы»</strong> — классификация звуков по четырём группам.</li>
+            <li><strong>Загадки о звуках природы</strong> — отгадывание и рисование отгадок.</li>
+            <li><strong>Рассказ «Спор четырёх братьев»</strong> — о том, что все звуки важны.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула занятия: четыре королевства</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Формула занятия">
+        <text x="440" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#334155">ПУТЬ ПО ЧЕТЫРЁМ КОРОЛЕВСТВАМ ЗВУКОВ</text>
+
+        <!-- Королевство 1 -->
+        <rect x="20" y="60" width="195" height="140" rx="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.5"/>
+        <text x="117" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">КОРОЛЕВСТВО 1</text>
+        <text x="117" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌧️</text>
+        <text x="117" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">Неживой природы</text>
+        <text x="117" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">ветер · дождь · гром · ручей</text>
+        <text x="117" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#1e40af">продукт: схема-карта</text>
+
+        <text x="230" y="135" text-anchor="middle" font-size="16" fill="#475569">→</text>
+
+        <!-- Королевство 2 -->
+        <rect x="245" y="60" width="195" height="140" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="342" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">КОРОЛЕВСТВО 2</text>
+        <text x="342" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌿</text>
+        <text x="342" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">Живой природы</text>
+        <text x="342" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">шелест · стрекот · жужжание</text>
+        <text x="342" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#166534">продукт: ритмический рисунок</text>
+
+        <text x="455" y="135" text-anchor="middle" font-size="16" fill="#475569">→</text>
+
+        <!-- Королевство 3 -->
+        <rect x="470" y="60" width="195" height="140" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="567" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#155e75">КОРОЛЕВСТВО 3</text>
+        <text x="567" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">💨</text>
+        <text x="567" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#155e75">Движения</text>
+        <text x="567" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#155e75">качание · плеск · звон капели</text>
+        <text x="567" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#155e75">продукт: схема движения</text>
+
+        <text x="680" y="135" text-anchor="middle" font-size="16" fill="#475569">→</text>
+
+        <!-- Королевство 4 -->
+        <rect x="695" y="60" width="165" height="140" rx="14" fill="#f1f5f9" stroke="#334155" stroke-width="2.5"/>
+        <text x="777" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e293b">КОРОЛЕВСТВО 4</text>
+        <text x="777" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌙</text>
+        <text x="777" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">Тишины</text>
+        <text x="777" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e293b">покой · пауза · молчание</text>
+        <text x="777" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#1e293b">продукт: карта тишины</text>
+
+        <!-- Итог -->
+        <rect x="180" y="235" width="520" height="48" rx="14" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+        <text x="440" y="258" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="white">ИТОГ: ОБЩАЯ ЗВУКОВАЯ КАРТА ПРИРОДЫ</text>
+        <text x="440" y="276" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#cbd5e1">четыре королевства соединяются в одно целое</text>
+    </svg>
+
+    <div class="quote">
+        «В природе нет ни одного лишнего звука. Каждый — часть большого оркестра. И тот, кто умеет слушать, слышит всю симфонию».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: пять глав и финал</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:44%;">Этап</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:38%;">Продукт ребёнка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><strong>Вступление. Письмо от кузнечика</strong></td>
+                <td class="center">5 мин</td>
+                <td>Слушание, отгадывание загадки-настроя</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>Глава 1. Королевство Неживой природы</strong></td>
+                <td class="center">14 мин</td>
+                <td>Схема-карта первого королевства</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>Глава 2. Королевство Живой природы</strong></td>
+                <td class="center">13 мин</td>
+                <td>Ритмический рисунок «Живые голоса»</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><strong>Глава 3. Королевство Движения</strong></td>
+                <td class="center">12 мин</td>
+                <td>Схема движения: линии, стрелки, завитки</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Глава 4. Королевство Тишины</strong></td>
+                <td class="center">12 мин</td>
+                <td>«Карта тишины» — почти пустой лист с одной деталью</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><strong>Глава 5. Собирание карты</strong></td>
+                <td class="center">10 мин</td>
+                <td>Общая Звуковая карта природы</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td><strong>Финал. Точка тишины и вызов</strong></td>
+                <td class="center">10 мин</td>
+                <td>Финальная история + рефлексия</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Материалы для занятия.</strong> Большой лист для общей карты; цветные карандаши, фломастеры, краски; сухие листья для аппликации; клей; камертон или стеклянные стаканы с водой; аудиозаписи звуков природы (ветер, дождь, гром, ручей, тишина леса). Музыкальные инструменты — по возможности.
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- ЭТАП 1. ВСТУПЛЕНИЕ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Письмо от кузнечика <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Педагог входит с красивым конвертом. Молча кладёт на стол. Дети смотрят.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>(Тихо.) «Ребята, у меня письмо. От кузнечика. Помните, того самого, который в прошлый раз искал свою песню? Он её нашёл. Но теперь ему нужно кое-что другое. Слушайте».</em></p>
+        <p><em>Педагог открывает конверт и читает: «Дорогие ребята! Помогите мне разобраться. Я нашёл свою песню, но не понимаю, из чего она состоит. В ней так много голосов! Откуда они все? Кто их собрал? Я слышу свист, журчание, стук, шелест, тишину — и не понимаю, что с этим делать. Приходите ко мне в гости. Я живу в Луговом краю. Там четыре королевства. Пройдите по ним и помогите мне собрать полную карту звуков. Ваш друг — кузнечик».</em></p>
+    </div>
+
+    <div class="child-voice">«А где эти королевства?»</div>
+    <div class="child-voice">«А мы уже там были?»</div>
+    <div class="child-voice">«А какие четыре?»</div>
+
+    <div class="speech-block">
+        <p><em>«Мы узнаем это в пути. Скажу только одно: каждое королевство — со своим голосом. И у каждого — свой характер. Идите за мной».</em></p>
+    </div>
+
+    <div class="move-block">
+        <p><strong>Дыхательный этюд «Настроить уши».</strong> Дети кладут ладони за уши — «делают уши большими». Медленно вдыхают, слушают, выдыхают. Повторяют 3 раза. «Теперь мы слышим лучше».</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 1. КОРОЛЕВСТВО НЕЖИВОЙ ПРИРОДЫ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЕРВАЯ · КОРОЛЕВСТВО НЕЖИВОЙ ПРИРОДЫ">
+        <div class="tale-title">Страна, где правят ветер, дождь и гром</div>
+        <div class="tale-text">
+            <p>Первое королевство, куда пришёл кузнечик, было шумным и грозным. Здесь жил <strong>Ветер</strong> — большой и вольный. Он свистел в ущельях и раскачивал травы.</p>
+            <p>Здесь жил <strong>Дождь</strong>. Он стучал по листьям, по камням, по крышам — <strong>кап-кап-кап, тук-тук-тук</strong>. Каждая капля пела свою короткую песню.</p>
+            <p>Здесь жил <strong>Гром</strong>. Он был самым громким. Он грохотал в небе, и все жители прятались. Но и его голос был нужен: без грома не было бы дождя, без дождя не было бы жизни.</p>
+            <p>Здесь жил маленький <strong>Ручей</strong>. Он бежал между камнями и тихо журчал: <strong>жур-жур-жур</strong>. Никто его не боялся — а он поил весь луг.</p>
+            <p>«Вот это королевство! — сказал кузнечик. — Здесь всё звучит. Но как же мне это записать?»</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 1. Схема-карта первого королевства.</strong></p>
+        <p>Дети получают небольшой лист. Рисуют <em>карту</em>: в центре — название королевства, по краям — четыре символа его звуков. Не картинки, а <strong>схемы</strong>:</p>
+        <ul>
+            <li>Ветер — волнистые линии.</li>
+            <li>Дождь — точки и штрихи.</li>
+            <li>Гром — жирные зигзаги.</li>
+            <li>Ручей — пунктирные линии.</li>
+        </ul>
+        <p>Готовые листы откладываются — они пригодятся в главе 5.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🗺️ Образец схемы-карты первого королевства</div>
+        <svg viewBox="0 0 520 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Рамка карты -->
+            <rect x="20" y="20" width="480" height="160" rx="10" fill="none" stroke="#334155" stroke-width="2"/>
+            <text x="260" y="45" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">НЕЖИВАЯ ПРИРОДА</text>
+
+            <!-- Сектор 1: Ветер -->
+            <line x1="260" y1="60" x2="260" y2="170" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,3"/>
+            <line x1="20" y1="115" x2="500" y2="115" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+            <!-- Ветер -->
+            <text x="140" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">ВЕТЕР</text>
+            <path d="M60,100 Q80,90 100,100 T140,100 T180,100" fill="none" stroke="#3b82f6" stroke-width="2"/>
+            <path d="M60,108 Q80,98 100,108 T140,108 T180,108" fill="none" stroke="#3b82f6" stroke-width="2"/>
+
+            <!-- Дождь -->
+            <text x="380" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">ДОЖДЬ</text>
+            <g fill="#3b82f6">
+                <circle cx="310" cy="100" r="2"/>
+                <circle cx="330" cy="105" r="2"/>
+                <circle cx="350" cy="100" r="2"/>
+                <circle cx="370" cy="105" r="2"/>
+                <circle cx="390" cy="100" r="2"/>
+                <circle cx="410" cy="105" r="2"/>
+                <circle cx="430" cy="100" r="2"/>
+                <circle cx="450" cy="105" r="2"/>
+            </g>
+
+            <!-- Гром -->
+            <text x="140" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">ГРОМ</text>
+            <path d="M60,150 L90,150 L80,165 L110,165 L100,180 L130,180" fill="none" stroke="#1e40af" stroke-width="3"/>
+
+            <!-- Ручей -->
+            <text x="380" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">РУЧЕЙ</text>
+            <path d="M310,160 Q330,155 350,160 T390,160 T430,160 T460,160" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4"/>
+            <path d="M310,170 Q330,165 350,170 T390,170 T430,170 T460,170" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4"/>
+        </svg>
+        <div class="draw-caption">Нарисуй свою карту королевства — четыре символа по углам</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Первые четыре загадки — о жителях королевства:</strong></p>
+        <ol>
+            <li>«Без рук, без ног, а в лесу шумит, деревья гнёт» <em>(ветер)</em>.</li>
+            <li>«Кто всю ночь по крыше бьёт да постукивает?» <em>(дождь)</em>.</li>
+            <li>«Конь бежит — земля дрожит, изо рта огонь летит» <em>(гром)</em>.</li>
+            <li>«Бежит, бежит — не выбежит; течёт, течёт — не вытечет» <em>(ручей)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Вставная история 1. «Спор четырёх братьев»</div>
+        <div class="story-text">Поспорили однажды четверо братьев: Ветер, Дождь, Гром и Ручей. Кто из них самый важный? Ветер сказал: «Без меня семена не разлетятся по земле — не будет новых лесов». Дождь сказал: «Без меня всё засохнет — не будет ни травы, ни деревьев». Гром сказал: «Без меня Дождь не пойдёт на землю». А Ручей молчал. Тогда спросили его: «А ты что скажешь?» Ручей тихо ответил: «Я пою самую тихую песню. Но без меня реки не побегут, а без рек — моря высохнут. Все мы нужны. Никто из нас не главный».</div>
+        <div class="story-moral">💡 Мораль: в природе нет главных и второстепенных. Каждый голос нужен. И тот, кто это понимает, — мудр.</div>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Первые поговорки — о голосе и слушании:</strong></p>
+        <ul>
+            <li>«У кого уши открыты, тому природа много скажет».</li>
+            <li>«Не всякий звук — музыка, но всякая музыка — звук».</li>
+            <li>«В лесу шуметь — ничего не услышать».</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 2. КОРОЛЕВСТВО ЖИВОЙ ПРИРОДЫ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ВТОРАЯ · КОРОЛЕВСТВО ЖИВОЙ ПРИРОДЫ">
+        <div class="tale-title">Страна шелеста и стрекота</div>
+        <div class="tale-text">
+            <p>Второе королевство встретило кузнечика тихим шелестом. Здесь не было ни грома, ни бури. Здесь всё звучало тихо и по-своему.</p>
+            <p>Здесь шелестела <strong>трава</strong>, когда её касался ветерок. Здесь стрекотали <strong>кузнечики и сверчки</strong> — коротко, ритмично, будто играли на невидимых скрипочках.</p>
+            <p>Здесь жужжали <strong>пчёлы</strong>, перелетая с цветка на цветок. Здесь <strong>лягушки</strong> квакали у пруда: «Ква-а! Ква-а!» Здесь <strong>птицы</strong> пели свои песни — высокие и тонкие, как ниточки.</p>
+            <p>Кузнечик слушал и понимал: это целый хор. И каждая нота в нём — своя.</p>
+            <p>«В этом королевстве все звуки — живые. Они рождаются от дыхания, от движения, от жизни. Как же это записать?» — подумал кузнечик.</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 2. Ритмический рисунок «Живые голоса».</strong></p>
+        <p>Дети рисуют <em>ритм</em> живых голосов. Никаких существ — только <strong>точки, штрихи, цепочки, волны</strong>.</p>
+        <p>Например: стрекот — короткие вертикальные чёрточки с равными промежутками. Пение — волнистая линия. Жужжание — пунктир. Кваканье — крупные точки попарно.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🎵 Образец ритмического рисунка живых голосов</div>
+        <svg viewBox="0 0 520 170" width="100%" height="170" xmlns="http://www.w3.org/2000/svg">
+            <!-- Стрекот -->
+            <text x="80" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">СТРЕКОТ</text>
+            <g stroke="#16a34a" stroke-width="2">
+                <line x1="30" y1="50" x2="30" y2="65"/>
+                <line x1="45" y1="50" x2="45" y2="65"/>
+                <line x1="60" y1="50" x2="60" y2="65"/>
+                <line x1="75" y1="50" x2="75" y2="65"/>
+                <line x1="90" y1="50" x2="90" y2="65"/>
+                <line x1="105" y1="50" x2="105" y2="65"/>
+                <line x1="120" y1="50" x2="120" y2="65"/>
+                <line x1="135" y1="50" x2="135" y2="65"/>
+            </g>
+
+            <!-- Пение — волнистая линия -->
+            <text x="300" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">ПЕНИЕ</text>
+            <path d="M200,65 Q215,50 230,65 T260,65 T290,65 T320,65 T350,65 T380,65" fill="none" stroke="#16a34a" stroke-width="2"/>
+            <path d="M200,75 Q215,60 230,75 T260,75 T290,75 T320,75 T350,75 T380,75" fill="none" stroke="#16a34a" stroke-width="2"/>
+
+            <!-- Жужжание — пунктир -->
+            <text x="80" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">ЖУЖЖАНИЕ</text>
+            <path d="M30,135 Q60,120 90,135 T150,135" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="6,4"/>
+            <path d="M30,150 Q60,135 90,150 T150,150" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="6,4"/>
+
+            <!-- Кваканье — точки попарно -->
+            <text x="320" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">КВАКАНЬЕ</text>
+            <circle cx="240" cy="135" r="4" fill="#16a34a"/>
+            <circle cx="255" cy="135" r="4" fill="#16a34a"/>
+            <circle cx="280" cy="135" r="4" fill="#16a34a"/>
+            <circle cx="295" cy="135" r="4" fill="#16a34a"/>
+            <circle cx="320" cy="135" r="4" fill="#16a34a"/>
+            <circle cx="335" cy="135" r="4" fill="#16a34a"/>
+            <circle cx="360" cy="135" r="4" fill="#16a34a"/>
+            <circle cx="375" cy="135" r="4" fill="#16a34a"/>
+
+            <!-- Подпись -->
+            <text x="260" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#166534">Ритм рисуется точками, чёрточками, волнами, пунктиром</text>
+        </svg>
+    </div>
+
+    <div class="move-block">
+        <p><strong>Двигательный этюд «Хор луга».</strong> Дети садятся в круг. Каждый выбирает «свой голос»: «стрекот» — хлопки двумя пальцами по столу; «жужжание» — тянущийся звук «ж-ж-ж»; «кваканье» — два хлопка в ладоши; «пение» — скользящий звук «у-и». Педагог дирижирует — дети по очереди включаются в хор. Потом — все вместе.</p>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Следующие загадки — о голосах живой природы (отгадки не рисуем):</strong></p>
+        <ol start="5">
+            <li>«Не зверь, не птица, а нос как спица» <em>(комар)</em>.</li>
+            <li>«Летит — пищит, сядет — молчит» <em>(комар)</em>.</li>
+            <li>«В лесу у пня суета, беготня: народ рабочий весь день хлопочет» <em>(муравьи)</em>.</li>
+            <li>«Зелёный, но не трава; прыгает, но не мяч» <em>(кузнечик)</em>.</li>
+        </ol>
+        <p><em>Примечание: этих существ мы не рисуем — только отгадываем.</em></p>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 1. «Что лишнее?»</strong></p>
+        <p>Шум дождя, свист ветра, звон капели, <em>стрекот кузнечика</em>. Лишнее — стрекот кузнечика: это звук живой природы, остальные — неживой.</p>
+        <p><strong>Интеллектуальная задача 2. «Продолжи цепочку».</strong> Ветер — свист; ручей — журчание; дождь — стук; гром — грохот; тишина — <em>(молчание)</em>.</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Вставная история 2. «Сверчок и Соловей»</div>
+        <div class="story-text">Сверчок сказал Соловью: «Твоя песня громкая и красивая. Ею восхищаются все. А моя — тихая и простая. Кто её услышит?» Соловей ответил: «Твоя песня — самая верная. Ты поёшь, когда все спят. Ты поёшь ночью, когда мир молчит. И тот, кто не спит, слышит тебя и знает: рядом жизнь. Моя песня — для всех. Твоя — для того, кто умеет слушать. Это большее».</div>
+        <div class="story-moral">💡 Мораль: тихая песня не хуже громкой. Иногда она важнее — потому что её слышит только тот, кто действительно слушает.</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 3. КОРОЛЕВСТВО ДВИЖЕНИЯ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ТРЕТЬЯ · КОРОЛЕВСТВО ДВИЖЕНИЯ">
+        <div class="tale-title">Страна, где звук рождается из движения</div>
+        <div class="tale-text">
+            <p>Третье королевство было самым удивительным. Здесь не было своих «звуков». Здесь всё звучало потому, что <strong>двигалось</strong>.</p>
+            <p>Качалось дерево — шелестели листья. Падала капля — звенела капель. Плескалась вода — рождался плеск. Тёрлись ветки — слышался скрип. Шуршала трава под ногами — и это тоже была музыка.</p>
+            <p>«Понял! — воскликнул кузнечик. — Звук не живёт сам по себе. Он рождается от движения. Уберите движение — исчезнет звук».</p>
+            <p>Он посмотрел на своё тело и понял: его собственная песня тоже рождается из движения. Из дрожания крылышек. Из ритма дыхания.</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 3. Схема движения.</strong></p>
+        <p>Дети рисуют <em>схему движения</em> — то, что рождает звук. Линии, стрелки, завитки, спирали. Можно показать:</p>
+        <ul>
+            <li>как качается дерево — дуга;</li>
+            <li>как падает капля — вертикальная линия с точкой;</li>
+            <li>как летит снежинка — спираль;</li>
+            <li>как бежит ручей — волна.</li>
+        </ul>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">💨 Образец схемы движения</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Дерево качается -->
+            <text x="90" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#155e75">КАЧАНИЕ</text>
+            <path d="M40,60 Q90,40 140,60" fill="none" stroke="#0891b2" stroke-width="2"/>
+            <path d="M40,80 Q90,60 140,80" fill="none" stroke="#0891b2" stroke-width="2"/>
+            <path d="M40,100 Q90,80 140,100" fill="none" stroke="#0891b2" stroke-width="2"/>
+            <polygon points="140,60 148,64 140,68" fill="#0891b2"/>
+            <polygon points="140,80 148,84 140,88" fill="#0891b2"/>
+            <polygon points="140,100 148,104 140,108" fill="#0891b2"/>
+
+            <!-- Капля падает -->
+            <text x="270" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#155e75">ПАДЕНИЕ</text>
+            <line x1="250" y1="50" x2="250" y2="120" stroke="#0891b2" stroke-width="1.5"/>
+            <circle cx="250" cy="125" r="4" fill="#0891b2"/>
+            <line x1="290" y1="50" x2="290" y2="120" stroke="#0891b2" stroke-width="1.5"/>
+            <circle cx="290" cy="125" r="4" fill="#0891b2"/>
+
+            <!-- Снежинка кружится -->
+            <text x="420" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#155e75">КРУЖЕНИЕ</text>
+            <path d="M380,65 m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+            <path d="M420,65 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0" fill="none" stroke="#0891b2" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <path d="M460,65 m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+            <path d="M380,110 m-12,0 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0" fill="none" stroke="#0891b2" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <path d="M440,110 m-12,0 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0" fill="none" stroke="#0891b2" stroke-width="1.5"/>
+
+            <!-- Подпись -->
+            <text x="260" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#155e75">Стрелка, волна, спираль, точка — вот язык движения</text>
+        </svg>
+    </div>
+
+    <div class="focus-block">
+        <p><strong>Фокус «Поющая верёвка».</strong></p>
+        <p>Педагог натягивает верёвку между двумя стульями. Прикладывает к ней камертон. Звук идёт по верёвке — дети прикладывают ухо к верёвке и слышат его отчётливо. <em>«Звук — это движение. Оно бежит по верёвке, по воздуху, по воде»</em>.</p>
+        <p><strong>Безопасность:</strong> верёвку держим свободно, не тянем резко.</p>
+    </div>
+
+    <div class="move-block">
+        <p><strong>Двигательный этюд «Движение рождает звук».</strong> Дети выполняют движения: медленно покачиваются — «шелест листьев»; быстро топают ногами — «шум дождя»; трут ладони — «шорох»; стучат пальцами по столу — «стук». После каждого движения — затихают. «Движение закончилось — звук исчез».</p>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Новые поговорки — о движении и звуке:</strong></p>
+        <ul>
+            <li>«Под лежачий камень вода не течёт».</li>
+            <li>«Тихая вода берега подмывает».</li>
+            <li>«Пока движется — живёт».</li>
+        </ul>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 3. «Найди пару».</strong></p>
+        <ul>
+            <li>Качание дерева → шелест листьев.</li>
+            <li>Падение капли → звон капели.</li>
+            <li>Плеск волны → шум прибоя.</li>
+            <li>Дрожание крыльев → пение кузнечика.</li>
+        </ul>
+        <p><strong>Интеллектуальная задача 4. «Что изменится?»</strong> Если бы всё в природе остановилось — что мы услышали бы? <em>Ничего. Тишину.</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 4. КОРОЛЕВСТВО ТИШИНЫ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ЧЕТВЁРТАЯ · КОРОЛЕВСТВО ТИШИНЫ">
+        <div class="tale-title">Страна, где живёт самый тихий звук</div>
+        <div class="tale-text">
+            <p>Четвёртое королевство кузнечик нашёл не сразу. Оно было совсем не там, где он искал. Он ждал, что это будет шумное место. А оказалось — <strong>самое тихое</strong>.</p>
+            <p>Здесь не пел ветер. Здесь не стучал дождь. Здесь не квакали лягушки и не стрекотали кузнечики. Здесь была <strong>тишина</strong>.</p>
+            <p>Кузнечик сначала испугался: «Неужели я потерял слух?» Но нет. Он прислушался — и вдруг услышал. Услышал <strong>своё дыхание</strong>. Услышал, как бьётся его сердце. Услышал, как шевелится трава — так тихо, что обычно этого не замечаешь.</p>
+            <p>«Вот это и есть настоящее чудо, — подумал кузнечик. — Тишина — это тоже звук. Самый главный. Потому что из неё рождается всё остальное».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 4. «Карта тишины».</strong></p>
+        <p>Дети получают белый лист. Задание: «Нарисуйте тишину. Но не пустой лист. На нём должна быть <em>одна маленькая деталь</em> — та, которую слышно только в тишине». Можно нарисовать: крошечную точку, лёгкий завиток, короткую чёрточку, маленькое сердечко. Всё остальное — белое пространство.</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🌙 Образец «карты тишины» — почти пустой лист, но с одной деталью</div>
+        <svg viewBox="0 0 520 160" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="120" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+            <!-- Одна маленькая точка в центре -->
+            <circle cx="260" cy="80" r="2" fill="#334155"/>
+            <!-- Один лёгкий завиток справа -->
+            <path d="M400,80 Q410,70 420,80 Q430,90 420,100" fill="none" stroke="#334155" stroke-width="1.5" opacity="0.6"/>
+            <!-- Подпись -->
+            <text x="260" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#64748b">Тишина — это почти пустой лист. Но не совсем</text>
+        </svg>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Вставная история 3. «Тишина после снегопада»</div>
+        <div class="story-text">Однажды зимой выпал первый снег. Он шёл всю ночь и укрыл землю белым одеялом. Утром всё замерло. Не было слышно ни ветра, ни дождя. Только снег скрипел под ногами. Мальчик вышел во двор и остановился. Он никогда раньше не слышал такой тишины. Ему показалось, что он слышит, как падают снежинки. Он стоял долго-долго. А когда вернулся домой, мама спросила: «Ты что делал на улице?» — «Я слушал тишину», — ответил мальчик. «И что же ты услышал?» — «Я услышал, как дышит мир. Он дышит тихо-тихо. И это — красиво».</div>
+        <div class="story-moral">💡 Мораль: тишина — не пустота, а особое состояние мира. Тот, кто умеет её слушать, узнаёт больше, чем тот, кто ищет шума.</div>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Финальные поговорки — о тишине:</strong></p>
+        <ul>
+            <li>«Тишина — тоже музыка, но её надо уметь услышать».</li>
+            <li>«Кто молчит, тот двух научит».</li>
+            <li>«Молчание — золото».</li>
+        </ul>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Финальные загадки — о тишине и загадках звука:</strong></p>
+        <ol start="9">
+            <li>«Что можно услышать в полной тишине, если слушать внимательно?» <em>(своё сердце, дыхание, мысли)</em>.</li>
+            <li>«Что тише всех, а слышно дальше всех?» <em>(молчание, тишина)</em>.</li>
+            <li>«Что есть у каждой снежинки, но нет ни у одной — одинакового?» <em>(её узор)</em>.</li>
+            <li>«Что никогда не заканчивается, хотя всегда возвращается?» <em>(времена года)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальная задача 5. «Сгруппируй».</strong></p>
+        <p>Педагог называет: <em>шелест листвы, пение птиц, звон капели, тишина зимнего леса, стрекот кузнечика, шум дождя, плеск воды, дыхание человека</em>.</p>
+        <p>Дети распределяют по четырём королевствам:</p>
+        <ul>
+            <li><strong>Неживая природа:</strong> шум дождя, звон капели.</li>
+            <li><strong>Живая природа:</strong> пение птиц, стрекот кузнечика.</li>
+            <li><strong>Движение:</strong> шелест листвы, плеск воды.</li>
+            <li><strong>Тишина:</strong> тишина зимнего леса, дыхание человека.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 5. СОБИРАНИЕ КАРТЫ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЯТАЯ · ВОЗВРАЩЕНИЕ">
+        <div class="tale-title">Кузнечик собирает карту звуков</div>
+        <div class="tale-text">
+            <p>Кузнечик вернулся домой — на свой луг. И разложил перед собой всё, что собрал: карту королевства неживой природы, ритмический рисунок живых голосов, схему движения, карту тишины.</p>
+            <p>Он долго смотрел на них. И вдруг понял: <strong>это всё — его песня</strong>. Все четыре королевства — в ней. Ветер, дождь, ручей, голоса живых, движение и тишина. Всё это звучит одновременно — и рождает его собственную песню.</p>
+            <p>Кузнечик сложил все карты вместе. И получилась <strong>одна большая Звуковая карта природы</strong>. А рядом с ней — его песня.</p>
+            <p>И с тех пор каждый вечер, когда кузнечик поёт, все, кто его слышит, говорят: «Это не просто песня. Это карта мира. Это голос самой природы».</p>
+        </div>
+    </div>
+
+    <div class="map-block">
+        <p><strong>Продуктивная деятельность 5. Общая Звуковая карта природы.</strong></p>
+        <p>Дети собирают всё, что сделали за занятие, в одну большую карту.</p>
+        <ul>
+            <li>Карты четырёх королевств — по сторонам листа.</li>
+            <li>Ритмический рисунок живых голосов — в центре.</li>
+            <li>Схема движения — над центром.</li>
+            <li>Карта тишины — под центром.</li>
+            <li>Подписи и стрелки связывают всё в одно целое.</li>
+        </ul>
+        <p>Готовая карта вывешивается в классе. Педагог: <em>«Это наша общая Звуковая карта природы. Она будет напоминать нам: у каждого звука — своё место»</em>.</p>
+    </div>
+
+    <div class="music-block">
+        <p><strong>Рисунок под музыку «Времена года. Весна» (Вивальди).</strong> Педагог включает фрагмент. Дети рисуют то, что слышат. Инструкция: <em>«Рисуй, что слышишь. Не думай. Пусть рука сама ведёт»</em>. Через 5 минут — работы откладываются.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФИНАЛ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">7</div>
+        <div class="stage-content">
+            <div class="stage-title">Финал. Точка тишины и вызов <span class="stage-time">10 мин</span></div>
+            <div class="stage-desc">Финальная история, один вопрос рефлексии, вызов на дом.</div>
+        </div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Финальная история. «Как звук путешествует»</div>
+        <div class="story-text">Однажды маленькая девочка спросила отца: «Папа, а куда уходит звук, когда мы перестаём говорить?» Отец подумал и сказал: «Звук не уходит. Он летит. Он летит по воздуху, отражается от стен, от деревьев, от воды. Он уходит всё дальше и дальше. И где-то — далеко-далеко — его слышит кто-то другой. Может быть, птица. Может быть, другая девочка на другом конце Земли. А может быть, он уходит в небо и превращается в облако». Девочка задумалась. И с тех пор, когда она говорила что-то важное, она делала это громко — чтобы звук долетел как можно дальше. Чтобы его услышал кто-то ещё.</div>
+        <div class="story-moral">💡 Мораль: каждый звук уходит в мир. И то, что ты говоришь, живёт дальше — даже когда ты замолчал. Поэтому говори доброе.</div>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Точка тишины.</strong> Педагог просит детей сесть в круг. Все молчат 30 секунд. Педагог не считает — он сам в тишине вместе с детьми. Затем — один вопрос:</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«Какое из четырёх королевств — твоё? Почему?»</p>
+        <p>Ответы — короткие. По желанию. Кто-то скажет: «Неживой природы — там громко и весело». Кто-то: «Тишины — там спокойно». Кто-то промолчит — и это тоже ответ.</p>
+        <p>Педагог благодарит каждого кивком.</p>
+    </div>
+
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Сегодня мы прошли четыре королевства. А теперь — маленькое дело для души.</em></p>
+        <p><em>Найдите дома или во дворе <strong>три звука, которые вам нравятся</strong>. Может быть, тиканье часов. Может быть, шелест страниц. Может быть, скрип половиц. Послушайте их и нарисуйте маленькие схемы этих звуков — точками, линиями, штрихами, как мы делали.</em></p>
+        <p><em>И ещё одно: расскажите маме или папе о четырёх королевствах, в которых мы сегодня побывали. И спросите их: какой звук любят они? А если захотите — запишите их ответ и принесите на следующее занятие».</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ЛИЧНОСТНО-ОРИЕНТИРОВАННАЯ ТЕХНОЛОГИЯ -->
+    <!-- ============================================================ -->
+    <h2>🪞 Личностно-ориентированная технология «Андрюша»</h2>
+
+    <p>Педагог реализует технологию «Андрюша» — <strong>незаметно для класса</strong> уделяет одному ребёнку (условно — Максим) в три раза больше внимания, чем обычно.</p>
+
+    <div class="andryusha-box">
+        <p><strong>15 блоков технологии, вплетённых в занятие:</strong></p>
+        <p><strong>1. «Ты молодец».</strong> В главе 1, когда дети рисуют карту, педагог подходит к Максиму первым: «Максим, ты уже начал. Молодец».</p>
+        <p><strong>2. «Кубик».</strong> В главе 2 педагог садится рядом с Максимом и вместе с ним рисует ритм стрекота. Между делом разбирает простой кубик Рубика 3×3: «Тут повернуть эту грань — что получится?»</p>
+        <p><strong>3. «Фокус».</strong> В главе 3 педагог показывает Максиму фокус с верёвкой отдельно: «Приложи ухо — слышишь? Звук бежит по верёвке».</p>
+        <p><strong>4. «Медведь».</strong> В двигательном этюде «Хор луга» педагог даёт Максиму роль главного «дирижёра»: «Ты будешь включать хор. Кого первого?»</p>
+        <p><strong>5. «Лес и парк».</strong> В главе 4, когда дети рисуют «карту тишины», педагог тихо спрашивает Максима: «А ты когда-нибудь слушал тишину? Где тебе было тихо — дома или в парке?» Максим отвечает. Педагог: «Нарисуй эту тишину».</p>
+        <p><strong>6. «Ошибочное суждение».</strong> После «карты тишины» педагог показывает Максиму его работы в начале года — серые, неуверенные — и говорит: «Смотри, что ты рисовал раньше. А вот что нарисовал сегодня. Сегодня — во много раз лучше. Молодец».</p>
+        <p><strong>7. «Правила поведения в обществе».</strong> В главе 5 педагог напоминает классу: «Мы уважаем работы друг друга. Не сравниваем — любуемся».</p>
+        <p><strong>8. «Рисунок под музыку».</strong> В финале педагог отдельно подчёркивает Максиму: «Ты сегодня нарисовал музыку по-своему. Это — твоё».</p>
+        <p><strong>9. «Лодочка».</strong> При сборке карты педагог даёт Максиму особую роль: «Ты положишь первую карту в центр. Ты — хранитель центра».</p>
+        <p><strong>10. «Музыкальная пауза».</strong> В финале, когда карта собирается, педагог включает музыку и даёт Максиму первым приклеить работу: «Ты — первый автор. Начинай».</p>
+        <p><strong>11. «Этика гражданственности».</strong> Перед точкой тишины педагог: «Карта, которую мы сделали — вклад в общее дело. Она останется в классе, чтобы другие ребята учились слушать мир».</p>
+        <p><strong>12. «Листок-книжка на букву "з"».</strong> Максим получает особое задание — сделать маленькую книжку на букву «З»: «звук», «зелень», «зима», «звон». Слова нарисовать по представлению.</p>
+        <p><strong>13. «Мотивированный выбор».</strong> В финале Максим выбирает, где на общей карте будет его работа. «Ты — автор. Ты решаешь».</p>
+        <p><strong>14. «Рефлексия и коррекция».</strong> После занятия педагог отдельно разговаривает с Максимом: «Ты сегодня справился со всем. Ты был настоящим автором карты. Молодец. А в следующий раз попробуем ещё что-нибудь новое».</p>
+        <p><strong>15. Индивидуальный отзыв.</strong> На общей рефлексии педагог скажет Максиму: «Твоя карта тишины — самая тонкая сегодня. Хорошо получилось».</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- КОММЕНТАРИЙ МЕТОДИСТА -->
+    <!-- ============================================================ -->
+    <h2>🔍 Комментарий методиста</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Продолжение предыдущей сказки.</strong> Кузнечик с прошлого занятия уже знаком детям. Он продолжает свой путь — это создаёт <em>эффект сериала</em>, и дети с нетерпением ждут «следующей серии».</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Четыре королевства — четыре классификации звуков.</strong> Дети не «заучивают» группы звуков. Они <em>проживают</em> их через путешествие. Классификация рождается сама — в пути.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Пять продуктов — пять глав.</strong> Схема-карта, ритмический рисунок, схема движения, «карта тишины», общая карта. Каждый продукт — свой вид деятельности.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. «Карта тишины» — самый сложный и глубокий продукт.</strong> Ребёнок должен нарисовать <em>пустоту с одной деталью</em>. Это — не «пустой лист», а <em>осмысленная тишина</em>. Такая задача тренирует абстрактное мышление.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Загадки — в трёх смысловых группах.</strong> 4 — о неживой природе, 4 — о живой, 4 — о тишине. Все отгадки — знакомые детям явления и существа. Существа не рисуем — только отгадываем.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Четыре истории.</strong> Одна большая сказка (5 глав) + 3 вставных. Каждая вставная — <em>углубляет одну тему</em>: спор голосов, тихий голос, тишина.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>7. Пять поговорок.</strong> Три о голосе и слушании, три о движении, три о тишине. Все вплетены в речь педагога.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>8. Пять интеллектуальных задач.</strong> «Что лишнее?», «Продолжи цепочку», «Найди пару», «Что изменится?», «Сгруппируй» — все на классификацию.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>9. Один фокус — «поющая верёвка».</strong> Не для развлечения, а для <em>понимания</em>: звук бежит по верёвке. Это — физическое явление, доступное детям.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>10. Три двигательных этюда.</strong> «Настроить уши», «Хор луга», «Движение рождает звук» — каждый по-своему продолжает сказку.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>11. Рисунок под музыку — только один раз</strong> (в главе 5, Вивальди). Это финальная нота, не развлечение.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>12. Точка тишины — один вопрос.</strong> «Какое из четырёх королевств — твоё? Почему?» — вопрос <em>самоопределения</em>. Он заставляет ребёнка задуматься о своём характере.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг занятия.</strong> Если занятие 14 давало детям <em>опыт слушания</em>, то занятие 15 даёт <strong>систематику</strong>. Не «запомните четыре группы звуков», а «вы сами прошли все четыре и теперь знаете, что они разные». Это знание — <em>прожитое</em>, а не выученное.
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1.</strong> Сказка — стержень. Не торопите. Паузы работают сильнее слов.</p>
+        <p><strong>2.</strong> После каждой главы — <em>продуктивная деятельность</em>, а не вопросы.</p>
+        <p><strong>3.</strong> «Карта тишины» — не пустой лист. Одна маленькая деталь делает её осмысленной.</p>
+        <p><strong>4.</strong> Животных не изображаем. Отгадки в загадках — <em>называем</em>, но не рисуем.</p>
+        <p><strong>5.</strong> Двигательные этюды — часть сказки, не перерыв.</p>
+        <p><strong>6.</strong> Фокус «поющая верёвка» — для понимания, а не для развлечения.</p>
+        <p><strong>7.</strong> Точка тишины — обязательна. 30 секунд молчания.</p>
+        <p><strong>8.</strong> Технология «Андрюша» — незаметно для класса.</p>
+        <p><strong>9.</strong> Если что-то пошло не по плану — следуйте за детьми.</p>
+        <p><strong>10.</strong> Общая карта — итог. Она остаётся в классе надолго.</p>
+    </div>
+
+    <div class="quote">
+        «Природа говорит с нами на четырёх языках. И каждый звучит по-своему. Тот, кто слышит все четыре, знает больше, чем тот, кто слушает только громкое».
+        <span class="quote-author">— из размышлений о звуках природы</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson14.html" class="button">← Занятие 14</a>
+        <a href="section3.html" class="button secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson16.html" class="button">Занятие 16 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson14.html" class="back-link">← Занятие 14. Звуки природы. Музыка природы</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson16.html" class="back-link">Занятие 16. Воздействие природной музыки →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 15 «Многообразие звуков в природе»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Путешествие по четырём королевствам звуков вместе с кузнечиком</em></p>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 10. Виды искусства — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ЧЕМ ЭТО ЗАНЯТИЕ ОТЛИЧАЕТСЯ ОТ ЗАНЯТИЯ 9";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Что делают дети";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🎭 Тайна / испытание";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .silhouette-block {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 2px solid #475569;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .silhouette-block::before {
+            content: "🌑 Пять теней";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #475569;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .silhouette-block p:first-child { margin-top: 8px; }
+
+        .expedition-block {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .expedition-block::before {
+            content: "🚩 Экспедиция искусств";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ea580c;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .expedition-block p:first-child { margin-top: 8px; }
+
+        .language-block {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .language-block::before {
+            content: "🗣️ Пять языков без слов";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .language-block p:first-child { margin-top: 8px; }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .beauty-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border-top: 4px solid #16a34a;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .beauty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -6px rgba(22, 163, 74, 0.25);
+        }
+        .beauty-card .beauty-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .beauty-card .beauty-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .beauty-card .beauty-text {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .poem-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        .big-empty-board {
+            background: #94a3b8;
+            border-radius: 12px;
+            height: 160px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e2e8f0;
+            font-style: italic;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .beauty-grid { grid-template-columns: 1fr; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson9.html" class="back-link">← Занятие 9. Искусство. Понятие об искусстве</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson11.html" class="back-link">Занятие 11. Свойства прекрасного →</a>
+    </div>
+
+    <h1>🎭 Занятие 10. Виды искусства</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Это занятие построено как коллективное приключение, а не как одиночное исследование.</strong> На занятии 9 дети разбирались с одним вопросом — «что такое искусство?» — и работали в основном индивидуально. Здесь они решают задачу посложнее: <strong>искусств много, и у каждого — свой язык</strong>. И решают её <em>вместе</em>, в движении, в пантомиме, в экспедициях.</p>
+        <p><strong>Что принципиально ново по сравнению с занятием 9:</strong></p>
+        <ul>
+            <li>Занятие начинается <strong>с пустоты</strong> — на доске висит серый лист, и педагог молчит. Ребёнок встречается не с ящиком, а с отсутствием.</li>
+            <li>Нет спора о понятии — есть <strong>поиск пропавших</strong>. Дети не спорят, а ищут.</li>
+            <li>Нет «галереи без стен» — есть <strong>пять теней</strong> и <strong>пять языков без слов</strong>. Это движение, но другое: не созерцательное, а игровое.</li>
+            <li>Нет «мастерской» в одиночку — есть <strong>экспедиция искусств</strong>. Дети создают <em>командой</em>, у каждого — своя роль.</li>
+            <li>Нет «вернисажа» — есть <strong>оживление серого листа</strong>. Все работы собираются в одно общее «произведение».</li>
+            <li>Нет «точки удивления» с тремя вопросами — есть <strong>точка тишины</strong> и <strong>один вопрос</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу «Мир прекрасного»</strong>, подтема <strong>«Искусство. Виды искусства»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Продолжи орнамент»</strong> — работа с ритмом и повторяемостью в разных искусствах.</li>
+            <li><strong>Задание «Обведи и раскрась солнце»</strong> — символ как язык искусства.</li>
+            <li><strong>Задание «Угадай вид искусства»</strong> — игра на узнавание вида искусства по выразительному средству.</li>
+            <li><strong>Поучительный рассказ «Ленивый художник»</strong> — о том, что мастерство растёт из труда.</li>
+            <li><strong>Загадка «Разноцветное коромысло»</strong> — образ радуги как моста между природой и искусством.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула этого занятия</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 840 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Формула занятия">
+        <text x="420" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">ПУТЬ ДЕТЕЙ НА ЭТОМ ЗАНЯТИИ</text>
+
+        <!-- Пустота -->
+        <rect x="20" y="65" width="140" height="85" rx="14" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+        <text x="90" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">🌑</text>
+        <text x="90" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#334155">ПУСТОТА</text>
+        <text x="90" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#334155">мир без искусства</text>
+
+        <text x="178" y="112" text-anchor="middle" font-size="18" fill="#16a34a">→</text>
+
+        <!-- Тени -->
+        <rect x="192" y="65" width="140" height="85" rx="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.5"/>
+        <text x="262" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">👥</text>
+        <text x="262" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">ТЕНИ</text>
+        <text x="262" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af">кто пропал?</text>
+
+        <text x="350" y="112" text-anchor="middle" font-size="18" fill="#16a34a">→</text>
+
+        <!-- Языки -->
+        <rect x="364" y="65" width="140" height="85" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="434" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">🗣️</text>
+        <text x="434" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">ЯЗЫКИ</text>
+        <text x="434" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">как говорит искусство?</text>
+
+        <text x="522" y="112" text-anchor="middle" font-size="18" fill="#16a34a">→</text>
+
+        <!-- Возвращение -->
+        <rect x="536" y="65" width="140" height="85" rx="14" fill="#ffe4e6" stroke="#ec4899" stroke-width="2.5"/>
+        <text x="606" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">🚩</text>
+        <text x="606" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#9d174d">ВОЗВРАЩЕНИЕ</text>
+        <text x="606" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#9d174d">экспедиции искусств</text>
+
+        <text x="694" y="112" text-anchor="middle" font-size="18" fill="#16a34a">→</text>
+
+        <!-- Жизнь -->
+        <rect x="708" y="65" width="115" height="85" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+        <text x="765" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22">✨</text>
+        <text x="765" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">ЖИЗНЬ</text>
+        <text x="765" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#92400e">мир оживает</text>
+
+        <!-- Итог -->
+        <rect x="200" y="180" width="440" height="42" rx="12" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+        <text x="420" y="208" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="white">ИТОГ: пять искусств возвращаются — каждое со своим языком</text>
+    </svg>
+
+    <div class="quote">
+        «У каждого искусства — свой голос. Живопись говорит красками, музыка — звуками, литература — словами, танец — движениями, ремесло — руками. Пять голосов — один мир».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: пять фаз коллективного приключения</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:6%;">Фаза</th>
+                <th style="width:38%;">Название</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:46%;">Роль ребёнка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><strong>🌑 Пустота</strong><br><span style="font-size:0.85rem;color:#64748b;">Встреча с отсутствием.</span></td>
+                <td class="center">8 мин</td>
+                <td>Свидетель: замечает, что мир потерял краски, и задаёт вопрос</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>👥 Тени</strong><br><span style="font-size:0.85rem;color:#64748b;">Поиск пропавших.</span></td>
+                <td class="center">12 мин</td>
+                <td>Следователь: по силуэтам угадывает, какие искусства исчезли</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>🗣️ Языки без слов</strong><br><span style="font-size:0.85rem;color:#64748b;">Пантомима и звук.</span></td>
+                <td class="center">15 мин</td>
+                <td>Актёр: показывает «голос» своего искусства без слов</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><strong>🚩 Экспедиции искусств</strong><br><span style="font-size:0.85rem;color:#64748b;">Творчество в команде.</span></td>
+                <td class="center">25 мин</td>
+                <td>Хранитель: возвращает одно искусство в мир вместе с командой</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>✨ Жизнь</strong><br><span style="font-size:0.85rem;color:#64748b;">Оживление серого листа.</span></td>
+                <td class="center">20 мин</td>
+                <td>Творец: соединяет свою работу с работами других в общий мир</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Гибкость хронометража.</strong> Продолжительность фаз — ориентировочная. Фаза 3 («Языки без слов») может занять и 10, и 18 минут, в зависимости от азарта группы. Фаза 4 («Экспедиции») — от 20 до 30 минут. Главное — сохранить последовательность: пустота → тени → языки → возвращение → жизнь.
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 1. ПУСТОТА -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Пустота <span class="stage-time">8 мин</span></div>
+            <div class="stage-desc">Педагог входит в класс, молча вешает на доску большой серый лист. Не здоровается. Ждёт. Дети первыми начинают говорить.</div>
+        </div>
+    </div>
+
+    <div class="big-empty-board">[ серый лист ]</div>
+
+    <div class="speech-block">
+        <p><em>Педагог входит в класс. Не здоровается. Подходит к доске. Прикрепляет большой серый лист бумаги. Отходит на шаг. Молчит.</em></p>
+        <p><em>Пауза — 10–15 секунд. Дети переглядываются. Кто-то наконец спрашивает: «А что это?»</em></p>
+        <p><em>Педагог (тихо, почти шёпотом): «Это мир. Только в нём нет искусства».</em></p>
+    </div>
+
+    <div class="child-voice">«А почему?»</div>
+
+    <div class="speech-block">
+        <p><em>«Потому что искусства обиделись и ушли. Они были разные, жили вместе — но поссорились. И ушли. Каждое — в свою сторону. И мир стал серым».</em></p>
+    </div>
+
+    <div class="child-voice">«А что теперь делать?»</div>
+
+    <div class="speech-block">
+        <p><em>«Я не знаю. Я не могу вернуть их один. Я знаю только одно: пока мы не поймём, что это были за искусства и какие у них голоса, — мир останется серым. Вы готовы помочь?»</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>В первые 30 секунд — удивляются, переглядываются, ждут, пока педагог заговорит.</li>
+            <li>Задают вопросы: «А что это?», «А почему серый?», «А как вернуть?»</li>
+            <li>Постепенно включаются в игру и дают согласие помочь.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li><strong>Молчит</strong> первые 10–15 секунд. Это самое важное в фазе: тишина работает сильнее слов.</li>
+            <li>Говорит <strong>тихо</strong>, не торжественно. Никакого «а сейчас мы с вами отправимся в увлекательное путешествие!». Только простые слова.</li>
+            <li>Не даёт сразу инструкций. Сначала — <strong>даёт детям удивиться</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Методическая ловушка, которой избегаем.</strong> Не превращайте «Пустоту» в театрализованное представление. Не надо падать на колени и восклицать «О, горе нам!». Тихое, простое, честное — вот что работает. Ребёнок чувствует фальшь мгновенно.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 2. ТЕНИ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Пять теней <span class="stage-time">12 мин</span></div>
+            <div class="stage-desc">Дети получают пять силуэтов. Каждый силуэт — «тень» одного искусства. Задача: угадать, кто пропал.</div>
+        </div>
+    </div>
+
+    <div class="silhouette-block">
+        <p><strong>Что подготовить заранее.</strong> Педагог вырезает из чёрной бумаги или распечатывает <strong>пять силуэтов-теней</strong>. Каждый силуэт — простой узнаваемый контур:</p>
+        <ul>
+            <li><strong>Кисть и палитра</strong> — тень живописи.</li>
+            <li><strong>Скрипичный ключ и нота</strong> — тень музыки.</li>
+            <li><strong>Раскрытая книга и перо</strong> — тень литературы.</li>
+            <li><strong>Танцующая фигурка</strong> — тень танца.</li>
+            <li><strong>Кувшин и гончарный круг</strong> — тень ремесла.</li>
+        </ul>
+        <p>Силуэты прикрепляются к доске (рядом с серым листом). Тени чёрные, без подписей.</p>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Когда искусства уходили, они оставили после себя только тени. Пять теней. Посмотрите на них. Что вы видите?»</em></p>
+    </div>
+
+    <div class="child-voice">«Похоже на кисточку!»</div>
+    <div class="child-voice">«А это нота!»</div>
+    <div class="child-voice">«А вот это — книжка!»</div>
+    <div class="child-voice">«А вот тут человек танцует!»</div>
+    <div class="child-voice">«А это… кувшин? Или что-то круглое?»</div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ol>
+            <li>В парах (по 2 человека) получают <strong>одну тень</strong> на карточке.</li>
+            <li>Им даётся <strong>1 минута</strong> на обсуждение: что это за искусство?</li>
+            <li>Пары по очереди показывают свою тень классу и говорят: «Мы думаем, что это…»</li>
+            <li>Класс соглашается или спорит.</li>
+            <li>Педагог <strong>не подтверждает</strong> правильный ответ сразу — ждёт, пока дети назовут все пять.</li>
+        </ol>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Значит, у нас получилось пять искусств. Назовём их вместе ещё раз: живопись, музыка, литература, танец и… кто последний?»</em></p>
+    </div>
+
+    <div class="child-voice">«Ремесло!» / «Рукоделие!» / «Что-то руками делают!»</div>
+
+    <div class="speech-block">
+        <p><em>«Пусть будет ремесло. Это искусство, которое живёт в руках мастера: глина, дерево, ткань, металл. Хорошо. Мы узнали их имена. Но этого мало. Чтобы вернуть искусства, нужно знать, как каждое из них говорит. У них у всех — разные языки. Давайте это проверим».</em></p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Тонкость.</strong> Тени нужны не для «угадайки», а для того, чтобы дети <em>сами</em> назвали виды искусства. Если педагог просто напишет на доске «живопись, музыка, литература, танец, ремесло», это будет список для запоминания. А если дети <strong>узнают</strong> эти виды в силуэтах — это станет <em>их</em> знанием.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 3. ЯЗЫКИ БЕЗ СЛОВ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Пять языков без слов <span class="stage-time">15 мин</span></div>
+            <div class="stage-desc">Дети показывают пантомимой «голос» каждого искусства. Это фаза движения, смеха и настоящего открытия: оказывается, искусство можно объяснить без слов.</div>
+        </div>
+    </div>
+
+    <div class="language-block">
+        <p><strong>Что происходит.</strong> Педагог называет искусство — а ребёнок (по желанию) выходит и <strong>без слов</strong> показывает, как это искусство «говорит». Остальные угадывают.</p>
+        <ul>
+            <li><strong>Живопись</strong> — ребёнок делает движение кистью в воздухе, прищуривается, отступает, как художник.</li>
+            <li><strong>Музыка</strong> — ребёнок «играет» на воображаемом инструменте, дирижирует, покачивается в такт.</li>
+            <li><strong>Литература</strong> — ребёнок «читает» воображаемую книгу, водит пальцем по строчкам, шевелит губами.</li>
+            <li><strong>Танец</strong> — ребёнок плавно двигается, кружится, «летит».</li>
+            <li><strong>Ремесло</strong> — ребёнок «лепит» руками, «вырезает», «ткёт».</li>
+        </ul>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Смотрите: у каждого искусства — свой язык. Живопись говорит красками. Музыка — звуками. Литература — словами. Танец — движениями. Ремесло — руками.</em></p>
+        <p><em>А теперь проверим: сможем ли мы <strong>сами</strong> поговорить на этих языках — без слов? Я буду называть искусство, а вы — показывать. Кто хочет первым?»</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ol>
+            <li>Желающие (2–3 ребёнка) выходят к доске и получают <strong>карточку с видом искусства</strong>.</li>
+            <li>Ребёнок <strong>без слов</strong> показывает «язык» этого искусства.</li>
+            <li>Остальные угадывают: «Это живопись?», «Это музыка?»</li>
+            <li>Если угадали — аплодисменты. Если нет — ребёнок показывает ещё раз, уже медленнее.</li>
+            <li>Через 3–4 выхода педагог спрашивает: «А какой язык вам ближе? Какой язык — ваш?»</li>
+        </ol>
+    </div>
+
+    <div class="child-voice">«Мне нравится, как танцует музыка — плавно и красиво».</div>
+    <div class="child-voice">«А мне нравится, как художник машет кистью — как будто волшебник».</div>
+    <div class="child-voice">«А ремесло — это как лепить из глины? Я так умею!»</div>
+
+    <div class="warning-box">
+        <strong>⚠️ Ловушка, которой избегаем.</strong> Не превращайте пантомиму в соревнование «кто лучше». Не оценивайте. Не хлопайте «правильным» и не хмурьтесь «неправильным». Важно <em>почувствовать</em> язык, а не изобразить его точно.
+    </div>
+
+    <div class="poem-box">
+        <p>«Пять искусств — пять голосов,<br>
+        Пять дорог, пять волшебств.<br>
+        Кто-то краской говорит,<br>
+        Кто-то нотою звенит.<br><br>
+        Кто-то словом, кто-то пляской,<br>
+        Кто-то тёплою рукой.<br>
+        Все они — одна команда,<br>
+        Все они — один покой».</p>
+        <span class="poem-author">— из размышлений о языках искусства</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 4. ЭКСПЕДИЦИИ ИСКУССТВ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Экспедиции искусств <span class="stage-time">25 мин</span></div>
+            <div class="stage-desc">Дети объединяются в пять команд. Каждая команда «возвращает» одно искусство в мир — создаёт своё произведение. Это не индивидуальная работа, а командная.</div>
+        </div>
+    </div>
+
+    <div class="expedition-block">
+        <p><strong>Что подготовить заранее.</strong> Педагог раскладывает материалы <strong>пятью зонами</strong> по классу — по одной зоне на каждое искусство:</p>
+        <ul>
+            <li><strong>Зона живописи:</strong> краски, кисти, большие листы бумаги.</li>
+            <li><strong>Зона музыки:</strong> шумовые инструменты (сделанные ранее), бутылочки с крупой, деревянные палочки, металлофон.</li>
+            <li><strong>Зона литературы:</strong> листы бумаги, ручки, карандаши, книги стихов о природе.</li>
+            <li><strong>Зона танца:</strong> свободное пространство, платки, ленточки.</li>
+            <li><strong>Зона ремесла:</strong> пластилин, глина, природный материал, клей, цветная бумага.</li>
+        </ul>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Мы узнали имена искусств. Мы услышали их языки. Пришло время вернуть их в мир.</em></p>
+        <p><em>Сейчас мы разделимся на пять команд. Каждая команда выберет одно искусство — то, которое ей ближе, — и создаст для него что-то новое. Что именно — вы решите сами.</em></p>
+        <p><em>Вот зоны. Подойдите, посмотрите, потрогайте. И выберите».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ol>
+            <li>Свободно <strong>проходят по классу</strong>, рассматривают пять зон, трогают материалы.</li>
+            <li>Собираются в команды <strong>по интересу</strong> — не по указанию педагога.</li>
+            <li>Получают <strong>15–20 минут</strong> на создание произведения.</li>
+            <li>Внутри команды каждый ребёнок берёт на себя <strong>свою роль</strong>: кто-то рисует, кто-то подаёт материалы, кто-то придумывает.</li>
+            <li>Педагог <strong>ходит между командами</strong> и помогает советом, но <strong>не диктует</strong>, что делать.</li>
+        </ol>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Единственное условие: ваше произведение должно быть о природе. Потому что искусства ушли из серого мира — а вернуть их нужно именно в мир природы. Вспомните всё, что вы знаете о красоте природы. И скажите это своим искусством».</em></p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Три правила этой фазы.</strong>
+        <ol>
+            <li><strong>Не оценивать.</strong> Педагог не говорит «правильно / неправильно». Он говорит: «Расскажи, что вы придумали».</li>
+            <li><strong>Не торопить.</strong> 20 минут — это минимум. Кому-то нужно 12, кому-то — 25. Это нормально.</li>
+            <li><strong>Не переделывать.</strong> Если ребёнок нарисовал «не так», как задумал педагог, — <em>ничего не поправлять</em>. Искусство не терпит вмешательства.</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 5. ЖИЗНЬ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Жизнь: мир оживает <span class="stage-time">20 мин</span></div>
+            <div class="stage-desc">Все работы собираются вместе и размещаются на большом сером листе — символ мира без искусства. Постепенно серый лист оживает.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Мы почти закончили. У нас есть пять искусств. У каждой команды — своё произведение. Посмотрите на серый лист на доске. Это был мир без искусства. А теперь мы вернём искусства обратно — по одному.</em></p>
+        <p><em>Команда живописи — подойдите и прикрепите вашу работу на серый лист. Где хотите? Как хотите? Только не отдельно. Пусть ваша работа <strong>войдёт в мир</strong> — соединится с другими.</em></p>
+        <p><em>Команда музыки — а ваше искусство нельзя прикрепить. Тогда <strong>сыграйте</strong>. Прямо сейчас, для серого листа. И для нас.</em></p>
+        <p><em>Команда литературы — <strong>прочитайте</strong> ваше произведение. Не нам — миру. Скажите это серому листу.</em></p>
+        <p><em>Команда танца — <strong>станцуйте</strong> свой танец перед серым листом. Один раз. Может быть, два.</em></p>
+        <p><em>Команда ремесла — подойдите и <strong>прикрепите</strong> свою работу рядом с картиной. Пусть они встретятся.</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ol>
+            <li>Каждая команда по очереди <strong>выходит к серому листу</strong>.</li>
+            <li>Живопись и ремесло — прикрепляют работы.</li>
+            <li>Музыка и литература — <strong>исполняют</strong> свои произведения.</li>
+            <li>Танец — <strong>показывает</strong> движение.</li>
+            <li>Постепенно серый лист превращается в <strong>общую картину</strong> — мир, в который вернулось искусство.</li>
+        </ol>
+    </div>
+
+    <div class="speech-block">
+        <p><em>Посмотрите на наш серый лист. Он больше не серый. На нём — картины. Рядом — поделки. И на нём живут звуки музыки, слова литературы, движения танца. Пять искусств вернулись в мир. Потому что вы — вернули их».</em></p>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Главное в этой фазе.</strong> Каждый ребёнок должен <strong>увидеть свою работу в общем произведении</strong>. Не «выставленную отдельно», а <em>вплетённую</em> в общий мир. Это даёт ощущение: «Я — часть целого. Моё искусство важно».
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ТОЧКА ТИШИНЫ -->
+    <!-- ============================================================ -->
+    <div class="reflect-block">
+        <p><strong>Точка тишины.</strong> После шумной фазы 5 педагог <strong>не спешит</strong> переходить к финалу. Он садится вместе с детьми в круг и говорит: <em>«Мы сделали большое дело. Давайте просто помолчим немного. Тридцать секунд»</em>.</p>
+        <p>Дети молчат. Педагог тоже молчит. Не «считает секунды», а <em>сам</em> в тишине.</p>
+        <p>Через 30 секунд педагог задаёт <strong>один вопрос</strong>:</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«Какое искусство теперь живёт в тебе?»</p>
+        <p>Ответы детей — короткие. Не по кругу. По желанию. Кто-то скажет «живопись», кто-то «танец», кто-то «музыка». Кто-то промолчит — и это тоже ответ.</p>
+        <p>Педагог благодарит каждого кивком. Без слов.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>💡 Почему именно так.</strong> «Точка тишины» — приём, который позволяет детям <em>осознать</em>, что с ними произошло. Не «что ты узнал» (это вопрос для ума), а «что в тебе живёт» (это вопрос для сердца). Ответ на такой вопрос нельзя выучить — можно только почувствовать.
+    </div>
+
+    <!-- ВЫЗОВ ВМЕСТО ДОМАШНЕГО ЗАДАНИЯ -->
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Мне было бы интересно узнать одну вещь. У каждого из вас есть семья. Мама, папа, бабушка, дедушка, брат, сестра. У каждого из них — своё любимое искусство. Кто-то любит музыку, кто-то — книги, кто-то — шить или вязать.</em></p>
+        <p><em>Дома спросите у родных: какое искусство живёт в них? И расскажите им, какое живёт в вас. А если захотите — сделайте что-нибудь вместе: спойте, нарисуйте, слепите, станцуйте.</em></p>
+        <p><em>А если не захотите — просто расскажете мне на следующем занятии, что ответили ваши родные. Это тоже будет интересно».</em></p>
+    </div>
+
+    <div class="purple-note">
+        <strong>💡 Почему это вызов, а не задание.</strong> Здесь нет обязательства. Есть <em>приглашение к разговору</em>. Ребёнок может прийти с ответом, может прийти без него — но и в том, и в другом случае он <strong>что-то проживает</strong>: разговор в семье, взгляд на близких с новой стороны, попытку совместного творчества. Это не «домашка», это — <em>жизнь</em>.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- КОММЕНТАРИЙ МЕТОДИСТА -->
+    <!-- ============================================================ -->
+    <h2>🔍 Комментарий методиста: что здесь работает иначе</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Начало с пустоты, а не с ящика.</strong> На занятии 9 дети встречались с <em>полнотой</em> (в ящике было пять предметов). Здесь — с <em>отсутствием</em>. Психологически это разные ситуации: ящик возбуждает любопытство, пустота — тревогу и желание заполнить. И то, и другое работает — но по-разному. Важно не повторять один и тот же приём дважды.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Нет словесного спора, есть визуальный поиск.</strong> На занятии 9 дети спорили о том, что такое искусство. Здесь — ищут пропавших. Это разные типы мышления: критическое (спор) и исследовательское (поиск). Чередование типов мышления — основа живого обучения.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Пять теней как метафора отсутствия.</strong> Тени — это не картинки искусств. Это <em>следы</em> искусств. Ребёнок, угадывая тень, чувствует себя <strong>археологом</strong>: он не «изучает», а <em>восстанавливает</em> утраченное. Это принципиально другая мотивация.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. Пантомима вместо беседы.</strong> В механических занятиях виды искусства давались через таблицу. Здесь — через <strong>движение тела</strong>. Дети <em>проживают</em> искусство, а не «проходят» его. Пантомима активирует память тела — и знание остаётся дольше.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Экспедиции, а не мастерская.</strong> На занятии 9 дети работали <em>индивидуально</em> — каждый создавал своё. Здесь — <em>командами</em>. Это важное различие: командная работа формирует другие компетенции — умение договариваться, распределять роли, слышать другого. И занятия дополняют друг друга: в 9-м ребёнок понимает, что он <em>сам</em> может творить; в 10-м — что он может творить <em>вместе</em>.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Свободный выбор команды.</strong> Дети собираются в команды <strong>по интересу</strong>, а не по указанию педагога. Это снимает проблему «мне не дали ту роль, которую я хотел». Ребёнок выбирает не роль, а <em>искусство</em>, которое ему ближе.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>7. Оживление серого листа как итог.</strong> Работы детей не «сдаются педагогу» — они <strong>прикрепляются к общему листу</strong>. Это символ: «твоё искусство возвращается в мир и становится частью общего». В механической модели работы просто вывешивались на стену — и всё. Здесь — <em>встраивались в общий смысл</em>.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>8. Точка тишины вместо точки удивления.</strong> На занятии 9 педагог задавал <strong>три вопроса</strong> (что удивило? что было трудно? что расскажешь дома?). Здесь — <strong>один вопрос</strong> и <strong>30 секунд тишины</strong>. Это медленный, вдумчивый финал. Ребёнку нужно время, чтобы почувствовать, что произошло.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>9. Вызов — семейный.</strong> Домашнее задание занятия 9 касалось личного поиска предметов. Здесь вызов — про <em>разговор с близкими</em>. Это вовлекает семью в образовательный процесс, не превращая его в «обязанность для родителей». Ребёнок идёт не «выполнять задание», а <em>разговаривать</em>.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>10. Никакой викторины.</strong> В конце занятия нет ни одного вопроса на воспроизведение. Нет «что такое живопись?», «какие виды искусства вы знаете?». Дети <em>пережили</em> пять искусств — и этого достаточно. Викторина обесценила бы прожитое, превратив его в «материал для проверки».</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг этого занятия.</strong> Если занятие 9 помогало ребёнку сказать «я могу творить», то занятие 10 помогает ему сказать <strong>«искусств много, и каждое говорит по-своему»</strong>. Это два разных открытия, и оба — необходимы. Вместе они дают ребёнку целостную картину: искусство — это и <em>личное</em> (я — творец), и <em>многообразное</em> (миров искусств — пять).
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1. Тишина в начале — главный инструмент.</strong> Не бойтесь молчать 10–15 секунд после того, как повесили серый лист. В этой тишине рождается интерес.</p>
+        <p><strong>2. Тени — не «угадайка».</strong> Не превращайте фазу 2 в соревнование «кто быстрее угадает». Пусть будет медленно. Пусть будут сомнения. Пусть будет спор.</p>
+        <p><strong>3. Пантомиму не оцениваем.</strong> Если ребёнок показывает «плохо» — ничего не говорите. Он <em>пробует</em>. Это ценнее, чем правильное исполнение.</p>
+        <p><strong>4. Команды — по выбору детей.</strong> Не назначайте. Даже если получится, что в одной команде — 1 человек, а в другой — 5. Это нормально.</p>
+        <p><strong>5. В «оживлении» не торопите.</strong> Пусть каждая команда подойдёт к серому листу со своим ритмом. Не надо «а теперь быстро все!».</p>
+        <p><strong>6. Точку тишины — соблюдайте буквально.</strong> 30 секунд — это <em>долго</em>, когда сидишь в тишине. Не сокращайте. Не спешите задавать вопрос. Тишина работает на вас.</p>
+    </div>
+
+    <div class="quote">
+        «Пять искусств — это пять способов человека разговаривать с миром. И каждый ребёнок имеет право найти <em>свой</em> способ. Не тот, что удобен педагогу, а тот, что живёт в нём самом».
+        <span class="quote-author">— из размышлений о видах искусства</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson9.html" class="button">← Занятие 9</a>
+        <a href="section2.html" class="button secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson11.html" class="button">Занятие 11 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson9.html" class="back-link">← Занятие 9. Искусство. Понятие об искусстве</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson11.html" class="back-link">Занятие 11. Свойства прекрасного →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 10 «Виды искусства»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Занятие построено по событийной модели: пустота → тени → языки → возвращение → жизнь</em></p>
+    </footer>
+
+</div>
+</body>
+</html>

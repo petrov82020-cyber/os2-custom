@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 12. Критерии оценки прекрасного — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ЧЕМ ЭТО ЗАНЯТИЕ ОТЛИЧАЕТСЯ ОТ 9, 10 И 11";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Что делают дети";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🎪 Испытание";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        /* Блок ярмарки */
+        .fair-block {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .fair-block::before {
+            content: "🎪 Ярмарка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .fair-block p:first-child { margin-top: 8px; }
+
+        /* Блок торговца */
+        .trader-block {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin: 16px 0;
+            position: relative;
+            border-left: 5px solid #d97706;
+        }
+        .trader-block .trader-name {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .trader-block .trader-speech {
+            font-style: italic;
+            color: #78350f;
+            font-size: 0.93rem;
+            line-height: 1.6;
+            background: #fef3c7;
+            padding: 10px 16px;
+            border-radius: 0 10px 10px 0;
+            border-left: 3px solid #d97706;
+            margin: 8px 0;
+        }
+        .trader-block .trader-item {
+            font-size: 0.88rem;
+            color: #475569;
+            margin-top: 6px;
+        }
+
+        /* Жетоны */
+        .token-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+        .token {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid #b45309;
+            box-shadow: 0 2px 4px rgba(180, 83, 9, 0.3);
+        }
+
+        /* Протокол оценки */
+        .protocol-block {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .protocol-block::before {
+            content: "📋 Протокол оценки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .protocol-block p:first-child { margin-top: 8px; }
+
+        /* Пять критериев */
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .criterion-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-top: 5px solid #16a34a;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .criterion-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px -8px rgba(22, 163, 74, 0.35);
+        }
+        .criterion-card .criterion-icon {
+            font-size: 1.7rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .criterion-card .criterion-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .criterion-card .criterion-question {
+            font-style: italic;
+            color: #166534;
+            font-size: 0.92rem;
+            background: #f0fdf4;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #16a34a;
+            margin: 8px 0;
+        }
+        .criterion-card .criterion-text {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .poem-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .criteria-grid { grid-template-columns: 1fr; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson11.html" class="back-link">← Занятие 11. Свойства прекрасного</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson13.html" class="back-link">Занятие 13. Обобщение по разделу →</a>
+    </div>
+
+    <h1>🎪 Занятие 12. Критерии оценки прекрасного</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Это занятие построено как ярмарка, где нужно выбрать настоящее из множества похожего.</strong> На занятии 9 дети искали сущность искусства. На занятии 10 — возвращали пять искусств в мир. На занятии 11 — открывали шесть свойств прекрасного. Здесь — <strong>учатся различать</strong>. Пять торговцев расхваливают свои товары. Каждый знает <em>только один</em> критерий. Дети слушают, сравнивают, выбирают. И в конце понимают: <em>настоящая красота — это когда сходятся все пять критериев сразу</em>.</p>
+        <p><strong>Что принципиально ново по сравнению с 9, 10 и 11:</strong></p>
+        <ul>
+            <li>Начало — <strong>звон колокольчика и распахнутая дверь</strong>. Не ящик, не пустой лист, не осколки — а <em>приглашение войти</em>.</li>
+            <li>Вместо спора (занятие 9), поиска (занятие 10) и восстановления (занятие 11) — <strong>сравнение и выбор</strong>. Дети не создают, а <em>различают</em>.</li>
+            <li>Критерии вводятся <strong>через живые голоса пяти торговцев</strong>, а не через таблицу. Каждый торговец — персонаж со своей интонацией.</li>
+            <li>У каждого торговца — <strong>свой товар</strong>. И каждый товар <em>силён только в одном</em>. Вместе они — целая палитра неполной красоты.</li>
+            <li>Дети не «выполняют задание», а <strong>тратят жетоны</strong>. Это игровая механика с реальным выбором и последствиями.</li>
+            <li>Финал — не вернисаж и не тихий обход, а <strong>протокол оценки</strong> — документ, в котором дети фиксируют свои выводы о каждом товаре.</li>
+            <li>Рефлексия — <strong>не вопрос, а выбор</strong>: «Какой критерий тебе сложнее всего применить? Почему?»</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу «Мир прекрасного»</strong>, подтема <strong>«Критерии оценки прекрасного»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Критерии оценки»</strong> — сопоставление критерия и вопроса, на который он отвечает.</li>
+            <li><strong>Задание «Свойства прекрасного»</strong> — нахождение примеров каждого свойства в природе.</li>
+            <li><strong>Задание «Отношение к прекрасному»</strong> — заполнение таблицы о личном отношении к прекрасному.</li>
+            <li><strong>Загадки-размышления о прекрасном</strong> — загадки без «правильного» ответа.</li>
+            <li><strong>Поучительный рассказ «Мудрая природа»</strong> — о том, что настоящая красота всегда соединена с пользой.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула занятия: ярмарка, на которой различают</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 860 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Формула занятия">
+        <text x="430" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">ПУТЬ ДЕТЕЙ НА ЭТОМ ЗАНЯТИИ</text>
+
+        <!-- Ярмарка открывается -->
+        <rect x="25" y="60" width="150" height="130" rx="16" fill="#fef9c3" stroke="#d97706" stroke-width="2.5"/>
+        <text x="100" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">ЯРМАРКА</text>
+        <text x="100" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🎪</text>
+        <text x="100" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#92400e">открывается</text>
+        <text x="100" y="176" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#92400e">«войдите и выберите»</text>
+
+        <text x="190" y="128" text-anchor="middle" font-size="20" fill="#16a34a">→</text>
+
+        <!-- Пять торговцев -->
+        <rect x="205" y="60" width="160" height="130" rx="16" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.5"/>
+        <text x="285" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">ПЯТЬ ГОЛОСОВ</text>
+        <text x="285" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🗣️</text>
+        <text x="285" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e40af">каждый — свой</text>
+        <text x="285" y="176" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#1e40af">«только я прав!»</text>
+
+        <text x="380" y="128" text-anchor="middle" font-size="20" fill="#16a34a">→</text>
+
+        <!-- Торг -->
+        <rect x="395" y="60" width="150" height="130" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="470" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">ТОРГ</text>
+        <text x="470" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🪙</text>
+        <text x="470" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#166534">выбор за жетоны</text>
+        <text x="470" y="176" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#166534">«что же взять?»</text>
+
+        <text x="560" y="128" text-anchor="middle" font-size="20" fill="#16a34a">→</text>
+
+        <!-- Открытие -->
+        <rect x="575" y="60" width="160" height="130" rx="16" fill="#fae8ff" stroke="#a855f7" stroke-width="2.5"/>
+        <text x="655" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">ОТКРЫТИЕ</text>
+        <text x="655" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">💡</text>
+        <text x="655" y="158" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#6b21a8">настоящая красота</text>
+        <text x="655" y="176" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#6b21a8">«когда все пять вместе»</text>
+
+        <text x="750" y="128" text-anchor="middle" font-size="20" fill="#16a34a">→</text>
+
+        <!-- Своя оценка -->
+        <rect x="765" y="60" width="80" height="130" rx="16" fill="#ffe4e6" stroke="#ec4899" stroke-width="2.5"/>
+        <text x="805" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#9d174d">СВОЯ</text>
+        <text x="805" y="106" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#9d174d">ОЦЕНКА</text>
+        <text x="805" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26">🛍️</text>
+        <text x="805" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#9d174d">мой</text>
+        <text x="805" y="182" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#9d174d">выбор</text>
+
+        <!-- Итог -->
+        <rect x="180" y="225" width="500" height="38" rx="12" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+        <text x="430" y="250" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="white">ИТОГ: пять критериев стали инструментами различения настоящей красоты</text>
+    </svg>
+
+    <div class="quote">
+        «Красивое — не то, что громче всех хвалит себя. Красивое — то, что выдерживает пять разных взглядов: и на форму, и на смысл, и на чувство, и на пользу, и на единственность».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: пять фаз ярмарочного дня</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:6%;">Фаза</th>
+                <th style="width:38%;">Название</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:46%;">Роль ребёнка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><strong>🎪 Ярмарка открывается</strong><br><span style="font-size:0.85rem;color:#64748b;">Встреча с прилавками.</span></td>
+                <td class="center">7 мин</td>
+                <td>Гость: входит на ярмарку, видит пять прилавков, слышит звон колокольчика</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>🗣️ Пять голосов</strong><br><span style="font-size:0.85rem;color:#64748b;">Знакомство с торговцами.</span></td>
+                <td class="center">13 мин</td>
+                <td>Слушатель: слышит пять речей — по одному критерию в каждой</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>🪙 Торг</strong><br><span style="font-size:0.85rem;color:#64748b;">Свободный выбор.</span></td>
+                <td class="center">22 мин</td>
+                <td>Покупатель: ходит между прилавками, задаёт вопросы, тратит жетоны</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><strong>💡 Протокол оценки</strong><br><span style="font-size:0.85rem;color:#64748b;">Открытие истины.</span></td>
+                <td class="center">13 мин</td>
+                <td>Эксперт: заполняет протокол, сравнивает товары по пяти критериям</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>🛍️ Свой выбор</strong><br><span style="font-size:0.85rem;color:#64748b;">Личная экспертиза.</span></td>
+                <td class="center">22 мин</td>
+                <td>Мастер: выбирает или создаёт предмет и оценивает его по всем пяти критериям</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Гибкость.</strong> Фаза 3 может занять и 15, и 28 минут — в зависимости от того, насколько дети увлекутся разговорами с торговцами. Фаза 5 тоже гибкая: если ребёнок затрудняется «создать» — он может оценить предмет из класса или из дома. Главное — сохранить последовательность: знакомство → слушание → выбор → сравнение → своя оценка.
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 1. ЯРМАРКА ОТКРЫВАЕТСЯ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Ярмарка открывается <span class="stage-time">7 мин</span></div>
+            <div class="stage-desc">Дети входят в класс, где расставлены пять «прилавков» — столов с разными предметами. Педагог стоит у входа с маленьким колокольчиком.</div>
+        </div>
+    </div>
+
+    <div class="fair-block">
+        <p><strong>Что подготовить заранее.</strong> Педагог расставляет в классе пять столов. На каждом — <strong>прилавок</strong> с одним предметом, накрытым красивой тканью или салфеткой. На каждом прилавке — <strong>табличка</strong> с именем торговца (без объяснения критерия).</p>
+        <p><strong>Пять предметов:</strong></p>
+        <ul>
+            <li><strong>Прилавок 1.</strong> Репродукция картины (или красивая иллюстрация пейзажа).</li>
+            <li><strong>Прилавок 2.</strong> Глиняная чашка ручной работы (или любая вещь с историей).</li>
+            <li><strong>Прилавок 3.</strong> Засушенный осенний лист клёна.</li>
+            <li><strong>Прилавок 4.</strong> Детский рисунок (заранее подобранный из архива объединения).</li>
+            <li><strong>Прилавок 5.</strong> Красивая ветка с шишкой или небольшое изделие из природного материала.</li>
+        </ul>
+        <p>На дверях класса — табличка: <em>«ЯРМАРКА КРАСОТЫ. Сегодня. Открыто»</em>.</p>
+    </div>
+
+    <div class="speech-block">
+        <p><em>Педагог стоит у входа. Дети подходят. Педагог молча звонит в колокольчик. Пауза — 5 секунд.</em></p>
+        <p><em>«Добро пожаловать на ярмарку красоты. Здесь пять торговцев. Каждый привёз свой товар. И каждый уверяет, что его товар — самый красивый. Вот только правду говорит только один. Может быть, два. А может быть — ни один.</em></p>
+        <p><em>Мы сегодня — покупатели. У каждого из вас есть пять жетонов. Проходите, знакомьтесь с торговцами, слушайте их речи, задавайте вопросы. Тратьте жетоны — но с умом. А в конце мы вместе разберёмся, кто же из торговцев говорил правду».</em></p>
+    </div>
+
+    <div class="child-voice">«А как понять, кто правду говорит?»</div>
+    <div class="child-voice">«А можно потрогать товары?»</div>
+    <div class="child-voice">«А что если никто не правду говорит?»</div>
+
+    <div class="speech-block">
+        <p><em>«Хорошие вопросы. На первый я отвечу так: правду говорит тот, чей товар окажется красивым <strong>по всем меркам сразу</strong>. Мерки мы узнаем у самих торговцев. На второй: можно посмотреть, но не трогать без разрешения хозяина. На третий: если никто не правду говорит — значит, мы сегодня научимся отличать настоящую красоту от поддельной. И это тоже большое открытие».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Входят в класс, слышат звон колокольчика.</li>
+            <li>Видят пять прилавков, накрытых тканью.</li>
+            <li>Получают по <strong>пять жетонов</strong> (реальные бумажные жетоны или нарисованные).</li>
+            <li>Начинают ходить между прилавками, разглядывать таблички.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li><strong>Молчит первые 5 секунд после звона</strong>. Даёт детям осмотреться.</li>
+            <li>Говорит <strong>живо, но не театрально</strong>. Как будто и правда открывает ярмарку.</li>
+            <li>Не объясняет критерии. Это произойдёт в фазе 2 — устами самих торговцев.</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Ловушка.</strong> Не превращайте начало в длинную лекцию. Никаких «сегодня мы с вами узнаем пять критериев прекрасного». Только ярмарка и предложение выбрать.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 2. ПЯТЬ ГОЛОСОВ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div class="stage-content">
+            <div class="stage-title">Пять голосов <span class="stage-time">13 мин</span></div>
+            <div class="stage-desc">Дети снимают ткань с прилавков, и каждый торговец «оживает» — рассказывает о своём товаре, но только с одной стороны.</div>
+        </div>
+    </div>
+
+    <div class="fair-block">
+        <p><strong>Как это устроено.</strong> Педагог может <strong>сам сыграть всех пятерых торговцев</strong> — меняя голос, позу, жест. Либо выбрать <strong>пять детей-актёров</strong> заранее и дать им короткие роли. Второй вариант веселее, но требует подготовки.</p>
+        <p>Каждый торговец выходит к своему прилавку, снимает ткань — и говорит <strong>короткую речь</strong>. Все речи разные по интонации. Каждая — про один критерий.</p>
+    </div>
+
+    <div class="trader-block">
+        <div class="trader-name">🎨 Торговец Первый — «Красивая форма»</div>
+        <div class="trader-speech">«Ах, посмотрите, какая красота! Какие ровные линии! Какие нежные цвета! Какая гармония во всём! Форма — вот что делает вещь прекрасной! Если форма красива — всё остальное неважно! Берите, берите, пока не разобрали!»</div>
+        <div class="trader-item"><strong>Товар:</strong> репродукция картины. <em>Сильна по форме и цвету.</em></div>
+    </div>
+
+    <div class="trader-block">
+        <div class="trader-name">📖 Торговец Второй — «Глубокий смысл»</div>
+        <div class="trader-speech">«Не спешите смотреть на форму. Задумайтесь: о чём эта вещь? Что хотел сказать мастер? Какой смысл вложен в неё? Вот это — главное. Красота — в глубине. Смотрите глубже!»</div>
+        <div class="trader-item"><strong>Товар:</strong> детский рисунок. <em>Силён по содержанию и чувству.</em></div>
+    </div>
+
+    <div class="trader-block">
+        <div class="trader-name">💗 Торговец Третий — «Сильные чувства»</div>
+        <div class="trader-speech">«А я спрошу проще: что вы чувствуете, глядя на это? Сердце радуется? Душа замирает? Хочется улыбнуться или заплакать? Вот это и есть красота — то, что трогает сердце!»</div>
+        <div class="trader-item"><strong>Товар:</strong> засушенный лист клёна. <em>Силен по воздействию и уникальности.</em></div>
+    </div>
+
+    <div class="trader-block">
+        <div class="trader-name">🛠️ Торговец Четвёртый — «Настоящая польза»</div>
+        <div class="trader-speech">«Красота без пользы — пустая сума! Посмотрите: эту вещь можно взять в руки, она служит человеку каждый день. Из неё можно пить, её можно подарить. Вот это — настоящая красота!»</div>
+        <div class="trader-item"><strong>Товар:</strong> глиняная чашка. <em>Сильна по форме и пользе.</em></div>
+    </div>
+
+    <div class="trader-block">
+        <div class="trader-name">✨ Торговец Пятый — «Единственная в мире»</div>
+        <div class="trader-speech">«А я скажу так: такой вещи больше нет нигде! Ни в одном музее, ни в одном доме! Она — единственная. Вот это и есть главное в красоте — неповторимость!»</div>
+        <div class="trader-item"><strong>Товар:</strong> ветка с шишкой. <em>Сильна по уникальности и форме.</em></div>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Слушают пять речей.</li>
+            <li>Замечают, что каждый торговец хвалит <em>что-то своё</em>.</li>
+            <li>Задают вопросы: «А почему вы не сказали про…?»</li>
+            <li>Получают от педагога <strong>лист-протокол</strong> с пятью колонками (по одному критерию на каждую) и пятью строками (по одному товару на каждую).</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li>Играет торговцев с <strong>разными интонациями</strong>: у первого — торжественная, у второго — задумчивая, у третьего — эмоциональная, у четвёртого — практичная, у пятого — восторженная.</li>
+            <li>После каждой речи — <strong>короткая пауза</strong>: «Что вы об этом думаете?»</li>
+            <li>Не комментирует, прав ли торговец. Это — задача детей.</li>
+        </ul>
+    </div>
+
+    <div class="game-block">
+        <p><strong>Мини-приём «Доспроси торговца».</strong></p>
+        <p>Перед фазой 3 педагог предлагает каждому ребёнку выбрать <strong>одного торговца</strong> и задать ему <em>один неудобный вопрос</em>. Например:</p>
+        <ul>
+            <li>«А ваша картина — она полезна? Что она делает?»</li>
+            <li>«А ваш лист — он единственный? Или таких миллион?»</li>
+            <li>«А ваша чашка — она чем-то отличается от других чашек?»</li>
+        </ul>
+        <p>Торговец должен ответить — и честно признать, если его товар слаб по чужому критерию.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 3. ТОРГ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div class="stage-content">
+            <div class="stage-title">Торг <span class="stage-time">22 мин</span></div>
+            <div class="stage-desc">Дети свободно ходят между прилавками, слушают торговцев ещё раз, задают вопросы, рассматривают товары. И тратят жетоны.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Ярмарка открыта. У вас пять жетонов. Каждый жетон — это ваш голос: "Я считаю этот товар красивым". Вы можете отдать все пять жетонов одному торговцу — или распределить между разными. Можете вообще не тратить, если решите, что ни один товар не заслуживает.</em></p>
+        <p><em>Ходите, слушайте, спрашивайте. У вас 20 минут».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Свободно <strong>двигаются по классу</strong> от прилавка к прилавку.</li>
+            <li>Переспрашивают торговцев: «А расскажите ещё раз про форму!», «А покажите, как это работает?»</li>
+            <li>Рассматривают предметы — берут в руки, если разрешено.</li>
+            <li>Решают, куда потратить жетоны.</li>
+            <li>Отдают жетон торговцу — торговец «складывает» его в свою коробочку.</li>
+        </ul>
+        <p><strong>Что делает педагог (в роли торговцев).</strong></p>
+        <ul>
+            <li>Каждый торговец <strong>отвечает на вопросы</strong>, но не выходит за пределы <em>своего</em> критерия. Например, торговец Первый на вопрос «А это полезно?» отвечает: «Моя задача — форма! О пользе спросите Четвёртого!»</li>
+            <li>Не уговаривает. Не перетягивает детей. Только отвечает.</li>
+            <li>Замечает вслух: «Вижу, ты думаешь. Это правильное занятие».</li>
+        </ul>
+    </div>
+
+    <div class="token-block">
+        <span class="token">🪙</span>
+        <span class="token">🪙</span>
+        <span class="token">🪙</span>
+        <span class="token">🪙</span>
+        <span class="token">🪙</span>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Три правила.</strong>
+        <ol>
+            <li><strong>Не торопите.</strong> Дайте детям вдоволь походить. Иногда кто-то возвращается к одному прилавку три раза.</li>
+            <li><strong>Не подсказывайте.</strong> Никаких «ну, а польза? Ты не забыл про пользу?». Ребёнок должен <em>сам</em> вспомнить критерии.</li>
+            <li><strong>Не спорьте.</strong> Если ребёнок отдаёт все пять жетонов одному торговцу — это его выбор. Не переубеждайте.</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 4. ПРОТОКОЛ ОЦЕНКИ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div class="stage-content">
+            <div class="stage-title">Протокол оценки <span class="stage-time">13 мин</span></div>
+            <div class="stage-desc">Дети садятся за столы. На доске — большая таблица. Вместе заполняют её: у каждого товара — свои «плюсы» и «минусы».</div>
+        </div>
+    </div>
+
+    <div class="protocol-block">
+        <p><strong>Что заполняется.</strong> На доске — большая таблица. Строки — товары. Столбцы — пять критериев. Дети по очереди называют, каким критериям соответствует каждый товар, а каким — нет.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Форма</th>
+                    <th>Содержание</th>
+                    <th>Воздействие</th>
+                    <th>Польза</th>
+                    <th>Уникальность</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Картина</strong></td>
+                    <td class="center">✅</td>
+                    <td class="center">✅</td>
+                    <td class="center">✅</td>
+                    <td class="center">❌</td>
+                    <td class="center">✅</td>
+                </tr>
+                <tr>
+                    <td><strong>Чашка</strong></td>
+                    <td class="center">✅</td>
+                    <td class="center">❌</td>
+                    <td class="center">❌</td>
+                    <td class="center">✅</td>
+                    <td class="center">❌</td>
+                </tr>
+                <tr>
+                    <td><strong>Лист клёна</strong></td>
+                    <td class="center">✅</td>
+                    <td class="center">❌</td>
+                    <td class="center">✅</td>
+                    <td class="center">❌</td>
+                    <td class="center">✅</td>
+                </tr>
+                <tr>
+                    <td><strong>Детский рисунок</strong></td>
+                    <td class="center">❌</td>
+                    <td class="center">✅</td>
+                    <td class="center">✅</td>
+                    <td class="center">❌</td>
+                    <td class="center">✅</td>
+                </tr>
+                <tr>
+                    <td><strong>Ветка с шишкой</strong></td>
+                    <td class="center">✅</td>
+                    <td class="center">❌</td>
+                    <td class="center">❌</td>
+                    <td class="center">❌</td>
+                    <td class="center">✅</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><em>Пример заполнения. Ответы детей могут отличаться — это нормально. Важно, чтобы они аргументировали.</em></p>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Смотрите, что получается. У картины — четыре из пяти. У чашки — два. У листа — три. У детского рисунка — три. У ветки — два. Ни у одного товара нет всех пяти сразу.</em></p>
+        <p><em>Что это значит? Это значит, что ни один из наших торговцев не сказал полной правды. Каждый говорил только про <strong>свою сторону</strong>. И каждый — был прав. Но только наполовину.</em></p>
+        <p><em>А какой товар самый красивый?»</em></p>
+    </div>
+
+    <div class="child-voice">«Картина! У неё четыре!»</div>
+    <div class="child-voice">«Но у неё нет пользы!»</div>
+    <div class="child-voice">«А зачем картине польза? Она же для души!»</div>
+    <div class="child-voice">«А чашка — полезная и красивая. Тоже хорошая».</div>
+    <div class="child-voice">«А лист — он настоящий, из природы!»</div>
+
+    <div class="speech-block">
+        <p><em>«Вот в этом и главный секрет. Нет одного "самого красивого". Есть разные вещи — и у каждой своя красота. И есть один секрет: если вещь красива <strong>по всем пяти критериям сразу</strong> — это редкость. Это — настоящий шедевр. А если вещь красива только по одному — это "частичная" красота.</em></p>
+        <p><em>Пять критериев — это как пять дверей. Пройдёт вещь через все пять — она прекрасна полностью. Задержится на одной — прекрасна наполовину».</em></p>
+    </div>
+
+    <div class="criteria-grid">
+        <div class="criterion-card">
+            <span class="criterion-icon">🎨</span>
+            <div class="criterion-title">Форма</div>
+            <div class="criterion-question">Как это выглядит?</div>
+            <div class="criterion-text">Ровные линии, гармония цвета, соразмерность частей.</div>
+        </div>
+        <div class="criterion-card">
+            <span class="criterion-icon">📖</span>
+            <div class="criterion-title">Содержание</div>
+            <div class="criterion-question">Что хотел сказать автор?</div>
+            <div class="criterion-text">Смысл, идея, глубина, о чём эта вещь.</div>
+        </div>
+        <div class="criterion-card">
+            <span class="criterion-icon">💗</span>
+            <div class="criterion-title">Воздействие</div>
+            <div class="criterion-question">Что я чувствую?</div>
+            <div class="criterion-text">Радость, удивление, грусть, спокойствие — какие чувства вызывает.</div>
+        </div>
+        <div class="criterion-card">
+            <span class="criterion-icon">🛠️</span>
+            <div class="criterion-title">Польза</div>
+            <div class="criterion-question">Что это делает? Кому служит?</div>
+            <div class="criterion-text">Служит ли вещь человеку, помогает ли другим.</div>
+        </div>
+        <div class="criterion-card">
+            <span class="criterion-icon">✨</span>
+            <div class="criterion-title">Уникальность</div>
+            <div class="criterion-question">Что здесь единственного?</div>
+            <div class="criterion-text">Есть ли что-то, чего больше нигде не встретишь.</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ФАЗА 5. СВОЙ ВЫБОР -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div class="stage-content">
+            <div class="stage-title">Свой выбор <span class="stage-time">22 мин</span></div>
+            <div class="stage-desc">Каждый ребёнок выбирает предмет из класса, из дома или создаёт свой — и оценивает его по всем пяти критериям. Это — личная экспертиза.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Теперь ваша очередь. Каждый из вас станет экспертом. Выберите один предмет — из класса, из своего портфеля, или придумайте и нарисуйте. И оцените его по нашим пяти критериям.</em></p>
+        <p><em>Но не спешите ставить "галочки". Сначала — рассмотрите внимательно. Потом — подумайте. И только потом — запишите».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ol>
+            <li><strong>Выбирают предмет</strong> — из класса, из своего портфеля, или создают на листе.</li>
+            <li><strong>Заполняют протокол</strong> на своём листе: пять критериев, плюс или минус.</li>
+            <li><strong>Добавляют строчку</strong>: «Что я мог бы улучшить?» — если предмет чего-то не хватает, как это можно было бы исправить?</li>
+            <li>Несколько детей по желанию <strong>показывают свой протокол</strong> классу и рассказывают о своём выборе.</li>
+        </ol>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">📖 Нарисуй свой предмет и заполни протокол оценки по пяти критериям</div>
+        <svg viewBox="0 0 500 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="460" height="160" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4" rx="10"/>
+            <text x="250" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#94a3b8" font-style="italic">Здесь твой предмет и протокол оценки</text>
+        </svg>
+    </div>
+
+    <div class="purple-note">
+        <strong>💡 Тонкость.</strong> Если у ребёнка не получается выбрать предмет — предложите ему оценить <em>свою руку</em>. Или <em>свой рисунок</em>. Или <em>своё имя</em>. Формулировки критериев подойдут и к абстрактному предмету. Главное — ребёнок должен пройти путь оценки <em>сам</em>.
+    </div>
+
+    <!-- ТОЧКА ТИШИНЫ -->
+    <div class="reflect-block">
+        <p><strong>Точка тишины и один вопрос.</strong> После заполнения протоколов педагог собирает детей в круг.</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«Какой из пяти критериев тебе сложнее всего применить? Почему?»</p>
+        <p>Ответы — короткие. По желанию. Кто-то скажет: «Содержание — потому что я не знаю, что хотел сказать автор». Кто-то: «Польза — потому что красивое не всегда полезно». Кто-то промолчит — и это тоже ответ.</p>
+        <p>Педагог благодарит каждого кивком. И — одна короткая фраза от себя: <em>«Настоящая красота — это всегда разговор. И её нельзя оценить одной меркой. Только пятью. А иногда — и больше».</em></p>
+    </div>
+
+    <!-- ВЫЗОВ -->
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Мы сегодня побывали на ярмарке. Мы научились оценивать вещи по пяти критериям. И у меня к вам одна просьба — не как учителя, а как мастера к мастерам.</em></p>
+        <p><em>Выберите <strong>одну вещь</strong> в своём доме или во дворе — и оцените её по всем пяти критериям. Но не простую вещь. Найдите такую, которую все считают красивой, а вы — не уверены. Может быть, это картина на стене. Может быть, чашка. Может быть, старый бабушкин платок.</em></p>
+        <p><em>Заполните по ней протокол. И расскажете на следующем занятии: сколько критериев она проходит?»</em></p>
+    </div>
+
+    <div class="purple-note">
+        <strong>💡 Почему такое задание.</strong> Просто оценить предмет — скучно. А оценить предмет, который <em>другие считают красивым</em>, — это тренировка <em>самостоятельного взгляда</em>. Ребёнок учится не бояться своего мнения. И это важнее, чем ещё раз применить критерии.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- КОММЕНТАРИЙ МЕТОДИСТА -->
+    <!-- ============================================================ -->
+    <h2>🔍 Комментарий методиста: что здесь работает иначе</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Начало с ярмарки, а не с тайны, пустоты или утраты.</strong> Три предыдущих занятия начинались с «минус-эмоции» (неизвестность, тревога, утрата). Здесь — с «плюс-эмоции»: приглашение, радость, движение. Ребёнок входит в класс не как исследователь-детектив, а как <em>гость на празднике</em>. Это снимает напряжение и настраивает на выбор.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Критерии не вводятся — их «приносят» персонажи.</strong> В механической модели критерии давались таблицей. На занятии 11 — через шесть опытов. Здесь — через пять живых голосов. Каждый торговец — это <em>персонифицированный критерий</em>. Дети запоминают не слова «форма», «содержание», а <em>интонации и характеры</em>. Это работает глубже.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Дети тратят жетоны — это создаёт ответственность.</strong> Жетон — не «оценка», а <em>личный голос</em>. Отдать жетон — значит взять на себя решение. Пять жетонов — пять решений. Это тренирует <em>выбор</em> — а не воспроизведение.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. Протокол оценки как коллективный документ.</strong> Таблица заполняется <em>вместе</em>, на доске. Дети видят, что у каждого товара — свой набор сильных и слабых сторон. Это открытие — <em>не бывает красоты, идеальной во всём</em>. И это освобождает от перфекционизма.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Через сравнение — к пониманию сложности.</strong> Механическая модель давала критерии в готовом виде. Здесь дети <em>сами</em> обнаруживают, что ни один товар не проходит все пять критериев. Это открытие — не «так учит педагог», а «так устроен мир». Знание становится личным.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Своя экспертиза — не «задание», а «свой выбор».</strong> Ребёнок выбирает <em>свой</em> предмет, оценивает по пяти критериям, заполняет <em>свой</em> протокол. И — самое важное — <em>дописывает</em> строчку «Что можно улучшить?». Это переход от <em>оценки</em> к <em>творчеству</em>: «как сделать вещь ещё красивее?».</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>7. Один вопрос рефлексии — но другой по типу.</strong> На занятии 9 вопрос был про <em>удивление</em> («что тебя удивило?»). На занятии 11 — про <em>труд</em> («какое правило было труднее применить?»). Здесь — про <em>инструмент</em>: «какой критерий тебе сложнее всего применить?». Это — вопросы разного уровня: эмоциональный, деятельностный, инструментальный.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>8. Вызов — на смелость собственного взгляда.</strong> Задание — оценить вещь, которую все считают красивой, а ребёнок не уверен. Это не «применить критерии», а <em>не побояться своего мнения</em>. Это уже воспитательная задача — формирование самостоятельности.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>9. Нет викторины и нет «проверки знаний».</strong> В конце занятия — ни одного вопроса на воспроизведение. Критерии остаются <em>в прожитом действии</em>, а не в «проверочной работе». Это позволяет знанию укорениться глубже.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>10. Живые персонажи вместо схем.</strong> Пять торговцев — не таблица. Это <em>характеры</em>. Торговец Формой говорит торжественно. Торговец Смыслом — задумчиво. Торговец Чувством — эмоционально. Торговец Пользой — практично. Торговец Уникальностью — восторженно. Такое разнообразие голосов запоминается лучше любого конспекта.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг этого занятия.</strong> Если занятие 9 помогало ребёнку сказать «я — творец», занятие 10 — «искусств много», занятие 11 — «у красоты есть законы», то занятие 12 даёт четвёртое ощущение: <strong>«я умею различать настоящую красоту от поддельной»</strong>. Это — фундамент <em>критического мышления</em>. И заложен он не через таблицу критериев, а через <em>живое общение с пятью торговцами на ярмарке</em>.
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1.</strong> Начало — звон колокольчика и короткая фраза. Не превращайте в лекцию.</p>
+        <p><strong>2.</strong> Пять торговцев — это <em>роли</em>. Меняйте голос, позу, жест. Не бойтесь переиграть.</p>
+        <p><strong>3.</strong> Дети ходят свободно. Если кто-то возвращается к одному прилавку три раза — это нормально.</p>
+        <p><strong>4.</strong> Торговец не выходит за границы своего критерия. Он может сказать: «О пользе спросите другого».</p>
+        <p><strong>5.</strong> Не подсказывайте. Если ребёнок отдал все жетоны одному торговцу — не переубеждайте.</p>
+        <p><strong>6.</strong> Протокол — <em>коллективный</em>. Заполняйте его <em>вместе</em> с детьми на доске. Не «правильно», а «как решили».</p>
+        <p><strong>7.</strong> Открытие «ни один товар не проходит все пять критериев» — <strong>главное</strong>. Не торопите это открытие. Пусть дети сами заметят.</p>
+        <p><strong>8.</strong> Своя экспертиза — не оценочная работа. Ребёнок выбирает предмет сам. Если предмет не идеален — это нормально. Ценность — в <em>процессе</em> оценки.</p>
+        <p><strong>9.</strong> Точка тишины — соблюдайте буквально. Вопрос «какой критерий сложнее всего?» не должен превратиться в «что вы сегодня узнали?».</p>
+        <p><strong>10.</strong> Если что-то пошло не по плану — <em>следуйте за детьми</em>. Импровизация — признак живого занятия.</p>
+    </div>
+
+    <div class="poem-box">
+        <p>«Красота — не то, что хвалит себя громко.<br>
+        Красота — что выдержит пять разных взглядов:<br>
+        и на форму, и на смысл, и на чувство,<br>
+        и на пользу, и на то, что она — одна.</p>
+        <p>Тот, кто знает пять дорог к красоте,<br>
+        Тот проходит мимо лжи и подделки.<br>
+        А кто знает только одну —<br>
+        Тот и сам не заметит, как обманут».</p>
+        <span class="poem-author">— из размышлений о критериях прекрасного</span>
+    </div>
+
+    <div class="quote">
+        «Критерии — это не клетки, в которые мы загоняем красоту. Это окна, через которые мы её рассматриваем. И чем больше окон — тем полнее видим картину».
+        <span class="quote-author">— из размышлений о прекрасном</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson11.html" class="button">← Занятие 11</a>
+        <a href="section2.html" class="button secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson13.html" class="button">Занятие 13 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson11.html" class="back-link">← Занятие 11. Свойства прекрасного</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson13.html" class="back-link">Занятие 13. Обобщение по разделу →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 12 «Критерии оценки прекрасного»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Занятие построено как ярмарка: открытие → голоса → торг → протокол → свой выбор</em></p>
+    </footer>
+
+</div>
+</body>
+</html>

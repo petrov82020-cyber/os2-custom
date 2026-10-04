@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 18. Значение цвета в природе — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "О ЧЁМ ЭТО ЗАНЯТИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .tale-block {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 3px solid #475569;
+            border-radius: 18px;
+            padding: 26px 30px;
+            margin: 26px 0;
+            position: relative;
+            box-shadow: 0 8px 20px -8px rgba(71, 85, 105, 0.25);
+        }
+        .tale-block::before {
+            content: attr(data-chapter);
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            background: #475569;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .tale-block .tale-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        .tale-block .tale-text {
+            font-size: 1rem;
+            color: #334155;
+            line-height: 1.85;
+            font-style: italic;
+        }
+        .tale-block .tale-text strong {
+            font-style: normal;
+            color: #1e293b;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Легенда";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.75;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .riddles-block {
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            border: 2px solid #eab308;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .riddles-block::before {
+            content: "❓ Загадки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #eab308;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .riddles-block p:first-child { margin-top: 8px; }
+        .riddles-block ol { margin-left: 26px; }
+        .riddles-block ol li { margin: 8px 0; font-style: italic; }
+
+        .proverbs-block {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .proverbs-block::before {
+            content: "🌿 Поговорки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .proverbs-block p:first-child { margin-top: 8px; }
+
+        .task-block {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .task-block::before {
+            content: "🧠 Интеллектуальные задачи";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #6366f1;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .task-block p:first-child { margin-top: 8px; }
+
+        .craft-block {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .craft-block::before {
+            content: "🛠️ Продуктивная деятельность";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ea580c;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .craft-block p:first-child { margin-top: 8px; }
+
+        .music-block {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .music-block::before {
+            content: "🎵 Рисунок под музыку";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .music-block p:first-child { margin-top: 8px; }
+
+        .focus-block {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .focus-block::before {
+            content: "✨ Фокус";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #a855f7;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .focus-block p:first-child { margin-top: 8px; }
+
+        .move-block {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .move-block::before {
+            content: "💫 Двигательный этюд";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .move-block p:first-child { margin-top: 8px; }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson17.html" class="back-link">← Занятие 17. Краски природы</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson19.html" class="back-link">Занятие 19. Природные композиции →</a>
+    </div>
+
+    <h1>🌿 Занятие 18. Значение цвета в природе</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>О чём это занятие.</strong> Мы уже знаем, что у природы много красок. Но у каждой краски есть <em>своя работа</em>. Зелёный цвет — это не просто «красиво». Это цвет жизни: в листьях есть зелёное вещество — хлорофилл, которое ловит солнечный свет и кормит всё растение. Красный цвет — это сигнал: «Я — ягода, съешь меня и разнеси мои семена». Жёлтый цвет — приглашение для бабочек: «Садись на меня, я угощу тебя нектаром». Сегодня дети узнают, зачем цвет нужен растениям, и создадут «Азбуку цвета» — книжку, в которой каждый цвет получит своё объяснение.</p>
+        <p><strong>Как устроено занятие:</strong></p>
+        <ul>
+            <li>Одна сказка «Совет Красок» проходит через всё занятие в <strong>пяти главах</strong>.</li>
+            <li>После каждой главы — <em>продуктивная деятельность</em>: «Азбука цвета», «Карта ролей цвета», «Сигналы природы».</li>
+            <li>Четыре легенды о цветах (подснежник, ландыш, василёк, ромашка) вплетены как вставные истории.</li>
+            <li>13 загадок, 6 поговорок, 5 интеллектуальных задач, фокус, двигательный этюд, рисунок под музыку.</li>
+            <li>Животных и человека не изображаем. Только флора, неживая природа, схемы и бабочки.</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу 3. Источники прекрасного</strong>, подтема <strong>«Значение цвета в природе»</strong>. Материалы занятия опираются на страницы рабочей тетради:</p>
+        <ul>
+            <li><strong>Задание «Зачем растению цвет?»</strong> — соединение цвета и его роли.</li>
+            <li><strong>Задание «Сигналы природы»</strong> — раскрашивание предупреждающих знаков.</li>
+            <li><strong>Задание «Азбука цвета»</strong> — создание книжки-малышки.</li>
+            <li><strong>Легенды о цветах</strong> — подснежник, ландыш, василёк, ромашка.</li>
+            <li><strong>Загадки о цветах и красках</strong> — отгадывание и рисование отгадок.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула занятия: пять красок — пять дел</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Формула занятия">
+        <text x="440" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#334155">СОВЕТ КРАСОК: У КАЖДОГО — СВОЁ ДЕЛО</text>
+
+        <rect x="15" y="60" width="160" height="140" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="95" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#166534">ЗЕЛЁНЫЙ</text>
+        <text x="95" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌿</text>
+        <text x="95" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#166534">цвет жизни</text>
+        <text x="95" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534">хлорофилл</text>
+        <text x="95" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#166534">продукт: азбука</text>
+
+        <text x="190" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="205" y="60" width="160" height="140" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5"/>
+        <text x="285" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#7f1d1d">КРАСНЫЙ</text>
+        <text x="285" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🍎</text>
+        <text x="285" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#7f1d1d">цвет сигнала</text>
+        <text x="285" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#7f1d1d">«съешь меня»</text>
+        <text x="285" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#7f1d1d">продукт: карта</text>
+
+        <text x="380" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="395" y="60" width="160" height="140" rx="14" fill="#fef9c3" stroke="#eab308" stroke-width="2.5"/>
+        <text x="475" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#854d0e">ЖЁЛТЫЙ</text>
+        <text x="475" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌻</text>
+        <text x="475" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#854d0e">цвет приглашения</text>
+        <text x="475" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#854d0e">для бабочек</text>
+        <text x="475" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#854d0e">продукт: сигналы</text>
+
+        <text x="570" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="585" y="60" width="150" height="140" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+        <text x="660" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1e3a8a">СИНИЙ</text>
+        <text x="660" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">🌊</text>
+        <text x="660" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e3a8a">цвет покоя</text>
+        <text x="660" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e3a8a">вода и небо</text>
+        <text x="660" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#1e3a8a">продукт: обложка</text>
+
+        <text x="750" y="135" text-anchor="middle" font-size="16" fill="#3b82f6">→</text>
+
+        <rect x="765" y="60" width="100" height="140" rx="14" fill="#fae8ff" stroke="#a855f7" stroke-width="2.5"/>
+        <text x="815" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#6b21a8">БЕЛЫЙ</text>
+        <text x="815" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28">❄️</text>
+        <text x="815" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#6b21a8">цвет чистоты</text>
+        <text x="815" y="173" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#6b21a8">снег и свет</text>
+        <text x="815" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#6b21a8">продукт: итог</text>
+
+        <rect x="180" y="235" width="520" height="48" rx="14" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+        <text x="440" y="258" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="white">ИТОГ: «АЗБУКА ЦВЕТА»</text>
+        <text x="440" y="276" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#cbd5e1">каждая краска получает своё объяснение</text>
+    </svg>
+
+    <div class="quote">
+        «Цвет — это язык, на котором природа говорит с нами. Зелёный говорит: "Я живу". Красный говорит: "Я созрел". Жёлтый говорит: "Приходи, я жду". И тот, кто выучил этот язык, слышит, как дышит земля».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: пять глав и финал</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:8%;">№</th>
+                <th style="width:44%;">Этап</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:38%;">Продукт ребёнка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><strong>Вступление. Совет Красок</strong></td>
+                <td class="center">5 мин</td>
+                <td>Слушание, отгадывание загадки-настроя</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>Глава 1. Зелёный — цвет жизни</strong></td>
+                <td class="center">14 мин</td>
+                <td>Страница «Азбуки цвета» — зелёная</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>Глава 2. Красный — цвет сигнала</strong></td>
+                <td class="center">14 мин</td>
+                <td>Страница «Азбуки цвета» — красная</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><strong>Глава 3. Жёлтый — цвет приглашения</strong></td>
+                <td class="center">14 мин</td>
+                <td>Страница «Азбуки цвета» — жёлтая</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Глава 4. Синий и Белый — цвет покоя и чистоты</strong></td>
+                <td class="center">14 мин</td>
+                <td>Страницы «Азбуки цвета» — синяя и белая</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><strong>Глава 5. Сборка «Азбуки цвета»</strong></td>
+                <td class="center">10 мин</td>
+                <td>Общая «Азбука цвета»</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td><strong>Финал. Точка тишины и вызов</strong></td>
+                <td class="center">9 мин</td>
+                <td>Финальная история + рефлексия</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Материалы для занятия.</strong> Большой лист для общей «Азбуки цвета»; цветные карандаши, фломастеры, краски; цветная бумага и клей; сухие листья; аудиозаписи спокойной музыки (Чайковский «Времена года», Вивальди); стаканы с водой для фокуса.
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- ЭТАП 1. ВСТУПЛЕНИЕ -->
+    <!-- ============================================================ -->
+    <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div class="stage-content">
+            <div class="stage-title">Совет Красок <span class="stage-time">5 мин</span></div>
+            <div class="stage-desc">Педагог входит с большой красивой папкой, на которой написано «АЗБУКА ЦВЕТА». Кладёт её на стол. Молчит.</div>
+        </div>
+    </div>
+
+    <div class="speech-block">
+        <p><em>(Тихо.) «Ребята, смотрите, что я принесла. Это Азбука. Только она пустая. В ней нет ни одной страницы. Потому что написать её должны мы. Но для этого нужно узнать главное: зачем в природе нужен каждый цвет. Сегодня краски сами расскажут нам о своей работе. Слушайте».</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 1. ЗЕЛЁНЫЙ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЕРВАЯ · ЗЕЛЁНЫЙ">
+        <div class="tale-title">Краска Зелёная и её фабрика</div>
+        <div class="tale-text">
+            <p>Собрались однажды краски на совет. И каждая стала говорить, кто из них важнее.</p>
+            <p>«Я — самая главная, — сказала <strong>Зелёная Краска</strong>. — Потому что я — цвет жизни. Посмотрите на любой лист, на любую травинку. Я живу в них. Во мне есть удивительное вещество — <strong>хлорофилл</strong>. Оно ловит солнечный свет и превращает его в еду для растения. Без меня ни одно растение не смогло бы жить».</p>
+            <p>«Но ты же просто зелёная! — возразила Красная. — Что в тебе особенного?»</p>
+            <p>«Особенное — то, что я — фабрика, — ответила Зелёная. — Каждый лист — это маленькая фабрика, где из света, воды и воздуха делается сахар. И эта фабрика работает только потому, что она зелёная. Если бы листья были другого цвета, они бы не смогли кормить растение. Вот почему меня больше всего в природе».</p>
+            <p>Краски задумались. А Зелёная продолжила: «И ещё: я — цвет надежды. Когда весной появляется первая травка, все радуются. Потому что зелёный говорит: "Жизнь продолжается"».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 1. Зелёная страница «Азбуки цвета».</strong></p>
+        <p>Дети получают листы. Задание:</p>
+        <ul>
+            <li>Нарисовать зелёный лист или травинку.</li>
+            <li>Подписать: «Зелёный — цвет жизни. Хлорофилл ловит свет».</li>
+            <li>Дорисовать маленькое солнце, которое «кормит» лист.</li>
+        </ul>
+        <p>Работы откладываются — они станут первой страницей «Азбуки цвета».</p>
+    </div>
+
+    <div class="draw-area">
+        <div class="draw-caption">🌿 Образец зелёной страницы</div>
+        <svg viewBox="0 0 520 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="480" height="140" rx="10" fill="#f8fafc" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="260" y="45" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#14532d">ЗЕЛЁНЫЙ — ЦВЕТ ЖИЗНИ</text>
+            <!-- Лист -->
+            <path d="M200,80 Q230,55 260,80 Q230,105 200,80 Z" fill="none" stroke="#16a34a" stroke-width="2"/>
+            <line x1="200" y1="80" x2="260" y2="80" stroke="#16a34a" stroke-width="1"/>
+            <!-- Солнце -->
+            <circle cx="140" cy="70" r="18" fill="none" stroke="#d97706" stroke-width="2"/>
+            <line x1="140" y1="40" x2="140" y2="30" stroke="#d97706" stroke-width="2"/>
+            <line x1="140" y1="100" x2="140" y2="110" stroke="#d97706" stroke-width="2"/>
+            <line x1="110" y1="70" x2="100" y2="70" stroke="#d97706" stroke-width="2"/>
+            <line x1="170" y1="70" x2="180" y2="70" stroke="#d97706" stroke-width="2"/>
+            <!-- Стрелка от солнца к листу -->
+            <path d="M160,70 L190,80" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowGreen)"/>
+            <defs>
+                <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                    <path d="M0,0 L8,4 L0,8 Z" fill="#d97706"/>
+                </marker>
+            </defs>
+            <text x="260" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-style="italic" fill="#14532d">Хлорофилл ловит свет и делает еду для растения</text>
+        </svg>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Первые три загадки — о зелёном:</strong></p>
+        <ol>
+            <li>«Зелёный, а не огурец, растёт в лесу и в поле» <em>(лист, трава)</em>.</li>
+            <li>«Весной веселит, летом холодит, осенью питает, зимой согревает» <em>(лес)</em>.</li>
+            <li>«Сидит — зеленеет, летит — пожелтеет, упадёт — почернеет» <em>(лист)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о подснежнике</div>
+        <div class="story-text">Когда Адама и Еву изгнали из рая, на земле была зима. Ева горько плакала от холода и тоски. И несколько снежинок, желая утешить её, превратились в нежные белые цветы — подснежники. Ева увидела их, улыбнулась и поняла: даже в самый трудный час рядом может появиться чудо. С тех пор подснежник — первый вестник весны, символ надежды.</div>
+        <div class="story-moral">💡 Мораль: даже самый хрупкий цветок может согреть сердце и напомнить о том, что после зимы всегда приходит весна.</div>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о зелёном:</strong></p>
+        <ul>
+            <li>«Зелёный наряд землю украшает».</li>
+            <li>«Молодо-зелено» — говорят о неопытном, но растущем.</li>
+            <li>«Зелен виноград не сладок» — о том, что всё приходит в своё время.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 2. КРАСНЫЙ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ВТОРАЯ · КРАСНЫЙ">
+        <div class="tale-title">Краска Красная и её сигнал</div>
+        <div class="tale-text">
+            <p>«Ну а я? — сказала <strong>Красная Краска</strong>. — Я — цвет сигнала. Посмотрите на ягоды: землянику, малину, рябину. Они красные. Почему? Потому что они хотят, чтобы их съели. И не просто съели, а разнесли семена по всему лесу. Красный цвет — это как объявление: "Я спелая! Я вкусная! Съешь меня и помоги моим семенам найти новый дом"».</p>
+            <p>«Но ведь красный — это ещё и цвет опасности, — заметила Белая. — Есть ягоды, которые нельзя есть».</p>
+            <p>«Верно, — согласилась Красная. — И это тоже моя работа. Я предупреждаю: "Стой! Я ядовитая!" Красный — это язык, на котором природа говорит: "Осторожно!" или "Угощайся!" — в зависимости от того, кто перед тобой. Я — самая заметная. Меня видно издалека. Вот почему я — цвет сигнала».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 2. Красная страница «Азбуки цвета».</strong></p>
+        <p>Дети получают листы. Задание:</p>
+        <ul>
+            <li>Нарисовать красную ягоду (землянику или рябину).</li>
+            <li>Подписать: «Красный — цвет сигнала».</li>
+            <li>Дорисовать рядом маленькое семечко, которое «путешествует».</li>
+        </ul>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о ландыше</div>
+        <div class="story-text">Морская царевна Волхова полюбила юношу Садко, но он отдал своё сердце земной девушке Любаве. Узнав об этом, Волхова горько заплакала. Её слёзы-жемчужины падали на землю и превращались в белые душистые цветы — ландыши. С тех пор ландыш — символ чистоты и нежной, но печальной любви.</div>
+        <div class="story-moral">💡 Мораль: даже грусть может превратиться в красоту, если пройдёт через доброе сердце.</div>
+    </div>
+
+    <div class="focus-block">
+        <p><strong>Фокус «Красный сигнал».</strong> Педагог показывает: если нарисовать на листе красное пятно и рядом зелёное, красное «выступает» вперёд, а зелёное «отступает». <em>«Красный всегда виден первым. Поэтому природа сделала спелые ягоды красными — чтобы их заметили»</em>.</p>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о красном:</strong></p>
+        <ol start="4">
+            <li>«Красная девица сидит в темнице, а коса — на улице» <em>(морковь)</em>.</li>
+            <li>«Сидит в траве Аленка в красной рубашонке» <em>(земляника)</em>.</li>
+            <li>«Красный сапожок в землю врос» <em>(свёкла)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о красном:</strong></p>
+        <ul>
+            <li>«Красна ягодка, да на вкус горька».</li>
+            <li>«Не красна изба углами, а красна пирогами».</li>
+            <li>«Красное словцо» — меткое, яркое слово.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 3. ЖЁЛТЫЙ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ТРЕТЬЯ · ЖЁЛТЫЙ">
+        <div class="tale-title">Краска Жёлтая и её приглашение</div>
+        <div class="tale-text">
+            <p>«А я — <strong>Жёлтая Краска</strong>, — сказала она. — Я — цвет приглашения. Посмотрите на одуванчик, на подсолнух, на лютик. Они жёлтые. Почему? Потому что они хотят позвать бабочек и пчёл. Жёлтый цвет виден издалека и говорит: "Прилетай! У меня есть сладкий нектар!"».</p>
+            <p>«Но бабочки любят не только жёлтый, — заметила Синяя. — Они летят и на красный, и на синий».</p>
+            <p>«Да, — согласилась Жёлтая. — Но я — самая тёплая. Я — как маленькое солнышко на лугу. Когда бабочка видит меня, она знает: здесь её ждут. Я — цвет радости и гостеприимства. И ещё я — цвет осени. Когда листья желтеют, они прощаются с летом. И это тоже красиво».</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 3. Жёлтая страница «Азбуки цвета».</strong></p>
+        <p>Дети получают листы. Задание:</p>
+        <ul>
+            <li>Нарисовать жёлтый цветок (одуванчик или лютик).</li>
+            <li>Подписать: «Жёлтый — цвет приглашения».</li>
+            <li>Дорисовать бабочку, которая летит на цветок (бабочку можно!).</li>
+        </ul>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о васильке</div>
+        <div class="story-text">В одной деревне жил юноша по имени Василий. Он был добрым и трудолюбивым. Однажды русалка полюбила его и позвала жить в подводное царство. Но Василий не мог оставить свою землю и свою работу в поле. Русалка рассердилась и превратила его в цветок. С тех пор каждый год, когда зацветают синие васильки, русалки плетут из них венки — в память о юноше, который остался верен своей земле.</div>
+        <div class="story-moral">💡 Мораль: верность родной земле и своему делу — это качество, которое ценится выше любых богатств.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о жёлтом:</strong></p>
+        <ol start="7">
+            <li>«Золотой и молодой за неделю стал седой» <em>(одуванчик)</em>.</li>
+            <li>«Жёлтый, а не лимон, круглый, а не мяч» <em>(одуванчик, солнце)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о жёлтом:</strong></p>
+        <ul>
+            <li>«Жёлтый цвет — цвет солнца и радости».</li>
+            <li>«Осенью листья желтеют — лето провожают».</li>
+        </ul>
+    </div>
+
+    <div class="move-block">
+        <p><strong>Двигательный этюд «Танец бабочки».</strong> Дети встают. Педагог: «Вы — бабочки. Вы летите на жёлтый цветок. Покажите, как вы летите: плавно, легко, кружитесь». Дети двигаются под музыку. «Вот вы сели на цветок. Что вы чувствуете?» — «Радость, тепло».</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 4. СИНИЙ И БЕЛЫЙ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ЧЕТВЁРТАЯ · СИНИЙ И БЕЛЫЙ">
+        <div class="tale-title">Краска Синяя и Краска Белая</div>
+        <div class="tale-text">
+            <p>«Мы не спорим, — сказали <strong>Синяя</strong> и <strong>Белая</strong>. — Мы — цвет покоя и чистоты. Синяя — это цвет неба и воды. Когда смотришь на синее, становится спокойно. Синий говорит: "Отдохни, подумай, помечтай". Он — цвет глубины и мудрости».</p>
+            <p>«А я — Белая, — сказала Белая. — Я — цвет чистоты и света. Я — снег, облака, первый луч. Во мне нет ни одной другой краски, поэтому я могу соединить их все. Я — как чистый лист, на котором можно нарисовать что угодно. Я — начало всех начал».</p>
+            <p>И все краски согласились: без синего и белого мир был бы слишком ярким и пёстрым. Синий успокаивает, белый очищает. И вместе они дают миру глубину и воздух.</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 4. Синяя и белая страницы «Азбуки цвета».</strong></p>
+        <ul>
+            <li>На синем листе — нарисовать небо и воду, подписать: «Синий — цвет покоя».</li>
+            <li>На белом листе — нарисовать снежинку или облако, подписать: «Белый — цвет чистоты».</li>
+        </ul>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">Легенда о ромашке</div>
+        <div class="story-text">Давным-давно жила на свете лесная фея. Там, где она появлялась, оживала природа, расцветали удивительные цветы. Однажды она увидела юношу-пастуха, и они полюбили друг друга. Но пастух ушёл в дальние края и не вернулся. Фея долго плакала, и там, где её слёзы падали на землю, вырастали белые цветы с жёлтой серединкой — ромашки. С тех пор ромашка — символ верности и нежной памяти.</div>
+        <div class="story-moral">💡 Мораль: память о добром и любимом живёт в цветах, в травах, в самом воздухе. Природа умеет хранить светлое.</div>
+    </div>
+
+    <div class="riddles-block">
+        <p><strong>Загадки о синем и белом:</strong></p>
+        <ol start="9">
+            <li>«Голубое, а не небо, летом над рекой» <em>(отражение)</em>.</li>
+            <li>«Белое, а не снег, плывёт по небу» <em>(облако)</em>.</li>
+            <li>«Синий, а не море, высокий и глубокий» <em>(небо)</em>.</li>
+        </ol>
+    </div>
+
+    <div class="proverbs-block">
+        <p><strong>Поговорки о синем и белом:</strong></p>
+        <ul>
+            <li>«Синий цвет — глубина и покой».</li>
+            <li>«Белое на чёрном видно далеко».</li>
+        </ul>
+    </div>
+
+    <div class="task-block">
+        <p><strong>Интеллектуальные задачи:</strong></p>
+        <p><strong>Задача 1. «Что лишнее?»</strong> Зелёный, красный, синий, жёлтый. Лишнее — <em>синий</em>: он не «рабочий» цвет растения, а цвет покоя.</p>
+        <p><strong>Задача 2. «Найди пару».</strong> Зелёный — хлорофилл. Красный — сигнал. Жёлтый — приглашение. Синий — покой. Белый — чистота.</p>
+        <p><strong>Задача 3. «Продолжи цепочку».</strong> Весна — зелёный. Лето — яркий. Осень — жёлтый и красный. Зима — <em>белый</em>.</p>
+        <p><strong>Задача 4. «Что изменится?»</strong> Если убрать зелёный цвет из природы — что произойдёт? <em>Растения не смогут питаться, жизнь исчезнет.</em></p>
+        <p><strong>Задача 5. «Составь рецепт».</strong> Красный + жёлтый = <em>оранжевый</em>. Жёлтый + синий = <em>зелёный</em>. Красный + синий = <em>фиолетовый</em>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ГЛАВА 5. СБОРКА АЗБУКИ -->
+    <!-- ============================================================ -->
+
+    <div class="tale-block" data-chapter="ГЛАВА ПЯТАЯ · СБОРКА">
+        <div class="tale-title">Как краски помирились</div>
+        <div class="tale-text">
+            <p>Когда все краски высказались, они замолчали. И поняли: каждая из них — не просто цвет. Каждая — <strong>дело</strong>. Зелёная кормит. Красная сигналит. Жёлтая приглашает. Синяя успокаивает. Белая очищает. И только вместе они делают мир живым и красивым.</p>
+            <p>«Мы не будем больше спорить, — сказали краски. — Мы — одна азбука. Без одной буквы не будет слова. Без одного цвета не будет картины».</p>
+            <p>И они протянули друг другу руки. И мир засиял всеми красками.</p>
+        </div>
+    </div>
+
+    <div class="craft-block">
+        <p><strong>Продуктивная деятельность 5. Общая «Азбука цвета».</strong></p>
+        <p>Дети собирают все страницы в одну книжку:</p>
+        <ul>
+            <li>Зелёная страница.</li>
+            <li>Красная страница.</li>
+            <li>Жёлтая страница.</li>
+            <li>Синяя страница.</li>
+            <li>Белая страница.</li>
+            <li>Обложка: «Азбука цвета».</li>
+        </ul>
+        <p>Книжка скрепляется лентой и выставляется в классе.</p>
+    </div>
+
+    <div class="music-block">
+        <p><strong>Рисунок под музыку «Времена года. Осень» (Чайковский).</strong> Педагог включает фрагмент. Дети рисуют цветовую гамму осени. Через 4 минуты работы добавляются в «Азбуку цвета» как свободная страница.</p>
+    </div>
+
+    <div class="reflect-block">
+        <p><strong>Точка тишины.</strong> Педагог просит детей сесть в круг. Все молчат 30 секунд. Затем — один вопрос:</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«Какая работа у твоего любимого цвета?»</p>
+        <p>Ответы — короткие. По желанию. Кто-то скажет: «Зелёный кормит». Кто-то: «Красный сигналит». Кто-то промолчит — и это тоже ответ.</p>
+    </div>
+
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Сегодня мы написали Азбуку цвета. А теперь — маленькое дело для души.</em></p>
+        <p><em>Посмотрите дома и во дворе: какие цвета вас окружают? Найдите <strong>три предмета разного цвета</strong> и подумайте: какую работу выполняет их цвет? Может быть, красный коврик говорит: "Осторожно, я яркий"? Может быть, зелёное растение говорит: "Я живое"?</em></p>
+        <p><em>Нарисуйте эти предметы и подпишите их "работу". Мы добавим их в нашу Азбуку».</em></p>
+    </div>
+
+    <h2>🔍 Комментарий методиста</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Сказка — не «про цвета», а про их работу.</strong> Каждая глава объясняет <em>зачем</em> нужен цвет. Это научное знание, поданное через образ.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Легенды вплетены как отдельные истории.</strong> Подснежник, ландыш, василёк, ромашка — каждая легенда углубляет тему и даёт детям культурный контекст.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Продуктивная деятельность на каждом шагу.</strong> Пять страниц «Азбуки цвета» — пять продуктов. Ребёнок не просто слушает — он делает.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. 13 загадок, 6 поговорок, 5 задач, фокус, двигательный этюд, рисунок под музыку.</strong> Все элементы вплетены в ткань сказки.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Нет технологии «Андрюша».</strong> Вместо формальных блоков — естественная поддержка: педагог подходит к каждому, помогает, замечает усилия.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Животные и человек не изображаются.</strong> Только флора, неживая природа, схемы, бабочки.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг занятия.</strong> Если занятие 17 давало детям <em>цветовую грамотность</em> (классификация, смешение), то занятие 18 даёт <strong>понимание смысла цвета</strong>: зачем он нужен природе. Это переход от «красиво» к «важно». И закрепляется он через создание «Азбуки цвета» — продукта, который остаётся в классе.
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1.</strong> Сказка — стержень. Читайте медленно, с паузами.</p>
+        <p><strong>2.</strong> После каждой главы — продуктивная деятельность, а не вопросы.</p>
+        <p><strong>3.</strong> Легенды — короткие. Они не заменяют сказку, а дополняют её.</p>
+        <p><strong>4.</strong> Загадки — ритмичные, короткие.</p>
+        <p><strong>5.</strong> Фокус — для понимания, а не для развлечения.</p>
+        <p><strong>6.</strong> Точка тишины — обязательна.</p>
+        <p><strong>7.</strong> «Азбука цвета» — итог. Она остаётся в классе.</p>
+        <p><strong>8.</strong> Если что-то пошло не по плану — следуйте за детьми.</p>
+    </div>
+
+    <div class="quote">
+        «Цвет — это не украшение. Это язык. И тот, кто его выучил, понимает, о чём молчит лес, о чём кричит ягода и о чём шепчет рассвет».
+        <span class="quote-author">— из размышлений о значении цвета</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson17.html" class="button">← Занятие 17</a>
+        <a href="section3.html" class="button secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson19.html" class="button">Занятие 19 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson17.html" class="back-link">← Занятие 17. Краски природы</a>
+        <a href="section3.html" class="back-link secondary">📖 Раздел 3 «Источники прекрасного» рабочей тетради</a>
+        <a href="lesson19.html" class="back-link">Занятие 19. Природные композиции →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 18 «Значение цвета в природе»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 3. Источники прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Сказка «Совет Красок» в пяти главах</em></p>
+    </footer>
+
+</div>
+</body>
+</html>

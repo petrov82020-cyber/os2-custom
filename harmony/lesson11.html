@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 11. Свойства прекрасного — Конспект занятия</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .nav-links-top, .nav-links-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links-bottom {
+            margin-bottom: 0;
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .back-link {
+            display: inline-block;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link.secondary { color: #64748b; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #16a34a;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f0fdf4;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #166534;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #15803d;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #166534;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ЧЕМ ЭТО ЗАНЯТИЕ ОТЛИЧАЕТСЯ ОТ 9 И 10";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .workbook-link-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 18px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .workbook-link-card::before {
+            content: "📖 СВЯЗЬ С РАБОЧЕЙ ТЕТРАДЬЮ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .workbook-link-card p:first-child { margin-top: 8px; }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #16a34a;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0fdf4;
+            color: #166534;
+            font-weight: 600;
+        }
+        td.center { text-align: center; }
+        td.num { text-align: center; font-weight: 700; color: #16a34a; min-width: 32px; }
+
+        .button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #15803d; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 14px 0;
+            border-left: 5px solid #16a34a;
+        }
+        .stage-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #16a34a;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .stage-content { flex: 1; }
+        .stage-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .stage-time {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .stage-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-block {
+            background: #f0f9ff;
+            border: 2px dashed #0ea5e9;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .speech-block::before {
+            content: "💬 Голос педагога";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .speech-block p:first-child { margin-top: 6px; }
+        .speech-block em { color: #155e75; font-style: italic; }
+
+        .child-voice {
+            background: #fef9c3;
+            border-left: 4px solid #eab308;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin: 10px 0 10px 20px;
+            font-size: 0.92rem;
+            color: #713f12;
+            font-style: italic;
+        }
+        .child-voice::before {
+            content: "🧒 Голос ребёнка: ";
+            font-style: normal;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .action-block {
+            background: #f0fdf4;
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .action-block::before {
+            content: "🎯 Что делают дети";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .action-block p:first-child { margin-top: 6px; }
+
+        .game-block {
+            background: #fef9c3;
+            border: 2px solid #eab308;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .game-block::before {
+            content: "🔍 Опыт";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #eab308;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .game-block p:first-child { margin-top: 6px; }
+
+        .reflect-block {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .reflect-block::before {
+            content: "🤫 Точка тишины";
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: #a855f7;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .reflect-block p:first-child { margin-top: 6px; }
+
+        .shards-block {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 2px solid #475569;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .shards-block::before {
+            content: "🧩 Осколки";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #475569;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .shards-block p:first-child { margin-top: 8px; }
+
+        .restoration-block {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #ea580c;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .restoration-block::before {
+            content: "🛠️ Реставрация";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ea580c;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .restoration-block p:first-child { margin-top: 8px; }
+
+        .six-rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 16px;
+            margin: 22px 0;
+        }
+        .rule-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-top: 5px solid #16a34a;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .rule-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px -8px rgba(22, 163, 74, 0.35);
+        }
+        .rule-card .rule-num {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background: #16a34a;
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        .rule-card .rule-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .rule-card .rule-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+        .rule-card .rule-text {
+            font-size: 0.88rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+        .rule-card .rule-task {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #166534;
+            border-left: 3px solid #16a34a;
+        }
+
+        .draw-area {
+            border: 2px dashed #16a34a;
+            border-radius: 14px;
+            background: #f8fafc;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #166534;
+            font-style: italic;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .poem-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a855f7;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 16px 0;
+            font-style: italic;
+            color: #4c1d95;
+            line-height: 1.9;
+        }
+        .poem-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .analysis-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .analysis-block::before {
+            content: "🔍 Комментарий методиста";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .analysis-block p:first-child { margin-top: 8px; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 6px 8px; }
+            .six-rules-grid { grid-template-columns: 1fr; }
+            .nav-links-top, .nav-links-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links-top">
+        <a href="lesson10.html" class="back-link">← Занятие 10. Виды искусства</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson12.html" class="back-link">Занятие 12. Критерии оценки прекрасного →</a>
+    </div>
+
+    <h1>🌸 Занятие 11. Свойства прекрасного</h1>
+    <div class="chapter-meta">✍️ Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет | Продолжительность: 2 академических часа</div>
+
+    <div class="intro-card">
+        <p><strong>Это занятие построено как трёхактная драма «утрата → открытие → возвращение».</strong> На занятии 9 дети спорили о том, что такое искусство. На занятии 10 — возвращали в мир пять искусств. Здесь — <strong>расследуют гибель красоты</strong>: в класс приносят разбитую вазу, и дети становятся <em>реставраторами</em>. Чтобы её восстановить, нужно понять, <em>что именно</em> делало вазу красивой. Так, шаг за шагом, дети открывают <strong>шесть свойств прекрасного</strong>.</p>
+        <p><strong>Что принципиально ново по сравнению с занятиями 9 и 10:</strong></p>
+        <ul>
+            <li>Начало — <strong>молчаливое высыпание осколков</strong>. Не ящик (занятие 9) и не пустой лист (занятие 10), а <em>обломки</em> того, что было красивым.</li>
+            <li>Вместо спора (занятие 9) и поиска (занятие 10) — <strong>реставрация</strong>. Дети не спорят и не ищут, а <em>собирают заново</em>.</li>
+            <li>Каждое свойство добывается через <strong>отдельный микропыт</strong> с телом и руками: подуть на полоски, приложить зеркало, сжать в кулаке, разложить по росту. Не словом, а <em>руками</em>.</li>
+            <li>Драматургия — <strong>не линейная, а трёхактная</strong>: утрата (Акт I), открытие (Акт II), возвращение (Акт III). У каждого акта — своя эмоция.</li>
+            <li>Дети не «получают» свойства, а <strong>находят их как правила реставратора</strong>. Это смена оптики: не «что такое красивое?», а «как вернуть красоту?».</li>
+            <li>Финал — не вернисаж (занятие 9) и не оживление листа (занятие 10), а <strong>тихий обход мастерской</strong>, где дети молча отмечают стикерами те работы, в которых видят <em>все шесть</em> свойств.</li>
+        </ul>
+    </div>
+
+    <div class="workbook-link-card">
+        <p><strong>📖 Связь с рабочей тетрадью «Гармония».</strong> Данное занятие соответствует <strong>Разделу «Мир прекрасного»</strong>, подтема <strong>«Свойства прекрасного»</strong>. Материалы занятия опираются на страницы рабочей тетради, где представлены следующие задания:</p>
+        <ul>
+            <li><strong>Задание «Свойства прекрасного»</strong> — соединение линиями свойства и его определения.</li>
+            <li><strong>Задание «Критерии оценки»</strong> — сопоставление критерия и вопроса к нему.</li>
+            <li><strong>Задание «Свойства прекрасного»</strong> — нахождение примеров каждого свойства в природе.</li>
+            <li><strong>Поучительный рассказ «Три дерева и один мастер»</strong> — о том, что настоящая красота — в пользе.</li>
+            <li><strong>Загадки-размышления о прекрасном</strong> — загадки без «правильного» ответа.</li>
+        </ul>
+    </div>
+
+    <!-- ФОРМУЛА ЗАНЯТИЯ -->
+    <h2>🎯 Формула этого занятия: три акта одной драмы</h2>
+
+    <svg class="svg-diagram" viewBox="0 0 860 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Три акта занятия">
+        <text x="430" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="bold" fill="#166534">ДРАМАТУРГИЯ ЗАНЯТИЯ</text>
+
+        <!-- АКТ I -->
+        <rect x="30" y="65" width="230" height="150" rx="18" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+        <text x="145" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#334155">АКТ I</text>
+        <text x="145" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🌑</text>
+        <text x="145" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#334155">УТРАТА</text>
+        <text x="145" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">осколки разбитой вазы</text>
+        <text x="145" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#64748b">«Что-то потеряно»</text>
+
+        <!-- Стрелка -->
+        <text x="280" y="148" text-anchor="middle" font-size="22" fill="#16a34a">→</text>
+
+        <!-- АКТ II -->
+        <rect x="305" y="65" width="250" height="150" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="430" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">АКТ II</text>
+        <text x="430" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🔍</text>
+        <text x="430" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#166534">ОТКРЫТИЕ</text>
+        <text x="430" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">шесть правил реставратора</text>
+        <text x="430" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#166534">«Я понял, что делает вещь красивой»</text>
+
+        <!-- Стрелка -->
+        <text x="575" y="148" text-anchor="middle" font-size="22" fill="#16a34a">→</text>
+
+        <!-- АКТ III -->
+        <rect x="600" y="65" width="230" height="150" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+        <text x="715" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">АКТ III</text>
+        <text x="715" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="30">🛠️</text>
+        <text x="715" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#92400e">ВОЗВРАЩЕНИЕ</text>
+        <text x="715" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">моя красота</text>
+        <text x="715" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" font-style="italic" fill="#92400e">«Я сам создаю красоту»</text>
+
+        <!-- Итог -->
+        <rect x="180" y="235" width="500" height="34" rx="12" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+        <text x="430" y="257" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="white">ИТОГ: шесть свойств прекрасного стали личными инструментами ребёнка</text>
+    </svg>
+
+    <div class="quote">
+        «Красота — не случайность. У неё есть законы. Кто их знает — тот умеет и видеть красоту, и создавать её. Кто не знает — тот проходит мимо».
+        <span class="quote-author">— ключевая мысль занятия</span>
+    </div>
+
+    <!-- СТРУКТУРА ЗАНЯТИЯ -->
+    <h2>📋 Структура занятия: три акта, восемь моментов</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:10%;">Акт</th>
+                <th style="width:8%;">№</th>
+                <th style="width:44%;">Момент</th>
+                <th style="width:10%;">Время</th>
+                <th style="width:28%;">Роль ребёнка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3" style="background:#f1f5f9;text-align:center;vertical-align:middle;font-weight:700;color:#334155;">АКТ I<br><span style="font-size:0.75rem;font-weight:400;">УТРАТА</span></td>
+                <td class="num">1</td>
+                <td><strong>Осколки на столе</strong></td>
+                <td class="center">4 мин</td>
+                <td>Свидетель: видит обломки, задаёт вопрос</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><strong>Что делает вещь красивой?</strong></td>
+                <td class="center">5 мин</td>
+                <td>Исследователь: пробует соединить осколки и понимает — не хватает правил</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><strong>Клятва реставратора</strong></td>
+                <td class="center">3 мин</td>
+                <td>Ученик: получает «карточки-правила» и берёт на себя роль реставратора</td>
+            </tr>
+            <tr>
+                <td rowspan="3" style="background:#f0fdf4;text-align:center;vertical-align:middle;font-weight:700;color:#166534;">АКТ II<br><span style="font-size:0.75rem;font-weight:400;">ОТКРЫТИЕ</span></td>
+                <td class="num">4</td>
+                <td><strong>Шесть опытов</strong> — по одному на каждое свойство</td>
+                <td class="center">30 мин</td>
+                <td>Мастер-реставратор: проходит опыт руками и открывает правило</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><strong>Совет мастеров</strong> — обмен открытиями</td>
+                <td class="center">7 мин</td>
+                <td>Рассказчик: делится своим правилом с другими</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><strong>Свиток реставратора</strong> — свод шести правил</td>
+                <td class="center">4 мин</td>
+                <td>Хранитель: вписывает своё правило в общий свиток</td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="background:#fef3c7;text-align:center;vertical-align:middle;font-weight:700;color:#92400e;">АКТ III<br><span style="font-size:0.75rem;font-weight:400;">ВОЗВРАЩЕНИЕ</span></td>
+                <td class="num">7</td>
+                <td><strong>Сборка вазы и создание своего</strong></td>
+                <td class="center">22 мин</td>
+                <td>Творец: собирает общую вазу и создаёт свою работу по шести правилам</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td><strong>Тихий обход мастерской</strong></td>
+                <td class="center">7 мин</td>
+                <td>Мастер: молча оценивает чужие работы и отмечает те, где есть все свойства</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>💡 Гибкость.</strong> Акт II может быть сокращён до 22 минут, если группа быстро проходит опыты. Акт III может быть расширен до 35 минут, если дети увлекутся созданием. Главное — сохранить три эмоции: <em>растерянность</em> (Акт I), <em>радость открытия</em> (Акт II), <em>гордость мастера</em> (Акт III).
+    </div>
+
+    <h2>📖 Ход занятия</h2>
+
+    <!-- ============================================================ -->
+    <!-- АКТ I. УТРАТА -->
+    <!-- ============================================================ -->
+
+    <div class="stage-card" style="background:#f1f5f9;">
+        <div class="stage-num" style="color:#475569;">АКТ I</div>
+        <div class="stage-content">
+            <div class="stage-title" style="color:#334155;">Утрата <span class="stage-time" style="background:#e2e8f0;color:#334155;">12 мин</span></div>
+            <div class="stage-desc">Три момента, которые создают эмоцию потери и вызывают желание восстановить красоту.</div>
+        </div>
+    </div>
+
+    <!-- Момент 1 -->
+    <h3>Момент 1. Осколки на столе <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 4 мин</span></h3>
+
+    <div class="shards-block">
+        <p><strong>Что подготовить заранее.</strong> Педагог делает «разбитую вазу» из плотной бумаги: рисует на большом листе силуэт красивой вазы с орнаментом, аккуратно разрезает его на <strong>12–15 крупных осколков</strong> неправильной формы. Осколки перемешивает и складывает в красивую коробку.</p>
+        <p>Также готовит <strong>6 карточек-правил</strong> (см. Акт II).</p>
+    </div>
+
+    <div class="speech-block">
+        <p><em>Педагог входит в класс. Не здоровается. Ставит на стол красивую коробку. Открывает. Молча высыпает осколки на середину стола.</em></p>
+        <p><em>Пауза — 10 секунд. Дети смотрят на груду бумажных обломков.</em></p>
+        <p><em>(Тихо.) «Это была ваза. Красивая. С орнаментом. Я несла её сюда — чтобы показать вам. А она возьми и рассыпься. Вот. Теперь это просто куча бумаги».</em></p>
+    </div>
+
+    <div class="child-voice">«А кто её разбил?»</div>
+    <div class="child-voice">«А можно склеить?»</div>
+    <div class="child-voice">«А она была красивая?»</div>
+
+    <div class="speech-block">
+        <p><em>«Была. Очень красивая. А теперь — куча осколков. Никто не скажет: "Ах, какая красота!" Никто. И знаете, что самое обидное? Даже если мы её склеим, она не станет прежней. Не потому, что будут трещины. А потому, что мы уже не помним, <strong>что именно</strong> делало её красивой».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Смотрят на осколки. Многие тянутся потрогать.</li>
+            <li>Задают вопросы: «А кто разбил?», «А зачем вы её принесли?»</li>
+            <li>Начинают предлагать способы склеить.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li><strong>Молчит первые 10 секунд.</strong> Это важнее слов.</li>
+            <li>Говорит <strong>тихо, буднично</strong>. Не театрально. Как будто это действительно случайность.</li>
+            <li>Не комментирует первые детские вопросы. Даёт им повисеть в воздухе.</li>
+        </ul>
+    </div>
+
+    <!-- Момент 2 -->
+    <h3>Момент 2. Что делает вещь красивой? <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 5 мин</span></h3>
+
+    <div class="speech-block">
+        <p><em>«Давайте проверим. Возьмите каждый по осколку. Поднимите, посмотрите на свет. Что вы видите?»</em></p>
+    </div>
+
+    <div class="child-voice">«Тут узор!»</div>
+    <div class="child-voice">«А у меня — линия и точка».</div>
+    <div class="child-voice">«А у меня — просто белая бумага».</div>
+
+    <div class="speech-block">
+        <p><em>«Интересно. У кого-то узор, у кого-то линия, у кого-то — ничего. А теперь попробуйте соединить два осколка рядом. Получилось?»</em></p>
+    </div>
+
+    <div class="child-voice">«Нет, они не сходятся».</div>
+    <div class="child-voice">«У меня узор не совпадает».</div>
+    <div class="child-voice">«А у меня сходится! Смотрите, тут цветочек продолжается».</div>
+
+    <div class="speech-block">
+        <p><em>«Вот именно. Одни осколки подходят друг к другу, другие — нет. Как вы думаете, почему? Что делает осколки одной вазой, а не просто кучей бумаги?»</em></p>
+    </div>
+
+    <div class="child-voice">«Узор! Если узор совпадает — они подходят».</div>
+    <div class="child-voice">«Цвет. У них одинаковый цвет».</div>
+    <div class="child-voice">«Форма. Они как пазл».</div>
+
+    <div class="speech-block">
+        <p><em>«Умно. Но посмотрите дальше. Даже если осколки подходят друг к другу — получится ли из них красота? Я собрала две половинки вон там. Видите? Они соединены. Но красиво ли это?»</em></p>
+    </div>
+
+    <div class="child-voice">«Нет, потому что остальные лежат отдельно».</div>
+    <div class="child-voice">«Красиво, только когда всё вместе».</div>
+    <div class="child-voice">«А ещё — если трещин не видно».</div>
+
+    <div class="speech-block">
+        <p><em>«Значит, чтобы вернуть красоту, нужно не просто склеить. Нужно понять, <strong>по каким правилам</strong> эта ваза была сделана. Что мастер вкладывал в неё, когда её создавал. Сейчас я раздам вам инструмент реставратора — шесть карточек. На каждой — один опыт. Пройдёте все шесть — узнаете шесть правил красоты. И тогда ваза вернётся. Не прежняя. Но своя».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Берут осколки, ищут совпадающие.</li>
+            <li>Пробуют соединять по 2, по 3, по 5 осколков.</li>
+            <li>Замечают, что некоторые осколки подходят, другие — нет.</li>
+            <li>Понимают: сами они красоту не соберут. Нужны правила.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li>Помогает находить правильные сочетания осколков.</li>
+            <li>Фиксирует на доске слова детей: «узор», «цвет», «форма», «вместе».</li>
+            <li>Не даёт готовых ответов. Только вопросы.</li>
+        </ul>
+    </div>
+
+    <!-- Момент 3 -->
+    <h3>Момент 3. Клятва реставратора <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 3 мин</span></h3>
+
+    <div class="speech-block">
+        <p><em>«Прежде чем начать — одно условие. Реставратор работает не быстро. Реставратор работает с уважением к тому, что восстанавливает. И главное: реставратор не выдумывает красоту — он её <strong>находит</strong> в том, что уже есть. Договорились?»</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Каждый берёт <strong>6 карточек-правил</strong> (по одной на каждое свойство).</li>
+            <li>Проверяет, все ли на месте. Считает.</li>
+            <li>Получает фломастер и маленький лист — для записи открытий.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li>Раздаёт карточки с улыбкой. Не торжественно — как рабочий инструмент.</li>
+            <li>Коротко объясняет: «Опыты можете проходить в любом порядке. Начните с того, который вам кажется интереснее».</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Ловушка.</strong> Не превращайте «клятву реставратора» в торжественную церемонию с поднятыми руками. Это — короткое деловое соглашение. Одна фраза педагога. Не больше.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- АКТ II. ОТКРЫТИЕ -->
+    <!-- ============================================================ -->
+
+    <div class="stage-card" style="background:#f0fdf4;">
+        <div class="stage-num" style="color:#16a34a;">АКТ II</div>
+        <div class="stage-content">
+            <div class="stage-title">Открытие <span class="stage-time">41 мин</span></div>
+            <div class="stage-desc">Три момента: шесть опытов, обмен открытиями и создание общего свитка правил.</div>
+        </div>
+    </div>
+
+    <!-- Момент 4: шесть опытов -->
+    <h3>Момент 4. Шесть опытов <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 30 мин</span></h3>
+
+    <p>На большом столе заранее разложены <strong>шесть «станций-опытов»</strong>. Дети свободно переходят от одной станции к другой, проходят опыт, записывают открытие на своём листке и идут дальше. Это — самостоятельное исследование, а не фронтальная работа.</p>
+
+    <div class="six-rules-grid">
+
+        <!-- Правило 1. Симметрия -->
+        <div class="rule-card">
+            <span class="rule-num">1</span>
+            <span class="rule-icon">🪞</span>
+            <div class="rule-title">Правило зеркала — симметрия</div>
+            <div class="rule-text">Красота любит зеркальность: когда одна половина повторяет другую.</div>
+            <div class="rule-task"><strong>Опыт:</strong> возьми половинку бабочки и маленькое зеркальце. Приставь зеркало к оси — увидишь вторую половину. Убери зеркало — половина исчезнет. <em>Что делает бабочку красивой?</em></div>
+        </div>
+
+        <!-- Правило 2. Ритм -->
+        <div class="rule-card">
+            <span class="rule-num">2</span>
+            <span class="rule-icon">🎵</span>
+            <div class="rule-title">Правило повтора — ритм</div>
+            <div class="rule-text">Красота любит повторяться через равные промежутки — но не подряд.</div>
+            <div class="rule-task"><strong>Опыт:</strong> возьми 8 полосок бумаги — длинные и короткие. Разложи их в случайном порядке. Красиво? Нет. А теперь разложи по правилу: длинная — короткая — длинная — короткая. <em>Что изменилось?</em></div>
+        </div>
+
+        <!-- Правило 3. Гармония -->
+        <div class="rule-card">
+            <span class="rule-num">3</span>
+            <span class="rule-icon">🎨</span>
+            <div class="rule-title">Правило согласия — гармония</div>
+            <div class="rule-text">Красиво то, что не спорит, а согласуется: цвета, формы, размеры.</div>
+            <div class="rule-task"><strong>Опыт:</strong> получи набор из 12 цветных квадратиков. Выбери любые 3 и сложи их вместе. А теперь выбери 3, которые «смотрятся» друг с другом. <em>В чём разница?</em></div>
+        </div>
+
+        <!-- Правило 4. Целесообразность -->
+        <div class="rule-card">
+            <span class="rule-num">4</span>
+            <span class="rule-icon">🔑</span>
+            <div class="rule-title">Правило смысла — целесообразность</div>
+            <div class="rule-text">Красиво то, что сделано с умом. Форма служит назначению.</div>
+            <div class="rule-task"><strong>Опыт:</strong> перед тобой две чашки. Одна — гладкая, с удобной ручкой. Другая — красивая, но ручка острая и режет пальцы. Возьми обе по очереди. <em>Какая красивее? Почему?</em></div>
+        </div>
+
+        <!-- Правило 5. Неповторимость -->
+        <div class="rule-card">
+            <span class="rule-num">5</span>
+            <span class="rule-icon">❄️</span>
+            <div class="rule-title">Правило единственности — неповторимость</div>
+            <div class="rule-text">Красиво то, чего больше нигде нет. Каждая вещь — единственная.</div>
+            <div class="rule-task"><strong>Опыт:</strong> перед тобой 6 снежинок. Пять — разные. Две — близнецы. Найди подделку. <em>Почему природа делает каждую снежинку неповторимой?</em></div>
+        </div>
+
+        <!-- Правило 6. Изящность -->
+        <div class="rule-card">
+            <span class="rule-num">6</span>
+            <span class="rule-icon">🪶</span>
+            <div class="rule-title">Правило лёгкости — изящность</div>
+            <div class="rule-text">Красивое — тонкое, лёгкое, не грубое. Тяжёлое и грубое красивым не назовёшь.</div>
+            <div class="rule-task"><strong>Опыт:</strong> возьми в одну руку камень, в другую — веточку. Сравни. А теперь посмотри на два предмета на столе: грубый брусок и тонкую соломинку. <em>Что красивее? Почему?</em></div>
+        </div>
+
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Свободно <strong>переходят от станции к станции</strong> в любом порядке.</li>
+            <li>Проходят опыт — <strong>руками</strong>, а не глазами.</li>
+            <li>Записывают на своём листке формулировку открытия.</li>
+            <li>Могут вернуться к станции, если что-то не поняли.</li>
+            <li>Могут спросить педагога, но педагог отвечает вопросом на вопрос.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li>Ходит между станциями, но <strong>не подходит первым</strong>.</li>
+            <li>Если ребёнок застрял — задаёт наводящий вопрос: «А что общего у всех элементов этого узора?»</li>
+            <li>Следит, чтобы все дети прошли <strong>все шесть станций</strong>. Иногда напоминает: «Ты ещё не был у правила лёгкости».</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Ключевое отличие от механической модели.</strong> Здесь нет «практической работы» как отдельной фазы после теории. Здесь <em>вся</em> теория рождается из опыта. Ребёнок не слушает про симметрию, а прикладывает зеркало и <em>видит</em>, как бабочка оживает. Не слушает про ритм, а <em>чувствует</em> руками, как полоски складываются в красивый ряд.
+    </div>
+
+    <!-- Момент 5 -->
+    <h3>Момент 5. Совет мастеров <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 7 мин</span></h3>
+
+    <div class="speech-block">
+        <p><em>«Сейчас каждый из вас — мастер одного правила. Не всех шести, а одного, которое ему особенно понравилось. Давайте соберёмся в круг и поделимся. Кто хочет рассказать про своё правило?»</em></p>
+    </div>
+
+    <div class="child-voice">«Я расскажу про правило зеркала. Когда я приложил зеркало к половинке бабочки — она стала целой. Это как чудо! Значит, красота — это когда одно повторяет другое».</div>
+    <div class="child-voice">«А я про ритм. Если полоски разложить подряд по длине — скучно. А если длинная-короткая — красиво. Как будто танцуют».</div>
+    <div class="child-voice">«А я про смысл. Острая ручка — это красиво, но неудобно. А удобная — красиво по-настоящему».</div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>По очереди рассказывают про выбранное правило.</li>
+            <li>Слушают других, сравнивают с собой: «А я думал по-другому».</li>
+            <li>Задают друг другу вопросы.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li><strong>Не пересказывает</strong> открытия детей. Только слегка уточняет формулировку.</li>
+            <li>Помогает, если ребёнок затрудняется сказать. Но не говорит за него.</li>
+            <li>Фиксирует на доске <strong>ключевые слова</strong>, которые называют дети: «зеркало», «повтор», «согласие», «смысл», «единственность», «лёгкость».</li>
+        </ul>
+    </div>
+
+    <!-- Момент 6 -->
+    <h3>Момент 6. Свиток реставратора <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 4 мин</span></h3>
+
+    <p>Педагог заранее готовит большой лист (формата A2) с заголовком «СВИТОК РЕСТАВРАТОРА» и шестью пустыми строками. Дети по очереди выходят и вписывают своё правило — в любой момент, как только сформулируют.</p>
+
+    <div class="restoration-block">
+        <p><strong>Что записано на свитке в конце:</strong></p>
+        <ol>
+            <li><strong>Симметрия.</strong> Одна половина повторяет другую — как в зеркале.</li>
+            <li><strong>Ритм.</strong> Элементы повторяются через равные промежутки.</li>
+            <li><strong>Гармония.</strong> Части согласуются между собой — не спорят.</li>
+            <li><strong>Целесообразность.</strong> Форма служит смыслу. Красиво то, что сделано с умом.</li>
+            <li><strong>Неповторимость.</strong> Каждая вещь — единственная в своём роде.</li>
+            <li><strong>Изящность.</strong> Красивое — тонкое, лёгкое, не грубое.</li>
+        </ol>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Вот он — наш свод. Шесть правил. Теперь мы — настоящие реставраторы. И можем вернуть красоту. Не ту, что была, а <strong>свою</strong>. Потому что теперь мы понимаем, что делает вещь прекрасной».</em></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- АКТ III. ВОЗВРАЩЕНИЕ -->
+    <!-- ============================================================ -->
+
+    <div class="stage-card" style="background:#fef3c7;">
+        <div class="stage-num" style="color:#d97706;">АКТ III</div>
+        <div class="stage-content">
+            <div class="stage-title" style="color:#92400e;">Возвращение <span class="stage-time">29 мин</span></div>
+            <div class="stage-desc">Два момента: сборка общей вазы и создание своего произведения, а затем — тихий обход мастерской.</div>
+        </div>
+    </div>
+
+    <!-- Момент 7 -->
+    <h3>Момент 7. Сборка вазы и своя красота <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 22 мин</span></h3>
+
+    <div class="restoration-block">
+        <p><strong>Что подготовить заранее.</strong> Педагог оставляет на большом столе <em>все осколки</em>, а рядом раскладывает материалы для собственного творчества:</p>
+        <ul>
+            <li>Цветная бумага, ножницы, клей.</li>
+            <li>Краски, кисти, фломастеры.</li>
+            <li>Пластилин.</li>
+            <li>Природный материал (листья, шишки, сухие веточки).</li>
+            <li>Небольшие листы бумаги — каждому для своей работы.</li>
+        </ul>
+    </div>
+
+    <div class="speech-block">
+        <p><em>«Мы разделимся на две задачи. Первая — вернуть вазу. Все вместе. Каждый из вас возьмёт один-два осколка и встанет у большого стола. Когда я скажу — вы по очереди будете выкладывать свой осколок рядом с другими. Смотрим, чтобы узор совпадал. Помогаем друг другу.</em></p>
+        <p><em>А вторая задача — важнее. Пока одни собирают вазу, другие создают <strong>своё</strong>. Каждый из вас сделает на листе бумаги свой предмет — тот, который, по вашему мнению, объединяет все шесть правил. Может быть, вазу. Может быть, лист, цветок, что угодно. Но — по правилам. Через 20 минут мы посмотрим, что получилось».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Часть детей собирает общую вазу: выкладывают осколки, помогают друг другу, проверяют совпадение узоров.</li>
+            <li>Часть детей работает над своими произведениями — индивидуально или в парах.</li>
+            <li>Некоторые дети переходят от одной задачи к другой.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li>Помогает сборщикам вазы <strong>только советом</strong>: «Посмотри, здесь линии совпадают? А тут?»</li>
+            <li>Не мешает индивидуальной работе. Ходит и наблюдает.</li>
+            <li>Замечает вслух усилия, а не результат: «Ты долго подбирал цвет — это по-настоящему мастерски».</li>
+            <li>За 2 минуты до конца напоминает: «Осталось совсем немного».</li>
+        </ul>
+    </div>
+
+    <div class="green-note">
+        <strong>🌿 Важно понять.</strong> Никаких оценок «правильно / неправильно» в этой фазе быть не может. Ребёнок создаёт <em>своё</em>. Даже если у него получится кривой домик — это его красота, и она имеет право быть.
+    </div>
+
+    <!-- Момент 8 -->
+    <h3>Момент 8. Тихий обход мастерской <span style="font-size:0.9rem;color:#64748b;font-weight:400;">— 7 мин</span></h3>
+
+    <div class="speech-block">
+        <p><em>«Мы закончили. А теперь — особый момент. Я прошу вас развесить свои работы. И — молча обойти друг друга. Без слов. Каждому я дам три маленьких стикера. Подойдите к тем работам, в которых, по вашему мнению, соблюдены <strong>все шесть</strong> правил. Приклейте стикер. И тихо идите дальше.</em></p>
+        <p><em>Не нужно объяснять, почему. Не нужно хвалить. Только отметить. Молча».</em></p>
+    </div>
+
+    <div class="action-block">
+        <p><strong>Что делают дети.</strong></p>
+        <ul>
+            <li>Развешивают свои работы на стенах или большом столе.</li>
+            <li>Получают по 3 стикера.</li>
+            <li>Молча ходят по классу.</li>
+            <li>Останавливаются у тех работ, где видят все шесть свойств.</li>
+            <li>Приклеивают стикер и идут дальше.</li>
+        </ul>
+        <p><strong>Что делает педагог.</strong></p>
+        <ul>
+            <li>Тоже молчит. Ходит вместе с детьми.</li>
+            <li>Тоже приклеивает свои стикеры — у 3 работ.</li>
+            <li>Когда все обошли — возвращается к собранной вазе, ставит её на видное место и говорит одну фразу: «Красота вернулась. Уже другая. Но своя».</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Ошибка, которой избегаем.</strong> Не превращайте тихий обход в соревнование. Не считайте стикеры вслух. Не объявляйте победителя. Если у кого-то мало стикеров — не расстраивайтесь и не утешайте. Просто идите дальше. Тишина здесь — самое главное.
+    </div>
+
+    <!-- ТОЧКА ТИШИНЫ -->
+    <div class="reflect-block">
+        <p><strong>Точка тишины и один вопрос.</strong> После тихого обхода педагог собирает детей в круг. Просит сесть удобно. И задаёт <strong>один вопрос</strong>:</p>
+        <p style="font-size:1.15rem;color:#6b21a8;font-weight:700;text-align:center;margin:20px 0;">«Какое правило тебе было труднее всего применить? Почему?»</p>
+        <p>Ответы — короткие. Не по кругу. По желанию. Кто-то скажет: «Неповторимость — потому что сложно сделать то, чего нет» . Кто-то: «Целесообразность — потому что красивое и удобное — не всегда одно и то же». Кто-то промолчит — и это тоже ответ.</p>
+        <p>Педагог благодарит каждого кивком. Без слов.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>💡 Почему именно один вопрос.</strong> Шесть свойств — большая нагрузка. Спрашивать «что нового узнали?» — значит повторять пройденное. Спрашивать «что было трудно?» — значит говорить о <em>своём опыте</em>. А это — совсем другое.
+    </div>
+
+    <!-- ВЫЗОВ -->
+    <h2>🎯 Вызов (вместо домашнего задания)</h2>
+
+    <div class="info-box">
+        <p><strong>Педагог не говорит «домашнее задание».</strong> Он говорит:</p>
+        <p><em>«Мы сегодня открыли шесть правил красоты. И у меня к вам одна просьба — но не как учителя, а как мастера к мастерам.</em></p>
+        <p><em>Найдите дома или во дворе один предмет, в котором, как вам кажется, есть <strong>3 или 4</strong> из наших правил. Не все шесть, а хотя бы три. Принесите его на следующее занятие — или нарисуйте, или сфотографируйте. И расскажете, какие правила вы в нём увидели.</em></p>
+        <p><em>Только, чур, не искать идеальное. Ищите такое, что вам самим нравится».</em></p>
+    </div>
+
+    <div class="purple-note">
+        <strong>💡 Почему именно 3–4 правила, а не 6.</strong> Искать предмет с шестью свойствами — почти невозможно. Ребёнок будет расстроен. А 3–4 свойства — реальная задача, которая тренирует <em>наблюдательность</em> и даёт опыт успеха.
+    </div>
+
+    <!-- КОММЕНТАРИЙ МЕТОДИСТА -->
+    <h2>🔍 Комментарий методиста: что здесь работает иначе</h2>
+
+    <div class="analysis-block">
+        <p><strong>1. Начало с утраты, а не с полноты (занятие 9) и не с пустоты (занятие 10).</strong> Три разных эмоции начала: любопытство (ящик), тревога (пустой лист), <em>печаль и желание починить</em> (осколки). Эмоция утраты запускает у ребёнка <strong>заботу</strong> — а это самая сильная мотивация для 6–10 лет.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>2. Не спор о понятии, а восстановление объекта.</strong> На занятии 9 дети спорили о сущности искусства. Здесь они <em>склеивают вазу</em>. Разница: спор — это про ум, восстановление — про руки и сердце.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>3. Каждое свойство — отдельный микропыт с телом.</strong> Это ключевое отличие от механической модели. Там свойства давались через <em>таблицу</em>. Здесь — через <em>действие</em>: приложить зеркало, разложить полоски, взять чашку, найти близнецов среди снежинок, сравнить камень и веточку. Знание рождается из ощущения.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>4. Свободное перемещение по станциям, а не фронтальная работа.</strong> Дети сами выбирают порядок опытов и темп. Это снимает проблему «кто-то отстал, кто-то убежал вперёд». Каждый проходит свой путь.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>5. Свиток реставратора как коллективный продукт.</strong> Правила не пишет педагог — их вписывают дети. При этом свиток один на всех, и он остаётся в классе как «памятка мастеров». Это превращает знание в <em>общее достояние</em>.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>6. Сборка вазы как совместное действие.</strong> Осколки собирают все вместе — и когда ваза «оживает», у детей возникает ощущение <strong>общего результата</strong>. Это особенно важно для 6–10 лет: ощущение «мы сделали это вместе» формирует чувство общности.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>7. Тихий обход вместо вернисажа.</strong> В занятии 9 каждый ребёнок <em>рассказывал</em> о своей работе. Здесь — <strong>молчаливая оценка</strong> через стикеры. Это разные коммуникативные формы: вербальная (рассказ) и невербальная (молчаливый выбор). Обе нужны — но в разное время.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>8. Один вопрос рефлексии, а не три (занятие 9).</strong> «Какое правило было труднее всего применить?» — вопрос не про <em>память</em>, а про <em>труд</em>. Ребёнок вспоминает не «что он узнал», а <em>как он работал</em>. Это метакогнитивный уровень мышления.</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>9. Вызов — найти предмет с 3–4 свойствами.</strong> Это конкретное задание, но с большой свободой: где искать, что искать, какой предмет выбрать — решает ребёнок. И критерий не «правильный ответ», а «мне нравится».</p>
+    </div>
+
+    <div class="analysis-block">
+        <p><strong>10. Нет викторины, нет тестов.</strong> В конце занятия — ни одного вопроса на воспроизведение. Шесть свойств остаются в <em>прожитом опыте</em>, а не в списке для проверки. Это позволяет знанию укорениться глубже.</p>
+    </div>
+
+    <div class="purple-note">
+        <strong>🎯 Главный сдвиг этого занятия.</strong> Если занятие 9 давало ребёнку ощущение «я — творец», а занятие 10 — «искусств много», то занятие 11 даёт третье ощущение: <strong>«у красоты есть законы, и я их знаю»</strong>. Это — фундамент, на котором дальше будет строиться вся художественная грамотность ребёнка. И заложен он не через теорию, а через <em>шесть маленьких опытов с собственными руками</em>.
+    </div>
+
+    <h2>📌 Что важно запомнить педагогу</h2>
+
+    <div class="note">
+        <p><strong>1.</strong> Начало — самое важное. Не объявляйте тему, не говорите «здравствуйте, дети». Молча высыпайте осколки. Тишина запустит интерес.</p>
+        <p><strong>2.</strong> Не превращайте «Клятву реставратора» в театр. Одна фраза. И всё.</p>
+        <p><strong>3.</strong> Шесть станций — это <em>не очередь</em>. Дети ходят свободно. Если кто-то застрял на первой станции — нормально.</p>
+        <p><strong>4.</strong> Не подсказывайте формулировки правил. Пусть дети скажут своими словами. Даже если это будет «криво».</p>
+        <p><strong>5.</strong> Ваза собирается медленно. Не торопите. Если получилось криво — это нормально. Скажите: «Смотрите, ваза снова живая».</p>
+        <p><strong>6.</strong> Тихий обход — соблюдайте буквально. Молчание работает сильнее любых слов. Не считайте стикеры. Не объявляйте победителя.</p>
+        <p><strong>7.</strong> Если что-то пошло не по плану — <em>следуйте за детьми</em>. Импровизация здесь — не ошибка, а признак живого занятия.</p>
+    </div>
+
+    <div class="poem-box">
+        <p>«Красота — не чудо, а закон.<br>
+        Есть у неё свой порядок и свой звон.<br>
+        Симметрия, ритм, гармония, смысл,<br>
+        Единственность, лёгкость — вот её мысль.<br><br>
+        Кто правила знает, тот видит ясней,<br>
+        И мир для него становится красивей.<br>
+        А кто их не знает — проходит мимо,<br>
+        Хотя красота — всегда рядом, всегда зрима».</p>
+        <span class="poem-author">— из размышлений о свойствах прекрасного</span>
+    </div>
+
+    <div class="quote">
+        «Красота — это не прихоть и не каприз. Это язык, на котором с нами говорит мир. И у этого языка — шесть правил. Кто их знает — тот слышит. Кто не знает — тот глух».
+        <span class="quote-author">— из размышлений о прекрасном</span>
+    </div>
+
+    <p style="margin-top: 30px;">
+        <a href="lesson10.html" class="button">← Занятие 10</a>
+        <a href="section2.html" class="button secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson12.html" class="button">Занятие 12 →</a>
+    </p>
+
+    <div class="nav-links-bottom">
+        <a href="lesson10.html" class="back-link">← Занятие 10. Виды искусства</a>
+        <a href="section2.html" class="back-link secondary">📖 Раздел «Мир прекрасного» рабочей тетради</a>
+        <a href="lesson12.html" class="back-link">Занятие 12. Критерии оценки прекрасного →</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Конспект занятия 11 «Свойства прекрасного»</p>
+        <p>Программа «Гармония» (1-й год обучения) | Раздел 2. Мир прекрасного | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p><em>Занятие построено как трёхактная драма: утрата → открытие → возвращение</em></p>
+    </footer>
+
+</div>
+</body>
+</html>
