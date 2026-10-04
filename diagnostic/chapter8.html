@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 8. Диагностика мотивации и отношения к обучению</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .level-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #0891b2;
+        }
+        .level-card .level-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 40px;
+            text-align: center;
+        }
+        .level-card .level-text {
+            font-size: 0.93rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .level-card.high { border-left-color: #16a34a; }
+        .level-card.high .level-num { color: #16a34a; }
+        .level-card.mid { border-left-color: #eab308; }
+        .level-card.mid .level-num { color: #eab308; }
+        .level-card.low { border-left-color: #ef4444; }
+        .level-card.low .level-num { color: #ef4444; }
+
+        .motiv-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f0f9ff;
+            border-radius: 12px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #0ea5e9;
+        }
+        .motiv-bar .motiv-emoji {
+            font-size: 1.6rem;
+        }
+        .motiv-bar .motiv-text {
+            font-size: 0.93rem;
+            color: #155e75;
+            line-height: 1.55;
+        }
+        .motiv-bar.high { border-left-color: #16a34a; background: #f0fdf4; }
+        .motiv-bar.high .motiv-text { color: #166534; }
+        .motiv-bar.mid { border-left-color: #eab308; background: #fefce8; }
+        .motiv-bar.mid .motiv-text { color: #854d0e; }
+        .motiv-bar.low { border-left-color: #ef4444; background: #fef2f2; }
+        .motiv-bar.low .motiv-text { color: #991b1b; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter7.html" class="back-link" style="margin-left: 15px;">← Глава 7</a>
+
+    <h1>🎯 Глава 8. Диагностика мотивации и отношения к обучению</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~38 минут | 🎯 Цель: освоить систему диагностики мотивации детей 6–10 лет, научиться выявлять отношение ребёнка к обучению, познавательную активность и интерес к эколого-биологической деятельности</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Мы прошли долгий путь: научились диагностировать экологическую культуру, нравственные качества, культуру речи, личностное развитие, творческие способности. Но есть ещё одна грань, без которой всё остальное может «не сработать». Это — <strong>мотивация</strong>. Ведь если ребёнок не хочет учиться, никакие методики и задания не принесут результата.</p>
+        <p>Задумывались ли вы, почему один ребёнок бежит на занятия с радостью, а другой — идёт «потому что мама сказала»? Почему один задаёт десятки вопросов, а другой — сидит молча? Почему один гордится своими успехами, а другой — равнодушно бросает тетрадь? За всем этим стоит <strong>мотивация</strong> — та внутренняя сила, которая направляет поведение и деятельность человека.</p>
+        <p>В этой главе мы разберём, какие виды мотивов существуют, как их диагностировать у детей 6–10 лет, какие методики использовать, и — что особенно важно — как <em>использовать результаты диагностики</em> для того, чтобы помочь ребёнку полюбить учиться.</p>
+    </div>
+
+    <div class="quote">
+        «Ребёнка нельзя заставить учиться. Но можно создать условия, в которых ему <em>захочется</em> учиться. И диагностика — это первый шаг к таким условиям».
+        <span class="quote-author">— из размышлений о мотивации учения</span>
+    </div>
+
+    <h2>🧩 Что такое мотивация и какие мотивы бывают?</h2>
+
+    <p><strong>Мотивация</strong> — это совокупность внутренних и внешних движущих сил, которые побуждают человека к деятельности, задают её направление и регулируют её. Проще говоря, мотивация — это ответ на вопрос «почему я это делаю?».</p>
+
+    <p>В психологии выделяют несколько <strong>видов мотивов учения</strong>. Для детей 6–10 лет особенно важны следующие:</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема видов мотивов учения">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">ВИДЫ МОТИВОВ УЧЕНИЯ</text>
+
+        <!-- Центральный круг -->
+        <circle cx="350" cy="220" r="75" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="350" y="210" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">МОТИВАЦИЯ</text>
+        <text x="350" y="230" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">УЧЕНИЯ</text>
+
+        <!-- Внутренние мотивы -->
+        <rect x="30" y="60" width="200" height="70" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="130" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">🌱 ВНУТРЕННИЕ</text>
+        <text x="130" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">познавательный интерес</text>
+        <text x="130" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">желание узнать новое</text>
+
+        <!-- Внешние мотивы -->
+        <rect x="470" y="60" width="200" height="70" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="570" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">🌟 ВНЕШНИЕ</text>
+        <text x="570" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">похвала, оценка</text>
+        <text x="570" y="115" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">награда, признание</text>
+
+        <!-- Социальные мотивы -->
+        <rect x="30" y="330" width="200" height="70" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="130" y="352" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">👥 СОЦИАЛЬНЫЕ</text>
+        <text x="130" y="370" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">общение, дружба</text>
+        <text x="130" y="385" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">одобрение взрослых</text>
+
+        <!-- Игровые мотивы -->
+        <rect x="470" y="330" width="200" height="70" rx="12" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="570" y="352" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">🎮 ИГРОВЫЕ</text>
+        <text x="570" y="370" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">интерес к игре</text>
+        <text x="570" y="385" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">соревнование</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="200" y1="135" x2="285" y2="180" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow8)"/>
+        <line x1="500" y1="135" x2="415" y2="180" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow8)"/>
+        <line x1="200" y1="340" x2="285" y2="270" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow8)"/>
+        <line x1="500" y1="340" x2="415" y2="270" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow8)"/>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 8.1. Виды мотивов учения, подлежащие диагностике</p>
+
+    <h3>Внутренние мотивы — самые ценные</h3>
+
+    <p><strong>Внутренние мотивы</strong> — это когда ребёнок учится потому, что ему <em>самому интересно</em>. Это самый ценный вид мотивации, потому что он не требует внешних «подкреплений». Ребёнок с внутренней мотивацией:</p>
+
+    <ul>
+        <li>задаёт много вопросов («А почему?», «А как?»);</li>
+        <li>сам ищет ответы, читает книги, экспериментирует;</li>
+        <li>радуется процессу познания, а не только результату;</li>
+        <li>не требует награды за каждое действие.</li>
+    </ul>
+
+    <h3>Внешние мотивы — «подпорки» для внутренних</h3>
+
+    <p><strong>Внешние мотивы</strong> — это когда ребёнок учится ради чего-то <em>внешнего</em>: похвалы, оценки, подарка, признания. Они важны на первых этапах, но не должны становиться единственным стимулом. Если ребёнок учится <em>только</em> за конфету или пятёрку, есть риск, что без этих «подпорок» он потеряет интерес.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Тревожная тенденция.</strong><br>
+        Если родители приучают ребёнка к мысли, что учиться нужно за деньги или подарки («Закончишь четверть на отлично — купим телефон»), это <strong>разрушает внутреннюю мотивацию</strong>. Ребёнок перестаёт учиться для себя, а учится для выгоды. В долгосрочной перспективе это приводит к потребительскому отношению к знаниям, к труду, к жизни.
+    </div>
+
+    <h2>🧠 Методика 1. «Отношение ребенка к обучению в школе»</h2>
+
+    <p><strong>Цель:</strong> определить исходную мотивацию учения — есть ли у ребёнка интерес к обучению.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа по 10 вопросам.</p>
+
+    <p><strong>Описание методики.</strong> Ребёнку задаются 10 вопросов. Ответы оцениваются по трёхбалльной шкале: 1 балл — полный ответ, 0,5 балла — частично правильный, 0 баллов — неверный.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ 10 вопросов для беседы</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Объясни</span></p>
+        <ol>
+            <li>Хочешь ли ты пойти в школу?</li>
+            <li>Зачем нужно ходить в школу?</li>
+            <li>Чем ты будешь заниматься в школе?</li>
+            <li>Что нужно иметь для того, чтобы быть готовым идти в школу?</li>
+            <li>Что такое уроки? Чем на них занимаются?</li>
+            <li>Как нужно вести себя на уроках в школе?</li>
+            <li>Что такое домашние задания?</li>
+            <li>Зачем нужно выполнять домашние задания?</li>
+            <li>Чем ты будешь заниматься дома, когда придёшь из школы?</li>
+            <li>Что нового появится в твоей жизни, когда ты начнёшь учиться в школе?</li>
+        </ol>
+    </div>
+
+    <p><strong>Обработка результатов:</strong></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Сумма баллов</th>
+                <th>Уровень мотивации</th>
+                <th>Характеристика</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>8–10 баллов</strong></td>
+                <td>Высокий</td>
+                <td>Ребёнок полностью готов к обучению. Есть интерес, есть понимание целей и смысла учения.</td>
+            </tr>
+            <tr>
+                <td><strong>5–8 баллов</strong></td>
+                <td>Средний</td>
+                <td>Ребёнок недостаточно готов. Есть отдельные положительные ответы, но нет целостной картины.</td>
+            </tr>
+            <tr>
+                <td><strong>менее 5 баллов</strong></td>
+                <td>Низкий</td>
+                <td>Ребёнок не готов к обучению. Интерес к учёбе отсутствует, ребёнок не понимает её смысла.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: разные ответы — разные мотивы</div>
+        <p>Педагог проводил методику с тремя детьми. На вопрос «Зачем нужно ходить в школу?» дети ответили по-разному:</p>
+        <ul>
+            <li><strong>Маша (7 лет):</strong> «Чтобы научиться читать, писать, узнать много нового». — <em>Внутренний мотив, 1 балл.</em></li>
+            <li><strong>Ваня (7 лет):</strong> «Чтобы мама не ругалась». — <em>Внешний негативный мотив, 0,5 балла.</em></li>
+            <li><strong>Петя (8 лет):</strong> «Не знаю. Мне не хочется в школу». — <em>Отсутствие мотивации, 0 баллов.</em></li>
+        </ul>
+        <p>Педагог понял: с Машей можно работать над углублением интереса, Ване нужно помочь найти внутренние мотивы, а с Петей требуется серьёзная поддерживающая работа.</p>
+    </div>
+
+    <h3>Методика 2. Анкета Н. Лускановой</h3>
+
+    <p><strong>Цель:</strong> диагностика уровня школьной мотивации.</p>
+
+    <p><strong>Форма проведения:</strong> анкетирование (для детей 8–10 лет) или беседа (для детей 6–7 лет).</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Примеры вопросов анкеты</div>
+        <p><span class="signal">📝 Выбери ответ</span></p>
+        <p>Ребёнку предлагается выбрать один из нескольких вариантов ответа на каждый вопрос.</p>
+        <ol>
+            <li>Тебе нравится в школе (на занятиях)?
+                <br><em>а) да; б) не очень; в) нет.</em></li>
+            <li>Утром, когда ты просыпаешься, ты всегда с радостью идёшь на занятия?
+                <br><em>а) да; б) не всегда; в) хочется остаться дома.</em></li>
+            <li>Если бы учитель сказал, что завтра не обязательно приходить всем, ты бы пошёл?
+                <br><em>а) пошёл бы; б) не знаю; в) остался бы дома.</em></li>
+            <li>Тебе нравится, когда у вас отменяют какие-нибудь занятия?
+                <br><em>а) не нравится; б) бывает по-разному; в) нравится.</em></li>
+            <li>Ты хотел бы, чтобы тебе не задавали домашних заданий?
+                <br><em>а) нет; б) не знаю; в) да.</em></li>
+            <li>Ты хотел бы, чтобы в школе остались одни перемены?
+                <br><em>а) нет; б) не знаю; в) да.</em></li>
+            <li>Ты часто рассказываешь о занятиях родителям?
+                <br><em>а) часто; б) редко; в) не рассказываю.</em></li>
+            <li>Ты бы хотел, чтобы у тебя был менее строгий педагог?
+                <br><em>а) нет; б) не знаю; в) да.</em></li>
+            <li>У тебя в группе много друзей?
+                <br><em>а) много; б) мало; в) нет друзей.</em></li>
+            <li>Тебе нравятся твои товарищи в группе?
+                <br><em>а) нравятся; б) не очень; в) не нравятся.</em></li>
+        </ol>
+    </div>
+
+    <p><strong>Обработка результатов.</strong> За каждый ответ «а» — 3 балла, «б» — 1 балл, «в» — 0 баллов.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Сумма баллов</th>
+                <th>Уровень мотивации</th>
+                <th>Характеристика</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>25–30 баллов</strong></td>
+                <td>Высокий</td>
+                <td>Ребёнок с удовольствием ходит на занятия, проявляет познавательную активность, рассказывает о занятиях дома.</td>
+            </tr>
+            <tr>
+                <td><strong>15–24 балла</strong></td>
+                <td>Средний</td>
+                <td>Ребёнок в целом положительно относится к занятиям, но без особого энтузиазма.</td>
+            </tr>
+            <tr>
+                <td><strong>10–14 баллов</strong></td>
+                <td>Низкий</td>
+                <td>Ребёнок посещает занятия без интереса, часто отвлекается.</td>
+            </tr>
+            <tr>
+                <td><strong>менее 10 баллов</strong></td>
+                <td>Очень низкий</td>
+                <td>Ребёнок негативно относится к занятиям, не видит смысла в учёбе.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>👁️ Методика 3. Наблюдение за познавательной активностью</h2>
+
+    <p>Помимо специальных методик, ценнейшим источником информации является <strong>педагогическое наблюдение</strong>. Мы наблюдаем за ребёнком в естественных условиях и фиксируем проявления его познавательной активности.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Что наблюдать?</div>
+        <p><span class="signal">👁️ Наблюдай</span> <span class="signal">📝 Фиксируй</span></p>
+        <p>Педагог фиксирует следующие проявления:</p>
+        <ul>
+            <li><strong>Частота вопросов.</strong> Задаёт ли ребёнок вопросы? Сколько? Какие?</li>
+            <li><strong>Включённость в занятие.</strong> Внимателен ли он? Отвлекается ли?</li>
+            <li><strong>Инициативность.</strong> Предлагает ли свои идеи? Дополняет ли педагога?</li>
+            <li><strong>Реакция на новые темы.</strong> Проявляет ли интерес к новому материалу?</li>
+            <li><strong>Продолжение деятельности после занятия.</strong> Ищет ли дополнительную информацию?</li>
+            <li><strong>Реакция на трудности.</strong> Пытается ли найти решение или опускает руки?</li>
+            <li><strong>Устойчивость интереса.</strong> Увлекается ли надолго или переключается?</li>
+        </ul>
+    </div>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: наблюдение за двумя детьми</div>
+        <p>Педагог наблюдал за двумя детьми на занятии «Времена года».</p>
+        <p><strong>Маша:</strong> задала 5 вопросов («А почему осенью листья желтеют?», «А куда улетают птицы?», «А что делают зимой насекомые?»). После занятия подошла и спросила: «А можно я принесу книгу про осень?» — <em>Высокий уровень познавательной активности.</em></p>
+        <p><strong>Ваня:</strong> слушал молча, смотрел в окно, задал только один вопрос по просьбе педагога. После занятия сразу убежал играть. — <em>Низкий уровень познавательной активности.</em></p>
+    </div>
+
+    <h2>🌿 Методика 4. Диагностика интереса к эколого-биологической деятельности</h2>
+
+    <p><strong>Цель:</strong> определить, насколько ребёнку интересна природа и деятельность, связанная с ней.</p>
+
+    <p><strong>Форма проведения:</strong> беседа, анкетирование, наблюдение.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Вопросы для беседы</div>
+        <p><span class="signal">📝 Ответь</span></p>
+        <ol>
+            <li>Что тебе больше всего нравится в природе?</li>
+            <li>Любишь ли ты гулять в лесу, в парке?</li>
+            <li>Есть ли у тебя дома комнатные растения? Ты за ними ухаживаешь?</li>
+            <li>Наблюдал ли ты когда-нибудь за животными или растениями?</li>
+            <li>Что ты знаешь о Красной книге?</li>
+            <li>Хотел бы ты помогать природе? Как?</li>
+            <li>Рассказываешь ли ты родителям о том, что узнал на занятиях?</li>
+            <li>Хотел бы ты стать экологом или биологом, когда вырастешь?</li>
+        </ol>
+        <p><strong>Оценка:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> 7–8 развёрнутых ответов, ярко выраженный интерес;</li>
+            <li><strong>Средний уровень:</strong> 4–6 ответов, интерес есть, но не ярко выражен;</li>
+            <li><strong>Низкий уровень:</strong> 1–3 ответа или ответы формальны.</li>
+        </ul>
+    </div>
+
+    <h2>🎨 Проективная методика «Моё любимое занятие»</h2>
+
+    <p><strong>Цель:</strong> выявление доминирующих мотивов через рисунок.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная или групповая работа с последующей беседой.</p>
+
+    <div class="draw-area">
+        <div class="draw-caption" style="padding: 20px;">🎨 Нарисуй своё любимое занятие</div>
+        <svg viewBox="0 0 500 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Пустой лист с рамкой -->
+            <rect x="20" y="20" width="460" height="160" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+            <text x="250" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#94a3b8" font-style="italic">Здесь твой рисунок</text>
+        </svg>
+        <div class="draw-caption">Что ты любишь делать больше всего? Нарисуй (без изображения людей и животных, кроме бабочек)</div>
+    </div>
+
+    <p><strong>Что диагностируется:</strong> доминирующие мотивы (игровые, познавательные, социальные).</p>
+
+    <p><strong>Как интерпретировать:</strong></p>
+
+    <ul>
+        <li>Рисунок с природой, растениями, экспериментами — <em>познавательные мотивы</em>;</li>
+        <li>Рисунок с игрушками, играми — <em>игровые мотивы</em>;</li>
+        <li>Рисунок группы детей — <em>социальные мотивы</em>;</li>
+        <li>Рисунок с символами наград, грамот — <em>внешние мотивы</em>.</li>
+    </ul>
+
+    <h2>📊 Комплексная диагностика мотивации: итоговая карта</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Показатель</th>
+                <th>Методика</th>
+                <th>Начало года</th>
+                <th>Середина года</th>
+                <th>Конец года</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Отношение к обучению</td>
+                <td>«Отношение ребенка к обучению в школе»</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Уровень школьной мотивации</td>
+                <td>Анкета Н. Лускановой</td>
+                <td>С</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Познавательная активность</td>
+                <td>Наблюдение</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Интерес к эколого-биологической деятельности</td>
+                <td>Беседа + наблюдение</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Доминирующие мотивы</td>
+                <td>«Моё любимое занятие»</td>
+                <td>Игровые</td>
+                <td>Познавательные</td>
+                <td>Познавательные</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><em>Условные обозначения: Н — низкий, С — средний, В — высокий.</em></p>
+
+    <h3>Уровни мотивации учения</h3>
+
+    <div class="motiv-bar high">
+        <div class="motiv-emoji">🌟</div>
+        <div class="motiv-text"><strong>Высокий уровень.</strong> Ребёнок с радостью идёт на занятия, задаёт много вопросов, самостоятельно ищет информацию, рассказывает о занятиях дома, проявляет устойчивый интерес к природе. Преобладают внутренние познавательные мотивы.</div>
+    </div>
+
+    <div class="motiv-bar mid">
+        <div class="motiv-emoji">🙂</div>
+        <div class="motiv-text"><strong>Средний уровень.</strong> Ребёнок посещает занятия с интересом, но не проявляет инициативы. Отвечает на вопросы, но сам их редко задаёт. Интерес связан с отдельными темами. Мотивы смешанные: внешние и игровые.</div>
+    </div>
+
+    <div class="motiv-bar low">
+        <div class="motiv-emoji">😐</div>
+        <div class="motiv-text"><strong>Низкий уровень.</strong> Ребёнок посещает занятия без желания, часто отвлекается, не проявляет интереса к новому материалу. Мотивация внешняя (по требованию родителей) или отсутствует. Требуется специальная работа по формированию мотивации.</div>
+    </div>
+
+    <h2>🧠 Разнообразие диагностических заданий: от простого к сложному</h2>
+
+    <p>Разберём типы заданий, которые можно использовать для диагностики мотивации.</p>
+
+    <h3>Устные задания</h3>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Закончи фразу»</div>
+        <p><span class="signal">📝 Продолжи</span></p>
+        <p>Педагог начинает фразу, ребёнок продолжает:</p>
+        <ul>
+            <li>«Мне нравится на занятиях, потому что...»</li>
+            <li>«Самое интересное для меня — это...»</li>
+            <li>«Я хожу в объединение, чтобы...»</li>
+            <li>«Когда я узнаю что-то новое, я чувствую...»</li>
+            <li>«Мне было бы скучно, если бы...»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> доминирующие мотивы, отношение к обучению.</p>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Выбери, что тебе нравится»</div>
+        <p><span class="signal">📊 Выбери</span></p>
+        <p>Педагог предлагает ребёнку пары занятий и просит выбрать, что ему нравится больше:</p>
+        <ul>
+            <li>Слушать рассказ педагога <em>или</em> играть в игру?</li>
+            <li>Наблюдать за природой <em>или</em> рисовать?</li>
+            <li>Работать в паре <em>или</em> одному?</li>
+            <li>Получить грамоту <em>или</em> узнать что-то новое?</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> преобладающие мотивы (познавательные, игровые, социальные, внешние).</p>
+    </div>
+
+    <h3>Конструкторские и комбинаторные задания</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Составь расписание»</div>
+        <p><span class="signal">📊 Составь</span> <span class="signal">📝 Объясни</span></p>
+        <p>Ребёнку предлагается составить «идеальное расписание» из предложенных занятий: прогулка, рисование, чтение, игра, эксперимент. Затем нужно объяснить, почему выбраны именно эти занятия.</p>
+        <p><strong>Что диагностируется:</strong> предпочтения, доминирующие мотивы.</p>
+    </div>
+
+    <h3>Задания на развитие памяти, внимания и мышления</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Запомни и назови»</div>
+        <p><span class="signal">👁️ Посмотри</span> <span class="signal">📝 Назови</span></p>
+        <p>Педагог показывает ребёнку карточку с 7–8 словами, обозначающими разные виды деятельности (читать, рисовать, играть, наблюдать, строить, помогать, исследовать, петь). Через 30 секунд карточка убирается. Ребёнок должен назвать те виды деятельности, которые запомнил, и сказать, какие из них ему нравятся больше всего.</p>
+        <p><strong>Что диагностируется:</strong> память, внимание, предпочтения.</p>
+    </div>
+
+    <h3>Задания на развитие воображения</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Если бы я был педагогом...»</div>
+        <p><span class="signal">📝 Придумай</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Педагог предлагает: «Представь, что ты стал педагогом. Какое занятие ты бы провёл? Что бы ты рассказал детям? Что бы вы вместе делали?»</p>
+        <p><strong>Что диагностируется:</strong> ценностные ориентации, доминирующие мотивы, творческое воображение.</p>
+    </div>
+
+    <h3>Задания на развитие двигательных навыков</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Создай символ мотивации»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Ребёнку предлагается создать (нарисовать, вырезать, склеить) символ, который олицетворяет для него учёбу, интерес, познание. Это может быть солнце, ключ, книга, компас, кристалл.</p>
+        <p><strong>Что диагностируется:</strong> отношение к обучению, творческие способности, мелкая моторика.</p>
+    </div>
+
+    <h3>Задания на диагностику стиля общения</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🤝 Задание «Расскажи другу»</div>
+        <p><span class="signal">🤝 Работа в паре</span> <span class="signal">👁️ Наблюдение</span></p>
+        <p>Педагог предлагает ребёнку рассказать своему товарищу о том, что ему больше всего понравилось на занятиях. Наблюдает за тем, как ребёнок рассказывает (с энтузиазмом, равнодушно, формально), как слушает товарища.</p>
+        <p><strong>Что диагностируется:</strong> мотивация, коммуникативные навыки, эмоциональное отношение к обучению.</p>
+    </div>
+
+    <h2>📖 Из практики: истории о мотивации</h2>
+
+    <div class="story-card">
+        <div class="story-title">«Мальчик, который не хотел учиться»</div>
+        <div class="story-text">
+            <p>Кирилл пришёл в объединение «Культура» по настоянию мамы. На занятиях он сидел с отсутствующим видом, ничего не делал, на вопросы отвечал односложно. Педагог провёл диагностику. По методике «Отношение к обучению» Кирилл набрал всего 3 балла — низкий уровень.</p>
+            <p>Тогда педагог стал наблюдать. Оказалось, что Кирилл очень любит рисовать. На рисунке «Моё любимое занятие» он изобразил нечто похожее на пейзаж с яркими красками. Педагог понял: у мальчика есть интерес к рисованию, но он «спрятан» за равнодушием.</p>
+            <p>Педагог начал включать рисование в каждое занятие: то схему нарисовать, то цветок, то пейзаж. Постепенно Кирилл стал оживать. А когда педагог предложил ему сделать плакат в защиту природы, Кирилл впервые заинтересовался <em>содержанием</em> — он стал читать о редких растениях, чтобы изобразить их правильно.</p>
+            <p>К концу года по методике «Отношение к обучению» Кирилл набрал уже 8 баллов — высокий уровень.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: мотивация — это не «есть» или «нет». Это сложная система, которая может «оживать» через интерес ребёнка. Задача педагога — найти эту «ниточку» и потянуть за неё.</div>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Типичная ошибка: только оценки как стимул</div>
+        <p>Педагог на каждом занятии ставил детям оценки («Сегодня Петя — молодец, а Ваня — плохо поработал»). Через несколько недель дети стали учиться только ради оценок: одни — чтобы похвалили, другие — чтобы не ругали. Внутренний интерес к природе угас.</p>
+        <p><strong>Как исправить?</strong> Оценки важны, но они не должны быть единственным стимулом. Говорите о <em>самом процессе</em>: «Сегодня мы узнаем удивительные вещи!», «Посмотри, какую красоту ты создал!», «Ты сам смог решить эту задачу — как здорово!»</p>
+    </div>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: как наблюдение помогло понять мотивацию</div>
+        <p>Педагог заметил, что одна девочка на занятиях ведёт себя пассивно, отвечает односложно. По методикам у неё был средний уровень мотивации. Но при наблюдении педагог обнаружил: девочка часто остаётся после занятия и <em>разглядывает</em> карточки, дотрагивается до природных материалов, шепчет что-то себе под нос.</p>
+        <p>Педагог понял: у девочки есть <em>внутренний интерес</em>, но она боится ошибиться, боится, что её «неправильно» поймут. Педагог стал давать ей задания, где нет «правильного» ответа: наблюдать, описывать, чувствовать. Постепенно девочка раскрылась. Итоговая диагностика показала высокий уровень мотивации.</p>
+    </div>
+
+    <h2>🎯 Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 8.1. «Определи уровень» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите сумму баллов по методике «Отношение ребенка к обучению в школе» с уровнем мотивации.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Сумма баллов</th>
+                    <th>Уровень</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. 8–10 баллов</td><td>1. Низкий</td></tr>
+                <tr><td>Б. 5–8 баллов</td><td>2. Высокий</td></tr>
+                <tr><td>В. менее 5 баллов</td><td>3. Средний</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 8.2. «Составь диагностическое задание» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Составь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Придумайте задание для диагностики мотивации учения детей 6–7 лет с использованием игровых элементов (без изображения людей и животных, кроме бабочек).</p>
+        <p><strong>Описание задания:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Критерии оценки:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 8.3. «Проверь себя» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">❓ Ответь на вопросы</span></p>
+        <ol>
+            <li>Почему внутренняя мотивация считается самой ценной?</li>
+            <li>В чём опасность «покупки» мотивации за деньги или подарки?</li>
+            <li>Как педагог может развивать внутреннюю мотивацию ребёнка?</li>
+            <li>Почему наблюдение является важным методом диагностики мотивации?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Мотивация</strong> — совокупность внутренних и внешних движущих сил, побуждающих человека к деятельности.</p>
+        <p><strong>Внутренние мотивы</strong> — интерес к самому процессу деятельности, желание узнать новое.</p>
+        <p><strong>Внешние мотивы</strong> — стремление получить похвалу, оценку, награду, признание.</p>
+        <p><strong>Социальные мотивы</strong> — стремление к общению, одобрению, дружбе.</p>
+        <p><strong>Игровые мотивы</strong> — интерес к игровой деятельности, соревнованию.</p>
+        <p><strong>Познавательная активность</strong> — стремление к познанию, любознательность, инициативность.</p>
+        <p><strong>Уровень школьной мотивации</strong> — интегральная характеристика отношения ребёнка к обучению.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Что такое мотивация и какие виды мотивов существуют.</li>
+            <li>Почему внутренние мотивы — самые ценные.</li>
+            <li>Как использовать методику «Отношение ребенка к обучению в школе» (10 вопросов).</li>
+            <li>Как применять анкету Н. Лускановой для диагностики школьной мотивации.</li>
+            <li>Как проводить наблюдение за познавательной активностью.</li>
+            <li>Как диагностировать интерес к эколого-биологической деятельности.</li>
+            <li>Как использовать проективную методику «Моё любимое занятие».</li>
+            <li>Как составить комплексную диагностическую карту мотивации.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Мотивация — это не то, что можно «вложить» в ребёнка. Это то, что можно вырастить. И для этого нужно понимать, что уже есть в его душе, к чему он тянется, что его радует. Диагностика мотивации — это не оценка, а <em>диалог</em> с ребёнком о том, что для него важно».
+        <span class="quote-author">— из размышлений о мотивации учения</span>
+    </div>
+
+    <h2>🚀 Что дальше?</h2>
+
+    <p>В следующей главе мы перейдём к <strong>анализу готовых диагностических инструментов</strong>. Мы разберём:</p>
+
+    <ul>
+        <li>как находить готовые диагностические инструменты;</li>
+        <li>какие критерии экспертизы существуют;</li>
+        <li>как проводить всесторонний анализ методик;</li>
+        <li>какие типичные ошибки встречаются при проектировании диагностического инструментария.</li>
+    </ul>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter9.html" class="button">📖 Перейти к главе 9. «Анализ готовых диагностических инструментов» →</a>
+        <a href="chapter7.html" class="button secondary">← Вернуться к главе 7</a>
+        <a href="index.html" class="button secondary">🏠 К плану курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 8. Диагностика мотивации и отношения к обучению | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

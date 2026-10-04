@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 5. Диагностика культуры речи и коммуникативных навыков</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .level-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #0891b2;
+        }
+        .level-card .level-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 40px;
+            text-align: center;
+        }
+        .level-card .level-text {
+            font-size: 0.93rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .level-card.high { border-left-color: #16a34a; }
+        .level-card.high .level-num { color: #16a34a; }
+        .level-card.mid { border-left-color: #eab308; }
+        .level-card.mid .level-num { color: #eab308; }
+        .level-card.low { border-left-color: #ef4444; }
+        .level-card.low .level-num { color: #ef4444; }
+
+        .speech-bubble {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 18px 18px 18px 0;
+            padding: 14px 20px;
+            margin: 12px 0;
+            position: relative;
+        }
+        .speech-bubble::before {
+            content: "💬";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 6px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter4.html" class="back-link" style="margin-left: 15px;">← Глава 4</a>
+
+    <h1>🗣️ Глава 5. Диагностика культуры речи и коммуникативных навыков</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить систему диагностики культуры речи и коммуникативных навыков детей 6–10 лет, научиться выявлять уровень развития связной речи, словарного запаса, произносительной культуры и коммуникативной эстетики</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Мы продолжаем наше путешествие в мир педагогической диагностики. Мы уже научились диагностировать экологическую культуру и нравственные качества. Теперь поговорим о том, что пронизывает <em>всю</em> жизнь ребёнка, — о <strong>речи и общении</strong>. Ведь именно через слово ребёнок познаёт мир, выражает свои чувства, строит отношения с другими людьми.</p>
+        <p>Задумывались ли вы, почему один ребёнок может увлекательно рассказать историю, а другой — теряется и молчит? Почему один умеет договариваться со сверстниками, а другой — ссорится и обижается? За всем этим стоит <strong>культура речи и коммуникативные навыки</strong>. И, как показывает практика, эти качества <em>можно и нужно</em> диагностировать, чтобы помочь ребёнку раскрыться в полной мере.</p>
+        <p>В этой главе мы разберём, из каких компонентов состоит культура речи, какие методики позволяют её диагностировать, как использовать игровые задания для оценки коммуникативных навыков, и как интерпретировать полученные результаты.</p>
+    </div>
+
+    <div class="quote">
+        «Слово — это самый тонкий и самый мощный инструмент, который есть у человека. И тот, кто умеет им пользоваться, владеет ключом к сердцам людей».
+        <span class="quote-author">— из размышлений о культуре речи</span>
+    </div>
+
+    <h2>🧩 Из чего состоит культура речи?</h2>
+
+    <p>Культура речи — это <strong>многогранное понятие</strong>, которое включает в себя несколько взаимосвязанных компонентов. Для диагностики важно понимать, что мы оцениваем каждый из них.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема компонентов культуры речи">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">КОМПОНЕНТЫ КУЛЬТУРЫ РЕЧИ</text>
+
+        <!-- Центральный круг -->
+        <circle cx="350" cy="210" r="75" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="350" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">КУЛЬТУРА</text>
+        <text x="350" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">РЕЧИ</text>
+
+        <!-- Компонент 1: Произносительная (сверху) -->
+        <rect x="230" y="60" width="240" height="55" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="350" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#1e40af">🎤 ПРОИЗНОСИТЕЛЬНАЯ</text>
+        <text x="350" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">дикция, артикуляция, голос</text>
+
+        <!-- Компонент 2: Лексическая (слева) -->
+        <rect x="20" y="185" width="200" height="55" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="120" y="207" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#92400e">📚 ЛЕКСИЧЕСКАЯ</text>
+        <text x="120" y="225" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">словарный запас</text>
+
+        <!-- Компонент 3: Грамматическая (справа) -->
+        <rect x="480" y="185" width="200" height="55" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="580" y="207" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">📐 ГРАММАТИЧЕСКАЯ</text>
+        <text x="580" y="225" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">построение фраз, согласование</text>
+
+        <!-- Компонент 4: Связная речь (снизу) -->
+        <rect x="230" y="340" width="240" height="55" rx="12" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="350" y="362" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#6b21a8">🔗 СВЯЗНАЯ РЕЧЬ</text>
+        <text x="350" y="380" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">умение строить рассказ, диалог</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="350" y1="115" x2="350" y2="140" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow5)"/>
+        <line x1="220" y1="212" x2="280" y2="212" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow5)"/>
+        <line x1="480" y1="212" x2="420" y2="212" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow5)"/>
+        <line x1="350" y1="285" x2="350" y2="340" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow5)"/>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 5.1. Компоненты культуры речи, подлежащие диагностике</p>
+
+    <h3>Компонент 1. Произносительная культура</h3>
+
+    <p><strong>Произносительная культура</strong> — это то, <em>как</em> ребёнок говорит. Она включает:</p>
+
+    <ul>
+        <li><strong>дикцию</strong> — чёткость произнесения звуков;</li>
+        <li><strong>артикуляцию</strong> — правильное положение органов речи;</li>
+        <li><strong>силу голоса</strong> — умение говорить достаточно громко, но не кричать;</li>
+        <li><strong>темп речи</strong> — умение говорить не слишком быстро и не слишком медленно;</li>
+        <li><strong>интонацию</strong> — умение выражать голосом различные чувства;</li>
+        <li><strong>логическое ударение</strong> — умение выделять голосом главное слово в предложении.</li>
+    </ul>
+
+    <h3>Компонент 2. Лексическая культура</h3>
+
+    <p><strong>Лексическая культура</strong> — это <strong>словарный запас</strong> ребёнка. Она включает:</p>
+
+    <ul>
+        <li>знание значений слов и умение их употреблять;</li>
+        <li>умение использовать синонимы, антонимы, омонимы;</li>
+        <li>умение использовать образные выражения (сравнения, эпитеты, метафоры);</li>
+        <li>умение подбирать точные слова для выражения мысли.</li>
+    </ul>
+
+    <h3>Компонент 3. Грамматическая культура</h3>
+
+    <p><strong>Грамматическая культура</strong> — это умение правильно строить предложения. Она включает:</p>
+
+    <ul>
+        <li>согласование слов в роде, числе, падеже;</li>
+        <li>правильное употребление предлогов;</li>
+        <li>умение строить сложные предложения;</li>
+        <li>умение использовать разные типы предложений (повествовательные, вопросительные, побудительные).</li>
+    </ul>
+
+    <h3>Компонент 4. Связная речь</h3>
+
+    <p><strong>Связная речь</strong> — это умение выражать свои мысли <em>последовательно и логично</em>. Она включает:</p>
+
+    <ul>
+        <li>умение пересказывать текст;</li>
+        <li>умение составлять рассказ по картинке или серии картинок;</li>
+        <li>умение вести диалог;</li>
+        <li>умение задавать вопросы и отвечать на них.</li>
+    </ul>
+
+    <div class="green-note">
+        <strong>🌿 Важно понять.</strong> Все компоненты культуры речи <strong>взаимосвязаны</strong>. Нельзя развивать связную речь, не работая над словарным запасом. Нельзя улучшить произношение, не обращая внимания на грамматику. Наша задача — <strong>диагностировать все четыре компонента</strong> и обеспечить их гармоничное развитие.
+    </div>
+
+    <h2>🔬 Методики диагностики культуры речи</h2>
+
+    <p>Теперь перейдём к конкретным методикам. Мы разберём несколько подходов, которые позволяют оценить разные стороны речевого развития ребёнка.</p>
+
+    <h3>Методика 1. Тестовая методика Т.А. Фотековой</h3>
+
+    <p><strong>Цель:</strong> комплексная диагностика речевого развития, включая произносительную культуру, грамматический строй, словарный запас и связную речь.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа с использованием картинок и специальных заданий.</p>
+
+    <p><strong>Структура методики:</strong></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Блок</th>
+                <th>Что диагностируется</th>
+                <th>Примеры заданий</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Сенсомоторный уровень речи</strong></td>
+                <td>Артикуляция, звукопроизношение, слоговая структура</td>
+                <td>Повторить за педагогом слоги, слова, фразы; назвать предметы на картинках</td>
+            </tr>
+            <tr>
+                <td><strong>Грамматический строй</strong></td>
+                <td>Согласование, употребление предлогов, словообразование</td>
+                <td>Составить предложение по картинке; закончить предложение; образовать новое слово</td>
+            </tr>
+            <tr>
+                <td><strong>Словарный запас</strong></td>
+                <td>Знание слов, синонимов, антонимов</td>
+                <td>Назвать предметы, подобрать синонимы, антонимы</td>
+            </tr>
+            <tr>
+                <td><strong>Связная речь</strong></td>
+                <td>Пересказ, составление рассказа</td>
+                <td>Пересказать текст; составить рассказ по серии картинок</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Примеры заданий из методики Т.А. Фотековой</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Соедини</span></p>
+
+        <p><strong>Задание 1. «Повтори за мной»</strong></p>
+        <p>Педагог произносит слоги, слова, фразы, ребёнок повторяет:</p>
+        <ul>
+            <li>«Ба-па-ба», «да-та-да», «са-ша-са»;</li>
+            <li>«Скакалка», «аквариум», «велосипед»;</li>
+            <li>«Мальчик рисует дом», «Девочка читает книгу».</li>
+        </ul>
+        <p><strong>Оценка:</strong> высокий уровень — ребёнок повторяет без ошибок; средний — с небольшими ошибками; низкий — с множественными ошибками или отказывается.</p>
+
+        <p><strong>Задание 2. «Назови предметы»</strong></p>
+        <p>Педагог показывает картинки, ребёнок называет предметы: «дерево», «цветок», «облако», «ручей», «солнце».</p>
+        <p><strong>Оценка:</strong> высокий — 5–6 предметов; средний — 3–4; низкий — 1–2.</p>
+
+        <p><strong>Задание 3. «Подбери слово»</strong></p>
+        <p>Педагог предлагает подобрать синонимы и антонимы:</p>
+        <ul>
+            <li>Синонимы: «красивый — ...», «большой — ...», «грустный — ...».</li>
+            <li>Антонимы: «день — ...», «холодный — ...», «высокий — ...».</li>
+        </ul>
+        <p><strong>Оценка:</strong> высокий — правильно подбирает 4–5 пар; средний — 2–3; низкий — 0–1.</p>
+
+        <p><strong>Задание 4. «Составь рассказ»</strong></p>
+        <p>Педагог даёт ребёнку серию из 3–4 сюжетных картинок (без изображения людей и животных) и просит составить рассказ.</p>
+        <p><strong>Оценка:</strong> высокий — связный, логичный рассказ с использованием сложных предложений; средний — рассказ с помощью педагога; низкий — отдельные предложения или отказ.</p>
+    </div>
+
+    <h3>Методика 2. Наблюдение в процессе общения</h3>
+
+    <p><strong>Цель:</strong> оценка коммуникативной эстетики и стиля общения ребёнка в естественных условиях.</p>
+
+    <p><strong>Форма проведения:</strong> педагогическое наблюдение во время занятий, игр, прогулок.</p>
+
+    <p><strong>Что фиксируется:</strong></p>
+
+    <ul>
+        <li>как ребёнок обращается к взрослым и сверстникам (вежливо, грубо, требовательно);</li>
+        <li>умеет ли слушать собеседника, не перебивает ли;</li>
+        <li>как реагирует на замечания и просьбы;</li>
+        <li>как выражает свои эмоции (сдержанно, бурно, агрессивно);</li>
+        <li>умеет ли договариваться, уступать, предлагать компромиссы;</li>
+        <li>использует ли вежливые слова («спасибо», «пожалуйста», «извините»).</li>
+    </ul>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: наблюдение за стилем общения</div>
+        <p>Педагог наблюдает за двумя детьми во время игры.</p>
+        <p><strong>Маша (высокий уровень):</strong> «Давай построим башню вместе? Ты будешь подавать кубики, а я — ставить. Хорошо?» — предлагает, договаривается, учитывает желания партнёра.</p>
+        <p><strong>Петя (средний уровень):</strong> «Дай мне кубик!» — требует, но не предлагает сотрудничество. При напоминании педагога говорит «пожалуйста».</p>
+        <p><strong>Вова (низкий уровень):</strong> молча отбирает кубики, толкается, не реагирует на просьбы. На замечание педагога обижается.</p>
+    </div>
+
+    <h3>Методика 3. Диагностика понимания и употребления омонимов, синонимов, антонимов</h3>
+
+    <p><strong>Цель:</strong> оценка лексической культуры — богатства словарного запаса и умения использовать выразительные средства языка.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа с использованием карточек или словесных заданий.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задания на диагностику лексической культуры</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Соедини</span></p>
+
+        <p><strong>Задание 1. «Омонимы»</strong> (для детей 9–10 лет)</p>
+        <p>Педагог объясняет, что есть слова, которые звучат одинаково, но значат разное. Затем просит ребёнка объяснить значения слов в разных контекстах:</p>
+        <ul>
+            <li>«Ключ» — от двери и родник.</li>
+            <li>«Лук» — растение и оружие.</li>
+            <li>«Коса» — девичья и инструмент.</li>
+            <li>«Ручка» — для письма и дверная.</li>
+        </ul>
+        <p><strong>Оценка:</strong> высокий — объясняет 4 слова; средний — 2–3; низкий — 0–1.</p>
+
+        <p><strong>Задание 2. «Синонимы»</strong></p>
+        <p>Педагог называет слово и просит подобрать близкие по значению слова:</p>
+        <ul>
+            <li>«Красивый» — прекрасный, чудесный, великолепный.</li>
+            <li>«Большой» — огромный, гигантский, крупный.</li>
+            <li>«Идти» — шагать, ступать, двигаться.</li>
+        </ul>
+        <p><strong>Оценка:</strong> высокий — подбирает 3 и более синонима; средний — 1–2; низкий — не подбирает.</p>
+
+        <p><strong>Задание 3. «Антонимы»</strong></p>
+        <p>Педагог называет слово и просит подобрать противоположное:</p>
+        <ul>
+            <li>«День — ночь», «холодный — горячий», «высокий — низкий».</li>
+            <li>«Храбрый — трусливый», «щедрый — жадный».</li>
+        </ul>
+        <p><strong>Оценка:</strong> высокий — 5–6 пар; средний — 3–4; низкий — 1–2.</p>
+    </div>
+
+    <h3>Методика 4. Составление рассказа по серии сюжетных картинок</h3>
+
+    <p><strong>Цель:</strong> диагностика связной речи — умения логично и последовательно излагать мысли.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа с использованием серии картинок.</p>
+
+    <div class="example-card">
+        <div class="example-title">Пример серии картинок для составления рассказа</div>
+        <p>Педагог предлагает ребёнку серию из 3–4 картинок, на которых изображены природные явления или объекты (без людей и животных). Например:</p>
+        <ul>
+            <li><strong>Картинка 1:</strong> Солнце высоко в небе, жаркий день.</li>
+            <li><strong>Картинка 2:</strong> Появились тучи, подул ветер.</li>
+            <li><strong>Картинка 3:</strong> Пошёл дождь.</li>
+            <li><strong>Картинка 4:</strong> После дождя выглянуло солнце и появилась радуга.</li>
+        </ul>
+        <p><strong>Задание:</strong> «Расскажи, что произошло. Составь рассказ по картинкам».</p>
+        <p><strong>Оценка:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> ребёнок составляет связный рассказ из 4–6 предложений, использует сложные предложения, соблюдает последовательность.</li>
+            <li><strong>Средний уровень:</strong> ребёнок составляет рассказ из 2–3 простых предложений, последовательность соблюдена частично.</li>
+            <li><strong>Низкий уровень:</strong> ребёнок называет отдельные предметы на картинках, рассказ не получается.</li>
+        </ul>
+    </div>
+
+    <h3>Методика 5. Пересказ текста</h3>
+
+    <p><strong>Цель:</strong> диагностика связной речи — умения понимать и воспроизводить текст.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Пример текста для пересказа</div>
+        <p><span class="signal">📝 Перескажи</span></p>
+        <p>Педагог читает ребёнку короткий текст (3–5 предложений) и просит пересказать его. Тексты подбираются без изображения людей и животных (кроме бабочек).</p>
+        <p><strong>Пример текста:</strong></p>
+        <div class="speech-bubble">
+            <p>«Наступила весна. Солнце стало греть сильнее. Снег растаял, и побежали ручьи. На поляне распустились первые подснежники. Скоро прилетят бабочки и будут порхать над цветами».</p>
+        </div>
+        <p><strong>Оценка:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> ребёнок пересказывает текст полно, связно, сохраняя последовательность, использует сложные предложения.</li>
+            <li><strong>Средний уровень:</strong> ребёнок пересказывает основное содержание, но с помощью педагога, предложения простые.</li>
+            <li><strong>Низкий уровень:</strong> ребёнок воспроизводит отдельные фразы или не может пересказать.</li>
+        </ul>
+    </div>
+
+    <h2>🎭 Диагностика коммуникативных навыков через игровые задания</h2>
+
+    <p>Коммуникативные навыки лучше всего проявляются в <strong>игре</strong>. В этом разделе мы разберём несколько игровых заданий, которые позволяют оценить, как ребёнок общается со сверстниками и взрослыми.</p>
+
+    <h3>Игра 1. «Собери картинку вместе»</h3>
+
+    <p><strong>Цель:</strong> диагностика умения договариваться, распределять роли, помогать друг другу.</p>
+
+    <p><strong>Форма проведения:</strong> работа в парах.</p>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Игровое задание «Собери картинку вместе»</div>
+        <p><span class="signal">🤝 Работа в паре</span> <span class="signal">👁️ Наблюдение</span></p>
+        <p>Педагог даёт двум детям набор разрезанных карточек, из которых нужно собрать единое изображение (например, пейзаж: солнце, дерево, река, цветы). При этом карточки распределены так, что каждый ребёнок имеет только часть элементов.</p>
+        <p><strong>Что диагностируется:</strong></p>
+        <ul>
+            <li>умеют ли дети договариваться, кто что делает;</li>
+            <li>слушают ли друг друга;</li>
+            <li>помогают ли друг другу;</li>
+            <li>возникают ли конфликты и как они разрешаются.</li>
+        </ul>
+        <p><strong>Как фиксировать:</strong> педагог наблюдает и отмечает в диагностической карте: «Активно предлагает идеи», «Умеет слушать партнёра», «Помогает товарищу», «Возникают конфликты».</p>
+    </div>
+
+    <h3>Игра 2. «Интервью»</h3>
+
+    <p><strong>Цель:</strong> диагностика умения задавать вопросы и отвечать на них, вести диалог.</p>
+
+    <p><strong>Форма проведения:</strong> работа в парах или малых группах.</p>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Игровое задание «Интервью»</div>
+        <p><span class="signal">🎭 Игра</span> <span class="signal">👁️ Наблюдение</span></p>
+        <p>Дети разбиваются на пары. Один ребёнок — «журналист», другой — «гость». «Журналист» задаёт вопросы на тему природы (например: «Какое твоё любимое время года?», «Что тебе нравится в лесу?»). Затем дети меняются ролями.</p>
+        <p><strong>Что диагностируется:</strong></p>
+        <ul>
+            <li>умение формулировать вопросы;</li>
+            <li>умение отвечать развёрнуто;</li>
+            <li>умение слушать собеседника;</li>
+            <li>использование вежливых форм общения.</li>
+        </ul>
+    </div>
+
+    <h3>Игра 3. «Продолжи историю»</h3>
+
+    <p><strong>Цель:</strong> диагностика связной речи и воображения в коммуникативной ситуации.</p>
+
+    <p><strong>Форма проведения:</strong> групповая игра.</p>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Игровое задание «Продолжи историю»</div>
+        <p><span class="signal">🎭 Игра</span> <span class="signal">📝 Продолжи</span></p>
+        <p>Педагог начинает рассказ: «Однажды в лесу...», а дети по очереди продолжают его, добавляя по одному предложению. Каждый следующий должен слушать предыдущего и развивать его мысль.</p>
+        <p><strong>Что диагностируется:</strong></p>
+        <ul>
+            <li>умение слушать и слышать других;</li>
+            <li>умение строить связное высказывание;</li>
+            <li>умение развивать чужую мысль;</li>
+            <li>коммуникативная гибкость.</li>
+        </ul>
+    </div>
+
+    <h2>📊 Комплексная диагностика культуры речи: итоговая карта</h2>
+
+    <p>Для полноценной картины речевого развития ребёнка предлагаю использовать <strong>комплексную диагностическую карту</strong>. Заполняется она три раза в год: в сентябре, декабре и мае.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Компонент</th>
+                <th>Показатели</th>
+                <th>Начало года</th>
+                <th>Середина года</th>
+                <th>Конец года</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2"><strong>Произносительная культура</strong></td>
+                <td>Чёткая дикция, правильное звукопроизношение</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Выразительная интонация, логическое ударение</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Лексическая культура</strong></td>
+                <td>Богатый словарный запас</td>
+                <td>С</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Умение использовать синонимы, антонимы, омонимы</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Грамматическая культура</strong></td>
+                <td>Правильное согласование слов</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Умение строить сложные предложения</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Связная речь</strong></td>
+                <td>Умение пересказывать текст</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Умение составлять рассказ по картинкам</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Коммуникативные навыки</strong></td>
+                <td>Умение договариваться, слушать других</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Использование вежливых форм общения</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><em>Условные обозначения: Н — низкий, С — средний, В — высокий.</em></p>
+
+    <h3>Уровни сформированности культуры речи</h3>
+
+    <div class="level-card high">
+        <div class="level-num">В</div>
+        <div class="level-text"><strong>Высокий уровень.</strong> Ребёнок говорит чётко, выразительно, использует богатый словарный запас, правильно строит сложные предложения, умеет пересказывать и составлять связные рассказы, активно и вежливо общается со сверстниками и взрослыми.</div>
+    </div>
+
+    <div class="level-card mid">
+        <div class="level-num">С</div>
+        <div class="level-text"><strong>Средний уровень.</strong> Ребёнок говорит достаточно чётко, но не всегда выразительно; словарный запас ограничен; испытывает трудности при построении сложных предложений; пересказывает и составляет рассказ с помощью педагога; в общении бывает непоследователен.</div>
+    </div>
+
+    <div class="level-card low">
+        <div class="level-num">Н</div>
+        <div class="level-text"><strong>Низкий уровень.</strong> Ребёнок говорит нечётко, словарный запас беден, использует только простые предложения; не может пересказать текст или составить рассказ; в общении пассивен или конфликтен; редко использует вежливые слова.</div>
+    </div>
+
+    <h2>🧠 Разнообразие диагностических заданий: от простого к сложному</h2>
+
+    <p>Разберём, какие типы заданий можно использовать для диагностики культуры речи и коммуникативных навыков.</p>
+
+    <h3>Устные задания</h3>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Назови предмет»</div>
+        <p><span class="signal">📝 Ответь</span></p>
+        <p>Педагог показывает картинку, ребёнок называет предмет (без изображения людей и животных). Например: «дерево», «река», «цветок», «облако».</p>
+        <p><strong>Что диагностируется:</strong> словарный запас, произносительная культура.</p>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Опиши предмет»</div>
+        <p><span class="signal">📝 Опиши</span></p>
+        <p>Ребёнок описывает предмет по вопросам педагога: «Какого цвета? Какой формы? Какой на ощупь? Где растёт?»</p>
+        <p><strong>Что диагностируется:</strong> связная речь, словарный запас, грамматическая культура.</p>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Продолжи предложение»</div>
+        <p><span class="signal">📝 Продолжи</span></p>
+        <p>Педагог начинает предложение, ребёнок продолжает:</p>
+        <ul>
+            <li>«Весной на деревьях распускаются...»</li>
+            <li>«Осенью листья становятся...»</li>
+            <li>«Летом на лугу можно увидеть...»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> грамматическая культура, словарный запас, логическое мышление.</p>
+    </div>
+
+    <h3>Конструкторские и комбинаторные задания</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Составь предложение»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📝 Составь</span></p>
+        <p>Ребёнку даются карточки со словами, из которых нужно составить предложение. Например: «На / лугу / растут / цветы».</p>
+        <p><strong>Что диагностируется:</strong> грамматическая культура, логическое мышление.</p>
+    </div>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Собери рассказ»</div>
+        <p><span class="signal">📊 Составь</span></p>
+        <p>Ребёнку даётся набор карточек с изображениями природных объектов (солнце, дождь, радуга, дерево). Задача — расположить их в логической последовательности и составить рассказ.</p>
+        <p><strong>Что диагностируется:</strong> связная речь, логическое мышление.</p>
+    </div>
+
+    <h3>Задания на развитие памяти, внимания и мышления</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Запомни и повтори»</div>
+        <p><span class="signal">👁️ Посмотри</span> <span class="signal">📝 Повтори</span></p>
+        <p>Педагог произносит ряд слов (например: «дерево, река, цветок, облако, солнце»), ребёнок должен повторить их в том же порядке.</p>
+        <p><strong>Что диагностируется:</strong> слуховая память, внимание, лексический запас.</p>
+    </div>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Найди лишнее слово»</div>
+        <p><span class="signal">👁️ Найди</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог называет ряд слов: «дерево, цветок, куст, камень» (лишнее — камень, так как это неживая природа).</p>
+        <p><strong>Что диагностируется:</strong> логическое мышление, словарный запас.</p>
+    </div>
+
+    <h3>Задания на развитие воображения</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Придумай историю»</div>
+        <p><span class="signal">📝 Придумай</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Ребёнку предлагается придумать короткую историю о природном объекте (например, о ручейке, о дереве, о цветке). Затем — нарисовать главный символ этой истории.</p>
+        <p><strong>Что диагностируется:</strong> связная речь, воображение, творческие способности.</p>
+    </div>
+
+    <h3>Задания на развитие двигательных навыков</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Обведи и раскрась»</div>
+        <p><span class="signal">✏️ Обведи</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Ребёнку даётся контур природного объекта (например, листа дерева). Задача — обвести по контуру и раскрасить, а затем назвать этот объект и описать его.</p>
+        <p><strong>Что диагностируется:</strong> мелкая моторика, словарный запас, связная речь.</p>
+    </div>
+
+    <h2>📖 Из практики: истории о культуре речи</h2>
+
+    <div class="story-card">
+        <div class="story-title">«Молчаливый Петя»</div>
+        <div class="story-text">
+            <p>Петя пришёл в объединение «Культура» тихим и застенчивым. Он почти не разговаривал, отвечал односложно, редко вступал в игры. Педагог сначала подумал, что у мальчика проблемы с речью. Но при индивидуальной беседе выяснилось, что Петя знает много слов, может составить рассказ, но <em>боится</em> говорить при других — боится, что засмеют, что скажет что-то не так.</p>
+            <p>Тогда педагог стал давать Пете задания, где он мог говорить шёпотом, потом — в паре с одним другом, потом — в маленькой группе. Постепенно Петя раскрылся. К концу года он уже выступал перед всей группой с рассказом о природе.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: низкий уровень культуры речи может быть связан не с незнанием, а с <strong>психологическими барьерами</strong>. Наша задача — не только диагностировать, но и создавать условия для раскрытия.</div>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Типичная ошибка: оценка речи только по «правильности»</div>
+        <p>Педагог оценивал речь детей только по тому, насколько правильно они произносят звуки и строят предложения. В результате дети, которые говорили грамматически правильно, но <em>невыразительно, монотонно, без эмоций</em>, получали высокие оценки. А дети, которые говорили с ошибками, но ярко, образно, с интересом — низкие.</p>
+        <p><strong>Как исправить?</strong> Культура речи — это не только «правильность», но и <em>выразительность, богатство, коммуникативная целесообразность</em>. Оценивайте все компоненты речи, а не только грамматику.</p>
+    </div>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: как игра помогает диагностике</div>
+        <p>Педагог проводил диагностику коммуникативных навыков в форме игры «Интервью». Дети должны были задавать друг другу вопросы о природе. Один мальчик, который на обычных занятиях казался замкнутым, в роли «журналиста» преобразился: он задавал интересные вопросы, внимательно слушал ответы, шутил. Педагог понял, что у мальчика <em>есть</em> коммуникативные навыки, просто ему нужна была <em>подходящая роль</em>, чтобы их проявить.</p>
+    </div>
+
+    <h2>🎯 Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.1. «Определи компонент» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите диагностическое задание с тем компонентом культуры речи, который оно диагностирует.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Задание</th>
+                    <th>Компонент</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Ребёнок подбирает антонимы к словам</td><td>1. Произносительная культура</td></tr>
+                <tr><td>Б. Ребёнок повторяет за педагогом слоги и слова</td><td>2. Лексическая культура</td></tr>
+                <tr><td>В. Ребёнок составляет рассказ по серии картинок</td><td>3. Грамматическая культура</td></tr>
+                <tr><td>Г. Ребёнок составляет предложение из слов</td><td>4. Связная речь</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.2. «Составь диагностическую ситуацию» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Составь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Придумайте игровое задание для диагностики коммуникативных навыков у детей 6–7 лет. Опишите его и предложите критерии оценки.</p>
+        <p><strong>Описание задания:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Критерии оценки:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 5.3. «Проверь себя» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">❓ Ответь на вопросы</span></p>
+        <ol>
+            <li>Почему культура речи — это не только правильность, но и выразительность?</li>
+            <li>Какие компоненты культуры речи важно диагностировать у детей 6–10 лет?</li>
+            <li>Как игровые задания помогают диагностировать коммуникативные навыки?</li>
+            <li>Что делать, если у ребёнка низкий уровень культуры речи, но он стесняется говорить?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Культура речи</strong> — многогранное понятие, включающее произносительную, лексическую, грамматическую культуру и связную речь.</p>
+        <p><strong>Произносительная культура</strong> — чёткость дикции, правильное звукопроизношение, выразительная интонация.</p>
+        <p><strong>Лексическая культура</strong> — богатство словарного запаса, умение использовать синонимы, антонимы, омонимы.</p>
+        <p><strong>Грамматическая культура</strong> — правильное построение предложений, согласование слов.</p>
+        <p><strong>Связная речь</strong> — умение последовательно и логично выражать свои мысли, пересказывать, составлять рассказ.</p>
+        <p><strong>Коммуникативные навыки</strong> — умение общаться, договариваться, слушать, использовать вежливые формы.</p>
+        <p><strong>Коммуникативная эстетика</strong> — выразительность, уместность, вежливость речи в общении.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Из каких четырёх компонентов состоит культура речи.</li>
+            <li>Как использовать методику Т.А. Фотековой для диагностики речевого развития.</li>
+            <li>Как диагностировать понимание и употребление омонимов, синонимов, антонимов.</li>
+            <li>Как использовать составление рассказа по картинкам и пересказ текста для диагностики связной речи.</li>
+            <li>Как проводить наблюдение за стилем общения в естественных условиях.</li>
+            <li>Как использовать игровые задания («Собери картинку вместе», «Интервью», «Продолжи историю») для диагностики коммуникативных навыков.</li>
+            <li>Как составить комплексную диагностическую карту и определить уровень сформированности культуры речи.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Речь — это зеркало души. И то, как ребёнок говорит, как он общается, — это ключ к пониманию его внутреннего мира. Наша задача — не просто научить его правильно говорить, а помочь ему выразить себя, найти общий язык с другими, раскрыть свои мысли и чувства».
+        <span class="quote-author">— из размышлений о культуре речи</span>
+    </div>
+
+    <h2>🚀 Что дальше?</h2>
+
+    <p>В следующей главе мы перейдём к <strong>диагностике личностного развития и самооценки</strong>. Мы разберём:</p>
+
+    <ul>
+        <li>какие методики позволяют диагностировать самооценку и уровень притязаний;</li>
+        <li>как использовать проективные рисуночные тесты для диагностики личностных особенностей;</li>
+        <li>как выявлять тревожность и эмоциональное состояние ребёнка;</li>
+        <li>как интерпретировать результаты и использовать их для поддержки развития.</li>
+    </ul>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter6.html" class="button">📖 Перейти к главе 6. «Диагностика личностного развития и самооценки» →</a>
+        <a href="chapter4.html" class="button secondary">← Вернуться к главе 4</a>
+        <a href="index.html" class="button secondary">🏠 К плану курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 5. Диагностика культуры речи и коммуникативных навыков | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

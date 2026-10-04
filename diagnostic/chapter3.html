@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 3. Диагностика уровня сформированности экологической культуры</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .level-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #0891b2;
+        }
+        .level-card .level-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 40px;
+            text-align: center;
+        }
+        .level-card .level-text {
+            font-size: 0.93rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .level-card.high { border-left-color: #16a34a; }
+        .level-card.high .level-num { color: #16a34a; }
+        .level-card.mid { border-left-color: #eab308; }
+        .level-card.mid .level-num { color: #eab308; }
+        .level-card.low { border-left-color: #ef4444; }
+        .level-card.low .level-num { color: #ef4444; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter2.html" class="back-link" style="margin-left: 15px;">← Глава 2</a>
+
+    <h1>🌿 Глава 3. Диагностика уровня сформированности экологической культуры</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить систему диагностики экологической культуры детей 6–10 лет, научиться применять конкретные методики для оценки когнитивного, эмоционально-ценностного, деятельностного и рефлексивного компонентов</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Мы подошли к одной из самых сложных и одновременно самых важных тем всего курса. <strong>Экологическая культура</strong> — это не просто знание названий растений и животных. Это гораздо более глубокое и многогранное образование, которое затрагивает ум, сердце и поступки ребёнка. Именно поэтому её так трудно диагностировать.</p>
+        <p>Представьте себе ребёнка, который на занятии блестяще отвечает на вопросы о Красной книге, называет редких животных и рассуждает о вреде мусора. А после занятия — бросает фантик от конфеты прямо на землю. Знакомо? Это классический пример <em>разрыва</em> между знаниями и поведением. И наша задача как педагогов — не просто научить ребёнка «правильным словам», а помочь ему <strong>жить</strong> в согласии с природой. А для этого нам нужна точная диагностика, которая показывает <em>все</em> стороны экологической культуры: и знания, и чувства, и поступки, и размышления.</p>
+        <p>В этой главе мы подробно разберём, из каких компонентов состоит экологическая культура, какие методики позволяют её диагностировать, и как интерпретировать полученные результаты. А ещё — поговорим об одном неожиданном, но очень важном критерии: <strong>отношении ребёнка к деньгам</strong>.</p>
+    </div>
+
+    <div class="quote">
+        «Экологическая культура — это не то, что человек знает о природе. Это то, как он с ней поступает, когда его никто не видит».
+        <span class="quote-author">— из размышлений об экологическом воспитании</span>
+    </div>
+
+    <h2>🧩 Из чего состоит экологическая культура?</h2>
+
+    <p>Экологическая культура — это <strong>сложное интегрированное образование</strong> в психике человека. Она формируется на протяжении всей жизни, но особую роль играет сензитивный период — возраст 6–10 лет, когда закладываются основы отношения к миру.</p>
+
+    <p>Учёные выделяют <strong>четыре взаимосвязанных компонента</strong> экологической культуры. Диагностика должна охватывать каждый из них.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема четырёх компонентов экологической культуры">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">ЧЕТЫРЕ КОМПОНЕНТА ЭКОЛОГИЧЕСКОЙ КУЛЬТУРЫ</text>
+
+        <!-- Центральный круг -->
+        <circle cx="350" cy="220" r="70" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="350" y="212" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">ЭКОЛОГИЧЕСКАЯ</text>
+        <text x="350" y="230" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">КУЛЬТУРА</text>
+
+        <!-- Компонент 1: Когнитивный (сверху) -->
+        <rect x="230" y="70" width="240" height="55" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="350" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#1e40af">🧠 КОГНИТИВНЫЙ</text>
+        <text x="350" y="110" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">знания о природе, экологические понятия</text>
+
+        <!-- Компонент 2: Эмоционально-ценностный (слева) -->
+        <rect x="20" y="195" width="200" height="55" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="120" y="217" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#92400e">💚 ЭМОЦИОНАЛЬНО-</text>
+        <text x="120" y="235" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#92400e">ЦЕННОСТНЫЙ</text>
+        <text x="120" y="248" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">отношение к природе</text>
+
+        <!-- Компонент 3: Деятельностный (справа) -->
+        <rect x="480" y="195" width="200" height="55" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="580" y="217" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">🌱 ДЕЯТЕЛЬНОСТНЫЙ</text>
+        <text x="580" y="235" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">(поступки)</text>
+        <text x="580" y="248" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">экологическое поведение</text>
+
+        <!-- Компонент 4: Рефлексивный (снизу) -->
+        <rect x="230" y="340" width="240" height="55" rx="12" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="350" y="362" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#6b21a8">🔍 РЕФЛЕКСИВНЫЙ</text>
+        <text x="350" y="380" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">осознание своего отношения и поведения</text>
+
+        <!-- Стрелки связей -->
+        <defs>
+            <marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="350" y1="125" x2="350" y2="150" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow3)"/>
+        <line x1="220" y1="222" x2="280" y2="222" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow3)"/>
+        <line x1="480" y1="222" x2="420" y2="222" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow3)"/>
+        <line x1="350" y1="290" x2="350" y2="340" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow3)"/>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 3.1. Четыре компонента экологической культуры, подлежащие диагностике</p>
+
+    <h3>Компонент 1. Когнитивный (знания)</h3>
+
+    <p><strong>Когнитивный компонент</strong> — это система экологических знаний, которые ребёнок усваивает на занятиях. Сюда входят:</p>
+
+    <ul>
+        <li>знание объектов и явлений природы (растения, животные, времена года, погода);</li>
+        <li>понимание взаимосвязей в природе (пищевые цепочки, круговорот воды);</li>
+        <li>знание экологических понятий (среда обитания, экологические факторы);</li>
+        <li>знание правил поведения в природе;</li>
+        <li>представления об экологических проблемах и способах их решения.</li>
+    </ul>
+
+    <h3>Компонент 2. Эмоционально-ценностный (отношение)</h3>
+
+    <p><strong>Эмоционально-ценностный компонент</strong> — это то, <em>как</em> ребёнок относится к природе. Здесь важны:</p>
+
+    <ul>
+        <li>эмоциональная отзывчивость на красоту природы;</li>
+        <li>чувство восхищения, удивления, радости от общения с природой;</li>
+        <li>ценностное отношение к природе (природа — это ценность);</li>
+        <li>сопереживание живым существам, сочувствие;</li>
+        <li>нравственное отношение к природе (не навреди, помоги).</li>
+    </ul>
+
+    <h3>Компонент 3. Деятельностный (поступки)</h3>
+
+    <p><strong>Деятельностный компонент</strong> — это конкретные <em>поступки</em> ребёнка по отношению к природе. Именно этот компонент показывает, стали ли знания и чувства <em>привычкой</em>:</p>
+
+    <ul>
+        <li>уход за растениями и животными;</li>
+        <li>соблюдение правил поведения в природе;</li>
+        <li>участие в экологических акциях;</li>
+        <li>бережное отношение к природным ресурсам (вода, свет, бумага);</li>
+        <li>стремление к экологически устойчивому стилю жизни.</li>
+    </ul>
+
+    <h3>Компонент 4. Рефлексивный (осознание)</h3>
+
+    <p><strong>Рефлексивный компонент</strong> — это способность ребёнка <em>осознавать</em> своё отношение к природе и своё поведение, анализировать свои поступки, делать выводы:</p>
+
+    <ul>
+        <li>умение оценить свой поступок с точки зрения экологии;</li>
+        <li>способность объяснить, почему он поступил так или иначе;</li>
+        <li>готовность признать ошибку и исправить её;</li>
+        <li>стремление к саморазвитию в экологическом направлении.</li>
+    </ul>
+
+    <div class="green-note">
+        <strong>🌿 Важно понять.</strong> Все четыре компонента <strong>взаимосвязаны</strong>. Нельзя сформировать экологическую культуру, развивая только один из них. Ребёнок может знать правила (когнитивный компонент), но не соблюдать их (деятельностный). Может любить природу (эмоциональный), но не понимать её законов (когнитивный). Наша задача — <strong>диагностировать все четыре компонента</strong> и обеспечить их гармоничное развитие.
+    </div>
+
+    <h2>🔬 Методики диагностики экологической культуры</h2>
+
+    <p>Теперь перейдём к конкретным методикам. Мы разберём их по порядку — от диагностики знаний к диагностике поступков и рефлексии.</p>
+
+    <h3>Методика 1. Тест «Что я знаю о природе?»</h3>
+
+    <p><strong>Цель:</strong> диагностика когнитивного компонента — знаний о природе.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная или групповая беседа с использованием карточек с изображениями.</p>
+
+    <p><strong>Описание методики.</strong> Педагог показывает ребёнку карточки и задаёт вопросы. Ответы фиксируются в диагностической карте.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Примерные вопросы и задания</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Соедини</span> <span class="signal">📊 Раздели на группы</span></p>
+
+        <p><strong>Задание 1. «Назови и покажи»</strong> (для детей 6–7 лет)</p>
+        <p>Педагог показывает карточки с изображениями деревьев (берёза, дуб, ель), цветов (ромашка, василёк, роза), животных (заяц, лиса, медведь) и спрашивает: «Что это? Как называется?»</p>
+        <p><strong>Оценка:</strong></p>
+        <ul>
+            <li>Высокий уровень — ребёнок правильно называет 8–10 объектов;</li>
+            <li>Средний уровень — 5–7 объектов;</li>
+            <li>Низкий уровень — менее 5 объектов.</li>
+        </ul>
+
+        <p><strong>Задание 2. «Раздели на группы»</strong> (для детей 8–10 лет)</p>
+        <p>Педагог даёт ребёнку набор карточек с изображениями растений и животных и просит разделить их на группы: «Деревья», «Кустарники», «Травы», «Птицы», «Звери», «Насекомые».</p>
+        <p><strong>Оценка:</strong> учитывается правильность распределения и умение объяснить свой выбор.</p>
+
+        <p><strong>Задание 3. «Установи связь»</strong> (для детей 9–10 лет)</p>
+        <p>Педагог предлагает ребёнку составить пищевую цепочку: «Растение → Насекомое → Птица» (например: лист → гусеница → синица). Ребёнок должен объяснить, почему цепочка именно такая.</p>
+        <p><strong>Оценка:</strong> высокий уровень — ребёнок самостоятельно составляет цепочку и объясняет; средний — составляет с подсказкой; низкий — затрудняется.</p>
+    </div>
+
+    <h3>Методика 2. Оценка эмоционально-положительного отношения к природе (по С.Н. Глазачеву)</h3>
+
+    <p><strong>Цель:</strong> диагностика эмоционально-ценностного компонента.</p>
+
+    <p><strong>Форма проведения:</strong> наблюдение в естественных условиях и специально созданных ситуациях.</p>
+
+    <p><strong>Описание методики.</strong> Педагог наблюдает за реакцией ребёнка в различных ситуациях общения с природой и фиксирует:</p>
+
+    <ul>
+        <li>проявляет ли ребёнок радость, удивление, восхищение при виде красивого пейзажа, цветка, бабочки;</li>
+        <li>замечает ли он красоту природы без напоминания педагога;</li>
+        <li>выражает ли желание поделиться своими впечатлениями;</li>
+        <li>сочувствует ли живым существам, попавшим в беду;</li>
+        <li>бережно ли относится к растениям и животным.</li>
+    </ul>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: диагностика эмоционального отношения</div>
+        <p>Педагог и дети вышли на прогулку. На клумбе распустился первый подснежник. Педагог не обращает на него внимания, но наблюдает за реакцией детей.</p>
+        <p><strong>Маша (высокий уровень):</strong> «Ой, смотрите, подснежник! Какой красивый! Он первый, значит, весна пришла!» — девочка подбежала, но не сорвала цветок, а просто любовалась.</p>
+        <p><strong>Петя (средний уровень):</strong> «О, цветок. Красиво». — заметил, но не проявил ярких эмоций, прошёл мимо.</p>
+        <p><strong>Вова (низкий уровень):</strong> не заметил цветка вообще, побежал дальше по своим делам.</p>
+        <p>По таким наблюдениям педагог делает вывод об уровне развития эмоционального компонента у каждого ребёнка.</p>
+    </div>
+
+    <h3>Методика 3. Анкета «Что я делаю по отношению к природе?»</h3>
+
+    <p><strong>Цель:</strong> диагностика деятельностного компонента.</p>
+
+    <p><strong>Форма проведения:</strong> анкетирование (для детей 9–10 лет — письменно; для 6–8 лет — в форме беседы с картинками).</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Анкета для детей «Что я делаю для природы?»</div>
+        <p><span class="signal">📝 Ответь</span></p>
+        <p><strong>Инструкция:</strong> «Прочитай вопрос и выбери ответ: "Да", "Нет" или "Иногда"».</p>
+        <ol>
+            <li>Я помогаю ухаживать за комнатными растениями.</li>
+            <li>Я кормлю птиц зимой.</li>
+            <li>Я не мусорю в лесу и парке.</li>
+            <li>Я закрываю кран с водой, когда чищу зубы.</li>
+            <li>Я выключаю свет, когда выхожу из комнаты.</li>
+            <li>Я участвую в экологических акциях.</li>
+            <li>Я бережно отношусь к бумаге (не рву зря).</li>
+            <li>Я сдаю батарейки в специальные контейнеры.</li>
+            <li>Я рассказываю другим о том, как беречь природу.</li>
+            <li>Я замечаю и убираю мусор, если вижу его на природе.</li>
+        </ol>
+        <p><strong>Оценка:</strong></p>
+        <ul>
+            <li>Высокий уровень — 8–10 ответов «Да» (или «Да» и «Иногда»);</li>
+            <li>Средний уровень — 5–7 ответов;</li>
+            <li>Низкий уровень — менее 5 ответов.</li>
+        </ul>
+    </div>
+
+    <h3>Методика 4. «Экологические ситуации» (Е.К. Берюхова, Н.В. Груздева)</h3>
+
+    <p><strong>Цель:</strong> диагностика деятельностного и рефлексивного компонентов — как ребёнок поступил бы в конкретной ситуации.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа с использованием карточек или словесных описаний.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Примеры экологических ситуаций</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Объясни</span></p>
+
+        <p><strong>Ситуация 1.</strong> «Ты гуляешь по лесу и видишь, что кто-то оставил после себя мусор: бутылки, пакеты, бумажки. Что ты сделаешь?»</p>
+        <p><em>Высокий уровень:</em> «Уберу мусор и унесу его с собой, чтобы отнести в мусорный контейнер».</p>
+        <p><em>Средний уровень:</em> «Скажу взрослым, чтобы они убрали».</p>
+        <p><em>Низкий уровень:</em> «Ничего не сделаю, это не моё».</p>
+
+        <p><strong>Ситуация 2.</strong> «Ты видишь, что твой друг сорвал редкий цветок, который занесён в Красную книгу. Что ты сделаешь?»</p>
+        <p><em>Высокий уровень:</em> «Объясню другу, что так нельзя, что этот цветок редкий и его нужно беречь».</p>
+        <p><em>Средний уровень:</em> «Скажу, что так нельзя, но не объясню почему».</p>
+        <p><em>Низкий уровень:</em> «Ничего не скажу, это его дело».</p>
+
+        <p><strong>Ситуация 3.</strong> «Ты нашёл в лесу маленького птенца, который выпал из гнезда. Что ты сделаешь?»</p>
+        <p><em>Высокий уровень:</em> «Осторожно посажу его обратно в гнездо или позову взрослых, чтобы помочь».</p>
+        <p><em>Средний уровень:</em> «Возьму домой и попробую выходить».</p>
+        <p><em>Низкий уровень:</em> «Оставлю на месте, это не моё дело».</p>
+    </div>
+
+    <h3>Методика 5. Метод незаконченных предложений</h3>
+
+    <p><strong>Цель:</strong> диагностика рефлексивного компонента и ценностных ориентаций.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная или групповая беседа.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Примеры незаконченных предложений</div>
+        <p><span class="signal">📝 Продолжи</span></p>
+        <p>Ребёнку предлагается закончить предложения. Ответы фиксируются дословно.</p>
+        <ul>
+            <li>«Когда я вижу красивый цветок, я...»</li>
+            <li>«Мне нравится природа, потому что...»</li>
+            <li>«Если бы я мог помочь природе, я бы...»</li>
+            <li>«Самое красивое, что я видел в природе, — это...»</li>
+            <li>«Когда я делаю доброе дело для природы, я чувствую...»</li>
+            <li>«Природа — это...»</li>
+            <li>«Я хочу, чтобы природа...»</li>
+        </ul>
+        <p><strong>Оценка:</strong> учитывается глубина и эмоциональная насыщенность ответов, их связь с экологическими ценностями.</p>
+    </div>
+
+    <h2>💰 Неожиданный критерий: отношение ребёнка к деньгам</h2>
+
+    <p>А теперь поговорим о том, о чём редко говорят на педагогических советах, но что имеет огромное значение для формирования экологической культуры. Речь пойдёт об <strong>отношении ребёнка к деньгам</strong>.</p>
+
+    <p>Это может показаться странным: при чём тут деньги и экология? Но давайте разберёмся. Экологическая культура — это часть <strong>общей культуры личности</strong>. А общая культура включает в себя не только отношение к природе, но и отношение к людям, к труду, к материальным благам. И здесь деньги играют ключевую роль.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Тревожная тенденция.</strong><br>
+        Обычная картина: ребёнок, начинающий совершать первые осознанные движения, уже приучается копить деньги. Родители всеми своими действиями внушают ему в <strong>сензитивный период формирования основ нравственности</strong>, что деньги — это самое главное в жизни, потому что за них можно «всё» купить. И что для жизненного благополучия нужны именно деньги, а не нравственность и совесть.<br><br>
+        Такие действия родителей впоследствии приводят к тому, что когда ребёнка затем берут в магазин, он настоятельно начинает требовать купить ему всё, что он хочет. В случае отказа он начинает кричать и плакать.
+    </div>
+
+    <p>Возникает вопрос: как это связано с экологической культурой? Ответ глубже, чем кажется. <strong>Экологическая культура предполагает бескорыстное отношение к природе.</strong> Мы заботимся о ней не потому, что нам за это заплатят, а потому что это <em>правильно</em>, <em>нравственно</em>, <em>красиво</em>. Но если ребёнок с детства усвоил, что всё в мире имеет денежную цену, что главное — это выгода, то и к природе он будет относиться <strong>потребительски</strong>.</p>
+
+    <div class="quote">
+        «Гражданственность и патриотизм предполагают бескорыстное служение своему отечеству, проявление гуманности и милосердия к окружающим. А это невозможно, если человек с детства приучен оценивать всё в деньгах».
+        <span class="quote-author">— из материалов «2.1.4. Диагностика уровня сформированности экологической культуры»</span>
+    </div>
+
+    <h3>Как диагностировать отношение ребёнка к деньгам?</h3>
+
+    <p>Прямо спросить ребёнка «Любишь ли ты деньги?» — бессмысленно. Мы используем <strong>косвенные методы</strong>.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Методика «Что бы ты выбрал?»</div>
+        <p><span class="signal">📝 Выбери</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог предлагает ребёнку несколько ситуаций выбора и просит объяснить свой выбор.</p>
+
+        <p><strong>Ситуация 1.</strong> «У тебя есть 100 рублей. Что ты сделаешь: купишь себе сладости или купишь корм для птиц в парке?»</p>
+        <p><em>Высокий уровень:</em> ребёнок выбирает помощь птицам (или предлагает разделить: часть — себе, часть — птицам) и объясняет это заботой о живом.</p>
+        <p><em>Средний уровень:</em> ребёнок выбирает сладости, но после вопроса «А как же птицы?» задумывается и говорит, что можно было бы помочь.</p>
+        <p><em>Низкий уровень:</em> ребёнок выбирает сладости и не понимает, зачем помогать птицам.</p>
+
+        <p><strong>Ситуация 2.</strong> «Тебе предлагают заработать деньги, но для этого нужно сорвать редкие цветы в лесу и продать их. Что ты сделаешь?»</p>
+        <p><em>Высокий уровень:</em> «Откажусь. Редкие цветы нельзя рвать, они могут исчезнуть. Лучше заработать другим способом».</p>
+        <p><em>Средний уровень:</em> «Не буду рвать, но не знаю, как объяснить почему».</p>
+        <p><em>Низкий уровень:</em> «Соглашусь, если заплатят много».</p>
+
+        <p><strong>Ситуация 3.</strong> «Твой друг нашёл красивую бабочку и хочет продать её коллекционеру. Что ты скажешь?»</p>
+        <p><em>Высокий уровень:</em> «Скажу, что бабочка — живая, её нельзя продавать. Ей нужно жить на воле».</p>
+        <p><em>Средний уровень:</em> «Скажу, что это нехорошо, но не смогу объяснить».</p>
+        <p><em>Низкий уровень:</em> «Пусть продаёт, если хочет».</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">«Два мальчика и одна река»</div>
+        <div class="story-text">
+            <p>Однажды два мальчика пошли на реку. Один из них, Витя, увидел, что в воде плавает мусор, и стал вылавливать его палкой и складывать в пакет. Другой, Стёпа, посмотрел на это и сказал:</p>
+            <p>— Зачем ты это делаешь? Тебе за это не заплатят!</p>
+            <p>Витя ответил:</p>
+            <p>— Я делаю это не за деньги. Я делаю это, потому что река — живая. Ей больно от мусора. А если каждый будет думать, что за добро нужно платить, — река погибнет.</p>
+            <p>Стёпа задумался. А потом взял второй пакет и стал помогать другу.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: экологическая культура — это <strong>бескорыстная забота о природе</strong>. Если ребёнок с детства приучен оценивать всё в деньгах, ему будет сложно понять, что природу нужно беречь просто так.</div>
+    </div>
+
+    <h2>🧠 Комплексная диагностика: соединяем всё вместе</h2>
+
+    <p>Каждая из методик, рассмотренных выше, диагностирует отдельный компонент экологической культуры. Но для полноценной картины нам нужна <strong>комплексная диагностика</strong>, которая охватывает все четыре компонента.</p>
+
+    <p>Предлагаю использовать <strong>единую диагностическую карту</strong>, в которую заносятся результаты по каждому компоненту. Заполняется она три раза в год: в сентябре, декабре и мае.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Компонент</th>
+                <th>Показатели</th>
+                <th>Начало года</th>
+                <th>Середина года</th>
+                <th>Конец года</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3"><strong>Когнитивный</strong></td>
+                <td>Знает названия растений и животных родного края</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Понимает взаимосвязи в природе</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+            </tr>
+            <tr>
+                <td>Знает правила поведения в природе</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Эмоционально-ценностный</strong></td>
+                <td>Проявляет радость, восхищение при виде красоты природы</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Сопереживает живым существам</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Деятельностный</strong></td>
+                <td>Ухаживает за растениями</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+            </tr>
+            <tr>
+                <td>Соблюдает правила поведения в природе</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Рефлексивный</strong></td>
+                <td>Может объяснить, почему поступил так или иначе</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Признаёт ошибки и старается их исправить</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><em>Условные обозначения: Н — низкий, С — средний, В — высокий.</em></p>
+
+    <h3>Уровни сформированности экологической культуры</h3>
+
+    <p>На основе комплексной диагностики можно выделить <strong>три уровня</strong> сформированности экологической культуры.</p>
+
+    <div class="level-card high">
+        <div class="level-num">В</div>
+        <div class="level-text"><strong>Высокий уровень.</strong> Ребёнок имеет глубокие и прочные знания о природе, эмоционально отзывчив, проявляет заботу о живых существах, соблюдает правила поведения в природе, может объяснить свои поступки и признать ошибки. Экологическая культура стала частью его личности.</div>
+    </div>
+
+    <div class="level-card mid">
+        <div class="level-num">С</div>
+        <div class="level-text"><strong>Средний уровень.</strong> Ребёнок имеет базовые знания о природе, но они не всегда системны. Проявляет эмоциональный отклик на красоту природы, но не всегда последовательно. Соблюдает правила поведения, но нуждается в напоминаниях. Может объяснить свои поступки с помощью педагога.</div>
+    </div>
+
+    <div class="level-card low">
+        <div class="level-num">Н</div>
+        <div class="level-text"><strong>Низкий уровень.</strong> Знания о природе фрагментарны или поверхностны. Эмоциональный отклик слабый или отсутствует. Правила поведения в природе соблюдает редко, часто нуждается в контроле. Не может объяснить свои поступки, не признаёт ошибок.</div>
+    </div>
+
+    <h2>🎯 Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 3.1. «Определи компонент» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите диагностическое задание с тем компонентом экологической культуры, который оно диагностирует.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Задание</th>
+                    <th>Компонент</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Ребёнок рассказывает, какие птицы зимуют в его крае</td><td>1. Когнитивный</td></tr>
+                <tr><td>Б. Ребёнок ухаживает за комнатным растением без напоминания</td><td>2. Эмоционально-ценностный</td></tr>
+                <tr><td>В. Ребёнок восхищается закатом и говорит: «Как красиво!»</td><td>3. Деятельностный</td></tr>
+                <tr><td>Г. Ребёнок объясняет, почему он не сорвал редкий цветок</td><td>4. Рефлексивный</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 3.2. «Составь диагностическую ситуацию» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Составь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Придумайте экологическую ситуацию для диагностики деятельностного компонента у детей 6–7 лет. Опишите её и предложите варианты ответов детей с разным уровнем экологической культуры.</p>
+        <p><strong>Описание ситуации:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Варианты ответов:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 3.3. «Проверь себя» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">❓ Ответь на вопросы</span></p>
+        <ol>
+            <li>Почему экологическую культуру нельзя диагностировать только через проверку знаний?</li>
+            <li>Как связаны между собой когнитивный и деятельностный компоненты?</li>
+            <li>Почему отношение к деньгам может быть критерием сформированности экологической культуры?</li>
+            <li>Какие методы диагностики экологической культуры наиболее подходят для детей 6–7 лет, а какие — для 8–10 лет?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Экологическая культура</strong> — сложное интегрированное образование личности, включающее знания о природе, эмоционально-ценностное отношение к ней, экологически целесообразное поведение и способность к рефлексии.</p>
+        <p><strong>Когнитивный компонент</strong> — система экологических знаний.</p>
+        <p><strong>Эмоционально-ценностный компонент</strong> — отношение к природе, эмоциональная отзывчивость.</p>
+        <p><strong>Деятельностный компонент</strong> — конкретные поступки по отношению к природе.</p>
+        <p><strong>Рефлексивный компонент</strong> — способность осознавать и анализировать своё отношение и поведение.</p>
+        <p><strong>Сензитивный период</strong> — возрастной период, наиболее благоприятный для формирования определённых качеств личности. Для формирования основ экологической культуры — это возраст 6–10 лет.</p>
+        <p><strong>Экологически устойчивый стиль жизни</strong> — образ жизни, при котором человек удовлетворяет свои потребности, не нанося вреда природе.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Из каких четырёх компонентов состоит экологическая культура.</li>
+            <li>Какие методики позволяют диагностировать каждый компонент.</li>
+            <li>Как использовать тест «Что я знаю о природе?» для диагностики когнитивного компонента.</li>
+            <li>Как оценивать эмоционально-ценностное отношение к природе по методике С.Н. Глазачева.</li>
+            <li>Как применять анкету «Что я делаю по отношению к природе?».</li>
+            <li>Как разбирать экологические ситуации для диагностики деятельностного и рефлексивного компонентов.</li>
+            <li>Как использовать метод незаконченных предложений.</li>
+            <li>Почему отношение к деньгам является важным критерием экологической культуры.</li>
+            <li>Как составить комплексную диагностическую карту и определить уровень сформированности экологической культуры.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Мы не можем заставить ребёнка любить природу. Но мы можем создать условия, в которых эта любовь родится сама. А диагностика — это инструмент, который помогает нам увидеть, где мы находимся на этом пути».
+        <span class="quote-author">— из размышлений об экологическом воспитании</span>
+    </div>
+
+    <h2>🚀 Что дальше?</h2>
+
+    <p>В следующей главе мы перейдём к <strong>диагностике нравственных качеств и воспитанности личности</strong>. Мы разберём:</p>
+
+    <ul>
+        <li>какие критерии нравственной воспитанности существуют;</li>
+        <li>как диагностировать нравственные представления, эмоциональное отношение к моральным нормам и уровень воспитанности;</li>
+        <li>какие методики использовать для детей 6–10 лет;</li>
+        <li>как учитывать отсроченный характер результатов воспитания.</li>
+    </ul>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter4.html" class="button">📖 Перейти к главе 4. «Диагностика нравственных качеств и воспитанности» →</a>
+        <a href="chapter2.html" class="button secondary">← Вернуться к главе 2</a>
+        <a href="index.html" class="button secondary">🏠 К плану курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 3. Диагностика уровня сформированности экологической культуры | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 9. Анализ готовых диагностических инструментов: критерии экспертизы и типичные ошибки</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 14px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin: 6px 0;
+            border-left: 4px solid #0891b2;
+        }
+        .checklist-item .check-box {
+            min-width: 24px;
+            height: 24px;
+            border: 2px solid #0891b2;
+            border-radius: 6px;
+            background: white;
+            margin-top: 2px;
+        }
+        .checklist-item .check-text {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+
+        .criteria-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 18px 0;
+            position: relative;
+        }
+        .criteria-card::before {
+            content: "🔍 Критерий";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0ea5e9;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .criteria-card p:first-child { margin-top: 8px; }
+        .criteria-title {
+            font-weight: 700;
+            color: #155e75;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter8.html" class="back-link" style="margin-left: 15px;">← Глава 8</a>
+
+    <h1>🔍 Глава 9. Анализ готовых диагностических инструментов: критерии экспертизы и типичные ошибки</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~40 минут | 🎯 Цель: освоить методику всестороннего анализа готовых диагностических инструментов, научиться выявлять их сильные и слабые стороны, а также избегать типичных ошибок при проектировании собственного инструментария</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Мы прошли долгий путь: научились проектировать диагностический инструментарий, разобрали конкретные методики для каждой из шести содержательных областей. Но теперь настало время взглянуть на нашу работу <em>критически</em>. Задумывались ли вы, почему одни диагностические методики работают годами, а другие — «умирают» после первого применения? Почему одни педагоги с успехом используют чужие разработки, а другие — терпят неудачу?</p>
+        <p>Ответ прост: <strong>настоящий профессионал умеет не только создавать, но и анализировать</strong>. Он может взять готовую методику, увидеть её сильные стороны, распознать скрытые недостатки, адаптировать под свои условия. Именно этому искусству экспертизы посвящена наша глава.</p>
+        <p>Мы разберём, где искать готовые диагностические инструменты, по каким критериям их оценивать, какие ошибки чаще всего встречаются при проектировании, и как избежать их в своей работе. И, что особенно важно, — научимся <em>бережно относиться к чужому труду</em>, не впадая при этом в слепое доверие.</p>
+    </div>
+
+    <div class="quote">
+        «Профессионал — это не тот, кто не ошибается, а тот, кто умеет учиться на ошибках — своих и чужих. Анализ готовых диагностических инструментов — это и есть способ учиться на чужом опыте».
+        <span class="quote-author">— из размышлений о педагогической экспертизе</span>
+    </div>
+
+    <h2>📚 Где находить готовые диагностические инструменты</h2>
+
+    <p>Прежде чем анализировать, нужно найти. Существует несколько основных источников, где можно познакомиться с готовыми диагностическими инструментами.</p>
+
+    <h3>Источник 1. Методические кабинеты учреждений дополнительного образования</h3>
+
+    <p><strong>Что это?</strong> В каждом учреждении дополнительного образования детей и молодёжи формируется методический кабинет или методический совет, где накапливаются разработки педагогов.</p>
+
+    <p><strong>Преимущества:</strong> доступность, возможность обсудить с коллегами, увидеть методику «в действии».</p>
+
+    <p><strong>Ограничения:</strong> разработки могут быть устаревшими, не всегда соответствуют актуальным нормативным требованиям.</p>
+
+    <h3>Источник 2. Республиканские методические кластеры и опорные площадки</h3>
+
+    <p><strong>Что это?</strong> В Республике Беларусь действует система республиканских методических кластеров и опорных площадок по направлениям дополнительного образования. Эти структуры создаются на базе ведущих учреждений и аккумулируют лучшие методические разработки.</p>
+
+    <p><strong>Преимущества:</strong> высокое качество, прохождение экспертизы, актуальность.</p>
+
+    <p><strong>Где искать:</strong> сайты Национального центра художественного творчества детей и молодёжи, Республиканского центра экологии и краеведения.</p>
+
+    <h3>Источник 3. Республиканские и областные конкурсы методических разработок</h3>
+
+    <p><strong>Что это?</strong> Ежегодно проводятся конкурсы методических разработок, на которых педагоги представляют свои диагностические инструменты. Материалы победителей и лауреатов публикуются в сборниках и на сайтах организаторов.</p>
+
+    <p><strong>Преимущества:</strong> признанные образцы, прошедшие экспертизу на высоком уровне.</p>
+
+    <h3>Источник 4. Электронные ресурсы и профессиональные сообщества</h3>
+
+    <p><strong>Что это?</strong> Профессиональные интернет-сообщества педагогов дополнительного образования, методические платформы, блоги.</p>
+
+    <p><strong>Преимущества:</strong> разнообразие, доступность.</p>
+
+    <p><strong>Ограничения:</strong> далеко не всё, что размещено в сети, соответствует нормативным требованиям. Требуется критическое осмысление.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно!</strong><br>
+        При анализе готовых диагностических инструментов, найденных в интернете, <strong>всегда проверяйте</strong>, соответствуют ли они действующим нормативным документам Республики Беларусь. Многие материалы, размещённые в сети, могут быть устаревшими или созданными по российским стандартам, которые не применимы напрямую в белорусской практике.
+    </div>
+
+    <h2>🔍 Критерии экспертизы диагностических инструментов</h2>
+
+    <p>Экспертиза диагностического инструментария проводится по нескольким взаимосвязанным критериям. Рассмотрим их подробно.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема критериев экспертизы диагностических инструментов">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">КРИТЕРИИ ЭКСПЕРТИЗЫ ДИАГНОСТИЧЕСКИХ ИНСТРУМЕНТОВ</text>
+
+        <!-- Центральный круг -->
+        <circle cx="350" cy="250" r="70" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="350" y="240" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">ЭКСПЕРТИЗА</text>
+        <text x="350" y="260" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">ИНСТРУМЕНТА</text>
+
+        <!-- 6 критериев вокруг -->
+        <!-- Комплексность -->
+        <rect x="30" y="60" width="170" height="55" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="115" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">🔗 КОМПЛЕКСНОСТЬ</text>
+        <text x="115" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">полнота компонентов</text>
+
+        <!-- Научность -->
+        <rect x="270" y="60" width="170" height="55" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="355" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">📖 НАУЧНОСТЬ</text>
+        <text x="355" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">достоверность</text>
+
+        <!-- Доступность -->
+        <rect x="510" y="60" width="170" height="55" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="595" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">🌈 ДОСТУПНОСТЬ</text>
+        <text x="595" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">соответствие возрасту</text>
+
+        <!-- Вариативность -->
+        <rect x="30" y="360" width="170" height="55" rx="12" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="115" y="382" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">🔀 ВАРИАТИВНОСТЬ</text>
+        <text x="115" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">разные уровни</text>
+
+        <!-- Практико-ориентированность -->
+        <rect x="270" y="360" width="170" height="55" rx="12" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+        <text x="355" y="382" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#854d0e">🛠️ ПРАКТИКА</text>
+        <text x="355" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">применимость</text>
+
+        <!-- Объективность -->
+        <rect x="510" y="360" width="170" height="55" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+        <text x="595" y="382" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#14532d">⚖️ ОБЪЕКТИВНОСТЬ</text>
+        <text x="595" y="400" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#14532d">чёткие критерии</text>
+
+        <!-- Стрелки к центру -->
+        <defs>
+            <marker id="arrow9" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="170" y1="120" x2="285" y2="210" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow9)"/>
+        <line x1="355" y1="120" x2="355" y2="175" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow9)"/>
+        <line x1="540" y1="120" x2="425" y2="210" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow9)"/>
+        <line x1="170" y1="360" x2="285" y2="290" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow9)"/>
+        <line x1="355" y1="360" x2="355" y2="325" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow9)"/>
+        <line x1="540" y1="360" x2="425" y2="290" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow9)"/>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 9.1. Шесть критериев экспертизы диагностических инструментов</p>
+
+    <h3>Критерий 1. Комплексность</h3>
+
+    <p><strong>Комплексность</strong> — это полнота представленных материалов. Диагностический инструментарий должен охватывать все основные компоненты:</p>
+
+    <ul>
+        <li>цели и задачи диагностики;</li>
+        <li>описание методик и процедур;</li>
+        <li>критерии оценки и уровни;</li>
+        <li>формы фиксации результатов;</li>
+        <li>рекомендации по интерпретации.</li>
+    </ul>
+
+    <p>Если какой-либо из компонентов отсутствует или представлен фрагментарно, комплексность считается недостаточной.</p>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка: «диагностика без критериев»</div>
+        <p>Педагог нашёл готовую методику: набор заданий для детей по теме «Времена года». Но в описании не указано, <em>как</em> оценивать результаты, <em>что</em> считать высоким уровнем, а что — низким. В итоге каждый педагог интерпретирует результаты по-своему — диагностика теряет объективность.</p>
+    </div>
+
+    <h3>Критерий 2. Научность</h3>
+
+    <p><strong>Научность</strong> предполагает, что диагностический инструментарий опирается на современные научные представления, использует корректную терминологию, не содержит фактических ошибок.</p>
+
+    <p>При экспертизе проверяется:</p>
+    <ul>
+        <li>соответствие теоретических оснований современному уровню науки;</li>
+        <li>корректность использования понятий и терминов;</li>
+        <li>отсутствие устаревших или опровергнутых данных;</li>
+        <li>наличие ссылок на источники (для теоретических материалов).</li>
+    </ul>
+
+    <h3>Критерий 3. Доступность</h3>
+
+    <p><strong>Доступность</strong> — соответствие содержания и форм диагностики возрастным и индивидуальным особенностям детей. Инструмент, рассчитанный на детей 6–10 лет, не должен содержать абстрактных теоретических построений, доступных только старшеклассникам.</p>
+
+    <p>При экспертизе оценивается:</p>
+    <ul>
+        <li>соответствие сложности материала возрасту;</li>
+        <li>ясность и понятность формулировок;</li>
+        <li>достаточность наглядности;</li>
+        <li>учёт индивидуальных особенностей (вариативность заданий).</li>
+    </ul>
+
+    <h3>Критерий 4. Вариативность</h3>
+
+    <p><strong>Вариативность</strong> — наличие заданий разного уровня сложности, разных форм предъявления, разных способов выполнения. Это позволяет адаптировать диагностику под индивидуальные особенности каждого ребёнка.</p>
+
+    <div class="green-note">
+        <strong>🌿 Почему это важно?</strong><br>
+        Дети 6–10 лет очень разные: одни схватывают на лету, другие нуждаются в поддержке. Если диагностика предлагает только один уровень сложности, она либо «не дотягивает» до сильных детей, либо «пугает» слабых. Вариативность решает эту проблему.
+    </div>
+
+    <h3>Критерий 5. Практико-ориентированность</h3>
+
+    <p><strong>Практико-ориентированность</strong> — применимость диагностики в реальных условиях учреждения дополнительного образования. Инструмент должен быть удобен в использовании, не требовать чрезмерных ресурсов, вписываться в образовательный процесс.</p>
+
+    <p>При экспертизе оценивается:</p>
+    <ul>
+        <li>простота проведения (не требует специального оборудования);</li>
+        <li>экономия времени (не перегружает занятие);</li>
+        <li>возможность использования в групповой и индивидуальной форме;</li>
+        <li>наличие готовых бланков и форм для фиксации.</li>
+    </ul>
+
+    <h3>Критерий 6. Объективность</h3>
+
+    <p><strong>Объективность</strong> означает, что результаты диагностики не зависят от субъективных предпочтений педагога, а отражают реальный уровень развития ребёнка. Это особенно важно для критериев оценки — они должны быть чёткими, однозначными и воспроизводимыми.</p>
+
+    <p>При экспертизе проверяется:</p>
+    <ul>
+        <li>наличие чётких критериев оценки;</li>
+        <li>отсутствие оценочных суждений, не подкреплённых критериями;</li>
+        <li>возможность использования диагностики разными педагогами с одинаковым результатом.</li>
+    </ul>
+
+    <h2>📋 Чек-лист эксперта</h2>
+
+    <p>Для проведения всестороннего анализа диагностического инструмента удобно использовать <strong>чек-лист</strong> — структурированный перечень вопросов, на которые нужно ответить в ходе экспертизы.</p>
+
+    <h3>Блок 1. Нормативно-правовые основания</h3>
+
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Соответствует ли инструмент требованиям Кодекса Республики Беларусь об образовании?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Учитывает ли он типовую программу эколого-биологического профиля?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Разработан ли инструмент на основе программы объединения по интересам?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Есть ли ссылки на нормативные документы в описании?</div>
+    </div>
+
+    <h3>Блок 2. Цели и задачи диагностики</h3>
+
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Сформулированы ли цели и задачи диагностики диагностично (измеримо)?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Соответствуют ли задачи трём группам результатов (личностные, метапредметные, предметные)?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Указан ли возраст детей, для которых предназначен инструмент?</div>
+    </div>
+
+    <h3>Блок 3. Содержание и методики</h3>
+
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Охватывает ли инструмент все заявленные компоненты (когнитивный, эмоциональный, деятельностный)?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Соответствуют ли задания возрастным особенностям детей?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Есть ли задания разного уровня сложности (вариативность)?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Используются ли разнообразные формы заданий (устные, конструкторские, творческие)?</div>
+    </div>
+
+    <h3>Блок 4. Критерии оценки</h3>
+
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Есть ли чёткие критерии оценки по каждому заданию?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Описаны ли уровни (высокий, средний, низкий) с конкретными признаками?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Возможно ли использование критериев разными педагогами с одинаковым результатом?</div>
+    </div>
+
+    <h3>Блок 5. Формы фиксации и интерпретации</h3>
+
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Есть ли готовые формы для фиксации результатов (диагностические карты, таблицы)?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Описана ли методика интерпретации результатов?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Даны ли рекомендации по использованию результатов для корректировки образовательного процесса?</div>
+    </div>
+
+    <h3>Блок 6. Оформление</h3>
+
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Единообразно ли оформлены все материалы?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Есть ли титульный лист, содержание, нумерация страниц?</div>
+    </div>
+    <div class="checklist-item">
+        <div class="check-box"></div>
+        <div class="check-text">Аккуратно ли оформлены таблицы, схемы, рисунки?</div>
+    </div>
+
+    <h2>⚠️ Типичные ошибки при проектировании диагностического инструментария</h2>
+
+    <p>Анализ множества диагностических инструментов, представленных на конкурсы и в методические кабинеты, позволяет выделить <strong>типичные ошибки</strong>. Знание этих ошибок поможет вам избежать их в собственной работе.</p>
+
+    <h3>Ошибки в целеполагании</h3>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 1: Неизмеримые цели</div>
+        <p>Формулировки типа «развитие творческих способностей» без указания конкретных параметров не позволяют проверить достижение цели. Что значит «развитие»? Как его измерить? Непонятно.</p>
+        <p><strong>Как исправить:</strong> формулируйте цели диагностично. Например: «Определить уровень сформированности умения составлять связный рассказ по серии картинок».</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 2: Подмена цели задачей</div>
+        <p>Цель — это образ результата, а задача — шаг к его достижению. Часто педагоги формулируют задачи вместо цели: «Провести диагностику...» — это не цель, а задача.</p>
+        <p><strong>Как исправить:</strong> цель должна отвечать на вопрос «что будет достигнуто?», а задачи — на вопрос «как?».</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 3: Отсутствие воспитательных задач</div>
+        <p>Некоторые диагностические инструменты сосредоточены только на предметных результатах, забывая о личностном развитии.</p>
+        <p><strong>Как исправить:</strong> включите в диагностику оценку личностных результатов (мотивация, ценностные ориентации, нравственные качества).</p>
+    </div>
+
+    <h3>Ошибки в структурировании содержания</h3>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 4: Несоответствие заданий и критериев</div>
+        <p>В диагностике заявлены одни критерии, а задания проверяют совсем другое. Например, критерий «умение работать в паре», а задания — индивидуальные.</p>
+        <p><strong>Как исправить:</strong> каждое задание должно проверять именно тот критерий, который заявлен.</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 5: Нарушение логики</div>
+        <p>Задания расположены не последовательно (например, сложное предшествует простому). Это затрудняет диагностику и снижает мотивацию детей.</p>
+        <p><strong>Как исправить:</strong> выстраивайте задания от простого к сложному, соблюдайте логику.</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 6: Перегрузка теоретическим материалом</div>
+        <p>Диагностический инструмент содержит много теории и мало практических заданий. Дети 6–10 лет не воспринимают абстрактные тексты.</p>
+        <p><strong>Как исправить:</strong> сократите теоретическую часть, увеличьте количество практических и игровых заданий.</p>
+    </div>
+
+    <h3>Ошибки в методических материалах</h3>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 7: Однообразие форм</div>
+        <p>Все задания проводятся по одной схеме (например, только беседа и практическая работа). Дети теряют интерес.</p>
+        <p><strong>Как исправить:</strong> используйте разнообразные формы: устные, конструкторские, комбинаторные, творческие, игровые.</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 8: Отсутствие наглядности</div>
+        <p>Диагностика содержит только словесные задания, без карточек, схем, рисунков. Для детей 6–10 лет это критично.</p>
+        <p><strong>Как исправить:</strong> добавьте наглядные материалы (контуры для раскраски, схемы, раздаточный материал).</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 9: Несоответствие дидактики возрасту</div>
+        <p>Материалы слишком сложные или слишком простые для заявленного возраста.</p>
+        <p><strong>Как исправить:</strong> проверьте каждое задание на соответствие возрастным особенностям детей.</p>
+    </div>
+
+    <h3>Ошибки в диагностике</h3>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 10: Сведение диагностики к тестам</div>
+        <p>Проверяются только знания, а умения и личностные качества не оцениваются.</p>
+        <p><strong>Как исправить:</strong> включите в диагностику разные методы: наблюдение, проективные методики, анализ продуктов деятельности.</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 11: Отсутствие критериев</div>
+        <p>Непонятно, по каким параметрам оценивается результат.</p>
+        <p><strong>Как исправить:</strong> разработайте чёткие критерии и опишите уровни (высокий, средний, низкий) с конкретными признаками.</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 12: Субъективизм</div>
+        <p>Оценка зависит от настроения педагога, а не от чётких критериев.</p>
+        <p><strong>Как исправить:</strong> используйте стандартизированные формы фиксации, понятные разным педагогам.</p>
+    </div>
+
+    <h3>Ошибки в оформлении</h3>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 13: Отсутствие единого стиля</div>
+        <p>Разные разделы оформлены по-разному.</p>
+        <p><strong>Как исправить:</strong> приведите все материалы к единому стилю.</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 14: Отсутствие содержания</div>
+        <p>Невозможно быстро найти нужный раздел.</p>
+        <p><strong>Как исправить:</strong> добавьте оглавление с указанием страниц.</p>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка 15: Небрежность</div>
+        <p>Опечатки, ошибки, неаккуратные таблицы и схемы.</p>
+        <p><strong>Как исправить:</strong> проведите финальную вычитку и проверку единообразия оформления.</p>
+    </div>
+
+    <h2>🖼️ Практика анализа: разбор кейсов</h2>
+
+    <p>Рассмотрим несколько типичных кейсов, которые могут встретиться при экспертизе диагностических инструментов эколого-биологического профиля.</p>
+
+    <div class="example-card">
+        <div class="example-title">Кейс 1. Диагностика без критериев оценки</div>
+        <p><strong>Ситуация:</strong> Педагог представил диагностический инструментарий по теме «Экологическая культура». Задания интересные, разнообразные, соответствуют возрасту. Но в описании не указано, <em>как</em> оценивать результаты.</p>
+        <p><strong>Анализ:</strong> Это серьёзное упущение. Без критериев оценки диагностика теряет объективность. Каждый педагог будет интерпретировать результаты по-своему.</p>
+        <p><strong>Рекомендация:</strong> Разработать чёткие критерии оценки по каждому заданию и описать уровни (высокий, средний, низкий) с конкретными признаками.</p>
+    </div>
+
+    <div class="example-card">
+        <div class="example-title">Кейс 2. Диагностика, не соответствующая возрасту</div>
+        <p><strong>Ситуация:</strong> Диагностический инструмент для детей 6–7 лет содержит задания, требующие абстрактного мышления (например, «объясни, почему...»), которое ещё не сформировано в этом возрасте.</p>
+        <p><strong>Анализ:</strong> Это несоответствие возрастным особенностям. Дети 6–7 лет мыслят наглядно-образно, им трудно давать развёрнутые абстрактные объяснения.</p>
+        <p><strong>Рекомендация:</strong> Заменить абстрактные вопросы на наглядные задания (покажи, выбери, нарисуй, соедини).</p>
+    </div>
+
+    <div class="example-card">
+        <div class="example-title">Кейс 3. Диагностика, дублирующая программу</div>
+        <p><strong>Ситуация:</strong> Педагог разработал диагностику, которая полностью повторяет задания из программы. Диагностика становится «второй программой» и не даёт новой информации.</p>
+        <p><strong>Анализ:</strong> Диагностика должна <em>оценивать</em> результаты, а не дублировать обучение. Если задания совпадают с программными, это не диагностика, а повторение.</p>
+        <p><strong>Рекомендация:</strong> Разработать диагностические задания, которые <em>отличаются</em> от программных, но проверяют те же результаты.</p>
+    </div>
+
+    <div class="example-card">
+        <div class="example-title">Кейс 4. Диагностика без учёта индивидуальных особенностей</div>
+        <p><strong>Ситуация:</strong> Диагностический инструмент содержит только один уровень сложности заданий. Дети с разным уровнем развития оказываются в неравных условиях.</p>
+        <p><strong>Анализ:</strong> Отсутствие вариативности — серьёзный недостаток. Сильные дети «скучают», слабые — «не справляются».</p>
+        <p><strong>Рекомендация:</strong> Разработать задания разного уровня сложности (базовый, повышенный). Предусмотреть возможность выбора.</p>
+    </div>
+
+    <h2>📖 Из практики: истории о диагностике</h2>
+
+    <div class="story-card">
+        <div class="story-title">«Две методики — два результата»</div>
+        <div class="story-text">
+            <p>Молодой педагог нашёл в интернете две готовые методики для диагностики экологической культуры детей. Первая была яркой, красочной, с красивыми картинками. Вторая — скромной, с небольшим количеством заданий, но с чёткими критериями.</p>
+            <p>Педагог выбрал первую — она казалась более привлекательной. Провёл диагностику, получил результаты. Но когда стал их анализировать, понял: результаты <em>невозможно сравнить</em> между детьми, потому что критерии оценки отсутствовали. Каждое задание он оценивал «на глаз».</p>
+            <p>Тогда педагог вернулся ко второй методике. Она была не такой красивой, но зато <em>точной</em>. Результаты диагностики позволили ему увидеть реальную картину и спланировать работу.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: при выборе готового диагностического инструмента <strong>внешняя привлекательность не главное</strong>. Главное — чёткость критериев, соответствие возрасту, практичность. Красота — приятный бонус, но не основание для выбора.</div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">«Диагностика, которая помогла всем»</div>
+        <div class="story-text">
+            <p>Опытный педагог Татьяна Ивановна разработала диагностику экологической культуры для детей 6–10 лет. Она представила её на методическом совете. Коллеги отметили: диагностика хорошая, но задания одинаковые для всех возрастов.</p>
+            <p>Татьяна Ивановна прислушалась к замечанию. Она <em>адаптировала</em> диагностику: для 6–7 лет — простые задания с картинками, для 8–9 лет — задания средней сложности, для 10 лет — задания повышенной сложности. Каждая возрастная группа получила свой вариант.</p>
+            <p>Через год коллеги из других учреждений попросили у неё эту диагностику. А ещё через год — она была опубликована в республиканском сборнике как <em>образец</em>. Так простая адаптация превратила хорошую методику в <em>универсальный инструмент</em>.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: анализ и адаптация готовых инструментов — это не «переделка ради переделки». Это <strong>путь к созданию качественного инструмента</strong>, который может помочь многим педагогам.</div>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Типичная ошибка: слепое доверие к авторитету</div>
+        <p>Педагог нашёл диагностику в сборнике, изданном 15 лет назад. Автор — известный учёный. Педагог решил: «Раз автор известный, значит, методика хорошая» — и провёл её без адаптации. Результаты оказались неинформативными: задания не соответствовали современным детям и новым нормативным требованиям.</p>
+        <p><strong>Как исправить?</strong> Всегда проверяйте готовый инструмент на соответствие <em>актуальным</em> требованиям и <em>вашим</em> детям. Авторитет автора — не гарантия того, что методика подойдёт именно вам.</p>
+    </div>
+
+    <h2>🧠 Разнообразие диагностических заданий для анализа инструментов</h2>
+
+    <p>Разберём, какие типы заданий можно использовать при экспертизе и адаптации диагностических инструментов.</p>
+
+    <h3>Устные задания</h3>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Определи критерий»</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог предлагает коллегам описание готовой методики и просит определить, какие критерии экспертизы в ней соблюдены, а какие — нарушены.</p>
+        <p><strong>Пример описания:</strong> «Методика содержит 20 заданий для детей 6–10 лет. Все задания устные. Критерии оценки не указаны. Оформление — единое».</p>
+        <p><strong>Ответ:</strong> критерий «доступность» — частично (нет вариативности по возрасту); «объективность» — нарушен (нет критериев); «комплексность» — нарушен; «оформление» — соблюдён.</p>
+    </div>
+
+    <h3>Конструкторские и комбинаторные задания</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Собери чек-лист»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📊 Составь</span></p>
+        <p>Педагог даёт коллегам набор карточек с вопросами для экспертизы. Задача — распределить их по блокам чек-листа (нормативные основания, цели, содержание, критерии, формы фиксации, оформление).</p>
+    </div>
+
+    <h3>Задания на развитие памяти, внимания и мышления</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Найди ошибку»</div>
+        <p><span class="signal">👁️ Найди</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог показывает коллегам фрагмент диагностической методики с ошибкой. Задача — найти ошибку и объяснить, в чём она заключается. Например: «Задание для детей 6 лет: «Напиши эссе на тему "Почему важно беречь природу"». — ошибка: не соответствует возрасту.</p>
+    </div>
+
+    <h3>Задания на развитие воображения</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Придумай улучшение»</div>
+        <p><span class="signal">📝 Придумай</span></p>
+        <p>Педагог предлагает описание готового диагностического инструмента и просит придумать 3–5 улучшений, которые сделают его более качественным.</p>
+    </div>
+
+    <h3>Задания на развитие двигательных навыков</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Создай образец»</div>
+        <p><span class="signal">📊 Создай</span> <span class="signal">🎨 Оформи</span></p>
+        <p>Педагог предлагает коллегам создать образец диагностической карты для одного из блоков диагностики (например, экологическая культура). Оценивается полнота и практичность образца.</p>
+    </div>
+
+    <h3>Задания на диагностику стиля общения</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🤝 Задание «Экспертиза в паре»</div>
+        <p><span class="signal">🤝 Работа в паре</span> <span class="signal">👁️ Наблюдение</span></p>
+        <p>Два педагога получают описание одного диагностического инструмента и проводят его экспертизу совместно. Наблюдатель фиксирует, как они договариваются, слушают друг друга, приходят к общему выводу.</p>
+        <p><strong>Что диагностируется:</strong> коммуникативные навыки, умение работать в команде, стиль общения.</p>
+    </div>
+
+    <h2>🎯 Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.1. «Определи критерий» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите описание ситуации с критерием экспертизы, который нарушен.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ситуация</th>
+                    <th>Нарушенный критерий</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. В диагностике нет критериев оценки</td><td>1. Доступность</td></tr>
+                <tr><td>Б. Задания не соответствуют возрасту детей</td><td>2. Объективность</td></tr>
+                <tr><td>В. Все задания одного уровня сложности</td><td>3. Комплексность</td></tr>
+                <tr><td>Г. Отсутствуют формы фиксации результатов</td><td>4. Вариативность</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.2. «Проведи экспертизу» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Запиши</span> <span class="signal">📊 Оцени</span></p>
+        <p>Возьмите любую доступную готовую диагностическую методику (в методическом кабинете, в интернете, у коллег). Проведите её анализ по чек-листу из этой главы. Определите, какие критерии соблюдены, а какие — нарушены. Напишите краткое экспертное заключение (1 страница).</p>
+        <p><strong>Общие сведения о методике:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Соблюдённые критерии:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Нарушенные критерии и рекомендации:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 9.3. «Проверь себя» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">❓ Ответь на вопросы</span></p>
+        <ol>
+            <li>Почему экспертиза диагностического инструмента начинается с проверки нормативных оснований?</li>
+            <li>Какие шесть критериев экспертизы вы знаете?</li>
+            <li>В чём разница между «комплексностью» и «вариативностью» диагностического инструмента?</li>
+            <li>Почему отсутствие критериев оценки делает диагностику необъективной?</li>
+            <li>Как избежать типичной ошибки — «слепого доверия» к готовому инструменту?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Экспертиза диагностического инструмента</strong> — всесторонний анализ готовой методики на соответствие нормативным, содержательным, методическим и оформительским требованиям.</p>
+        <p><strong>Комплексность</strong> — полнота представленных компонентов диагностики.</p>
+        <p><strong>Научность</strong> — соответствие современным научным представлениям, корректность терминологии.</p>
+        <p><strong>Доступность</strong> — соответствие содержания и форм диагностики возрастным особенностям детей.</p>
+        <p><strong>Вариативность</strong> — наличие заданий разного уровня сложности и форм.</p>
+        <p><strong>Практико-ориентированность</strong> — применимость диагностики в реальных условиях.</p>
+        <p><strong>Объективность</strong> — независимость результатов от субъективных предпочтений педагога.</p>
+        <p><strong>Чек-лист эксперта</strong> — структурированный перечень вопросов для анализа диагностического инструмента.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Где находить готовые диагностические инструменты (методические кабинеты, республиканские кластеры, конкурсы, интернет-сообщества).</li>
+            <li>Какие шесть критериев экспертизы существуют: комплексность, научность, доступность, вариативность, практико-ориентированность, объективность.</li>
+            <li>Как использовать чек-лист эксперта для анализа готовых методик.</li>
+            <li>Какие типичные ошибки встречаются при проектировании диагностического инструментария (в целеполагании, содержании, методике, диагностике, оформлении).</li>
+            <li>Как проводить разбор кейсов и анализировать конкретные ситуации.</li>
+            <li>Как использовать разнообразные типы заданий для экспертизы (устные, конструкторские, комбинированные, на память, воображение, двигательные, на стиль общения).</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Экспертиза — это не поиск виноватых. Это поиск лучшего. Если мы научимся анализировать чужие разработки, мы сможем улучшить и свои. А вместе — создадим инструментарий, который действительно работает на развитие детей».
+        <span class="quote-author">— из размышлений о педагогической экспертизе</span>
+    </div>
+
+    <h2>🚀 Что дальше?</h2>
+
+    <p>В следующей, заключительной главе мы перейдём к <strong>оформлению, апробации и публикации диагностического инструментария</strong>. Мы разберём:</p>
+
+    <ul>
+        <li>требования к оформлению диагностического раздела ОМК «Культура»;</li>
+        <li>комплектацию диагностических материалов в единый документ;</li>
+        <li>апробацию в течение учебного года;</li>
+        <li>внесение корректировок по результатам апробации;</li>
+        <li>публикацию и представление диагностического инструментария.</li>
+    </ul>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter10.html" class="button">📖 Перейти к главе 10. «Оформление, апробация и публикация диагностического инструментария» →</a>
+        <a href="chapter8.html" class="button secondary">← Вернуться к главе 8</a>
+        <a href="index.html" class="button secondary">🏠 К плану курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 9. Анализ готовых диагностических инструментов | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

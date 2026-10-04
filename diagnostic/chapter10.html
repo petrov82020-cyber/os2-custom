@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 10. Оформление, апробация и публикация диагностического инструментария</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .final-banner {
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 24px;
+            border-radius: 18px;
+            margin: 30px 0;
+        }
+        .final-banner h2 {
+            color: white;
+            border: none;
+            padding: 0;
+            margin-bottom: 12px;
+            font-size: 1.8rem;
+        }
+        .final-banner p {
+            font-size: 1.02rem;
+            margin: 8px 0;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f0f9ff;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-left: 5px solid #0ea5e9;
+        }
+        .step-num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 50px;
+            text-align: center;
+            line-height: 1;
+        }
+        .step-content {
+            font-size: 0.94rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .step-content strong { color: #155e75; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter9.html" class="back-link" style="margin-left: 15px;">← Глава 9</a>
+
+    <h1>📦 Глава 10. Оформление, апробация и публикация диагностического инструментария</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~42 минуты | 🎯 Цель: освоить требования к оформлению диагностического раздела ОМК «Культура», научиться проводить апробацию, вносить корректировки и готовить инструментарий к публикации</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Мы прошли долгий путь. От нормативной базы — через теорию диагностики — к конкретным методикам для каждого содержательного блока. Мы научились проектировать задания, анализировать готовые инструменты, выявлять ошибки. И вот мы подошли к <strong>финалу</strong> — моменту, когда весь наш труд должен превратиться в единый, оформленный, готовый к использованию документ.</p>
+        <p>Но этот этап — не просто «формальность». Задумывались ли вы, почему одни методические разработки живут годами, переходя от педагога к педагогу, а другие — остаются в столе автора? Ответ — в <strong>качестве оформления, продуманности апробации и готовности к публикации</strong>. Именно этим вопросам посвящена завершающая глава нашего курса.</p>
+        <p>Мы разберём, как правильно оформить диагностический раздел, как провести апробацию и внести корректировки, как подготовить инструментарий к публикации. И — что особенно важно — как завершить наш курс <em>итоговым заданием</em>, которое объединит всё, что мы освоили.</p>
+    </div>
+
+    <div class="quote">
+        «Диагностический инструментарий — это не архивный документ. Это живой инструмент, который должен работать. А чтобы он работал, его нужно правильно оформить, проверить на практике и сделать доступным для коллег».
+        <span class="quote-author">— из размышлений о завершении работы над ОМК</span>
+    </div>
+
+    <h2>📐 Требования к оформлению диагностического раздела ОМК «Культура»</h2>
+
+    <p>Оформление диагностического раздела — это не «косметика», а <strong>показатель профессиональной культуры педагога</strong>. Хорошо оформленный документ легко читается, быстро ориентирует в материалах, вызывает доверие. Плохо оформленный — даже при глубоком содержании — теряет свою ценность.</p>
+
+    <h3>Общие требования к оформлению</h3>
+
+    <p>Диагностический раздел ОМК «Культура» оформляется в соответствии со следующими требованиями:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Параметр</th>
+                <th>Требование</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Формат</strong></td>
+                <td>Текстовый документ А4 (210 × 297 мм)</td>
+            </tr>
+            <tr>
+                <td><strong>Шрифт</strong></td>
+                <td>Times New Roman или Arial, размер 12–14 пт</td>
+            </tr>
+            <tr>
+                <td><strong>Межстрочный интервал</strong></td>
+                <td>Одинарный или полуторный</td>
+            </tr>
+            <tr>
+                <td><strong>Поля</strong></td>
+                <td>Левое — 30 мм, правое — 15 мм, верхнее — 20 мм, нижнее — 20 мм</td>
+            </tr>
+            <tr>
+                <td><strong>Абзацный отступ</strong></td>
+                <td>1,25 см</td>
+            </tr>
+            <tr>
+                <td><strong>Выравнивание</strong></td>
+                <td>По ширине</td>
+            </tr>
+            <tr>
+                <td><strong>Нумерация страниц</strong></td>
+                <td>Сквозная, в правом нижнем углу или по центру</td>
+            </tr>
+            <tr>
+                <td><strong>Заголовки</strong></td>
+                <td>Выделяются полужирным шрифтом, выравниваются по центру или по левому краю</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Документ должен быть аккуратно оформлен: без опечаток, ошибок, небрежных таблиц и схем. Все таблицы, рисунки, схемы должны быть пронумерованы и иметь названия. Если документ содержит приложения, на них должны быть ссылки в основном тексте.</p>
+
+    <h3>Структура диагностического раздела и порядок расположения материалов</h3>
+
+    <p>Диагностический раздел ОМК «Культура» должен содержать следующие структурные элементы в указанном порядке:</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Структура диагностического раздела">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">СТРУКТУРА ДИАГНОСТИЧЕСКОГО РАЗДЕЛА</text>
+
+        <!-- Блоки структуры -->
+        <rect x="100" y="60" width="500" height="45" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="350" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#1e40af">1. Титульный лист</text>
+
+        <rect x="100" y="115" width="500" height="45" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="350" y="143" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">2. Пояснительная записка к диагностическому инструментарию</text>
+
+        <rect x="100" y="170" width="500" height="45" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="350" y="198" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#92400e">3. Содержание диагностического инструментария</text>
+
+        <rect x="100" y="225" width="500" height="45" rx="10" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="350" y="253" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#6b21a8">4. Методика проведения диагностики</text>
+
+        <rect x="100" y="280" width="500" height="45" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+        <text x="350" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">5. Критерии оценки и интерпретация результатов</text>
+
+        <rect x="100" y="335" width="500" height="45" rx="10" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+        <text x="350" y="363" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#854d0e">6. Формы фиксации результатов</text>
+
+        <rect x="100" y="390" width="500" height="45" rx="10" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+        <text x="350" y="418" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#14532d">7. Приложения (бланки, карты, стимульный материал)</text>
+
+        <!-- Стрелка -->
+        <defs>
+            <marker id="arrow10" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="350" y1="440" x2="350" y2="470" stroke="#0891b2" stroke-width="2" marker-end="url(#arrow10)"/>
+        <text x="350" y="495" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-style="italic" fill="#64748b">Порядок расположения нельзя менять произвольно</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 10.1. Структура диагностического раздела ОМК «Культура»</p>
+
+    <h3>Оформление титульного листа</h3>
+
+    <p>Титульный лист — первый лист диагностического раздела. Он не нумеруется, но включается в общую нумерацию страниц. В верхней части указывается полное наименование учреждения образования в соответствии с уставом. В правой части — гриф утверждения. В центральной части — название раздела, профиль, автор. В нижней части — город и год разработки.</p>
+
+    <div class="example-card">
+        <div class="example-title">Образец оформления титульного листа</div>
+        <p style="text-align:center;font-family:'Courier New',monospace;font-size:0.88rem;line-height:1.5;background:white;padding:20px;border-radius:8px;">
+            (наименование учреждения образования)<br><br>
+            <span style="float:right;">УТВЕРЖДЕНО<br>Протокол педагогического совета<br>от «___» _____ 20___ г. № ___</span><br><br>
+            <span style="clear:both;"></span>
+            <strong>ДИАГНОСТИЧЕСКИЙ ИНСТРУМЕНТАРИЙ<br>к образовательно-методическому комплексу «Культура»</strong><br><br>
+            Профиль: эколого-биологический<br>
+            Возраст детей: 6–10 лет<br>
+            Автор-составитель: _______________<br><br><br>
+            Город, 20___ год
+        </p>
+    </div>
+
+    <h3>Оформление таблиц и приложений</h3>
+
+    <p>Диагностические карты, таблицы критериев, перечни заданий оформляются в виде таблиц. Таблицы должны иметь порядковый номер и название. Например: «Таблица 1. Диагностическая карта учащегося». В тексте должны быть ссылки на таблицы: «представлено в таблице 1».</p>
+
+    <p>Приложения оформляются на отдельных листах. Каждое приложение имеет заголовок и порядковый номер (например, «Приложение 1. Бланк диагностической карты»). В тексте должны быть ссылки на приложения.</p>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Типичная ошибка оформления</div>
+        <p>Использование разных шрифтов и размеров в одном документе, невыровненные таблицы, отсутствие нумерации страниц, произвольное расположение разделов. Такие недочёты создают впечатление небрежности и снижают доверие к диагностическому инструментарию. Перед сдачей документа проведите финальную вычитку и проверьте единообразие оформления.</p>
+    </div>
+
+    <h2>📚 Комплектация диагностического инструментария</h2>
+
+    <p>После того как все компоненты диагностического раздела разработаны, необходимо провести <strong>комплектацию</strong> — собрать все материалы в единый документ. Рассмотрим этот процесс пошагово.</p>
+
+    <h3>Формирование основного документа</h3>
+
+    <p>Основной документ включает текстовую часть (пояснительная записка, методика проведения, критерии оценки) и табличную часть (диагностические карты, бланки). Все материалы объединяются в один файл (например, в формате DOCX).</p>
+
+    <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>Создайте новый документ.</strong> Назовите его осмысленно: «Диагностический_инструментарий_ОМК_Культура.docx».</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>Вставьте титульный лист.</strong> Проверьте правильность всех надписей.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>Добавьте пояснительную записку.</strong> Укажите цели, задачи, принципы диагностики.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>Вставьте описание содержательных блоков.</strong> Разместите по порядку: экологическая культура, нравственные качества, культура речи, личностное развитие, творческие способности, мотивация.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-content"><strong>Добавьте методику проведения диагностики.</strong> Опишите процедуры, порядок, временные рамки.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-content"><strong>Вставьте критерии оценки и интерпретацию.</strong> Опишите уровни (высокий, средний, низкий) с конкретными признаками.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">7</div>
+        <div class="step-content"><strong>Добавьте формы фиксации результатов.</strong> Диагностические карты, опорно-аналитические таблицы, карты успешности, портфолио.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">8</div>
+        <div class="step-content"><strong>Проверьте нумерацию страниц и оглавление.</strong> Оглавление поможет быстро найти нужный раздел.</div>
+    </div>
+
+    <h3>Формирование приложений</h3>
+
+    <p>Приложения формируются отдельно, но являются частью диагностического раздела. В приложения включаются:</p>
+
+    <ul>
+        <li>бланки диагностических карт и таблиц;</li>
+        <li>стимульный материал (карточки, схемы, контуры);</li>
+        <li>тексты заданий для устной диагностики;</li>
+        <li>образцы заполнения форм;</li>
+        <li>инструкции для педагогов и родителей.</li>
+    </ul>
+
+    <p>Каждое приложение оформляется на отдельном листе с указанием номера и названия. Если приложений много, составляется перечень приложений, который размещается после содержания.</p>
+
+    <h3>Электронная версия диагностического инструментария</h3>
+
+    <p>Помимо печатной версии, целесообразно подготовить <strong>электронную версию</strong>. Это удобно для хранения, распространения и публикации. Электронная версия может быть представлена в форматах:</p>
+
+    <ul>
+        <li><strong>DOCX</strong> — для редактирования;</li>
+        <li><strong>PDF</strong> — для просмотра и печати (рекомендуется как основной формат для распространения);</li>
+        <li><strong>HTML</strong> — для публикации в интернете.</li>
+    </ul>
+
+    <p>При создании PDF-версии убедитесь, что все шрифты встроены, таблицы и рисунки отображаются корректно. Проверьте документ на разных устройствах (компьютер, планшет, смартфон).</p>
+
+    <div class="green-note">
+        <strong>🌿 Совет по организации хранения.</strong> Создайте структурированную папку для хранения диагностического инструментария. Например:
+        <ul>
+            <li><strong>Диагностика_Культура/</strong>
+                <ul>
+                    <li>01_Основной_документ.docx</li>
+                    <li>01_Основной_документ.pdf</li>
+                    <li>02_Приложения/</li>
+                    <li>03_Бланки/</li>
+                    <li>04_Стимульный_материал/</li>
+                </ul>
+            </li>
+        </ul>
+        Такая структура упростит поиск нужных материалов и подготовку к публикации.
+    </div>
+
+    <h2>🔬 Апробация диагностического инструментария</h2>
+
+    <p><strong>Апробация</strong> — это проверка диагностического инструментария в реальной образовательной практике. Апробация позволяет выявить сильные и слабые стороны, определить, насколько инструментарий соответствует возрастным возможностям детей, достаточно ли времени на проведение диагностики, эффективны ли выбранные методы.</p>
+
+    <h3>Этапы апробации</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Этап</th>
+                <th>Сроки</th>
+                <th>Содержание работы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Подготовительный</strong></td>
+                <td>Август–сентябрь</td>
+                <td>Утверждение инструментария, подготовка бланков, стимульного материала, проведение входной диагностики</td>
+            </tr>
+            <tr>
+                <td><strong>Основной</strong></td>
+                <td>Октябрь–апрель</td>
+                <td>Проведение текущей и промежуточной диагностики, фиксация результатов, наблюдение за реакцией детей</td>
+            </tr>
+            <tr>
+                <td><strong>Аналитический</strong></td>
+                <td>Май</td>
+                <td>Проведение итоговой диагностики, анализ эффективности инструментария, выявление затруднений</td>
+            </tr>
+            <tr>
+                <td><strong>Корректировочный</strong></td>
+                <td>Июнь</td>
+                <td>Внесение корректировок по результатам апробации, оформление листа корректировки</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Что проверяется в ходе апробации</h3>
+
+    <ul>
+        <li><strong>Соответствие содержания возрастным возможностям.</strong> Доступны ли задания для детей 6–10 лет? Не перегружены ли они?</li>
+        <li><strong>Достаточность времени.</strong> Хватает ли времени на выполнение заданий? Не устают ли дети?</li>
+        <li><strong>Эффективность форм и методов.</strong> Какие задания вызывают наибольший интерес? Какие оказываются наиболее результативными?</li>
+        <li><strong>Работоспособность материалов.</strong> Понятны ли карточки, схемы, бланки? Соответствуют ли они возрасту?</li>
+        <li><strong>Объективность критериев.</strong> Позволяют ли критерии выявить реальный уровень достижений? Понятны ли они?</li>
+        <li><strong>Удобство фиксации.</strong> Удобны ли формы для записи результатов?</li>
+        <li><strong>Достижение заявленных результатов.</strong> Соответствуют ли полученные результаты ожидаемым?</li>
+    </ul>
+
+    <h3>Методы сбора информации в ходе апробации</h3>
+
+    <p>В ходе апробации педагог использует следующие методы:</p>
+
+    <ul>
+        <li><strong>Педагогическое наблюдение.</strong> Систематическое наблюдение за реакцией детей на диагностические задания, их активностью, интересом, утомляемостью.</li>
+        <li><strong>Анкетирование родителей.</strong> Сбор обратной связи о том, как дети рассказывают о диагностике, что им понравилось.</li>
+        <li><strong>Беседы с воспитанниками.</strong> Выявление отношения детей к диагностическим заданиям.</li>
+        <li><strong>Анализ продуктов деятельности.</strong> Оценка выполненных работ.</li>
+        <li><strong>Самоанализ педагога.</strong> Рефлексия собственной деятельности: что получилось, что вызвало затруднения, что требует доработки.</li>
+    </ul>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: как проходила апробация</div>
+        <p>Педагог разработал диагностический инструментарий и провёл апробацию в течение учебного года. На этапе анализа выяснилось:</p>
+        <ul>
+            <li>Задания на диагностику нравственных качеств оказались слишком длинными — дети 6–7 лет уставали к середине. <strong>Решение:</strong> сократить количество вопросов, разбить на два занятия.</li>
+            <li>Рисуночные методики показали высокую эффективность — дети с удовольствием рисовали, результаты были информативны. <strong>Решение:</strong> увеличить количество таких заданий.</li>
+            <li>Анкета для родителей оказалась слишком объёмной — родители не заполняли её полностью. <strong>Решение:</strong> сократить до 5 вопросов, добавить форму Google Forms для удобства.</li>
+            <li>Диагностическая карта была неудобна в использовании — приходилось записывать результаты в разные файлы. <strong>Решение:</strong> объединить всё в единую таблицу.</li>
+        </ul>
+        <p>По итогам апробации педагог внёс корректировки, и инструментарий стал значительно удобнее.</p>
+    </div>
+
+    <h2>✏️ Внесение корректировок по результатам апробации</h2>
+
+    <p>По итогам апробации в диагностический инструментарий вносятся <strong>корректировки</strong>. Это нормальный процесс: ни один инструмент не бывает совершенным с первого раза. Регулярное обновление — признак профессионального роста педагога.</p>
+
+    <h3>Что может быть скорректировано</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Что корректируется</th>
+                <th>Примеры корректировок</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Содержание заданий</strong></td>
+                <td>Упрощение или усложнение, добавление новых, исключение неэффективных</td>
+            </tr>
+            <tr>
+                <td><strong>Количество заданий</strong></td>
+                <td>Сокращение или увеличение в зависимости от времени и возраста</td>
+            </tr>
+            <tr>
+                <td><strong>Критерии оценки</strong></td>
+                <td>Уточнение формулировок, добавление новых уровней</td>
+            </tr>
+            <tr>
+                <td><strong>Формы фиксации</strong></td>
+                <td>Упрощение или детализация бланков, объединение таблиц</td>
+            </tr>
+            <tr>
+                <td><strong>Методика проведения</strong></td>
+                <td>Изменение последовательности, добавление игровых элементов</td>
+            </tr>
+            <tr>
+                <td><strong>Формы взаимодействия с родителями</strong></td>
+                <td>Сокращение анкет, использование электронных форм</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Документальное оформление корректировок</h3>
+
+    <p>Все изменения, внесённые в диагностический инструментарий, должны быть <strong>задокументированы</strong>. Это может быть сделано в форме:</p>
+
+    <ul>
+        <li><strong>Листа корректировки</strong> — таблицы, в которой указывается, что было изменено и почему;</li>
+        <li><strong>Аналитической записки</strong> — текстового документа с обоснованием изменений;</li>
+        <li><strong>Новой редакции инструментария</strong> — с указанием даты и номера протокола утверждения.</li>
+    </ul>
+
+    <div class="example-card">
+        <div class="example-title">Пример листа корректировки</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Раздел</th>
+                    <th>Что изменено</th>
+                    <th>Обоснование</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Блок «Нравственные качества»</td>
+                    <td>Сокращено количество вопросов с 10 до 6</td>
+                    <td>Дети 6–7 лет устают, теряют внимание к середине беседы</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Формы фиксации</td>
+                    <td>Добавлена сводная таблица результатов</td>
+                    <td>Упрощает анализ данных по группе</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Анкета для родителей</td>
+                    <td>Переведена в Google Forms</td>
+                    <td>Родителям удобнее заполнять онлайн</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно!</strong><br>
+        Корректировка инструментария не означает, что первоначальный вариант был плохим. Это естественный процесс совершенствования. Регулярное обновление диагностического инструментария — <strong>признак профессионального роста педагога</strong> и его готовности к постоянному развитию.
+    </div>
+
+    <h2>🌐 Подготовка к публикации</h2>
+
+    <p>Современный педагог не ограничивается хранением диагностического инструментария в методическом кабинете. Публикация в интернете позволяет:</p>
+
+    <ul>
+        <li>поделиться опытом с коллегами;</li>
+        <li>получить обратную связь и рекомендации;</li>
+        <li>представить инструментарий на конкурсах и конференциях;</li>
+        <li>сделать его доступным для родителей и воспитанников.</li>
+    </ul>
+
+    <h3>Способы публикации</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Способ</th>
+                <th>Преимущества</th>
+                <th>Ограничения</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Размещение на сайте учреждения</strong></td>
+                <td>Простота, официальный статус</td>
+                <td>Зависимость от администрации</td>
+            </tr>
+            <tr>
+                <td><strong>Создание персонального сайта</strong></td>
+                <td>Полный контроль, возможность развития</td>
+                <td>Требует времени и навыков</td>
+            </tr>
+            <tr>
+                <td><strong>Публикация в профессиональных сообществах</strong></td>
+                <td>Обратная связь от коллег</td>
+                <td>Не всегда высокое качество контента</td>
+            </tr>
+            <tr>
+                <td><strong>Облачные хранилища (Google Диск)</strong></td>
+                <td>Доступ по ссылке, простота</td>
+                <td>Меньше возможностей для навигации</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Подготовка инструментария к публикации</h3>
+
+    <p>Перед публикацией необходимо:</p>
+
+    <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>Проверить на наличие персональных данных.</strong> Убедитесь, что в документе нет лишних персональных данных (адресов, телефонов, паспортных данных).</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>Оформить в удобном для чтения виде.</strong> PDF-версия — оптимальный вариант для публикации.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>Создать краткую аннотацию.</strong> Аннотация поможет посетителям быстро понять, о чём инструментарий.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>Продумать структуру публикации.</strong> Если публикуете на сайте, продумайте навигацию: как посетитель найдёт нужный раздел.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-content"><strong>Указать контактные данные для обратной связи.</strong> Адрес электронной почты или форму обратной связи.</div>
+    </div>
+
+    <h3>Использование Google Sites для публикации</h3>
+
+    <p>Одним из наиболее удобных и доступных инструментов для публикации диагностического инструментария является платформа <strong>sites.google.com</strong>. Она позволяет создать сайт без знания программирования, обеспечивает надёжное хранение данных и предоставляет удобные инструменты для структурирования информации.</p>
+
+    <p><strong>Рекомендуемая структура сайта для публикации диагностического инструментария:</strong></p>
+
+    <ul>
+        <li><strong>Главная страница</strong> — название, автор, краткая аннотация, навигация;</li>
+        <li><strong>Пояснительная записка</strong> — полный текст пояснительной записки;</li>
+        <li><strong>Содержательные блоки</strong> — разделы по каждому блоку диагностики;</li>
+        <li><strong>Методика проведения</strong> — описание процедур;</li>
+        <li><strong>Критерии оценки</strong> — таблицы и уровни;</li>
+        <li><strong>Формы фиксации</strong> — диагностические карты, бланки;</li>
+        <li><strong>Приложения</strong> — стимульный материал, образцы;</li>
+        <li><strong>Контакты</strong> — форма обратной связи, адрес электронной почты.</li>
+    </ul>
+
+    <p>Сайт может быть дополнен фотографиями занятий, работами воспитанников, отзывами коллег и родителей. Это сделает публикацию более живой и убедительной.</p>
+
+    <div class="green-note">
+        <strong>🌿 Совет.</strong> При публикации диагностического инструментария в интернете указывайте <strong>дату последнего обновления</strong>. Это показывает, что инструментарий актуален и регулярно совершенствуется. Если вы вносите изменения, обновляйте и публикацию.
+    </div>
+
+    <h2>🎯 Итоговое задание по курсу</h2>
+
+    <p>Мы завершаем курс. Итоговое задание объединяет всё, что вы освоили на протяжении десяти глав: от анализа нормативной базы до публикации диагностического инструментария в интернете.</p>
+
+    <div class="final-banner">
+        <h2>🎓 Итоговое задание</h2>
+        <p><strong>Цель:</strong> разработать, апробировать и подготовить к публикации диагностический инструментарий к ОМК «Культура» для детей 6–10 лет.</p>
+    </div>
+
+    <h3>Этапы выполнения</h3>
+
+    <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>Аналитический этап.</strong> Изучите Кодекс Республики Беларусь об образовании (Раздел XIII, главы 46–47) и типовую программу эколого-биологического профиля (постановление № 325 от 20.10.2023). Определите, какие результаты подлежат диагностике.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>Проектировочный этап.</strong> Разработайте структуру диагностического раздела: пояснительная записка, содержательные блоки, методика проведения, критерии оценки, формы фиксации.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>Содержательный этап.</strong> Создайте диагностические задания по каждому из шести блоков (экологическая культура, нравственные качества, культура речи, личностное развитие, творческие способности, мотивация).</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>Оформительский этап.</strong> Соберите все материалы в единый документ. Проверьте соответствие оформления установленным требованиям. Проведите самоэкспертизу по чек-листу из главы 9.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-content"><strong>Апробационный этап.</strong> Проведите апробацию инструментария в течение учебного года (если это возможно) или смоделируйте апробацию. Соберите обратную связь, зафиксируйте затруднения и успехи.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-content"><strong>Корректировочный этап.</strong> Внесите корректировки по результатам апробации. Оформите лист корректировки.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">7</div>
+        <div class="step-content"><strong>Публикационный этап.</strong> Подготовьте инструментарий к публикации. Создайте сайт на sites.google.com или разместите материалы на сайте учреждения. Опубликуйте.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-num">8</div>
+        <div class="step-content"><strong>Презентационный этап.</strong> Подготовьте краткое устное представление вашего диагностического инструментария (5–7 минут) с демонстрацией сайта.</div>
+    </div>
+
+    <h3>Критерии оценки итогового задания</h3>
+
+    <ul>
+        <li><strong>Соответствие нормативным требованиям Республики Беларусь.</strong></li>
+        <li><strong>Полнота и целостность диагностического инструментария.</strong></li>
+        <li><strong>Качество оформления материалов.</strong></li>
+        <li><strong>Работоспособность и удобство сайта.</strong></li>
+        <li><strong>Оригинальность и практическая ценность разработки.</strong></li>
+        <li><strong>Учёт возрастных особенностей детей 6–10 лет.</strong></li>
+        <li><strong>Разнообразие типов заданий (устные, конструкторские, комбинированные, на память, воображение, двигательные, на стиль общения).</strong></li>
+    </ul>
+
+    <h2>🧠 Разнообразие диагностических заданий: от простого к сложному</h2>
+
+    <p>Разберём типы заданий, которые можно использовать для завершающего этапа работы над диагностическим инструментарием.</p>
+
+    <h3>Устные задания</h3>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Защити свой инструментарий»</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог просит коллегу представить свой диагностический инструментарий и ответить на вопросы: «Почему ты выбрал именно эти методики?», «Как ты будешь обрабатывать результаты?», «Как ты будешь использовать результаты для корректировки образовательного процесса?»</p>
+        <p><strong>Что диагностируется:</strong> понимание логики диагностики, рефлексия.</p>
+    </div>
+
+    <h3>Конструкторские и комбинаторные задания</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Собери портфолио»</div>
+        <p><span class="signal">📊 Собери</span> <span class="signal">📝 Оформи</span></p>
+        <p>Педагог предлагает коллегам собрать диагностическое портфолио: отобрать лучшие задания, оформить их в единый документ, подготовить аннотацию.</p>
+        <p><strong>Что диагностируется:</strong> умение систематизировать материал, оформлять документ.</p>
+    </div>
+
+    <h3>Задания на развитие памяти, внимания и мышления</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Найди несоответствие»</div>
+        <p><span class="signal">👁️ Найди</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог даёт коллегам два варианта одной и той же методики (первоначальный и скорректированный). Задача — найти различия и объяснить, почему были внесены эти изменения.</p>
+        <p><strong>Что диагностируется:</strong> внимание, логическое мышление, понимание логики корректировки.</p>
+    </div>
+
+    <h3>Задания на развитие воображения</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Придумай будущее»</div>
+        <p><span class="signal">📝 Придумай</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Педагог предлагает коллегам представить, как их диагностический инструментарий будет развиваться через год. Что они хотели бы добавить? Изменить? Какие новые методики внедрить?</p>
+        <p><strong>Что диагностируется:</strong> творческое воображение, стратегическое мышление.</p>
+    </div>
+
+    <h3>Задания на развитие двигательных навыков</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Создай макет сайта»</div>
+        <p><span class="signal">📐 Создай</span> <span class="signal">🎨 Оформи</span></p>
+        <p>Педагог предлагает коллегам создать макет (на бумаге или в графическом редакторе) сайта для публикации диагностического инструментария. Оценивается логичность структуры, удобство навигации.</p>
+        <p><strong>Что диагностируется:</strong> мелкая моторика, пространственное мышление, умение структурировать информацию.</p>
+    </div>
+
+    <h3>Задания на диагностику стиля общения</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🤝 Задание «Презентация в паре»</div>
+        <p><span class="signal">🤝 Работа в паре</span> <span class="signal">👁️ Наблюдение</span></p>
+        <p>Два педагога готовят совместную презентацию своих диагностических инструментов. Наблюдатель фиксирует, как они договариваются, распределяют роли, поддерживают друг друга.</p>
+        <p><strong>Что диагностируется:</strong> коммуникативные навыки, умение сотрудничать.</p>
+    </div>
+
+    <h2>📖 Из практики: истории о завершении работы</h2>
+
+    <div class="story-card">
+        <div class="story-title">«Инструментарий, который стал общим достоянием»</div>
+        <div class="story-text">
+            <p>Молодой педагог Анна Сергеевна разработала диагностический инструментарий для своего объединения. Она долго работала над ним, провела апробацию, внесла корректировки, оформила документ и опубликовала его на сайте учреждения.</p>
+            <p>Через год ей написала педагог из другого города: «Ваш инструментарий очень помог мне в работе. Можно я его адаптирую под свои условия?» Анна Сергеевна с радостью согласилась. Ещё через год она получила письмо от ещё одного педагога. А потом — приглашение выступить на республиканском семинаре с презентацией своего опыта.</p>
+            <p>Так её диагностический инструментарий из «личного документа» превратился в <em>общее достояние</em>. А сама Анна Сергеевна выросла в профессии — ведь когда твою работу ценят и используют другие, это лучший стимул для развития.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: не бойтесь делиться своими разработками. Публикация — это не «отдать своё», а <strong>обогатить общее педагогическое пространство</strong> и получить обратную связь для роста.</div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">«Инструментарий, который не был апробирован»</div>
+        <div class="story-text">
+            <p>Педагог с большим стажем разработал диагностический инструментарий «на одном дыхании». Он был красиво оформлен, содержал много заданий, охватывал все шесть блоков. Педагог решил, что апробация не нужна: «Я опытный, я знаю, что это будет работать».</p>
+            <p>Он представил инструментарий на конкурс методических разработок. Но эксперты задали ему вопрос: «Вы проводили апробацию? Какие результаты получили? Что корректировали?» Педагог не смог ответить — апробации не было.</p>
+            <p>Инструментарий не получил высокой оценки. А коллеги, которые провели апробацию и представили результаты, оказались впереди.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: апробация — это не «бюрократическая формальность», а <strong>обязательный этап создания качественного инструментария</strong>. Без апробации инструмент остаётся лишь «теоретическим проектом».</div>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Типичная ошибка: публикация «сырого» инструментария</div>
+        <p>Педагог опубликовал свой диагностический инструментарий в интернете сразу после разработки, не проведя ни апробации, ни корректировки. Через год он сам обнаружил ошибки и недочёты, но было уже поздно: его инструментарий использовали коллеги, а он содержал неточности и непроработанные моменты.</p>
+        <p><strong>Как исправить?</strong> Публикуйте только тот инструментарий, который прошёл <em>апробацию и корректировку</em>. Помните: когда вы публикуете материал, вы несёте за него ответственность перед коллегами, которые им воспользуются.</p>
+    </div>
+
+    <h2>🎯 Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 10.1. «Определи этап» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите описание работы с этапом работы над диагностическим инструментарием.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Описание работы</th>
+                    <th>Этап</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Проверка инструментария на практике</td><td>1. Оформление</td></tr>
+                <tr><td>Б. Внесение изменений по результатам проверки</td><td>2. Апробация</td></tr>
+                <tr><td>В. Сборка всех материалов в единый документ</td><td>3. Корректировка</td></tr>
+                <tr><td>Г. Размещение материалов в интернете</td><td>4. Публикация</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 10.2. «Составь лист корректировки» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Составь</span> <span class="signal">📊 Оформи</span></p>
+        <p>Представьте, что вы провели апробацию своего диагностического инструментария. По результатам вы выявили три проблемы: 1) задания для детей 6 лет слишком сложные; 2) анкета для родителей слишком длинная; 3) диагностическая карта неудобна. Составьте лист корректировки.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Раздел</th>
+                    <th>Что изменено</th>
+                    <th>Обоснование</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td><td><span class="line-for-writing" style="margin:0;"></span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 10.3. «Проверь себя» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">❓ Ответь на вопросы</span></p>
+        <ol>
+            <li>Почему апробация считается обязательным этапом работы над диагностическим инструментарием?</li>
+            <li>Какие методы сбора информации используются в ходе апробации?</li>
+            <li>Какие корректировки могут быть внесены по результатам апробации?</li>
+            <li>Почему важно документировать корректировки?</li>
+            <li>Какие требования предъявляются к публикации диагностического инструментария в интернете?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📚 Ресурсы для дальнейшего самообразования</h2>
+
+    <p>Разработка диагностического инструментария — это процесс, который не заканчивается с публикацией. Профессиональный рост педагога предполагает непрерывное самообразование. Ниже приведены ресурсы, которые помогут вам углубить знания и усовершенствовать навыки.</p>
+
+    <h3>Нормативные и методические ресурсы</h3>
+
+    <ul>
+        <li><strong>Официальный сайт Министерства образования Республики Беларусь — edu.gov.by</strong> — актуальные нормативные документы, приказы, постановления.</li>
+        <li><strong>Национальный центр художественного творчества детей и молодёжи — method.nchtdm.by</strong> — методические рекомендации по проектированию диагностического инструментария.</li>
+        <li><strong>Республиканский центр экологии и краеведения — rcek.by</strong> — методические материалы по эколого-биологическому профилю.</li>
+        <li><strong>Национальный образовательный портал — adu.by</strong> — учебные программы, методические материалы.</li>
+        <li><strong>Национальный правовой интернет-портал — pravo.by</strong> — тексты Кодекса об образовании и других нормативных актов.</li>
+    </ul>
+
+    <h3>Профессиональные сообщества и площадки</h3>
+
+    <ul>
+        <li><strong>Республиканские методические кластеры</strong> — объединения учреждений дополнительного образования по профилям.</li>
+        <li><strong>Опорные площадки</strong> — учреждения, аккумулирующие лучший педагогический опыт.</li>
+        <li><strong>Профессиональные конкурсы</strong> — «Педагог дополнительного образования», конкурсы методических разработок.</li>
+        <li><strong>Научно-практические конференции</strong> — возможность представить свой опыт и познакомиться с разработками коллег.</li>
+    </ul>
+
+    <h3>Литература для углублённого изучения</h3>
+
+    <ul>
+        <li>Методические рекомендации по разработке образовательно-методических комплексов (издания Национального центра художественного творчества детей и молодёжи).</li>
+        <li>Пособия по педагогике дополнительного образования.</li>
+        <li>Работы по методике экологического образования детей дошкольного и младшего школьного возраста.</li>
+        <li>Публикации в профильных периодических изданиях.</li>
+    </ul>
+
+    <h3>Онлайн-ресурсы для самообразования</h3>
+
+    <ul>
+        <li><strong>Курсы повышения квалификации</strong> — на базе институтов развития образования.</li>
+        <li><strong>Вебинары и онлайн-семинары</strong> — по актуальным вопросам дополнительного образования.</li>
+        <li><strong>Электронные библиотеки</strong> — доступ к научно-методической литературе.</li>
+        <li><strong>Профессиональные блоги и сообщества</strong> — обмен опытом с коллегами.</li>
+    </ul>
+
+    <div class="final-banner">
+        <h2>🎉 Поздравляем!</h2>
+        <p>Вы прошли весь курс — от нормативной базы до публикации диагностического инструментария.</p>
+        <p>Теперь вы знаете, <strong>чего мы хотим достичь</strong> и <strong>как определить то, что мы достигли</strong>.</p>
+        <p>Вы научились проектировать диагностику, анализировать готовые инструменты, оформлять и публиковать результаты своего труда.</p>
+        <p>Помните: диагностика — это не «проверка» ребёнка. Это <strong>диалог с ним</strong>, инструмент помощи и поддержки.</p>
+        <p>Пусть ваша работа приносит радость вам и пользу детям!</p>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Комплектация диагностического инструментария</strong> — сборка всех материалов в единый документ.</p>
+        <p><strong>Апробация</strong> — проверка диагностического инструментария в реальной образовательной практике.</p>
+        <p><strong>Корректировка</strong> — внесение изменений в диагностический инструментарий по результатам апробации.</p>
+        <p><strong>Лист корректировки</strong> — документ, фиксирующий внесённые изменения и их обоснование.</p>
+        <p><strong>Публикация</strong> — размещение диагностического инструментария в интернете для общего доступа.</p>
+        <p><strong>Google Sites</strong> — платформа для создания сайтов без знания программирования.</p>
+        <p><strong>Итоговое задание</strong> — комплексная работа, объединяющая все этапы проектирования диагностического инструментария.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Какие требования предъявляются к оформлению диагностического раздела ОМК «Культура».</li>
+            <li>Какова структура диагностического раздела и порядок расположения материалов.</li>
+            <li>Как комплектовать диагностический инструментарий в единый документ.</li>
+            <li>Как проводить апробацию и какие методы сбора информации использовать.</li>
+            <li>Какие корректировки могут быть внесены по результатам апробации и как их документировать.</li>
+            <li>Как подготовить диагностический инструментарий к публикации.</li>
+            <li>Как использовать Google Sites для публикации.</li>
+            <li>Как выполнить итоговое задание курса.</li>
+            <li>Какие ресурсы использовать для дальнейшего самообразования.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Работа над диагностическим инструментарием — это не финиш, а начало нового этапа. Каждый год вы будете его совершенствовать, адаптировать, обновлять. И в этом — суть профессионального роста педагога. Пусть ваш инструментарий живёт и развивается вместе с вами и вашими детьми».
+        <span class="quote-author">— из размышлений о завершении работы над курсом</span>
+    </div>
+
+    <h2>🚀 Завершение курса</h2>
+
+    <p>Дорогой коллега! Мы завершили курс по проектированию диагностического инструментария к ОМК «Культура». За десять глав мы прошли путь от нормативной базы до публикации. Мы разобрали:</p>
+
+    <ul>
+        <li>нормативно-правовые основы диагностики в Беларуси и России;</li>
+        <li>диагностику как компонент ОМК: цели, задачи, структуру, виды контроля, принципы построения;</li>
+        <li>диагностику экологической культуры (четыре компонента: когнитивный, эмоционально-ценностный, деятельностный, рефлексивный);</li>
+        <li>диагностику нравственных качеств и воспитанности (принцип нравственной направленности, учёт мотивации);</li>
+        <li>диагностику культуры речи и коммуникативных навыков (произносительная, лексическая, грамматическая культура, связная речь);</li>
+        <li>диагностику личностного развития и самооценки (методика «Лесенка», Дембо-Рубинштейн, проективные методики);</li>
+        <li>диагностику творческих способностей и наглядно-действенного мышления («Кубик Рубика», тест Вильямса, «Дорисовывание фигур»);</li>
+        <li>диагностику мотивации и отношения к обучению (методика «Отношение к обучению в школе», анкета Н. Лускановой);</li>
+        <li>анализ готовых диагностических инструментов (шесть критериев экспертизы, чек-лист, типичные ошибки);</li>
+        <li>оформление, апробацию и публикацию диагностического инструментария.</li>
+    </ul>
+
+    <p>Теперь вы готовы к созданию собственного диагностического инструментария, который станет неотъемлемой частью образовательно-методического комплекса «Культура». Помните главное: <strong>диагностика — это не формальность, а фундамент качественного образования</strong>. Она помогает нам понять, чего мы достигли, и куда двигаться дальше.</p>
+
+    <p style="margin-top: 30px;">
+        <a href="index.html" class="button">🏠 Вернуться к плану курса</a>
+        <a href="chapter9.html" class="button secondary">← Вернуться к главе 9</a>
+        <a href="preface.html" class="button secondary">📋 К аннотации диагностики</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 10. Оформление, апробация и публикация | Эколого-биологический профиль | Для детей 6–10 лет</p>
+        <p style="margin-top:10px;font-style:italic;color:#0891b2;">Курс завершён. Удачи в вашей педагогической работе!</p>
+    </footer>
+
+</div>
+</body>
+</html>

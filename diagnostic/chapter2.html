@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 2. Диагностика как компонент ОМК «Культура»: цели, задачи, структура</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            padding: 15px 20px;
+            border-left: 5px solid #a855f7;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter1.html" class="back-link" style="margin-left: 15px;">← Глава 1</a>
+
+    <h1>🎯 Глава 2. Диагностика как компонент ОМК «Культура»: цели, задачи, структура</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~30 минут | 🎯 Цель: понять место диагностики в структуре ОМК «Культура», освоить принципы построения диагностического раздела и научиться проектировать разнообразные диагностические задания</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! В первой главе мы разобрались с правовым полем. Теперь настало время поговорить о самом главном: <strong>что такое диагностика в контексте ОМК «Культура» и как она устроена</strong>. Задумывались ли вы когда-нибудь, почему одни педагоги легко и точно определяют, что происходит с ребёнком, а другие — теряются в догадках? Ответ прост: у первых есть <em>система</em> диагностики, у вторых — набор случайных методик.</p>
+        <p>В этой главе мы построим такую систему. Мы разберём, какие задачи решает диагностика, из каких компонентов она состоит, какие виды контроля существуют и как связать диагностику с программой объединения по интересам. А ещё — познакомимся с <strong>разнообразными типами заданий</strong>, которые можно использовать в диагностическом разделе ОМК «Культура».</p>
+    </div>
+
+    <div class="quote">
+        «Диагностика — это не экзамен для ребёнка. Это инструмент для педагога, который помогает ему увидеть, куда двигаться дальше. И если педагог не понимает, что он измеряет, он не сможет помочь ребёнку».
+        <span class="quote-author">— из размышлений о педагогической диагностике</span>
+    </div>
+
+    <h2>🗺️ Место диагностики в структуре ОМК «Культура»</h2>
+
+    <p>Вспомним, что образовательно-методический комплекс (ОМК) «Культура» — это <strong>система</strong>, состоящая из пяти взаимосвязанных разделов. Диагностический раздел — один из них, но он <em>пронизывает</em> все остальные. Давайте посмотрим на схему.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема структуры ОМК Культура с диагностическим разделом">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">СТРУКТУРА ОМК «КУЛЬТУРА»</text>
+
+        <!-- Центральный круг -->
+        <circle cx="350" cy="200" r="60" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+        <text x="350" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">ОМК</text>
+        <text x="350" y="212" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">«Культура»</text>
+
+        <!-- Пять разделов вокруг -->
+        <!-- 1. Введение -->
+        <rect x="30" y="60" width="160" height="50" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+        <text x="110" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">1. Введение</text>
+        <text x="110" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">(пояснительная записка)</text>
+
+        <!-- 2. Теоретический -->
+        <rect x="270" y="60" width="160" height="50" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+        <text x="350" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">2. Теоретический</text>
+        <text x="350" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">(программа, УТП, содержание)</text>
+
+        <!-- 3. Методический -->
+        <rect x="510" y="60" width="160" height="50" rx="10" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="590" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">3. Методический</text>
+        <text x="590" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">(разработки, дидактика)</text>
+
+        <!-- 4. Диагностический (выделен) -->
+        <rect x="30" y="290" width="200" height="60" rx="10" fill="#fef9c3" stroke="#eab308" stroke-width="3"/>
+        <text x="130" y="315" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#854d0e">4. ДИАГНОСТИЧЕСКИЙ</text>
+        <text x="130" y="333" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">(карты, тесты, задания)</text>
+
+        <!-- 5. Вспомогательный -->
+        <rect x="470" y="290" width="200" height="60" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+        <text x="570" y="315" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#334155">5. Вспомогательный</text>
+        <text x="570" y="333" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#334155">(библиография, родители)</text>
+
+        <!-- Стрелки связи диагностического раздела с другими -->
+        <defs>
+            <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#eab308"/>
+            </marker>
+        </defs>
+        <line x1="130" y1="290" x2="230" y2="260" stroke="#eab308" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="230" y1="290" x2="280" y2="260" stroke="#eab308" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="330" y1="290" x2="350" y2="260" stroke="#eab308" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="430" y1="290" x2="400" y2="260" stroke="#eab308" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="530" y1="290" x2="460" y2="260" stroke="#eab308" stroke-width="2" marker-end="url(#arrow2)"/>
+
+        <!-- Подписи связей -->
+        <text x="180" y="278" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">связан</text>
+        <text x="255" y="278" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">связан</text>
+        <text x="350" y="278" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">связан</text>
+        <text x="445" y="278" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">связан</text>
+        <text x="520" y="278" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">связан</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 2.1. Диагностический раздел — «сердце» ОМК, он связан со всеми остальными разделами</p>
+
+    <p>Как видно из схемы, диагностический раздел — это <strong>«сердце» ОМК</strong>. Он не просто «лежит рядом» с другими разделами, а <em>пронизывает</em> их:</p>
+
+    <ul>
+        <li><strong>С введением</strong> диагностика связана через цели и ожидаемые результаты: мы диагностируем именно то, что заявлено в пояснительной записке.</li>
+        <li><strong>С теоретическим разделом</strong> — через программу, УТП и содержание: мы диагностируем освоение конкретных тем.</li>
+        <li><strong>С методическим разделом</strong> — через разработки занятий: диагностические задания встраиваются в занятие как его часть.</li>
+        <li><strong>С вспомогательным разделом</strong> — через материалы для родителей: результаты диагностики доводятся до сведения родителей.</li>
+    </ul>
+
+    <div class="green-note">
+        <strong>🌿 Важно понять.</strong> Диагностика в ОМК «Культура» — это <strong>не отдельный блок, а сквозная линия</strong>. Каждое занятие содержит элементы диагностики: наблюдение, анализ работ, рефлексию. Именно поэтому диагностический раздел оформляется как самостоятельный документ, но <em>используется</em> на протяжении всего образовательного процесса.
+    </div>
+
+    <h2>🎯 Цели и задачи диагностики в ОМК «Культура»</h2>
+
+    <p>Прежде чем перейти к структуре, давайте чётко определим, <strong>зачем</strong> нам нужна диагностика. Это поможет избежать формального подхода, о котором мы говорили в первой главе.</p>
+
+    <h3>Цель диагностики</h3>
+
+    <p><strong>Главная цель диагностики</strong> — обеспечить обратную связь в образовательном процессе, позволяющую педагогу своевременно корректировать свою работу, а ребёнку — видеть свои достижения и понимать, над чем ещё нужно поработать.</p>
+
+    <p>Обратите внимание: цель диагностики <em>не</em> «оценить ребёнка» и <em>не</em> «поставить оценку». Цель — <strong>помочь</strong> и педагогу, и ребёнку.</p>
+
+    <h3>Задачи диагностики</h3>
+
+    <p>Из главной цели вытекают конкретные задачи. Их можно разделить на несколько групп.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Группа задач</th>
+                <th>Конкретные задачи</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Диагностические</strong></td>
+                <td>Определить исходный уровень развития ребёнка; выявить его сильные и слабые стороны; отследить динамику развития; определить зону ближайшего развития (по Л.С. Выготскому).</td>
+            </tr>
+            <tr>
+                <td><strong>Обучающие</strong></td>
+                <td>Закрепить пройденный материал через диагностические задания; показать ребёнку, что он уже умеет; мотивировать к дальнейшему обучению.</td>
+            </tr>
+            <tr>
+                <td><strong>Развивающие</strong></td>
+                <td>Развивать память, внимание, мышление, воображение через специальные задания; формировать навыки самоконтроля и самооценки.</td>
+            </tr>
+            <tr>
+                <td><strong>Воспитательные</strong></td>
+                <td>Формировать ответственность, аккуратность, честность; воспитывать уважение к результатам своего и чужого труда.</td>
+            </tr>
+            <tr>
+                <td><strong>Коррекционные</strong></td>
+                <td>Своевременно выявить затруднения и скорректировать образовательный маршрут; адаптировать задания под индивидуальные особенности ребёнка.</td>
+            </tr>
+            <tr>
+                <td><strong>Информационные</strong></td>
+                <td>Предоставить родителям объективную информацию о развитии ребёнка; документировать результаты для портфолио и аттестации.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: как задача диагностики меняет её форму</div>
+        <p>Педагог хочет определить, насколько хорошо дети усвоили тему «Времена года». В зависимости от <em>задачи</em> он может выбрать разные формы диагностики:</p>
+        <ul>
+            <li><strong>Задача: проверить знание признаков времён года.</strong> Форма: тест с картинками («Покажи, где зима»).</li>
+            <li><strong>Задача: выявить эмоциональное отношение к временам года.</strong> Форма: рисуночный тест («Нарисуй своё любимое время года»).</li>
+            <li><strong>Задача: оценить умение устанавливать причинно-следственные связи.</strong> Форма: задание «Продолжи цепочку» («Осенью листья желтеют, потому что...»).</li>
+            <li><strong>Задача: развивать наблюдательность.</strong> Форма: дневник наблюдений, который заполняется в течение месяца.</li>
+        </ul>
+        <p>Одна тема — четыре разные задачи — четыре разные формы диагностики. Именно поэтому так важно <em>сначала</em> определить задачу, а <em>потом</em> выбирать инструмент.</p>
+    </div>
+
+    <h2>📊 Три группы результатов и их диагностика</h2>
+
+    <p>В современной педагогике принято выделять <strong>три группы образовательных результатов</strong>: личностные, метапредметные и предметные. Диагностика в ОМК «Культура» должна охватывать все три группы. Рассмотрим каждую.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема трёх групп результатов">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">ТРИ ГРУППЫ ОБРАЗОВАТЕЛЬНЫХ РЕЗУЛЬТАТОВ</text>
+
+        <!-- Три круга -->
+        <circle cx="140" cy="170" r="80" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+        <text x="140" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#92400e">ЛИЧНОСТНЫЕ</text>
+        <text x="140" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">мотивация</text>
+        <text x="140" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">ценности</text>
+        <text x="140" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">отношения</text>
+
+        <circle cx="350" cy="170" r="80" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.5"/>
+        <text x="350" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#3730a3">МЕТАПРЕДМЕТНЫЕ</text>
+        <text x="350" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3730a3">УУД</text>
+        <text x="350" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3730a3">коммуникация</text>
+        <text x="350" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3730a3">рефлексия</text>
+
+        <circle cx="560" cy="170" r="80" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="560" y="155" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#166534">ПРЕДМЕТНЫЕ</text>
+        <text x="560" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">знания</text>
+        <text x="560" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">умения</text>
+        <text x="560" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">навыки</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 2.2. Три группы результатов, диагностируемых в ОМК «Культура»</p>
+
+    <h3>Личностные результаты</h3>
+
+    <p><strong>Личностные результаты</strong> — это то, что происходит с <em>отношением</em> ребёнка к миру, к себе, к другим. Они включают:</p>
+
+    <ul>
+        <li><strong>мотивацию</strong> — интерес к занятиям, желание учиться;</li>
+        <li><strong>ценностные ориентации</strong> — что ребёнок считает важным, к чему стремится;</li>
+        <li><strong>эмоциональное отношение</strong> — как ребёнок относится к природе, к искусству, к людям;</li>
+        <li><strong>нравственные качества</strong> — отзывчивость, доброта, ответственность.</li>
+    </ul>
+
+    <p><strong>Как диагностировать?</strong> Личностные результаты — самые сложные для диагностики, потому что они <em>не видны</em> напрямую. Мы не можем «измерить» мотивацию или доброту. Поэтому используются <em>косвенные</em> методы:</p>
+
+    <ul>
+        <li><strong>наблюдение</strong> — как ребёнок ведёт себя на занятии, в игре, в общении;</li>
+        <li><strong>проективные методики</strong> — рисуночные тесты, незаконченные предложения;</li>
+        <li><strong>беседы</strong> — что ребёнок рассказывает о своих чувствах и желаниях;</li>
+        <li><strong>анализ продуктов деятельности</strong> — что ребёнок рисует, лепит, сочиняет.</li>
+    </ul>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Устное задание 2.1. «Закончи фразу»</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Педагог предлагает ребёнку закончить фразу. Это простой, но очень информативный метод диагностики личностных результатов.</p>
+        <p><strong>Примеры фраз для незаконченного предложения:</strong></p>
+        <ul>
+            <li>«Когда я вижу красивый цветок, я...»</li>
+            <li>«Мне нравится природа, потому что...»</li>
+            <li>«Если бы я мог помочь природе, я бы...»</li>
+            <li>«Самое красивое, что я видел, — это...»</li>
+            <li>«Когда я делаю доброе дело, я чувствую...»</li>
+        </ul>
+        <p><strong>Как интерпретировать:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> ребёнок даёт развёрнутые, эмоционально насыщенные ответы, связанные с заботой, красотой, добром;</li>
+            <li><strong>Средний уровень:</strong> ответы краткие, но по существу, без ярко выраженного эмоционального отношения;</li>
+            <li><strong>Низкий уровень:</strong> ребёнок затрудняется ответить, даёт формальные или не относящиеся к делу ответы.</li>
+        </ul>
+    </div>
+
+    <h3>Метапредметные результаты</h3>
+
+    <p><strong>Метапредметные результаты</strong> — это <em>универсальные учебные действия</em> (УУД), которые помогают ребёнку осваивать любой материал. Они включают:</p>
+
+    <ul>
+        <li><strong>познавательные УУД</strong> — умение наблюдать, сравнивать, анализировать, задавать вопросы;</li>
+        <li><strong>коммуникативные УУД</strong> — умение слушать, договариваться, работать в паре и группе;</li>
+        <li><strong>регулятивные УУД</strong> — умение ставить цель, планировать, оценивать результат, рефлексировать.</li>
+    </ul>
+
+    <p><strong>Как диагностировать?</strong> Метапредметные результаты проявляются <em>в деятельности</em>. Поэтому основные методы — наблюдение, игровые ситуации, задания на взаимодействие.</p>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Конструкторское задание 2.2. «Собери вместе»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">🤝 Работа в паре</span></p>
+        <p>Педагог даёт двум детям набор карточек с изображениями природных объектов (солнце, дерево, река, цветок, облако) и просит <strong>вместе</strong> составить единую картину. При этом каждый ребёнок должен внести свой вклад.</p>
+        <p><strong>Что диагностируется:</strong></p>
+        <ul>
+            <li><strong>коммуникативные УУД:</strong> умеют ли дети договариваться, слушать друг друга, предлагать идеи;</li>
+            <li><strong>регулятивные УУД:</strong> могут ли они спланировать свою работу, распределить роли;</li>
+            <li><strong>познавательные УУД:</strong> видят ли они связи между элементами (солнце нужно цветку, река — дереву).</li>
+        </ul>
+        <p><strong>Как фиксировать:</strong> педагог наблюдает за процессом и отмечает в диагностической карте: «Активно предлагал идеи», «Уступал партнёру», «Помогал товарищу».</p>
+    </div>
+
+    <h3>Предметные результаты</h3>
+
+    <p><strong>Предметные результаты</strong> — это конкретные <em>знания, умения и навыки</em>, которые ребёнок осваивает в рамках программы. Они наиболее <em>измеримы</em>, и для их диагностики существует множество инструментов:</p>
+
+    <ul>
+        <li><strong>тесты</strong> — с выбором ответа, с открытым ответом;</li>
+        <li><strong>практические задания</strong> — выполнить действие (полить растение, нарисовать узор);</li>
+        <li><strong>викторины</strong> — ответы на вопросы по пройденному материалу;</li>
+        <li><strong>творческие работы</strong> — рисунок, аппликация, поделка.</li>
+    </ul>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание на память и внимание 2.3. «Найди и запомни»</div>
+        <p><span class="signal">👁️ Посмотри</span> <span class="signal">📝 Запиши</span></p>
+        <p>Педагог показывает ребёнку в течение 30 секунд карточку с пятью природными объектами (например, солнце, дерево, цветок, облако, ручей). Затем карточка убирается, и ребёнок должен назвать (или нарисовать) то, что запомнил.</p>
+        <p><strong>Что диагностируется:</strong> зрительная память, внимание, наблюдательность.</p>
+        <p><strong>Нормативы для детей 6–10 лет:</strong></p>
+        <ul>
+            <li><strong>6–7 лет:</strong> 3 объекта — средний уровень, 4–5 — высокий;</li>
+            <li><strong>8–9 лет:</strong> 4 объекта — средний уровень, 5 — высокий;</li>
+            <li><strong>10 лет:</strong> 5 объектов — средний, больше 5 — высокий.</li>
+        </ul>
+    </div>
+
+    <h2>📅 Виды контроля в диагностике ОМК «Культура»</h2>
+
+    <p>Диагностика не проводится «один раз в год». Она распределена во времени и включает несколько <strong>видов контроля</strong>. Каждый вид контроля решает свои задачи.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Вид контроля</th>
+                <th>Когда проводится</th>
+                <th>Цель</th>
+                <th>Формы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Входной</strong></td>
+                <td>Сентябрь</td>
+                <td>Определить исходный уровень знаний, интересов, мотивации</td>
+                <td>Анкеты для родителей, беседы, игровые задания, рисуночные тесты</td>
+            </tr>
+            <tr>
+                <td><strong>Текущий</strong></td>
+                <td>В течение года</td>
+                <td>Отслеживать динамику освоения материала и развития качеств</td>
+                <td>Педагогическое наблюдение, анализ творческих работ, игровые упражнения</td>
+            </tr>
+            <tr>
+                <td><strong>Промежуточный</strong></td>
+                <td>Декабрь, март</td>
+                <td>Оценить продвижение за определённый период</td>
+                <td>Контрольные игровые занятия, выставки, защита мини-проектов</td>
+            </tr>
+            <tr>
+                <td><strong>Итоговый</strong></td>
+                <td>Май</td>
+                <td>Определить уровень освоения программы за год</td>
+                <td>Итоговые игровые занятия, викторины, выставки, портфолио</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="story-card">
+        <div class="story-title">«Диагностика без стресса»</div>
+        <div class="story-text">
+            <p>Опытный педагог Татьяна Ивановна никогда не говорит детям слово «тест» или «проверка». Вместо этого она говорит: «А сейчас мы поиграем в интересную игру!» И действительно — диагностика проходит в форме игры, квеста, творческого задания. Дети не чувствуют, что их «проверяют». Они просто играют, рисуют, отвечают на вопросы, помогают друг другу.</p>
+            <p>А Татьяна Ивановна в это время внимательно наблюдает, делает пометки в своей диагностической карте, а потом — на основе этих наблюдений — планирует следующие занятия. Она знает: если ребёнок боится проверки, он не покажет своих настоящих способностей. А если он играет — он раскрывается полностью.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: диагностика для детей 6–10 лет должна быть <strong>игровой, ненавязчивой и творческой</strong>. Задача педагога — не «проверить», а «увидеть» ребёнка в естественной для него деятельности.</div>
+    </div>
+
+    <h2>🏗️ Принципы построения системы диагностики</h2>
+
+    <p>Теперь, когда мы разобрались с целями, задачами и видами контроля, перейдём к <strong>принципам</strong>, на которых строится вся система диагностики в ОМК «Культура». Этих принципов шесть.</p>
+
+    <h3>Принцип 1. Системность</h3>
+
+    <p>Диагностика — это не набор разрозненных методик, а <strong>система</strong>. Каждое диагностическое задание связано с другими, все результаты фиксируются в единой форме, и на основе их анализа строится целостная картина развития ребёнка.</p>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Ошибка: «разрозненная диагностика»</div>
+        <p>Педагог провёл рисуночный тест «Дом. Дерево. Человек», потом — викторину по природе, потом — игру «Найди пару». Результаты записал в разные блокноты и забыл. В итоге — три разных набора данных, которые невозможно соединить в единую картину. Системности нет — значит, диагностика не работает.</p>
+    </div>
+
+    <h3>Принцип 2. Комплексность</h3>
+
+    <p>Диагностика должна охватывать <strong>все три группы результатов</strong>: личностные, метапредметные, предметные. Нельзя ограничиться только проверкой знаний — это обедняет картину развития ребёнка.</p>
+
+    <h3>Принцип 3. Возрастосообразность</h3>
+
+    <p>Методы и задания должны соответствовать <strong>возрастным особенностям</strong> детей 6–10 лет. Для этого возраста характерны:</p>
+
+    <ul>
+        <li>преобладание игровой деятельности;</li>
+        <li>наглядно-образное мышление;</li>
+        <li>высокая эмоциональность;</li>
+        <li>быстрая утомляемость;</li>
+        <li>потребность в движении и смене деятельности.</li>
+    </ul>
+
+    <p>Поэтому диагностические задания должны быть <strong>игровыми, наглядными, короткими и разнообразными</strong>.</p>
+
+    <h3>Принцип 4. Объективность</h3>
+
+    <p>Критерии оценки должны быть <strong>чётными и однозначными</strong>. Не «понравилось / не понравилось», а «высокий / средний / низкий уровень», с конкретным описанием каждого уровня.</p>
+
+    <h3>Принцип 5. Развивающий характер</h3>
+
+    <p>Диагностика должна не только <em>констатировать</em> уровень развития, но и <em>стимулировать</em> его. Поэтому диагностические задания — это одновременно и <strong>развивающие упражнения</strong>.</p>
+
+    <h3>Принцип 6. Интеграция с образовательным процессом</h3>
+
+    <p>Диагностика не должна быть «отдельной процедурой». Она <strong>встраивается в занятия</strong> и проводится естественно, в ходе обычной деятельности.</p>
+
+    <h2>📦 Структура диагностического раздела ОМК «Культура»</h2>
+
+    <p>Теперь перейдём к <strong>структуре</strong> — тому, из чего состоит диагностический раздел. Он включает пять основных компонентов.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Структура диагностического раздела ОМК Культура">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">СТРУКТУРА ДИАГНОСТИЧЕСКОГО РАЗДЕЛА</text>
+
+        <!-- 5 компонентов в виде столбцов -->
+        <!-- 1 -->
+        <rect x="20" y="60" width="120" height="300" rx="10" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+        <text x="80" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#854d0e">Диагностические</text>
+        <text x="80" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#854d0e">карты</text>
+        <text x="80" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">для фиксации</text>
+        <text x="80" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">результатов</text>
+        <text x="80" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#854d0e">по 3 группам</text>
+
+        <!-- 2 -->
+        <rect x="155" y="60" width="120" height="300" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="215" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">Рисуночные</text>
+        <text x="215" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">тесты</text>
+        <text x="215" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">«Дом. Дерево.</text>
+        <text x="215" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">Человек»</text>
+        <text x="215" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">«Несуществующее</text>
+        <text x="215" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">животное»</text>
+
+        <!-- 3 -->
+        <rect x="290" y="60" width="120" height="300" rx="10" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+        <text x="350" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#3730a3">Анкеты</text>
+        <text x="350" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#3730a3">и опросники</text>
+        <text x="350" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3730a3">для родителей</text>
+        <text x="350" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3730a3">для детей</text>
+        <text x="350" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#3730a3">для педагогов</text>
+
+        <!-- 4 -->
+        <rect x="425" y="60" width="120" height="300" rx="10" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="485" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">Игровые</text>
+        <text x="485" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">задания</text>
+        <text x="485" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">дидактические</text>
+        <text x="485" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">подвижные</text>
+        <text x="485" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">квесты</text>
+
+        <!-- 5 -->
+        <rect x="560" y="60" width="120" height="300" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="620" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Портфолио</text>
+        <text x="620" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">достижений</text>
+        <text x="620" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">творческие</text>
+        <text x="620" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">работы</text>
+        <text x="620" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">грамоты</text>
+        <text x="620" y="180" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">отзывы</text>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 2.3. Пять компонентов диагностического раздела ОМК «Культура»</p>
+
+    <h3>Компонент 1. Диагностические карты</h3>
+
+    <p><strong>Диагностические карты</strong> — это основной инструмент фиксации результатов. В карте по каждому ребёнку отмечается уровень сформированности того или иного качества или умения. Карта заполняется педагогом на основе наблюдений и выполнения диагностических заданий.</p>
+
+    <p><strong>Пример диагностической карты (фрагмент):</strong></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Показатели (критерии)</th>
+                <th>Начало года</th>
+                <th>Середина года</th>
+                <th>Конец года</th>
+                <th>Комментарий</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>Предметные результаты</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>1.1</td>
+                <td>Знает времена года, их признаки</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+                <td>Стал увереннее</td>
+            </tr>
+            <tr>
+                <td>1.2</td>
+                <td>Умеет ухаживать за комнатным растением</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+                <td>Нужна помощь</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>Метапредметные результаты</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2.1</td>
+                <td>Умеет работать в паре, договариваться</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+                <td>Лидер в группе</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>Личностные результаты</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3.1</td>
+                <td>Проявляет интерес к занятиям</td>
+                <td>В</td>
+                <td>В</td>
+                <td>В</td>
+                <td>Активен</td>
+            </tr>
+            <tr>
+                <td>3.2</td>
+                <td>Эмоционально откликается на красоту природы</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+                <td>Замечает детали</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><em>Условные обозначения: Н — низкий, С — средний, В — высокий.</em></p>
+
+    <h3>Компонент 2. Рисуночные тесты</h3>
+
+    <p><strong>Рисуночные тесты</strong> — это особый вид диагностики, при котором ребёнок выражает своё внутреннее состояние через рисунок. Для детей 6–10 лет это <em>наиболее естественный</em> способ самовыражения.</p>
+
+    <p><strong>Важно помнить:</strong> в ОМК «Культура» при проведении рисуночных тестов <strong>запрещено изображать животных и человека (кроме бабочек и мотыльков)</strong>. Это связано с тем, что мы не даём готовых шаблонов, а стимулируем свободное творчество. Допустимы: флора, неживая природа, архитектура, предметы быта, музыкальные инструменты, схемы.</p>
+
+    <div class="example-card">
+        <div class="example-title">Пример рисуночного теста «Моё настроение»</div>
+        <p>Педагог предлагает ребёнку нарисовать своё настроение в виде природного объекта или явления. Например:</p>
+        <ul>
+            <li>солнце — радость, тепло;</li>
+            <li>туча — грусть, тревога;</li>
+            <li>радуга — удивление, восторг;</li>
+            <li>дерево — спокойствие, уверенность.</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> эмоциональное состояние ребёнка, его отношение к занятию, к себе, к миру.</p>
+        <p><strong>Как интерпретировать:</strong> яркие, тёплые цвета, солнечные образы — хорошее настроение; тёмные цвета, изображения бури, дождя — тревожность, усталость.</p>
+    </div>
+
+    <h3>Компонент 3. Анкеты и опросники</h3>
+
+    <p><strong>Анкеты и опросники</strong> используются для сбора информации о ребёнке от него самого и от родителей. Они позволяют выявить интересы, предпочтения, мотивацию, а также получить обратную связь о качестве образовательного процесса.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Анкета для родителей (фрагмент)</div>
+        <p><strong>Уважаемые родители!</strong> Ответьте, пожалуйста, на вопросы. Ваши ответы помогут нам лучше узнать вашего ребёнка.</p>
+        <ol>
+            <li>Как часто ваш ребёнок рассказывает дома о занятиях в объединении?</li>
+            <li>Что больше всего нравится вашему ребёнку на занятиях?</li>
+            <li>Какие темы ему особенно интересны?</li>
+            <li>Замечаете ли вы изменения в его отношении к природе за последнее время?</li>
+            <li>Какие занятия, по вашему мнению, были бы полезны вашему ребёнку?</li>
+        </ol>
+    </div>
+
+    <h3>Компонент 4. Игровые задания</h3>
+
+    <p><strong>Игровые задания</strong> — это самый любимый детьми вид диагностики. Игра позволяет ребёнку раскрыться естественно, без напряжения.</p>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Комбинаторное задание 2.4. «Собери цепочку»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📊 Раздели на группы</span></p>
+        <p>Педагог даёт ребёнку набор карточек с изображениями природных объектов и просит составить из них логические цепочки. Например:</p>
+        <ul>
+            <li><strong>Цепочка «Времена года»:</strong> весна → лето → осень → зима.</li>
+            <li><strong>Цепочка «Рост растения»:</strong> семя → росток → цветок → плод.</li>
+            <li><strong>Цепочка «Круговорот воды»:</strong> капля → облако → дождь → ручей → море.</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> умение устанавливать логические связи, знание природных закономерностей, наглядно-образное мышление.</p>
+    </div>
+
+    <h3>Компонент 5. Портфолио достижений</h3>
+
+    <p><strong>Портфолио достижений</strong> — это папка, в которой собираются творческие работы ребёнка, его грамоты, отзывы, а также результаты диагностики. Портфолио формируется на протяжении всего учебного года и позволяет увидеть <em>динамику</strong> развития ребёнка.</p>
+
+    <p><strong>Что входит в портфолио:</strong></p>
+    <ul>
+        <li>творческие работы (рисунки, аппликации, поделки);</li>
+        <li>результаты диагностических заданий;</li>
+        <li>грамоты и дипломы за участие в конкурсах;</li>
+        <li>отзывы педагога, родителей, товарищей;</li>
+        <li>фотографии участия в мероприятиях.</li>
+    </ul>
+
+    <h2>🧠 Разнообразие диагностических заданий: от простого к сложному</h2>
+
+    <p>Теперь давайте подробно разберём, какие <strong>типы заданий</strong> могут быть включены в диагностический раздел ОМК «Культура». Мы пойдём от простых к сложным.</p>
+
+    <h3>Устные задания</h3>
+
+    <p><strong>Устные задания</strong> — это самый простой тип диагностики. Они не требуют письменных принадлежностей и могут использоваться в любой момент занятия.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Ответь на вопрос»</div>
+        <p><span class="signal">📝 Ответь</span></p>
+        <p>Педагог задаёт ребёнку вопросы по пройденному материалу. Например:</p>
+        <ul>
+            <li>«Какие времена года ты знаешь?»</li>
+            <li>«Что бывает зимой?»</li>
+            <li>«Какие растения ты видел на прогулке?»</li>
+            <li>«Почему нельзя мусорить в лесу?»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> знание материала, умение формулировать мысли, словарный запас.</p>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Отгадай загадку»</div>
+        <p><span class="signal">❓ Отгадай</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Педагог загадывает загадку, ребёнок отгадывает и рисует отгадку. Например:</p>
+        <ul>
+            <li>«Разноцветное коромысло над рекой повисло» (радуга).</li>
+            <li>«Без рук, без ног, а в лес шумит» (ветер).</li>
+            <li>«Зимой белое, летом серое» (снег, но загадка требует пояснения).</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> наблюдательность, логическое мышление, образное воображение.</p>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Продолжи фразу»</div>
+        <p><span class="signal">📝 Продолжи</span></p>
+        <p>Педагог начинает фразу, ребёнок продолжает. Например:</p>
+        <ul>
+            <li>«Весной природа просыпается, а осенью...»</li>
+            <li>«Если я сорву цветок, то...»</li>
+            <li>«Красивый мир — это...»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> понимание причинно-следственных связей, нравственные представления, речь.</p>
+    </div>
+
+    <h3>Конструкторские и комбинаторные задания</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Собери картинку из частей»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📊 Собери</span></p>
+        <p>Ребёнку даётся разрезанное на части изображение природного объекта (например, дерева или цветка). Задача — собрать целое.</p>
+        <p><strong>Что диагностируется:</strong> целостность восприятия, наглядно-действенное мышление, внимание.</p>
+    </div>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Составь узор»</div>
+        <p><span class="signal">🎨 Раскрась</span> <span class="signal">📐 Составь</span></p>
+        <p>Ребёнку даётся набор геометрических фигур, из которых нужно составить симметричный узор (например, снежинку или орнамент).</p>
+        <p><strong>Что диагностируется:</strong> пространственное мышление, комбинаторные способности, чувство симметрии.</p>
+    </div>
+
+    <h3>Задания на развитие памяти, внимания и мышления</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Запомни и повтори»</div>
+        <p><span class="signal">👁️ Посмотри</span> <span class="signal">📝 Повтори</span></p>
+        <p>Педагог показывает ребёнку карточку с несколькими природными объектами (например, 5 штук) на 30 секунд. Затем карточка убирается, и ребёнок должен назвать или нарисовать то, что запомнил.</p>
+        <p><strong>Что диагностируется:</strong> зрительная память, объём внимания.</p>
+    </div>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Найди лишнее»</div>
+        <p><span class="signal">👁️ Найди</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог предлагает ребёнку ряд картинок, среди которых одна — лишняя. Например: дерево, цветок, куст, камень (лишний — камень, так как это неживая природа).</p>
+        <p><strong>Что диагностируется:</strong> логическое мышление, умение классифицировать, обосновывать свой выбор.</p>
+    </div>
+
+    <h3>Задания на развитие воображения</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Дорисуй фигуру»</div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Педагог даёт ребёнку лист с незаконченными фигурами (например, круг, квадрат, волна) и просит дорисовать их так, чтобы получились природные объекты.</p>
+        <p><strong>Что диагностируется:</strong> творческое воображение, гибкость мышления.</p>
+    </div>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «На что похоже облако?»</div>
+        <p><span class="signal">👁️ Посмотри</span> <span class="signal">📝 Ответь</span></p>
+        <p>Педагог показывает изображение облака и спрашивает: «На что оно похоже?» Ребёнок предлагает свои варианты.</p>
+        <p><strong>Что диагностируется:</strong> ассоциативное мышление, воображение.</p>
+    </div>
+
+    <h3>Задания на развитие двигательных навыков</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Обведи и вырежи»</div>
+        <p><span class="signal">✏️ Обведи</span> <span class="signal">✂️ Вырежи</span></p>
+        <p>Ребёнку даётся контур природного объекта (например, листа дерева). Задача — обвести его по контуру и вырезать.</p>
+        <p><strong>Что диагностируется:</strong> мелкая моторика, координация движений, аккуратность.</p>
+    </div>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Сложи из бумаги»</div>
+        <p><span class="signal">📐 Сложи</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Ребёнку предлагается сложить из бумаги простую фигуру (например, кораблик или самолётик) по образцу.</p>
+        <p><strong>Что диагностируется:</strong> пространственное мышление, моторика, умение работать по инструкции.</p>
+    </div>
+
+    <h3>Задания на диагностику стиля общения</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🤝 Задание «Работа в паре»</div>
+        <p><span class="signal">🤝 Работа в паре</span> <span class="signal">👁️ Наблюдение</span></p>
+        <p>Педагог предлагает двум детям выполнить общее задание (например, нарисовать совместный пейзаж). Педагог наблюдает за тем, как дети взаимодействуют.</p>
+        <p><strong>Что диагностируется:</strong> коммуникативные навыки, умение договариваться, уступать, помогать.</p>
+        <p><strong>Как фиксировать:</strong> в диагностической карте отмечается: «Активно предлагает идеи», «Умеет слушать партнёра», «Помогает товарищу», «Возникают конфликты».</p>
+    </div>
+
+    <h2>🛠️ Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 2.5. «Разнообразие диагностических заданий» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите тип диагностического задания с его назначением.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Тип задания</th>
+                    <th>Назначение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Устное задание «Отгадай загадку»</td><td>1. Диагностика логического мышления и умения классифицировать</td></tr>
+                <tr><td>Б. Конструкторское задание «Собери узор»</td><td>2. Диагностика воображения, наблюдательности</td></tr>
+                <tr><td>В. Задание «Найди лишнее»</td><td>3. Диагностика пространственного мышления, комбинаторики</td></tr>
+                <tr><td>Г. Задание «Работа в паре»</td><td>4. Диагностика коммуникативных навыков</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 2.6. «Составь диагностическую карту» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Составь</span> <span class="signal">📊 Заполни</span></p>
+        <p>Составьте фрагмент диагностической карты для одного из занятий по теме «Времена года». Включите по одному критерию из каждой группы результатов (предметные, метапредметные, личностные).</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Показатели (критерии)</th>
+                    <th>Начало года</th>
+                    <th>Середина года</th>
+                    <th>Конец года</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="line-for-writing" style="margin:0;"></span></td><td></td><td></td><td></td></tr>
+                <tr><td>2</td><td><span class="line-for-writing" style="margin:0;"></span></td><td></td><td></td><td></td></tr>
+                <tr><td>3</td><td><span class="line-for-writing" style="margin:0;"></span></td><td></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Личностные результаты</strong> — мотивация, ценностные ориентации, эмоциональное отношение, нравственные качества.</p>
+        <p><strong>Метапредметные результаты</strong> — универсальные учебные действия: познавательные, коммуникативные, регулятивные.</p>
+        <p><strong>Предметные результаты</strong> — конкретные знания, умения и навыки, освоенные в рамках программы.</p>
+        <p><strong>Входной контроль</strong> — диагностика в начале года для определения исходного уровня.</p>
+        <p><strong>Текущий контроль</strong> — диагностика в течение года для отслеживания динамики.</p>
+        <p><strong>Промежуточный контроль</strong> — диагностика в середине года для оценки продвижения.</p>
+        <p><strong>Итоговый контроль</strong> — диагностика в конце года для определения уровня освоения программы.</p>
+        <p><strong>Диагностическая карта</strong> — основной инструмент фиксации результатов по трём группам.</p>
+        <p><strong>Портфолио достижений</strong> — папка с творческими работами и результатами диагностики.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Какое место занимает диагностика в структуре ОМК «Культура».</li>
+            <li>Какие цели и задачи решает диагностика.</li>
+            <li>Какие три группы результатов подлежат диагностике.</li>
+            <li>Какие виды контроля существуют и как они распределены во времени.</li>
+            <li>Какие шесть принципов лежат в основе системы диагностики.</li>
+            <li>Из каких пяти компонентов состоит диагностический раздел ОМК.</li>
+            <li>Какие разнообразные типы заданий можно использовать: устные, конструкторские, комбинаторные, на память, внимание, мышление, воображение, двигательные, на стиль общения.</li>
+            <li>Как оформлять диагностические карты и портфолио.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Диагностика — это не про оценку. Это про понимание. Понять ребёнка — значит увидеть, где он сейчас, и помочь ему сделать следующий шаг».
+        <span class="quote-author">— из размышлений о педагогической диагностике</span>
+    </div>
+
+    <h2>🚀 Что дальше?</h2>
+
+    <p>В следующей главе мы перейдём к <strong>конкретным методикам</strong> диагностики экологической культуры. Мы разберём:</p>
+
+    <ul>
+        <li>какие критерии и показатели характеризуют экологическую культуру;</li>
+        <li>какие методики позволяют её диагностировать;</li>
+        <li>как интерпретировать результаты;</li>
+        <li>как использовать полученные данные для планирования работы.</li>
+    </ul>
+
+    <p>А ещё — познакомимся с уникальной методикой диагностики отношения ребёнка к деньгам как одного из критериев экологической культуры, о которой говорилось в предоставленных материалах.</p>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter3.html" class="button">📖 Перейти к главе 3. «Диагностика уровня сформированности экологической культуры» →</a>
+        <a href="chapter1.html" class="button secondary">← Вернуться к главе 1</a>
+        <a href="index.html" class="button secondary">🏠 К плану курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 2. Диагностика как компонент ОМК «Культура» | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

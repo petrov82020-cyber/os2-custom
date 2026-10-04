@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 6. Диагностика личностного развития и самооценки</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .level-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #0891b2;
+        }
+        .level-card .level-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 40px;
+            text-align: center;
+        }
+        .level-card .level-text {
+            font-size: 0.93rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .level-card.high { border-left-color: #16a34a; }
+        .level-card.high .level-num { color: #16a34a; }
+        .level-card.mid { border-left-color: #eab308; }
+        .level-card.mid .level-num { color: #eab308; }
+        .level-card.low { border-left-color: #ef4444; }
+        .level-card.low .level-num { color: #ef4444; }
+
+        .ladder {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 8px;
+            margin: 20px auto;
+            max-width: 320px;
+        }
+        .ladder-step {
+            width: 100%;
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #155e75;
+        }
+        .ladder-step.high { background: #dcfce7; border-color: #16a34a; color: #166534; }
+        .ladder-step.low { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter5.html" class="back-link" style="margin-left: 15px;">← Глава 5</a>
+
+    <h1>🌟 Глава 6. Диагностика личностного развития и самооценки</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~38 минут | 🎯 Цель: освоить систему диагностики личностного развития детей 6–10 лет, научиться выявлять уровень самооценки, притязаний, эмоционального состояния и личностных особенностей</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Мы уже научились диагностировать экологическую культуру, нравственные качества, культуру речи. Но есть ещё одна важная грань развития ребёнка — <strong>его отношение к самому себе</strong>. Как ребёнок воспринимает себя? Считает ли он себя хорошим, умным, способным? Или, наоборот, думает, что он «хуже всех»? От этого зависит очень многое: и его мотивация к учёбе, и его поведение в группе, и его эмоциональное благополучие.</p>
+        <p>В этой главе мы поговорим о <strong>самооценке</strong> — одном из центральных личностных образований. Мы разберём, как диагностировать самооценку и уровень притязаний, как выявлять эмоциональное состояние ребёнка, как использовать проективные методики для понимания его внутреннего мира. И, что важно, — научимся делать это <em>бережно и тактично</em>, ведь диагностика личности требует особой чуткости.</p>
+    </div>
+
+    <div class="quote">
+        «Ребёнок — это не сосуд, который нужно наполнить, а огонь, который нужно зажечь. А чтобы зажечь огонь, нужно сначала понять, какой он — этот огонь, что он любит, чего боится, во что верит».
+        <span class="quote-author">— из размышлений о личностно-ориентированном воспитании</span>
+    </div>
+
+    <h2>🧩 Что такое личностное развитие и самооценка?</h2>
+
+    <p><strong>Личностное развитие</strong> — это процесс становления человека как личности, формирование его отношений к миру, к другим людям, к самому себе. Одним из ключевых компонентов личностного развития является <strong>самооценка</strong> — оценка человеком самого себя, своих качеств, возможностей, места среди других людей.</p>
+
+    <p>Самооценка бывает:</p>
+
+    <div class="example-card">
+        <div class="example-title">Виды самооценки</div>
+        <ul>
+            <li><strong>Адекватная</strong> — ребёнок реально оценивает свои сильные и слабые стороны («Я хорошо рисую, но не очень быстро бегаю»).</li>
+            <li><strong>Завышенная</strong> — ребёнок переоценивает свои возможности («Я самый лучший художник в мире!»).</li>
+            <li><strong>Заниженная</strong> — ребёнок недооценивает себя («Я ничего не умею, у меня всё плохо»).</li>
+        </ul>
+        <p>Для детей 6–10 лет <em>небольшое</em> завышение самооценки — это <strong>норма</strong>. Ребёнок верит в свои силы, стремится к достижениям. Тревожным сигналом является <em>стойкая заниженная</em> самооценка, которая может привести к неуверенности, отказу от деятельности, трудностям в общении.</p>
+    </div>
+
+    <p>Тесно связана с самооценкой и другая характеристика — <strong>уровень притязаний</strong>. Это то, на какой результат ребёнок <em>претендует</em>, какую задачу он считает для себя посильной. Если уровень притязаний слишком высокий, ребёнок берётся за задачи, которые не может решить, и расстраивается. Если слишком низкий — он выбирает только лёгкие задачи и не развивается.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема личностного развития">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">СОСТАВЛЯЮЩИЕ ЛИЧНОСТНОГО РАЗВИТИЯ</text>
+
+        <!-- Центральный круг -->
+        <circle cx="350" cy="210" r="75" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="350" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">ЛИЧНОСТНОЕ</text>
+        <text x="350" y="220" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">РАЗВИТИЕ</text>
+
+        <!-- Самооценка -->
+        <rect x="30" y="60" width="180" height="55" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="120" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">🌱 САМООЦЕНКА</text>
+        <text x="120" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#1e40af">отношение к себе</text>
+
+        <!-- Уровень притязаний -->
+        <rect x="490" y="60" width="180" height="55" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="580" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">🎯 ПРИТЯЗАНИЯ</text>
+        <text x="580" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">каких успехов ждёт</text>
+
+        <!-- Эмоциональное состояние -->
+        <rect x="30" y="300" width="180" height="55" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="120" y="322" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">💚 ЭМОЦИИ</text>
+        <text x="120" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">как себя чувствует</text>
+
+        <!-- Личностные особенности -->
+        <rect x="490" y="300" width="180" height="55" rx="12" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="580" y="322" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">🎭 ОСОБЕННОСТИ</text>
+        <text x="580" y="340" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">тревожность, характер</text>
+
+        <!-- Стрелки -->
+        <defs>
+            <marker id="arrow6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="210" y1="115" x2="285" y2="170" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow6)"/>
+        <line x1="490" y1="115" x2="415" y2="170" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow6)"/>
+        <line x1="210" y1="305" x2="285" y2="250" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow6)"/>
+        <line x1="490" y1="305" x2="415" y2="250" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow6)"/>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 6.1. Составляющие личностного развития, подлежащие диагностике</p>
+
+    <h2>🔬 Методики диагностики самооценки и уровня притязаний</h2>
+
+    <p>Начнём с самой известной и часто используемой методики — «Лесенка».</p>
+
+    <h3>Методика 1. «Лесенка» (В.Г. Щур)</h3>
+
+    <p><strong>Цель:</strong> диагностика самооценки и уровня притязаний ребёнка.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа с использованием рисунка лестницы.</p>
+
+    <p><strong>Описание методики.</strong> Педагог показывает ребёнку рисунок лестницы из 7 ступенек и объясняет: «На верхних ступеньках стоят самые хорошие дети, на нижних — самые плохие. На средней — обычные дети. Куда ты себя поставишь?»</p>
+
+    <div class="ladder">
+        <div class="ladder-step high">7 — самые хорошие дети</div>
+        <div class="ladder-step high">6 — очень хорошие</div>
+        <div class="ladder-step">5 — хорошие</div>
+        <div class="ladder-step">4 — обычные</div>
+        <div class="ladder-step">3 — не очень хорошие</div>
+        <div class="ladder-step low">2 — плохие</div>
+        <div class="ladder-step low">1 — самые плохие</div>
+    </div>
+
+    <p><strong>Интерпретация:</strong></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Позиция</th>
+                <th>Уровень самооценки</th>
+                <th>Характеристика</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ступенька 7</td>
+                <td><strong>Очень высокая</strong></td>
+                <td>Ребёнок ставит себя выше всех. Может быть признаком как здорового оптимизма, так и неадекватно завышенной самооценки.</td>
+            </tr>
+            <tr>
+                <td>Ступеньки 5–6</td>
+                <td><strong>Высокая (адекватная)</strong></td>
+                <td>Ребёнок доволен собой, уверен в своих силах, но не считает себя лучше всех. Оптимальный вариант.</td>
+            </tr>
+            <tr>
+                <td>Ступенька 4</td>
+                <td><strong>Средняя</strong></td>
+                <td>Ребёнок оценивает себя реалистично, но не стремится к высоким достижениям.</td>
+            </tr>
+            <tr>
+                <td>Ступеньки 2–3</td>
+                <td><strong>Низкая</strong></td>
+                <td>Ребёнок не уверен в себе, считает себя хуже других. Требует поддержки и внимания.</td>
+            </tr>
+            <tr>
+                <td>Ступенька 1</td>
+                <td><strong>Очень низкая</strong></td>
+                <td>Тревожный сигнал. Ребёнок считает себя самым плохим. Требуется работа с психологом.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: диагностика с помощью «Лесенки»</div>
+        <p>Педагог проводит методику с тремя детьми.</p>
+        <p><strong>Маша (7 лет):</strong> поставила себя на 6-ю ступеньку: «Я хорошо рисую, помогаю маме». — <em>Адекватно высокая самооценка.</em></p>
+        <p><strong>Ваня (8 лет):</strong> поставил себя на 3-ю ступеньку: «Я не очень хорошо учусь, у меня не получается». — <em>Низкая самооценка. Требуется поддержка.</em></p>
+        <p><strong>Петя (9 лет):</strong> поставил себя на 7-ю: «Я самый лучший!». При этом на вопрос «А что ты умеешь делать лучше всех?» ответил: «Всё!» — <em>Завышенная самооценка, требует корректировки.</em></p>
+    </div>
+
+    <h3>Методика 2. «Дембо-Рубинштейн» (адаптированная для детей)</h3>
+
+    <p><strong>Цель:</strong> диагностика уровня притязаний и самооценки по разным параметрам.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа с использованием шкал.</p>
+
+    <p><strong>Описание методики.</strong> Педагог рисует несколько вертикальных шкал (линий) и предлагает ребёнку отметить на каждой из них, где, по его мнению, он находится. Обычно используются 5–7 шкал:</p>
+
+    <ul>
+        <li>«Здоровье»;</li>
+        <li>«Ум (способности)»;</li>
+        <li>«Характер (доброта)»;</li>
+        <li>«Умение общаться с друзьями»;</li>
+        <li>«Умение рисовать / делать поделки»;</li>
+        <li>«Умение заботиться о природе».</li>
+    </ul>
+
+    <p>На каждой шкале верхняя точка означает «самый лучший», нижняя — «самый плохой».</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Пример проведения методики</div>
+        <p><span class="signal">📝 Отметь</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог: «Представь, что эта линия — все дети на свете. На самом верху — самые умные дети, внизу — самые глупые. Где ты?» Ребёнок ставит отметку.</p>
+        <p>Затем педагог задаёт дополнительные вопросы:</p>
+        <ul>
+            <li>«А почему ты поставил себя именно здесь?»</li>
+            <li>«А где бы ты хотел быть?»</li>
+            <li>«А где тебя видят твои друзья? Родители?»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> соотношение самооценки (где ребёнок видит себя сейчас) и уровня притязаний (где он хотел бы быть). Большой разрыв между ними свидетельствует о внутреннем конфликте.</p>
+    </div>
+
+    <h2>🎨 Проективные рисуночные методики</h2>
+
+    <p>Проективные методики — это особый класс диагностических инструментов, которые позволяют ребёнку <em>выразить свои внутренние переживания</em> через рисунок. В отличие от прямых вопросов, проективные методики не вызывают защитных реакций и позволяют «увидеть» то, что ребёнок не может или не хочет сказать словами.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Важно!</strong><br>
+        В ОМК «Культура» мы <strong>соблюдаем запрет на изображение животных и человека (кроме бабочек и мотыльков)</strong>. Это связано с тем, что мы не даём готовых шаблонов, а стимулируем свободное творчество. Поэтому классические проективные методики («Дом. Дерево. Человек», «Несуществующее животное», «Рисунок семьи») <em>адаптируются</em>: мы заменяем изображения людей и животных на символы, природные объекты и предметы быта.
+    </div>
+
+    <h3>Методика 3. Адаптированный вариант «Дом. Дерево.»</h3>
+
+    <p><strong>Цель:</strong> диагностика эмоционального состояния, отношения к себе, к своему «дому» (месту, где ребёнок чувствует себя в безопасности).</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная или групповая работа с последующим анализом.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание для ребёнка «Нарисуй дом и дерево»</div>
+        <p><span class="signal">🎨 Нарисуй</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Педагог предлагает ребёнку: «Нарисуй дом и дерево рядом. А потом расскажи мне про них: какой это дом? Кто в нём живёт? Какое это дерево? Что оно видит?»</p>
+        <p><strong>Что диагностируется:</strong></p>
+        <ul>
+            <li><strong>Размер дома:</strong> большой — уверенность, оптимизм; маленький — тревожность, неуверенность;</li>
+            <li><strong>Цвет дома:</strong> яркие, тёплые цвета — хорошее настроение; тёмные цвета — тревога, печаль;</li>
+            <li><strong>Окна и двери:</strong> открытые — открытость, общительность; закрытые — замкнутость;</li>
+            <li><strong>Дерево:</strong> с листьями — жизненная сила; без листьев — упадок сил; с плодами — успешность;</li>
+            <li><strong>Композиция:</strong> дом и дерево на одной земле — ощущение связи с миром; «висящие в воздухе» — оторванность.</li>
+        </ul>
+        <p><strong>Как интерпретировать:</strong> важно не только «что» нарисовано, но и «как». Размер, цвет, расположение — всё имеет значение.</p>
+    </div>
+
+    <h3>Методика 4. «Нарисуй своё настроение»</h3>
+
+    <p><strong>Цель:</strong> диагностика эмоционального состояния ребёнка в момент обследования.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная или групповая работа.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Описание методики</div>
+        <p><span class="signal">🎨 Нарисуй</span> <span class="signal">📝 Объясни</span></p>
+        <p>Педагог предлагает ребёнку: «Нарисуй своё настроение в виде природного объекта или явления. Например: солнце, туча, радуга, ручей, дерево, цветок, капля». Затем просит рассказать, почему он выбрал именно этот образ.</p>
+        <p><strong>Интерпретация:</strong></p>
+        <ul>
+            <li><strong>Солнце, радуга, светлые цвета</strong> — хорошее, радостное настроение;</li>
+            <li><strong>Туча, дождь, тёмные цвета</strong> — тревожность, усталость, печаль;</li>
+            <li><strong>Гроза, молния</strong> — сильное эмоциональное напряжение, гнев;</li>
+            <li><strong>Дерево с корнями</strong> — уверенность, ощущение опоры;</li>
+            <li><strong>Одинокий цветок, травинка</strong> — чувство одиночества, потребность в поддержке.</li>
+        </ul>
+    </div>
+
+    <h3>Методика 5. «Моё место в природе»</h3>
+
+    <p><strong>Цель:</strong> диагностика отношения ребёнка к природе и к себе как части природы.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная или групповая работа с последующей беседой.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание для ребёнка «Моё место в природе»</div>
+        <p><span class="signal">🎨 Нарисуй</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Педагог предлагает: «Нарисуй природу и найди в ней место для себя. Где ты? Что ты делаешь? Что ты чувствуешь?»</p>
+        <p><strong>Что диагностируется:</strong></p>
+        <ul>
+            <li>Включает ли ребёнок себя в мир природы или рисует себя отдельно;</li>
+            <li>Какое место занимает он в композиции (центр, угол, отдельно);</li>
+            <li>Какие чувства выражает (изображает ли себя улыбающимся, спокойным, одиноким).</li>
+        </ul>
+        <p><strong>Критерии оценки:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> ребёнок изображает себя как часть природы, активно взаимодействующим с ней;</li>
+            <li><strong>Средний уровень:</strong> ребёнок изображает себя рядом с природой, но не включён в неё;</li>
+            <li><strong>Низкий уровень:</strong> ребёнок изображает себя отдельно от природы или не включает себя в рисунок.</li>
+        </ul>
+    </div>
+
+    <h3>Методика 6. «Дорисуй фигуру» (адаптация)</h3>
+
+    <p><strong>Цель:</strong> диагностика воображения и эмоционального состояния.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная работа.</p>
+
+    <div class="draw-area">
+        <div class="draw-caption" style="padding: 20px;">🎨 Ребёнку предлагается лист с несколькими незаконченными фигурами</div>
+        <svg viewBox="0 0 500 160" width="100%" height="150" xmlns="http://www.w3.org/2000/svg">
+            <!-- Фигура 1: круг -->
+            <circle cx="70" cy="80" r="35" fill="none" stroke="#333" stroke-width="2"/>
+            <!-- Фигура 2: квадрат -->
+            <rect x="170" y="45" width="70" height="70" fill="none" stroke="#333" stroke-width="2"/>
+            <!-- Фигура 3: волна -->
+            <path d="M300,80 Q320,50 340,80 T380,80" fill="none" stroke="#333" stroke-width="2"/>
+            <!-- Фигура 4: полукруг -->
+            <path d="M430,80 Q460,30 490,80" fill="none" stroke="#333" stroke-width="2"/>
+        </svg>
+        <div class="draw-caption">Дорисуй фигуры так, чтобы получились природные объекты или явления</div>
+    </div>
+
+    <p><strong>Что диагностируется:</strong> воображение, гибкость мышления, эмоциональное состояние (через выбор цвета и содержания рисунка).</p>
+
+    <h2>😰 Диагностика тревожности</h2>
+
+    <p>Тревожность — это устойчивое эмоциональное состояние, которое проявляется в повышенном беспокойстве, напряжении, страхах. У детей 6–10 лет тревожность может быть связана с разными причинами: страх ошибки, боязнь общения, неуверенность в себе. Диагностика тревожности важна для своевременной поддержки ребёнка.</p>
+
+    <h3>Методика 7. Адаптированный тест тревожности Филлипса</h3>
+
+    <p><strong>Цель:</strong> диагностика уровня тревожности в различных ситуациях (общение, обучение, самовыражение).</p>
+
+    <p><strong>Форма проведения:</strong> анкетирование (для детей 9–10 лет) или беседа (для детей 6–8 лет).</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Примеры вопросов для беседы</div>
+        <p><span class="signal">📝 Ответь</span></p>
+        <p>Педагог задаёт ребёнку вопросы. Ребёнок отвечает «да», «нет» или «иногда».</p>
+        <ol>
+            <li>Волнуешься ли ты, когда тебя спрашивают на занятии?</li>
+            <li>Боишься ли ты сделать ошибку?</li>
+            <li>Трудно ли тебе отвечать перед всей группой?</li>
+            <li>Бывает ли, что у тебя дрожат руки, когда ты рисуешь?</li>
+            <li>Расстраиваешься ли ты, если что-то не получается?</li>
+            <li>Легко ли ты знакомишься с новыми детьми?</li>
+            <li>Боишься ли ты, что над тобой будут смеяться?</li>
+            <li>Часто ли ты чувствуешь себя одиноким?</li>
+            <li>Трудно ли тебе успокоиться, когда ты расстроен?</li>
+            <li>Боишься ли ты, что родители будут тобой недовольны?</li>
+        </ol>
+        <p><strong>Интерпретация:</strong></p>
+        <ul>
+            <li>0–3 ответа «да» — низкий уровень тревожности;</li>
+            <li>4–6 — средний уровень (требует внимания);</li>
+            <li>7 и более — высокий уровень (требуется работа с психологом).</li>
+        </ul>
+    </div>
+
+    <h3>Методика 8. «Кактус» (адаптированная)</h3>
+
+    <p><strong>Цель:</strong> диагностика эмоционального состояния и агрессивности.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная работа.</p>
+
+    <div class="task-box">
+        <div class="task-box-title">✏️ Задание для ребёнка «Нарисуй растение»</div>
+        <p><span class="signal">🎨 Нарисуй</span> <span class="signal">📝 Объясни</span></p>
+        <p>Педагог предлагает: «Нарисуй любое растение, которое тебе нравится. А потом расскажи мне про него: какое оно? Где растёт? Ему хорошо или плохо?»</p>
+        <p><strong>Интерпретация (по аналогии с методикой «Кактус»):</strong></p>
+        <ul>
+            <li><strong>Большое растение с колючками</strong> — возможная агрессивность, защитная позиция;</li>
+            <li><strong>Маленькое, слабое растение</strong> — неуверенность, потребность в защите;</li>
+            <li><strong>Растение с цветами</strong> — оптимизм, жизнерадостность;</li>
+            <li><strong>Растение в тени, без света</strong> — тревожность, подавленность;</li>
+            <li><strong>Растение с корнями</strong> — уверенность, устойчивость.</li>
+        </ul>
+    </div>
+
+    <h2>📊 Комплексная диагностика личностного развития: итоговая карта</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Показатель</th>
+                <th>Методика</th>
+                <th>Начало года</th>
+                <th>Середина года</th>
+                <th>Конец года</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Самооценка</td>
+                <td>«Лесенка»</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Уровень притязаний</td>
+                <td>Дембо-Рубинштейн</td>
+                <td>С</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Эмоциональное состояние</td>
+                <td>«Нарисуй своё настроение»</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Отношение к себе как части природы</td>
+                <td>«Моё место в природе»</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Уровень тревожности</td>
+                <td>Беседа / Филлипс</td>
+                <td>С</td>
+                <td>С</td>
+                <td>Н</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><em>Условные обозначения: Н — низкий, С — средний, В — высокий (для тревожности — чем ниже, тем лучше).</em></p>
+
+    <h3>Уровни личностного развития</h3>
+
+    <div class="level-card high">
+        <div class="level-num">В</div>
+        <div class="level-text"><strong>Высокий уровень.</strong> Ребёнок имеет адекватную самооценку, реалистичный уровень притязаний, преобладает положительное эмоциональное состояние, низкая тревожность. Уверен в себе, открыт, доброжелателен.</div>
+    </div>
+
+    <div class="level-card mid">
+        <div class="level-num">С</div>
+        <div class="level-text"><strong>Средний уровень.</strong> Самооценка может быть слегка завышенной или заниженной, эмоциональное состояние в целом положительное, но бывают колебания. Тревожность умеренная. Требует поддержки и внимания.</div>
+    </div>
+
+    <div class="level-card low">
+        <div class="level-num">Н</div>
+        <div class="level-text"><strong>Низкий уровень.</strong> Самооценка заниженная или нестабильная, эмоциональное состояние часто негативное, тревожность высокая. Ребёнок неуверен, замкнут или агрессивен. Требуется специальная работа с психологом.</div>
+    </div>
+
+    <h2>🧠 Разнообразие диагностических заданий: от простого к сложному</h2>
+
+    <p>Разберём, какие типы заданий можно использовать для диагностики личностного развития.</p>
+
+    <h3>Устные задания</h3>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Закончи фразу»</div>
+        <p><span class="signal">📝 Продолжи</span></p>
+        <p>Педагог начинает фразу, ребёнок продолжает:</p>
+        <ul>
+            <li>«Я люблю себя за то, что...»</li>
+            <li>«Мне нравится, когда...»</li>
+            <li>«Я боюсь, когда...»</li>
+            <li>«Я горжусь, когда...»</li>
+            <li>«Я хочу научиться...»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> самооценка, ценности, страхи, желания.</p>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Хорошо и плохо»</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог задаёт ребёнку вопросы:</p>
+        <ul>
+            <li>«Что в тебе хорошего? А что не очень?»</li>
+            <li>«Что у тебя получается лучше всего? А что труднее?»</li>
+            <li>«За что тебя хвалят? А за что иногда ругают?»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> адекватность самооценки, способность к рефлексии.</p>
+    </div>
+
+    <h3>Конструкторские и комбинаторные задания</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Мой герб»</div>
+        <p><span class="signal">🎨 Нарисуй</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Ребёнку предлагается нарисовать свой «герб» — символ себя. Это может быть цветок, дерево, солнце, звезда, кристалл — любой природный объект или символ (без изображения людей и животных, кроме бабочек). Под гербом нужно написать 3–5 слов, которые описывают ребёнка.</p>
+        <p><strong>Что диагностируется:</strong> самовосприятие, самооценка, ценности.</p>
+    </div>
+
+    <h3>Задания на развитие памяти, внимания и мышления</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Запомни и назови»</div>
+        <p><span class="signal">👁️ Посмотри</span> <span class="signal">📝 Назови</span></p>
+        <p>Педагог показывает ребёнку карточку с 5–7 словами-качествами (добрый, весёлый, умный, смелый, честный, трудолюбивый, заботливый). Через 30 секунд карточка убирается. Ребёнок должен назвать те качества, которые запомнил, и сказать, какие из них — про него.</p>
+        <p><strong>Что диагностируется:</strong> память, внимание, самооценка.</p>
+    </div>
+
+    <h3>Задания на развитие воображения</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Если бы я был...»</div>
+        <p><span class="signal">📝 Придумай</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Педагог предлагает: «Представь, что ты превратился в природный объект. В кого? Нарисуй себя в этом образе. Почему ты выбрал именно этот объект?»</p>
+        <p><strong>Что диагностируется:</strong> самовосприятие, воображение, эмоциональное состояние.</p>
+    </div>
+
+    <h3>Задания на развитие двигательных навыков</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Дорисуй и раскрась»</div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Педагог даёт ребёнку контур цветка с недостающими лепестками. Задача — дорисовать лепестки так, чтобы цветок стал «счастливым» или «грустным» (по выбору ребёнка), и раскрасить его в соответствующие цвета.</p>
+        <p><strong>Что диагностируется:</strong> мелкая моторика, эмоциональное состояние, самооценка.</p>
+    </div>
+
+    <h2>📖 Из практики: истории о самооценке</h2>
+
+    <div class="story-card">
+        <div class="story-title">«Девочка, которая считала себя невидимкой»</div>
+        <div class="story-text">
+            <p>Лена пришла в объединение тихой и незаметной. Она садилась в угол, почти не отвечала, редко поднимала руку. Педагог провёл методику «Лесенка». Лена поставила себя на 2-ю ступеньку: «Я хуже всех. У меня ничего не получается».</p>
+            <p>Педагог не стал спорить или убеждать. Вместо этого он начал давать Лене задания, с которыми она точно справится: нарисовать солнце, раскрасить цветок, помочь разложить карточки. Каждый раз он отмечал: «Смотри, как у тебя красиво получилось!», «Ты сегодня справилась сама!»</p>
+            <p>Через полгода Лена поставила себя уже на 5-ю ступеньку: «Я не самая лучшая, но я многое умею». И главное — она стала поднимать руку и отвечать на занятиях.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: заниженная самооценка не лечится уговорами. Она лечится <strong>реальными успехами</strong> — маленькими, но настоящими. Наша задача — создать условия, в которых ребёнок сможет их пережить.</div>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Типичная ошибка: публичное сравнение детей</div>
+        <p>Педагог на занятии сказал: «Посмотрите, как красиво нарисовала Маша! А Ваня, к сожалению, нарисовал хуже всех». Ваня расстроился, замкнулся, и в следующий раз отказался рисовать вообще.</p>
+        <p><strong>Как исправить?</strong> Сравнивайте ребёнка только с ним самим: «Сегодня у тебя получилось лучше, чем в прошлый раз!», «Ты старался, и это видно!» Публичное сравнение с другими — путь к заниженной самооценке.</p>
+    </div>
+
+    <div class="example-card">
+        <div class="example-title">Пример из практики: рисунок как «окно в душу»</div>
+        <p>Педагог предложил детям нарисовать своё настроение. Большинство нарисовали солнце, радугу, яркие цветы. А один мальчик нарисовал одинокое дерево без листьев на фоне серого неба. Педагог не стал ничего говорить при всех, а после занятия поговорил с мальчиком наедине. Оказалось, что у него дома сложная ситуация — родители часто ссорятся. Педагог не стал решать семейные проблемы, но стал уделять мальчику больше внимания, поддерживать его, давать задания, с которыми он справлялся. Через месяц рисунки мальчика изменились — на них появились листья и солнце.</p>
+    </div>
+
+    <h2>🎯 Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 6.1. «Определи уровень» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите результаты методики «Лесенка» с уровнем самооценки.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Результат</th>
+                    <th>Уровень</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Ребёнок поставил себя на 7-ю ступеньку и сказал: «Я лучше всех»</td><td>1. Заниженная самооценка</td></tr>
+                <tr><td>Б. Ребёнок поставил себя на 2-ю ступеньку: «Я хуже всех»</td><td>2. Адекватная самооценка</td></tr>
+                <tr><td>В. Ребёнок поставил себя на 5-ю ступеньку: «Я хороший, но не самый лучший»</td><td>3. Завышенная самооценка</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 6.2. «Составь диагностическое задание» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Составь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Придумайте диагностическое задание для оценки эмоционального состояния детей 7–8 лет с использованием рисуночной методики (без изображения людей и животных, кроме бабочек).</p>
+        <p><strong>Описание задания:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Критерии интерпретации:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 6.3. «Проверь себя» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">❓ Ответь на вопросы</span></p>
+        <ol>
+            <li>Почему завышенная самооценка у детей 6–10 лет считается вариантом нормы?</li>
+            <li>В чём разница между самооценкой и уровнем притязаний?</li>
+            <li>Почему при диагностике личностного развития важно использовать не одну, а несколько методик?</li>
+            <li>Как педагог может помочь ребёнку с заниженной самооценкой?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Самооценка</strong> — оценка человеком самого себя, своих качеств, возможностей, места среди других.</p>
+        <p><strong>Адекватная самооценка</strong> — реалистичное представление о себе.</p>
+        <p><strong>Завышенная самооценка</strong> — переоценка своих возможностей.</p>
+        <p><strong>Заниженная самооценка</strong> — недооценка себя, своих сил.</p>
+        <p><strong>Уровень притязаний</strong> — на какой результат ребёнок претендует, какую задачу считает для себя посильной.</p>
+        <p><strong>Тревожность</strong> — устойчивое эмоциональное состояние беспокойства, напряжения, страха.</p>
+        <p><strong>Проективные методики</strong> — методики, позволяющие выразить внутренние переживания через творчество (рисунок).</p>
+        <p><strong>Эмоциональное состояние</strong> — преобладающее настроение ребёнка в момент обследования и в целом.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Что такое самооценка и уровень притязаний.</li>
+            <li>Как использовать методику «Лесенка» (В.Г. Щур) для диагностики самооценки.</li>
+            <li>Как применять адаптированную методику Дембо-Рубинштейн.</li>
+            <li>Как использовать проективные рисуночные методики: «Нарисуй дом и дерево», «Нарисуй своё настроение», «Моё место в природе», «Дорисуй фигуру».</li>
+            <li>Как диагностировать тревожность с помощью адаптированного теста Филлипса и методики «Кактус».</li>
+            <li>Как составить комплексную диагностическую карту личностного развития.</li>
+            <li>Как избежать типичных ошибок: публичного сравнения, оценок без учёта возраста.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Каждый ребёнок — это целая вселенная. И наша задача — не судить его, а понять. Не изменить его, а помочь ему раскрыться. И диагностика — это первый шаг к такому пониманию».
+        <span class="quote-author">— из размышлений о личностно-ориентированном воспитании</span>
+    </div>
+
+    <h2>🚀 Что дальше?</h2>
+
+    <p>В следующей главе мы перейдём к <strong>диагностике творческих способностей и наглядно-действенного мышления</strong>. Мы разберём:</p>
+
+    <ul>
+        <li>методику «Кубик Рубика» (9 заданий возрастающей сложности) для диагностики наглядно-действенного мышления;</li>
+        <li>тест дивергентного мышления Вильямса (адаптированный);</li>
+        <li>методику «Дорисовывание фигур» (О.М. Дьяченко);</li>
+        <li>анализ творческих работ учащихся.</li>
+    </ul>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter7.html" class="button">📖 Перейти к главе 7. «Диагностика творческих способностей и наглядно-действенного мышления» →</a>
+        <a href="chapter5.html" class="button secondary">← Вернуться к главе 5</a>
+        <a href="index.html" class="button secondary">🏠 К плану курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 6. Диагностика личностного развития и самооценки | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>

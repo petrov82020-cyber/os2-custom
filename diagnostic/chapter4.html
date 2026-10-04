@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 4. Диагностика нравственных качеств и воспитанности личности</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 32px 38px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 12px;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0891b2;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #ecfeff;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.55rem;
+            margin: 34px 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #155e75;
+        }
+        h3 {
+            font-size: 1.22rem;
+            margin: 24px 0 10px 0;
+            color: #0e7490;
+        }
+        h4 {
+            font-size: 1.05rem;
+            margin: 18px 0 8px 0;
+            color: #155e75;
+            font-weight: 700;
+        }
+        p { margin: 10px 0; text-align: justify; }
+        ul, ol { margin: 10px 0 12px 26px; }
+        li { margin: 6px 0; }
+
+        .intro-card {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 24px 0;
+            position: relative;
+        }
+        .intro-card::before {
+            content: "ВСТУПЛЕНИЕ";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #0891b2;
+            color: white;
+            padding: 3px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .intro-card p:first-child { margin-top: 8px; }
+
+        .task-box {
+            background: #ecfeff;
+            border: 2px dashed #0891b2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin: 22px 0;
+        }
+        .task-box-title {
+            font-weight: 700;
+            color: #155e75;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .task-level {
+            display: inline-block;
+            background: #cffafe;
+            color: #155e75;
+            padding: 1px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .task-level.hard {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .signal {
+            display: inline-block;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #0891b2;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .note {
+            background: #ffffcc;
+            padding: 15px 20px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .warning-box {
+            background: #fff3e3;
+            border-left: 5px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .green-note {
+            background: #f0fdf4;
+            padding: 15px 20px;
+            border-left: 5px solid #16a34a;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .purple-note {
+            background: #faf5ff;
+            border-left: 5px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 22px 0;
+            position: relative;
+        }
+        .story-card::before {
+            content: "📖 Из практики";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #d97706;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .story-card p:first-child { margin-top: 8px; }
+        .story-title {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .story-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.7;
+        }
+        .story-moral {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: white;
+            border-left: 4px solid #d97706;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #7c2d12;
+            font-size: 0.92rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #16a34a;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .example-card::before {
+            content: "✅ Пример";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #16a34a;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .example-card p:first-child { margin-top: 8px; }
+        .example-title {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .anti-example-card {
+            background: #fef2f2;
+            border: 2px dashed #ef4444;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .anti-example-card::before {
+            content: "❌ Ошибка";
+            position: absolute;
+            top: -13px;
+            left: 24px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .anti-example-card p:first-child { margin-top: 8px; }
+        .anti-example-title {
+            font-weight: 700;
+            color: #991b1b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .oral-task {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .oral-task-title {
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .construct-task {
+            background: #f0fdfa;
+            border-left: 5px solid #14b8a6;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .construct-task-title {
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .memory-task {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 16px 22px;
+            margin: 18px 0;
+        }
+        .memory-task-title {
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4a5568;
+            padding: 12px 22px;
+            border-left: 3px solid #0891b2;
+            margin: 16px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+        .quote-author {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.93rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ecfeff;
+            color: #155e75;
+            font-weight: 600;
+        }
+        .line-for-writing {
+            display: block;
+            border-bottom: 1.5px dashed #94a3b8;
+            height: 28px;
+            margin: 8px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0891b2;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+        .button:hover { background: #0e7490; }
+        .button.secondary { background: #64748b; }
+        .button.secondary:hover { background: #475569; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .svg-diagram {
+            display: block;
+            margin: 22px auto;
+            max-width: 100%;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .draw-area {
+            border: 1px dashed #94a3b8;
+            border-radius: 12px;
+            background: white;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+        }
+        .draw-area svg { max-width: 100%; height: auto; }
+        .draw-caption {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .level-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #0891b2;
+        }
+        .level-card .level-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0891b2;
+            min-width: 40px;
+            text-align: center;
+        }
+        .level-card .level-text {
+            font-size: 0.93rem;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .level-card.high { border-left-color: #16a34a; }
+        .level-card.high .level-num { color: #16a34a; }
+        .level-card.mid { border-left-color: #eab308; }
+        .level-card.mid .level-num { color: #eab308; }
+        .level-card.low { border-left-color: #ef4444; }
+        .level-card.low .level-num { color: #ef4444; }
+
+        footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 720px) {
+            .container { padding: 22px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            table { font-size: 0.82rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К плану курса</a>
+    <a href="chapter3.html" class="back-link" style="margin-left: 15px;">← Глава 3</a>
+
+    <h1>💚 Глава 4. Диагностика нравственных качеств и воспитанности личности</h1>
+    <div class="chapter-meta">✍️ Время чтения: ~35 минут | 🎯 Цель: освоить систему диагностики нравственных качеств и воспитанности детей 6–10 лет, научиться выявлять общую нравственную направленность личности и оценивать поступки в связи с их мотивацией</div>
+
+    <div class="intro-card">
+        <p>Дорогой коллега! Мы продолжаем наше путешествие в мир педагогической диагностики. Если экологическая культура — это отношение ребёнка к природе, то <strong>нравственность</strong> — это его отношение к другим людям, к самому себе, к добру и злу. И эти два направления тесно связаны: невозможно по-настоящему любить природу, не будучи добрым, честным, отзывчивым человеком.</p>
+        <p>В этой главе мы разберёмся с очень непростым вопросом: <strong>как диагностировать то, что нельзя «измерить» линейкой?</strong> Как понять, добрый ли ребёнок? Честный ли? Умеет ли он сопереживать? Ведь нравственные качества — это не знания, которые можно проверить тестом. Это глубоко личностные образования, которые проявляются в поступках, но не всегда очевидны.</p>
+        <p>Мы рассмотрим несколько проверенных методик, которые позволяют педагогу «заглянуть» в душу ребёнка и понять его нравственные ориентиры. И, что важно, — научимся различать <em>истинные</em> нравственные поступки от тех, что совершаются по принуждению, ради похвалы или по другим, далёким от нравственности мотивам.</p>
+    </div>
+
+    <div class="quote">
+        «Нравственность — это не свод правил, которые нужно заучить. Это внутренний компас, который помогает человеку выбирать добро, даже когда никто не видит».
+        <span class="quote-author">— из размышлений о нравственном воспитании</span>
+    </div>
+
+    <h2>🧭 Что такое нравственные качества и воспитанность?</h2>
+
+    <p>Прежде чем говорить о диагностике, давайте определимся с понятиями. <strong>Нравственные качества</strong> — это устойчивые свойства личности, которые проявляются в её отношении к другим людям, к обществу, к самой себе. К ним относятся:</p>
+
+    <div class="beauty-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:20px 0;">
+        <div class="example-card" style="margin:0;">
+            <div class="example-title">💚 Доброта</div>
+            <p style="font-size:0.9rem;">Способность сочувствовать, помогать, не быть равнодушным к чужой беде.</p>
+        </div>
+        <div class="example-card" style="margin:0;">
+            <div class="example-title">🤝 Честность</div>
+            <p style="font-size:0.9rem;">Умение говорить правду, признавать ошибки, не обманывать.</p>
+        </div>
+        <div class="example-card" style="margin:0;">
+            <div class="example-title">❤️ Отзывчивость</div>
+            <p style="font-size:0.9rem;">Умение замечать чужую боль и откликаться на неё делом.</p>
+        </div>
+        <div class="example-card" style="margin:0;">
+            <div class="example-title">🛡️ Ответственность</div>
+            <p style="font-size:0.9rem;">Готовность отвечать за свои поступки и держать слово.</p>
+        </div>
+        <div class="example-card" style="margin:0;">
+            <div class="example-title">🙏 Уважение</div>
+            <p style="font-size:0.9rem;">Признание ценности другого человека, его прав и особенностей.</p>
+        </div>
+        <div class="example-card" style="margin:0;">
+            <div class="example-title">🌟 Справедливость</div>
+            <p style="font-size:0.9rem;">Умение поступать по правде, не выделяя одних в ущерб другим.</p>
+        </div>
+    </div>
+
+    <p><strong>Воспитанность</strong> — это интегральный показатель, который характеризует <em>уровень развития</em> нравственных качеств и <em>готовность</em> ребёнка поступать в соответствии с ними. Воспитанный человек — это не тот, кто знает много правил, а тот, кто <strong>живёт по этим правилам</strong>.</p>
+
+    <div class="warning-box">
+        <strong>⚠️ Трудность диагностики.</strong><br>
+        Результаты воспитания чаще всего имеют <strong>отсроченный характер</strong>. То, что мы сегодня вложили в ребёнка, может проявиться только через годы. Кроме того, имеющиеся сегодня в педагогике критерии и методы не дают возможности достаточно глубоко и надёжно диагностировать часто <em>скрытые</em> качества личности.
+    </div>
+
+    <h2>🎯 Главный критерий: общая нравственная направленность личности</h2>
+
+    <p>Разные педагоги и психологи предлагают разные критерии для диагностики воспитанности. Но все они сходятся в одном: <strong>в основу оценки воспитанности должна быть положена общая нравственная направленность личности, а не отдельные её качества</strong>.</p>
+
+    <p>Что это значит? Это значит, что мы не можем судить о ребёнке по одному поступку. Сегодня он поделился игрушкой — завтра отнял её у другого. Сегодня сказал правду — завтра обманул. Нам важно понять <strong>общее направление</strong> его личности: к добру или ко злу, к людям или от людей, к созиданию или разрушению.</p>
+
+    <svg class="svg-diagram" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема нравственной направленности личности">
+        <text x="350" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#155e75">ОБЩАЯ НРАВСТВЕННАЯ НАПРАВЛЕННОСТЬ ЛИЧНОСТИ</text>
+
+        <!-- Центральный круг -->
+        <circle cx="350" cy="200" r="80" fill="#cffafe" stroke="#0891b2" stroke-width="2.5"/>
+        <text x="350" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#155e75">ЛИЧНОСТЬ</text>
+        <text x="350" y="210" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#155e75">ребёнка</text>
+
+        <!-- Три круга вокруг -->
+        <circle cx="120" cy="100" r="55" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="120" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#166534">Знания</text>
+        <text x="120" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#166534">о добре и зле</text>
+
+        <circle cx="580" cy="100" r="55" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="580" y="95" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Чувства</text>
+        <text x="580" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#92400e">сопереживание</text>
+
+        <circle cx="350" cy="330" r="55" fill="#fae8ff" stroke="#a855f7" stroke-width="2"/>
+        <text x="350" y="325" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6b21a8">Поступки</text>
+        <text x="350" y="342" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b21a8">поведение</text>
+
+        <!-- Стрелки к центру -->
+        <defs>
+            <marker id="arrow4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#0891b2"/>
+            </marker>
+        </defs>
+        <line x1="170" y1="130" x2="285" y2="175" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow4)"/>
+        <line x1="530" y1="130" x2="415" y2="175" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow4)"/>
+        <line x1="350" y1="278" x2="350" y2="275" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow4)"/>
+    </svg>
+    <p style="text-align:center;font-size:0.88rem;color:#64748b;font-style:italic;">Схема 4.1. Нравственная направленность личности — единство знаний, чувств и поступков</p>
+
+    <h2>🧠 Принцип: поступок и мотивация</h2>
+
+    <p>Один из самых важных принципов диагностики нравственных качеств — <strong>рассматривать поступок ребёнка в связи с его мотивацией</strong>. Это значит, что мы не можем оценивать поступок сам по себе, вне контекста.</p>
+
+    <div class="example-card">
+        <div class="example-title">Пример: один и тот же поступок — разные мотивы</div>
+        <p>Представьте себе ситуацию: мальчик помог бабушке донести сумку. Что это значит?</p>
+        <ul>
+            <li><strong>Мотив 1:</strong> «Мне стало жалко бабушку, ей тяжело» — это <em>нравственный</em> мотив, поступок действительно говорит о доброте.</li>
+            <li><strong>Мотив 2:</strong> «Мама увидит и даст мне конфету» — это <em>корыстный</em> мотив, поступок не свидетельствует о доброте.</li>
+            <li><strong>Мотив 3:</strong> «Мне сказали — я сделал» — это <em>исполнительный</em> мотив, ребёнок послушный, но не добрый по своей инициативе.</li>
+        </ul>
+        <p>Внешне — один и тот же поступок. Но за ним стоят разные мотивы, и нравственная оценка будет разной.</p>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Обратите внимание!</strong><br>
+        Иногда даже самые гуманные поступки, якобы свидетельствующие о воспитанности человека, на самом деле бывают обусловлены <em>не самыми лучшими побуждениями</em>. Наша задача — не просто фиксировать поступки, а <strong>понять их мотивы</strong>.
+    </div>
+
+    <h2>🔬 Методики диагностики нравственных качеств</h2>
+
+    <p>Теперь перейдём к конкретным методикам. Мы рассмотрим четыре основные методики, каждая из которых позволяет увидеть определённую грань нравственного развития ребёнка.</p>
+
+    <h3>Методика 1. «Что такое хорошо и что такое плохо?» (Г.М. Фридман)</h3>
+
+    <p><strong>Цель:</strong> диагностика нравственных представлений ребёнка — понимания того, какие поступки являются хорошими, а какие — плохими.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа с использованием карточек или словесных описаний ситуаций.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Описание методики</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог предлагает ребёнку несколько ситуаций и просит определить, правильно ли поступил герой, и объяснить, почему он так считает.</p>
+
+        <p><strong>Ситуация 1.</strong> «Мальчик нашёл на улице кошелёк с деньгами и оставил его себе. Хорошо ли он поступил? Почему?»</p>
+        <p><em>Ожидаемый ответ:</em> «Плохо, потому что это чужие деньги. Их нужно вернуть хозяину».</p>
+
+        <p><strong>Ситуация 2.</strong> «Девочка увидела, что у её подруги порвалось платье, и предложила свою запасную кофточку. Хорошо ли она поступила? Почему?»</p>
+        <p><em>Ожидаемый ответ:</em> «Хорошо, потому что она помогла подруге в трудную минуту».</p>
+
+        <p><strong>Ситуация 3.</strong> «Мальчик смеялся над одноклассником, который неправильно ответил у доски. Хорошо ли он поступил? Почему?»</p>
+        <p><em>Ожидаемый ответ:</em> «Плохо, потому что нельзя смеяться над чужими ошибками. Нужно помогать, а не унижать».</p>
+
+        <p><strong>Ситуация 4.</strong> «Девочка сорвала в лесу редкий цветок, занесённый в Красную книгу, чтобы подарить маме. Хорошо ли она поступила? Почему?»</p>
+        <p><em>Ожидаемый ответ:</em> «Плохо, потому что редкие цветы рвать нельзя. Их нужно беречь. Можно подарить маме другой цветок».</p>
+
+        <p><strong>Критерии оценки:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> ребёнок правильно определяет, что хорошо, а что плохо, и <em>аргументирует</em> свой ответ, опираясь на нравственные нормы.</li>
+            <li><strong>Средний уровень:</strong> ребёнок правильно определяет, но <em>не может объяснить</em> почему.</li>
+            <li><strong>Низкий уровень:</strong> ребёнок не может определить, что хорошо, а что плохо, или даёт неверные ответы.</li>
+        </ul>
+    </div>
+
+    <h3>Методика 2. «Диагностика эмоционального отношения к нравственным нормам» (Р.Р. Калинина)</h3>
+
+    <p><strong>Цель:</strong> изучение эмоционального отношения ребёнка к нравственным нормам — переживает ли он, когда нарушает норму, и радуется ли, когда поступает нравственно.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная беседа.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Описание методики</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Педагог предлагает ребёнку несколько ситуаций, в которых герой совершает тот или иной поступок. Ребёнка просят:</p>
+        <ol>
+            <li>Оценить поступок (хорошо/плохо).</li>
+            <li>Представить, <em>что чувствует</em> герой.</li>
+            <li>Нарисовать <em>настроение</em> героя (например, в виде солнца или тучи).</li>
+        </ol>
+
+        <p><strong>Примеры ситуаций:</strong></p>
+        <ul>
+            <li><strong>Ситуация А.</strong> «Мальчик помог другу собрать портфель. Что он чувствует?» <em>(Ожидание: радость, гордость.)</em></li>
+            <li><strong>Ситуация Б.</strong> «Девочка обманула маму и сказала, что получила пятёрку, а на самом деле — двойку. Что она чувствует?» <em>(Ожидание: стыд, тревогу, страх.)</em></li>
+            <li><strong>Ситуация В.</strong> «Мальчик защитил слабого от обидчика. Что он чувствует?» <em>(Ожидание: гордость, радость.)</em></li>
+            <li><strong>Ситуация Г.</strong> «Девочка не поделилась игрушкой с младшим братом и увидела, что он плачет. Что она чувствует?» <em>(Ожидание: стыд, желание исправиться.)</em></li>
+        </ul>
+
+        <p><strong>Критерии оценки:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> ребёнок правильно определяет эмоции героя в соответствии с нравственной нормой (радость при добром поступке, стыд — при плохом).</li>
+            <li><strong>Средний уровень:</strong> ребёнок определяет эмоции, но не всегда точно, с помощью педагога.</li>
+            <li><strong>Низкий уровень:</strong> ребёнок не связывает поступок и эмоции (например, говорит, что герой радуется, обманув маму).</li>
+        </ul>
+    </div>
+
+    <h3>Методика 3. «Диагностика уровня воспитанности» (Н.П. Капустина)</h3>
+
+    <p><strong>Цель:</strong> комплексная оценка уровня воспитанности ребёнка по нескольким показателям.</p>
+
+    <p><strong>Форма проведения:</strong> анкетирование (для детей 9–10 лет — письменно, для 6–8 лет — в форме беседы).</p>
+
+    <p>Данная методика предполагает оценку по нескольким критериям. Для детей 6–10 лет они адаптируются.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Критерий</th>
+                <th>Показатели</th>
+                <th>Оценка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Любознательность</strong></td>
+                <td>Интересуется новым, задаёт вопросы, читает книги</td>
+                <td>0–5 баллов</td>
+            </tr>
+            <tr>
+                <td><strong>Отношение к школе</strong></td>
+                <td>С желанием посещает занятия, активно участвует</td>
+                <td>0–5 баллов</td>
+            </tr>
+            <tr>
+                <td><strong>Отношение к труду</strong></td>
+                <td>Трудится с желанием, помогает взрослым, доводит дело до конца</td>
+                <td>0–5 баллов</td>
+            </tr>
+            <tr>
+                <td><strong>Отношение к природе</strong></td>
+                <td>Бережно относится к природе, ухаживает за растениями и животными</td>
+                <td>0–5 баллов</td>
+            </tr>
+            <tr>
+                <td><strong>Отношение к людям</strong></td>
+                <td>Доброжелателен, отзывчив, уважителен, умеет помогать</td>
+                <td>0–5 баллов</td>
+            </tr>
+            <tr>
+                <td><strong>Отношение к себе</strong></td>
+                <td>Соблюдает правила поведения, аккуратен, ответственен за свои поступки</td>
+                <td>0–5 баллов</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Обработка результатов:</strong></p>
+    <ul>
+        <li><strong>25–30 баллов</strong> — высокий уровень воспитанности;</li>
+        <li><strong>15–24 балла</strong> — средний уровень;</li>
+        <li><strong>менее 15 баллов</strong> — низкий уровень.</li>
+    </ul>
+
+    <h3>Методика 4. «Состояние духовно-нравственных качеств личности учащегося»</h3>
+
+    <p><strong>Цель:</strong> оценка состояния духовно-нравственных качеств через наблюдение за поведением ребёнка в различных ситуациях.</p>
+
+    <p><strong>Форма проведения:</strong> педагогическое наблюдение (заполняется в течение учебного года).</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Качество</th>
+                <th>Проявление</th>
+                <th>Начало года</th>
+                <th>Конец года</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Доброта</strong></td>
+                <td>Помогает товарищам, сочувствует, делится</td>
+                <td>Н / С / В</td>
+                <td>Н / С / В</td>
+            </tr>
+            <tr>
+                <td><strong>Честность</strong></td>
+                <td>Говорит правду, признаёт ошибки</td>
+                <td>Н / С / В</td>
+                <td>Н / С / В</td>
+            </tr>
+            <tr>
+                <td><strong>Ответственность</strong></td>
+                <td>Выполняет обещания, доводит дело до конца</td>
+                <td>Н / С / В</td>
+                <td>Н / С / В</td>
+            </tr>
+            <tr>
+                <td><strong>Уважение</strong></td>
+                <td>Вежлив, слушает других, не перебивает</td>
+                <td>Н / С / В</td>
+                <td>Н / С / В</td>
+            </tr>
+            <tr>
+                <td><strong>Справедливость</strong></td>
+                <td>Поступает по правде, не выделяет favourites</td>
+                <td>Н / С / В</td>
+                <td>Н / С / В</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Методика 5. «Если бы я был добрым волшебником»</h3>
+
+    <p><strong>Цель:</strong> выявление нравственных желаний ребёнка и его представлений о добре.</p>
+
+    <p><strong>Форма проведения:</strong> индивидуальная или групповая беседа с элементами рисования.</p>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Описание методики</div>
+        <p><span class="signal">📝 Ответь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Педагог предлагает ребёнку представить, что он стал добрым волшебником, и спрашивает:</p>
+        <ul>
+            <li>«Какие три желания ты бы загадал?»</li>
+            <li>«Что бы ты сделал для своей семьи?»</li>
+            <li>«Что бы ты сделал для своих друзей?»</li>
+            <li>«Что бы ты сделал для природы?»</li>
+            <li>«Что бы ты сделал для всех людей на Земле?»</li>
+        </ul>
+        <p>Затем ребёнку предлагается нарисовать своё самое главное желание (без изображения людей и животных — можно использовать символы).</p>
+
+        <p><strong>Критерии оценки:</strong></p>
+        <ul>
+            <li><strong>Высокий уровень:</strong> желания ребёнка направлены на благо других (помочь маме, чтобы все были здоровы, чтобы не было войны, чтобы природа была чистой).</li>
+            <li><strong>Средний уровень:</strong> желания связаны с близкими, но не выходят за пределы семьи.</li>
+            <li><strong>Низкий уровень:</strong> желания эгоистичны (новые игрушки, сладости, деньги для себя).</li>
+        </ul>
+    </div>
+
+    <h2>📊 Комплексная диагностика нравственных качеств: итоговая карта</h2>
+
+    <p>Как и в случае с экологической культурой, для полноценной картины нам нужна <strong>комплексная диагностика</strong>. Предлагаю использовать единую карту, которая заполняется в течение года.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Показатель</th>
+                <th>Методика</th>
+                <th>Начало года</th>
+                <th>Середина года</th>
+                <th>Конец года</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Нравственные представления (что хорошо, что плохо)</td>
+                <td>«Что такое хорошо и что такое плохо?»</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Эмоциональное отношение к нравственным нормам</td>
+                <td>Методика Р.Р. Калининой</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Общий уровень воспитанности</td>
+                <td>Методика Н.П. Капустиной</td>
+                <td>С</td>
+                <td>С</td>
+                <td>В</td>
+            </tr>
+            <tr>
+                <td>Духовно-нравственные качества</td>
+                <td>Наблюдение</td>
+                <td>Н</td>
+                <td>С</td>
+                <td>С</td>
+            </tr>
+            <tr>
+                <td>Нравственные желания и представления о добре</td>
+                <td>«Если бы я был добрым волшебником»</td>
+                <td>С</td>
+                <td>В</td>
+                <td>В</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Уровни сформированности нравственных качеств</h3>
+
+    <div class="level-card high">
+        <div class="level-num">В</div>
+        <div class="level-text"><strong>Высокий уровень.</strong> Ребёнок имеет чёткие нравственные представления, эмоционально откликается на нарушение норм, проявляет доброту, честность, ответственность в поступках. Его желания направлены на благо других.</div>
+    </div>
+
+    <div class="level-card mid">
+        <div class="level-num">С</div>
+        <div class="level-text"><strong>Средний уровень.</strong> Ребёнок знает нравственные нормы, но не всегда поступает в соответствии с ними. Эмоциональный отклик выражен умеренно. В поступках ориентируется на взрослых.</div>
+    </div>
+
+    <div class="level-card low">
+        <div class="level-num">Н</div>
+        <div class="level-text"><strong>Низкий уровень.</strong> Нравственные представления фрагментарны или искажены. Эмоциональный отклик на нарушение норм отсутствует. Поступки часто эгоистичны, ребёнок не задумывается о других.</div>
+    </div>
+
+    <h2>🧠 Разнообразие диагностических заданий: от простого к сложному</h2>
+
+    <p>Теперь, как и в предыдущих главах, разберём <strong>конкретные типы заданий</strong>, которые можно использовать для диагностики нравственных качеств. Пойдём от простых к сложным.</p>
+
+    <h3>Устные задания</h3>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Ответь на вопрос»</div>
+        <p><span class="signal">📝 Ответь</span></p>
+        <p>Педагог задаёт ребёнку вопросы о нравственных нормах:</p>
+        <ul>
+            <li>«Что значит быть добрым?»</li>
+            <li>«Почему нельзя обманывать?»</li>
+            <li>«Что ты чувствуешь, когда кому-то помогаешь?»</li>
+            <li>«Как бы ты поступил, если бы увидел, что кто-то плачет?»</li>
+        </ul>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Продолжи фразу»</div>
+        <p><span class="signal">📝 Продолжи</span></p>
+        <p>Педагог начинает фразу, ребёнок продолжает:</p>
+        <ul>
+            <li>«Добрый человек — это тот, кто...»</li>
+            <li>«Честный человек никогда не...»</li>
+            <li>«Если я обидел друга, я...»</li>
+            <li>«Настоящий друг — это тот, кто...»</li>
+            <li>«Мне бывает стыдно, когда...»</li>
+        </ul>
+    </div>
+
+    <div class="oral-task">
+        <div class="oral-task-title">🗣️ Задание «Оцени поступок»</div>
+        <p><span class="signal">📝 Оцени</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог описывает ситуацию, ребёнок оценивает поступок и объясняет, почему он так считает.</p>
+        <ul>
+            <li>«Мальчик нашёл чужую игрушку и оставил себе».</li>
+            <li>«Девочка помогла маме помыть посуду».</li>
+            <li>«Мальчик сказал неправду, чтобы не получить замечание».</li>
+            <li>«Девочка поделилась яблоком с товарищем».</li>
+        </ul>
+    </div>
+
+    <h3>Конструкторские и комбинаторные задания</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Собери правило»</div>
+        <p><span class="signal">🔗 Соедини</span> <span class="signal">📊 Составь</span></p>
+        <p>Ребёнку даются карточки со словами, из которых нужно составить правило нравственного поведения. Например:</p>
+        <ul>
+            <li>«Не / делай / другому / того, / чего / не / желаешь / себе».</li>
+            <li>«Помогай / тем, / кто / в / беде».</li>
+            <li>«Говори / правду, / даже / если / это / трудно».</li>
+        </ul>
+    </div>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🧩 Задание «Разложи по порядку»</div>
+        <p><span class="signal">📊 Раздели на группы</span></p>
+        <p>Педагог даёт ребёнку набор карточек с изображениями поступков. Задача — разделить их на две группы: «Хорошие поступки» и «Плохие поступки».</p>
+        <p><strong>Примеры поступков (можно обозначить символами):</strong></p>
+        <ul>
+            <li>Помочь другу собрать вещи (✓).</li>
+            <li>Обмануть родителей (✗).</li>
+            <li>Поделиться игрушкой (✓).</li>
+            <li>Обидеть младшего (✗).</li>
+            <li>Убрать за собой посуду (✓).</li>
+            <li>Смеяться над чужой ошибкой (✗).</li>
+        </ul>
+    </div>
+
+    <h3>Задания на развитие памяти, внимания и мышления</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Запомни и назови»</div>
+        <p><span class="signal">👁️ Посмотри</span> <span class="signal">📝 Назови</span></p>
+        <p>Педагог показывает ребёнку карточку с несколькими словами, обозначающими нравственные качества (например: доброта, честность, отзывчивость, ответственность). Через 30 секунд карточка убирается. Ребёнок должен назвать те качества, которые запомнил.</p>
+        <p><strong>Что диагностируется:</strong> память, внимание, знание нравственных понятий.</p>
+    </div>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Найди лишнее»</div>
+        <p><span class="signal">👁️ Найди</span> <span class="signal">🔗 Объясни</span></p>
+        <p>Педагог предлагает ряд нравственных качеств, среди которых одно — лишнее (не относится к нравственным). Например: «доброта, честность, ловкость, отзывчивость» (лишнее — ловкость, так как это физическое качество, а не нравственное).</p>
+        <p><strong>Что диагностируется:</strong> логическое мышление, понимание сути нравственных категорий.</p>
+    </div>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🧠 Задание «Что было бы, если...»</div>
+        <p><span class="signal">📝 Ответь</span></p>
+        <p>Педагог задаёт ребёнку вопросы на развитие нравственного мышления:</p>
+        <ul>
+            <li>«Что было бы, если бы все люди всегда говорили только правду?»</li>
+            <li>«Что было бы, если бы никто никогда не помогал друг другу?»</li>
+            <li>«Что было бы, если бы все люди были добрыми?»</li>
+        </ul>
+        <p><strong>Что диагностируется:</strong> нравственное мышление, способность прогнозировать последствия.</p>
+    </div>
+
+    <h3>Задания на развитие воображения</h3>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Нарисуй доброе дело»</div>
+        <p><span class="signal">🎨 Нарисуй</span> <span class="signal">📝 Подпиши</span></p>
+        <p>Ребёнку предлагается нарисовать любое доброе дело, которое он совершил или хотел бы совершить. Можно использовать символы (сердце, солнце, цветок, руку помощи). <strong>Запрещено изображать людей и животных (кроме бабочек)</strong>.</p>
+        <p><strong>Что диагностируется:</strong> нравственные представления, воображение, творческие способности.</p>
+    </div>
+
+    <div class="memory-task">
+        <div class="memory-task-title">🎨 Задание «Дорисуй настроение»</div>
+        <p><span class="signal">🖍️ Дорисуй</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Педагог даёт ребёнку лист с контурами двух кругов. В первом нужно нарисовать настроение человека, который совершил добрый поступок. Во втором — настроение того, кто поступил плохо. Раскрасить соответствующими цветами.</p>
+        <p><strong>Что диагностируется:</strong> эмоциональное отношение к нравственным нормам.</p>
+    </div>
+
+    <h3>Задания на развитие двигательных навыков</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">✂️ Задание «Обведи и раскрась»</div>
+        <p><span class="signal">✏️ Обведи</span> <span class="signal">🎨 Раскрась</span></p>
+        <p>Ребёнку даётся контур символа нравственного качества (например, сердце — символ доброты, весы — символ справедливости). Задача — обвести по контуру и раскрасить.</p>
+        <p><strong>Что диагностируется:</strong> мелкая моторика, знание символики нравственных качеств.</p>
+    </div>
+
+    <h3>Задания на диагностику стиля общения</h3>
+
+    <div class="construct-task">
+        <div class="construct-task-title">🤝 Задание «Помоги товарищу»</div>
+        <p><span class="signal">🤝 Работа в паре</span> <span class="signal">👁️ Наблюдение</span></p>
+        <p>Педагог даёт двум детям задание, в котором один ребёнок должен помочь другому (например, объяснить, как выполнить задание). Педагог наблюдает за тем, как дети взаимодействуют.</p>
+        <p><strong>Что диагностируется:</strong> отзывчивость, умение помочь, стиль общения (поддерживающий, назидательный, равнодушный).</p>
+    </div>
+
+    <h2>📖 Из практики: истории о нравственном выборе</h2>
+
+    <div class="story-card">
+        <div class="story-title">«Мальчик и чужой кошелёк»</div>
+        <div class="story-text">
+            <p>Однажды пятиклассник Ваня нашёл на улице кошелёк. Внутри было много денег. Ваня огляделся — вокруг никого. «Никто не видел, — подумал он. — Могу забрать себе». Но тут же вспомнил слова бабушки: «Не бери чужого — оно счастья не принесёт». Ваня постоял, подумал и отнёс кошелёк в полицию. Через неделю ему позвонили: хозяин кошелька, пожилой мужчина, потерял деньги, которые копил на лекарства. Он приехал к Ване, чтобы поблагодарить его. И тогда Ваня понял: <strong>поступать честно — это не только правильно, но и радостно</strong>.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: нравственный выбор — это не всегда легко. Но именно в таких ситуациях формируется настоящий характер.</div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-title">«Две девочки и один секрет»</div>
+        <div class="story-text">
+            <p>Две подруги, Катя и Лена, случайно разбили любимую вазу учительницы. В классе никого не было. Катя предложила: «Давай скажем, что это не мы. Нас никто не видел». Лена задумалась: «Но это же неправда. Если мы обманем, нам будет стыдно». Катя настаивала: «Но если признаемся, нас накажут!» Лена ответила: «Лучше честно признаться и извиниться, чем всю жизнь бояться, что нас разоблачат». Девочки пошли к учительнице и признались. Учительница не стала их ругать — она похвалила их за честность и попросила в следующий раз быть аккуратнее.</p>
+        </div>
+        <div class="story-moral">💡 Мораль: честность — это не отсутствие страха, а готовность поступать правильно, даже когда страшно.</div>
+    </div>
+
+    <div class="anti-example-card">
+        <div class="anti-example-title">Типичная ошибка: оценка поступка без учёта мотивации</div>
+        <p>Педагог похвалил мальчика за то, что он помог девочке донести портфель. А мальчик сделал это потому, что хотел получить похвалу и «быть лучше всех» в глазах учителя. Настоящего альтруизма в его поступке не было. Через неделю, когда педагог не видел, мальчик отказался помогать той же девочке.</p>
+        <p><strong>Как исправить?</strong> Оценивая поступок, всегда задавайте себе вопрос: «А <em>почему</em> ребёнок так поступил? Что им двигало?» Наблюдайте за поведением в разных ситуациях, а не только «на публике».</p>
+    </div>
+
+    <h2>🎯 Практические задания для самопроверки</h2>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 4.1. «Определи мотив» <span class="task-level">Базовый уровень</span></div>
+        <p><span class="signal">🔗 Соедини линиями</span></p>
+        <p>Соотнесите поступок ребёнка с мотивом, которым он может быть вызван.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Поступок</th>
+                    <th>Мотив</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>А. Мальчик помог бабушке донести сумку</td><td>1. Нравственный (искренняя помощь)</td></tr>
+                <tr><td>Б. Девочка поделилась конфетой с братом</td><td>2. Корыстный (ожидание награды)</td></tr>
+                <tr><td>В. Ребёнок убрал игрушки, чтобы мама дала конфету</td><td>3. Исполнительный (по приказу)</td></tr>
+                <tr><td>Г. Мальчик помог учительнице, потому что она попросила</td><td>4. Эмоциональный (желание порадовать)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 4.2. «Составь диагностическую ситуацию» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">📝 Составь</span> <span class="signal">🎨 Нарисуй</span></p>
+        <p>Придумайте нравственную ситуацию для диагностики честности у детей 8–9 лет. Опишите её и предложите варианты ответов детей с разным уровнем сформированности этого качества.</p>
+        <p><strong>Описание ситуации:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <p><strong>Варианты ответов:</strong></p>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <div class="task-box">
+        <div class="task-box-title">📝 Задание 4.3. «Проверь себя» <span class="task-level">Повышенный уровень</span></div>
+        <p><span class="signal">❓ Ответь на вопросы</span></p>
+        <ol>
+            <li>Почему при диагностике нравственных качеств важно учитывать мотивацию поступка?</li>
+            <li>В чём отличие нравственных знаний от нравственных убеждений?</li>
+            <li>Почему результаты воспитания имеют отсроченный характер? Как это влияет на диагностику?</li>
+            <li>Как связаны нравственные качества и экологическая культура ребёнка?</li>
+        </ol>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+        <span class="line-for-writing"></span>
+    </div>
+
+    <h2>📌 Ключевые понятия главы</h2>
+
+    <div class="note">
+        <p><strong>Нравственные качества</strong> — устойчивые свойства личности, проявляющиеся в отношении к другим людям, обществу и себе (доброта, честность, ответственность, справедливость и др.).</p>
+        <p><strong>Воспитанность</strong> — интегральный показатель уровня развития нравственных качеств и готовности ребёнка поступать в соответствии с ними.</p>
+        <p><strong>Нравственная направленность личности</strong> — общее направление личности (к добру или ко злу), которое определяется единством нравственных знаний, чувств и поступков.</p>
+        <p><strong>Мотив поступка</strong> — внутреннее побуждение, ради которого человек совершает поступок.</p>
+        <p><strong>Отсроченный характер воспитания</strong> — особенность воспитания, при которой результаты проявляются не сразу, а через длительное время.</p>
+        <p><strong>Эмоциональное отношение к нравственным нормам</strong> — переживания ребёнка, связанные с соблюдением или нарушением норм.</p>
+    </div>
+
+    <h2>📝 Итоги главы</h2>
+
+    <div class="info-box">
+        <strong>🎯 Что вы узнали в этой главе:</strong>
+        <ul>
+            <li>Что такое нравственные качества и воспитанность.</li>
+            <li>Почему общая нравственная направленность личности — главный критерий воспитанности.</li>
+            <li>Почему важно рассматривать поступок в связи с его мотивацией.</li>
+            <li>Какие методики позволяют диагностировать нравственные качества: «Что такое хорошо и что такое плохо?», методика Р.Р. Калининой, методика Н.П. Капустиной, наблюдение, «Если бы я был добрым волшебником».</li>
+            <li>Как использовать устные, конструкторские, комбинаторные задания, задания на память, внимание, мышление, воображение и двигательные навыки для диагностики нравственных качеств.</li>
+            <li>Как составить комплексную диагностическую карту и определить уровень сформированности нравственных качеств.</li>
+            <li>Как избежать типичной ошибки — оценки поступка без учёта мотивации.</li>
+        </ul>
+    </div>
+
+    <div class="quote">
+        «Нравственность — это то, что остаётся, когда всё остальное забыто. И наша задача — не просто научить ребёнка правилам, а помочь ему вырастить в себе внутренний компас, который будет вести его по жизни».
+        <span class="quote-author">— из размышлений о нравственном воспитании</span>
+    </div>
+
+    <h2>🚀 Что дальше?</h2>
+
+    <p>В следующей главе мы перейдём к <strong>диагностике культуры речи и коммуникативных навыков</strong>. Мы разберём:</p>
+
+    <ul>
+        <li>какие компоненты входят в культуру речи;</li>
+        <li>как диагностировать произносительную культуру, связность речи, словарный запас;</li>
+        <li>как использовать тестовую методику Т.А. Фотековой;</li>
+        <li>как оценивать коммуникативные навыки в игровых ситуациях.</li>
+    </ul>
+
+    <p style="margin-top: 30px;">
+        <a href="chapter5.html" class="button">📖 Перейти к главе 5. «Диагностика культуры речи и коммуникативных навыков» →</a>
+        <a href="chapter3.html" class="button secondary">← Вернуться к главе 3</a>
+        <a href="index.html" class="button secondary">🏠 К плану курса</a>
+    </p>
+
+    <footer>
+        <p>© 2026 Курс по проектированию диагностического инструментария к ОМК «Культура»</p>
+        <p>Глава 4. Диагностика нравственных качеств и воспитанности личности | Эколого-биологический профиль | Для детей 6–10 лет</p>
+    </footer>
+
+</div>
+</body>
+</html>
