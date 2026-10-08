@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Этап 9. ИКТ, безопасность и здоровьесбережение в образовательном процессе — Диагностика профессиональных компетенций</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .progress-info {
+            font-weight: 600;
+            color: #0969da;
+        }
+        .progress-counter {
+            color: #1a1e24;
+            font-weight: 500;
+        }
+        .progress-counter strong {
+            color: #0969da;
+        }
+        .question-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        .question-number {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 16px;
+            line-height: 1.55;
+        }
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .answer {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #1a1e24;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            line-height: 1.5;
+        }
+        .answer:hover:not(.locked) {
+            border-color: #0969da;
+            background: #eef2ff;
+        }
+        .answer.selected-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.selected-wrong {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #7f1d1d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.reveal-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.locked {
+            cursor: default;
+        }
+        .answer-letter {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background: #e2e8f0;
+            color: #1a1e24;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .answer.selected-correct .answer-letter,
+        .answer.reveal-correct .answer-letter {
+            background: #16a34a;
+            color: white;
+        }
+        .answer.selected-wrong .answer-letter {
+            background: #dc2626;
+            color: white;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .feedback.correct {
+            background: #dcfce7;
+            color: #14532d;
+            border-left: 4px solid #16a34a;
+        }
+        .feedback.wrong {
+            background: #fee2e2;
+            color: #7f1d1d;
+            border-left: 4px solid #dc2626;
+        }
+        .results-panel {
+            background: #eef2ff;
+            border-left: 5px solid #0969da;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 28px 0;
+            text-align: center;
+        }
+        .results-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin-bottom: 14px;
+        }
+        .results-score {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0969da;
+            margin: 8px 0;
+        }
+        .results-mark {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin: 6px 0 14px 0;
+        }
+        .results-comment {
+            font-size: 0.95rem;
+            color: #1a1e24;
+            max-width: 720px;
+            margin: 0 auto 18px auto;
+            text-align: left;
+            line-height: 1.65;
+        }
+        .results-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+        .action-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .action-btn.primary {
+            background: #0969da;
+            color: white;
+        }
+        .action-btn.primary:hover {
+            background: #0550ae;
+        }
+        .action-btn.secondary {
+            background: #f0f2f5;
+            color: #1e466e;
+            border: 1px solid #cbd5e1;
+        }
+        .action-btn.secondary:hover {
+            background: #e2e8f0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .question-text { font-size: 0.96rem; }
+            .answer { font-size: 0.9rem; padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К структуре диагностики</a>
+
+    <h1>Этап 9. ИКТ, безопасность и здоровьесбережение в образовательном процессе</h1>
+    <div class="chapter-meta">✍️ Проверка готовности педагога к использованию цифровых технологий, обеспечению безопасности детей на занятиях и в природе, а также к реализации здоровьесберегающего подхода в работе с детьми 6–10 лет</div>
+
+    <div class="progress-bar">
+        <span class="progress-info">Вопрос <span id="currentNum">1</span> из 20</span>
+        <span class="progress-counter">Правильных ответов: <strong id="correctCount">0</strong></span>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div id="resultsPanel" class="results-panel" style="display:none;">
+        <div class="results-title">Результат этапа 9</div>
+        <div class="results-score"><span id="finalCorrect">0</span> / 20</div>
+        <div class="results-mark" id="finalMark">—</div>
+        <div class="results-comment" id="finalComment"></div>
+        <div class="results-actions">
+            <button class="action-btn secondary" id="repeatBtn" onclick="repeatStage()">Повторить этап 9</button>
+            <a class="action-btn primary" href="test10.html" id="nextBtn">Перейти к этапу 10 →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Диагностика профессиональных компетенций педагогов дополнительного образования</p>
+        <p>Этап 9. ИКТ, безопасность и здоровьесбережение в образовательном процессе</p>
+    </footer>
+</div>
+
+<script>
+/* ============================================================
+   БАНК ВОПРОСОВ (60 заданий)
+   ============================================================ */
+const QUESTION_BANK = [
+    { q: "Какие цифровые ресурсы можно использовать на занятиях эколого-биологического профиля?", a: ["Презентации, видеоматериалы, интерактивные задания, виртуальные экскурсии", "Только презентации", "Только видеоматериалы", "Только интерактивные задания"], c: 0 },
+    { q: "Какие платформы можно использовать для публикации методических материалов?", a: ["Google Sites, блоги, образовательные порталы, облачные хранилища", "Только Google Sites", "Только блоги", "Только облачные хранилища"], c: 0 },
+    { q: "Что такое виртуальная экскурсия?", a: ["Имитация посещения природного объекта с помощью цифровых технологий", "Прогулка на природе", "Экскурсия на автобусе", "Экскурсия в музей"], c: 0 },
+    { q: "В чём преимущество использования цифровых технологий в экологическом образовании?", a: ["Расширяют возможности наглядности и доступа к материалам", "Заменяют живое общение с природой", "Уменьшают нагрузку на педагога", "Только для экономии времени"], c: 0 },
+    { q: "Что важно учитывать при использовании цифровых технологий с детьми 6–10 лет?", a: ["Ограничение времени работы с экраном и дозирование нагрузки", "Максимальное использование", "Отсутствие ограничений", "Только технические возможности"], c: 0 },
+    { q: "Какова рекомендуемая продолжительность работы с цифровыми ресурсами для детей 6–7 лет?", a: ["Не более 10–15 минут подряд", "30 минут", "45 минут", "60 минут"], c: 0 },
+    { q: "Какова рекомендуемая продолжительность работы с цифровыми ресурсами для детей 8–10 лет?", a: ["Не более 20–25 минут подряд", "10 минут", "45 минут", "60 минут"], c: 0 },
+    { q: "Почему важно чередовать работу с цифровыми ресурсами и другие виды деятельности?", a: ["Для профилактики утомления и сохранения здоровья детей", "Для разнообразия", "Для отчётности", "Не важно"], c: 0 },
+    { q: "Что такое цифровая грамотность педагога?", a: ["Способность эффективно и безопасно использовать цифровые технологии в работе", "Умение пользоваться интернетом", "Умение работать с офисными программами", "Умение программировать"], c: 0 },
+    { q: "Что относится к авторским правам при использовании цифровых материалов?", a: ["Необходимость указывать источник и не использовать чужие материалы без разрешения", "Свободное использование любых материалов", "Только для коммерческого использования", "Не имеет значения"], c: 0 },
+    { q: "Что такое персональные данные ребёнка?", a: ["Любая информация, относящаяся к конкретному ребёнку", "Только фамилия и имя", "Только фотография", "Только адрес"], c: 0 },
+    { q: "Как педагог должен относиться к персональным данным детей?", a: ["Обеспечивать их защиту и не публиковать без согласия родителей", "Свободно публиковать", "Передавать третьим лицам", "Не учитывать"], c: 0 },
+    { q: "Что такое кибербезопасность в образовании?", a: ["Защита участников образовательного процесса от угроз в цифровой среде", "Защита компьютеров", "Только антивирус", "Только пароли"], c: 0 },
+    { q: "Каким образом педагог может обезопасить цифровую работу с детьми?", a: ["Использовать проверенные ресурсы, контролировать доступ, соблюдать правила", "Разрешать свободный доступ", "Игнорировать правила", "Не использовать цифровые технологии"], c: 0 },
+    { q: "Что такое здоровьесберегающие технологии в образовании?", a: ["Совокупность методов и приёмов, направленных на сохранение и укрепление здоровья детей", "Только физические упражнения", "Только медицинские процедуры", "Только профилактика"], c: 0 },
+    { q: "Какие элементы здоровьесбережения используются на занятиях с детьми 6–10 лет?", a: ["Физкультминутки, смена видов деятельности, прогулки на свежем воздухе, соблюдение режима", "Только физкультминутки", "Только прогулки", "Только режим"], c: 0 },
+    { q: "Почему важны физкультминутки на занятиях?", a: ["Они снимают утомление и восстанавливают работоспособность", "Для разнообразия", "Для отчётности", "Для дисциплины"], c: 0 },
+    { q: "Какова рекомендуемая продолжительность физкультминутки?", a: ["2–5 минут", "10 минут", "15 минут", "20 минут"], c: 0 },
+    { q: "Что такое осанка и почему важно её сохранять?", a: ["Положение тела при сидении и работе; сохранение осанки важно для здоровья", "Внешний вид", "Форма одежды", "Стиль поведения"], c: 0 },
+    { q: "Как правильно организовать рабочее место ребёнка?", a: ["Обеспечить достаточное освещение, удобную мебель, соответствие росту", "Главное — наличие стола", "Не важно", "Только освещение"], c: 0 },
+    { q: "Какие требования предъявляются к освещению на занятиях?", a: ["Достаточное естественное освещение и дополнительное искусственное при необходимости", "Только искусственное", "Только естественное", "Не важно"], c: 0 },
+    { q: "Что такое техника безопасности на занятиях?", a: ["Совокупность правил поведения для предотвращения травм и несчастных случаев", "Только пожарная безопасность", "Только правила дорожного движения", "Только санитарные нормы"], c: 0 },
+    { q: "Почему важно проводить инструктаж по технике безопасности?", a: ["Для предотвращения травм и обеспечения безопасности детей", "Для отчётности", "По требованию администрации", "Для формальности"], c: 0 },
+    { q: "Какие виды инструктажей по технике безопасности существуют?", a: ["Вводный, первичный, повторный, внеплановый, целевой", "Только вводный", "Только первичный", "Только повторный"], c: 0 },
+    { q: "Как часто проводится повторный инструктаж по технике безопасности?", a: ["Не реже одного раза в полугодие", "Раз в год", "Раз в месяц", "Не проводится"], c: 0 },
+    { q: "Что обязательно должно быть в помещении для занятий с детьми?", a: ["Аптечка для оказания первой помощи", "Только вода", "Только огнетушитель", "Только телефон"], c: 0 },
+    { q: "Какие правила безопасности нужно соблюдать в природе с детьми?", a: ["Не трогать незнакомые растения и грибы, не подходить к животным, не пить воду из водоёмов", "Только не пить воду", "Только не трогать грибы", "Не обращать внимания"], c: 0 },
+    { q: "Что делать педагогу при несчастном случае?", a: ["Оказать первую помощь, сообщить администрации и родителям", "Продолжить занятие", "Игнорировать", "Заниматься самостоятельно"], c: 0 },
+    { q: "Что относится к первой помощи при укусе насекомого?", a: ["Обработка ранки, охлаждение, при необходимости — обращение к врачу", "Только промывание", "Только наложение пластыря", "Ничего не делать"], c: 0 },
+    { q: "Какие растения опасны для детей в природе?", a: ["Ядовитые растения (волчье лыко, борщевик, белена)", "Только борщевик", "Только волчье лыко", "Только белена"], c: 0 },
+    { q: "Что нужно знать о клещах при прогулках в лесу?", a: ["Клещи — переносчики опасных заболеваний, необходима защитная одежда", "Клещи безопасны", "Клещи только летом", "Клещи не опасны"], c: 0 },
+    { q: "Как правильно организовать питьевой режим на занятиях?", a: ["Обеспечить доступ к чистой питьевой воде", "Только в жару", "Не обязательно", "Только по требованию"], c: 0 },
+    { q: "Что такое режим дня и почему важно его учитывать?", a: ["Распорядок активности и отдыха; важно для сохранения здоровья детей", "Только расписание занятий", "Только время сна", "Не важно"], c: 0 },
+    { q: "Какие виды деятельности чередуются на занятии для профилактики утомления?", a: ["Умственная, двигательная, творческая, игровая", "Только умственная", "Только двигательная", "Только творческая"], c: 0 },
+    { q: "Что такое санитарно-гигиенические требования?", a: ["Нормы, обеспечивающие безопасные и здоровые условия образовательного процесса", "Только чистота помещения", "Только требования к мебели", "Только требования к питанию"], c: 0 },
+    { q: "Почему важно проветривать помещение перед занятием?", a: ["Для обеспечения свежего воздуха и профилактики заболеваний", "Для отчётности", "По требованию администрации", "Не важно"], c: 0 },
+    { q: "Что такое оптимальная температура воздуха в помещении для занятий?", a: ["18–22 °C", "25–28 °C", "15 °C", "30 °C"], c: 0 },
+    { q: "Как педагог может предотвратить переутомление детей?", a: ["Чередовать виды деятельности, делать паузы, следить за признаками усталости", "Увеличивать нагрузку", "Не обращать внимания", "Только уменьшать объём"], c: 0 },
+    { q: "Что делать, если ребёнок почувствовал себя плохо?", a: ["Оказать первую помощь, сообщить родителям и администрации", "Продолжить занятие", "Отправить домой одного", "Игнорировать"], c: 0 },
+    { q: "Какие требования предъявляются к обуви и одежде детей на занятиях?", a: ["Удобная, не стесняющая движений, соответствующая погоде", "Только тёплая", "Только спортивная", "Не важны"], c: 0 },
+    { q: "Что важно учитывать при проведении занятий на свежем воздухе?", a: ["Погодные условия, соответствие одежды, безопасность места проведения", "Только настроение", "Только желание детей", "Не важно"], c: 0 },
+    { q: "Что такое экологическая безопасность?", a: ["Обеспечение безопасности человека и природы при взаимодействии", "Только защита природы", "Только защита человека", "Только санитария"], c: 0 },
+    { q: "Почему важно использовать цифровые ресурсы умеренно?", a: ["Чтобы не нанести вред здоровью детей и не заменить живое общение с природой", "Для экономии времени", "Для отчётности", "Не важно"], c: 0 },
+    { q: "Что такое информационные технологии в образовании?", a: ["Совокупность методов и средств работы с информацией с использованием компьютеров", "Только компьютеры", "Только интернет", "Только программы"], c: 0 },
+    { q: "Какие цифровые инструменты может использовать педагог для создания презентаций?", a: ["PowerPoint, Google Slides, Canva, Prezi", "Только PowerPoint", "Только Google Slides", "Только Canva"], c: 0 },
+    { q: "Какие цифровые инструменты используются для создания интерактивных заданий?", a: ["LearningApps, Kahoot, Quizizz, Google Forms", "Только LearningApps", "Только Kahoot", "Только Google Forms"], c: 0 },
+    { q: "Что такое электронный образовательный ресурс?", a: ["Цифровой материал, используемый в образовательном процессе", "Только учебник", "Только видео", "Только презентация"], c: 0 },
+    { q: "Каким образом педагог может использовать интернет-ресурсы в подготовке к занятиям?", a: ["Для поиска информации, идей, готовых материалов и обмена опытом", "Только для развлечения", "Не использовать", "Только для копирования"], c: 0 },
+    { q: "Что такое онлайн-конференция для педагогов?", a: ["Форма участия в профессиональных мероприятиях через интернет", "Только для руководителей", "Только для учёных", "Не существует"], c: 0 },
+    { q: "Как педагог может создать безопасную цифровую среду для детей?", a: ["Использовать проверенные ресурсы, ограничивать время, объяснять правила", "Разрешать всё", "Не использовать цифровые технологии", "Игнорировать безопасность"], c: 0 },
+    { q: "Что относится к эргономическим требованиям к цифровым устройствам?", a: ["Размер экрана, яркость, расположение, соответствие возрасту", "Только цвет", "Только размер", "Только марка"], c: 0 },
+    { q: "Почему важно делать перерывы при работе с цифровыми устройствами?", a: ["Для снятия зрительного напряжения и общего утомления", "Для разнообразия", "Для отчётности", "Не важно"], c: 0 },
+    { q: "Что такое гимнастика для глаз и зачем она нужна?", a: ["Комплекс упражнений для снятия зрительного напряжения; важна при работе с экраном", "Только для взрослых", "Только для детей", "Не нужна"], c: 0 },
+    { q: "Какие простые упражнения для глаз можно использовать на занятии?", a: ["Поморгать, посмотреть вдаль, круговые движения глазами", "Только поморгать", "Только посмотреть вдаль", "Только круговые движения"], c: 0 },
+    { q: "Что такое профилактика нарушений осанки?", a: ["Комплекс мер по формированию и сохранению правильной осанки", "Только зарядка", "Только сидение прямо", "Не существует"], c: 0 },
+    { q: "Какие правила безопасности нужно соблюдать при работе с природным материалом?", a: ["Мыть руки, не брать в рот, использовать инструменты безопасно", "Только мыть руки", "Не важно", "Только не брать в рот"], c: 0 },
+    { q: "Какие инструменты безопасны для детей 6–10 лет?", a: ["Ножницы с закруглёнными концами, безопасный клей, пластилин", "Только ножницы", "Острые ножи", "Стекло"], c: 0 },
+    { q: "Что нужно сделать перед использованием любых инструментов на занятии?", a: ["Провести инструктаж и показать безопасные приёмы работы", "Сразу приступить к работе", "Игнорировать безопасность", "Только напомнить"], c: 0 },
+    { q: "Почему важно формировать у детей навыки безопасного поведения в природе?", a: ["Чтобы сохранить их здоровье и жизнь, а также беречь природу", "Для отчётности", "Для родителей", "Не важно"], c: 0 },
+    { q: "Что делать педагогу при подозрении на аллергическую реакцию у ребёнка?", a: ["Немедленно прекратить воздействие, оказать помощь, сообщить родителям и врачу", "Игнорировать", "Продолжить занятие", "Дать воду"], c: 0 }
+];
+
+/* ============================================================
+   ГЕНЕРАТОР СЛУЧАЙНЫХ ЧИСЕЛ
+   ============================================================ */
+let _seed = Date.now() % 2147483647;
+if (_seed <= 0) _seed += 2147483646;
+function rnd() {
+    _seed = (_seed * 16807) % 2147483647;
+    return (_seed - 1) / 2147483646;
+}
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+/* ============================================================
+   СОСТОЯНИЕ ТЕСТА
+   ============================================================ */
+const TOTAL_QUESTIONS = 20;
+let activeQuestions = [];
+let correctCount = 0;
+let answeredCount = 0;
+
+function buildActiveQuestions() {
+    const shuffledBank = shuffle(QUESTION_BANK);
+    const selected = shuffledBank.slice(0, TOTAL_QUESTIONS);
+    return selected.map(item => {
+        const options = item.a.map((text, idx) => ({ text, isCorrect: idx === item.c }));
+        const shuffledOptions = shuffle(options);
+        const correctPos = shuffledOptions.findIndex(o => o.isCorrect);
+        return {
+            q: item.q,
+            options: shuffledOptions.map(o => o.text),
+            correct: correctPos,
+            answered: false,
+            chosen: null
+        };
+    });
+}
+
+/* ============================================================
+   ОТРИСОВКА
+   ============================================================ */
+function renderAll() {
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
+    activeQuestions.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = 'q' + idx;
+
+        const num = document.createElement('span');
+        num.className = 'question-number';
+        num.textContent = 'Вопрос ' + (idx + 1);
+        card.appendChild(num);
+
+        const qText = document.createElement('div');
+        qText.className = 'question-text';
+        qText.textContent = item.q;
+        card.appendChild(qText);
+
+        const answersBox = document.createElement('div');
+        answersBox.className = 'answers';
+
+        const letters = ['А', 'Б', 'В', 'Г', 'Д'];
+        item.options.forEach((optText, optIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'answer';
+            btn.dataset.qidx = idx;
+            btn.dataset.oidx = optIdx;
+
+            const letterSpan = document.createElement('span');
+            letterSpan.className = 'answer-letter';
+            letterSpan.textContent = letters[optIdx] || '•';
+            btn.appendChild(letterSpan);
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = optText;
+            btn.appendChild(textSpan);
+
+            btn.addEventListener('click', () => handleAnswer(idx, optIdx));
+            answersBox.appendChild(btn);
+        });
+        card.appendChild(answersBox);
+
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+        feedback.id = 'fb' + idx;
+        feedback.style.display = 'none';
+        card.appendChild(feedback);
+
+        container.appendChild(card);
+    });
+    updateProgress();
+}
+
+function handleAnswer(qIdx, oIdx) {
+    const item = activeQuestions[qIdx];
+    if (item.answered) return;
+
+    item.answered = true;
+    item.chosen = oIdx;
+    answeredCount++;
+
+    const card = document.getElementById('q' + qIdx);
+    const buttons = card.querySelectorAll('.answer');
+    buttons.forEach((btn, i) => {
+        btn.classList.add('locked');
+        if (i === oIdx) {
+            if (i === item.correct) {
+                btn.classList.add('selected-correct');
+            } else {
+                btn.classList.add('selected-wrong');
+            }
+        } else if (i === item.correct) {
+            btn.classList.add('reveal-correct');
+        }
+    });
+
+    const fb = document.getElementById('fb' + qIdx);
+    fb.style.display = 'block';
+    if (oIdx === item.correct) {
+        correctCount++;
+        fb.classList.add('correct');
+        fb.textContent = '✓ Верно.';
+    } else {
+        fb.classList.add('wrong');
+        fb.textContent = '✗ Неверно. Правильный вариант подсвечен зелёным.';
+    }
+
+    updateProgress();
+
+    if (answeredCount === TOTAL_QUESTIONS) {
+        showResults();
+    }
+}
+
+function updateProgress() {
+    const numEl = document.getElementById('currentNum');
+    numEl.textContent = Math.min(answeredCount + 1, TOTAL_QUESTIONS);
+    document.getElementById('correctCount').textContent = correctCount;
+}
+
+function showResults() {
+    const panel = document.getElementById('resultsPanel');
+    panel.style.display = 'block';
+    document.getElementById('finalCorrect').textContent = correctCount;
+
+    let mark, comment;
+    if (correctCount >= 18) {
+        mark = '«5» (отлично)';
+        comment = 'Высокий уровень готовности к использованию ИКТ, обеспечению безопасности и здоровьесбережению в образовательном процессе. Педагог свободно владеет цифровыми инструментами, знает требования безопасности и умеет создавать здоровьесберегающую образовательную среду. Рекомендуется переход к следующему этапу.';
+    } else if (correctCount >= 14) {
+        mark = '«4» (хорошо)';
+        comment = 'Достаточный уровень готовности к использованию ИКТ и обеспечению безопасности. Педагог владеет основными инструментами и правилами, способен применять их на практике при незначительной методической поддержке.';
+    } else if (correctCount >= 10) {
+        mark = '«3» (удовлетворительно)';
+        comment = 'Базовый уровень готовности к использованию ИКТ и обеспечению безопасности. Педагог освоил основные положения курса, однако требуется повторное обращение к отдельным темам. Рекомендуется повторить текущий этап.';
+    } else {
+        mark = '«2» (неудовлетворительно)';
+        comment = 'Недостаточный уровень готовности к использованию ИКТ и обеспечению безопасности. Педагогу рекомендуется повторно изучить материалы курса и пройти диагностику заново.';
+    }
+    document.getElementById('finalMark').textContent = mark;
+    document.getElementById('finalComment').textContent = comment;
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function repeatStage() {
+    _seed = Date.now() % 2147483647;
+    if (_seed <= 0) _seed += 2147483646;
+    activeQuestions = buildActiveQuestions();
+    correctCount = 0;
+    answeredCount = 0;
+    document.getElementById('resultsPanel').style.display = 'none';
+    renderAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   ЗАПУСК
+   ============================================================ */
+activeQuestions = buildActiveQuestions();
+renderAll();
+</script>
+</body>
+</html>

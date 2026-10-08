@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Этап 4. Рабочая тетрадь и практика применения — Диагностика профессиональных компетенций</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .progress-info {
+            font-weight: 600;
+            color: #0969da;
+        }
+        .progress-counter {
+            color: #1a1e24;
+            font-weight: 500;
+        }
+        .progress-counter strong {
+            color: #0969da;
+        }
+        .question-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        .question-number {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 16px;
+            line-height: 1.55;
+        }
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .answer {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #1a1e24;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            line-height: 1.5;
+        }
+        .answer:hover:not(.locked) {
+            border-color: #0969da;
+            background: #eef2ff;
+        }
+        .answer.selected-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.selected-wrong {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #7f1d1d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.reveal-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.locked {
+            cursor: default;
+        }
+        .answer-letter {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background: #e2e8f0;
+            color: #1a1e24;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .answer.selected-correct .answer-letter,
+        .answer.reveal-correct .answer-letter {
+            background: #16a34a;
+            color: white;
+        }
+        .answer.selected-wrong .answer-letter {
+            background: #dc2626;
+            color: white;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .feedback.correct {
+            background: #dcfce7;
+            color: #14532d;
+            border-left: 4px solid #16a34a;
+        }
+        .feedback.wrong {
+            background: #fee2e2;
+            color: #7f1d1d;
+            border-left: 4px solid #dc2626;
+        }
+        .results-panel {
+            background: #eef2ff;
+            border-left: 5px solid #0969da;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 28px 0;
+            text-align: center;
+        }
+        .results-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin-bottom: 14px;
+        }
+        .results-score {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0969da;
+            margin: 8px 0;
+        }
+        .results-mark {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin: 6px 0 14px 0;
+        }
+        .results-comment {
+            font-size: 0.95rem;
+            color: #1a1e24;
+            max-width: 720px;
+            margin: 0 auto 18px auto;
+            text-align: left;
+            line-height: 1.65;
+        }
+        .results-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+        .action-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .action-btn.primary {
+            background: #0969da;
+            color: white;
+        }
+        .action-btn.primary:hover {
+            background: #0550ae;
+        }
+        .action-btn.secondary {
+            background: #f0f2f5;
+            color: #1e466e;
+            border: 1px solid #cbd5e1;
+        }
+        .action-btn.secondary:hover {
+            background: #e2e8f0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .question-text { font-size: 0.96rem; }
+            .answer { font-size: 0.9rem; padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К структуре диагностики</a>
+
+    <h1>Этап 4. Проектирование рабочей тетради и организация работы с ней</h1>
+    <div class="chapter-meta">✍️ Проверка готовности к проектированию учебного пособия для учащихся, разработке заданий различных типов и организации образовательного процесса с использованием рабочей тетради</div>
+
+    <div class="progress-bar">
+        <span class="progress-info">Вопрос <span id="currentNum">1</span> из 20</span>
+        <span class="progress-counter">Правильных ответов: <strong id="correctCount">0</strong></span>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div id="resultsPanel" class="results-panel" style="display:none;">
+        <div class="results-title">Результат этапа 4</div>
+        <div class="results-score"><span id="finalCorrect">0</span> / 20</div>
+        <div class="results-mark" id="finalMark">—</div>
+        <div class="results-comment" id="finalComment"></div>
+        <div class="results-actions">
+            <button class="action-btn secondary" id="repeatBtn" onclick="repeatStage()">Повторить этап 4</button>
+            <a class="action-btn primary" href="index.html" id="nextBtn">Завершить диагностику</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Диагностика профессиональных компетенций педагогов дополнительного образования</p>
+        <p>Этап 4. Проектирование рабочей тетради и организация работы с ней</p>
+    </footer>
+</div>
+
+<script>
+/* ============================================================
+   БАНК ВОПРОСОВ (60 заданий)
+   ============================================================ */
+const QUESTION_BANK = [
+    { q: "Какое место занимает рабочая тетрадь в структуре образовательно-методического комплекса?", a: ["Связующее звено между программой и практической деятельностью ребёнка", "Заменяет программу", "Заменяет педагога", "Является нормативным документом"], c: 0 },
+    { q: "Какова главная цель рабочей тетради?", a: ["Формирование и закрепление навыков эколого-биологической и нравственно-эстетической деятельности", "Замена учебника", "Контроль посещаемости", "Упрощение работы педагога"], c: 0 },
+    { q: "Какие задачи решает рабочая тетрадь, помимо образовательных?", a: ["Развивающие и воспитательные", "Только контрольные", "Только организационные", "Только дисциплинарные"], c: 0 },
+    { q: "Из скольких частей состоит рабочая тетрадь «Друзья природы»?", a: ["3", "2", "4", "5"], c: 0 },
+    { q: "Как называется первая часть рабочей тетради «Друзья природы»?", a: ["«Первые шаги в природу»", "«Удивительный мир природы»", "«Мы — друзья природы»", "«Здравствуй, природа!»"], c: 0 },
+    { q: "Как называется вторая часть рабочей тетради «Друзья природы»?", a: ["«Удивительный мир природы»", "«Первые шаги в природу»", "«Мы — друзья природы»", "«Времена года»"], c: 0 },
+    { q: "Как называется третья часть рабочей тетради «Друзья природы»?", a: ["«Мы — друзья природы»", "«Первые шаги в природу»", "«Удивительный мир природы»", "«Письмо природе»"], c: 0 },
+    { q: "Какому этапу соответствует первая часть рабочей тетради?", a: ["Ознакомительному", "Основному", "Творческому", "Итоговому"], c: 0 },
+    { q: "Какому этапу соответствует вторая часть рабочей тетради?", a: ["Основному", "Ознакомительному", "Творческому", "Заключительному"], c: 0 },
+    { q: "Какому этапу соответствует третья часть рабочей тетради?", a: ["Творческому и природоохранному", "Ознакомительному", "Основному", "Диагностическому"], c: 0 },
+    { q: "Какой принцип лежит в основе построения рабочей тетради?", a: ["От простого к сложному", "От сложного к простому", "Случайный порядок", "По алфавиту"], c: 0 },
+    { q: "Что такое система опорных сигналов в рабочей тетради?", a: ["Система условных обозначений для ориентировки в заданиях", "Список литературы", "Расписание занятий", "Диагностические карты"], c: 0 },
+    { q: "Для чего используются опорные сигналы в рабочей тетради?", a: ["Для облегчения ориентировки и развития знакового мышления", "Для украшения страниц", "Для увеличения объёма", "Для запутывания ребёнка"], c: 0 },
+    { q: "Что обозначает сигнал «🎨»?", a: ["Раскрась", "Понаблюдай", "Запиши", "Игра"], c: 0 },
+    { q: "Что обозначает сигнал «👁»?", a: ["Понаблюдай", "Раскрась", "Отгадай загадку", "Сделай опыт"], c: 0 },
+    { q: "Что обозначает сигнал «🔬»?", a: ["Опыт", "Раскрась", "Игра", "Практическое задание"], c: 0 },
+    { q: "Что обозначает сигнал «🎭»?", a: ["Игра", "Раскрась", "Дорисуй", "Запиши"], c: 0 },
+    { q: "Что обозначает сигнал «✏️»?", a: ["Обведи по контуру", "Раскрась", "Дорисуй", "Соедини"], c: 0 },
+    { q: "Что обозначает сигнал «🖍️»?", a: ["Дорисуй", "Обведи", "Раскрась", "Запиши"], c: 0 },
+    { q: "Что обозначает сигнал «🔗»?", a: ["Соедини линиями", "Раскрась", "Запиши", "Понаблюдай"], c: 0 },
+    { q: "Что такое карта наблюдений?", a: ["Структурированное задание для организации наблюдения за природным объектом", "Расписание занятий", "Список группы", "Диагностическая карта"], c: 0 },
+    { q: "Какие функции выполняет карта наблюдений в рабочей тетради?", a: ["Познавательную, развивающую, воспитательную, диагностическую", "Только познавательную", "Только развивающую", "Только диагностическую"], c: 0 },
+    { q: "Что такое фенологические наблюдения?", a: ["Систематические наблюдения за сезонными изменениями в природе", "Наблюдения за поведением животных", "Наблюдения за ростом растений", "Наблюдения за погодой"], c: 0 },
+    { q: "Что такое дневник природы?", a: ["Форма организации фенологических наблюдений с регулярными записями", "Расписание занятий", "Список литературы", "Сборник тестов"], c: 0 },
+    { q: "Что такое лента времени в рабочей тетради?", a: ["Графическая форма фиксации фенологических наблюдений", "Расписание занятий", "Календарь погоды", "Список литературы"], c: 0 },
+    { q: "Что такое календарь погоды?", a: ["Таблица для ежедневной фиксации параметров погоды с помощью условных символов", "Список литературы", "Диагностическая карта", "Расписание занятий"], c: 0 },
+    { q: "Какие символы используются в календаре погоды?", a: ["☀️ ⛅ ☁️ 🌧️ 🌨️ 💨", "Только буквы", "Только цифры", "Только рисунки животных"], c: 0 },
+    { q: "Что такое эксперимент в рабочей тетради?", a: ["Исследовательский метод, при котором ребёнок активно воздействует на объект", "Наблюдение со стороны", "Контрольная работа", "Опрос"], c: 0 },
+    { q: "Что обязательно включает структура эксперимента в рабочей тетради?", a: ["Цель, гипотезу, материалы, ход, наблюдение, результат, вывод", "Только цель", "Только ход", "Только вывод"], c: 0 },
+    { q: "Что такое гипотеза эксперимента?", a: ["Предположение, которое проверяется в ходе опыта", "Точный ответ", "Описание материалов", "Итог эксперимента"], c: 0 },
+    { q: "Кто автор принципа «обучения с опережением»?", a: ["Л.С. Выготский", "Ж. Пиаже", "Я.А. Коменский", "В.А. Сухомлинский"], c: 0 },
+    { q: "Как в рабочей тетради реализуется принцип «обучения с опережением»?", a: ["Через задания, требующие посильного усилия и ведущие развитие за собой", "Через максимально простые задания", "Через отсутствие новых знаний", "Через задания без усилий"], c: 0 },
+    { q: "Какие типы творческих заданий используются в рабочей тетради?", a: ["Раскрасить, дорисовать, продолжить по образцу, нарисовать по образцу, изготовить предмет", "Только раскрасить", "Только нарисовать", "Только изготовить"], c: 0 },
+    { q: "Чем полезно задание «раскрасить рисунок»?", a: ["Развивает цветовосприятие, мелкую моторику, аккуратность", "Только проверяет знания", "Только развивает речь", "Только развивает логику"], c: 0 },
+    { q: "Чем полезно задание «дорисовать рисунок»?", a: ["Развивает воображение, наблюдательность, чувство симметрии", "Только проверяет знания", "Только развивает речь", "Только развивает память"], c: 0 },
+    { q: "Что такое симметрия в природе?", a: ["Свойство, при котором одна половина предмета повторяет другую", "Отсутствие формы", "Случайное сочетание элементов", "Нарушение пропорций"], c: 0 },
+    { q: "Какие примеры симметрии в природе используются в рабочей тетради?", a: ["Крылья бабочки, снежинка, листья, цветы", "Только снежинка", "Только бабочка", "Только листья"], c: 0 },
+    { q: "Какие типы игровых заданий используются в рабочей тетради?", a: ["Ребусы, кроссворды, загадки, пословицы, дидактические игры, квесты", "Только кроссворды", "Только загадки", "Только ребусы"], c: 0 },
+    { q: "Что такое ребус?", a: ["Загадка, в которой слово зашифровано с помощью картинок, букв, цифр", "Кроссворд", "Загадка в стихах", "Тест"], c: 0 },
+    { q: "Что такое кроссворд?", a: ["Головоломка с пересекающимися рядами клеток", "Ребус", "Загадка", "Игра"], c: 0 },
+    { q: "Что относится к народным приметам?", a: ["Краткие изречения о погоде, основанные на многовековых наблюдениях", "Стихи о природе", "Сказки о животных", "Скороговорки"], c: 0 },
+    { q: "Как используются загадки в рабочей тетради?", a: ["Для развития образного мышления, наблюдательности и анализа текста", "Только для развлечения", "Только для проверки знаний", "Только для чтения"], c: 0 },
+    { q: "Как используются пословицы и поговорки в рабочей тетради?", a: ["Для формирования ценностного отношения к природе и связи с народной мудростью", "Только для чтения", "Только для заучивания", "Только для проверки"], c: 0 },
+    { q: "Что такое многоуровневые задания в рабочей тетради?", a: ["Задания разного уровня сложности (базовый, повышенный, творческий)", "Одинаковые задания", "Задания только повышенной сложности", "Задания только базового уровня"], c: 0 },
+    { q: "Что такое базовый уровень заданий?", a: ["Задания на узнавание, воспроизведение, раскрашивание", "Задания на сравнение", "Задания на творчество", "Задания на исследование"], c: 0 },
+    { q: "Что такое повышенный уровень заданий?", a: ["Задания на сравнение, анализ, установление связей", "Задания на раскрашивание", "Задания на узнавание", "Задания на воспроизведение"], c: 0 },
+    { q: "Что такое творческий уровень заданий?", a: ["Задания на придумывание, сочинение, исследование", "Задания на раскрашивание", "Задания на сравнение", "Задания на узнавание"], c: 0 },
+    { q: "Каким образом в рабочей тетради учитываются индивидуальные особенности ребёнка?", a: ["Через вариативность заданий и возможность выбора уровня сложности", "Через одинаковые задания для всех", "Через отсутствие выбора", "Через случайный подбор заданий"], c: 0 },
+    { q: "Что такое дидактические карточки в рабочей тетради?", a: ["Отдельные задания для индивидуальной работы", "Оценки", "Список литературы", "Расписание занятий"], c: 0 },
+    { q: "Чем полезны дидактические карточки как форма рабочей тетради?", a: ["Индивидуализацией, вариативностью, постепенностью, интересом", "Только экономией бумаги", "Только удобством хранения", "Только красотой"], c: 0 },
+    { q: "Сколько карточек рекомендуется размещать на листе формата A4?", a: ["От 2 до 9", "Только 1", "Только 20", "От 10 до 15"], c: 0 },
+    { q: "Что такое опорный конспект?", a: ["Сжатое, структурированное изложение теоретического материала", "Рабочая тетрадь", "Диагностическая карта", "Список литературы"], c: 0 },
+    { q: "Чем отличается рабочая тетрадь от опорного конспекта?", a: ["Рабочая тетрадь ориентирована на индивидуальную работу, конспект — на групповую", "Ничем не отличается", "Только оформлением", "Только объёмом"], c: 0 },
+    { q: "Что такое графический тест в рабочей тетради?", a: ["Задание, в котором ребёнок выполняет графическое действие по определённым правилам", "Устный опрос", "Диктант", "Тест с выбором ответа"], c: 0 },
+    { q: "Что оценивается с помощью графических тестов?", a: ["Внимание, мелкая моторика, умение работать по образцу", "Только знания", "Только речь", "Только память"], c: 0 },
+    { q: "Что такое опорно-аналитическая таблица?", a: ["Таблица для фиксации и анализа результатов наблюдений за ребёнком", "Расписание занятий", "Список литературы", "Учебный план"], c: 0 },
+    { q: "Что такое дневник педагогических наблюдений?", a: ["Документ для систематической фиксации наблюдений за развитием детей", "Расписание занятий", "Учебный план", "Список литературы"], c: 0 },
+    { q: "Какие задания можно давать детям на дом?", a: ["Наблюдения, практические задания, творческие задания, сбор материала", "Только письменные задания", "Только тесты", "Только переписывание текстов"], c: 0 },
+    { q: "Каким образом организуется работа с рабочей тетрадью во время каникул?", a: ["Через дневники наблюдений и практические задания по сезонам", "Никак не организуется", "Только через чтение текстов", "Только через письменные задания"], c: 0 },
+    { q: "Чему способствует систематическое выполнение заданий рабочей тетради?", a: ["Формированию ответственности как устойчивого нравственного качества", "Только развитию моторики", "Только развитию памяти", "Только развитию речи"], c: 0 },
+    { q: "Как в рабочей тетради формируются гражданско-патриотические чувства?", a: ["Через изучение природы родного края, символов страны, народных традиций", "Через изучение иностранных языков", "Через математические задачи", "Не формируются"], c: 0 }
+];
+
+/* ============================================================
+   ГЕНЕРАТОР СЛУЧАЙНЫХ ЧИСЕЛ
+   ============================================================ */
+let _seed = Date.now() % 2147483647;
+if (_seed <= 0) _seed += 2147483646;
+function rnd() {
+    _seed = (_seed * 16807) % 2147483647;
+    return (_seed - 1) / 2147483646;
+}
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+/* ============================================================
+   СОСТОЯНИЕ ТЕСТА
+   ============================================================ */
+const TOTAL_QUESTIONS = 20;
+let activeQuestions = [];
+let correctCount = 0;
+let answeredCount = 0;
+
+function buildActiveQuestions() {
+    const shuffledBank = shuffle(QUESTION_BANK);
+    const selected = shuffledBank.slice(0, TOTAL_QUESTIONS);
+    return selected.map(item => {
+        const options = item.a.map((text, idx) => ({ text, isCorrect: idx === item.c }));
+        const shuffledOptions = shuffle(options);
+        const correctPos = shuffledOptions.findIndex(o => o.isCorrect);
+        return {
+            q: item.q,
+            options: shuffledOptions.map(o => o.text),
+            correct: correctPos,
+            answered: false,
+            chosen: null
+        };
+    });
+}
+
+/* ============================================================
+   ОТРИСОВКА
+   ============================================================ */
+function renderAll() {
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
+    activeQuestions.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = 'q' + idx;
+
+        const num = document.createElement('span');
+        num.className = 'question-number';
+        num.textContent = 'Вопрос ' + (idx + 1);
+        card.appendChild(num);
+
+        const qText = document.createElement('div');
+        qText.className = 'question-text';
+        qText.textContent = item.q;
+        card.appendChild(qText);
+
+        const answersBox = document.createElement('div');
+        answersBox.className = 'answers';
+
+        const letters = ['А', 'Б', 'В', 'Г', 'Д'];
+        item.options.forEach((optText, optIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'answer';
+            btn.dataset.qidx = idx;
+            btn.dataset.oidx = optIdx;
+
+            const letterSpan = document.createElement('span');
+            letterSpan.className = 'answer-letter';
+            letterSpan.textContent = letters[optIdx] || '•';
+            btn.appendChild(letterSpan);
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = optText;
+            btn.appendChild(textSpan);
+
+            btn.addEventListener('click', () => handleAnswer(idx, optIdx));
+            answersBox.appendChild(btn);
+        });
+        card.appendChild(answersBox);
+
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+        feedback.id = 'fb' + idx;
+        feedback.style.display = 'none';
+        card.appendChild(feedback);
+
+        container.appendChild(card);
+    });
+    updateProgress();
+}
+
+function handleAnswer(qIdx, oIdx) {
+    const item = activeQuestions[qIdx];
+    if (item.answered) return;
+
+    item.answered = true;
+    item.chosen = oIdx;
+    answeredCount++;
+
+    const card = document.getElementById('q' + qIdx);
+    const buttons = card.querySelectorAll('.answer');
+    buttons.forEach((btn, i) => {
+        btn.classList.add('locked');
+        if (i === oIdx) {
+            if (i === item.correct) {
+                btn.classList.add('selected-correct');
+            } else {
+                btn.classList.add('selected-wrong');
+            }
+        } else if (i === item.correct) {
+            btn.classList.add('reveal-correct');
+        }
+    });
+
+    const fb = document.getElementById('fb' + qIdx);
+    fb.style.display = 'block';
+    if (oIdx === item.correct) {
+        correctCount++;
+        fb.classList.add('correct');
+        fb.textContent = '✓ Верно.';
+    } else {
+        fb.classList.add('wrong');
+        fb.textContent = '✗ Неверно. Правильный вариант подсвечен зелёным.';
+    }
+
+    updateProgress();
+
+    if (answeredCount === TOTAL_QUESTIONS) {
+        showResults();
+    }
+}
+
+function updateProgress() {
+    const numEl = document.getElementById('currentNum');
+    numEl.textContent = Math.min(answeredCount + 1, TOTAL_QUESTIONS);
+    document.getElementById('correctCount').textContent = correctCount;
+}
+
+function showResults() {
+    const panel = document.getElementById('resultsPanel');
+    panel.style.display = 'block';
+    document.getElementById('finalCorrect').textContent = correctCount;
+
+    let mark, comment;
+    if (correctCount >= 18) {
+        mark = '«5» (отлично)';
+        comment = 'Высокий уровень сформированности профессиональных компетенций. Педагог свободно владеет методикой проектирования рабочей тетради и организации работы с ней, готов к самостоятельной разработке учебных пособий для учащихся. Диагностика успешно завершена.';
+    } else if (correctCount >= 14) {
+        mark = '«4» (хорошо)';
+        comment = 'Достаточный уровень сформированности профессиональных компетенций. Педагог владеет основными методическими положениями разработки рабочей тетради, способен проектировать учебное пособие при незначительной методической поддержке.';
+    } else if (correctCount >= 10) {
+        mark = '«3» (удовлетворительно)';
+        comment = 'Базовый уровень сформированности профессиональных компетенций. Педагог освоил базовые положения курса, однако требуется повторное обращение к отдельным темам для формирования устойчивых профессиональных умений. Рекомендуется повторить текущий этап.';
+    } else {
+        mark = '«2» (неудовлетворительно)';
+        comment = 'Недостаточный уровень сформированности профессиональных компетенций. Педагогу рекомендуется повторно изучить материалы курса и пройти диагностику заново для формирования необходимых профессиональных умений.';
+    }
+    document.getElementById('finalMark').textContent = mark;
+    document.getElementById('finalComment').textContent = comment;
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function repeatStage() {
+    _seed = Date.now() % 2147483647;
+    if (_seed <= 0) _seed += 2147483646;
+    activeQuestions = buildActiveQuestions();
+    correctCount = 0;
+    answeredCount = 0;
+    document.getElementById('resultsPanel').style.display = 'none';
+    renderAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   ЗАПУСК
+   ============================================================ */
+activeQuestions = buildActiveQuestions();
+renderAll();
+</script>
+</body>
+</html>

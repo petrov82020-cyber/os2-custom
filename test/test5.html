@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Этап 5. Педагогическое мастерство и практика работы с детьми — Диагностика профессиональных компетенций</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .progress-info {
+            font-weight: 600;
+            color: #0969da;
+        }
+        .progress-counter {
+            color: #1a1e24;
+            font-weight: 500;
+        }
+        .progress-counter strong {
+            color: #0969da;
+        }
+        .question-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        .question-number {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 16px;
+            line-height: 1.55;
+        }
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .answer {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #1a1e24;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            line-height: 1.5;
+        }
+        .answer:hover:not(.locked) {
+            border-color: #0969da;
+            background: #eef2ff;
+        }
+        .answer.selected-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.selected-wrong {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #7f1d1d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.reveal-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.locked {
+            cursor: default;
+        }
+        .answer-letter {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background: #e2e8f0;
+            color: #1a1e24;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .answer.selected-correct .answer-letter,
+        .answer.reveal-correct .answer-letter {
+            background: #16a34a;
+            color: white;
+        }
+        .answer.selected-wrong .answer-letter {
+            background: #dc2626;
+            color: white;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .feedback.correct {
+            background: #dcfce7;
+            color: #14532d;
+            border-left: 4px solid #16a34a;
+        }
+        .feedback.wrong {
+            background: #fee2e2;
+            color: #7f1d1d;
+            border-left: 4px solid #dc2626;
+        }
+        .results-panel {
+            background: #eef2ff;
+            border-left: 5px solid #0969da;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 28px 0;
+            text-align: center;
+        }
+        .results-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin-bottom: 14px;
+        }
+        .results-score {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0969da;
+            margin: 8px 0;
+        }
+        .results-mark {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin: 6px 0 14px 0;
+        }
+        .results-comment {
+            font-size: 0.95rem;
+            color: #1a1e24;
+            max-width: 720px;
+            margin: 0 auto 18px auto;
+            text-align: left;
+            line-height: 1.65;
+        }
+        .results-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+        .action-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .action-btn.primary {
+            background: #0969da;
+            color: white;
+        }
+        .action-btn.primary:hover {
+            background: #0550ae;
+        }
+        .action-btn.secondary {
+            background: #f0f2f5;
+            color: #1e466e;
+            border: 1px solid #cbd5e1;
+        }
+        .action-btn.secondary:hover {
+            background: #e2e8f0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .question-text { font-size: 0.96rem; }
+            .answer { font-size: 0.9rem; padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К структуре диагностики</a>
+
+    <h1>Этап 5. Педагогическое мастерство и практика работы с детьми</h1>
+    <div class="chapter-meta">✍️ Проверка готовности к практическому применению созданных методических материалов в работе с детьми 6–10 лет на занятиях и во внеурочной деятельности</div>
+
+    <div class="progress-bar">
+        <span class="progress-info">Вопрос <span id="currentNum">1</span> из 20</span>
+        <span class="progress-counter">Правильных ответов: <strong id="correctCount">0</strong></span>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div id="resultsPanel" class="results-panel" style="display:none;">
+        <div class="results-title">Результат этапа 5</div>
+        <div class="results-score"><span id="finalCorrect">0</span> / 20</div>
+        <div class="results-mark" id="finalMark">—</div>
+        <div class="results-comment" id="finalComment"></div>
+        <div class="results-actions">
+            <button class="action-btn secondary" id="repeatBtn" onclick="repeatStage()">Повторить этап 5</button>
+            <a class="action-btn primary" href="test6.html" id="nextBtn">Перейти к этапу 6 →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Диагностика профессиональных компетенций педагогов дополнительного образования</p>
+        <p>Этап 5. Педагогическое мастерство и практика работы с детьми</p>
+    </footer>
+</div>
+
+<script>
+/* ============================================================
+   БАНК ВОПРОСОВ (60 заданий)
+   ============================================================ */
+const QUESTION_BANK = [
+    { q: "Какая продолжительность одного занятия рекомендуется для детей 6–7 лет в объединении по интересам?", a: ["30–35 минут", "45 минут", "60 минут", "90 минут"], c: 0 },
+    { q: "Какая продолжительность одного занятия рекомендуется для детей 8–10 лет?", a: ["40–45 минут", "20 минут", "60 минут", "90 минут"], c: 0 },
+    { q: "Почему в занятиях с детьми 6–10 лет важно чередовать виды деятельности?", a: ["Из-за быстрой утомляемости и неустойчивости внимания детей", "Для увеличения объёма материала", "Из-за требований администрации", "Чтобы усложнить занятие"], c: 0 },
+    { q: "Какова оптимальная нагрузка по программе для детей 6–10 лет в неделю?", a: ["2–4 часа в неделю", "1 час в неделю", "6–8 часов в неделю", "10 часов в неделю"], c: 0 },
+    { q: "Какую роль играет игровая деятельность в обучении детей 6–10 лет?", a: ["Ведущую роль в познании мира", "Второстепенную роль", "Не играет роли", "Используется только для развлечения"], c: 0 },
+    { q: "Какой принцип лежит в основе расположения заданий в рабочей тетради «Друзья природы»?", a: ["От простого к сложному", "От сложного к простому", "Случайный порядок", "По алфавиту"], c: 0 },
+    { q: "Что такое опорные сигналы в рабочей тетради?", a: ["Условные обозначения для ориентировки в заданиях", "Список литературы", "Расписание занятий", "Диагностические карты"], c: 0 },
+    { q: "Что обозначает сигнал «🎨» в рабочей тетради?", a: ["Раскрась", "Понаблюдай", "Запиши", "Игра"], c: 0 },
+    { q: "Что обозначает сигнал «🔬» в рабочей тетради?", a: ["Опыт", "Раскрась", "Игра", "Практическое задание"], c: 0 },
+    { q: "Что обозначает сигнал «👁» в рабочей тетради?", a: ["Понаблюдай", "Раскрась", "Отгадай загадку", "Сделай опыт"], c: 0 },
+    { q: "Сколько времени отводится на выполнение одного творческого задания детьми 6–10 лет?", a: ["15–25 минут", "5 минут", "45 минут", "60 минут"], c: 0 },
+    { q: "Что делать педагогу, если ребёнок не может выполнить задание?", a: ["Задать наводящий вопрос, но не выполнять за ребёнка", "Выполнить задание вместо ребёнка", "Поставить плохую оценку", "Отказаться от задания"], c: 0 },
+    { q: "Как правильно организовать самостоятельную работу детей с рабочей тетрадью на занятии?", a: ["Наблюдать, помогать, отвечать на вопросы, но не подсказывать готовый ответ", "Полностью контролировать каждое действие", "Не вмешиваться вообще", "Делать задания вместе с детьми"], c: 0 },
+    { q: "Какие этапы работы с рабочей тетрадью на занятии выделяются?", a: ["Знакомство с заданием, самостоятельная работа, обсуждение и рефлексия", "Только знакомство и выполнение", "Только обсуждение", "Только рефлексия"], c: 0 },
+    { q: "Почему этап рефлексии важен на занятии?", a: ["Ребёнок осмысливает свой опыт и видит свой рост", "Для экономии времени", "Для отчётности", "Чтобы занять детей"], c: 0 },
+    { q: "Чему способствует обсуждение выполненных заданий в конце занятия?", a: ["Развитию речи, самовыражению и обмену опытом между детьми", "Увеличению нагрузки", "Снижению интереса", "Замене новых знаний"], c: 0 },
+    { q: "Какие задания можно давать детям на дом?", a: ["Наблюдения, практические и творческие задания, сбор материала", "Только письменные задания", "Только тесты", "Только переписывание текстов"], c: 0 },
+    { q: "Что рекомендуется делать педагогу для вовлечения родителей в работу с рабочей тетрадью?", a: ["Проводить собрания, давать памятки, приглашать на открытые занятия", "Не общаться с родителями", "Требовать ежедневных отчётов", "Давать только домашние задания"], c: 0 },
+    { q: "Как правильно поддерживать интерес ребёнка к работе с тетрадью?", a: ["Хвалить за старание и организовывать выставки работ", "Сравнивать с другими детьми", "Наказывать за ошибки", "Ставить оценки за каждое задание"], c: 0 },
+    { q: "Что является главной целью диагностики в ОМК «Друзья природы»?", a: ["Помочь ребёнку вырасти, а не зафиксировать его уровень", "Определить «отличников» и «отстающих»", "Составить рейтинг детей", "Заполнить журнал"], c: 0 },
+    { q: "Как рекомендуется использовать результаты диагностики?", a: ["Для планирования индивидуальной работы, подбора заданий, обсуждения с родителями", "Для наказания детей", "Для выставления оценок", "Для сравнения групп"], c: 0 },
+    { q: "Что такое опорно-аналитическая таблица?", a: ["Таблица для фиксации и анализа результатов наблюдений за ребёнком", "Расписание занятий", "Список литературы", "Учебный план"], c: 0 },
+    { q: "Что такое дневник педагогических наблюдений?", a: ["Документ для систематической фиксации наблюдений за развитием детей", "Расписание занятий", "Учебный план", "Список группы"], c: 0 },
+    { q: "Как часто рекомендуется пересматривать содержание рабочей тетради?", a: ["Ежегодно, с учётом обратной связи и изменений в нормативах", "Раз в 10 лет", "Никогда", "Раз в 20 лет"], c: 0 },
+    { q: "Что делать, если ребёнок потерял рабочую тетрадь?", a: ["Не ругать, предложить восстановить ключевые задания или выдать новые карточки", "Строго наказать", "Отказать в дальнейшей работе", "Поставить плохую оценку"], c: 0 },
+    { q: "Почему для детей 6–7 лет рекомендуется использовать игровые формы диагностики?", a: ["Игра является ведущей деятельностью в этом возрасте", "Из-за отсутствия интереса к тестам", "По требованию администрации", "Для упрощения работы"], c: 0 },
+    { q: "Что включает в себя структура эксперимента в рабочей тетради?", a: ["Цель, гипотезу, материалы, ход, наблюдение, результат, вывод", "Только цель и вывод", "Только ход", "Только наблюдение"], c: 0 },
+    { q: "Что такое гипотеза эксперимента?", a: ["Предположение, которое проверяется в ходе опыта", "Точный ответ", "Описание материалов", "Итог эксперимента"], c: 0 },
+    { q: "Почему в рабочей тетради используется система опорных сигналов?", a: ["Для облегчения ориентировки и развития знакового мышления", "Для украшения страниц", "Для увеличения объёма", "Для усложнения заданий"], c: 0 },
+    { q: "Какова продолжительность одного эксперимента для детей 6–10 лет?", a: ["10–20 минут", "40 минут", "5 минут", "60 минут"], c: 0 },
+    { q: "Что делать педагогу, если опыт не получился?", a: ["Обсудить с ребёнком, почему так произошло, что можно изменить", "Скрыть неудачу", "Поставить плохую оценку", "Отказаться от экспериментов"], c: 0 },
+    { q: "Что такое дидактические карточки в рабочей тетради?", a: ["Отдельные задания для индивидуальной работы", "Оценки", "Список литературы", "Расписание занятий"], c: 0 },
+    { q: "Сколько карточек рекомендуется размещать на листе формата A4?", a: ["От 2 до 9", "Только 1", "Только 20", "От 10 до 15"], c: 0 },
+    { q: "Чем полезны дидактические карточки в работе с детьми?", a: ["Индивидуализацией, вариативностью, постепенностью, поддержанием интереса", "Экономией бумаги", "Удобством хранения", "Красотой оформления"], c: 0 },
+    { q: "Как рекомендуется организовывать работу с рабочей тетрадью в каникулярный период?", a: ["Через дневники наблюдений и практические задания по сезонам", "Прекратить работу", "Только чтение текстов", "Только письменные задания"], c: 0 },
+    { q: "Почему важно включать в рабочую тетрадь задания на дом?", a: ["Для продолжения исследовательской деятельности и связи с семьёй", "Для загрузки детей", "Для отчётности", "Для проверки родителей"], c: 0 },
+    { q: "Какие задания относятся к базовому уровню сложности?", a: ["Раскрасить, обвести, соединить линиями", "Сравнить, проанализировать", "Придумать, сочинить", "Исследовать"], c: 0 },
+    { q: "Какие задания относятся к повышенному уровню сложности?", a: ["Сравнить, объяснить, найти закономерности", "Раскрасить", "Обвести по контуру", "Соединить линиями"], c: 0 },
+    { q: "Какие задания относятся к творческому уровню сложности?", a: ["Придумать, сочинить, исследовать, создать", "Раскрасить", "Обвести", "Соединить"], c: 0 },
+    { q: "Что учитывается при дифференциации заданий в рабочей тетради?", a: ["Уровень развития творческо-познавательных способностей ребёнка", "Только возраст", "Только пол ребёнка", "Только настроение"], c: 0 },
+    { q: "Как педагог может определить, какой уровень заданий подходит ребёнку?", a: ["Через наблюдение, диагностику и беседу с ребёнком", "Случайным образом", "По фамилии", "По количеству лет строго"], c: 0 },
+    { q: "Что делать, если ребёнок выбирает только базовый уровень заданий?", a: ["Постепенно предлагать более сложные, поддерживать и хвалить", "Настаивать на повышенном уровне", "Ругать за лень", "Не обращать внимания"], c: 0 },
+    { q: "Какова роль игры в формировании экологической культуры детей?", a: ["Игра делает обучение увлекательным и закрепляет знания через действие", "Игра только развлекает", "Игра отвлекает от учёбы", "Игра не играет роли"], c: 0 },
+    { q: "Как интегрировать сказки и фольклор в эколого-биологические занятия?", a: ["Через чтение, обсуждение, инсценировку и творческие задания по сказкам о природе", "Только через чтение", "Не интегрировать", "Только через заучивание"], c: 0 },
+    { q: "Чему способствует использование загадок и пословиц на занятиях?", a: ["Развитию образного мышления, наблюдательности и связи с народной мудростью", "Усложнению занятия", "Замене новых знаний", "Уменьшению нагрузки"], c: 0 },
+    { q: "Как правильно использовать народные приметы в занятиях?", a: ["Объяснять их научно и учить проверять наблюдениями", "Принимать как научный закон", "Не использовать", "Только заучивать"], c: 0 },
+    { q: "Почему важно вести с детьми наблюдения за природой?", a: ["Наблюдения формируют исследовательские навыки и любознательность", "Для отчётности", "Для оценки детей", "Для заполнения журнала"], c: 0 },
+    { q: "Как правильно организовать экскурсию в природу с детьми 6–10 лет?", a: ["С повторением правил, наблюдениями и заполнением карты", "Без подготовки", "Только для прогулки", "Только для фотографий"], c: 0 },
+    { q: "Что такое карта наблюдений и зачем она используется?", a: ["Структурированное задание для организации наблюдения за природным объектом", "Расписание занятий", "Список литературы", "Оценка"], c: 0 },
+    { q: "Как интегрировать творческие задания в эколого-биологическое занятие?", a: ["Через рисование, лепку, аппликацию, поделки на экологическую тему", "Только через рисование", "Не интегрировать", "Только через письмо"], c: 0 },
+    { q: "Чему способствует ведение детьми дневника природы?", a: ["Систематичности, наблюдательности и умению анализировать", "Только письму", "Только чтению", "Только рисованию"], c: 0 },
+    { q: "Как правильно поощрять ребёнка за работу с тетрадью?", a: ["Хвалить за старание и демонстрировать достижения на выставках", "Сравнивать с другими детьми", "Давать только оценки", "Критиковать недостатки"], c: 0 },
+    { q: "Почему для детей 6–10 лет важна частая смена заданий?", a: ["Дети быстро утомляются и им нужно переключение внимания", "Это требование министерства", "Для упрощения работы педагога", "Для увеличения объёма"], c: 0 },
+    { q: "Как педагогу работать с детьми разного уровня подготовки в одной группе?", a: ["Использовать многоуровневые задания и дидактические карточки", "Работать только с сильными", "Работать только со слабыми", "Разделить группу навсегда"], c: 0 },
+    { q: "Какова роль родителей в работе с рабочей тетрадью?", a: ["Поддержка ребёнка, участие в наблюдениях и совместных делах", "Выполнение заданий за ребёнка", "Контроль и наказания", "Не участвовать"], c: 0 },
+    { q: "Как педагогу выстраивать сотрудничество с родителями?", a: ["Через памятки, собрания, выставки работ и открытые занятия", "Через приказы и требования", "Через наказания", "Не сотрудничать"], c: 0 },
+    { q: "Что такое экологическая привычка и зачем её формировать?", a: ["Устойчивое полезное для природы поведение, формирующееся через систему заданий", "Временное увлечение", "Обязанность для ребёнка", "Не имеет значения"], c: 0 },
+    { q: "Сколько времени нужно для закрепления экологической привычки?", a: ["Около 21 дня", "1 день", "1 год", "Не закрепляется"], c: 0 },
+    { q: "Что делать, если ребёнок не выполняет домашние задания?", a: ["Выяснить причины и скорректировать объём и характер заданий", "Наказать", "Поставить плохую оценку", "Игнорировать"], c: 0 },
+    { q: "Каким образом можно использовать результаты выполнения заданий для диагностики?", a: ["Фиксировать в дневнике наблюдений и отслеживать динамику развития", "Не использовать", "Для выставления оценок", "Для рейтинга"], c: 0 },
+    { q: "Чему способствует формирование портфолио достижений у детей?", a: ["Ребёнок видит свой рост и гордится своими достижениями", "Увеличению объёма документов", "Отчётности перед администрацией", "Сравнению детей"], c: 0 },
+    { q: "Как интегрировать экологические акции в образовательный процесс?", a: ["Через подготовку, участие и рефлексию по итогам акции", "Только через участие", "Не интегрировать", "Только через отчёт"], c: 0 }
+];
+
+/* ============================================================
+   ГЕНЕРАТОР СЛУЧАЙНЫХ ЧИСЕЛ
+   ============================================================ */
+let _seed = Date.now() % 2147483647;
+if (_seed <= 0) _seed += 2147483646;
+function rnd() {
+    _seed = (_seed * 16807) % 2147483647;
+    return (_seed - 1) / 2147483646;
+}
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+/* ============================================================
+   СОСТОЯНИЕ ТЕСТА
+   ============================================================ */
+const TOTAL_QUESTIONS = 20;
+let activeQuestions = [];
+let correctCount = 0;
+let answeredCount = 0;
+
+function buildActiveQuestions() {
+    const shuffledBank = shuffle(QUESTION_BANK);
+    const selected = shuffledBank.slice(0, TOTAL_QUESTIONS);
+    return selected.map(item => {
+        const options = item.a.map((text, idx) => ({ text, isCorrect: idx === item.c }));
+        const shuffledOptions = shuffle(options);
+        const correctPos = shuffledOptions.findIndex(o => o.isCorrect);
+        return {
+            q: item.q,
+            options: shuffledOptions.map(o => o.text),
+            correct: correctPos,
+            answered: false,
+            chosen: null
+        };
+    });
+}
+
+/* ============================================================
+   ОТРИСОВКА
+   ============================================================ */
+function renderAll() {
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
+    activeQuestions.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = 'q' + idx;
+
+        const num = document.createElement('span');
+        num.className = 'question-number';
+        num.textContent = 'Вопрос ' + (idx + 1);
+        card.appendChild(num);
+
+        const qText = document.createElement('div');
+        qText.className = 'question-text';
+        qText.textContent = item.q;
+        card.appendChild(qText);
+
+        const answersBox = document.createElement('div');
+        answersBox.className = 'answers';
+
+        const letters = ['А', 'Б', 'В', 'Г', 'Д'];
+        item.options.forEach((optText, optIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'answer';
+            btn.dataset.qidx = idx;
+            btn.dataset.oidx = optIdx;
+
+            const letterSpan = document.createElement('span');
+            letterSpan.className = 'answer-letter';
+            letterSpan.textContent = letters[optIdx] || '•';
+            btn.appendChild(letterSpan);
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = optText;
+            btn.appendChild(textSpan);
+
+            btn.addEventListener('click', () => handleAnswer(idx, optIdx));
+            answersBox.appendChild(btn);
+        });
+        card.appendChild(answersBox);
+
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+        feedback.id = 'fb' + idx;
+        feedback.style.display = 'none';
+        card.appendChild(feedback);
+
+        container.appendChild(card);
+    });
+    updateProgress();
+}
+
+function handleAnswer(qIdx, oIdx) {
+    const item = activeQuestions[qIdx];
+    if (item.answered) return;
+
+    item.answered = true;
+    item.chosen = oIdx;
+    answeredCount++;
+
+    const card = document.getElementById('q' + qIdx);
+    const buttons = card.querySelectorAll('.answer');
+    buttons.forEach((btn, i) => {
+        btn.classList.add('locked');
+        if (i === oIdx) {
+            if (i === item.correct) {
+                btn.classList.add('selected-correct');
+            } else {
+                btn.classList.add('selected-wrong');
+            }
+        } else if (i === item.correct) {
+            btn.classList.add('reveal-correct');
+        }
+    });
+
+    const fb = document.getElementById('fb' + qIdx);
+    fb.style.display = 'block';
+    if (oIdx === item.correct) {
+        correctCount++;
+        fb.classList.add('correct');
+        fb.textContent = '✓ Верно.';
+    } else {
+        fb.classList.add('wrong');
+        fb.textContent = '✗ Неверно. Правильный вариант подсвечен зелёным.';
+    }
+
+    updateProgress();
+
+    if (answeredCount === TOTAL_QUESTIONS) {
+        showResults();
+    }
+}
+
+function updateProgress() {
+    const numEl = document.getElementById('currentNum');
+    numEl.textContent = Math.min(answeredCount + 1, TOTAL_QUESTIONS);
+    document.getElementById('correctCount').textContent = correctCount;
+}
+
+function showResults() {
+    const panel = document.getElementById('resultsPanel');
+    panel.style.display = 'block';
+    document.getElementById('finalCorrect').textContent = correctCount;
+
+    let mark, comment;
+    if (correctCount >= 18) {
+        mark = '«5» (отлично)';
+        comment = 'Высокий уровень педагогического мастерства. Педагог свободно владеет методикой практической работы с детьми 6–10 лет, умеет применять созданные методические материалы в образовательном процессе, организовывать наблюдения, опыты, творческую и природоохранную деятельность. Рекомендуется переход к следующему этапу.';
+    } else if (correctCount >= 14) {
+        mark = '«4» (хорошо)';
+        comment = 'Достаточный уровень педагогического мастерства. Педагог владеет основными приёмами работы с детьми, способен применять методические материалы при незначительной методической поддержке.';
+    } else if (correctCount >= 10) {
+        mark = '«3» (удовлетворительно)';
+        comment = 'Базовый уровень педагогического мастерства. Педагог освоил основные положения курса, однако требуется повторное обращение к отдельным темам для формирования устойчивых практических умений. Рекомендуется повторить текущий этап.';
+    } else {
+        mark = '«2» (неудовлетворительно)';
+        comment = 'Недостаточный уровень педагогического мастерства. Педагогу рекомендуется повторно изучить материалы курса и пройти диагностику заново для формирования необходимых практических умений.';
+    }
+    document.getElementById('finalMark').textContent = mark;
+    document.getElementById('finalComment').textContent = comment;
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function repeatStage() {
+    _seed = Date.now() % 2147483647;
+    if (_seed <= 0) _seed += 2147483646;
+    activeQuestions = buildActiveQuestions();
+    correctCount = 0;
+    answeredCount = 0;
+    document.getElementById('resultsPanel').style.display = 'none';
+    renderAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   ЗАПУСК
+   ============================================================ */
+activeQuestions = buildActiveQuestions();
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Этап 7. Мониторинг, диагностика и оценка образовательных результатов — Диагностика профессиональных компетенций</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .progress-info {
+            font-weight: 600;
+            color: #0969da;
+        }
+        .progress-counter {
+            color: #1a1e24;
+            font-weight: 500;
+        }
+        .progress-counter strong {
+            color: #0969da;
+        }
+        .question-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        .question-number {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 16px;
+            line-height: 1.55;
+        }
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .answer {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #1a1e24;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            line-height: 1.5;
+        }
+        .answer:hover:not(.locked) {
+            border-color: #0969da;
+            background: #eef2ff;
+        }
+        .answer.selected-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.selected-wrong {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #7f1d1d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.reveal-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.locked {
+            cursor: default;
+        }
+        .answer-letter {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background: #e2e8f0;
+            color: #1a1e24;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .answer.selected-correct .answer-letter,
+        .answer.reveal-correct .answer-letter {
+            background: #16a34a;
+            color: white;
+        }
+        .answer.selected-wrong .answer-letter {
+            background: #dc2626;
+            color: white;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .feedback.correct {
+            background: #dcfce7;
+            color: #14532d;
+            border-left: 4px solid #16a34a;
+        }
+        .feedback.wrong {
+            background: #fee2e2;
+            color: #7f1d1d;
+            border-left: 4px solid #dc2626;
+        }
+        .results-panel {
+            background: #eef2ff;
+            border-left: 5px solid #0969da;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 28px 0;
+            text-align: center;
+        }
+        .results-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin-bottom: 14px;
+        }
+        .results-score {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0969da;
+            margin: 8px 0;
+        }
+        .results-mark {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin: 6px 0 14px 0;
+        }
+        .results-comment {
+            font-size: 0.95rem;
+            color: #1a1e24;
+            max-width: 720px;
+            margin: 0 auto 18px auto;
+            text-align: left;
+            line-height: 1.65;
+        }
+        .results-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+        .action-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .action-btn.primary {
+            background: #0969da;
+            color: white;
+        }
+        .action-btn.primary:hover {
+            background: #0550ae;
+        }
+        .action-btn.secondary {
+            background: #f0f2f5;
+            color: #1e466e;
+            border: 1px solid #cbd5e1;
+        }
+        .action-btn.secondary:hover {
+            background: #e2e8f0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .question-text { font-size: 0.96rem; }
+            .answer { font-size: 0.9rem; padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К структуре диагностики</a>
+
+    <h1>Этап 7. Мониторинг, диагностика и оценка образовательных результатов</h1>
+    <div class="chapter-meta">✍️ Проверка готовности педагога к системной диагностике достижений учащихся, оценке личностных, метапредметных и предметных результатов, ведению мониторинга и использованию результатов для корректировки образовательного процесса</div>
+
+    <div class="progress-bar">
+        <span class="progress-info">Вопрос <span id="currentNum">1</span> из 20</span>
+        <span class="progress-counter">Правильных ответов: <strong id="correctCount">0</strong></span>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div id="resultsPanel" class="results-panel" style="display:none;">
+        <div class="results-title">Результат этапа 7</div>
+        <div class="results-score"><span id="finalCorrect">0</span> / 20</div>
+        <div class="results-mark" id="finalMark">—</div>
+        <div class="results-comment" id="finalComment"></div>
+        <div class="results-actions">
+            <button class="action-btn secondary" id="repeatBtn" onclick="repeatStage()">Повторить этап 7</button>
+            <a class="action-btn primary" href="test8.html" id="nextBtn">Перейти к этапу 8 →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Диагностика профессиональных компетенций педагогов дополнительного образования</p>
+        <p>Этап 7. Мониторинг, диагностика и оценка образовательных результатов</p>
+    </footer>
+</div>
+
+<script>
+/* ============================================================
+   БАНК ВОПРОСОВ (60 заданий)
+   ============================================================ */
+const QUESTION_BANK = [
+    { q: "Что такое педагогическая диагностика?", a: ["Совокупность методов и приёмов для оценки результатов образовательного процесса", "Проверка знаний детей", "Оценка работы педагога", "Заполнение журнала"], c: 0 },
+    { q: "Какие виды диагностики используются в дополнительном образовании?", a: ["Входная, текущая, промежуточная, итоговая", "Только итоговая", "Только текущая", "Только входная"], c: 0 },
+    { q: "Для чего проводится входная диагностика?", a: ["Для определения исходного уровня знаний, интересов и мотивации детей", "Для выставления оценок", "Для распределения детей по группам", "Для отчётности"], c: 0 },
+    { q: "Когда проводится текущая диагностика?", a: ["В течение всего учебного года после изучения тем", "Только в начале года", "Только в конце года", "Раз в пять лет"], c: 0 },
+    { q: "Что оценивается с помощью промежуточной диагностики?", a: ["Продвижение за определённый период (например, за полугодие)", "Только итоговые знания", "Только поведение", "Только посещаемость"], c: 0 },
+    { q: "Что такое итоговая диагностика?", a: ["Определение уровня освоения программы за год", "Проверка в начале года", "Текущий опрос", "Анкетирование родителей"], c: 0 },
+    { q: "Какие три группы результатов оцениваются в дополнительном образовании?", a: ["Личностные, метапредметные, предметные", "Только предметные", "Только личностные", "Только метапредметные"], c: 0 },
+    { q: "Что относится к личностным результатам?", a: ["Развитие мотивации, ценностных ориентаций, коммуникативных навыков", "Знание растений", "Умение ставить опыты", "Владение техникой рисования"], c: 0 },
+    { q: "Что относится к метапредметным результатам?", a: ["Умение планировать деятельность, анализировать, работать в группе", "Знание о природе", "Развитие мотивации", "Проявление доброты"], c: 0 },
+    { q: "Что относится к предметным результатам?", a: ["Освоение знаний, умений и навыков, предусмотренных программой", "Развитие памяти", "Формирование патриотизма", "Развитие коммуникативности"], c: 0 },
+    { q: "Почему важно оценивать личностные результаты?", a: ["Они отражают развитие эмоционально-ценностного отношения ребёнка к миру", "Только для отчётности", "Для выставления оценки", "Для рейтинга"], c: 0 },
+    { q: "Какие методы используются для оценки личностных результатов?", a: ["Педагогическое наблюдение, беседы, анкеты, анализ продуктов деятельности", "Только тесты", "Только контрольные работы", "Только опросы"], c: 0 },
+    { q: "Что такое педагогическое наблюдение?", a: ["Целенаправленное восприятие педагогических явлений с фиксацией результатов", "Форма отчёта", "Вид игры", "Метод контроля"], c: 0 },
+    { q: "Каким образом можно фиксировать результаты педагогического наблюдения?", a: ["В дневнике наблюдений или опорно-аналитической таблице", "В журнале оценок", "Устно", "Не фиксировать"], c: 0 },
+    { q: "Что такое диагностическая карта?", a: ["Таблица для фиксации результатов оценки по определённым параметрам", "Учебный план", "Список литературы", "Расписание занятий"], c: 0 },
+    { q: "Что включают критерии оценки достижений?", a: ["Описание того, что именно оценивается и по каким параметрам", "Только количество баллов", "Только сроки", "Только фамилии"], c: 0 },
+    { q: "Почему критерии оценки должны быть чёткими и однозначными?", a: ["Чтобы разные педагоги могли получить одинаковый результат оценки", "Для отчётности", "Для ускорения работы", "Для упрощения"], c: 0 },
+    { q: "Что такое графический тест в диагностике?", a: ["Задание, в котором ребёнок выполняет графическое действие по определённым правилам", "Устный опрос", "Письменный диктант", "Зачёт"], c: 0 },
+    { q: "Что оценивается с помощью графических тестов?", a: ["Внимание, мелкая моторика, умение работать по образцу", "Только знания", "Только речь", "Только память"], c: 0 },
+    { q: "Что такое опорно-аналитическая таблица?", a: ["Таблица для фиксации и анализа результатов наблюдений за ребёнком", "Расписание занятий", "Список литературы", "Учебный план"], c: 0 },
+    { q: "Как рекомендуется использовать результаты диагностики?", a: ["Для планирования индивидуальной работы, подбора заданий, обсуждения с родителями", "Для наказания детей", "Для выставления оценок", "Для сравнения групп"], c: 0 },
+    { q: "Можно ли ставить оценки за творческие работы в дополнительном образовании?", a: ["Нет, творческие работы обсуждаются, а не оцениваются", "Да, обязательно", "Только по 5-балльной шкале", "Только по 10-балльной"], c: 0 },
+    { q: "Что такое портфолио достижений учащегося?", a: ["Собрание работ и материалов, отражающих достижения ребёнка", "Оценки", "Дневник", "Учебник"], c: 0 },
+    { q: "Чему способствует портфолио учащегося?", a: ["Ребёнок видит свой рост и гордится своими достижениями", "Сравнению с другими", "Замене оценок", "Уменьшению нагрузки"], c: 0 },
+    { q: "Что такое мониторинг в образовании?", a: ["Систематическое отслеживание результатов образовательной деятельности", "Оценка педагога", "Проверка детей", "Заполнение документов"], c: 0 },
+    { q: "Зачем педагогу вести мониторинг образовательных результатов?", a: ["Для своевременной корректировки образовательного процесса", "Для отчётности", "Для наказания детей", "Для замедления работы"], c: 0 },
+    { q: "Что такое текущая обратная связь в обучении?", a: ["Оперативная информация для ребёнка о его продвижении", "Оценка в журнал", "Анкета для родителей", "Итоговый тест"], c: 0 },
+    { q: "Почему важна обратная связь на занятии?", a: ["Помогает ребёнку понимать свои достижения и корректировать действия", "Для отчётности", "Для соблюдения дисциплины", "Для заполнения журнала"], c: 0 },
+    { q: "Каким образом педагог может обеспечить обратную связь на занятии?", a: ["Через похвалу, наводящие вопросы, обсуждение работы", "Через выставление оценок", "Через молчание", "Через критику"], c: 0 },
+    { q: "Что такое самооценка учащегося?", a: ["Оценка ребёнком собственных достижений и затруднений", "Оценка педагогом ребёнка", "Оценка родителей", "Оценка администрации"], c: 0 },
+    { q: "Зачем учить детей самооценке?", a: ["Формировать умение критически оценивать свою работу и планировать развитие", "Для отчётности", "Для экономии времени педагога", "Для рейтинга"], c: 0 },
+    { q: "Какие приёмы помогают формировать самооценку у детей?", a: ["Рефлексивные вопросы, карты самооценки, обсуждение работ", "Оценки в журнал", "Домашние задания", "Соревнования"], c: 0 },
+    { q: "Что такое рефлексия в образовательном процессе?", a: ["Осмысление ребёнком своей деятельности и её результатов", "Отдых", "Замена занятия", "Итоговый тест"], c: 0 },
+    { q: "Когда рекомендуется проводить рефлексию на занятии?", a: ["В конце занятия", "В начале занятия", "Только в конце года", "Никогда"], c: 0 },
+    { q: "Какие вопросы используются для рефлексии?", a: ["«Что нового я узнал?», «Что было интересно?», «Что было трудно?»", "Только «Какую оценку ты хочешь?»", "Только «Что не получилось?»", "Только «Тебе понравилось?»"], c: 0 },
+    { q: "Какие формы диагностики предпочтительны для детей 6–7 лет?", a: ["Игровые формы, наблюдения, простые практические задания", "Только тесты", "Только контрольные работы", "Только диктанты"], c: 0 },
+    { q: "Какие формы диагностики предпочтительны для детей 8–10 лет?", a: ["Наблюдения, беседы, практические задания, тесты, проекты", "Только тесты", "Только игры", "Только опросники"], c: 0 },
+    { q: "Что должно быть в основе диагностической карты воспитанника?", a: ["Параметры оценки, соответствующие ожидаемым результатам программы", "Только фамилия", "Только возраст", "Только группа"], c: 0 },
+    { q: "Сколько параметров рекомендуется включать в диагностическую карту?", a: ["5–8 параметров, действительно важных для программы", "20–30 параметров", "2–3 параметра", "Не ограничено"], c: 0 },
+    { q: "Какие уровни оценки обычно используются в диагностической карте?", a: ["Высокий, средний, низкий", "Только высокий и низкий", "Только высокий", "Только средний"], c: 0 },
+    { q: "Что делать педагогу, если ребёнок показывает низкий результат?", a: ["Скорректировать работу с ним, поддержать, повторить материал", "Ругать ребёнка", "Поставить плохую оценку", "Игнорировать"], c: 0 },
+    { q: "Что делать, если ребёнок показывает высокий результат?", a: ["Предложить более сложные задания, стимулировать дальнейшее развитие", "Ничего не делать", "Перевести в другую группу", "Игнорировать"], c: 0 },
+    { q: "Что такое критерий результативности образовательного процесса?", a: ["Совокупность показателей, по которым оценивается достижение целей программы", "Количество занятий", "Число детей в группе", "Стаж педагога"], c: 0 },
+    { q: "Почему важно фиксировать результаты диагностики в динамике?", a: ["Чтобы видеть развитие каждого ребёнка во времени", "Для отчётности", "Для выставления оценок", "Для сравнения групп"], c: 0 },
+    { q: "Как педагог может использовать результаты диагностики в общении с родителями?", a: ["Обсуждать динамику развития ребёнка и давать рекомендации", "Сравнивать ребёнка с другими", "Ставить диагнозы", "Обвинять родителей"], c: 0 },
+    { q: "Что такое анкетирование как метод диагностики?", a: ["Опрос с помощью специально составленных вопросов для получения информации", "Беседа", "Наблюдение", "Игра"], c: 0 },
+    { q: "Для чего используется анкетирование родителей?", a: ["Для получения обратной связи об удовлетворённости занятиями и предложений", "Для проверки знаний родителей", "Для выставления оценок родителям", "Для наказания"], c: 0 },
+    { q: "Что такое беседа как метод диагностики?", a: ["Целенаправленный разговор для выявления знаний, интересов, отношения ребёнка", "Форма отчёта", "Вид игры", "Метод контроля"], c: 0 },
+    { q: "Как педагог должен вести беседу с ребёнком в диагностических целях?", a: ["Доброжелательно, с открытыми вопросами, без навязывания ответов", "Строго, с закрытыми вопросами", "С подсказками", "С критикой"], c: 0 },
+    { q: "Что такое анализ продуктов деятельности в диагностике?", a: ["Изучение рисунков, поделок, проектов и других результатов труда ребёнка", "Замена занятия", "Вид игры", "Форма отчёта"], c: 0 },
+    { q: "Чему способствует анализ продуктов деятельности?", a: ["Пониманию уровня развития ребёнка через его творческие работы", "Замене наблюдений", "Ускорению работы", "Уменьшению нагрузки"], c: 0 },
+    { q: "Что такое входная диагностика в контексте ОМК «Знатоки природы»?", a: ["Определение исходного уровня экологических знаний и интересов", "Проверка в конце года", "Итоговый тест", "Олимпиада"], c: 0 },
+    { q: "Какие виды деятельности можно использовать для диагностики метапредметных результатов?", a: ["Проектные задания, работа в группе, планирование исследования", "Только тесты", "Только опросы", "Только диктанты"], c: 0 },
+    { q: "Почему нельзя оценивать личностные результаты по 5-балльной шкале?", a: ["Личностные качества не имеют однозначных количественных критериев", "Из-за нехватки времени", "Из-за требований администрации", "Из-за возраста"], c: 0 },
+    { q: "Что такое критериально-ориентированное оценивание?", a: ["Оценивание по заранее определённым критериям, а не по сравнению с другими", "Оценивание по рейтингу", "Оценивание по среднему баллу", "Случайное оценивание"], c: 0 },
+    { q: "Что такое формирующее оценивание?", a: ["Оценивание в процессе обучения с целью улучшения, а не итоговой оценки", "Итоговое оценивание", "Зачёт", "Экзамен"], c: 0 },
+    { q: "Чем формирующее оценивание отличается от итогового?", a: ["Формирующее оценивание помогает учиться, итоговое констатирует результат", "Они одинаковы", "Формирующее — только для детей", "Итоговое — только для педагогов"], c: 0 },
+    { q: "Что такое самоанализ педагогом результатов диагностики?", a: ["Осмысление результатов оценки для корректировки собственной работы", "Отчёт", "Форма контроля", "Наказание"], c: 0 },
+    { q: "Что включается в отчёт педагога о диагностике результатов?", a: ["Цели диагностики, используемые методики, полученные результаты, выводы и рекомендации", "Только результаты", "Только методики", "Только выводы"], c: 0 },
+    { q: "Почему важно использовать разные методы диагностики?", a: ["Разные методы дают более полную и объективную картину развития ребёнка", "Для отчётности", "Для разнообразия", "Для экономии времени"], c: 0 },
+    { q: "Что такое комплексная диагностика образовательных результатов?", a: ["Сочетание нескольких методов для оценки разных групп результатов", "Только тестирование", "Только наблюдение", "Только анкетирование"], c: 0 }
+];
+
+/* ============================================================
+   ГЕНЕРАТОР СЛУЧАЙНЫХ ЧИСЕЛ
+   ============================================================ */
+let _seed = Date.now() % 2147483647;
+if (_seed <= 0) _seed += 2147483646;
+function rnd() {
+    _seed = (_seed * 16807) % 2147483647;
+    return (_seed - 1) / 2147483646;
+}
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+/* ============================================================
+   СОСТОЯНИЕ ТЕСТА
+   ============================================================ */
+const TOTAL_QUESTIONS = 20;
+let activeQuestions = [];
+let correctCount = 0;
+let answeredCount = 0;
+
+function buildActiveQuestions() {
+    const shuffledBank = shuffle(QUESTION_BANK);
+    const selected = shuffledBank.slice(0, TOTAL_QUESTIONS);
+    return selected.map(item => {
+        const options = item.a.map((text, idx) => ({ text, isCorrect: idx === item.c }));
+        const shuffledOptions = shuffle(options);
+        const correctPos = shuffledOptions.findIndex(o => o.isCorrect);
+        return {
+            q: item.q,
+            options: shuffledOptions.map(o => o.text),
+            correct: correctPos,
+            answered: false,
+            chosen: null
+        };
+    });
+}
+
+/* ============================================================
+   ОТРИСОВКА
+   ============================================================ */
+function renderAll() {
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
+    activeQuestions.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = 'q' + idx;
+
+        const num = document.createElement('span');
+        num.className = 'question-number';
+        num.textContent = 'Вопрос ' + (idx + 1);
+        card.appendChild(num);
+
+        const qText = document.createElement('div');
+        qText.className = 'question-text';
+        qText.textContent = item.q;
+        card.appendChild(qText);
+
+        const answersBox = document.createElement('div');
+        answersBox.className = 'answers';
+
+        const letters = ['А', 'Б', 'В', 'Г', 'Д'];
+        item.options.forEach((optText, optIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'answer';
+            btn.dataset.qidx = idx;
+            btn.dataset.oidx = optIdx;
+
+            const letterSpan = document.createElement('span');
+            letterSpan.className = 'answer-letter';
+            letterSpan.textContent = letters[optIdx] || '•';
+            btn.appendChild(letterSpan);
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = optText;
+            btn.appendChild(textSpan);
+
+            btn.addEventListener('click', () => handleAnswer(idx, optIdx));
+            answersBox.appendChild(btn);
+        });
+        card.appendChild(answersBox);
+
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+        feedback.id = 'fb' + idx;
+        feedback.style.display = 'none';
+        card.appendChild(feedback);
+
+        container.appendChild(card);
+    });
+    updateProgress();
+}
+
+function handleAnswer(qIdx, oIdx) {
+    const item = activeQuestions[qIdx];
+    if (item.answered) return;
+
+    item.answered = true;
+    item.chosen = oIdx;
+    answeredCount++;
+
+    const card = document.getElementById('q' + qIdx);
+    const buttons = card.querySelectorAll('.answer');
+    buttons.forEach((btn, i) => {
+        btn.classList.add('locked');
+        if (i === oIdx) {
+            if (i === item.correct) {
+                btn.classList.add('selected-correct');
+            } else {
+                btn.classList.add('selected-wrong');
+            }
+        } else if (i === item.correct) {
+            btn.classList.add('reveal-correct');
+        }
+    });
+
+    const fb = document.getElementById('fb' + qIdx);
+    fb.style.display = 'block';
+    if (oIdx === item.correct) {
+        correctCount++;
+        fb.classList.add('correct');
+        fb.textContent = '✓ Верно.';
+    } else {
+        fb.classList.add('wrong');
+        fb.textContent = '✗ Неверно. Правильный вариант подсвечен зелёным.';
+    }
+
+    updateProgress();
+
+    if (answeredCount === TOTAL_QUESTIONS) {
+        showResults();
+    }
+}
+
+function updateProgress() {
+    const numEl = document.getElementById('currentNum');
+    numEl.textContent = Math.min(answeredCount + 1, TOTAL_QUESTIONS);
+    document.getElementById('correctCount').textContent = correctCount;
+}
+
+function showResults() {
+    const panel = document.getElementById('resultsPanel');
+    panel.style.display = 'block';
+    document.getElementById('finalCorrect').textContent = correctCount;
+
+    let mark, comment;
+    if (correctCount >= 18) {
+        mark = '«5» (отлично)';
+        comment = 'Высокий уровень готовности к организации мониторинга и диагностики образовательных результатов. Педагог свободно владеет методами оценки личностных, метапредметных и предметных результатов, умеет использовать результаты диагностики для корректировки образовательного процесса. Рекомендуется переход к следующему этапу.';
+    } else if (correctCount >= 14) {
+        mark = '«4» (хорошо)';
+        comment = 'Достаточный уровень готовности к организации диагностики. Педагог владеет основными методами оценки, способен применять их на практике при незначительной методической поддержке.';
+    } else if (correctCount >= 10) {
+        mark = '«3» (удовлетворительно)';
+        comment = 'Базовый уровень готовности к организации диагностики. Педагог освоил основные положения курса, однако требуется повторное обращение к отдельным темам для формирования устойчивых умений. Рекомендуется повторить текущий этап.';
+    } else {
+        mark = '«2» (неудовлетворительно)';
+        comment = 'Недостаточный уровень готовности к организации диагностики. Педагогу рекомендуется повторно изучить материалы курса и пройти диагностику заново для формирования необходимых умений.';
+    }
+    document.getElementById('finalMark').textContent = mark;
+    document.getElementById('finalComment').textContent = comment;
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function repeatStage() {
+    _seed = Date.now() % 2147483647;
+    if (_seed <= 0) _seed += 2147483646;
+    activeQuestions = buildActiveQuestions();
+    correctCount = 0;
+    answeredCount = 0;
+    document.getElementById('resultsPanel').style.display = 'none';
+    renderAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   ЗАПУСК
+   ============================================================ */
+activeQuestions = buildActiveQuestions();
+renderAll();
+</script>
+</body>
+</html>

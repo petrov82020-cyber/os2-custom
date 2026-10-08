@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Этап 10. Методы, средства и формы работы с детьми в рамках ОМК эколого-биологического профиля — Диагностика профессиональных компетенций</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #1a1e24;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            padding: 30px 35px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2540;
+        }
+        .chapter-meta {
+            color: #5b6e8c;
+            border-left: 4px solid #0969da;
+            padding-left: 18px;
+            margin: 15px 0 25px 0;
+            background: #f9fafb;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e466e;
+        }
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .progress-info {
+            font-weight: 600;
+            color: #0969da;
+        }
+        .progress-counter {
+            color: #1a1e24;
+            font-weight: 500;
+        }
+        .progress-counter strong {
+            color: #0969da;
+        }
+        .question-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #0969da;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        .question-number {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 16px;
+            line-height: 1.55;
+        }
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .answer {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #1a1e24;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            line-height: 1.5;
+        }
+        .answer:hover:not(.locked) {
+            border-color: #0969da;
+            background: #eef2ff;
+        }
+        .answer.selected-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.selected-wrong {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #7f1d1d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.reveal-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 600;
+            cursor: default;
+        }
+        .answer.locked {
+            cursor: default;
+        }
+        .answer-letter {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background: #e2e8f0;
+            color: #1a1e24;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .answer.selected-correct .answer-letter,
+        .answer.reveal-correct .answer-letter {
+            background: #16a34a;
+            color: white;
+        }
+        .answer.selected-wrong .answer-letter {
+            background: #dc2626;
+            color: white;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .feedback.correct {
+            background: #dcfce7;
+            color: #14532d;
+            border-left: 4px solid #16a34a;
+        }
+        .feedback.wrong {
+            background: #fee2e2;
+            color: #7f1d1d;
+            border-left: 4px solid #dc2626;
+        }
+        .results-panel {
+            background: #eef2ff;
+            border-left: 5px solid #0969da;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 28px 0;
+            text-align: center;
+        }
+        .results-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin-bottom: 14px;
+        }
+        .results-score {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0969da;
+            margin: 8px 0;
+        }
+        .results-mark {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1e466e;
+            margin: 6px 0 14px 0;
+        }
+        .results-comment {
+            font-size: 0.95rem;
+            color: #1a1e24;
+            max-width: 720px;
+            margin: 0 auto 18px auto;
+            text-align: left;
+            line-height: 1.65;
+        }
+        .results-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+        .action-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .action-btn.primary {
+            background: #0969da;
+            color: white;
+        }
+        .action-btn.primary:hover {
+            background: #0550ae;
+        }
+        .action-btn.secondary {
+            background: #f0f2f5;
+            color: #1e466e;
+            border: 1px solid #cbd5e1;
+        }
+        .action-btn.secondary:hover {
+            background: #e2e8f0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .question-text { font-size: 0.96rem; }
+            .answer { font-size: 0.9rem; padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← К структуре диагностики</a>
+
+    <h1>Этап 10. Методы, средства и формы работы с детьми в рамках ОМК эколого-биологического профиля</h1>
+    <div class="chapter-meta">✍️ Итоговая проверка владения методическим инструментарием: методами, средствами и формами организации образовательного процесса с детьми 6–10 лет в объединениях эколого-биологического профиля</div>
+
+    <div class="progress-bar">
+        <span class="progress-info">Вопрос <span id="currentNum">1</span> из 20</span>
+        <span class="progress-counter">Правильных ответов: <strong id="correctCount">0</strong></span>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div id="resultsPanel" class="results-panel" style="display:none;">
+        <div class="results-title">Результат этапа 10</div>
+        <div class="results-score"><span id="finalCorrect">0</span> / 20</div>
+        <div class="results-mark" id="finalMark">—</div>
+        <div class="results-comment" id="finalComment"></div>
+        <div class="results-actions">
+            <button class="action-btn secondary" id="repeatBtn" onclick="repeatStage()">Повторить этап 10</button>
+            <a class="action-btn primary" href="index.html" id="nextBtn">Завершить диагностику</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Диагностика профессиональных компетенций педагогов дополнительного образования</p>
+        <p>Этап 10. Методы, средства и формы работы с детьми в рамках ОМК эколого-биологического профиля</p>
+    </footer>
+</div>
+
+<script>
+/* ============================================================
+   БАНК ВОПРОСОВ (60 заданий)
+   ============================================================ */
+const QUESTION_BANK = [
+    { q: "Какие методы обучения относятся к словесным?", a: ["Беседа, рассказ, объяснение, дискуссия", "Наблюдение, демонстрация", "Опыт, упражнение", "Игра, проект"], c: 0 },
+    { q: "Какие методы обучения относятся к наглядным?", a: ["Демонстрация, иллюстрация, наблюдение", "Беседа, рассказ", "Опыт, упражнение", "Игра, проект"], c: 0 },
+    { q: "Какие методы обучения относятся к практическим?", a: ["Опыт, упражнение, творческая работа, уход за растениями", "Беседа, рассказ", "Демонстрация", "Игра"], c: 0 },
+    { q: "Какой метод является ведущим в эколого-биологическом образовании детей 6–10 лет?", a: ["Наблюдение в природе", "Лекция", "Диктант", "Контрольная работа"], c: 0 },
+    { q: "Почему наблюдение считается ключевым методом в эколого-биологическом образовании?", a: ["Оно формирует умение самостоятельно добывать знания о природе", "Оно самое простое", "Оно не требует подготовки", "Оно экономит время"], c: 0 },
+    { q: "Какой метод позволяет детям самостоятельно проверить предположение?", a: ["Эксперимент (опыт)", "Рассказ педагога", "Демонстрация", "Беседа"], c: 0 },
+    { q: "Что такое игровой метод обучения?", a: ["Использование игр для достижения образовательных целей", "Только развлечение", "Отдых на занятии", "Форма контроля"], c: 0 },
+    { q: "Почему игровые методы особенно эффективны для детей 6–10 лет?", a: ["Игра является ведущей деятельностью в этом возрасте", "Игра проста в организации", "Игра не требует подготовки", "Игра экономит время"], c: 0 },
+    { q: "Что такое проектный метод обучения?", a: ["Метод, при котором дети самостоятельно исследуют тему и представляют результат", "Метод опроса", "Метод контроля", "Метод демонстрации"], c: 0 },
+    { q: "Что относится к проблемно-поисковым методам?", a: ["Постановка проблемы, поиск решения, исследование", "Только объяснение", "Только демонстрация", "Только чтение"], c: 0 },
+    { q: "Какой метод помогает формировать у детей умение работать в команде?", a: ["Групповая работа, коллективные проекты, командные игры", "Индивидуальные задания", "Лекция", "Диктант"], c: 0 },
+    { q: "Что такое метод демонстрации?", a: ["Показ педагогом объекта, процесса или явления", "Рассказ педагога", "Беседа с детьми", "Опыт детей"], c: 0 },
+    { q: "Чем отличается демонстрация от иллюстрации?", a: ["Демонстрация — показ действия, иллюстрация — показ изображения", "Ничем не отличается", "Только по цвету", "Только по размеру"], c: 0 },
+    { q: "Какой метод предполагает самостоятельную работу детей по образцу?", a: ["Репродуктивный", "Проблемный", "Исследовательский", "Игровой"], c: 0 },
+    { q: "Какой метод предполагает творческое применение знаний?", a: ["Творческий (продуктивный)", "Репродуктивный", "Объяснительно-иллюстративный", "Информационный"], c: 0 },
+    { q: "Что такое средства обучения?", a: ["Материальные и идеальные объекты, используемые для достижения образовательных целей", "Только учебники", "Только доска", "Только компьютер"], c: 0 },
+    { q: "Что относится к наглядным средствам обучения?", a: ["Иллюстрации, схемы, таблицы, модели, муляжи", "Только иллюстрации", "Только схемы", "Только муляжи"], c: 0 },
+    { q: "Что относится к техническим средствам обучения?", a: ["Компьютер, проектор, интерактивная доска, аудио- и видеоаппаратура", "Только компьютер", "Только проектор", "Только интерактивная доска"], c: 0 },
+    { q: "Что относится к дидактическим средствам обучения?", a: ["Карточки, раздаточный материал, дидактические игры, рабочие тетради", "Только карточки", "Только раздаточный материал", "Только рабочие тетради"], c: 0 },
+    { q: "Что относится к натуральным средствам обучения в экологии?", a: ["Живые растения, животные, гербарии, образцы почвы, воды", "Только живые растения", "Только гербарии", "Только образцы"], c: 0 },
+    { q: "Что относится к изобразительным средствам обучения?", a: ["Репродукции картин, фотографии, плакаты, рисунки", "Только репродукции", "Только фотографии", "Только плакаты"], c: 0 },
+    { q: "Что относится к вербальным средствам обучения?", a: ["Учебники, словари, энциклопедии, методические пособия", "Только учебники", "Только словари", "Только энциклопедии"], c: 0 },
+    { q: "Что относится к средствам наглядности с использованием ИКТ?", a: ["Презентации, видеоролики, интерактивные задания, виртуальные экскурсии", "Только презентации", "Только видеоролики", "Только интерактивные задания"], c: 0 },
+    { q: "Как правильно выбрать средства обучения для занятия?", a: ["С учётом целей, возраста детей, содержания и технических возможностей", "Случайным образом", "Только самые современные", "Только самые простые"], c: 0 },
+    { q: "Что такое форма организации образовательного процесса?", a: ["Способ организации взаимодействия педагога и детей", "Только занятие", "Только экскурсия", "Только игра"], c: 0 },
+    { q: "Какие формы организации образовательного процесса используются в дополнительном образовании?", a: ["Занятие, экскурсия, игра, конкурс, квест, тренинг, дискуссия, акция, проект, презентация", "Только занятие", "Только экскурсия", "Только игра"], c: 0 },
+    { q: "Какова основная форма организации занятий в объединении по интересам?", a: ["Занятие (теоретическое, практическое, комбинированное)", "Только экскурсия", "Только игра", "Только проект"], c: 0 },
+    { q: "Что такое комбинированное занятие?", a: ["Занятие, сочетающее теоретическую и практическую части", "Только теория", "Только практика", "Только игра"], c: 0 },
+    { q: "Что такое практическое занятие?", a: ["Занятие, на котором преобладает практическая деятельность детей", "Только теория", "Только беседа", "Только лекция"], c: 0 },
+    { q: "Что такое экскурсия как форма работы?", a: ["Форма организации образовательной деятельности на природе или в музее", "Занятие в классе", "Игра", "Конкурс"], c: 0 },
+    { q: "Чему способствует экскурсия в природу?", a: ["Развитию наблюдательности, эмоциональной отзывчивости, интереса к природе", "Только знаниям", "Только дисциплине", "Только отчётности"], c: 0 },
+    { q: "Что такое игра как форма организации образовательного процесса?", a: ["Форма, использующая игровую деятельность для достижения образовательных целей", "Отдых", "Развлечение", "Форма контроля"], c: 0 },
+    { q: "Что такое квест как форма работы с детьми?", a: ["Игра с сюжетом, в которой нужно выполнить ряд заданий", "Только занятие", "Только экскурсия", "Только конкурс"], c: 0 },
+    { q: "Что такое тренинг как форма работы с детьми?", a: ["Форма работы с практическими упражнениями и отработкой навыков", "Только лекция", "Только игра", "Только экскурсия"], c: 0 },
+    { q: "Что такое дискуссия как форма работы?", a: ["Обсуждение проблемных вопросов с участием всех детей", "Только рассказ педагога", "Только демонстрация", "Только игра"], c: 0 },
+    { q: "Что такое экологическая акция как форма работы?", a: ["Коллективное практическое дело, направленное на охрану природы", "Только игра", "Только экскурсия", "Только занятие"], c: 0 },
+    { q: "Что такое проектная форма работы с детьми?", a: ["Форма работы, при которой дети самостоятельно исследуют тему и защищают проект", "Только занятие", "Только игра", "Только конкурс"], c: 0 },
+    { q: "Что такое презентация как форма работы?", a: ["Форма представления результатов работы (проекта, исследования, достижений)", "Только занятие", "Только экскурсия", "Только игра"], c: 0 },
+    { q: "Какие формы организации работы по количеству участников используются на занятии?", a: ["Фронтальная, групповая, парная, индивидуальная", "Только фронтальная", "Только групповая", "Только индивидуальная"], c: 0 },
+    { q: "Что такое фронтальная форма работы?", a: ["Работа со всей группой одновременно", "Работа в парах", "Индивидуальная работа", "Работа в малых группах"], c: 0 },
+    { q: "Что такое групповая форма работы?", a: ["Работа в малых группах по 3–5 человек", "Работа со всей группой", "Индивидуальная работа", "Работа в парах"], c: 0 },
+    { q: "Что такое парная форма работы?", a: ["Работа двух детей вместе", "Работа со всей группой", "Индивидуальная работа", "Работа в малых группах"], c: 0 },
+    { q: "Что такое индивидуальная форма работы?", a: ["Работа с отдельным ребёнком", "Работа со всей группой", "Работа в парах", "Работа в группах"], c: 0 },
+    { q: "Какие методы помогают развивать у детей самостоятельность?", a: ["Проблемно-поисковые, проектные, исследовательские", "Только рассказ", "Только демонстрация", "Только беседа"], c: 0 },
+    { q: "Какие методы способствуют формированию экологического мышления?", a: ["Анализ, сравнение, установление причинно-следственных связей, эксперимент", "Только заучивание", "Только рассказ", "Только демонстрация"], c: 0 },
+    { q: "Какие методы помогают формировать эмоционально-ценностное отношение к природе?", a: ["Наблюдение, чтение стихов и сказок о природе, творческие задания", "Только тесты", "Только диктанты", "Только опросы"], c: 0 },
+    { q: "Какие средства обучения помогают формировать у детей умение анализировать?", a: ["Схемы, таблицы, диаграммы, модели", "Только иллюстрации", "Только картинки", "Только фотографии"], c: 0 },
+    { q: "Что такое дидактическая игра?", a: ["Игра с правилами, направленная на решение образовательных задач", "Подвижная игра", "Сюжетно-ролевая игра", "Спортивная игра"], c: 0 },
+    { q: "Что такое подвижная игра?", a: ["Игра, направленная на развитие двигательной активности", "Игра с правилами", "Дидактическая игра", "Сюжетно-ролевая игра"], c: 0 },
+    { q: "Что такое сюжетно-ролевая игра?", a: ["Игра, в которой дети разыгрывают определённые роли и ситуации", "Подвижная игра", "Дидактическая игра", "Спортивная игра"], c: 0 },
+    { q: "Чему способствует использование сказок на эколого-биологических занятиях?", a: ["Развитию эмоциональной отзывчивости и пониманию природы через образы", "Только развлечению", "Только чтению", "Только заучиванию"], c: 0 },
+    { q: "Как правильно использовать фольклор на занятиях?", a: ["Как средство развития речи, мышления и эмоционального отношения к природе", "Только как развлечение", "Только как украшение", "Только для чтения"], c: 0 },
+    { q: "Чему способствует использование загадок на занятиях?", a: ["Развитию образного мышления, наблюдательности, памяти", "Только развлечению", "Только проверке знаний", "Только чтению"], c: 0 },
+    { q: "Чему способствует использование пословиц и поговорок на занятиях?", a: ["Развитию речи и формированию ценностного отношения к природе", "Только заучиванию", "Только развлечению", "Только чтению"], c: 0 },
+    { q: "Как интегрировать творческие задания в образовательный процесс?", a: ["Через рисование, лепку, аппликацию, конструирование, поделки на экологическую тему", "Только через рисование", "Только через лепку", "Только через аппликацию"], c: 0 },
+    { q: "Как правильно организовать наблюдение за природным объектом?", a: ["Сформулировать задачу, выбрать объект, определить признаки, зафиксировать результат", "Без подготовки", "Только наблюдать", "Только записывать"], c: 0 },
+    { q: "Что важно учитывать при выборе форм работы с детьми 6–10 лет?", a: ["Возрастные особенности, интересы, уровень подготовки, цели занятия", "Только возраст", "Только интересы", "Только цели"], c: 0 },
+    { q: "Какие методы помогают педагогу получать обратную связь от детей?", a: ["Беседа, вопросы, обсуждение, рефлексия, анкетирование", "Только беседа", "Только вопросы", "Только рефлексия"], c: 0 },
+    { q: "Что такое комплексное использование методов, средств и форм работы?", a: ["Сочетание разных методов, средств и форм для достижения образовательных целей", "Использование одного метода", "Использование одного средства", "Использование одной формы"], c: 0 },
+    { q: "Почему важно разнообразие методов, средств и форм работы с детьми 6–10 лет?", a: ["Разнообразие поддерживает интерес, учитывает особенности детей и повышает эффективность", "Для отчётности", "Для формальности", "Не важно"], c: 0 },
+    { q: "Что является главным критерием выбора методов, средств и форм работы педагогом?", a: ["Соответствие целям, содержанию и возрастным особенностям детей", "Простота использования", "Современность", "Популярность"], c: 0 }
+];
+
+/* ============================================================
+   ГЕНЕРАТОР СЛУЧАЙНЫХ ЧИСЕЛ
+   ============================================================ */
+let _seed = Date.now() % 2147483647;
+if (_seed <= 0) _seed += 2147483646;
+function rnd() {
+    _seed = (_seed * 16807) % 2147483647;
+    return (_seed - 1) / 2147483646;
+}
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+/* ============================================================
+   СОСТОЯНИЕ ТЕСТА
+   ============================================================ */
+const TOTAL_QUESTIONS = 20;
+let activeQuestions = [];
+let correctCount = 0;
+let answeredCount = 0;
+
+function buildActiveQuestions() {
+    const shuffledBank = shuffle(QUESTION_BANK);
+    const selected = shuffledBank.slice(0, TOTAL_QUESTIONS);
+    return selected.map(item => {
+        const options = item.a.map((text, idx) => ({ text, isCorrect: idx === item.c }));
+        const shuffledOptions = shuffle(options);
+        const correctPos = shuffledOptions.findIndex(o => o.isCorrect);
+        return {
+            q: item.q,
+            options: shuffledOptions.map(o => o.text),
+            correct: correctPos,
+            answered: false,
+            chosen: null
+        };
+    });
+}
+
+/* ============================================================
+   ОТРИСОВКА
+   ============================================================ */
+function renderAll() {
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
+    activeQuestions.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = 'q' + idx;
+
+        const num = document.createElement('span');
+        num.className = 'question-number';
+        num.textContent = 'Вопрос ' + (idx + 1);
+        card.appendChild(num);
+
+        const qText = document.createElement('div');
+        qText.className = 'question-text';
+        qText.textContent = item.q;
+        card.appendChild(qText);
+
+        const answersBox = document.createElement('div');
+        answersBox.className = 'answers';
+
+        const letters = ['А', 'Б', 'В', 'Г', 'Д'];
+        item.options.forEach((optText, optIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'answer';
+            btn.dataset.qidx = idx;
+            btn.dataset.oidx = optIdx;
+
+            const letterSpan = document.createElement('span');
+            letterSpan.className = 'answer-letter';
+            letterSpan.textContent = letters[optIdx] || '•';
+            btn.appendChild(letterSpan);
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = optText;
+            btn.appendChild(textSpan);
+
+            btn.addEventListener('click', () => handleAnswer(idx, optIdx));
+            answersBox.appendChild(btn);
+        });
+        card.appendChild(answersBox);
+
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+        feedback.id = 'fb' + idx;
+        feedback.style.display = 'none';
+        card.appendChild(feedback);
+
+        container.appendChild(card);
+    });
+    updateProgress();
+}
+
+function handleAnswer(qIdx, oIdx) {
+    const item = activeQuestions[qIdx];
+    if (item.answered) return;
+
+    item.answered = true;
+    item.chosen = oIdx;
+    answeredCount++;
+
+    const card = document.getElementById('q' + qIdx);
+    const buttons = card.querySelectorAll('.answer');
+    buttons.forEach((btn, i) => {
+        btn.classList.add('locked');
+        if (i === oIdx) {
+            if (i === item.correct) {
+                btn.classList.add('selected-correct');
+            } else {
+                btn.classList.add('selected-wrong');
+            }
+        } else if (i === item.correct) {
+            btn.classList.add('reveal-correct');
+        }
+    });
+
+    const fb = document.getElementById('fb' + qIdx);
+    fb.style.display = 'block';
+    if (oIdx === item.correct) {
+        correctCount++;
+        fb.classList.add('correct');
+        fb.textContent = '✓ Верно.';
+    } else {
+        fb.classList.add('wrong');
+        fb.textContent = '✗ Неверно. Правильный вариант подсвечен зелёным.';
+    }
+
+    updateProgress();
+
+    if (answeredCount === TOTAL_QUESTIONS) {
+        showResults();
+    }
+}
+
+function updateProgress() {
+    const numEl = document.getElementById('currentNum');
+    numEl.textContent = Math.min(answeredCount + 1, TOTAL_QUESTIONS);
+    document.getElementById('correctCount').textContent = correctCount;
+}
+
+function showResults() {
+    const panel = document.getElementById('resultsPanel');
+    panel.style.display = 'block';
+    document.getElementById('finalCorrect').textContent = correctCount;
+
+    let mark, comment;
+    if (correctCount >= 18) {
+        mark = '«5» (отлично)';
+        comment = 'Высокий уровень владения методами, средствами и формами работы с детьми 6–10 лет в рамках ОМК эколого-биологического профиля. Педагог свободно ориентируется в методическом инструментарии, умеет выбирать и сочетать методы, средства и формы в соответствии с целями, содержанием и возрастными особенностями детей. Диагностика успешно завершена.';
+    } else if (correctCount >= 14) {
+        mark = '«4» (хорошо)';
+        comment = 'Достаточный уровень владения методами, средствами и формами работы. Педагог знает основные методы, средства и формы, способен применять их на практике при незначительной методической поддержке.';
+    } else if (correctCount >= 10) {
+        mark = '«3» (удовлетворительно)';
+        comment = 'Базовый уровень владения методами, средствами и формами работы. Педагог освоил основные положения курса, однако требуется повторное обращение к отдельным темам. Рекомендуется повторить текущий этап.';
+    } else {
+        mark = '«2» (неудовлетворительно)';
+        comment = 'Недостаточный уровень владения методами, средствами и формами работы. Педагогу рекомендуется повторно изучить материалы курса и пройти диагностику заново для формирования необходимых методических умений.';
+    }
+    document.getElementById('finalMark').textContent = mark;
+    document.getElementById('finalComment').textContent = comment;
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function repeatStage() {
+    _seed = Date.now() % 2147483647;
+    if (_seed <= 0) _seed += 2147483646;
+    activeQuestions = buildActiveQuestions();
+    correctCount = 0;
+    answeredCount = 0;
+    document.getElementById('resultsPanel').style.display = 'none';
+    renderAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   ЗАПУСК
+   ============================================================ */
+activeQuestions = buildActiveQuestions();
+renderAll();
+</script>
+</body>
+</html>
