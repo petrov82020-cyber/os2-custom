@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Контрольные срезы и тестовые задания — tests.html</title>
+<style>
+body{font-family:Georgia,"Times New Roman",serif;max-width:880px;margin:2em auto;padding:0 1.5em;line-height:1.6;color:#1d1d1d}
+h1,h2,h3,h4{font-family:"Palatino Linotype",Georgia,serif;line-height:1.25;color:#1a2a40}
+h1{border-bottom:2px solid #2a4060;padding-bottom:.4em;margin-top:1em}
+h2{margin-top:2em;border-bottom:1px solid #b0b8c4;padding-bottom:.2em}
+h3{margin-top:1.6em;background:#e8ecf1;padding:.4em .7em;border-left:4px solid #2a4060}
+h4{margin-top:1.2em;font-size:1em;color:#2a4060}
+.heb{font-family:"Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;font-size:1.35em;direction:rtl;unicode-bidi:embed}
+.heb-b{font-family:"Noto Serif Hebrew","SBL Hebrew",serif;font-size:1.35em;direction:rtl;unicode-bidi:embed;font-weight:bold}
+.gr{font-family:"Noto Serif","Times New Roman",serif;font-size:1.1em}
+.cyr{font-style:italic;color:#4a4a4a}
+details{margin:.5em 0;padding:.4em .9em;background:#f4f5f0;border-left:3px solid #708090}
+details[open]{background:#eef0ea}
+summary{cursor:pointer;font-weight:bold;color:#2a4060}
+footer{margin-top:3em;padding-top:1em;border-top:1px solid #b0b8c4;font-size:.9em;color:#555;text-align:center}
+nav{background:#eaeef2;padding:.7em 1em;border-radius:4px;margin:1em 0;font-size:.95em}
+nav a{color:#1f3a60;text-decoration:none;margin:0 .3em}
+nav a:hover{text-decoration:underline}
+table{border-collapse:collapse;margin:1em 0;width:100%}
+td,th{border:1px solid #b8c0cc;padding:.4em .6em;vertical-align:top}
+th{background:#e8ecf1;text-align:left}
+.q{background:#fafbf8;padding:.7em 1em;border:1px solid #d8dcd0;margin:.8em 0;border-radius:3px}
+.q-num{font-weight:bold;color:#2a4060;margin-right:.5em}
+.intro{background:#eef4f8;padding:.9em 1.2em;border-left:4px solid #4a7090;margin:1em 0;border-radius:3px}
+.warn{background:#f8eeea;padding:.6em 1em;border-left:4px solid #a05030;margin:1em 0}
+.idx{background:#f4f8f0;padding:.6em 1em;border:1px dashed #50804a;margin:.8em 0}
+a.card-link{color:#1f3a60;text-decoration:none;border-bottom:1px dotted #708090}
+a.card-link:hover{background:#fff4c2}
+a.rule-link{color:#4a4060;text-decoration:none;border-bottom:1px dotted #a08060}
+a.rule-link:hover{background:#fff4c2}
+.opts{margin:.4em 0 .4em 1.4em;padding:0;list-style-type:upper-alpha}
+.opts li{margin:.2em 0}
+.err{color:#a05030;font-weight:bold}
+.ok{color:#2a6a2a;font-weight:bold}
+.timer{background:#fff4c2;padding:.2em .5em;border-radius:3px;font-size:.9em;color:#5a4a20}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html">Главная</a> ·
+<a href="exercises.html">exercises.html</a> ·
+<a href="dict-alpha.html">dict-alpha.html</a> ·
+<a href="aram001.html">Урок 1</a> ·
+<a href="aram008.html">Урок 8</a>
+</nav>
+
+<h1>Контрольные срезы и тестовые задания</h1>
+
+<div class="intro">
+<p><b>Файл:</b> <code>tests.html</code>. Первый выпуск. Охватывает материал уроков 1–8 и служит основой для файла <code>tests-stage2.html</code> (уроки 9–17), <code>tests-stage3.html</code> (уроки 18–22), <code>tests-stage4.html</code> (уроки 23–25) и <code>tests-final.html</code> (итоговый экзамен по всему курсу).</p>
+<p><b>Назначение.</b> Упражнения в файле <a href="exercises.html">exercises.html</a> служат для тренировки и допускают неоднократное повторение. Тесты в этом файле служат для контроля: они выполняются <b>один раз</b>, письменно, без обращения к словарю и учебнику, на время. После выполнения тест закрывается и больше не открывается до повторного полного прохождения курса.</p>
+<p><b>Правило выполнения.</b> Перед тестом откладывается в сторону всё, кроме листа бумаги и ручки. Тест выполняется в один присест. По истечении указанного времени работа прекращается, и только после этого открываются ключи. Ключ содержит не только правильный ответ, но и <b>разбор ошибок</b>: почему правильный ответ именно такой, какие типичные заблуждения приводят к неверным ответам, к какому правилу или к какой карточке словаря следует вернуться в случае ошибки.</p>
+<p><b>Оценка.</b> За каждый верный ответ — 1 балл. За верный ответ с незначительной опиской (например, перепутан порядок букв в транскрипции при верно определённой форме) — 0,5 балла. За неверный ответ — 0 баллов. Проходной балл: 75 % (например, 15 из 20; 19 из 25; 22 из 30). Ниже проходного балла — срез не сдан, соответствующие уроки перечитываются заново.</p>
+<p><b>Порядок.</b> Срезы выполняются строго по порядку. Не приступать к срезу 2 до сдачи среза 1. Не приступать к итоговому срезу этапа I до сдачи срезов 1 и 2. Не приступать к формулам славословий до сдачи итогового среза этапа I.</p>
+</div>
+
+<div class="warn">
+<b>О ссылках.</b> В ключах встречаются ссылки вида <a href="dict-alpha.html#melekh" class="card-link">dict-alpha.html#melekh</a> — якорь на карточку слова <span class="heb">מֶלֶךְ</span> в алфавитном словаре; <a href="aram006.html#paradigm-mlk" class="rule-link">aram006.html#paradigm-mlk</a> — якорь на §6.5.1 «Парадигма <span class="heb">מֶלֶךְ</span>». Такие ссылки позволяют мгновенно перейти к источнику ошибки. Где карточка ещё не готова, в ключе указано «карточка в подготовке, см. урок N, §M.K».
+</div>
+
+<h2 id="index">Указатель тестов</h2>
+
+<div class="idx">
+<ol>
+<li><a href="#test1">Срез 1. Уроки 1–4</a> — 20 вопросов, <span class="timer">30 минут</span>, проходной балл 15</li>
+<li><a href="#test2">Срез 2. Уроки 5–8</a> — 25 вопросов, <span class="timer">40 минут</span>, проходной балл 19</li>
+<li><a href="#test3">Итоговый срез этапа I (уроки 1–8)</a> — 30 вопросов, <span class="timer">60 минут</span>, проходной балл 22</li>
+<li><a href="#test4">Тест по формулам славословий</a> — 15 вопросов, <span class="timer">25 минут</span>, проходной балл 11</li>
+<li><a href="#test5">Тест двустороннего перевода (арамейский — иврит — греческий — русский)</a> — 15 вопросов, <span class="timer">30 минут</span>, проходной балл 11</li>
+</ol>
+</div>
+
+<!-- ===================================================== -->
+<!-- СРЕЗ 1. УРОКИ 1–4 -->
+<!-- ===================================================== -->
+
+<section id="test1">
+<h2>Срез 1. Уроки 1–4</h2>
+
+<p><b>Охват.</b> Урок 1 (предмет и задача, корпус, норма); урок 2 (алфавит, гортанные, бегад-кефат, дагеш); урок 3 (огласовка, камец, шва, транскрипция); урок 4 (соответствия согласных иврит — арамейский).</p>
+<p><b>Время:</b> 30 минут. <b>Проходной балл:</b> 15 из 20.</p>
+
+<h3>Часть I. Выбор одного правильного ответа (10 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">1.</span> Какая книга еврейской Библии содержит арамейский раздел 2:4б–7:28?</p>
+<ul class="opts">
+<li>Ездра</li>
+<li>Даниил</li>
+<li>Иеремия</li>
+<li>Бытие</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">2.</span> Что принимается за норму в курсе реконструкции?</p>
+<ul class="opts">
+<li>Текст BHS</li>
+<li>Текст BHQ</li>
+<li>Масоретский архетип</li>
+<li>Текст Септуагинты</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">3.</span> Какие из этих букв являются гортанными?</p>
+<ul class="opts">
+<li>ב, ג, ד, כ</li>
+<li>א, ה, ח, ע</li>
+<li>מ, נ, ס, פ</li>
+<li>ז, ט, צ, ק</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">4.</span> Какая буква имеет конечную форму ך?</p>
+<ul class="opts">
+<li>כ (каф)</li>
+<li>מ (мем)</li>
+<li>נ (нун)</li>
+<li>פ (пе)</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">5.</span> Чем камец-гадоль отличается от камец-хатуф?</p>
+<ul class="opts">
+<li>Камец-гадоль — долгий «а» в открытом ударном слоге; камец-хатуф — краткий «о» в закрытом безударном слоге</li>
+<li>Камец-гадоль — краткий «а»; камец-хатуф — долгий «а»</li>
+<li>Оба обозначают «э»</li>
+<li>Различия нет, знак один и тот же</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">6.</span> Как читается <span class="heb">שְׁמַיָּא</span>?</p>
+<ul class="opts">
+<li><span class="cyr">шмаййā́</span></li>
+<li><span class="cyr">шэмаййā́</span></li>
+<li><span class="cyr">шэмāййā́</span></li>
+<li><span class="cyr">шэма́ййа</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">7.</span> Какому прасемитскому звуку соответствует пара ивр. <span class="heb">שׁ</span> / арам. <span class="heb">ת</span>?</p>
+<ul class="opts">
+<li>*š</li>
+<li>*θ</li>
+<li>*ð</li>
+<li>*s</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">8.</span> Какая арамейская форма соответствует ивритскому <span class="heb">זָהָב</span> «золото»?</p>
+<ul class="opts">
+<li><span class="heb">זְהַב</span></li>
+<li><span class="heb">דְּהַב</span></li>
+<li><span class="heb">תְּהַב</span></li>
+<li><span class="heb">צְהַב</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">9.</span> Какая арамейская форма соответствует ивритскому <span class="heb">שָׁלוֹשׁ</span> «три»?</p>
+<ul class="opts">
+<li><span class="heb">שְׁלוֹשׁ</span></li>
+<li><span class="heb">תְּלָת</span></li>
+<li><span class="heb">צְלָת</span></li>
+<li><span class="heb">סְלוֹשׁ</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">10.</span> Какая буква в арамейском является рефлексом прасемитского *ð (ивр. <span class="heb">ז</span>)?</p>
+<ul class="opts">
+<li>ז</li>
+<li>ד</li>
+<li>ת</li>
+<li>ט</li>
+</ul>
+</div>
+
+<h3>Часть II. Короткий ответ (10 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">11.</span> Запишите кириллической транскрипцией: <span class="heb">מַלְכָּא</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">12.</span> Запишите кириллической транскрипцией: <span class="heb">אֱלָהָא</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">13.</span> Запишите кириллической транскрипцией: <span class="heb">בֵּיתָא</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">14.</span> Запишите кириллической транскрипцией: <span class="heb">עַבְדָּא</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">15.</span> Какие пять букв имеют конечные формы? Напишите их в паре «обычная — конечная».</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">16.</span> Назовите шесть букв бегад-кефат и укажите, как каждая произносится с дагешем и без дагеша.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">17.</span> Что такое шва на и чем оно отличается от шва нах? Приведите пример шва на из урока 3 и пример шва нах из урока 6.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">18.</span> Объясните, почему в арамейском <span class="heb">קָל</span> «голос» стоит «а», а в иврите <span class="heb">קוֹל</span> — «о». Какое фонологическое явление лежит в основе различия?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">19.</span> Перечислите все известные вам соответствия согласных между ивритом и арамейским из урока 4 (не менее четырёх).</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">20.</span> Объясните, почему частица <span class="heb">דִּי</span> «который» начинается с ד, а не с ז (как ивритское <span class="heb">זֶה</span>). К какому прасемитскому звуку она восходит?</p>
+</div>
+
+<h3>Ключ к срезу 1 с разбором ошибок</h3>
+
+<details>
+<summary>Ключ к вопросам 1–10 (часть I)</summary>
+
+<p><b>1.</b> <span class="ok">Правильно: Даниил.</span> Арамейский раздел Дан 2:4б–7:28 — самый обширный в Библии (около 200 стихов). См. <a href="aram001.html#m-corpus" class="rule-link">aram001.html#m-corpus</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать «Ездра» — в Ездре тоже есть арамейские разделы (4:8–6:18; 7:12–26), но их границы другие. Ездра — это первый по порядку книг арамейский раздел, Даниил — самый большой по объёму.</p>
+
+<p><b>2.</b> <span class="ok">Правильно: масоретский архетип.</span> BHS и BHQ как норма не принимаются — в них масоретский текст нередко «исправлен» в сторону иврита. См. <a href="aram001.html#m-norm" class="rule-link">aram001.html#m-norm</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать BHS, потому что это самое распространённое научное издание. Для целей реконструкции арамейского языка это неверно.</p>
+
+<p><b>3.</b> <span class="ok">Правильно: א, ה, ח, ע.</span> Гортанные не принимают дагеша. См. <a href="aram002.html#section-forms" class="rule-link">aram002.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> включить ר (реш) — он ведёт себя подобно гортанным в некоторых позициях (не принимает дагеш хазэк), но классически к гортанным не относится.</p>
+
+<p><b>4.</b> <span class="ok">Правильно: כ (каф).</span> Пять конечных форм: כ→ך, מ→ם, נ→ן, פ→ף, צ→ץ. См. <a href="aram002.html#section-forms" class="rule-link">aram002.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать другую букву, например פ (пе, конечная ף) — тоже имеет конечную форму, но не ך.</p>
+
+<p><b>5.</b> <span class="ok">Правильно: камец-гадоль — долгий «а» в открытом ударном слоге; камец-хатуф — краткий «о» в закрытом безударном слоге.</span> См. <a href="aram003.html#m-transcription" class="rule-link">aram003.html#m-transcription</a>.</p>
+<p><span class="err">Типичная ошибка:</span> считать, что различия нет. Знак один и тот же (ָ), но позиция в слоге и, соответственно, произношение — разные. Смешение камеца-гадоль с камец-хатуф приводит к ошибочной транскрипции (например, «хохмā́» вместо «хакмā́» или наоборот).</p>
+
+<p><b>6.</b> <span class="ok">Правильно: <span class="cyr">шэмаййā́</span>.</span> Шва на под ש — «э»; дагеш хазэк в י — удвоение «йй»; камец под מ — «ā». См. <a href="dict-alpha.html#shemayin" class="card-link">dict-alpha.html#shemayin</a>, <a href="aram003.html#m-transcription" class="rule-link">aram003.html#m-transcription</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «шмаййā́» — проглочено шва на. Шва на — это очень краткий «э», оно не проглатывается.</p>
+
+<p><b>7.</b> <span class="ok">Правильно: *θ.</span> Прасемитский *θ (глухой межзубный) в иврите дал שׁ, в арамейском — ת. См. <a href="aram004.html#section-two-ways" class="rule-link">aram004.html#section-two-ways</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать *š — это другой прасемитский звук, который и в иврите, и в арамейском дал שׁ (ср. <span class="heb">שֶׁמֶשׁ</span> / <span class="heb">שִׁמְשָׁא</span>).</p>
+
+<p><b>8.</b> <span class="ok">Правильно: <span class="heb">דְּהַב</span>.</span> *ð → ז (ивр.) / ד (арам.). См. <a href="aram004.html#section-two-ways" class="rule-link">aram004.html#section-two-ways</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">זְהַב</span> — это буквальное сохранение ивритской ז. В арамейском *ð даёт ד.</p>
+
+<p><b>9.</b> <span class="ok">Правильно: <span class="heb">תְּלָת</span>.</span> *θ → שׁ (ивр.) / ת (арам.). См. <a href="aram004.html#section-two-ways" class="rule-link">aram004.html#section-two-ways</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">שְׁלוֹשׁ</span> или <span class="heb">צְלָת</span> — эти формы не отражают соответствие *θ → ת.</p>
+
+<p><b>10.</b> <span class="ok">Правильно: ד.</span> См. <a href="aram004.html#section-two-ways" class="rule-link">aram004.html#section-two-ways</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать ז по аналогии с ивритом. В арамейском *ð даёт ד, а ז остаётся только как рефлекс прасемитского *z.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 11–20 (часть II)</summary>
+
+<p><b>11.</b> <span class="ok">малкā́.</span> Шва нах под ל — немое; камец под כ — «ā». См. <a href="dict-alpha.html#melekh" class="card-link">dict-alpha.html#melekh</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «малэкā́» — шва под ל прочитано как «э», хотя это шва нах (немое).</p>
+
+<p><b>12.</b> <span class="ok">элāhā́.</span> Хатаф-сеголь под א — «э»; камец под ל — «ā»; ה произносится как «h». См. <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «алāхā́» — хатаф-сеголь прочитан как «а». Это хатаф-сеголь, а не хатаф-патах.</p>
+
+<p><b>13.</b> <span class="ok">бēтā́.</span> Цере под ב — «ē»; тав с дагешем — смычный «т». См. <a href="dict-alpha.html#bayit" class="card-link">dict-alpha.html#bayit</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «бēθā́» — тав без дагеша. В <span class="heb">בֵּיתָא</span> тав с дагешем (дагеш лене после закрытого слога), поэтому «т», а не «θ».</p>
+
+<p><b>14.</b> <span class="ok">ʿабдā́.</span> Хатаф-патах под ע — «а»; дагеш хазэк в ב — «б»; дагеш хазэк в ד — «д». См. <a href="dict-alpha.html#aved" class="card-link">dict-alpha.html#aved</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «абдā́» без айна или «ʿавдā́» — ב с дагешем, смычный «б», а не «в».</p>
+
+<p><b>15.</b> <span class="ok">כ→ך (каф); מ→ם (мем); נ→ן (нун); פ→ף (пе); צ→ץ (цади).</span> См. <a href="aram002.html#section-forms" class="rule-link">aram002.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не указать одну из форм или поставить в паре неправильную букву. Все пять пар должны быть названы точно.</p>
+
+<p><b>16.</b> <span class="ok">ב (б / в); ג (г / γ); ד (д / δ); כ (к / х); פ (п / ф); ת (т / θ).</span> См. <a href="aram002.html#section-forms" class="rule-link">aram002.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> смешивать смычное и щелевое произношение (например, «в» вместо «б» или «θ» вместо «т»). Это фонологическое различие, передаваемое в транскрипции.</p>
+
+<p><b>17.</b> <span class="ok">Шва на (подвижное) произносится как очень краткий «э»; шва нах (немое) не произносится, закрывает слог. Пример шва на из урока 3: <span class="heb">בְּרֵאשִׁית</span> — бэрēшӣ́т. Пример шва нах из урока 6: <span class="heb">מַלְכָּא</span> — малкā́ (шва под ל немое).</span> См. <a href="aram003.html#m-transcription" class="rule-link">aram003.html#m-transcription</a>.</p>
+<p><span class="err">Типичная ошибка:</span> приводить оба примера без различия или путать, какое шва в каком слове. В <span class="heb">בְּרֵאשִׁית</span> шва под ב — на (подвижное), потому что оно под начальной буквой; в <span class="heb">מַלְכָּא</span> шва под ל — нах, потому что оно после ударного слога и перед конечным א.</p>
+
+<p><b>18.</b> <span class="ok">В иврите действует канаанейский сдвиг ā → ō; в арамейском этого сдвига нет, поэтому ā сохраняется. См. <a href="aram003.html#m-transcription" class="rule-link">aram003.html#m-transcription</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> не упомянуть канаанейский сдвиг; путать с соответствием *θ → ת или с камец-гадоль / камец-хатуф.</p>
+
+<p><b>19.</b> <span class="ok">*θ → שׁ / ת; *ð → ז / ד; *ṭ́ / *ḍ → צ / ט или ע; *ś → שׂ / שׂ; *s → ס / ס; *š → שׁ / שׁ. Достаточно четырёх для зачёта.</span> См. <a href="aram004.html#section-two-ways" class="rule-link">aram004.html#section-two-ways</a>.</p>
+<p><span class="err">Типичная ошибка:</span> приводить менее четырёх или приводить пары с ошибкой (например, *ð → ז / ז).</p>
+
+<p><b>20.</b> <span class="ok">Частица <span class="heb">דִּי</span> восходит к *ðī; в иврите *ð дал ז (ср. <span class="heb">זֶה</span>, <span class="heb">זוּ</span>), в арамейском — ד. См. <a href="aram004.html#section-two-ways" class="rule-link">aram004.html#section-two-ways</a>, <a href="dict-alpha.html#di" class="card-link">dict-alpha.html#di</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> не упомянуть *ð и соответствие ז / ד; иногда ошибочно связывают דִּי с *d.</p>
+</details>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- СРЕЗ 2. УРОКИ 5–8 -->
+<!-- ===================================================== -->
+
+<section id="test2">
+<h2>Срез 2. Уроки 5–8</h2>
+
+<p><b>Охват.</b> Урок 5 (личные местоимения); урок 6 (три состояния имени, множественное число); урок 7 (имя прилагательное, согласование, степени сравнения); урок 8 (сопряжённые цепи, частица <span class="heb">דִּי</span>, упреждающий суффикс).</p>
+<p><b>Время:</b> 40 минут. <b>Проходной балл:</b> 19 из 25.</p>
+
+<h3>Часть I. Выбор одного правильного ответа (10 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">1.</span> Какая форма местоимения 1 общ. мн. ч.?</p>
+<ul class="opts">
+<li><span class="heb">אֲנָא</span></li>
+<li><span class="heb">אֲנַחְנָא</span></li>
+<li><span class="heb">אַנְתּוּן</span></li>
+<li><span class="heb">אִנּוּן</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">2.</span> Какое состояние у формы <span class="heb">מַלְכָּא</span>?</p>
+<ul class="opts">
+<li>Абсолютное</li>
+<li>Сопряжённое</li>
+<li>Определённое</li>
+<li>Не имеет состояния</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">3.</span> Какая форма является сопряжённым множественным числом от <span class="heb">מֶלֶךְ</span>?</p>
+<ul class="opts">
+<li><span class="heb">מַלְכִין</span></li>
+<li><span class="heb">מַלְכֵי</span></li>
+<li><span class="heb">מַלְכַיָּא</span></li>
+<li><span class="heb">מֶלֶךְ</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">4.</span> Как переводится <span class="heb">אֱלָהָא קַדִּישָׁא</span>?</p>
+<ul class="opts">
+<li>«Бог свят»</li>
+<li>«Святой Бог»</li>
+<li>«Святые Бога»</li>
+<li>«Святой — Бог»</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">5.</span> Как переводится <span class="heb">מַלְכָּא רַב</span>?</p>
+<ul class="opts">
+<li>«Великий царь»</li>
+<li>«Царь велик»</li>
+<li>«Цари великие»</li>
+<li>«Царство великое»</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">6.</span> Что выражает конструкция <span class="heb">מֶלֶךְ מַלְכַיָּא</span>?</p>
+<ul class="opts">
+<li>Простую принадлежность</li>
+<li>Превосходную степень</li>
+<li>Частичность</li>
+<li>Определённость</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">7.</span> Какая конструкция является упреждающим притяжательным суффиксом (casus pendens)?</p>
+<ul class="opts">
+<li><span class="heb">בֵּית מַלְכָּא</span></li>
+<li><span class="heb">בֵּיתָא דִּי מַלְכָּא</span></li>
+<li><span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span></li>
+<li><span class="heb">מֶלֶךְ מַלְכַיָּא</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">8.</span> В каком состоянии стоит прилагательное при <b>предикативном</b> употреблении?</p>
+<ul class="opts">
+<li>В абсолютном</li>
+<li>В сопряжённом</li>
+<li>В определённом</li>
+<li>В любом, по выбору автора</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">9.</span> Как переводится <span class="heb">בֵּית אֱלָהָא רַבָּא</span>?</p>
+<ul class="opts">
+<li>«Дом великого Бога»</li>
+<li>«Великий дом Бога»</li>
+<li>«Дом Бога велик»</li>
+<li>«Великий Бог дома»</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">10.</span> Как правильно перевести <span class="heb">בֵּית מַלְכָּא רַבָּא</span>?</p>
+<ul class="opts">
+<li>«Великий дом царя»</li>
+<li>«Дом великого царя»</li>
+<li>«Дом царя велик»</li>
+<li>«Царь великого дома»</li>
+</ul>
+</div>
+
+<h3>Часть II. Короткий ответ (10 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">11.</span> Назовите все десять самостоятельных личных местоимений библейского арамейского (с указанием лица, рода, числа).</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">12.</span> Заполните парадигму <span class="heb">מֶלֶךְ</span>: ед. ч. — абс., сопр., опр.; мн. ч. — абс., сопр., опр.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">13.</span> Заполните парадигму <span class="heb">אֲרַע</span> (ж. р., ед. и мн. ч. во всех трёх состояниях).</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">14.</span> Как образуется определённое состояние для имён мужского рода единственного числа, для имён женского рода единственного числа, для имён мужского рода множественного числа? Назовите окончания.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">15.</span> Заполните парадигму <span class="heb">רַב</span>: м. р. ед. абс., м. р. ед. опр., м. р. мн. абс., м. р. мн. опр.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">16.</span> Заполните парадигму <span class="heb">קַדִּישׁ</span>: м. р. ед. абс., м. р. ед. опр., м. р. мн. абс., м. р. мн. сопр., м. р. мн. опр.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">17.</span> Назовите три способа выражения генитивной связи в библейском арамейском (по уроку 8) и приведите по одному примеру.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">18.</span> В чём разница между сопряжённой цепью и конструкцией с <span class="heb">דִּי</span>? В каких случаях предпочтительна каждая (назовите не менее двух критериев)?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">19.</span> Как образуется сравнительная степень прилагательного? Приведите пример.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">20.</span> Как образуется превосходная степень? Назовите не менее трёх способов и приведите по примеру.</p>
+</div>
+
+<h3>Часть III. Разбор стиха (5 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">21.</span> Разберите Езд 5:11 по схеме: (а) транскрипция; (б) все имена существительные и их состояние; (в) все прилагательные и их состояние; (г) личное местоимение; (д) перевод.</p>
+<p><span class="heb">עַבְדֵי אֱלָהּ שְׁמַיָּא וְאַרְעָא אֲנַחְנָא</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">22.</span> Разберите Дан 2:20: (а) транскрипция; (б) все имена существительные и их состояние; (в) конструкция с <span class="heb">דִּי</span>; (г) перевод.</p>
+<p><span class="heb">לֶהֱוֵא שְׁמֵהּ דִּי אֱלָהָא מְבָרַךְ מִן עָלְמָא וְעַד עָלְמָא</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">23.</span> Разберите Дан 5:18: (а) транскрипция; (б) все имена существительные и их состояние; (в) прилагательное и его функция; (г) перевод.</p>
+<p><span class="heb">אַנְתְּ מַלְכָּא מַלְכָּא רַבָּא</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">24.</span> Объясните разницу в значении: <span class="heb">מַלְכָּא רַבָּא</span> и <span class="heb">מַלְכָּא רַב</span>. Какое правило лежит в основе различия?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">25.</span> Объясните разницу в значении: <span class="heb">בֵּית אֱלָהָא רַבָּא</span> и <span class="heb">בֵּית מַלְכָּא רַבָּא</span>. К чему относится прилагательное в каждом случае?</p>
+</div>
+
+<h3>Ключ к срезу 2 с разбором ошибок</h3>
+
+<details>
+<summary>Ключ к вопросам 1–10 (часть I)</summary>
+
+<p><b>1.</b> <span class="ok">Правильно: <span class="heb">אֲנַחְנָא</span>.</span> См. <a href="dict-alpha.html#anachna" class="card-link">dict-alpha.html#anachna</a>, <a href="aram005.html#section-forms" class="rule-link">aram005.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">אִנּוּן</span> — это 3 м. р. мн. ч., а не 1 общ. мн. ч.</p>
+
+<p><b>2.</b> <span class="ok">Правильно: определённое.</span> См. <a href="dict-alpha.html#melekh" class="card-link">dict-alpha.html#melekh</a>, <a href="aram006.html#noun-determined" class="rule-link">aram006.html#noun-determined</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать «абсолютное» — окончание <span class="heb">א-</span> маркирует определённое состояние; абсолютное — <span class="heb">מֶלֶךְ</span>.</p>
+
+<p><b>3.</b> <span class="ok">Правильно: <span class="heb">מַלְכֵי</span>.</span> См. <a href="aram006.html#paradigm-mlk" class="rule-link">aram006.html#paradigm-mlk</a>, <a href="aram006.html#plural-m" class="rule-link">aram006.html#plural-m</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">מַלְכִין</span> (абс. мн.) или <span class="heb">מַלְכַיָּא</span> (опр. мн.). В сопряжённом мн. ч. м. р. конечное <span class="heb">ן-</span> заменяется на <span class="heb">י-</span>.</p>
+
+<p><b>4.</b> <span class="ok">Правильно: «Святой Бог».</span> Прилагательное в определённом состоянии — это определение, а не сказуемое. См. <a href="aram007.html#section-attributive" class="rule-link">aram007.html#section-attributive</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «Бог свят» — это перевод для <span class="heb">אֱלָהָא קַדִּישׁ</span> (прил. в абсолютном, предикат). Различие по состоянию, а не по порядку слов.</p>
+
+<p><b>5.</b> <span class="ok">Правильно: «Царь велик».</span> <span class="heb">רַב</span> в абсолютном — предикат. См. <a href="aram007.html#section-predicative" class="rule-link">aram007.html#section-predicative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «Великий царь» — это перевод для <span class="heb">מַלְכָּא רַבָּא</span> (прил. в опр.).</p>
+
+<p><b>6.</b> <span class="ok">Правильно: превосходную степень.</span> См. <a href="aram007.html#comparison-superlative" class="rule-link">aram007.html#comparison-superlative</a>, <a href="aram008.html#section-superlative" class="rule-link">aram008.html#section-superlative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «простую принадлежность» — если бы это была принадлежность, было бы «царь царей» в буквальном смысле («царь, принадлежащий царям»), но в семитских языках конструкция «X X-ов» идиоматически выражает превосходство.</p>
+
+<p><b>7.</b> <span class="ok">Правильно: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span>.</span> Упреждающий суффикс 3 м. ед. ч. в <span class="heb">שְׁמֵהּ</span> + <span class="heb">דִּי</span>. См. <a href="aram008.html#section-anticipatory" class="rule-link">aram008.html#section-anticipatory</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">בֵּיתָא דִּי מַלְכָּא</span> — это просто конструкция с <span class="heb">דִּי</span>, без упреждающего суффикса.</p>
+
+<p><b>8.</b> <span class="ok">Правильно: в абсолютном.</span> См. <a href="aram007.html#section-predicative" class="rule-link">aram007.html#section-predicative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «в определённом» — при предикативном употреблении прил. всегда в абсолютном, даже если подлежащее определённое. Согласование по состоянию — только при атрибутивном употреблении.</p>
+
+<p><b>9.</b> <span class="ok">Правильно: «Великий дом Бога».</span> Прилагательное стоит после всей цепи — определяет цепь как целое. См. <a href="aram007.html#attributive-construct" class="rule-link">aram007.html#attributive-construct</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «Дом великого Бога» — это перевод для <span class="heb">בֵּית אֱלָהָא רַבָּא</span> при другом порядке (когда прил. стоит после последнего члена цепи). В этой фразе прил. стоит после всей цепи, поэтому относится к целому.</p>
+
+<p><b>10.</b> <span class="ok">Правильно: «Дом великого царя».</span> Прил. стоит после последнего члена — определяет только <span class="heb">מַלְכָּא</span>. См. <a href="aram007.html#attributive-construct" class="rule-link">aram007.html#attributive-construct</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «Великий дом царя» — это перевод для <span class="heb">בֵּיתָא רַבָּא דִּי מַלְכָּא</span> или для <span class="heb">בֵּית מַלְכָּא רַבָּא</span>, если прил. отнести к первому члену цепи. Здесь позиция прил. однозначна: после <span class="heb">מַלְכָּא</span>, значит к <span class="heb">מַלְכָּא</span>.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 11–20 (часть II)</summary>
+
+<p><b>11.</b> <span class="ok">1 общ. ед. — <span class="heb">אֲנָא</span>; 2 м. ед. — <span class="heb">אַנְתְּ</span> (или <span class="heb">אַנְתָּה</span>); 2 ж. ед. — <span class="heb">אַנְתִּי</span>; 3 м. ед. — <span class="heb">הוּא</span>; 3 ж. ед. — <span class="heb">הִיא</span>; 1 общ. мн. — <span class="heb">אֲנַחְנָא</span>; 2 м. мн. — <span class="heb">אַנְתּוּן</span>; 2 ж. мн. — <span class="heb">אַנְתֵּן</span>; 3 м. мн. — <span class="heb">אִנּוּן</span>; 3 ж. мн. — <span class="heb">אִנִּין</span>.</span> См. <a href="aram005.html#section-forms" class="rule-link">aram005.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не указать одну-две формы или перепутать 2 м. ед. с 2 ж. ед.</p>
+
+<p><b>12.</b> <span class="ok">Ед.: абс. <span class="heb">מֶלֶךְ</span>, сопр. <span class="heb">מֶלֶךְ</span>, опр. <span class="heb">מַלְכָּא</span>. Мн.: абс. <span class="heb">מַלְכִין</span>, сопр. <span class="heb">מַלְכֵי</span>, опр. <span class="heb">מַלְכַיָּא</span>.</span> См. <a href="aram006.html#paradigm-mlk" class="rule-link">aram006.html#paradigm-mlk</a>.</p>
+<p><span class="err">Типичная ошибка:</span> перепутать сопр. мн. (<span class="heb">מַלְכֵי</span>) с абс. мн. (<span class="heb">מַלְכִין</span>).</p>
+
+<p><b>13.</b> <span class="ok">Ед.: абс. <span class="heb">אֲרַע</span>, сопр. <span class="heb">אֲרַע</span>, опр. <span class="heb">אַרְעָא</span>. Мн.: абс. <span class="heb">אַרְעָן</span>, сопр. <span class="heb">אַרְעָת</span>, опр. <span class="heb">אַרְעָתָא</span>.</span> См. <a href="aram006.html#paradigm-ar" class="rule-link">aram006.html#paradigm-ar</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не указать формы ж. р. мн. ч. или перепутать опр. ж. р. ед. (<span class="heb">אַרְעָא</span>) с опр. м. р. ед. (например, <span class="heb">אַרְעָא</span> ошибочно считают формой м. р.).</p>
+
+<p><b>14.</b> <span class="ok">М. р. ед. — <span class="heb">א-</span>; ж. р. ед. — <span class="heb">תָא-</span>; м. р. мн. — <span class="heb">יָּא-</span>.</span> См. <a href="aram006.html#noun-determined" class="rule-link">aram006.html#noun-determined</a>.</p>
+<p><span class="err">Типичная ошибка:</span> перепутать окончания опр. ед. и мн. (<span class="heb">א-</span> и <span class="heb">יָּא-</span>) или забыть <span class="heb">תָא-</span> для ж. р.</p>
+
+<p><b>15.</b> <span class="ok">М. р. ед.: абс. <span class="heb">רַב</span>, опр. <span class="heb">רַבָּא</span>. М. р. мн.: абс. <span class="heb">רַבְרְבִין</span>, опр. <span class="heb">רַבְרְבַיָּא</span>.</span> См. <a href="aram007.html#paradigm-rav" class="rule-link">aram007.html#paradigm-rav</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не знать, что мн. ч. от <span class="heb">רַב</span> — <span class="heb">רַבְרְבִין</span> (от основы <span class="heb">רבב</span>), и образовать по ложной аналогии <span class="heb">רַבִּין</span>.</p>
+
+<p><b>16.</b> <span class="ok">М. р. ед.: абс. <span class="heb">קַדִּישׁ</span>, опр. <span class="heb">קַדִּישָׁא</span>. М. р. мн.: абс. <span class="heb">קַדִּישִׁין</span>, сопр. <span class="heb">קַדִּישֵׁי</span>, опр. <span class="heb">קַדִּישַׁיָּא</span>.</span> См. <a href="aram007.html#paradigm-qaddish" class="rule-link">aram007.html#paradigm-qaddish</a>.</p>
+<p><span class="err">Типичная ошибка:</span> перепутать сопр. мн. (<span class="heb">קַדִּישֵׁי</span>) с абс. мн. (<span class="heb">קַדִּישִׁין</span>).</p>
+
+<p><b>17.</b> <span class="ok">(1) Сопряжённая цепь: <span class="heb">בֵּית מַלְכָּא</span> «дом царя». (2) Конструкция с <span class="heb">דִּי</span>: <span class="heb">בֵּיתָא דִּי מַלְכָּא</span> «дом царя». (3) Упреждающий суффикс: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span> «имя Бога».</span> См. <a href="aram008.html#section-two-ways" class="rule-link">aram008.html#section-two-ways</a>, <a href="aram008.html#section-di" class="rule-link">aram008.html#section-di</a>, <a href="aram008.html#section-anticipatory" class="rule-link">aram008.html#section-anticipatory</a>.</p>
+<p><span class="err">Типичная ошибка:</span> назвать только два способа; упреждающий суффикс часто забывают, хотя он специфичен именно для арамейского.</p>
+
+<p><b>18.</b> <span class="ok">Сопряжённая цепь: X (сопр.) + Y (абс. или опр.); конструкция с <span class="heb">דִּי</span>: X (опр.) + <span class="heb">דִּי</span> + Y (опр., абс. или с суффиксом). Критерии выбора: (1) длина цепи — короткие цепи чаще сопряжённые, длинные — с <span class="heb">דִּי</span>; (2) лексикализованность — титулы, формулы предпочитают сопряжённую цепь; (3) определённость второго члена — если второй член определён, предпочтительнее цепь; (4) риск неоднозначности — <span class="heb">דִּי</span> снижает риск.</span> См. <a href="aram008.html#section-choice" class="rule-link">aram008.html#section-choice</a>.</p>
+<p><span class="err">Типичная ошибка:</span> назвать не менее двух критериев, но не указать определённость второго члена или длину цепи. Также типичная ошибка — считать, что одна конструкция «правильнее» другой; обе грамматически верны.</p>
+
+<p><b>19.</b> <span class="ok">Сравнительная степень выражается конструкцией «прил. (абс.) + <span class="heb">מִן</span> + объект сравнения». Пример: <span class="heb">חַכִּים מִן כֹּל</span> «мудрее всех»; <span class="heb">תַּקִּיף מִן מַלְכָּא</span> «сильнее царя».</span> См. <a href="aram007.html#comparison-comparative" class="rule-link">aram007.html#comparison-comparative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> искать морфологическую форму сравнительной степени (как в русском «-ее», «более») — в семитских языках её нет, сравнение выражается синтаксически.</p>
+
+<p><b>20.</b> <span class="ok">Три способа: (1) конструкция «X X-ов»: <span class="heb">מֶלֶךְ מַלְכַיָּא</span> «Царь царей»; (2) конструкция с <span class="heb">מִן כֹּל</span>: <span class="heb">חַכִּים מִן כֹּל</span> «мудрее всех»; (3) особые прилагательные <span class="heb">עִלָּאָה</span> «Всевышний» или <span class="heb">יַתִּיר</span> «превосходный»: <span class="heb">אֱלָהָא עִלָּאָה</span> «Бог Всевышний».</span> См. <a href="aram007.html#comparison-superlative" class="rule-link">aram007.html#comparison-superlative</a>, <a href="aram008.html#section-superlative" class="rule-link">aram008.html#section-superlative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> назвать только «X X-ов» и не упомянуть <span class="heb">מִן כֹּל</span> или особые прилагательные.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 21–25 (часть III)</summary>
+
+<p><b>21.</b> <span class="ok">(а) Транскрипция: <span class="cyr">ʿабдē элā́х шэмаййā́ вэ-арʿā́ анаḥнā́</span>. (б) Имена: <span class="heb">עַבְדֵי</span> — м. р. мн. сопр.; <span class="heb">אֱלָהּ</span> — м. р. ед. сопр.; <span class="heb">שְׁמַיָּא</span> — м. р. мн. опр.; <span class="heb">אַרְעָא</span> — ж. р. ед. опр. (в) Прилагательных нет. (г) <span class="heb">אֲנַחְנָא</span> — 1 общ. мн. (д) Перевод: «Мы — рабы Бога неба и земли».</span> См. <a href="aram008.html#chain-three" class="rule-link">aram008.html#chain-three</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не указать состояние второго члена (<span class="heb">אֱלָהּ</span> — сопр.); не отметить, что <span class="heb">שְׁמַיָּא וְאַרְעָא</span> — координата (два опр. имени через союз).</p>
+
+<p><b>22.</b> <span class="ok">(а) Транскрипция: <span class="cyr">лэhэвḗ шэмḗh дӣ элāhā́ мэвāра́х мин ʿāлмā́ вэ-ʿад ʿāлмā́</span>. (б) Имена: <span class="heb">שְׁמֵהּ</span> — м. р. ед. опр. с суффиксом 3 м. ед. ч.; <span class="heb">אֱלָהָא</span> — м. р. ед. опр.; <span class="heb">עָלְמָא</span> — м. р. ед. опр. (дважды). (в) Конструкция с <span class="heb">דִּי</span>: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span> — упреждающий суффикс. (г) Перевод: «Да будет имя Бога благословенно от вечности до вечности».</span> См. <a href="aram008.html#section-anticipatory" class="rule-link">aram008.html#section-anticipatory</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не узнать упреждающий суффикс в <span class="heb">שְׁמֵהּ</span> и перевести буквально «имя его, которое Бога» вместо «имя Бога».</p>
+
+<p><b>23.</b> <span class="ok">(а) Транскрипция: <span class="cyr">ант малкā́, малкā́ раббā́</span>. (б) Имена: <span class="heb">מַלְכָּא</span> — м. р. ед. опр. (дважды). (в) <span class="heb">רַבָּא</span> — м. р. ед. опр.; функция определения к <span class="heb">מַלְכָּא</span>. (г) Перевод: «Ты, царь, — царь великий» (или «Тебе, царь, — царю великому»).</span> См. <a href="aram007.html#section-attributive" class="rule-link">aram007.html#section-attributive</a>, <a href="aram007.html#practical-dan5-18" class="rule-link">aram007.html#practical-dan5-18</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не различить дважды повторённое <span class="heb">מַלְכָּא</span> — первое как обращение, второе как определяемое к прилагательному. Перевод «царь велик» был бы неверен: прил. в определённом состоянии.</p>
+
+<p><b>24.</b> <span class="ok"><span class="heb">מַלְכָּא רַבָּא</span> — «великий царь» (прил. <span class="heb">רַבָּא</span> в опр., определение). <span class="heb">מַלְכָּא רַב</span> — «царь велик» (прил. <span class="heb">רַב</span> в абс., предикат). Правило: различие атрибутивного и предикативного употребления выражается <b>состоянием</b> прилагательного, а не порядком слов.</span> См. <a href="aram007.html#section-predicative" class="rule-link">aram007.html#section-predicative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> объяснять разницу порядком слов, а не состоянием. Обе фразы имеют одинаковый порядок (сущ. + прил.), но разное состояние прил.</p>
+
+<p><b>25.</b> <span class="ok">В <span class="heb">בֵּית אֱלָהָא רַבָּא</span> прил. стоит после всей цепи и определяет цепь как целое: «великий дом Бога». В <span class="heb">בֵּית מַלְכָּא רַבָּא</span> прил. стоит после последнего члена и определяет только <span class="heb">מַלְכָּא</span>: «дом великого царя». Правило: прил. в сопряжённой цепи относится к тому члену, после которого оно стоит.</span> См. <a href="aram007.html#attributive-construct" class="rule-link">aram007.html#attributive-construct</a>.</p>
+<p><span class="err">Типичная ошибка:</span> считать, что в обоих случаях прил. относится к первому члену (дому) или к последнему (Богу/царю) — без учёта позиции.</p>
+</details>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- ИТОГОВЫЙ СРЕЗ ЭТАПА I -->
+<!-- ===================================================== -->
+
+<section id="test3">
+<h2>Итоговый срез этапа I (уроки 1–8)</h2>
+
+<p><b>Охват.</b> Все темы уроков 1–8 в сводном виде. Срез выполняется после сдачи срезов 1 и 2.</p>
+<p><b>Время:</b> 60 минут. <b>Проходной балл:</b> 22 из 30.</p>
+
+<h3>Часть I. Смешанные вопросы с выбором (10 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">1.</span> Какой из перечисленных текстов является арамейским по языку?</p>
+<ul class="opts">
+<li><span class="heb">בְּרֵאשִׁית בָּרָא אֱלֹהִים</span></li>
+<li><span class="heb">מַלְכָּא לְעָלְמִין חֱיִי</span></li>
+<li><span class="heb">שְׁמַע יִשְׂרָאֵל</span></li>
+<li><span class="heb">יְהוָה רֹעִי</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">2.</span> Какая форма является определённым состоянием от <span class="heb">אֲרַע</span> «земля»?</p>
+<ul class="opts">
+<li><span class="heb">אֲרַע</span></li>
+<li><span class="heb">אַרְעָא</span></li>
+<li><span class="heb">אַרְעָן</span></li>
+<li><span class="heb">אַרְעָתָא</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">3.</span> Как переводится <span class="heb">מֶלֶךְ מַלְכַיָּא</span>?</p>
+<ul class="opts">
+<li>«Цари царя»</li>
+<li>«Царь царей»</li>
+<li>«Царство царей»</li>
+<li>«Царский царь»</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">4.</span> Какая конструкция содержит упреждающий притяжательный суффикс?</p>
+<ul class="opts">
+<li><span class="heb">אֱלָהָא קַדִּישָׁא</span></li>
+<li><span class="heb">בֵּית מַלְכָּא</span></li>
+<li><span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span></li>
+<li><span class="heb">מַלְכָּא רַבָּא</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">5.</span> Какая из этих форм является предикативным прилагательным?</p>
+<ul class="opts">
+<li><span class="heb">מַלְכָּא רַבָּא</span></li>
+<li><span class="heb">מַלְכָּא רַב</span></li>
+<li><span class="heb">מַלְכָּא קַדִּישָׁא</span></li>
+<li><span class="heb">מַלְכָּא חַכִּימָא</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">6.</span> Какое личное местоимение соответствует форме «вы (м. р. мн. ч.)»?</p>
+<ul class="opts">
+<li><span class="heb">אִנּוּן</span></li>
+<li><span class="heb">אַנְתּוּן</span></li>
+<li><span class="heb">אֲנַחְנָא</span></li>
+<li><span class="heb">אַנְתֵּן</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">7.</span> Какое соответствие согласных объясняет пару ивр. <span class="heb">אֶרֶץ</span> / арам. <span class="heb">אַרְעָא</span>?</p>
+<ul class="opts">
+<li>*θ → צ / ע</li>
+<li>*ð → צ / ע</li>
+<li>*ḍ → צ / ע</li>
+<li>*š → צ / ע</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">8.</span> Как правильно транскрибировать <span class="heb">מַלְכַיָּא</span>?</p>
+<ul class="opts">
+<li><span class="cyr">малкā́ййа</span></li>
+<li><span class="cyr">малхаййā́</span></li>
+<li><span class="cyr">малкхаййā́</span></li>
+<li><span class="cyr">малкэаййā́</span></li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">9.</span> Как образуется предикативное употребление прилагательного в арамейском?</p>
+<ul class="opts">
+<li>Прил. ставится в определённом состоянии</li>
+<li>Прил. ставится в абсолютном состоянии</li>
+<li>Прил. ставится в сопряжённом состоянии</li>
+<li>Прил. ставится перед существительным</li>
+</ul>
+</div>
+
+<div class="q">
+<p><span class="q-num">10.</span> Какое правило объясняет форму <span class="heb">קַדִּישֵׁי עֶלְיוֹנִין</span>?</p>
+<ul class="opts">
+<li>Простая принадлежность через сопряжённую цепь</li>
+<li>Упреждающий суффикс</li>
+<li>Конструкция с <span class="heb">דִּי</span></li>
+<li>Превосходная степень «X X-ов»</li>
+</ul>
+</div>
+
+<h3>Часть II. Короткий ответ (10 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">11.</span> Напишите все пять конечных форм букв (парами «обычная — конечная»).</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">12.</span> Назовите не менее трёх арамейских разделов Библии с точными границами (книга, глава, стихи).</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">13.</span> Заполните парадигму <span class="heb">שְׁמַיִן</span> (м. р. мн. ч.): абс., сопр., опр.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">14.</span> Заполните парадигму <span class="heb">טָב</span>: м. р. ед. абс., м. р. ед. опр., ж. р. ед. абс., ж. р. ед. опр., м. р. мн. абс., м. р. мн. опр.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">15.</span> Заполните парадигму <span class="heb">עֲבֵד</span>: ед. абс., ед. опр., мн. абс., мн. сопр., мн. опр.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">16.</span> Переведите на арамейский: «дом царя», «Бог неба», «Царь царей», «имя Бога», «святой царь».</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">17.</span> Переведите на русский: <span class="heb">אֱלָהָא קַדִּישָׁא</span>, <span class="heb">מַלְכָּא רַב</span>, <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span>, <span class="heb">עַבְדֵי אֱלָהּ שְׁמַיָּא</span>, <span class="heb">אֲנַחְנָא עַבְדִּין</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">18.</span> Переведите на иврит: <span class="heb">בֵּית מַלְכָּא</span>, <span class="heb">אֱלָהָא קַדִּישָׁא</span>, <span class="heb">מֶלֶךְ מַלְכַיָּא</span>, <span class="heb">אַרְעָא טָבְתָא</span>, <span class="heb">אֱלָהּ שְׁמַיָּא</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">19.</span> Объясните разницу между атрибутивным и предикативным употреблением прилагательного. Приведите пример на каждое.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">20.</span> Назовите три способа выражения генитивной связи и по одному примеру на каждый.</p>
+</div>
+
+<h3>Часть III. Разбор стихов (10 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">21.</span> Разберите Дан 2:20: транскрипция, все имена и их состояния, прилагательные, конструкция с <span class="heb">דִּי</span>, перевод.</p>
+<p><span class="heb">לֶהֱוֵא שְׁמֵהּ דִּי אֱלָהָא מְבָרַךְ מִן עָלְמָא וְעַד עָלְמָא</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">22.</span> Разберите Езд 5:11: транскрипция, все имена и их состояния, личное местоимение, перевод.</p>
+<p><span class="heb">עַבְדֵי אֱלָהּ שְׁמַיָּא וְאַרְעָא אֲנַחְנָא</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">23.</span> Разберите Дан 5:18: транскрипция, все имена и их состояния, прилагательное и его функция, перевод.</p>
+<p><span class="heb">אַנְתְּ מַלְכָּא מַלְכָּא רַבָּא</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">24.</span> Разберите Дан 2:31: транскрипция, все имена и их состояния, прилагательные и их функция, перевод.</p>
+<p><span class="heb">צְלֵם חַד שַׂגִּיא צַלְמָא דִּכֵּן רַב וְזִיוֵהּ יַתִּיר</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">25.</span> Разберите Дан 7:13: транскрипция, все имена и их состояния, конструкция с <span class="heb">כְּ-</span> «как», перевод.</p>
+<p><span class="heb">עִם עֲנָנֵי שְׁמַיָּא כְּבַר אֱנָשׁ</span></p>
+</div>
+
+<div class="q">
+<p><span class="q-num">26.</span> Переведите с иврита на арамейский: <span class="heb">הָאֵל הַקָּדוֹשׁ</span>, <span class="heb">הַמֶּלֶךְ הַגָּדוֹל</span>, <span class="heb">מֶלֶךְ מְלָכִים</span>, <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span>, <span class="heb">בֵּית־הָאֱלֹהִים</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">27.</span> Переведите с арамейского на иврит: <span class="heb">אֱלָהָא קַדִּישָׁא</span>, <span class="heb">מֶלֶךְ מַלְכַיָּא</span>, <span class="heb">אֱלָהּ שְׁמַיָּא</span>, <span class="heb">בֵּית מַלְכָּא</span>, <span class="heb">מַלְכָּא רַב</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">28.</span> Переведите на арамейский: «святые Всевышнего», «Бог Всевышний», «раскрывающий тайны», «рабы Бога неба и земли».</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">29.</span> Переведите на русский: <span class="heb">קַדִּישֵׁי עֶלְיוֹנִין</span>, <span class="heb">אֱלָהָא עִלָּאָה</span>, <span class="heb">גָּלֵא רָזִין</span>, <span class="heb">עִם עֲנָנֵי שְׁמַיָּא</span>, <span class="heb">כְּבַר אֱנָשׁ</span>.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">30.</span> Объясните, чем отличается <span class="heb">מַלְכָּא חַכִּים</span> от <span class="heb">מַלְכָּא חַכִּימָא</span>, и приведите пример на каждую форму.</p>
+</div>
+
+<h3>Ключ к итоговому срезу с разбором ошибок</h3>
+
+<details>
+<summary>Ключ к вопросам 1–10 (часть I)</summary>
+
+<p><b>1.</b> <span class="ok">Правильно: <span class="heb">מַלְכָּא לְעָלְמִין חֱיִי</span> (Дан 2:4б).</span></p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">שְׁמַע יִשְׂרָאֵל</span> — это иврит (Втор 6:4), хотя в нём есть арамейские слова; сам текст ивритский.</p>
+
+<p><b>2.</b> <span class="ok">Правильно: <span class="heb">אַרְעָא</span>.</span> Окончание <span class="heb">א-</span> маркирует опр. ед. ж. р. (в форме <span class="heb">אֲרַע</span> → <span class="heb">אַרְעָא</span>). См. <a href="aram006.html#paradigm-ar" class="rule-link">aram006.html#paradigm-ar</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">אַרְעָן</span> или <span class="heb">אַרְעָתָא</span> — это формы мн. ч. (абс. и опр.).</p>
+
+<p><b>3.</b> <span class="ok">Правильно: «Царь царей» (Дан 2:37).</span> См. <a href="aram008.html#section-superlative" class="rule-link">aram008.html#section-superlative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «Цари царя» — неверное понимание направления цепи: первый член (сопр.) — «царь», второй (опр. мн.) — «царей».</p>
+
+<p><b>4.</b> <span class="ok">Правильно: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span>.</span> См. <a href="aram008.html#section-anticipatory" class="rule-link">aram008.html#section-anticipatory</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">בֵּית מַלְכָּא</span> — это простая сопряжённая цепь без упреждающего суффикса.</p>
+
+<p><b>5.</b> <span class="ok">Правильно: <span class="heb">מַלְכָּא רַב</span> (прил. в абс.).</span> См. <a href="aram007.html#section-predicative" class="rule-link">aram007.html#section-predicative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать формы с прил. в опр. — это атрибутивные употребления, а не предикативные.</p>
+
+<p><b>6.</b> <span class="ok">Правильно: <span class="heb">אַנְתּוּן</span>.</span> См. <a href="dict-alpha.html#antun" class="card-link">dict-alpha.html#antun</a>, <a href="aram005.html#section-forms" class="rule-link">aram005.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать <span class="heb">אִנּוּן</span> — это «они», а не «вы». Также путают с <span class="heb">אַנְתֵּן</span> (2 ж. р. мн. ч.).</p>
+
+<p><b>7.</b> <span class="ok">Правильно: *ḍ → צ / ע.</span> См. <a href="aram004.html#section-two-ways" class="rule-link">aram004.html#section-two-ways</a>.</p>
+<p><span class="err">Типичная ошибка:</span> выбрать *θ (это соответствие *θ → שׁ / ת) или *ð (это *ð → ז / ד).</p>
+
+<p><b>8.</b> <span class="ok">Правильно: <span class="cyr">малхаййā́</span>.</span> Шва на под ל — «э»; дагеш хазэк в י — «йй»; камец под א — «ā». См. <a href="dict-alpha.html#melekh" class="card-link">dict-alpha.html#melekh</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «малкā́ййа» — шва под ל прочитано как «ā» (это шва на, краткий «э»).</p>
+
+<p><b>9.</b> <span class="ok">Правильно: прил. ставится в абсолютном состоянии.</span> См. <a href="aram007.html#section-predicative" class="rule-link">aram007.html#section-predicative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> «прил. ставится в определённом» — при атрибутивном употреблении, а не предикативном.</p>
+
+<p><b>10.</b> <span class="ok">Правильно: простая принадлежность через сопряжённую цепь («святые Всевышнего»).</span> См. <a href="aram007.html#paradigm-qaddish" class="rule-link">aram007.html#paradigm-qaddish</a>, <a href="aram008.html#section-construct" class="rule-link">aram008.html#section-construct</a>.</p>
+<p><span class="err">Типичная ошибка:</span> принять за превосходную степень «X X-ов» — но здесь корни разные (<span class="heb">קדשׁ</span> и <span class="heb">עלי</span>), это не повтор корня.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 11–20 (часть II)</summary>
+
+<p><b>11.</b> <span class="ok">כ→ך, מ→ם, נ→ן, פ→ף, צ→ץ.</span> См. <a href="aram002.html#section-forms" class="rule-link">aram002.html#section-forms</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не указать одну из пар или перепутать конечную форму.</p>
+
+<p><b>12.</b> <span class="ok">Дан 2:4б–7:28; Езд 4:8–6:18; Езд 7:12–26; Иер 10:11 (один стих); Быт 31:47 (два слова).</span> См. <a href="aram001.html#m-corpus" class="rule-link">aram001.html#m-corpus</a>.</p>
+<p><span class="err">Типичная ошибка:</span> назвать не менее трёх, но неточно указать границы (например, «Дан 2:4–7:28» вместо «2:4б–7:28»).</p>
+
+<p><b>13.</b> <span class="ok">абс. <span class="heb">שְׁמַיִן</span>; сопр. <span class="heb">שְׁמֵי</span>; опр. <span class="heb">שְׁמַיָּא</span>.</span> См. <a href="aram006.html#paradigm-shm" class="rule-link">aram006.html#paradigm-shm</a>.</p>
+<p><span class="err">Типичная ошибка:</span> перепутать сопр. (<span class="heb">שְׁמֵי</span>) с абс. (<span class="heb">שְׁמַיִן</span>) или опр. (<span class="heb">שְׁמַיָּא</span>).</p>
+
+<p><b>14.</b> <span class="ok">М. р. ед.: абс. <span class="heb">טָב</span>, опр. <span class="heb">טָבָא</span>. Ж. р. ед.: абс. <span class="heb">טָבָה</span>, опр. <span class="heb">טָבְתָא</span>. М. р. мн.: абс. <span class="heb">טָבִין</span>, опр. <span class="heb">טָבַיָּא</span>.</span> См. <a href="aram007.html#paradigm-tav" class="rule-link">aram007.html#paradigm-tav</a>.</p>
+<p><span class="err">Типичная ошибка:</span> перепутать ж. р. опр. (<span class="heb">טָבְתָא</span>) с м. р. опр. (<span class="heb">טָבָא</span>).</p>
+
+<p><b>15.</b> <span class="ok">ед. абс. <span class="heb">עֲבֵד</span>; ед. опр. <span class="heb">עַבְדָּא</span>; мн. абс. <span class="heb">עַבְדִּין</span>; мн. сопр. <span class="heb">עַבְדֵי</span>; мн. опр. <span class="heb">עַבְדַּיָּא</span>.</span> См. <a href="aram006.html#plural-m" class="rule-link">aram006.html#plural-m</a>.</p>
+<p><span class="err">Типичная ошибка:</span> перепутать сопр. (<span class="heb">עַבְדֵי</span>) с абс. (<span class="heb">עַבְדִּין</span>) или с опр. (<span class="heb">עַבְדַּיָּא</span>).</p>
+
+<p><b>16.</b> <span class="ok">«дом царя» → <span class="heb">בֵּית מַלְכָּא</span> (или <span class="heb">בֵּיתָא דִּי מַלְכָּא</span>). «Бог неба» → <span class="heb">אֱלָהּ שְׁמַיָּא</span> (или <span class="heb">אֱלָהָא דִּי שְׁמַיָּא</span>). «Царь царей» → <span class="heb">מֶלֶךְ מַלְכַיָּא</span>. «имя Бога» → <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span>. «святой царь» → <span class="heb">מַלְכָּא קַדִּישָׁא</span>.</span></p>
+<p><span class="err">Типичная ошибка:</span> в «имя Бога» давать <span class="heb">שֵׁם אֱלָהָא</span> без упреждающего суффикса — допустимо, но менее характерно для стиля Даниила; главный ожидаемый ответ — <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span>.</p>
+
+<p><b>17.</b> <span class="ok">«Святой Бог»; «царь велик»; «имя Бога»; «рабы Бога неба»; «мы — рабы».</span></p>
+<p><span class="err">Типичная ошибка:</span> перевести <span class="heb">מַלְכָּא רַב</span> как «великий царь» — это ошибка состояния прил.</p>
+
+<p><b>18.</b> <span class="ok"><span class="heb">בֵּית הַמֶּלֶךְ</span>; <span class="heb">הָאֵל הַקָּדוֹשׁ</span>; <span class="heb">מֶלֶךְ מְלָכִים</span>; <span class="heb">הָאָרֶץ הַטּוֹבָה</span>; <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span>.</span></p>
+<p><span class="err">Типичная ошибка:</span> перевести <span class="heb">אֱלָהָא קַדִּישָׁא</span> как <span class="heb">הָאֵל קָדוֹשׁ</span> (без артикля при прил.) — в иврите артикль должен быть при обоих словах.</p>
+
+<p><b>19.</b> <span class="ok">Атрибутивное: прил. стоит после сущ. и согласуется с ним в роде, числе и состоянии; пример: <span class="heb">מַלְכָּא רַבָּא</span> «великий царь». Предикативное: прил. стоит в абсолютном состоянии, даже если подлежащее определено; пример: <span class="heb">מַלְכָּא רַב</span> «царь велик».</span> См. <a href="aram007.html#section-attributive" class="rule-link">aram007.html#section-attributive</a>, <a href="aram007.html#section-predicative" class="rule-link">aram007.html#section-predicative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> объяснять различие порядком слов или наличием связки; главное различие — состояние прилагательного.</p>
+
+<p><b>20.</b> <span class="ok">(1) Сопряжённая цепь: <span class="heb">בֵּית מַלְכָּא</span> «дом царя». (2) Конструкция с <span class="heb">דִּי</span>: <span class="heb">בֵּיתָא דִּי מַלְכָּא</span> «дом царя». (3) Упреждающий суффикс: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span> «имя Бога».</span> См. <a href="aram008.html#section-two-ways" class="rule-link">aram008.html#section-two-ways</a>.</p>
+<p><span class="err">Типичная ошибка:</span> назвать только два способа; упреждающий суффикс часто забывают, хотя он специфичен для арамейского.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 21–30 (часть III)</summary>
+
+<p><b>21.</b> <span class="ok">Транскрипция: <span class="cyr">лэhэвḗ шэмḗh дӣ элāhā́ мэвāра́х мин ʿāлмā́ вэ-ʿад ʿāлмā́</span>. Имена: <span class="heb">שְׁמֵהּ</span> опр. с суффиксом; <span class="heb">אֱלָהָא</span> опр.; <span class="heb">עָלְמָא</span> опр. (дважды). Прил.: <span class="heb">מְבָרַךְ</span> — пасс. прич. (предикат). Конструкция с <span class="heb">דִּי</span>: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span> — упреждающий суффикс. Перевод: «Да будет имя Бога благословенно от вечности до вечности».</span></p>
+<p><span class="err">Типичная ошибка:</span> не узнать упреждающий суффикс; не отметить, что <span class="heb">מְבָרַךְ</span> — причастие, а не прил. в собственном смысле.</p>
+
+<p><b>22.</b> <span class="ok">Транскрипция: <span class="cyr">ʿабдē элā́х шэмаййā́ вэ-арʿā́ анаḥнā́</span>. Имена: <span class="heb">עַבְדֵי</span> сопр. мн.; <span class="heb">אֱלָהּ</span> сопр. ед.; <span class="heb">שְׁמַיָּא</span> опр. мн.; <span class="heb">אַרְעָא</span> опр. ед. Местоимение: <span class="heb">אֲנַחְנָא</span> 1 общ. мн. Перевод: «Мы — рабы Бога неба и земли».</span></p>
+<p><span class="err">Типичная ошибка:</span> не указать состояние второго члена (<span class="heb">אֱלָהּ</span> сопр.), координату <span class="heb">שְׁמַיָּא וְאַרְעָא</span>.</p>
+
+<p><b>23.</b> <span class="ok">Транскрипция: <span class="cyr">ант малкā́, малкā́ раббā́</span>. Имена: <span class="heb">מַלְכָּא</span> опр. (дважды). Прил.: <span class="heb">רַבָּא</span> опр., определение к <span class="heb">מַלְכָּא</span>. Перевод: «Ты, царь, — царь великий».</span></p>
+<p><span class="err">Типичная ошибка:</span> не различить дважды повторённое <span class="heb">מַלְכָּא</span>; перевести как «царь велик» — ошибка состояния.</p>
+
+<p><b>24.</b> <span class="ok">Транскрипция: <span class="cyr">цэлэ́м ḥад саггӣ́а, цэлмā́ диккḗн рав вэ-зивḗh йаттӣ́р</span>. Имена: <span class="heb">צְלֵם</span> абс. ед.; <span class="heb">צַלְמָא</span> опр. ед. Прил.: <span class="heb">שַׂגִּיא</span> абс. ед. (определение к <span class="heb">צְלֵם</span>); <span class="heb">רַב</span> абс. ед. (предикат при <span class="heb">צַלְמָא</span>); <span class="heb">יַתִּיר</span> абс. ед. (предикат при <span class="heb">זִיוֵהּ</span>). Перевод: «Один огромный образ; этот образ — велик, и блеск его — превосходный».</span></p>
+<p><span class="err">Типичная ошибка:</span> не различить атрибутивное <span class="heb">שַׂגִּיא</span> и предикативные <span class="heb">רַב</span> и <span class="heb">יַתִּיר</span>.</p>
+
+<p><b>25.</b> <span class="ok">Транскрипция: <span class="cyr">ʿим ʿана́нē шэмаййā́ кэ-ва́р энā́ш</span>. Имена: <span class="heb">עֲנָנֵי</span> сопр. мн.; <span class="heb">שְׁמַיָּא</span> опр. мн.; <span class="heb">בַּר</span> сопр. ед.; <span class="heb">אֱנָשׁ</span> абс./сопр. ед. Конструкция с <span class="heb">כְּ-</span>: <span class="heb">כְּבַר אֱנָשׁ</span> — «как бы сын человеческий». Перевод: «С облаками неба — как бы Сын Человеческий».</span></p>
+<p><span class="err">Типичная ошибка:</span> перевести <span class="heb">כְּ-</span> «как» как союз сравнения, а не как префикс; не отметить, что <span class="heb">בַּר אֱנָשׁ</span> — сопряжённая цепь.</p>
+
+<p><b>26.</b> <span class="ok"><span class="heb">הָאֵל הַקָּדוֹשׁ</span> → <span class="heb">אֱלָהָא קַדִּישָׁא</span>. <span class="heb">הַמֶּלֶךְ הַגָּדוֹל</span> → <span class="heb">מַלְכָּא רַבָּא</span>. <span class="heb">מֶלֶךְ מְלָכִים</span> → <span class="heb">מֶלֶךְ מַלְכַיָּא</span>. <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span> → <span class="heb">אֱלָהּ שְׁמַיָּא</span>. <span class="heb">בֵּית־הָאֱלֹהִים</span> → <span class="heb">בֵּית אֱלָהָא</span>.</span></p>
+<p><span class="err">Типичная ошибка:</span> перевести <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span> как <span class="heb">אֱלָהָא שְׁמַיָּא</span> (без сопр.); в арамейском первый член цепи должен быть в сопряжённом состоянии — <span class="heb">אֱלָהּ</span>.</p>
+
+<p><b>27.</b> <span class="ok"><span class="heb">אֱלָהָא קַדִּישָׁא</span> → <span class="heb">הָאֵל הַקָּדוֹשׁ</span>. <span class="heb">מֶלֶךְ מַלְכַיָּא</span> → <span class="heb">מֶלֶךְ מְלָכִים</span>. <span class="heb">אֱלָהּ שְׁמַיָּא</span> → <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span>. <span class="heb">בֵּית מַלְכָּא</span> → <span class="heb">בֵּית הַמֶּלֶךְ</span>. <span class="heb">מַלְכָּא רַב</span> → <span class="heb">הַמֶּלֶךְ גָּדוֹל</span> (предикат: артикль только при подлежащем).</span></p>
+<p><span class="err">Типичная ошибка:</span> перевести <span class="heb">מַלְכָּא רַב</span> как <span class="heb">הַמֶּלֶךְ הַגָּדוֹל</span> — это ошибка: в иврите при предикативном употреблении артикль только у подлежащего.</p>
+
+<p><b>28.</b> <span class="ok">«святые Всевышнего» → <span class="heb">קַדִּישֵׁי עֶלְיוֹנִין</span>. «Бог Всевышний» → <span class="heb">אֱלָהָא עִלָּאָה</span>. «раскрывающий тайны» → <span class="heb">גָּלֵא רָזִין</span>. «рабы Бога неба и земли» → <span class="heb">עַבְדֵי אֱלָהּ שְׁמַיָּא וְאַרְעָא</span>.</span></p>
+<p><span class="err">Типичная ошибка:</span> перевести «раскрывающий тайны» как сопряжённую цепь <span class="heb">גּוֹלֵה רָזִין</span> (без активного причастия <span class="heb">גָּלֵא</span>). В библейском арамейском <span class="heb">גָּלֵא</span> — причастие, а не имя.</p>
+
+<p><b>29.</b> <span class="ok">«святые Всевышнего» (Дан 7:18); «Бог Всевышний» (Дан 3:26); «раскрывающий тайны» (Дан 2:28, 47); «с облаками неба» (Дан 7:13); «как бы сын человеческий» (Дан 7:13).</span></p>
+<p><span class="err">Типичная ошибка:</span> «святые небесные» для <span class="heb">קַדִּישֵׁי עֶלְיוֹנִין</span> — ошибочно: <span class="heb">עֶלְיוֹנִין</span> — «Всевышний», а не «небесный».</p>
+
+<p><b>30.</b> <span class="ok"><span class="heb">מַלְכָּא חַכִּים</span> — «царь мудр» (прил. в абс., предикат). <span class="heb">מַלְכָּא חַכִּימָא</span> — «мудрый царь» (прил. в опр., определение). Правило: различие атрибутивного и предикативного употребления по состоянию прилагательного.</span> См. <a href="aram007.html#section-predicative" class="rule-link">aram007.html#section-predicative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> объяснять разницу порядком слов; здесь порядок одинаковый.</p>
+</details>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- ТЕСТ ПО ФОРМУЛАМ СЛАВОСЛОВИЙ -->
+<!-- ===================================================== -->
+
+<section id="test4">
+<h2>Тест по формулам славословий</h2>
+
+<p><b>Охват.</b> Формулы, засвидетельствованные в арамейском оригинале (Мк 5:41; Мк 7:34; Мк 14:36; Мф 27:46; 1 Кор 16:22) и формулы, реконструируемые по арамейской модели (Ис 6:3; Пс 118:25; Пс 150). Тест выполняется после сдачи итогового среза этапа I.</p>
+<p><b>Время:</b> 25 минут. <b>Проходной балл:</b> 11 из 15.</p>
+
+<h3>Часть I. Формулы в арамейском оригинале (8 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">1.</span> Какая арамейская формула стоит за греческим <span class="gr">Ἀββᾶ</span> в Мк 14:36 и как она переводится?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">2.</span> Какая арамейская формула стоит за греческим <span class="gr">ταλιθα κουμ</span> в Мк 5:41?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">3.</span> Какая арамейская формула стоит за греческим <span class="gr">εφφαθα</span> в Мк 7:34?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">4.</span> Какая арамейская формула стоит за греческим <span class="gr">μαρανα θα</span> в 1 Кор 16:22?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">5.</span> Какая арамейская формула стоит за греческим <span class="gr">ηλι ηλι λεμα σαβαχθανι</span> в Мф 27:46 и Мк 15:34?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">6.</span> Что означает каждый элемент формулы <span class="heb">אַבָּא</span> с точки зрения состояния?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">7.</span> Как образована форма <span class="heb">מָרָנָא</span> в формуле <span class="heb">מָרָנָא תָא</span>?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">8.</span> Переведите формулу <span class="heb">אֵלִי אֵלִי לְמָה שְׁבַקְתָּנִי</span>. Какие слова в ней снабжены притяжательными суффиксами?</p>
+</div>
+
+<h3>Часть II. Формулы, реконструируемые по модели (7 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">9.</span> Переведите на арамейский формулу <span class="heb">קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ יְהוָה צְבָאוֹת</span> (Ис 6:3). Какое прилагательное здесь используется?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">10.</span> Переведите на арамейский формулу <span class="heb">הַלְלוּיָהּ</span> (Пс 150). Какой арамейский глагол здесь используется?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">11.</span> Переведите на арамейский формулу <span class="heb">הוֹשִׁיעָה נָּא</span> (Пс 118:25). Как эта формула передаётся в Новом Завете?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">12.</span> Переведите на арамейский слово <span class="heb">אָמֵן</span>. Какое значение оно имеет в литургическом употреблении?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">13.</span> Переведите на арамейский начало Молитвы Господней: <span class="heb">אָבִינוּ שֶׁבַּשָּׁמַיִם</span> (Мф 6:9). Укажите, какие элементы реконструируются, а какие сохраняются.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">14.</span> Объясните, почему в новозаветном греческом тексте сохраняются арамейские слова (Авва, талифа куми, еффафа, маранафа, эли-эли). Что это говорит о языке Иисуса и первых христиан?</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">15.</span> Какой принцип положен в основу порядка подачи формул славословий в курсе — от чего к чему движется учащийся?</p>
+</div>
+
+<h3>Ключ к тесту по формулам славословий с разбором ошибок</h3>
+
+<details>
+<summary>Ключ к вопросам 1–8 (часть I)</summary>
+
+<p><b>1.</b> <span class="ok"><span class="heb">אַבָּא</span> (<span class="cyr">аббā́</span>) — «отец»; в определённом состоянии от <span class="heb">אַב</span>; буквально «(этот) отец», в литургическом употреблении — «Отче». Греч. <span class="gr">ὁ πατήρ</span> — перевод-пояснение. См. <a href="dict-alpha.html#av" class="card-link">dict-alpha.html#av</a>, <a href="aram006.html#noun-determined" class="rule-link">aram006.html#noun-determined</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> считать <span class="heb">אַבָּא</span> обычной формой абс. ед. — но <span class="heb">א-</span> в конце маркирует именно определённое состояние. Также ошибочно считать <span class="heb">אַבָּא</span> формой мн. ч. — это ед. ч.</p>
+
+<p><b>2.</b> <span class="ok"><span class="heb">טַלִיתָא קוּמִי</span> (<span class="cyr">талӣтā́ кӯмӣ́</span>) — «девица, встань» (или «дитя, встань»). <span class="heb">טַלִיתָא</span> — опр. ед. ж. р. «девица»; <span class="heb">קוּמִי</span> — императив ж. р. ед. ч. от <span class="heb">קוּם</span> «встать». См. <a href="aram006.html#noun-determined" class="rule-link">aram006.html#noun-determined</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">טַלִיתָא</span> как «овечка» (по созвучию с <span class="heb">טָלֶה</span>) — это неверно; в данном контексте это «девица, дитя».</p>
+
+<p><b>3.</b> <span class="ok"><span class="heb">אֶפְתַּח</span> (<span class="cyr">эпта́ḥ</span>) — «откройся» (императив породы <span class="heb">אֶתְפַּעֵל</span> от <span class="heb">פְּתַח</span> «открывать»). См. <a href="aram006.html#noun-determined" class="rule-link">aram006.html#noun-determined</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> прочитать <span class="heb">אֶפְתַּח</span> как «я открою» (имперфект 1 общ. ед. в иврите) — в арамейском это императив породы <span class="heb">אֶתְפַּעֵל</span>. Также смешивают с ивритским <span class="heb">אֶפְתַּח</span> «я открою».</p>
+
+<p><b>4.</b> <span class="ok"><span class="heb">מָרָנָא תָא</span> (<span class="cyr">мāрāнā́ тā</span>) — «Господь наш, приди» (или «Господи, приди»). <span class="heb">מָרָנָא</span> — опр. от <span class="heb">מָרֵא</span> с суффиксом 1 мн. ч.; <span class="heb">תָא</span> — императив «приди». См. <a href="dict-alpha.html#mare" class="card-link">dict-alpha.html#mare</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">מָרָנָא</span> как «наш господин» без учёта того, что это опр. форма с суффиксом; также ошибочно считать <span class="heb">תָא</span> существительным, а не императивом.</p>
+
+<p><b>5.</b> <span class="ok"><span class="heb">אֵלִי אֵלִי לְמָה שְׁבַקְתָּנִי</span> (<span class="cyr">элӣ́ элӣ́ лэмā́ шэвактā́нӣ</span>) — «Боже Мой, Боже Мой, для чего Ты оставил Меня?» См. <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">שְׁבַקְתָּנִי</span> как «Ты оставил меня» без учёта того, что это глагол с суффиксом 1 общ. ед. ч. «меня»; суффикс является частью глагольной формы, а не отдельным словом.</p>
+
+<p><b>6.</b> <span class="ok"><span class="heb">אַבָּא</span> — определённое состояние м. р. ед. ч.; окончание <span class="heb">א-</span> маркирует определённость. Значение «(этот) отец», в литургическом обращении — «Отче».</span> См. <a href="aram006.html#noun-determined" class="rule-link">aram006.html#noun-determined</a>.</p>
+<p><span class="err">Типичная ошибка:</span> считать <span class="heb">א-</span> окончанием мн. ч. — в арамейском мн. ч. м. р. оканчивается на <span class="heb">ין-</span> (<span class="heb">אֲבָהָתָא</span> «отцы» — особая форма), а <span class="heb">א-</span> — окончание опр. ед. ч.</p>
+
+<p><b>7.</b> <span class="ok"><span class="heb">מָרָנָא</span> = <span class="heb">מָרֵא</span> (сопр. «владыка») + суффикс 1 общ. мн. ч. <span class="heb">-נָא</span> + <span class="heb">א-</span> (определённое окончание). Буквально «(этот) владыка наш». В литургическом употреблении — «Господь наш». См. <a href="dict-alpha.html#mare" class="card-link">dict-alpha.html#mare</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> считать <span class="heb">-נָא</span> просто определённым окончанием; на самом деле <span class="heb">-נָא</span> здесь — притяжательный суффикс 1 мн. ч., а <span class="heb">א-</span> — окончание определённого состояния.</p>
+
+<p><b>8.</b> <span class="ok">«Боже Мой, Боже Мой, для чего Ты оставил Меня?» Притяжательные суффиксы: <span class="heb">אֵלִי</span> — «Бог мой» (суффикс <span class="heb">-ִי</span> 1 общ. ед. ч.); <span class="heb">שְׁבַקְתָּנִי</span> — «Ты оставил меня» (суффикс <span class="heb">-נִי</span> 1 общ. ед. ч.). Оба суффикса — 1 общ. ед. ч., но в разных позициях (на существительном и на глаголе).</span></p>
+<p><span class="err">Типичная ошибка:</span> считать оба суффикса одинаковыми по форме — <span class="heb">-ִי</span> на существительном, <span class="heb">-נִי</span> на глаголе. Это разные алломорфы одного и того же суффикса 1 общ. ед. ч.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 9–15 (часть II)</summary>
+
+<p><b>9.</b> <span class="ok"><span class="heb">קַדִּישׁ קַדִּישׁ קַדִּישׁ יי צְבָאוֹת</span> (<span class="cyr">каддӣ́ш каддӣ́ш каддӣ́ш ЙЙ цэвāʾṓт</span>). Прилагательное <span class="heb">קַדִּישׁ</span> (абс. ед. м. р.). См. <a href="dict-alpha.html#qaddish" class="card-link">dict-alpha.html#qaddish</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> ставить прил. в определённое состояние (<span class="heb">קַדִּישָׁא</span>) — в Трисвятом каждое <span class="heb">קָדוֹשׁ</span> стоит без артикля, как самостоятельное восклицание, поэтому в арамейской реконструкции сохраняется абс.</p>
+
+<p><b>10.</b> <span class="ok"><span class="heb">שַׁבַּחוּ לְיי</span> (<span class="cyr">шабба́ḥӯ лэ-ЙЙ</span>) — «хвалите Господа». Глагол <span class="heb">שַׁבַּח</span> (порода D). См. <a href="dict-alpha.html#qaddish" class="card-link">dict-alpha.html#qaddish</a> (для связанных форм); подробно глагол D-породы — урок 18.</span></p>
+<p><span class="err">Типичная ошибка:</span> сохранять ивритское <span class="heb">הַלְלוּ</span> без перевода. Арамейский эквивалент «хвалить» — <span class="heb">שַׁבַּח</span> (ср. <span class="heb">מְשַׁבַּח</span> в Дан 2:23).</p>
+
+<p><b>11.</b> <span class="ok"><span class="heb">הוֹשַׁע נָא</span> (<span class="cyr">hōша́ʿ нā</span>) — «спаси же». В Новом Завете передаётся как <span class="gr">Ὡσαννά</span> (Мф 21:9; Мк 11:9; Ин 12:13) — прямая транслитерация без перевода.</span></p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="gr">Ὡσαννά</span> как «осанна» без указания на семитский оригинал; или, наоборот, не замечать, что греческий текст сохраняет семитскую форму.</p>
+
+<p><b>12.</b> <span class="ok"><span class="heb">אָמֵן</span> (<span class="cyr">āмḗн</span>) — «истинно, верно, да будет так». В литургическом употреблении — формула подтверждения, согласия с молитвой или славословием. См. <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a> (для связанных форм).</span></p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">אָמֵן</span> только как «аминь» без объяснения значения; или связывать его с глаголом <span class="heb">אָמַן</span> «быть верным» без указания на литургическое употребление.</p>
+
+<p><b>13.</b> <span class="ok">Начало Молитвы Господней: <span class="heb">אֲבוּנָא דִּי בִּשְׁמַיָּא</span> (<span class="cyr">аву́нā дӣ би-шмаййā́</span>) — «Отец наш, который на небесах». Элементы <span class="heb">אֲבוּנָא</span> (с суффиксом 1 мн. ч.), <span class="heb">דִּי</span> (относительное), <span class="heb">בִּשְׁמַיָּא</span> (предлог <span class="heb">בְּ-</span> + опр. мн.) реконструируются. Греч. <span class="gr">Πάτερ ἡμῶν ὁ ἐν τοῖς οὐρανοῖς</span> — оригинал.</span></p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">שֶׁבַּשָּׁמַיִם</span> как <span class="heb">דִּי שְׁמַיָּא</span> (без предлога <span class="heb">בְּ-</span>) — теряется значение «на небесах». Также ошибочно использовать <span class="heb">אָבִינוּ</span> (ивритская форма) вместо арамейской <span class="heb">אֲבוּנָא</span>.</p>
+
+<p><b>14.</b> <span class="ok">Арамейские слова в греческом тексте сохраняются потому, что они были литургически значимыми формулами, произносившимися в первохристианской общине на языке Иисуса. Это свидетельствует, что арамейский был живым языком Иисуса и первых христиан; греческий текст Евангелий передаёт эти формулы в оригинальной форме, не переводя их (или переводя с пояснением, как <span class="gr">Ἀββᾶ ὁ πατήρ</span>).</span> См. <a href="aram001.html#m-goal" class="rule-link">aram001.html#m-goal</a>, <a href="aram001.html#m-order" class="rule-link">aram001.html#m-order</a>.</p>
+<p><span class="err">Типичная ошибка:</span> считать, что арамейские формулы в греческом тексте — позднейшие вставки; на самом деле они — древнейший слой евангельского предания, сохранённый именно потому, что звучал на языке Иисуса.</p>
+
+<p><b>15.</b> <span class="ok">Принцип: от известного к новому, от устоявшегося к спорному. Сначала — формулы, засвидетельствованные в арамейском оригинале (Авва, талифа куми, еффафа, маранафа, эли-эли); затем — формулы, засвидетельствованные в иврите или греческом и реконструируемые по арамейской модели (Трисвятое, Аллилуйя, Осанна); затем — Слово Жизни (1 Ин 1:1–4); затем — Молитва Господня; и только после этого — спорные места (например, Мф 5:3, «нищие духом»), для которых даётся не один, а несколько вариантов перевода. См. <a href="aram001.html#m-order" class="rule-link">aram001.html#m-order</a>.</span></p>
+<p><span class="err">Типичная ошибка:</span> начинать со спорных мест, не закрепив материал на устоявшихся формулах; или, наоборот, ограничиваться только устоявшимися формулами и не переходить к спорным. Принцип требует постепенности, а не исключения.</p>
+</details>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- ТЕСТ ДВУСТОРОННЕГО ПЕРЕВОДА -->
+<!-- ===================================================== -->
+
+<section id="test5">
+<h2>Тест двустороннего перевода (арамейский — иврит — греческий — русский)</h2>
+
+<p><b>Охват.</b> Умение переводить один и тот же материал в системе из четырёх языков: арамейский → иврит → греческий → русский, и обратно. Тест выполняется после сдачи среза 2 и до начала работы с файлом <a href="translations-am-he-gr-ru.html">translations-am-he-gr-ru.html</a>.</p>
+<p><b>Время:</b> 30 минут. <b>Проходной балл:</b> 11 из 15.</p>
+
+<h3>Часть I. Иврит → арамейский → греческий (5 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">1.</span> Дана ивритская фраза: <span class="heb">שֵׁם יְהוָה</span>. Переведите её на арамейский и греческий. Укажите, какая форма является оригиналом.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">2.</span> Дана ивритская фраза: <span class="heb">מֶלֶךְ מְלָכִים</span>. Переведите на арамейский и греческий. Укажите, какая форма является оригиналом.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">3.</span> Дана ивритская фраза: <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span>. Переведите на арамейский и греческий.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">4.</span> Дана ивритская фраза: <span class="heb">עֶבֶד הָאֱלֹהִים</span>. Переведите на арамейский и греческий.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">5.</span> Дана ивритская фраза: <span class="heb">רוּחַ הַקֹּדֶשׁ</span>. Переведите на арамейский и греческий.</p>
+</div>
+
+<h3>Часть II. Греческий → арамейский → иврит (5 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">6.</span> Дана греческая фраза: <span class="gr">ἡ βασιλεία τοῦ θεοῦ</span>. Переведите на арамейский и иврит.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">7.</span> Дана греческая фраза: <span class="gr">ἡ βασιλεία τῶν οὐρανῶν</span>. Переведите на арамейский и иврит.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">8.</span> Дана греческая фраза: <span class="gr">υἱὸς τοῦ ἀνθρώπου</span>. Переведите на арамейский и иврит. Укажите арамейский стих Ветхого Завета, в котором эта формула засвидетельствована.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">9.</span> Дана греческая фраза: <span class="gr">ὁ θεὸς τοῦ οὐρανοῦ</span>. Переведите на арамейский и иврит.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">10.</span> Дана греческая фраза: <span class="gr">βασιλεὺς βασιλέων</span>. Переведите на арамейский и иврит. Укажите арамейский стих Ветхого Завета, в котором эта формула засвидетельствована.</p>
+</div>
+
+<h3>Часть III. Арамейский → иврит → греческий (5 вопросов)</h3>
+
+<div class="q">
+<p><span class="q-num">11.</span> Дана арамейская фраза: <span class="heb">בֵּית אֱלָהָא</span>. Переведите на иврит и греческий. Укажите, в каком стихе Ветхого Завета она засвидетельствована.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">12.</span> Дана арамейская фраза: <span class="heb">אֱלָהָא קַדִּישָׁא</span>. Переведите на иврит и греческий.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">13.</span> Дана арамейская фраза: <span class="heb">מֶלֶךְ מַלְכַיָּא</span>. Переведите на иврит и греческий. Укажите стих Ветхого Завета.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">14.</span> Дана арамейская фраза: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span>. Переведите на иврит и греческий. Укажите стих Ветхого Завета.</p>
+</div>
+
+<div class="q">
+<p><span class="q-num">15.</span> Дана арамейская фраза: <span class="heb">קַדִּישֵׁי עֶלְיוֹנִין</span>. Переведите на иврит и греческий. Укажите стих Ветхого Завета.</p>
+</div>
+
+<h3>Ключ к тесту двустороннего перевода с разбором ошибок</h3>
+
+<details>
+<summary>Ключ к вопросам 1–5 (часть I)</summary>
+
+<p><b>1.</b> <span class="ok">Оригинал: иврит (<span class="heb">שֵׁם יְהוָה</span>, например Пс 8:2 и мн. др.). Арамейская реконструкция: <span class="heb">שְׁמֵהּ דִּי יי</span> (с упреждающим суффиксом; ср. Дан 2:20) или <span class="heb">שְׁמָא דִּי יי</span>. Греческий: <span class="gr">τὸ ὄνομα κυρίου</span> (Иак 5:10, 14 и мн. др.).</span> См. <a href="dict-alpha.html#shem" class="card-link">dict-alpha.html#shem</a>, <a href="aram008.html#section-anticipatory" class="rule-link">aram008.html#section-anticipatory</a>.</p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">שֵׁם יְהוָה</span> как <span class="heb">שֵׁם אֱלָהָא</span> в арамейском без упреждающего суффикса — грамматически допустимо, но для стиля Даниила характернее <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span>. Также ошибочно переводить «имя Господа» в арамейском как цепь с <span class="heb">יי</span> без <span class="heb">דִּי</span>.</p>
+
+<p><b>2.</b> <span class="ok">Оригинал: иврит (<span class="heb">מֶלֶךְ מְלָכִים</span>, например Дан 2:37 в арамейской версии). Арамейская реконструкция: <span class="heb">מֶלֶךְ מַלְכַיָּא</span> (Дан 2:37). Греческий: <span class="gr">βασιλεὺς βασιλέων</span> (Откр 17:14; 19:16).</span> См. <a href="dict-alpha.html#melekh" class="card-link">dict-alpha.html#melekh</a>, <a href="aram008.html#section-superlative" class="rule-link">aram008.html#section-superlative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">מֶלֶךְ מְלָכִים</span> как <span class="heb">מֶלֶךְ מֶלֶךְ</span> или как <span class="heb">מַלְכָּא מַלְכַיָּא</span> (с опр. первым членом) — в арамейском первый член цепи стоит в сопряжённом состоянии (<span class="heb">מֶלֶךְ</span>), а не в определённом.</p>
+
+<p><b>3.</b> <span class="ok">Оригинал: иврит (например, 2 Пар 36:23; Езд 1:2). Арамейская реконструкция: <span class="heb">אֱלָהּ שְׁמַיָּא</span> (Езд 5:11, 12 и мн. др.) или <span class="heb">אֱלָהָא דִּי שְׁמַיָּא</span>. Греческий: <span class="gr">ὁ θεὸς τοῦ οὐρανοῦ</span> (Откр 11:13; 16:11; ср. 1 Езд 2:3 в Септуагинте).</span> См. <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a>, <a href="dict-alpha.html#shemayin" class="card-link">dict-alpha.html#shemayin</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span> как <span class="heb">אֱלָהָא שְׁמַיָּא</span> (первый член в опр., а не в сопр.). В арамейском первый член цепи должен быть в сопряжённом состоянии — <span class="heb">אֱלָהּ</span>.</p>
+
+<p><b>4.</b> <span class="ok">Оригинал: иврит (например, Пс 105:42; Ис 42:19; ср. <span class="heb">עֶבֶד יְהוָה</span>). Арамейская реконструкция: <span class="heb">עֲבֵד אֱלָהָא</span> (сопряжённая цепь) или <span class="heb">עַבְדָּא דִּי אֱלָהָא</span>. Греческий: <span class="gr">ὁ δοῦλος τοῦ θεοῦ</span> (Деян 16:17; Откр 15:3 и др.).</span> См. <a href="dict-alpha.html#aved" class="card-link">dict-alpha.html#aved</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать без учёта того, что в арамейском вторая часть цепи обычно в определённом состоянии (<span class="heb">אֱלָהָא</span>), а не в абсолютном (как в иврите <span class="heb">אֱלֹהִים</span>).</p>
+
+<p><b>5.</b> <span class="ok">Оригинал: иврит (<span class="heb">רוּחַ הַקֹּדֶשׁ</span>, например Ис 63:10–11). Арамейская реконструкция: <span class="heb">רוּחַ קֻדְשָׁא</span> (сопряжённая цепь). Греческий: <span class="gr">τὸ πνεῦμα τὸ ἅγιον</span>.</span> См. <a href="dict-alpha.html#ruach" class="card-link">dict-alpha.html#ruach</a>, <a href="aram008.html#section-construct" class="rule-link">aram008.html#section-construct</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать <span class="heb">רוּחַ קַדִּישָׁא</span> — это тоже возможная модель («Дух Святой» как сущ. + прил.), но сопряжённая цепь <span class="heb">רוּחַ קֻדְשָׁא</span> («Дух святости») более характерна для семитской модели. Различие тонкое: прил. <span class="heb">קַדִּישׁ</span> указывает на качество, а имя <span class="heb">קֻדְשָׁא</span> — на состояние святости.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 6–10 (часть II)</summary>
+
+<p><b>6.</b> <span class="ok">Греческий оригинал: <span class="gr">ἡ βασιλεία τοῦ θεοῦ</span> (Мк 1:15 и мн. др.). Арамейская реконструкция: <span class="heb">מַלְכוּת אֱלָהָא</span> (сопряжённая цепь). Иврит: <span class="heb">מַלְכוּת הָאֱלֹהִים</span> (или <span class="heb">מַלְכוּת אֱלֹהִים</span>).</span> См. <a href="dict-alpha.html#malkhu" class="card-link">dict-alpha.html#malkhu</a>, <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать с определённым первым членом (<span class="heb">מַלְכוּתָא דִּי אֱלָהָא</span>) — грамматически допустимо, но сопряжённая цепь <span class="heb">מַלְכוּת אֱלָהָא</span> точнее соответствует семитской модели.</p>
+
+<p><b>7.</b> <span class="ok">Греческий оригинал: <span class="gr">ἡ βασιλεία τῶν οὐρανῶν</span> (Мф 5:3 и мн. др.). Арамейская реконструкция: <span class="heb">מַלְכוּת שְׁמַיָּא</span> (сопряжённая цепь). Иврит: <span class="heb">מַלְכוּת הַשָּׁמַיִם</span>.</span> См. <a href="dict-alpha.html#malkhu" class="card-link">dict-alpha.html#malkhu</a>, <a href="dict-alpha.html#shemayin" class="card-link">dict-alpha.html#shemayin</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать <span class="heb">מַלְכוּתָא שְׁמַיָּא</span> (первый член в опр.) — в арамейском первый член цепи должен быть в сопряжённом состоянии, <span class="heb">מַלְכוּת</span>.</p>
+
+<p><b>8.</b> <span class="ok">Греческий оригинал: <span class="gr">υἱὸς τοῦ ἀνθρώπου</span> (Мф 8:20 и мн. др.). Арамейская реконструкция: <span class="heb">בַּר אֱנָשָׁא</span> (сопряжённая цепь; Дан 7:13). Иврит: <span class="heb">בֶּן־הָאָדָם</span> (или <span class="heb">בֶּן־אָדָם</span>). Засвидетельствовано: Дан 7:13.</span> См. <a href="dict-alpha.html#bar" class="card-link">dict-alpha.html#bar</a>, <a href="dict-alpha.html#enash" class="card-link">dict-alpha.html#enash</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать <span class="heb">בַּר אֱנָשׁ</span> без определённого окончания у второго члена — в Дан 7:13 стоит именно <span class="heb">כְּבַר אֱנָשׁ</span> (без определённого), но в новозаветной реконструкции чаще <span class="heb">בַּר אֱנָשָׁא</span>, поскольку в арамейском второй член цепи обычно в определённом состоянии.</p>
+
+<p><b>9.</b> <span class="ok">Греческий оригинал: <span class="gr">ὁ θεὸς τοῦ οὐρανοῦ</span> (Откр 11:13; 16:11). Арамейская реконструкция: <span class="heb">אֱלָהּ שְׁמַיָּא</span> (Езд 5:11, 12; 6:9, 10) или <span class="heb">אֱלָהָא דִּי שְׁמַיָּא</span>. Иврит: <span class="heb">אֱלֹהֵי הַשָּׁמַיִם</span>.</span> См. <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a>, <a href="dict-alpha.html#shemayin" class="card-link">dict-alpha.html#shemayin</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать <span class="heb">אֱלָהָא שְׁמַיָּא</span> (первый член в опр.) — в арамейском первый член цепи должен быть в сопряжённом состоянии.</p>
+
+<p><b>10.</b> <span class="ok">Греческий оригинал: <span class="gr">βασιλεὺς βασιλέων</span> (Откр 17:14; 19:16). Арамейская реконструкция: <span class="heb">מֶלֶךְ מַלְכַיָּא</span> (Дан 2:37). Иврит: <span class="heb">מֶלֶךְ מְלָכִים</span>. Засвидетельствовано: Дан 2:37.</span> См. <a href="dict-alpha.html#melekh" class="card-link">dict-alpha.html#melekh</a>, <a href="aram008.html#section-superlative" class="rule-link">aram008.html#section-superlative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> реконструировать <span class="heb">מַלְכָּא מַלְכַיָּא</span> (первый член в опр.) — в Дан 2:37 стоит <span class="heb">מֶלֶךְ</span> в сопр.</p>
+</details>
+
+<details>
+<summary>Ключ к вопросам 11–15 (часть III)</summary>
+
+<p><b>11.</b> <span class="ok">Арамейский оригинал: <span class="heb">בֵּית אֱלָהָא</span> (Езд 4:24; 5:2, 8, 9, 11, 15; 6:3, 5, 7, 8, 12, 16, 17; Дан 5:3, 23 и мн. др.). Иврит: <span class="heb">בֵּית הָאֱלֹהִים</span> (или <span class="heb">בֵּית־הָאֱלֹהִים</span>). Греческий: <span class="gr">ὁ οἶκος τοῦ θεοῦ</span> (Мф 12:4; Мк 2:26; Лк 6:4 и мн. др.).</span> См. <a href="dict-alpha.html#bayit" class="card-link">dict-alpha.html#bayit</a>, <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a>.</p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">בֵּית אֱלָהָא</span> на иврит как <span class="heb">בֵּית אֱלֹהִים</span> без артикля — в иврите определённость второго члена должна быть выражена артиклем <span class="heb">הַ-</span> (или именем в опр. состоянии, если бы речь шла о цепочке имён).</p>
+
+<p><b>12.</b> <span class="ok">Арамейский оригинал: <span class="heb">אֱלָהָא קַדִּישָׁא</span> (Дан 3:26, 4:5, 5:11). Иврит: <span class="heb">הָאֵל הַקָּדוֹשׁ</span> (ср. Ис 5:16; Авв 3:3). Греческий: <span class="gr">ὁ θεὸς ὁ ἅγιος</span> (ср. Откр 4:8).</span> См. <a href="dict-alpha.html#elah" class="card-link">dict-alpha.html#elah</a>, <a href="dict-alpha.html#qaddish" class="card-link">dict-alpha.html#qaddish</a>.</p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">אֱלָהָא קַדִּישָׁא</span> как <span class="heb">הָאֵל קָדוֹשׁ</span> (без артикля при прил.) — в иврите артикль должен быть при обоих словах (атрибутивное употребление).</p>
+
+<p><b>13.</b> <span class="ok">Арамейский оригинал: <span class="heb">מֶלֶךְ מַלְכַיָּא</span> (Дан 2:37). Иврит: <span class="heb">מֶלֶךְ מְלָכִים</span>. Греческий: <span class="gr">βασιλεὺς βασιλέων</span> (Откр 17:14; 19:16).</span> См. <a href="dict-alpha.html#melekh" class="card-link">dict-alpha.html#melekh</a>, <a href="aram008.html#section-superlative" class="rule-link">aram008.html#section-superlative</a>.</p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">מֶלֶךְ מַלְכַיָּא</span> буквально как «царь, который над царями» — это не конструкция с <span class="heb">דִּי</span>, а сопряжённая цепь «X X-ов», выражающая превосходство.</p>
+
+<p><b>14.</b> <span class="ok">Арамейский оригинал: <span class="heb">שְׁמֵהּ דִּי אֱלָהָא</span> (Дан 2:20). Иврит: <span class="heb">שֵׁם הָאֱלֹהִים</span> (или <span class="heb">שֵׁם יְהוָה</span>). Греческий: <span class="gr">τὸ ὄνομα τοῦ θεοῦ</span> (ср. Откр 13:6; 16:9).</span> См. <a href="dict-alpha.html#shem" class="card-link">dict-alpha.html#shem</a>, <a href="aram008.html#section-anticipatory" class="rule-link">aram008.html#section-anticipatory</a>.</p>
+<p><span class="err">Типичная ошибка:</span> не узнавать упреждающий суффикс в <span class="heb">שְׁמֵהּ</span> и переводить буквально «имя его, которое Бога» вместо «имя Бога».</p>
+
+<p><b>15.</b> <span class="ok">Арамейский оригинал: <span class="heb">קַדִּישֵׁי עֶלְיוֹנִין</span> (Дан 7:18, 22, 25, 27). Иврит: <span class="heb">קְדוֹשֵׁי עֶלְיוֹן</span> (или <span class="heb">קְדוֹשֵׁי הָעֶלְיוֹן</span>). Греческий: <span class="gr">οἱ ἅγιοι τοῦ ὑψίστου</span> (ср. Лк 1:32, 35, 76; Деян 7:48; Евр 7:1).</span> См. <a href="dict-alpha.html#qaddish" class="card-link">dict-alpha.html#qaddish</a>, <a href="dict-alpha.html#illaah" class="card-link">dict-alpha.html#illaah</a>.</p>
+<p><span class="err">Типичная ошибка:</span> переводить <span class="heb">עֶלְיוֹנִין</span> как «небесные» — ошибочно; это «Всевышний», а не «небо». Также ошибочно переводить <span class="heb">קַדִּישֵׁי</span> как прил. (<span class="heb">קְדוֹשִׁים</span>), а не как сопр. мн. (<span class="heb">קְדוֹשֵׁי</span> «святые (чего-либо)»).</p>
+</details>
+
+</section>
+
+<nav>
+<a href="index.html">Главная</a> ·
+<a href="exercises.html">exercises.html</a> ·
+<a href="dict-alpha.html">dict-alpha.html</a> ·
+<a href="aram001.html">Урок 1</a> ·
+<a href="aram008.html">Урок 8</a>
+</nav>
+
+<footer>Реконструкция библейского арамейского языка. 2026</footer>
+</body>
+</html>
