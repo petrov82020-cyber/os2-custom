@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тест</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    max-width: 820px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #222;
+    background: #fafafa;
+  }
+  .he {
+    font-family: "Times New Roman", "David", "Noto Sans Hebrew", serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-size: 1.12em;
+  }
+  .meta {
+    color: #555;
+    font-size: .95em;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .bar {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+  }
+  .bar > div {
+    height: 100%;
+    background: #4a8;
+    width: 0;
+    transition: width .25s ease;
+  }
+  .question {
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .opt {
+    text-align: left;
+    padding: .65rem .9rem;
+    border: 1px solid #bbb;
+    background: #fff;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1.02rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+  }
+  .opt:hover:not(:disabled) { background: #f0f5ff; border-color: #88a; }
+  .opt:disabled { cursor: default; }
+  .opt.correct {
+    background: #e6f7ea;
+    border-color: #3a9a4e;
+  }
+  .opt.wrong {
+    background: #fdecea;
+    border-color: #c0392b;
+  }
+  .opt .label { flex: 1; }
+  .opt[dir="rtl"] .label { direction: rtl; }
+  .opt .mark {
+    font-size: 1.3em;
+    min-width: 1.2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  .opt.correct .mark { color: #1e7a3a; }
+  .opt.wrong .mark { color: #b03020; }
+  .result {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+  }
+  .result .score { font-size: 2rem; font-weight: bold; margin: .3rem 0 .6rem; }
+  .restart {
+    margin-top: 1rem;
+    padding: .6rem 1.1rem;
+    font: inherit;
+    background: #3a6ea5;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .restart:hover { background: #2f5a87; }
+  .note { color: #666; font-size: .9em; margin-top: .6rem; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="meta">
+    <span id="progress">Вопрос 1 из 20</span>
+    <span id="tally">Правильно: 0</span>
+  </div>
+  <div class="bar"><div id="barfill"></div></div>
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+</div>
+
+<div id="final" class="result" style="display:none"></div>
+
+<script>
+/* ---------- Seeded RNG (mulberry32) from system clock ---------- */
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    var t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const SEED = Date.now() >>> 0;
+const rng = mulberry32(SEED);
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------- Question bank (60) ---------- */
+const BANK = [
+  /* ===== Фонетика и огласовка (1–12) ===== */
+  { q: 'Что такое дагеш каль?',
+    options: ['Удвоение согласного', 'Взрывное произношение букв бегадкефат', 'Вторичное ударение', 'Долгота гласного'],
+    correct: 'Взрывное произношение букв бегадкефат' },
+  { q: 'Что такое дагеш форте?',
+    options: ['Удвоение (геминация) согласного', 'Взрывное произношение бегадкефат', 'Знак кантилляции', 'Показатель определённости'],
+    correct: 'Удвоение (геминация) согласного' },
+  { q: 'Какие буквы принимают дагеш каль?',
+    options: ['Все согласные', 'Буквы בגדכפת', 'Гортанные אהחער', 'Только בגדכפת и гортанные'],
+    correct: 'Буквы בגדכפת' },
+  { q: 'Какие буквы не могут принимать дагеш форте?',
+    options: ['Буквы בגדכפת', 'Гортанные אהחער (и реш)', 'Все сонорные', 'Только алеф и аин'],
+    correct: 'Гортанные אהחער (и реш)' },
+  { q: 'Что такое метэг?',
+    options: ['Основное ударение', 'Вторичное ударение / удлинение гласного', 'Знак кантилляции', 'Показатель син/шин'],
+    correct: 'Вторичное ударение / удлинение гласного' },
+  { q: 'Что обозначает шва?',
+    options: ['Долгий гласный a', 'Сверхкраткий/нейтральный гласный или отсутствие гласного', 'Удвоение', 'Ударение'],
+    correct: 'Сверхкраткий/нейтральный гласный или отсутствие гласного' },
+  { q: 'Как читается камац в закрытом предударном слоге (например, в <span class="he">מַלְכָּא</span>)?',
+    options: ['Только как o', 'Только как a', 'Как o или a в зависимости от традиции', 'Как ə'],
+    correct: 'Как o или a в зависимости от традиции' },
+  { q: 'В форме <span class="he">שְׁמַיָּא</span> точка над шин стоит справа. Что это значит?',
+    options: ['Син (s)', 'Шин (š)', 'Дагеш', 'Метэг'],
+    correct: 'Шин (š)' },
+  { q: 'Что такое теамим?',
+    options: ['Знаки огласовки', 'Знаки кантилляции (мелодии чтения)', 'Знаки ударения', 'Конечные формы букв'],
+    correct: 'Знаки кантилляции (мелодии чтения)' },
+  { q: 'Что такое хатаф?',
+    options: ['Долгий гласный', 'Редуцированный гласный (хатаф-патах, -сеголь, -камац)', 'Знак удвоения', 'Конечная форма'],
+    correct: 'Редуцированный гласный (хатаф-патах, -сеголь, -камац)' },
+  { q: 'Что указывает наличие дагеша форте в йоде в форме <span class="he">שְׁמַיָּא</span>?',
+    options: ['Ничего', 'Удвоение йода: šəmayyā', 'Дагеш каль', 'Огласовку'],
+    correct: 'Удвоение йода: šəmayyā' },
+  { q: 'Чем консонантный текст отличается от масоретской огласовки?',
+    options: ['Консонантный текст древнее, огласовка — средневековая интерпретация', 'Огласовка древнее', 'Они одновременны', 'Консонантный текст — перевод'],
+    correct: 'Консонантный текст древнее, огласовка — средневековая интерпретация' },
+
+  /* ===== Грамматика и морфология (13–26) ===== */
+  { q: 'Что выражает эмфатическое состояние имени?',
+    options: ['Определённость', 'Родительный падеж', 'Множественное число', 'Женский род'],
+    correct: 'Определённость' },
+  { q: 'Что выражает конструктное состояние?',
+    options: ['Определённость', 'Тесную связь с последующим родительным', 'Двойственное число', 'Звательную форму'],
+    correct: 'Тесную связь с последующим родительным' },
+  { q: 'Как образуется эмфатическое состояние ед. ч. в библейском арамейском?',
+    options: ['Прибавлением артикля הַ', 'Прибавлением окончания ־א', 'Прибавлением ־ִין', 'Редукцией гласного'],
+    correct: 'Прибавлением окончания ־א' },
+  { q: 'Какое окончание имеет эмфатическое мн. ч.?',
+    options: ['־א', '־ִין', '־ַיָּא', '־ֵי'],
+    correct: '־ַיָּא' },
+  { q: 'Какова форма перфекта Peal 3 м.р. ед.ч. от корня כתב?',
+    options: ['<span class="he">כְּתַב</span>', '<span class="he">כָּתַב</span>', '<span class="he">יִכְתֻּב</span>', '<span class="he">כְּתַבוּ</span>'],
+    correct: '<span class="he">כְּתַב</span>' },
+  { q: 'Какова форма имперфекта Peal 3 м.р. мн.ч. от כתב?',
+    options: ['<span class="he">כְּתַבוּ</span>', '<span class="he">יִכְתְּבוּן</span>', '<span class="he">יִכְתֻּב</span>', '<span class="he">כְּתַב</span>'],
+    correct: '<span class="he">יִכְתְּבוּן</span>' },
+  { q: 'Какой корень у слова <span class="he">מַלְכָּא</span>?',
+    options: ['<span class="he">מלך</span>', '<span class="he">מלכ</span>', '<span class="he">לכמ</span>', '<span class="he">מכל</span>'],
+    correct: '<span class="he">מלך</span>' },
+  { q: 'Какой корень у <span class="he">אִתְכְּתַב</span>?',
+    options: ['<span class="he">כתב</span>', '<span class="he">תכב</span>', '<span class="he">כבת</span>', '<span class="he">אתכ</span>'],
+    correct: '<span class="he">כתב</span>' },
+  { q: 'Какая порода у формы <span class="he">הַקְטֵל</span>?',
+    options: ['G (Peal)', 'D (Paʿʿel)', 'H (каузативная)', 'Itpeʿel'],
+    correct: 'H (каузативная)' },
+  { q: 'Какая порода у формы <span class="he">אִתְכְּתַב</span>?',
+    options: ['G (Peal)', 'D (Paʿʿel)', 'H (каузативная)', 'Itpeʿel (пассивно-возвратная)'],
+    correct: 'Itpeʿel (пассивно-возвратная)' },
+  { q: 'Что обозначают условные ярлыки G, D, H?',
+    options: ['Времена глагола', 'Породы (биньяним) для сравнительно-семитского описания', 'Падежи', 'Состояния имени'],
+    correct: 'Породы (биньяним) для сравнительно-семитского описания' },
+  { q: 'Есть ли в библейском арамейском продуктивная конструкция waw + перфект со значением будущего (как в иврите)?',
+    options: ['Да, регулярно', 'Нет, такая функция не засвидетельствована как системная', 'Только в Данииле', 'Только в Ездре'],
+    correct: 'Нет, такая функция не засвидетельствована как системная' },
+  { q: 'Как образуется множественное число от <span class="he">מֶלֶךְ</span> в эмфатическом состоянии?',
+    options: ['<span class="he">מֶלֶךְא</span>', '<span class="he">מַלְכַיָּא</span>', '<span class="he">מַלְכִין</span>', '<span class="he">מַלְכֵי</span>'],
+    correct: '<span class="he">מַלְכַיָּא</span>' },
+  { q: 'Что такое абсолютное состояние?',
+    options: ['Форма с определённым артиклем', 'Базовая форма имени вне конструктной связи', 'Форма с окончанием ־א', 'Форма множественного числа'],
+    correct: 'Базовая форма имени вне конструктной связи' },
+
+  /* ===== Синтаксис (27–34) ===== */
+  { q: 'В чём функция частицы <span class="he">דִּי</span>?',
+    options: ['Отрицание', 'Относительное местоимение / маркер генитива', 'Вопросительная частица', 'Предлог «под»'],
+    correct: 'Относительное местоимение / маркер генитива' },
+  { q: 'Что означает предлог <span class="he">קֳדָם</span>?',
+    options: ['После', 'Перед (лицом), пред', 'Между', 'Над'],
+    correct: 'Перед (лицом), пред' },
+  { q: 'В конструкции <span class="he">מַלְכָּא דִי מַלְכַיָּא</span> («царь царей») какую функцию выполняет <span class="he">דִּי</span>?',
+    options: ['Определённый артикль', 'Связка родительного отношения', 'Союз «и»', 'Отрицание'],
+    correct: 'Связка родительного отношения' },
+  { q: 'Как в арамейском выражается определённость имени?',
+    options: ['Артиклем הַ', 'Эмфатическим состоянием', 'Порядком слов', 'Местоимением'],
+    correct: 'Эмфатическим состоянием' },
+  { q: 'В чём риск переноса ивритской модели «перевёрнутых» форм (waw + перфект) на арамейский?',
+    options: ['Никакого риска', 'Студент ищет в арамейском категорию, которой там нет как системной', 'Арамейский и иврит идентичны', 'Это помогает понять арамейский'],
+    correct: 'Студент ищет в арамейском категорию, которой там нет как системной' },
+  { q: 'Что такое конструктная цепочка?',
+    options: ['Последовательность имён в конструктном состоянии', 'Последовательность глаголов', 'Ряд предлогов', 'Перечень пород'],
+    correct: 'Последовательность имён в конструктном состоянии' },
+  { q: 'Что выражает эмфатическое состояние в конструктной цепочке?',
+    options: ['Всегда неопределённость', 'Может выступать в функции, близкой к абсолютной', 'Только множественность', 'Только женский род'],
+    correct: 'Может выступать в функции, близкой к абсолютной' },
+  { q: 'Как соотносятся арамейский и иврит?',
+    options: ['Диалекты одного языка', 'Сестринские северозападносемитские языки', 'Арамейский — потомок иврита', 'Иврит — диалект арамейского'],
+    correct: 'Сестринские северозападносемитские языки' },
+
+  /* ===== Лексика и перевод (35–50) ===== */
+  { q: 'Как переводится <span class="he">מַלְכָּא</span>?',
+    options: ['царь (эмфат.)', 'царство', 'царица', 'цари'],
+    correct: 'царь (эмфат.)' },
+  { q: 'Как переводится <span class="he">אַרְעָא</span>?',
+    options: ['земля (эмфат.)', 'гора', 'море', 'небо'],
+    correct: 'земля (эмфат.)' },
+  { q: 'Как переводится <span class="he">שְׁמַיָּא</span>?',
+    options: ['небо (эмфат.)', 'земля', 'вода', 'солнце'],
+    correct: 'небо (эмфат.)' },
+  { q: 'Как переводится <span class="he">כְּתַב</span>?',
+    options: ['он написал', 'он прочитал', 'он сказал', 'он услышал'],
+    correct: 'он написал' },
+  { q: 'Как переводится <span class="he">סָפְרָא</span>?',
+    options: ['писец', 'книга', 'письмо', 'царь'],
+    correct: 'писец' },
+  { q: 'Как переводится <span class="he">אִגְּרָה</span>?',
+    options: ['письмо', 'писец', 'книга', 'гора'],
+    correct: 'письмо' },
+  { q: 'Как по-арамейски «дом» в эмфатическом состоянии?',
+    options: ['<span class="he">בֵּיתָא</span>', '<span class="he">בַּיִת</span>', '<span class="he">הֵיכְלָא</span>', '<span class="he">דָּרָא</span>'],
+    correct: '<span class="he">בֵּיתָא</span>' },
+  { q: 'Как по-арамейски «море» в эмфатическом состоянии?',
+    options: ['<span class="he">יַמָּא</span>', '<span class="he">יָם</span>', '<span class="he">נַהֲרָא</span>', '<span class="he">אַגַּם</span>'],
+    correct: '<span class="he">יַמָּא</span>' },
+  { q: 'Как по-арамейски «гора» в эмфатическом состоянии?',
+    options: ['<span class="he">טוּרָא</span>', '<span class="he">הַר</span>', '<span class="he">גִּבְעָה</span>', '<span class="he">מִדְבָּר</span>'],
+    correct: '<span class="he">טוּרָא</span>' },
+  { q: 'Как по-арамейски «река» в эмфатическом состоянии?',
+    options: ['<span class="he">נַהֲרָא</span>', '<span class="he">נָהָר</span>', '<span class="he">יַמָּא</span>', '<span class="he">נַחְלָא</span>'],
+    correct: '<span class="he">נַהֲרָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">שָׁמַיִם</span>?',
+    options: ['<span class="he">שְׁמַיָּא</span>', '<span class="he">אַרְעָא</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">יַמָּא</span>'],
+    correct: '<span class="he">שְׁמַיָּא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">אֶרֶץ</span>?',
+    options: ['<span class="he">אַרְעָא</span>', '<span class="he">שְׁמַיָּא</span>', '<span class="he">טוּרָא</span>', '<span class="he">נַהֲרָא</span>'],
+    correct: '<span class="he">אַרְעָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">כָּתַב</span>?',
+    options: ['<span class="he">כְּתַב</span>', '<span class="he">כְּתַבוּ</span>', '<span class="he">יִכְתֻּב</span>', '<span class="he">כְּתָב</span>'],
+    correct: '<span class="he">כְּתַב</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">מַלְכָּא</span>?',
+    options: ['<span class="he">מֶלֶךְ</span>', '<span class="he">מַלְכוּת</span>', '<span class="he">מַמְלָכָה</span>', '<span class="he">מְלָכִים</span>'],
+    correct: '<span class="he">מֶלֶךְ</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">בֵּיתָא</span>?',
+    options: ['<span class="he">בַּיִת</span>', '<span class="he">הֵיכָל</span>', '<span class="he">בָּתִּים</span>', '<span class="he">דִּירָה</span>'],
+    correct: '<span class="he">בַּיִת</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">דְּמָא</span>?',
+    options: ['<span class="he">דָּם</span>', '<span class="he">נֶפֶשׁ</span>', '<span class="he">בָּשָׂר</span>', '<span class="he">לֵב</span>'],
+    correct: '<span class="he">דָּם</span>' },
+
+  /* ===== Теория, текстология, языкознание (51–60) ===== */
+  { q: 'Что такое кетив?',
+    options: ['Читаемое (масоретская форма)', 'Написанное (консонантная форма)', 'Знак кантилляции', 'Конечная форма буквы'],
+    correct: 'Написанное (консонантная форма)' },
+  { q: 'Что такое кере?',
+    options: ['Написанное', 'Читаемое (масоретская форма)', 'Знак огласовки', 'Вариант в аппарате'],
+    correct: 'Читаемое (масоретская форма)' },
+  { q: 'В чём риск нормализации библейского текста «под грамматику»?',
+    options: ['Порочный круг: грамматика выводится из текста, а текст нормализуется под грамматику', 'Никакого риска', 'Улучшает понимание', 'Ускоряет чтение'],
+    correct: 'Порочный круг: грамматика выводится из текста, а текст нормализуется под грамматику' },
+  { q: 'Почему характеристика арамейского как «испорченного святого языка» неприемлема?',
+    options: ['Это теологическая оценка, а не лингвистическое описание', 'Это точное описание', 'Это научный термин', 'Это масоретский термин'],
+    correct: 'Это теологическая оценка, а не лингвистическое описание' },
+  { q: 'Что содержит аппарат BHS?',
+    options: ['Только масоретский текст', 'Варианты и реконструкции на основе внешних свидетельств', 'Только переводы', 'Только грамматические пометы'],
+    correct: 'Варианты и реконструкции на основе внешних свидетельств' },
+  { q: 'Какой статус имеют реконструированные формы в парадигмах критического пособия?',
+    options: ['Неотличимы от засвидетельствованных', 'Должны быть явно маркированы', 'Их не должно быть', 'Их можно опустить'],
+    correct: 'Должны быть явно маркированы' },
+  { q: 'В чём проблема legacy-кодировки шрифта Hebraica в современном учебнике?',
+    options: ['Она удобна', 'Она не поддаётся поиску, недоступна для экранного доступа и требует конкретного шрифта', 'Она совместима с Unicode', 'Она стандартна'],
+    correct: 'Она не поддаётся поиску, недоступна для экранного доступа и требует конкретного шрифта' },
+  { q: 'Какие критерии должна явно указывать периодизация библейского арамейского?',
+    options: ['Только даты', 'Орфография, лексика, синтаксис, состав корпуса', 'Только имена царей', 'Только масоретская огласовка'],
+    correct: 'Орфография, лексика, синтаксис, состав корпуса' },
+  { q: 'В чём опасность Hebrew-centric подхода к арамейскому?',
+    options: ['Он ускоряет обучение', 'Он создаёт риск отрицательного переноса и искажает категории арамейского', 'Он точен', 'Он рекомендован всеми грамматиками'],
+    correct: 'Он создаёт риск отрицательного переноса и искажает категории арамейского' },
+  { q: 'Почему важно различать консонантный текст и масоретскую огласовку при интерпретации?',
+    options: ['Огласовка — средневековая интерпретация, а не прямое свидетельство произношения эпохи создания текста', 'Они идентичны', 'Огласовка древнее', 'Это не важно'],
+    correct: 'Огласовка — средневековая интерпретация, а не прямое свидетельство произношения эпохи создания текста' }
+];
+
+/* ---------- Подготовка сессии ---------- */
+const TOTAL = 20;
+const indices = shuffle([...Array(BANK.length).keys()]).slice(0, TOTAL);
+const SESSION = indices.map(i => {
+  const q = BANK[i];
+  const opts = q.options.map(text => ({ text, correct: text === q.correct }));
+  return { q: q.q, options: shuffle(opts) };
+});
+
+/* ---------- Состояние ---------- */
+let current = 0;
+let score = 0;
+
+const $progress = document.getElementById('progress');
+const $tally = document.getElementById('tally');
+const $barfill = document.getElementById('barfill');
+const $question = document.getElementById('question');
+const $options = document.getElementById('options');
+const $stage = document.getElementById('stage');
+const $final = document.getElementById('final');
+
+function render() {
+  const item = SESSION[current];
+  $progress.textContent = `Вопрос ${current + 1} из ${TOTAL}`;
+  $tally.textContent = `Правильно: ${score}`;
+  $barfill.style.width = `${(current / TOTAL) * 100}%`;
+  $question.innerHTML = item.q;
+  $options.innerHTML = '';
+
+  item.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'opt';
+    const isHeb = /[\u0590-\u05FF]/.test(opt.text);
+    if (isHeb) btn.setAttribute('dir', 'rtl');
+    btn.innerHTML = `<span class="label">${opt.text}</span><span class="mark"></span>`;
+    btn.addEventListener('click', () => choose(btn, opt, item));
+    $options.appendChild(btn);
+  });
+}
+
+function choose(btn, opt, item) {
+  const buttons = [...$options.querySelectorAll('.opt')];
+  buttons.forEach(b => b.disabled = true);
+
+  if (opt.correct) {
+    btn.classList.add('correct');
+    btn.querySelector('.mark').textContent = '✓';
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    btn.querySelector('.mark').textContent = '✗';
+    buttons.forEach((b, i) => {
+      if (item.options[i].correct) {
+        b.classList.add('correct');
+        b.querySelector('.mark').textContent = '✓';
+      }
+    });
+  }
+
+  $tally.textContent = `Правильно: ${score}`;
+
+  setTimeout(() => {
+    current++;
+    if (current < TOTAL) {
+      render();
+    } else {
+      finish();
+    }
+  }, 900);
+}
+
+function finish() {
+  $barfill.style.width = '100%';
+  $stage.style.display = 'none';
+  const pct = Math.round((score / TOTAL) * 100);
+  let verdict = '';
+  if (pct >= 90) verdict = 'Отличный уровень: можно переходить к работе с текстами в оригинале.';
+  else if (pct >= 70) verdict = 'Хороший уровень: есть база, но нужна систематическая проверка по текстам.';
+  else if (pct >= 50) verdict = 'Средний уровень: повторите фонетику, состояния имён и породы.';
+  else verdict = 'Начальный уровень: начните с алфавита, огласовки и базовой лексики.';
+  $final.innerHTML = `
+    <div>Тест завершён. Итог:</div>
+    <div class="score">${score} / ${TOTAL}</div>
+    <div>${pct}%</div>
+    <p>${verdict}</p>
+    <button class="restart" onclick="location.reload()">Пройти ещё раз (новый набор вопросов)</button>
+    <p class="note">Порядок вопросов и вариантов определяется системным временем при загрузке страницы.</p>
+  `;
+  $final.style.display = 'block';
+}
+
+render();
+</script>
+
+</body>
+</html>
