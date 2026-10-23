@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Алфавитный указатель сказок А. Н. Афанасьева (1958, 3 тома)</title>
+<meta name="description" content="Алфавитный перечень народных русских сказок из трёхтомника А. Н. Афанасьева (М.: Гослитиздат, 1958) с указанием номера и тома.">
+<style>
+  :root{
+    --paper:#f2f5f8;
+    --paper-2:#fafcfe;
+    --ink:#232a33;
+    --ink-soft:#525b66;
+    --line:#c9d2db;
+    --line-soft:#dfe5eb;
+    --accent:#2e7dab;
+    --accent-2:#5fa5ce;
+    --accent-soft:#e0eef8;
+    --shadow:0 1px 2px rgba(35,42,51,.06), 0 8px 24px rgba(35,42,51,.07);
+    --radius:14px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:radial-gradient(1200px 600px at 50% -200px,#f7fafd 0%,transparent 70%),var(--paper);
+    color:var(--ink);
+    font-family:"Georgia","Iowan Old Style","Times New Roman",serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+  header.site{
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fafcfe 0%,rgba(250,252,254,.6) 100%);
+    padding:28px 0 22px;
+  }
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;font-size:.86rem;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    color:var(--ink-soft);
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink)}
+  .brand .mark{
+    width:30px;height:30px;flex:0 0 30px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+    color:#fff;display:grid;place-items:center;
+    font-size:.9rem;font-weight:700;font-family:"Segoe UI",system-ui,sans-serif;
+  }
+  .topbar nav{display:flex;gap:18px;flex-wrap:wrap}
+  .topbar nav a{color:var(--ink-soft)}
+
+  h1{
+    font-size:clamp(1.55rem,3.3vw,2.2rem);
+    line-height:1.25;
+    margin:32px 0 12px;
+    letter-spacing:-.01em;
+  }
+  .lead{color:var(--ink-soft);font-size:1.02rem;max-width:860px;margin:0 0 24px}
+
+  .meta-note{
+    background:var(--accent-soft);
+    border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;
+    padding:14px 20px;
+    font-size:.9rem;
+    color:#2c4356;
+    margin:0 0 28px;
+  }
+
+  .alphabet-nav{
+    display:flex;flex-wrap:wrap;gap:6px;
+    margin:0 0 20px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.82rem;
+  }
+  .alphabet-nav a{
+    display:inline-block;
+    min-width:28px;
+    padding:4px 9px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--paper-2);
+    color:var(--ink-soft);
+    text-align:center;
+  }
+  .alphabet-nav a:hover{border-color:var(--accent-2);color:var(--accent);text-decoration:none}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    font-size:.9rem;
+    margin:0 0 40px;
+  }
+  th,td{
+    padding:8px 12px;
+    text-align:left;
+    border-bottom:1px solid var(--line-soft);
+    vertical-align:top;
+  }
+  th{
+    background:var(--accent-soft);
+    color:#1f5a80;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-weight:700;
+    font-size:.76rem;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    position:sticky;top:0;z-index:2;
+  }
+  tr:last-child td{border-bottom:0}
+  td:first-child{width:60px;text-align:center;font-weight:700;color:var(--accent);font-family:"Segoe UI",sans-serif}
+  td:nth-child(2){width:70px;text-align:center;font-family:"Segoe UI",sans-serif;font-size:.82rem;color:var(--ink-soft)}
+  td:nth-child(3){width:60px;text-align:center;font-family:"Segoe UI",sans-serif;font-size:.82rem;color:var(--ink-soft)}
+  .letter-row td{
+    background:#f4f7fa;
+    font-family:"Segoe UI",sans-serif;
+    font-weight:700;
+    font-size:.9rem;
+    color:var(--accent);
+    padding:6px 12px;
+    border-bottom:1px solid var(--line-soft);
+  }
+
+  footer.site{
+    border-top:1px solid var(--line);
+    background:#e9eef3;
+    padding:28px 0 34px;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:.85rem;
+    color:var(--ink-soft);
+    margin-top:20px;
+  }
+
+  @media (max-width:640px){
+    body{font-size:16px}
+    table{font-size:.82rem}
+    th,td{padding:7px 8px}
+    td:first-child{width:44px}
+    td:nth-child(2),td:nth-child(3){width:44px;font-size:.78rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">АФ</span>
+        <span>Афанасьев · 1958 · Алфавитный указатель</span>
+      </div>
+      <nav>
+        <a href="index.html">Главная проекта</a>
+        <a href="aphan58.html">Принципы отбора</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Алфавитный перечень народных русских сказок А. Н. Афанасьева <br>(М.: Гослитиздат, 1958, в 3 томах)</h1>
+
+  <p class="lead">
+    Указатель составлен по доступным источникам: Википедия (список томов 1–2), 
+    azbyka.ru (том 2), fantlab.ru (том 3), сводный каталог (том 1) и др. 
+    Номера соответствуют сквозной нумерации издания 1958 года. 
+    В разных переизданиях нумерация может незначительно смещаться.
+  </p>
+ 
+  <div class="alphabet-nav" aria-label="Быстрый переход по буквам">
+    <a href="#A">А</a><a href="#B">Б</a><a href="#V">В</a><a href="#G">Г</a>
+    <a href="#D">Д</a><a href="#E">Е</a><a href="#Zh">Ж</a><a href="#Z">З</a>
+    <a href="#I">И</a><a href="#K">К</a><a href="#L">Л</a><a href="#M">М</a>
+    <a href="#N">Н</a><a href="#O">О</a><a href="#P">П</a><a href="#R">Р</a>
+    <a href="#S">С</a><a href="#T">Т</a><a href="#U">У</a><a href="#F">Ф</a>
+    <a href="#H">Х</a><a href="#Ts">Ц</a><a href="#Ch">Ч</a><a href="#Sh">Ш</a>
+    <a href="#Shch">Щ</a><a href="#Y">Ю</a><a href="#Ya">Я</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Название</th>
+        <th>Том</th>
+        <th>Номер у Афанасьева</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ================= А ================= -->
+      <tr class="letter-row" id="A"><td colspan="4">А</td></tr>
+      <tr><td>1</td><td>Алеша Попович</td><td>3</td><td>312</td></tr>
+      <tr><td>2</td><td>Арысь-поле</td><td>2</td><td>266</td></tr>
+
+      <!-- ================= Б ================= -->
+      <tr class="letter-row" id="B"><td colspan="4">Б</td></tr>
+      <tr><td>3</td><td>Баба-яга</td><td>1</td><td>102</td></tr>
+      <tr><td>4</td><td>Баба-яга и жихарь</td><td>1</td><td>106</td></tr>
+      <tr><td>5</td><td>Баба-яга и Заморышек</td><td>1</td><td>105</td></tr>
+      <tr><td>6</td><td>Байка о щуке зубастой</td><td>1</td><td>81</td></tr>
+      <tr><td>7</td><td>Байка про старину стародавнюю</td><td>3</td><td>—</td></tr>
+      <tr><td>8</td><td>Беглый солдат</td><td>3</td><td>—</td></tr>
+      <tr><td>9</td><td>Безногий и слепой богатыри</td><td>2</td><td>198</td></tr>
+      <tr><td>10</td><td>Белая уточка</td><td>2</td><td>265</td></tr>
+      <tr><td>11</td><td>Береза и три сокола</td><td>2</td><td>275</td></tr>
+      <tr><td>12</td><td>Бурёнушка</td><td>1</td><td>101</td></tr>
+
+      <!-- ================= В ================= -->
+      <tr class="letter-row" id="V"><td colspan="4">В</td></tr>
+      <tr><td>13</td><td>Вазуза и Волга</td><td>1</td><td>94</td></tr>
+      <tr><td>14</td><td>Василиса Прекрасная</td><td>1</td><td>104</td></tr>
+      <tr><td>15</td><td>Василиса Поповна</td><td>3</td><td>—</td></tr>
+      <tr><td>16</td><td>Василий-царевич и Елена Прекрасная</td><td>3</td><td>—</td></tr>
+      <tr><td>17</td><td>Ведьма и Солнцева сестра</td><td>1</td><td>93</td></tr>
+      <tr><td>18</td><td>Вещий сон</td><td>2</td><td>240</td></tr>
+      <tr><td>19</td><td>Вещий сон (второй вариант)</td><td>2</td><td>241</td></tr>
+      <tr><td>20</td><td>Волшебное зеркальце</td><td>2</td><td>210</td></tr>
+      <tr><td>21</td><td>Волшебное кольцо</td><td>2</td><td>190</td></tr>
+      <tr><td>22</td><td>Волшебный конь</td><td>2</td><td>185</td></tr>
+      <tr><td>23</td><td>Вороватый мужик</td><td>3</td><td>391</td></tr>
+      <tr><td>24</td><td>Ворона и рак</td><td>1</td><td>73</td></tr>
+
+      <!-- ================= Г ================= -->
+      <tr class="letter-row" id="G"><td colspan="4">Г</td></tr>
+      <tr><td>25</td><td>Грибы</td><td>1</td><td>90</td></tr>
+      <tr><td>26</td><td>Гусли-самогуды</td><td>2</td><td>238</td></tr>
+      <tr><td>27</td><td>Гуси-лебеди</td><td>1</td><td>113</td></tr>
+
+      <!-- ================= Д ================= -->
+      <tr class="letter-row" id="D"><td colspan="4">Д</td></tr>
+      <tr><td>28</td><td>Двое из сумы</td><td>2</td><td>187</td></tr>
+      <tr><td>29</td><td>Диво</td><td>2</td><td>254</td></tr>
+      <tr><td>30</td><td>Диво дивное, чудо чудное</td><td>2</td><td>256</td></tr>
+      <tr><td>31</td><td>Дочь и падчерица</td><td>1</td><td>98</td></tr>
+      <tr><td>32</td><td>Дочь пастуха</td><td>3</td><td>—</td></tr>
+      <tr><td>33</td><td>Дурак и береза</td><td>3</td><td>402</td></tr>
+
+      <!-- ================= Е ================= -->
+      <tr class="letter-row" id="E"><td colspan="4">Е</td></tr>
+      <tr><td>34</td><td>Елена Премудрая</td><td>2</td><td>236</td></tr>
+
+      <!-- ================= Ж ================= -->
+      <tr class="letter-row" id="Zh"><td colspan="4">Ж</td></tr>
+      <tr><td>35</td><td>Жадная старуха</td><td>1</td><td>76</td></tr>
+      <tr><td>36</td><td>Журавль и цапля</td><td>1</td><td>71</td></tr>
+
+      <!-- ================= З ================= -->
+      <tr class="letter-row" id="Z"><td colspan="4">З</td></tr>
+      <tr><td>37</td><td>За лапоток — курочку, за курочку — гусочку</td><td>1</td><td>2</td></tr>
+      <tr><td>38</td><td>Заколдованная королевна</td><td>2</td><td>271</td></tr>
+      <tr><td>39</td><td>Заклятый царевич</td><td>2</td><td>276</td></tr>
+      <tr><td>40</td><td>Звери в яме</td><td>1</td><td>—</td></tr>
+      <tr><td>41</td><td>Звериное молоко</td><td>2</td><td>202</td></tr>
+      <tr><td>42</td><td>Зимовье зверей</td><td>1</td><td>63</td></tr>
+      <tr><td>43</td><td>Золотая гора</td><td>2</td><td>243</td></tr>
+      <tr><td>44</td><td>Золотая рыбка</td><td>1</td><td>75</td></tr>
+      <tr><td>45</td><td>Золотой башмачок</td><td>2</td><td>292</td></tr>
+
+      <!-- ================= И ================= -->
+      <tr class="letter-row" id="I"><td colspan="4">И</td></tr>
+      <tr><td>46</td><td>Иван Быкович</td><td>1</td><td>—</td></tr>
+      <tr><td>47</td><td>Иван-царевич и Белый Полянин</td><td>1</td><td>—</td></tr>
+      <tr><td>48</td><td>Иван-царевич и Марфа-царевна</td><td>1</td><td>125</td></tr>
+      <tr><td>49</td><td>Иванушка-дурачок</td><td>3</td><td>400</td></tr>
+      <tr><td>50</td><td>Ивашко и ведьма</td><td>1</td><td>108</td></tr>
+      <tr><td>51</td><td>Илья Муромец и змей</td><td>3</td><td>—</td></tr>
+
+      <!-- ================= К ================= -->
+      <tr class="letter-row" id="K"><td colspan="4">К</td></tr>
+      <tr><td>52</td><td>Клад</td><td>2</td><td>258</td></tr>
+      <tr><td>53</td><td>Кобиляча голова</td><td>1</td><td>99</td></tr>
+      <tr><td>54</td><td>Коза</td><td>1</td><td>60</td></tr>
+      <tr><td>55</td><td>Козьма Скоробогатый</td><td>1</td><td>—</td></tr>
+      <tr><td>56</td><td>Колобок</td><td>1</td><td>—</td></tr>
+      <tr><td>57</td><td>Конь, скатерть и рожок</td><td>2</td><td>186</td></tr>
+      <tr><td>58</td><td>Королевич и его дядька</td><td>1</td><td>123</td></tr>
+      <tr><td>59</td><td>Королевна и разбойники</td><td>3</td><td>—</td></tr>
+      <tr><td>60</td><td>Косоручка</td><td>2</td><td>280</td></tr>
+      <tr><td>61</td><td>Кот и лиса</td><td>1</td><td>—</td></tr>
+      <tr><td>62</td><td>Кот, петух и лиса</td><td>1</td><td>—</td></tr>
+      <tr><td>63</td><td>Кочет и курица</td><td>1</td><td>67</td></tr>
+      <tr><td>64</td><td>Крошечка-Хаврошечка</td><td>1</td><td>100</td></tr>
+      <tr><td>65</td><td>Купеческая дочь и служанка</td><td>1</td><td>127</td></tr>
+      <tr><td>66</td><td>Купленная жена</td><td>2</td><td>230</td></tr>
+      <tr><td>67</td><td>Курочка</td><td>1</td><td>70</td></tr>
+
+      <!-- ================= Л ================= -->
+      <tr class="letter-row" id="L"><td colspan="4">Л</td></tr>
+      <tr><td>68</td><td>Лиса-исповедница</td><td>1</td><td>—</td></tr>
+      <tr><td>69</td><td>Лиса-повитуха</td><td>1</td><td>—</td></tr>
+      <tr><td>70</td><td>Лиса, заяц и петух</td><td>1</td><td>4</td></tr>
+      <tr><td>71</td><td>Лиса и дятел</td><td>1</td><td>—</td></tr>
+      <tr><td>72</td><td>Лиса и журавль</td><td>1</td><td>—</td></tr>
+      <tr><td>73</td><td>Лиса и рак</td><td>1</td><td>—</td></tr>
+      <tr><td>74</td><td>Лиса и тетерев</td><td>1</td><td>—</td></tr>
+      <tr><td>75</td><td>Лисичка-сестричка и волк</td><td>1</td><td>1</td></tr>
+      <tr><td>76</td><td>Лутонюшка</td><td>3</td><td>—</td></tr>
+
+      <!-- ================= М ================= -->
+      <tr class="letter-row" id="M"><td colspan="4">М</td></tr>
+      <tr><td>77</td><td>Марья Моревна</td><td>1</td><td>—</td></tr>
+      <tr><td>78</td><td>Масенжны дзядок</td><td>1</td><td>126</td></tr>
+      <tr><td>79</td><td>Медведь</td><td>1</td><td>56</td></tr>
+      <tr><td>80</td><td>Медведь, собака и кошка</td><td>1</td><td>57, 58</td></tr>
+      <tr><td>81</td><td>Медведь и петух</td><td>1</td><td>64</td></tr>
+      <tr><td>82</td><td>Мена</td><td>3</td><td>—</td></tr>
+      <tr><td>83</td><td>Мертвое тело</td><td>3</td><td>395</td></tr>
+      <tr><td>84</td><td>Мизгирь</td><td>1</td><td>85, 86</td></tr>
+      <tr><td>85</td><td>Мороз, Солнце и Ветер</td><td>1</td><td>91</td></tr>
+      <tr><td>86</td><td>Морозко</td><td>1</td><td>95</td></tr>
+      <tr><td>87</td><td>Морской царь и Василиса Премудрая</td><td>2</td><td>219</td></tr>
+      <tr><td>88</td><td>Мудрая жена</td><td>2</td><td>216</td></tr>
+      <tr><td>89</td><td>Мудрая дева</td><td>3</td><td>327, 328</td></tr>
+      <tr><td>90</td><td>Мудрые ответы</td><td>3</td><td>—</td></tr>
+      <tr><td>91</td><td>Мужик, медведь и лиса</td><td>1</td><td>—</td></tr>
+
+      <!-- ================= Н ================= -->
+      <tr class="letter-row" id="N"><td colspan="4">Н</td></tr>
+      <tr><td>92</td><td>Набитый дурак</td><td>3</td><td>—</td></tr>
+      <tr><td>93</td><td>Неосторожное слово</td><td>2</td><td>227</td></tr>
+      <tr><td>94</td><td>Неумойка</td><td>2</td><td>278</td></tr>
+      <tr><td>95</td><td>Никита Кожемяка</td><td>1</td><td>—</td></tr>
+
+      <!-- ================= О ================= -->
+      <tr class="letter-row" id="O"><td colspan="4">О</td></tr>
+      <tr><td>96</td><td>Овца, лиса и волк</td><td>1</td><td>—</td></tr>
+      <tr><td>97</td><td>Окаменелое царство</td><td>2</td><td>273</td></tr>
+      <tr><td>98</td><td>Орёл и ворона</td><td>1</td><td>74</td></tr>
+      <tr><td>99</td><td>Охотник и его жена</td><td>2</td><td>248</td></tr>
+
+      <!-- ================= П ================= -->
+      <tr class="letter-row" id="P"><td colspan="4">П</td></tr>
+      <tr><td>100</td><td>Перышко Финиста ясна сокола</td><td>2</td><td>234</td></tr>
+      <tr><td>101</td><td>Петух и жерновки</td><td>2</td><td>188</td></tr>
+      <tr><td>102</td><td>По колена ноги в золоте, по локоть руки в серебре</td><td>2</td><td>283</td></tr>
+      <tr><td>103</td><td>Поди туда — не знаю куда, принеси то — не знаю что</td><td>2</td><td>212</td></tr>
+      <tr><td>104</td><td>Пойди туда — не знаю куда, принеси то — не знаю что</td><td>2</td><td>212</td></tr>
+      <tr><td>105</td><td>Правда и Кривда</td><td>1</td><td>115</td></tr>
+      <tr><td>106</td><td>Притворная болезнь</td><td>2</td><td>206</td></tr>
+      <tr><td>107</td><td>Пузырь, соломинка и лапоть</td><td>1</td><td>87, 88</td></tr>
+      <tr><td>108</td><td>Птичий язык</td><td>2</td><td>247</td></tr>
+      <tr><td>109</td><td>Поющее дерево и птица-говорунья</td><td>2</td><td>288</td></tr>
+
+      <!-- ================= Р ================= -->
+      <tr class="letter-row" id="R"><td colspan="4">Р</td></tr>
+      <tr><td>110</td><td>Репка</td><td>1</td><td>89</td></tr>
+      <tr><td>111</td><td>Рога</td><td>2</td><td>192</td></tr>
+
+      <!-- ================= С ================= -->
+      <tr class="letter-row" id="S"><td colspan="4">С</td></tr>
+      <tr><td>112</td><td>Свиной чехол</td><td>2</td><td>290</td></tr>
+      <tr><td>113</td><td>Свинка золотая щетинка</td><td>2</td><td>182</td></tr>
+      <tr><td>114</td><td>Свинья и волк</td><td>1</td><td>—</td></tr>
+      <tr><td>115</td><td>Сестрица Аленушка, братец Иванушка</td><td>2</td><td>260</td></tr>
+      <tr><td>116</td><td>Сивко-бурко</td><td>2</td><td>179</td></tr>
+      <tr><td>117</td><td>Сказка о богатыре Голе Воянском</td><td>3</td><td>578</td></tr>
+      <tr><td>118</td><td>Сказка о Бессчастном стрелке</td><td>3</td><td>567</td></tr>
+      <tr><td>119</td><td>Сказка об Ерше Ершовиче, сыне Щетинникове</td><td>1</td><td>77–80</td></tr>
+      <tr><td>120</td><td>Сказка об Иване-царевиче, жар-птице и о сером волке</td><td>1</td><td>—</td></tr>
+      <tr><td>121</td><td>Сказка про одного однобокого барана</td><td>1</td><td>62</td></tr>
+      <tr><td>122</td><td>Сказка про утку с золотыми яйцами</td><td>2</td><td>195</td></tr>
+      <tr><td>123</td><td>Сказка про перстень о двенадцати винтах</td><td>3</td><td>—</td></tr>
+      <tr><td>124</td><td>Сказание об Александре Македонском</td><td>3</td><td>—</td></tr>
+      <tr><td>125</td><td>Скорый гонец</td><td>2</td><td>259</td></tr>
+      <tr><td>126</td><td>Слепцы</td><td>3</td><td>382</td></tr>
+      <tr><td>127</td><td>Смерть петушка</td><td>1</td><td>69</td></tr>
+      <tr><td>128</td><td>Смерть скупого</td><td>3</td><td>—</td></tr>
+      <tr><td>129</td><td>Собака и дятел</td><td>1</td><td>66</td></tr>
+      <tr><td>130</td><td>Солдат и разбойник</td><td>3</td><td>—</td></tr>
+      <tr><td>131</td><td>Солдатская загадка</td><td>3</td><td>392–394</td></tr>
+      <tr><td>132</td><td>Солнце, Месяц и Ворон Воронович</td><td>1</td><td>92</td></tr>
+      <tr><td>133</td><td>Соль</td><td>2</td><td>242</td></tr>
+      <tr><td>134</td><td>Сопливый козел</td><td>2</td><td>277</td></tr>
+      <tr><td>135</td><td>Счастливое дитя</td><td>2</td><td>257</td></tr>
+      <tr><td>136</td><td>Счастье и несчастье</td><td>3</td><td>—</td></tr>
+
+      <!-- ================= Т ================= -->
+      <tr class="letter-row" id="T"><td colspan="4">Т</td></tr>
+      <tr><td>137</td><td>Терем мухи</td><td>1</td><td>82–84</td></tr>
+      <tr><td>138</td><td>Терешечка</td><td>1</td><td>112</td></tr>
+      <tr><td>139</td><td>Три копеечки</td><td>2</td><td>217</td></tr>
+      <tr><td>140</td><td>Три царства — медное, серебряное и золотое</td><td>1</td><td>—</td></tr>
+
+      <!-- ================= У ================= -->
+      <tr class="letter-row" id="U"><td colspan="4">У</td></tr>
+      <tr><td>141</td><td>Упырь</td><td>3</td><td>—</td></tr>
+
+      <!-- ================= Ф ================= -->
+      <tr class="letter-row" id="F"><td colspan="4">Ф</td></tr>
+      <tr><td>142</td><td>Фомка-шут</td><td>3</td><td>398</td></tr>
+
+      <!-- ================= Х ================= -->
+      <tr class="letter-row" id="H"><td colspan="4">Х</td></tr>
+      <tr><td>143</td><td>Хитрая наука</td><td>2</td><td>249</td></tr>
+
+      <!-- ================= Ц ================= -->
+      <tr class="letter-row" id="Ts"><td colspan="4">Ц</td></tr>
+      <tr><td>144</td><td>Царевна, разрешающая загадки</td><td>2</td><td>239</td></tr>
+      <tr><td>145</td><td>Царевна-змея</td><td>2</td><td>270</td></tr>
+      <tr><td>146</td><td>Царевна-лягушка</td><td>2</td><td>267</td></tr>
+      <tr><td>147</td><td>Царевна — серая утица</td><td>2</td><td>264</td></tr>
+      <tr><td>148</td><td>Царевич-найденыш</td><td>3</td><td>—</td></tr>
+      <tr><td>149</td><td>Царица-гусляр</td><td>3</td><td>—</td></tr>
+      <tr><td>150</td><td>Царь-девица</td><td>2</td><td>232</td></tr>
+      <tr><td>151</td><td>Царь-медведь</td><td>2</td><td>201</td></tr>
+
+      <!-- ================= Ч ================= -->
+      <tr class="letter-row" id="Ch"><td colspan="4">Ч</td></tr>
+      <tr><td>152</td><td>Чернушка</td><td>2</td><td>293</td></tr>
+      <tr><td>153</td><td>Чудесная дудка</td><td>2</td><td>244</td></tr>
+      <tr><td>154</td><td>Чудесная курица</td><td>2</td><td>197</td></tr>
+      <tr><td>155</td><td>Чудесная рубашка</td><td>2</td><td>208</td></tr>
+      <tr><td>156</td><td>Чудесный ящик</td><td>2</td><td>189</td></tr>
+
+      <!-- ================= Ш ================= -->
+      <tr class="letter-row" id="Sh"><td colspan="4">Ш</td></tr>
+      <tr><td>157</td><td>Шабарша</td><td>1</td><td>—</td></tr>
+      <tr><td>158</td><td>Шут</td><td>3</td><td>397–399</td></tr>
+
+      <!-- ================= Щ ================= -->
+      <tr class="letter-row" id="Shch"><td colspan="4">Щ</td></tr>
+      <tr><td>159</td><td>Щука зубастая (байка)</td><td>1</td><td>81</td></tr>
+
+      <!-- ================= Ю ================= -->
+      <tr class="letter-row" id="Y"><td colspan="4">Ю</td></tr>
+      <tr><td>160</td><td>Юродивый</td><td>3</td><td>—</td></tr>
+
+      <!-- ================= Я ================= -->
+      <tr class="letter-row" id="Ya"><td colspan="4">Я</td></tr>
+      <tr><td>161</td><td>Яичко</td><td>1</td><td>—</td></tr>
+
+    </tbody>
+  </table>
+  
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© Аналитический проект «Гармония добра». Материалы носят образовательный характер.</span>
+  </div>
+</footer>
+
+</body>
+</html>
