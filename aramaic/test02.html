@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тест: арамейский — периодизация, диалекты, лексика</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    max-width: 840px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #222;
+    background: #fafafa;
+  }
+  .he {
+    font-family: "Times New Roman", "David", "Noto Sans Hebrew", serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-size: 1.12em;
+  }
+  .meta {
+    color: #555;
+    font-size: .95em;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .bar {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+  }
+  .bar > div {
+    height: 100%;
+    background: #4a8;
+    width: 0;
+    transition: width .25s ease;
+  }
+  .question {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+  }
+  .opt {
+    text-align: left;
+    padding: .6rem .9rem;
+    border: 1px solid #bbb;
+    background: #fff;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+  }
+  .opt:hover:not(:disabled) { background: #f0f5ff; border-color: #88a; }
+  .opt:disabled { cursor: default; }
+  .opt.correct { background: #e6f7ea; border-color: #3a9a4e; }
+  .opt.wrong { background: #fdecea; border-color: #c0392b; }
+  .opt .label { flex: 1; }
+  .opt .label[dir="rtl"] { direction: rtl; text-align: right; }
+  .opt .mark {
+    font-size: 1.35em;
+    min-width: 1.2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  .opt.correct .mark { color: #1e7a3a; }
+  .opt.wrong .mark { color: #b03020; }
+  .result {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+  }
+  .result .score { font-size: 2rem; font-weight: bold; margin: .3rem 0 .6rem; }
+  .restart {
+    margin-top: 1rem;
+    padding: .6rem 1.1rem;
+    font: inherit;
+    background: #3a6ea5;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .restart:hover { background: #2f5a87; }
+  .note { color: #666; font-size: .9em; margin-top: .6rem; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="meta">
+    <span id="progress">Вопрос 1 из 20</span>
+    <span id="tally">Правильно: 0</span>
+  </div>
+  <div class="bar"><div id="barfill"></div></div>
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+</div>
+
+<div id="final" class="result" style="display:none"></div>
+
+<script>
+/* ---------- Seeded RNG (mulberry32) from system clock ---------- */
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    var t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const SEED = Date.now() >>> 0;
+const rng = mulberry32(SEED);
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------- Question bank (60) ---------- */
+const BANK = [
+
+  /* ===== A. Периодизация, диалекты, датировки (1–15) ===== */
+  { q: 'К какому периоду относится библейский арамейский?',
+    options: ['Имперский (официальный) арамейский', 'Древнеарамейский', 'Среднеарамейский', 'Позднеарамейский'],
+    correct: 'Имперский (официальный) арамейский' },
+  { q: 'Когда имперский арамейский был объявлен официальным языком западной половины Ахеменидской империи?',
+    options: ['Около 500 г. до н. э. (Дарий I)', 'Около 700 г. до н. э.', 'Около 200 г. до н. э.', 'Около 100 г. н. э.'],
+    correct: 'Около 500 г. до н. э. (Дарий I)' },
+  { q: 'Какой диалект представляет Пешитта?',
+    options: ['Сирийский (восточноарамейский)', 'Галилейский (западноарамейский)', 'Имперский', 'Самаритянский'],
+    correct: 'Сирийский (восточноарамейский)' },
+  { q: 'К какому периоду относится Пешитта Нового Завета?',
+    options: ['II–V вв. н. э.', 'V–IV вв. до н. э.', 'X–XI вв. н. э.', 'XIII в. н. э.'],
+    correct: 'II–V вв. н. э.' },
+  { q: 'Когда были письменно зафиксированы Таргумы (Онкелос, Йонатан)?',
+    options: ['II–V вв. н. э.', 'V–IV вв. до н. э.', 'X–XI вв. н. э.', 'XIII в. н. э.'],
+    correct: 'II–V вв. н. э.' },
+  { q: 'К какому периоду относится Иерусалимский Талмуд?',
+    options: ['IV–V вв. н. э.', 'I в. н. э.', 'X в. н. э.', 'XIII в. н. э.'],
+    correct: 'IV–V вв. н. э.' },
+  { q: 'Когда появился Зоар?',
+    options: ['XIII в. н. э.', 'I в. н. э.', 'V в. до н. э.', 'IV в. н. э.'],
+    correct: 'XIII в. н. э.' },
+  { q: 'К какому периоду относятся новоарамейские диалекты?',
+    options: ['С X–XI вв. н. э.', 'С V в. до н. э.', 'С I в. н. э.', 'С IV в. н. э.'],
+    correct: 'С X–XI вв. н. э.' },
+  { q: 'Галилейский арамейский 1-го века — это...',
+    options: ['Реконструкция (нет прямых текстов)', 'Хорошо засвидетельствованный корпус', 'Синоним сирийского', 'Синоним имперского'],
+    correct: 'Реконструкция (нет прямых текстов)' },
+  { q: 'Какой диалект — западный, а какой восточный?',
+    options: ['Галилейский — западный, сирийский — восточный', 'Галилейский — восточный, сирийский — западный', 'Оба западные', 'Оба восточные'],
+    correct: 'Галилейский — западный, сирийский — восточный' },
+  { q: 'К какому периоду относится кумранский арамейский?',
+    options: ['Среднеарамейский (200 до н. э. – 200 н. э.)', 'Древнеарамейский', 'Имперский', 'Новоарамейский'],
+    correct: 'Среднеарамейский (200 до н. э. – 200 н. э.)' },
+  { q: 'Когда жил Дарий I, при котором имперский арамейский стал официальным?',
+    options: ['VI–V вв. до н. э.', 'II в. н. э.', 'XIII в. н. э.', 'IV в. н. э.'],
+    correct: 'VI–V вв. до н. э.' },
+  { q: 'Письма Бар-Кохбы датируются...',
+    options: ['132–135 гг. н. э.', 'V в. до н. э.', 'IV в. н. э.', 'X в. н. э.'],
+    correct: '132–135 гг. н. э.' },
+  { q: 'Что такое Элефантинские папирусы?',
+    options: ['Документы V в. до н. э. на имперском арамейском', 'Средневековые каббалистические трактаты', 'Сирийские литургические тексты', 'Новоарамейские записи'],
+    correct: 'Документы V в. до н. э. на имперском арамейском' },
+  { q: 'Где сегодня сохраняется западный новоарамейский?',
+    options: ['Маалюля (Сирия)', 'Урмия (Иран)', 'Мосул (Ирак)', 'Эдесса (Турция)'],
+    correct: 'Маалюля (Сирия)' },
+
+  /* ===== B. Арамейские глоссы в НЗ (16–25) ===== */
+  { q: 'Что означает <span class="lat">ταλιθα κουμ</span> (Мк 5:41)?',
+    options: ['«девочка, встань»', '«откройся»', '«отец»', '«Господь наш, приди»'],
+    correct: '«девочка, встань»' },
+  { q: 'Что означает <span class="lat">εφφαθα</span> (Мк 7:34)?',
+    options: ['«откройся»', '«девочка, встань»', '«мой учитель»', '«череп»'],
+    correct: '«откройся»' },
+  { q: 'Что означает <span class="lat">αββα</span> (Мк 14:36; Рим 8:15; Гал 4:6)?',
+    options: ['«отец»', '«брат»', '«царь»', '«мир»'],
+    correct: '«отец»' },
+  { q: 'Что означает <span class="lat">ραββουνι</span> (Мк 10:51; Ин 20:16)?',
+    options: ['«мой учитель / господин»', '«мой отец»', '«мой брат»', '«мой царь»'],
+    correct: '«мой учитель / господин»' },
+  { q: 'Что означает <span class="lat">μαρανα θα</span> (1 Кор 16:22)?',
+    options: ['«Господь наш, приди»', '«Господь наш пришёл»', '«Господь наш, помилуй»', '«Господь наш, спаси»'],
+    correct: '«Господь наш, приди»' },
+  { q: 'Что означает <span class="lat">σαβαχθανι</span> (Мк 15:34)?',
+    options: ['«ты оставил меня»', '«ты спас меня»', '«ты услышал меня»', '«ты проклял меня»'],
+    correct: '«ты оставил меня»' },
+  { q: 'Что означает <span class="lat">κορβαν</span> (Мк 7:11)?',
+    options: ['«дар, приношение»', '«жертва за грех»', '«десятина»', '«молитва»'],
+    correct: '«дар, приношение»' },
+  { q: 'Что означает <span class="lat">κηφας</span> (Ин 1:42)?',
+    options: ['«камень, скала»', '«рыбак»', '«брат»', '«ученик»'],
+    correct: '«камень, скала»' },
+  { q: 'Что означает <span class="lat">γολγοθα</span> (Мк 15:22)?',
+    options: ['«череп»', '«холм»', '«крест»', '«могила»'],
+    correct: '«череп»' },
+  { q: 'В каком Евангелии больше всего арамейских глосс?',
+    options: ['Марк', 'Матфей', 'Лука', 'Иоанн'],
+    correct: 'Марк' },
+
+  /* ===== C. Ключевые слова и критика (26–40) ===== */
+  { q: 'Что означает <span class="he">מָמוֹן</span>?',
+    options: ['богатство, имущество', 'бог богатства', 'жертва', 'молитва'],
+    correct: 'богатство, имущество' },
+  { q: 'Является ли <span class="he">מָמוֹן</span> именем «бога Маммона»?',
+    options: ['Нет, это обычное слово «богатство»', 'Да, это имя божества', 'Да, это синоним Плутона', 'Да, это синоним Ваала'],
+    correct: 'Нет, это обычное слово «богатство»' },
+  { q: 'Что означает <span class="he">בַּר נָשָׁא</span>?',
+    options: ['человек, человеческое существо', 'сын Божий', 'сын Давидов', 'Мессия'],
+    correct: 'человек, человеческое существо' },
+  { q: 'Кто оспорил титулярность «Сына Человеческого» в устах Иисуса?',
+    options: ['Морис Кейси и Геза Вермес', 'Иоахим Иеремиас и Уильям Баркли', 'Ф. Ф. Брюс и Джозеф Фицмайер', 'Густаф Дальман и Мэтью Блэк'],
+    correct: 'Морис Кейси и Геза Вермес' },
+  { q: 'Что означает <span class="he">אַבָּא</span>?',
+    options: ['отец (обращение)', 'мать', 'брат', 'сын'],
+    correct: 'отец (обращение)' },
+  { q: 'Кто показал, что «Авва» — не «папочка», а взрослое слово «отец»?',
+    options: ['Джеймс Барр', 'Иоахим Иеремиас', 'Уильям Баркли', 'Морис Кейси'],
+    correct: 'Джеймс Барр' },
+  { q: 'Что означает <span class="he">מַלְכוּתָא</span>?',
+    options: ['и «царство», и «царствование»', 'только «царствование»', 'только «царство»', 'только «царская власть»'],
+    correct: 'и «царство», и «царствование»' },
+  { q: 'Что означает <span class="he">שְׁלָמָא</span>?',
+    options: ['мир, полнота', 'спасение', 'жертва', 'молитва'],
+    correct: 'мир, полнота' },
+  { q: 'Что означает <span class="he">רוּחָא</span>?',
+    options: ['дух, ветер', 'дыхание, только', 'сердце', 'душа'],
+    correct: 'дух, ветер' },
+  { q: 'Что означает <span class="he">מְשִׁיחָא</span>?',
+    options: ['Мессия, помазанник', 'царь', 'пророк', 'священник'],
+    correct: 'Мессия, помазанник' },
+  { q: 'Что означает <span class="he">אֱלָהָא</span>?',
+    options: ['Бог', 'Господь', 'ангел', 'дух'],
+    correct: 'Бог' },
+  { q: 'Что означает <span class="he">רַבּוּנִי</span>?',
+    options: ['мой учитель / господин', 'мой отец', 'мой брат', 'мой царь'],
+    correct: 'мой учитель / господин' },
+  { q: 'Что такое <em>Adam Kadmon</em>?',
+    options: ['Каббалистическое понятие (XIII–XVI вв.)', 'Арамейское слово 1-го века', 'Сирийский литургический термин', 'Талмудический титул'],
+    correct: 'Каббалистическое понятие (XIII–XVI вв.)' },
+  { q: 'Что такое <em>Atzilut, Beriah, Yetzirah, Asiyah</em>?',
+    options: ['Каббалистические миры (XIII в. и позже)', 'Четыре уровня толкования 1-го века', 'Четыре арамейских диалекта', 'Четыре раздела Талмуда'],
+    correct: 'Каббалистические миры (XIII в. и позже)' },
+  { q: 'Можно ли использовать Пешитту как прямой источник «языка Иисуса»?',
+    options: ['Нет, это перевод II–V вв. на сирийский', 'Да, это оригинал на галилейском', 'Да, это запись слов Иисуса', 'Да, это кумранский текст'],
+    correct: 'Нет, это перевод II–V вв. на сирийский' },
+
+  /* ===== D. Иврит → арамейский (41–50) ===== */
+  { q: 'Какое арамейское соответствие евр. <span class="he">שָׁלוֹם</span>?',
+    options: ['<span class="he">שְׁלָמָא</span>', '<span class="he">מַלְכוּתָא</span>', '<span class="he">רוּחָא</span>', '<span class="he">אֱלָהָא</span>'],
+    correct: '<span class="he">שְׁלָמָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">מָשִׁיחַ</span>?',
+    options: ['<span class="he">מְשִׁיחָא</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">נְבִיָּא</span>', '<span class="he">כָּהֲנָא</span>'],
+    correct: '<span class="he">מְשִׁיחָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">אוֹר</span> «свет»?',
+    options: ['<span class="he">נְהוֹר</span>', '<span class="he">נוּרָא</span>', '<span class="he">מַיָּא</span>', '<span class="he">אַרְעָא</span>'],
+    correct: '<span class="he">נְהוֹר</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">דֶּרֶךְ</span>?',
+    options: ['<span class="he">אוֹרְחָא</span>', '<span class="he">שְׁבִילָא</span>', '<span class="he">מַסְלוּלָא</span>', '<span class="he">נְתִיבָא</span>'],
+    correct: '<span class="he">אוֹרְחָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">קוֹל</span>?',
+    options: ['<span class="he">קָל</span>', '<span class="he">שְׁמַע</span>', '<span class="he">דִּבּוּר</span>', '<span class="he">מִלָּה</span>'],
+    correct: '<span class="he">קָל</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">מַיִם</span>?',
+    options: ['<span class="he">מַיָּא</span>', '<span class="he">יַמָּא</span>', '<span class="he">נַהֲרָא</span>', '<span class="he">מַבּוּעָא</span>'],
+    correct: '<span class="he">מַיָּא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">אֵשׁ</span>?',
+    options: ['<span class="he">נוּרָא</span>', '<span class="he">נְהוֹר</span>', '<span class="he">רוּחָא</span>', '<span class="he">עֲנָנָא</span>'],
+    correct: '<span class="he">נוּרָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">יוֹם</span>?',
+    options: ['<span class="he">יוֹמָא</span>', '<span class="he">לֵילְיָא</span>', '<span class="he">שַׁתָּא</span>', '<span class="he">שָׁעָה</span>'],
+    correct: '<span class="he">יוֹמָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">לַיְלָה</span>?',
+    options: ['<span class="he">לֵילְיָא</span>', '<span class="he">יוֹמָא</span>', '<span class="he">צַפְרָא</span>', '<span class="he">רַמְשָׁא</span>'],
+    correct: '<span class="he">לֵילְיָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">שָׁנָה</span>?',
+    options: ['<span class="he">שַׁתָּא</span>', '<span class="he">יוֹמָא</span>', '<span class="he">יַרְחָא</span>', '<span class="he">זְמָן</span>'],
+    correct: '<span class="he">שַׁתָּא</span>' },
+
+  /* ===== E. Арамейский → русский (51–55) ===== */
+  { q: 'Как переводится <span class="he">מָמוֹן</span>?',
+    options: ['богатство', 'жертва', 'молитва', 'суд'],
+    correct: 'богатство' },
+  { q: 'Как переводится <span class="he">בַּר נָשָׁא</span>?',
+    options: ['человек', 'сын Божий', 'сын Давидов', 'ангел'],
+    correct: 'человек' },
+  { q: 'Как переводится <span class="he">מַלְכוּתָא</span>?',
+    options: ['царство / царствование', 'царь', 'царица', 'цари'],
+    correct: 'царство / царствование' },
+  { q: 'Как переводится <span class="he">שְׁלָמָא</span>?',
+    options: ['мир, полнота', 'спасение', 'жертва', 'молитва'],
+    correct: 'мир, полнота' },
+  { q: 'Как переводится <span class="he">רוּחָא</span>?',
+    options: ['дух, ветер', 'сердце', 'душа', 'дыхание'],
+    correct: 'дух, ветер' },
+
+  /* ===== F. Русский → арамейский (56–60) ===== */
+  { q: 'Как по-арамейски «Мессия»?',
+    options: ['<span class="he">מְשִׁיחָא</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">נְבִיָּא</span>', '<span class="he">כָּהֲנָא</span>'],
+    correct: '<span class="he">מְשִׁיחָא</span>' },
+  { q: 'Как по-арамейски «Бог»?',
+    options: ['<span class="he">אֱלָהָא</span>', '<span class="he">מָרְיָא</span>', '<span class="he">רוּחָא</span>', '<span class="he">מַלְכָּא</span>'],
+    correct: '<span class="he">אֱלָהָא</span>' },
+  { q: 'Как по-арамейски «пророк»?',
+    options: ['<span class="he">נְבִיָּא</span>', '<span class="he">מְשִׁיחָא</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">כָּהֲנָא</span>'],
+    correct: '<span class="he">נְבִיָּא</span>' },
+  { q: 'Как по-арамейски «закон» (в значении «Тора, учение»)?',
+    options: ['<span class="he">אוֹרַיְתָא</span>', '<span class="he">נָמוֹסָא</span>', '<span class="he">דִּינָא</span>', '<span class="he">מִצְוְתָא</span>'],
+    correct: '<span class="he">אוֹרַיְתָא</span>' },
+  { q: 'Как по-арамейски «слово»?',
+    options: ['<span class="he">מִלְּתָא</span>', '<span class="he">קָלָא</span>', '<span class="he">דִּבּוּרָא</span>', '<span class="he">שְׁמָעָא</span>'],
+    correct: '<span class="he">מִלְּתָא</span>' }
+];
+
+/* ---------- Подготовка сессии ---------- */
+const TOTAL = 20;
+const indices = shuffle([...Array(BANK.length).keys()]).slice(0, TOTAL);
+const SESSION = indices.map(i => {
+  const q = BANK[i];
+  return { q: q.q, correct: q.correct, options: shuffle(q.options) };
+});
+
+/* ---------- Состояние ---------- */
+let current = 0;
+let score = 0;
+
+const $progress = document.getElementById('progress');
+const $tally = document.getElementById('tally');
+const $barfill = document.getElementById('barfill');
+const $question = document.getElementById('question');
+const $options = document.getElementById('options');
+const $stage = document.getElementById('stage');
+const $final = document.getElementById('final');
+
+function render() {
+  const item = SESSION[current];
+  $progress.textContent = `Вопрос ${current + 1} из ${TOTAL}`;
+  $tally.textContent = `Правильно: ${score}`;
+  $barfill.style.width = `${(current / TOTAL) * 100}%`;
+  $question.innerHTML = item.q;
+  $options.innerHTML = '';
+
+  item.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'opt';
+    const isHeb = /[\u0590-\u05FF]/.test(opt);
+    const labelDir = isHeb ? ' dir="rtl"' : '';
+    btn.innerHTML = `<span class="label"${labelDir}>${opt}</span><span class="mark"></span>`;
+    btn.addEventListener('click', () => choose(btn, opt, item));
+    $options.appendChild(btn);
+  });
+}
+
+function choose(btn, opt, item) {
+  const buttons = [...$options.querySelectorAll('.opt')];
+  buttons.forEach(b => b.disabled = true);
+
+  if (opt === item.correct) {
+    btn.classList.add('correct');
+    btn.querySelector('.mark').textContent = '✓';
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    btn.querySelector('.mark').textContent = '✗';
+    buttons.forEach(b => {
+      if (b.querySelector('.label').innerHTML === item.correct) {
+        b.classList.add('correct');
+        b.querySelector('.mark').textContent = '✓';
+      }
+    });
+  }
+
+  $tally.textContent = `Правильно: ${score}`;
+
+  setTimeout(() => {
+    current++;
+    if (current < TOTAL) {
+      render();
+    } else {
+      finish();
+    }
+  }, 900);
+}
+
+function finish() {
+  $barfill.style.width = '100%';
+  $stage.style.display = 'none';
+  const pct = Math.round((score / TOTAL) * 100);
+  let verdict = '';
+  if (pct >= 90) verdict = 'Отличный уровень: периодизация, диалекты и лексика усвоены уверенно.';
+  else if (pct >= 70) verdict = 'Хороший уровень: есть база, но нужно повторить датировки и критику.';
+  else if (pct >= 50) verdict = 'Средний уровень: повторите периодизацию, глоссы и ключевые слова.';
+  else verdict = 'Начальный уровень: начните с конспекта (§1–5).';
+  $final.innerHTML = `
+    <div>Тест завершён. Итог:</div>
+    <div class="score">${score} / ${TOTAL}</div>
+    <div>${pct}%</div>
+    <p>${verdict}</p>
+    <button class="restart" onclick="location.reload()">Пройти ещё раз (новый набор вопросов)</button>
+    <p class="note">Порядок вопросов и вариантов определяется системным временем при загрузке страницы.</p>
+  `;
+  $final.style.display = 'block';
+}
+
+render();
+</script>
+
+</body>
+</html>

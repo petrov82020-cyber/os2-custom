@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тест: трансформации арамейского и реконструкция</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    max-width: 840px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #222;
+    background: #fafafa;
+  }
+  .he {
+    font-family: "Times New Roman", "David", "Noto Sans Hebrew", serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-size: 1.12em;
+  }
+  .lat { font-style: italic; }
+  .meta {
+    color: #555;
+    font-size: .95em;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .bar {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+  }
+  .bar > div {
+    height: 100%;
+    background: #4a8;
+    width: 0;
+    transition: width .25s ease;
+  }
+  .question {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+  }
+  .opt {
+    text-align: left;
+    padding: .6rem .9rem;
+    border: 1px solid #bbb;
+    background: #fff;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+  }
+  .opt:hover:not(:disabled) { background: #f0f5ff; border-color: #88a; }
+  .opt:disabled { cursor: default; }
+  .opt.correct { background: #e6f7ea; border-color: #3a9a4e; }
+  .opt.wrong { background: #fdecea; border-color: #c0392b; }
+  .opt .label { flex: 1; }
+  .opt .label[dir="rtl"] { direction: rtl; text-align: right; }
+  .opt .mark {
+    font-size: 1.35em;
+    min-width: 1.2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  .opt.correct .mark { color: #1e7a3a; }
+  .opt.wrong .mark { color: #b03020; }
+  .result {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+  }
+  .result .score { font-size: 2rem; font-weight: bold; margin: .3rem 0 .6rem; }
+  .restart {
+    margin-top: 1rem;
+    padding: .6rem 1.1rem;
+    font: inherit;
+    background: #3a6ea5;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .restart:hover { background: #2f5a87; }
+  .note { color: #666; font-size: .9em; margin-top: .6rem; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="meta">
+    <span id="progress">Вопрос 1 из 20</span>
+    <span id="tally">Правильно: 0</span>
+  </div>
+  <div class="bar"><div id="barfill"></div></div>
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+</div>
+
+<div id="final" class="result" style="display:none"></div>
+
+<script>
+/* ---------- Seeded RNG (mulberry32) from system clock ---------- */
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    var t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const SEED = Date.now() >>> 0;
+const rng = mulberry32(SEED);
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------- Question bank (60) ---------- */
+const BANK = [
+
+  /* ===== A. Фонетические и морфологические трансформации (1–15) ===== */
+  { q: 'Как BA <span class="he">אֲנָה</span> (<span class="lat">ʾănāh</span>) трансформируется в сирийском?',
+    options: ['<span class="lat">ʾenā</span>', '<span class="lat">ʾanā</span>', '<span class="lat">ʾinā</span>', '<span class="lat">ʾonā</span>'],
+    correct: '<span class="lat">ʾenā</span>' },
+  { q: 'Какой переход произошёл с кластером *nt в сирийском и таргумическом?',
+    options: ['*nt → tt → t', '*nt → nn → n', '*nt → dd → d', '*nt → ss → s'],
+    correct: '*nt → tt → t' },
+  { q: 'Как сир. <span class="lat">ʾat</span> восстанавливается в BA?',
+    options: ['*ʾant', '*ʾatt', '*ʾat', '*ʾanat'],
+    correct: '*ʾant' },
+  { q: 'Как тарг. <span class="he">אֲנַן</span> (<span class="lat">ʾănan</span>) восстанавливается в BA?',
+    options: ['*ʾănaḥnāʾ', '*ʾănan', '*ʾanāḥnû', '*ʾănîn'],
+    correct: '*ʾănaḥnāʾ' },
+  { q: 'Какое изменение префикса каузативной породы произошло в таргумах и сирийском?',
+    options: ['*h- → ʾ-', '*ʾ- → h-', '*y- → h-', '*n- → h-'],
+    correct: '*h- → ʾ-' },
+  { q: 'Как сир. <span class="lat">ʾaqṭel</span> восстанавливается в BA?',
+    options: ['*haqṭēl', '*ʾaqṭal', '*yaqṭēl', '*naqṭēl'],
+    correct: '*haqṭēl' },
+  { q: 'В сирийском имперфекте *y- переходит в:',
+    options: ['n-', 't-', 'ʾ-', 'h-'],
+    correct: 'n-' },
+  { q: 'Как сир. <span class="lat">nektōḇ</span> восстанавливается в BA?',
+    options: ['*yiktuḇ', '*niktuḇ', '*yaktub', '*yiktob'],
+    correct: '*yiktuḇ' },
+  { q: 'Что произошло с окончанием <span class="he">‑ַיָּא</span> (<span class="lat">-ayyā</span>) в сирийском?',
+    options: ['→ ē', '→ ā', '→ ī', '→ ō'],
+    correct: '→ ē' },
+  { q: 'Как сир. <span class="lat">malkē</span> восстанавливается в BA?',
+    options: ['*malkayyā', '*malkā', '*malkîn', '*malkê'],
+    correct: '*malkayyā' },
+  { q: 'Что происходит с *ə (shewa) в начале слова в сирийском?',
+    options: ['Выпадает (Ø)', 'Переходит в a', 'Переходит в i', 'Переходит в e'],
+    correct: 'Выпадает (Ø)' },
+  { q: 'Как сир. <span class="lat">kṯab</span> восстанавливается в BA?',
+    options: ['*kəṯab', '*kaṯab', '*kiṯab', '*kuṯab'],
+    correct: '*kəṯab' },
+  { q: 'Какой переход *ā в эмфатическом состоянии произошёл в зап.-сирийском?',
+    options: ['*ā → ō', '*ā → ē', '*ā → ī', '*ā → ū'],
+    correct: '*ā → ō' },
+  { q: 'Как сир. <span class="lat">ʾenā</span> восстанавливается в BA?',
+    options: ['*ʾănāh', '*ʾanā', '*ʾinā', '*ʾănē'],
+    correct: '*ʾănāh' },
+  { q: 'Как тарг. <span class="he">אַקְטֵל</span> восстанавливается в BA?',
+    options: ['*haqṭēl', '*ʾaqṭēl', '*yaqṭēl', '*naqṭēl'],
+    correct: '*haqṭēl' },
+
+  /* ===== B. Лексические и семантические трансформации (16–25) ===== */
+  { q: 'Что означает BA <span class="he">מֵימַר</span> (<span class="lat">mêmar</span>)?',
+    options: ['«слово, приказ»', '«Слово Божье»', '«молитва»', '«закон»'],
+    correct: '«слово, приказ»' },
+  { q: 'Что означает BA <span class="he">מָמוֹן</span> (<span class="lat">māmôn</span>)?',
+    options: ['богатство, имущество', 'бог богатства', 'жертва', 'молитва'],
+    correct: 'богатство, имущество' },
+  { q: 'Сирийское <span class="he">אֶוַונְגֶּלְיוֹן</span> — это:',
+    options: ['греческое заимствование (εὐαγγέλιον)', 'арамейское слово', 'ивритское слово', 'латинское слово'],
+    correct: 'греческое заимствование (εὐαγγέλιον)' },
+  { q: 'Таргумическое <span class="he">מֵימְרָא</span> (<span class="lat">mêmrāʾ</span>) — это:',
+    options: ['богословская амплификация «Слово (Божье)»', 'обычное слово «слово»', 'имя Бога', 'ангел'],
+    correct: 'богословская амплификация «Слово (Божье)»' },
+  { q: 'Что происходит с BA <span class="he">יְהַב</span> (<span class="lat">yəhaḇ</span>) в сирийском?',
+    options: ['Сохраняется, но появляется <span class="lat">ʾet(y)hab</span>', 'Полностью утрачено', 'Заменено на <span class="lat">nāṯan</span>', 'Заменено на <span class="lat">ʿăḇaḏ</span>'],
+    correct: 'Сохраняется, но появляется <span class="lat">ʾet(y)hab</span>' },
+  { q: 'Что означает <span class="he">רוּחָא</span> (<span class="lat">rûḥāʾ</span>)?',
+    options: ['дух, ветер', 'вода', 'огонь', 'земля'],
+    correct: 'дух, ветер' },
+  { q: 'Что означает <span class="he">נְבִיָּא</span> (<span class="lat">nəḇiyyāʾ</span>)?',
+    options: ['пророк', 'священник', 'царь', 'писец'],
+    correct: 'пророк' },
+  { q: 'Что означает <span class="he">כָּהֲנָא</span> (<span class="lat">kāhănāʾ</span>)?',
+    options: ['священник', 'пророк', 'царь', 'судья'],
+    correct: 'священник' },
+  { q: 'Что означает <span class="he">סָפְרָא</span> (<span class="lat">sāfrāʾ</span>)?',
+    options: ['писец', 'книга', 'письмо', 'закон'],
+    correct: 'писец' },
+  { q: 'Что означает <span class="he">דִּין</span> (<span class="lat">dîn</span>)?',
+    options: ['суд', 'закон', 'правда', 'наказание'],
+    correct: 'суд' },
+
+  /* ===== C. Датировка и диалекты (26–35) ===== */
+  { q: 'Библейский арамейский датируется:',
+    options: ['V–IV вв. до н. э.', 'II–V вв. н. э.', 'I в. н. э.', 'XIII в. н. э.'],
+    correct: 'V–IV вв. до н. э.' },
+  { q: 'Таргумы письменно зафиксированы:',
+    options: ['II–V вв. н. э.', 'V–IV вв. до н. э.', 'I в. н. э.', 'X–XI вв. н. э.'],
+    correct: 'II–V вв. н. э.' },
+  { q: 'Пешитта Нового Завета — это:',
+    options: ['перевод с греческого на сирийский', 'оригинал на арамейском', 'перевод с иврита', 'текст I в. н. э.'],
+    correct: 'перевод с греческого на сирийский' },
+  { q: 'Сирийский — это диалект:',
+    options: ['восточноарамейский', 'западноарамейский', 'имперский', 'ханаанский'],
+    correct: 'восточноарамейский' },
+  { q: 'Галилейский арамейский 1-го века относится к:',
+    options: ['западной ветви', 'восточной ветви', 'имперскому арамейскому', 'сирийскому'],
+    correct: 'западной ветви' },
+  { q: 'Какая частица «если» в BA?',
+    options: ['<span class="he">הֵן</span> (<span class="lat">hēn</span>)', '<span class="he">אִי</span> (<span class="lat">ʾî</span>)', '<span class="lat">en</span>', '<span class="lat">d-</span>'],
+    correct: '<span class="he">הֵן</span> (<span class="lat">hēn</span>)' },
+  { q: 'Какая частица «если» в таргумах?',
+    options: ['<span class="he">אִי</span> (<span class="lat">ʾî</span>)', '<span class="he">הֵן</span> (<span class="lat">hēn</span>)', '<span class="lat">en</span>', '<span class="lat">l-</span>'],
+    correct: '<span class="he">אִי</span> (<span class="lat">ʾî</span>)' },
+  { q: 'Какая относительная частица в BA?',
+    options: ['<span class="he">דִּי</span> (<span class="lat">dî</span>)', '<span class="he">דְּ־</span> (<span class="lat">də-</span>)', '<span class="lat">d-</span>', '<span class="he">אֲשֶׁר</span>'],
+    correct: '<span class="he">דִּי</span> (<span class="lat">dî</span>)' },
+  { q: 'Плеонастические (избыточные) местоимения характерны для:',
+    options: ['сирийского', 'BA', 'кумранского арамейского', 'древнеарамейского'],
+    correct: 'сирийского' },
+  { q: 'Аналитические (композитные) времена характерны для:',
+    options: ['сирийского и среднеарамейского', 'BA', 'древнеарамейского', 'только для таргумов'],
+    correct: 'сирийского и среднеарамейского' },
+
+  /* ===== D. Лексика и перевод (36–50) ===== */
+  { q: 'Какое арамейское соответствие евр. <span class="he">שָׁלוֹם</span>?',
+    options: ['<span class="he">שְׁלָמָא</span>', '<span class="he">שָׁלוֹם</span>', '<span class="he">שֶׁקֶט</span>', '<span class="he">נַחַת</span>'],
+    correct: '<span class="he">שְׁלָמָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">מָשִׁיחַ</span>?',
+    options: ['<span class="he">מְשִׁיחָא</span>', '<span class="he">מָשִׁיחַ</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">נְבִיָּא</span>'],
+    correct: '<span class="he">מְשִׁיחָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">רוּחַ</span>?',
+    options: ['<span class="he">רוּחָא</span>', '<span class="he">נֶפֶשׁ</span>', '<span class="he">נְשָׁמָה</span>', '<span class="he">לֵב</span>'],
+    correct: '<span class="he">רוּחָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">דָּם</span>?',
+    options: ['<span class="he">דְּמָא</span>', '<span class="he">דָּם</span>', '<span class="he">נֶפֶשׁ</span>', '<span class="he">בָּשָׂר</span>'],
+    correct: '<span class="he">דְּמָא</span>' },
+  { q: 'Что означает <span class="he">אֱלָהָא</span> (<span class="lat">ʾĕlāhāʾ</span>)?',
+    options: ['Бог', 'Господь', 'ангел', 'дух'],
+    correct: 'Бог' },
+  { q: 'Что означает <span class="he">מַלְכוּתָא</span> (<span class="lat">malkûtāʾ</span>)?',
+    options: ['царство / царствование', 'царь', 'царица', 'цари'],
+    correct: 'царство / царствование' },
+  { q: 'Что означает <span class="he">שְׁמַיָּא</span> (<span class="lat">šəmayyāʾ</span>)?',
+    options: ['небо', 'земля', 'море', 'гора'],
+    correct: 'небо' },
+  { q: 'Что означает <span class="he">אַרְעָא</span> (<span class="lat">ʾarʿāʾ</span>)?',
+    options: ['земля', 'небо', 'вода', 'гора'],
+    correct: 'земля' },
+  { q: 'Что означает <span class="he">יַמָּא</span> (<span class="lat">yammāʾ</span>)?',
+    options: ['море', 'река', 'озеро', 'гора'],
+    correct: 'море' },
+  { q: 'Что означает <span class="he">טוּרָא</span> (<span class="lat">ṭûrāʾ</span>)?',
+    options: ['гора', 'море', 'река', 'дом'],
+    correct: 'гора' },
+  { q: 'Что означает <span class="he">נַהֲרָא</span> (<span class="lat">nahărāʾ</span>)?',
+    options: ['река', 'море', 'гора', 'пустыня'],
+    correct: 'река' },
+  { q: 'Что означает <span class="he">בֵּיתָא</span> (<span class="lat">bêtāʾ</span>)?',
+    options: ['дом', 'дворец', 'храм', 'город'],
+    correct: 'дом' },
+  { q: 'Что означает <span class="he">עֲבַד</span> (<span class="lat">ʿăḇaḏ</span>)?',
+    options: ['он сделал', 'он сказал', 'он написал', 'он дал'],
+    correct: 'он сделал' },
+  { q: 'Что означает <span class="he">אֲמַר</span> (<span class="lat">ʾămar</span>)?',
+    options: ['он сказал', 'он сделал', 'он написал', 'он дал'],
+    correct: 'он сказал' },
+  { q: 'Что означает <span class="he">כְּתַב</span> (<span class="lat">kəṯab</span>)?',
+    options: ['он написал', 'он сказал', 'он сделал', 'он дал'],
+    correct: 'он написал' },
+
+  /* ===== E. Реконструкция, проблемы, ограничения (51–60) ===== */
+  { q: 'Сколько категорий трансформации выделено в анализе?',
+    options: ['4: фонетика, морфология, синтаксис, лексика', '2: фонетика и морфология', '3: фонетика, морфология, синтаксис', '5: + текстология'],
+    correct: '4: фонетика, морфология, синтаксис, лексика' },
+  { q: '«Плеонастические местоимения» — это:',
+    options: ['избыточные местоимения в сирийском', 'отсутствие местоимений', 'местоимения только в BA', 'местоимения в таргумах'],
+    correct: 'избыточные местоимения в сирийском' },
+  { q: 'Что утратил сирийский по сравнению с BA?',
+    options: ['функцию эмфатического состояния как маркера определённости', 'эмфатическое состояние полностью', 'все породы', 'все местоимения'],
+    correct: 'функцию эмфатического состояния как маркера определённости' },
+  { q: 'Что такое <span class="he">יָת</span> (<span class="lat">yāṯ</span>)?',
+    options: ['инновация в таргумах, отсутствует в BA', 'древняя частица BA', 'сирийская частица', 'кумранская инновация'],
+    correct: 'инновация в таргумах, отсутствует в BA' },
+  { q: 'Какое изменение в порядке слов произошло в имперском арамейском?',
+    options: ['тенденция к SOV под персидским влиянием', 'тенденция к VSO', 'тенденция к OSV', 'порядок не изменился'],
+    correct: 'тенденция к SOV под персидским влиянием' },
+  { q: 'Греческие кальки в Пешитте:',
+    options: ['не имеют BA-прототипа', 'восходят к BA', 'являются оригиналом', 'восходят к таргумам'],
+    correct: 'не имеют BA-прототипа' },
+  { q: 'Парафрастические добавления в Таргумах:',
+    options: ['не восходят к BA', 'восходят к BA', 'являются оригиналом', 'восходят к Пешитте'],
+    correct: 'не восходят к BA' },
+  { q: 'Что произошло с внутренним пассивом Peal (*qutal) в позднейших диалектах?',
+    options: ['вытеснен рефлексивными формами', 'сохранился без изменений', 'стал единственным пассивом', 'перешёл в каузатив'],
+    correct: 'вытеснен рефлексивными формами' },
+  { q: 'Какое правило реконструкции для сир. <span class="lat">ʾat</span>?',
+    options: ['восстановить *n перед t', 'восстановить *h', 'восстановить *y', 'восстановить *ʾ'],
+    correct: 'восстановить *n перед t' },
+  { q: 'Какое ограничение алгоритма реконструкции?',
+    options: ['семантические реконструкции невозможны', 'алгоритм работает для всех случаев', 'алгоритм не работает вообще', 'алгоритм работает только для глаголов'],
+    correct: 'семантические реконструкции невозможны' }
+];
+
+/* ---------- Подготовка сессии ---------- */
+const TOTAL = 20;
+const indices = shuffle([...Array(BANK.length).keys()]).slice(0, TOTAL);
+const SESSION = indices.map(i => {
+  const q = BANK[i];
+  return { q: q.q, correct: q.correct, options: shuffle(q.options) };
+});
+
+/* ---------- Состояние ---------- */
+let current = 0;
+let score = 0;
+
+const $progress = document.getElementById('progress');
+const $tally = document.getElementById('tally');
+const $barfill = document.getElementById('barfill');
+const $question = document.getElementById('question');
+const $options = document.getElementById('options');
+const $stage = document.getElementById('stage');
+const $final = document.getElementById('final');
+
+function render() {
+  const item = SESSION[current];
+  $progress.textContent = `Вопрос ${current + 1} из ${TOTAL}`;
+  $tally.textContent = `Правильно: ${score}`;
+  $barfill.style.width = `${(current / TOTAL) * 100}%`;
+  $question.innerHTML = item.q;
+  $options.innerHTML = '';
+
+  item.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'opt';
+    const isHeb = /[\u0590-\u05FF]/.test(opt);
+    const labelDir = isHeb ? ' dir="rtl"' : '';
+    btn.innerHTML = `<span class="label"${labelDir}>${opt}</span><span class="mark"></span>`;
+    btn.addEventListener('click', () => choose(btn, opt, item));
+    $options.appendChild(btn);
+  });
+}
+
+function choose(btn, opt, item) {
+  const buttons = [...$options.querySelectorAll('.opt')];
+  buttons.forEach(b => b.disabled = true);
+
+  if (opt === item.correct) {
+    btn.classList.add('correct');
+    btn.querySelector('.mark').textContent = '✓';
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    btn.querySelector('.mark').textContent = '✗';
+    buttons.forEach(b => {
+      if (b.querySelector('.label').innerHTML === item.correct) {
+        b.classList.add('correct');
+        b.querySelector('.mark').textContent = '✓';
+      }
+    });
+  }
+
+  $tally.textContent = `Правильно: ${score}`;
+
+  setTimeout(() => {
+    current++;
+    if (current < TOTAL) {
+      render();
+    } else {
+      finish();
+    }
+  }, 900);
+}
+
+function finish() {
+  $barfill.style.width = '100%';
+  $stage.style.display = 'none';
+  const pct = Math.round((score / TOTAL) * 100);
+  let verdict = '';
+  if (pct >= 90) verdict = 'Отличный уровень: трансформации и реконструкция усвоены уверенно.';
+  else if (pct >= 70) verdict = 'Хороший уровень: есть база, но нужно повторить правила реконструкции.';
+  else if (pct >= 50) verdict = 'Средний уровень: повторите категории изменений и датировки.';
+  else verdict = 'Начальный уровень: начните с частей I–II разбора distortion3.';
+  $final.innerHTML = `
+    <div>Тест завершён. Итог:</div>
+    <div class="score">${score} / ${TOTAL}</div>
+    <div>${pct}%</div>
+    <p>${verdict}</p>
+    <button class="restart" onclick="location.reload()">Пройти ещё раз (новый набор вопросов)</button>
+    <p class="note">Порядок вопросов и вариантов определяется системным временем при загрузке страницы.</p>
+  `;
+  $final.style.display = 'block';
+}
+
+render();
+</script>
+
+</body>
+</html>

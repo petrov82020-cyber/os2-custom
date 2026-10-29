@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Трансформация библейского арамейского и алгоритм обратной реконструкции</title>
+<style>
+  body { font-family: Georgia, "Times New Roman", serif; line-height: 1.6; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; color: #222; background: #fafafa; }
+  h1 { font-family: Arial, Helvetica, sans-serif; font-size: 1.45rem; margin-top: 0; border-bottom: 2px solid #444; padding-bottom: .4rem; }
+  h2 { font-family: Arial, Helvetica, sans-serif; font-size: 1.2rem; margin-top: 2.6rem; border-bottom: 1px solid #888; padding-bottom: .25rem; }
+  h3 { font-family: Arial, Helvetica, sans-serif; font-size: 1.05rem; margin-top: 1.8rem; }
+  .he { font-family: "Times New Roman", "David", "Noto Sans Hebrew", serif; direction: rtl; unicode-bidi: isolate; font-size: 1.12em; }
+  .lat { font-style: italic; }
+  table { border-collapse: collapse; width: 100%; margin: .9rem 0; font-size: .9em; }
+  th, td { border: 1px solid #bbb; padding: .35rem .5rem; vertical-align: top; }
+  th { background: #eee; text-align: left; }
+  .note { border-left: 4px solid #c90; background: #fffbe8; padding: .7rem 1rem; margin: 1rem 0; }
+  .note p { margin: .3rem 0; }
+  .algo { border-left: 4px solid #2e8b57; background: #f3f9f5; padding: .7rem 1rem; margin: 1rem 0; }
+  .algo p { margin: .3rem 0; }
+  .limit { border-left: 4px solid #c0392b; background: #fdf4f3; padding: .7rem 1rem; margin: 1rem 0; }
+  .limit p { margin: .3rem 0; }
+  ul, ol { margin: .4rem 0 .7rem 1.3rem; }
+  li { margin-bottom: .25rem; }
+</style>
+</head>
+<body>
+
+<h1>Трансформация библейского арамейского и алгоритм обратной реконструкции</h1>
+
+<div class="note">
+<p><strong>Методологическая оговорка.</strong> Термины «искажение» и «порча» используются здесь условно, как обозначения <em>диахронического изменения</em> и <em>переводческой адаптации</em>. Таргумы и Пешитта — не «испорченные копии» библейского арамейского (BA), а самостоятельные системы, развившиеся из общего праарамейского состояния. Для целей обратной реконструкции важно видеть, какие именно трансформации произошли и по каким правилам они обратимы.</p>
+<p><strong>Обозначения.</strong> <span class="he">XXX</span> — арамейский/еврейский текст; <span class="lat">xxx</span> — транслитерация. BA = библейский арамейский (Дан 2:4b–7:28; Езд 4:8–6:18; 7:12–26; V–IV вв. до н. э.). Тарг. = таргумический иудейский литературный арамейский (II–V вв. н. э.). Сир. = сирийский (восточноарамейский, II–V вв. н. э.).</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>Часть I. Категории искажений (100+ примеров)</h2>
+
+<h3>I.1. Фонетические изменения (№ 1–30)</h3>
+
+<table>
+<thead>
+<tr><th>№</th><th>BA</th><th>Таргум</th><th>Пешитта (сир.)</th><th>Тип изменения</th><th>Источник</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><span class="he">אֲנָה</span> <span class="lat">ʾănāh</span></td><td><span class="he">אֲנָה</span> <span class="lat">ʾănāh</span></td><td><span class="lat">ʾenā</span></td><td>*ă &gt; e в закрытом слоге</td><td>Дан 2:8; Мф 3:11</td></tr>
+<tr><td>2</td><td><span class="he">אַנְתְּ</span> <span class="lat">ʾant</span></td><td><span class="he">אַתְּ</span> <span class="lat">ʾatt</span></td><td><span class="lat">ʾat</span></td><td>*nt &gt; tt &gt; t</td><td>Дан 2:31; Быт 3:19</td></tr>
+<tr><td>3</td><td><span class="he">אַנְתּוּן</span> <span class="lat">ʾantûn</span></td><td><span class="he">אַתּוּן</span> <span class="lat">ʾattûn</span></td><td><span class="lat">ʾatton</span></td><td>*nt &gt; tt; *û &gt; o (вост.-сир.)</td><td>Дан 2:8; Мф 5:13</td></tr>
+<tr><td>4</td><td><span class="he">מַלְכָּא</span> <span class="lat">malkā</span></td><td><span class="he">מַלְכָּא</span> <span class="lat">malkā</span></td><td><span class="lat">malkā</span> (вост.) / <span class="lat">malkō</span> (зап.)</td><td>*ā &gt; ō в зап.-сир.</td><td>Дан 2:37</td></tr>
+<tr><td>5</td><td><span class="he">שְׁמַיָּא</span> <span class="lat">šəmayyā</span></td><td><span class="he">שְׁמַיָּא</span> <span class="lat">šəmayyā</span></td><td><span class="lat">šmayyā</span></td><td>*ə &gt; Ø в начале слова</td><td>Дан 4:23</td></tr>
+<tr><td>6</td><td><span class="he">כְּתַב</span> <span class="lat">kəṯab</span></td><td><span class="he">כְּתַב</span> <span class="lat">kəṯab</span></td><td><span class="lat">kṯab</span></td><td>*ə &gt; Ø</td><td>Дан 5:5</td></tr>
+<tr><td>7</td><td><span class="he">אֲמַר</span> <span class="lat">ʾămar</span></td><td><span class="he">אֲמַר</span> <span class="lat">ʾămar</span></td><td><span class="lat">ʾemar</span></td><td>*ă &gt; e</td><td>Дан 2:5</td></tr>
+<tr><td>8</td><td><span class="he">שְׁמַע</span> <span class="lat">šəmaʿ</span></td><td><span class="he">שְׁמַע</span> <span class="lat">šəmaʿ</span></td><td><span class="lat">šmaʿ</span></td><td>*ə &gt; Ø</td><td>Дан 5:14</td></tr>
+<tr><td>9</td><td><span class="he">יִכְתֻּב</span> <span class="lat">yiktuḇ</span></td><td><span class="he">יִכְתֹּב</span> <span class="lat">yiktōḇ</span></td><td><span class="lat">nektōḇ</span></td><td>*y- &gt; n-; *u &gt; o</td><td>Дан 5:5 (ср.); Мф 4:4</td></tr>
+<tr><td>10</td><td><span class="he">דִּי</span> <span class="lat">dî</span></td><td><span class="he">דְּ־</span> <span class="lat">də-</span></td><td><span class="lat">d-</span></td><td>*dî &gt; də- &gt; d-</td><td>Дан 2:11; Быт 1:7</td></tr>
+<tr><td>11</td><td><span class="he">הֵן</span> <span class="lat">hēn</span></td><td><span class="he">אִי</span> <span class="lat">ʾî</span></td><td><span class="lat">en</span></td><td>*h- &gt; ʾ- / Ø</td><td>Дан 3:15; Мф 4:3</td></tr>
+<tr><td>12</td><td><span class="he">‑ַיָּא</span> <span class="lat">-ayyā</span></td><td><span class="he">‑ַיָּא</span> <span class="lat">-ayyā</span></td><td><span class="lat">-ē</span></td><td>*ayyā &gt; ē</td><td>Дан 2:37; Мф 2:1</td></tr>
+<tr><td>13</td><td><span class="he">רוּחַ</span> <span class="lat">rûaḥ</span></td><td><span class="he">רוּחָא</span> <span class="lat">rûḥā</span></td><td><span class="lat">rūḥā</span></td><td>*û &gt; ū; *a &gt; ā</td><td>Дан 5:12</td></tr>
+<tr><td>14</td><td><span class="he">אֱלָהּ</span> <span class="lat">ʾĕlāh</span></td><td><span class="he">אֱלָהָא</span> <span class="lat">ʾĕlāhā</span></td><td><span class="lat">ʾalāhā</span></td><td>*ĕ &gt; a</td><td>Дан 2:18</td></tr>
+<tr><td>15</td><td><span class="he">קֳדָם</span> <span class="lat">qŏḏām</span></td><td><span class="he">קֳדָם</span> <span class="lat">qŏḏām</span></td><td><span class="lat">qḏām</span></td><td>*ŏ &gt; ə &gt; Ø</td><td>Дан 2:9</td></tr>
+<tr><td>16</td><td><span class="he">עִם</span> <span class="lat">ʿim</span></td><td><span class="he">עִם</span> <span class="lat">ʿim</span></td><td><span class="lat">ʿam</span></td><td>*i &gt; a</td><td>Дан 2:11</td></tr>
+<tr><td>17</td><td><span class="he">סָפְרָא</span> <span class="lat">sāfrā</span></td><td><span class="he">סָפְרָא</span> <span class="lat">sāfrā</span></td><td><span class="lat">sāfrā</span></td><td>*ə &gt; Ø; *ā сохр.</td><td>Езд 4:8</td></tr>
+<tr><td>18</td><td><span class="he">נְבִיָּא</span> <span class="lat">nəḇiyyāʾ</span></td><td><span class="he">נְבִיָּא</span> <span class="lat">nəḇiyyāʾ</span></td><td><span class="lat">nḇīyā</span></td><td>*ə &gt; Ø; *î &gt; ī</td><td>Езд 5:1</td></tr>
+<tr><td>19</td><td><span class="he">כָּהֲנָא</span> <span class="lat">kāhănāʾ</span></td><td><span class="he">כָּהֲנָא</span> <span class="lat">kāhănāʾ</span></td><td><span class="lat">kāhnā</span></td><td>*ă &gt; Ø; *ā сохр.</td><td>Езд 6:9</td></tr>
+<tr><td>20</td><td><span class="he">רְחִים</span> <span class="lat">rəḥîm</span></td><td><span class="he">רְחִים</span> <span class="lat">rəḥîm</span></td><td><span class="lat">rḥīm</span></td><td>*ə &gt; Ø; *î &gt; ī</td><td>реконстр.</td></tr>
+<tr><td>21</td><td><span class="he">קְטִיל</span> <span class="lat">qəṭîl</span></td><td><span class="he">קְטִיל</span> <span class="lat">qəṭîl</span></td><td><span class="lat">qṭīl</span></td><td>*ə &gt; Ø</td><td>реконстр.</td></tr>
+<tr><td>22</td><td><span class="he">שֻׁם</span> <span class="lat">šum</span></td><td><span class="he">שְׁמָא</span> <span class="lat">šəmāʾ</span></td><td><span class="lat">šmā</span></td><td>*u &gt; ə; *ā добавлен</td><td>Дан 2:20</td></tr>
+<tr><td>23</td><td><span class="he">אַב</span> <span class="lat">ʾaḇ</span></td><td><span class="he">אַבָּא</span> <span class="lat">ʾabbāʾ</span></td><td><span class="lat">ʾaḇā</span></td><td>геминация; *ā добавлен</td><td>Дан 2:23</td></tr>
+<tr><td>24</td><td><span class="he">יָם</span> <span class="lat">yām</span></td><td><span class="he">יַמָּא</span> <span class="lat">yammāʾ</span></td><td><span class="lat">yammā</span></td><td>геминация мем</td><td>Дан 7:2</td></tr>
+<tr><td>25</td><td><span class="he">טוּר</span> <span class="lat">ṭûr</span></td><td><span class="he">טוּרָא</span> <span class="lat">ṭûrāʾ</span></td><td><span class="lat">ṭūrā</span></td><td>*û &gt; ū; *ā добавлен</td><td>Дан 2:35</td></tr>
+<tr><td>26</td><td><span class="he">נְהַר</span> <span class="lat">nəhar</span></td><td><span class="he">נַהֲרָא</span> <span class="lat">nahărāʾ</span></td><td><span class="lat">nahrā</span></td><td>*ə &gt; a; *ā добавлен</td><td>Дан 7:10</td></tr>
+<tr><td>27</td><td><span class="he">בַּיִת</span> <span class="lat">bayit</span></td><td><span class="he">בֵּיתָא</span> <span class="lat">bêtāʾ</span></td><td><span class="lat">baytā</span></td><td>*ay &gt; ê (тарг.); *ā добавлен</td><td>Езд 5:8</td></tr>
+<tr><td>28</td><td><span class="he">אֲרַע</span> <span class="lat">ʾăraʿ</span></td><td><span class="he">אַרְעָא</span> <span class="lat">ʾarʿāʾ</span></td><td><span class="lat">ʾarʿā</span></td><td>*ă &gt; a; *ā добавлен</td><td>Дан 2:39</td></tr>
+<tr><td>29</td><td><span class="he">אִמָּא</span> <span class="lat">ʾimmāʾ</span></td><td><span class="he">אִמָּא</span> <span class="lat">ʾimmāʾ</span></td><td><span class="lat">ʾemā</span></td><td>*i &gt; e; геминация сохр.</td><td>Дан 5:2</td></tr>
+<tr><td>30</td><td><span class="he">קְטַל</span> <span class="lat">qəṭal</span></td><td><span class="he">קְטַל</span> <span class="lat">qəṭal</span></td><td><span class="lat">qṭal</span></td><td>*ə &gt; Ø</td><td>Дан 5:19</td></tr>
+</tbody>
+</table>
+
+<h3>I.2. Морфологические изменения (№ 31–65)</h3>
+
+<table>
+<thead>
+<tr><th>№</th><th>BA</th><th>Таргум</th><th>Пешитта (сир.)</th><th>Тип изменения</th><th>Источник</th></tr>
+</thead>
+<tbody>
+<tr><td>31</td><td><span class="he">אֲנַחְנָא</span> <span class="lat">ʾănaḥnāʾ</span></td><td><span class="he">אֲנַן</span> <span class="lat">ʾănan</span></td><td><span class="lat">ḥnan</span></td><td>утрата *ḥ / *ʾă-</td><td>Дан 2:36; Быт 42:11</td></tr>
+<tr><td>32</td><td><span class="he">הַקְטֵל</span> <span class="lat">haqṭēl</span></td><td><span class="he">אַקְטֵל</span> <span class="lat">ʾaqṭēl</span></td><td><span class="lat">ʾaqṭel</span></td><td>*h- &gt; ʾ-</td><td>Дан 5:20</td></tr>
+<tr><td>33</td><td><span class="he">הִתְקְטַל</span> <span class="lat">hitqəṭal</span></td><td><span class="he">אִתְקְטַל</span> <span class="lat">ʾitqəṭal</span></td><td><span class="lat">ʾetqṭel</span></td><td>*hit- &gt; ʾit- &gt; ʾet-</td><td>Дан 2:34</td></tr>
+<tr><td>34</td><td><span class="he">הָפְעַל</span> <span class="lat">hophʿal</span></td><td><span class="he">אִתַּפְעַל</span> <span class="lat">ʾittapʿal</span></td><td><span class="lat">ʾettapʿal</span></td><td>пассив каузатива &gt; рефлексив</td><td>реконстр.</td></tr>
+<tr><td>35</td><td>эмфат. = определённость</td><td>эмфат. = определённость (частично)</td><td>эмфат. утратил функцию определённости</td><td>функциональный сдвиг</td><td>системное</td></tr>
+<tr><td>36</td><td>внутренний пассив Peal (*qutal)</td><td>вытеснен рефлексивом</td><td>то же</td><td>утрата внутреннего пассива</td><td>системное</td></tr>
+<tr><td>37</td><td><span class="he">‑ַי</span> <span class="lat">-ay</span> (сопр. мн.)</td><td><span class="he">‑ֵי</span> <span class="lat">-ê</span></td><td><span class="lat">-ay</span></td><td>*ay &gt; ê в таргумах</td><td>Дан 2:37</td></tr>
+<tr><td>38</td><td><span class="he">קְטַלְתָּ</span> <span class="lat">qəṭaltā</span></td><td><span class="he">קְטַלְתָּא</span> <span class="lat">qəṭaltāʾ</span></td><td><span class="lat">qṭalt</span></td><td>*-tā &gt; -tāʾ / -t</td><td>реконстр.</td></tr>
+<tr><td>39</td><td><span class="he">קְטַלְתִּי</span> <span class="lat">qəṭaltî</span></td><td><span class="he">קְטַלְתְּ</span> <span class="lat">qəṭalt</span></td><td><span class="lat">qṭal(t)</span></td><td>*-tî &gt; -t</td><td>реконстр.</td></tr>
+<tr><td>40</td><td>имперфект = прошлое и будущее</td><td>имперфект чаще = будущее</td><td>имперфект = будущее</td><td>сдвиг функции</td><td>системное</td></tr>
+<tr><td>41</td><td><span class="he">יְהַב</span> <span class="lat">yəhaḇ</span></td><td><span class="he">יְהַב</span> <span class="lat">yəhaḇ</span></td><td><span class="lat">ʾet(y)hab</span></td><td>морфологическая инновация</td><td>Дан 2:21</td></tr>
+<tr><td>42</td><td><span class="he">יִקְטֻל</span> <span class="lat">yiqṭul</span></td><td><span class="he">יִקְטֹל</span> <span class="lat">yiqṭōl</span></td><td><span class="lat">neqtōl</span></td><td>*y- &gt; n-; *u &gt; o</td><td>реконстр.</td></tr>
+<tr><td>43</td><td><span class="he">תִּקְטֻל</span> <span class="lat">tiqṭul</span></td><td><span class="he">תִּקְטֹל</span> <span class="lat">tiqṭōl</span></td><td><span class="lat">teqtōl</span></td><td>*u &gt; o</td><td>реконстр.</td></tr>
+<tr><td>44</td><td><span class="he">נִקְטֻל</span> <span class="lat">niqṭul</span></td><td><span class="he">נִקְטֹל</span> <span class="lat">niqṭōl</span></td><td><span class="lat">neqtōl</span></td><td>*u &gt; o</td><td>реконстр.</td></tr>
+<tr><td>45</td><td><span class="he">קְטַלְתּוּן</span> <span class="lat">qəṭaltûn</span></td><td><span class="he">קְטַלְתּוּן</span> <span class="lat">qəṭaltûn</span></td><td><span class="lat">qṭaltōn</span></td><td>*û &gt; ō</td><td>реконстр.</td></tr>
+<tr><td>46</td><td><span class="he">קְטַלְנָא</span> <span class="lat">qəṭalnāʾ</span></td><td><span class="he">קְטַלְנָא</span> <span class="lat">qəṭalnāʾ</span></td><td><span class="lat">qṭaln</span></td><td>*-āʾ &gt; Ø</td><td>реконстр.</td></tr>
+<tr><td>47</td><td><span class="he">יִקְטְלוּן</span> <span class="lat">yiqṭəlûn</span></td><td><span class="he">יִקְטְלוּן</span> <span class="lat">yiqṭəlûn</span></td><td><span class="lat">neqtlūn</span></td><td>*y- &gt; n-</td><td>реконстр.</td></tr>
+<tr><td>48</td><td><span class="he">תִּקְטְלוּן</span> <span class="lat">tiqṭəlûn</span></td><td><span class="he">תִּקְטְלוּן</span> <span class="lat">tiqṭəlûn</span></td><td><span class="lat">teqtlūn</span></td><td>*ə &gt; Ø; *û &gt; ū</td><td>реконстр.</td></tr>
+<tr><td>49</td><td><span class="he">נִקְטְלוּן</span> <span class="lat">niqṭəlûn</span></td><td><span class="he">נִקְטְלוּן</span> <span class="lat">niqṭəlûn</span></td><td><span class="lat">neqtlūn</span></td><td>*ə &gt; Ø; *û &gt; ū</td><td>реконстр.</td></tr>
+<tr><td>50</td><td><span class="he">קְטֻל</span> <span class="lat">qəṭul</span> (импер.)</td><td><span class="he">קְטֹל</span> <span class="lat">qəṭōl</span></td><td><span class="lat">qṭol</span></td><td>*u &gt; o; *ə &gt; Ø</td><td>реконстр.</td></tr>
+<tr><td>51</td><td><span class="he">קְטֻלוּ</span> <span class="lat">qəṭulû</span></td><td><span class="he">קְטֻלוּ</span> <span class="lat">qəṭulû</span></td><td><span class="lat">qṭolū</span></td><td>*ə &gt; Ø; *û &gt; ū</td><td>реконстр.</td></tr>
+<tr><td>52</td><td><span class="he">מְקַטֵּל</span> <span class="lat">məqaṭṭēl</span> (Pael прич.)</td><td><span class="he">מְקַטֵּל</span> <span class="lat">məqaṭṭēl</span></td><td><span class="lat">mqaṭṭal</span></td><td>*ē &gt; a; *ə &gt; Ø</td><td>реконстр.</td></tr>
+<tr><td>53</td><td><span class="he">מַהְקְטֵל</span> <span class="lat">mahqṭēl</span> (Haphel прич.)</td><td><span class="he">מַקְטֵל</span> <span class="lat">maqṭēl</span></td><td><span class="lat">maqṭel</span></td><td>*h- &gt; Ø; *ē &gt; e</td><td>реконстр.</td></tr>
+<tr><td>54</td><td><span class="he">מִתְקְטַל</span> <span class="lat">mithqəṭal</span></td><td><span class="he">מִתְקְטַל</span> <span class="lat">mithqəṭal</span></td><td><span class="lat">mettqṭal</span></td><td>*ith &gt; ett; *ə &gt; Ø</td><td>реконстр.</td></tr>
+<tr><td>55</td><td><span class="he">קְטִיל</span> <span class="lat">qəṭîl</span> (пасс. прич.)</td><td><span class="he">קְטִיל</span> <span class="lat">qəṭîl</span></td><td><span class="lat">qṭīl</span></td><td>*ə &gt; Ø; *î &gt; ī</td><td>реконстр.</td></tr>
+<tr><td>56</td><td><span class="he">הִתְפְּעַל</span> <span class="lat">hitpəʿal</span></td><td><span class="he">אִתְפְּעַל</span> <span class="lat">ʾitpəʿal</span></td><td><span class="lat">ʾettapʿal</span></td><td>*hit- &gt; ʾit-; *pʿ &gt; ppʿ</td><td>реконстр.</td></tr>
+<tr><td>57</td><td><span class="he">הִתַּפְעַל</span> <span class="lat">hittapʿal</span></td><td><span class="he">אִתַּפְעַל</span> <span class="lat">ʾittapʿal</span></td><td><span class="lat">ʾettapʿal</span></td><td>*h- &gt; ʾ-; геминация t</td><td>реконстр.</td></tr>
+<tr><td>58</td><td><span class="he">אִיתַי</span> <span class="lat">ʾîtay</span> «есть»</td><td><span class="he">אִית</span> <span class="lat">ʾît</span></td><td><span class="lat">ʾit</span></td><td>*-ay &gt; Ø</td><td>Дан 2:10</td></tr>
+<tr><td>59</td><td><span class="he">לָהֵן</span> <span class="lat">lāhēn</span> «поэтому»</td><td><span class="he">עַל־כֵּן</span> <span class="lat">ʿal-kēn</span></td><td><span class="lat">mettol</span></td><td>лексическая замена</td><td>Дан 2:6</td></tr>
+<tr><td>60</td><td><span class="he">אַחֲרֵי</span> <span class="lat">ʾaḥărê</span> «после»</td><td><span class="he">בָּתַר</span> <span class="lat">bāṯar</span></td><td><span class="lat">bāṯar</span></td><td>лексическая замена</td><td>Дан 2:29</td></tr>
+<tr><td>61</td><td><span class="he">קֳדָם</span> <span class="lat">qŏḏām</span> «перед»</td><td><span class="he">קֳדָם</span> <span class="lat">qŏḏām</span></td><td><span class="lat">qḏām</span></td><td>*ŏ &gt; Ø</td><td>Дан 2:9</td></tr>
+<tr><td>62</td><td><span class="he">לְוָת</span> <span class="lat">ləwāṯ</span> «к»</td><td><span class="he">לְוָת</span> <span class="lat">ləwāṯ</span></td><td><span class="lat">lwāṯ</span></td><td>*ə &gt; Ø</td><td>Дан 2:16</td></tr>
+<tr><td>63</td><td><span class="he">בָּתַר</span> <span class="lat">bāṯar</span> «после»</td><td><span class="he">בָּתַר</span> <span class="lat">bāṯar</span></td><td><span class="lat">bāṯar</span></td><td>сохр.</td><td>Дан 2:29</td></tr>
+<tr><td>64</td><td><span class="he">יָת</span> <span class="lat">yāṯ</span> (nota accusativi) — нет в BA</td><td><span class="he">יָת</span> <span class="lat">yāṯ</span></td><td><span class="lat">yāṯ</span></td><td>инновация в таргумах</td><td>системное</td></tr>
+<tr><td>65</td><td>простое именное предложение</td><td>часто с местоимением-связкой</td><td>регулярно с местоимением-связкой</td><td>плеоназм</td><td>системное</td></tr>
+</tbody>
+</table>
+
+<h3>I.3. Синтаксические изменения (№ 66–85)</h3>
+
+<table>
+<thead>
+<tr><th>№</th><th>BA</th><th>Таргум</th><th>Пешитта (сир.)</th><th>Тип изменения</th></tr>
+</thead>
+<tbody>
+<tr><td>66</td><td>порядок VSO</td><td>более гибкий порядок</td><td>гибкий; композитные времена</td><td>синтаксическая перестройка</td></tr>
+<tr><td>67</td><td>именное предложение без связки</td><td>часто без связки</td><td>часто со связкой-местоимением</td><td>плеоназм</td></tr>
+<tr><td>68</td><td>причастие без местоимения</td><td>причастие без местоимения</td><td>«он есть пишущий он»</td><td>плеонастическое местоимение</td></tr>
+<tr><td>69</td><td>объектный суффикс только при отсутствии прямого дополнения</td><td>то же</td><td>суффикс добавляется даже при наличии дополнения</td><td>избыточность</td></tr>
+<tr><td>70</td><td><span class="he">דִּי</span> — относит. и генитив</td><td><span class="he">דְּ־</span></td><td><span class="lat">d-</span></td><td>сокращение</td></tr>
+<tr><td>71</td><td><span class="he">הֵן</span> «если»</td><td><span class="he">אִי</span></td><td><span class="lat">en</span></td><td>замена</td></tr>
+<tr><td>72</td><td><span class="he">לָהֵן</span> «поэтому»</td><td><span class="he">עַל־כֵּן</span></td><td><span class="lat">mettol</span></td><td>замена</td></tr>
+<tr><td>73</td><td><span class="he">אִיתַי</span> «есть»</td><td><span class="he">אִית</span></td><td><span class="lat">ʾit</span></td><td>сокращение</td></tr>
+<tr><td>74</td><td>конструкция сопряжения (construct chain)</td><td>чаще аналитическая с <span class="he">דְּ־</span></td><td>аналитическая с <span class="lat">d-</span></td><td>аналитизация</td></tr>
+<tr><td>75</td><td>простое отрицание <span class="he">לָא</span></td><td><span class="he">לָא</span></td><td><span class="lat">lā</span></td><td>сохр.</td></tr>
+<tr><td>76</td><td>нет <span class="he">יָת</span></td><td><span class="he">יָת</span> (nota accusativi)</td><td>нет <span class="lat">yāṯ</span></td><td>инновация</td></tr>
+<tr><td>77</td><td>простое прошедшее (перфект)</td><td>перфект сохр.</td><td>композитные времена (перфект + вспом.)</td><td>аналитизация</td></tr>
+<tr><td>78</td><td>простое будущее (имперфект)</td><td>имперфект = будущее</td><td>имперфект = будущее; + композитные</td><td>сдвиг</td></tr>
+<tr><td>79</td><td>инфинитив без предлога</td><td>инфинитив с <span class="he">לְ־</span></td><td>инфинитив с <span class="lat">l-</span></td><td>аналитизация</td></tr>
+<tr><td>80</td><td>прямая речь без маркера</td><td>прямая речь с <span class="he">לֵאמֹר</span></td><td>прямая речь с <span class="lat">d-</span></td><td>маркирование</td></tr>
+<tr><td>81</td><td>порядок слов в придаточных</td><td>более свободный</td><td>более свободный</td><td>перестройка</td></tr>
+<tr><td>82</td><td>временные придаточные с <span class="he">דִּי</span></td><td>с <span class="he">דְּ־</span> + <span class="he">כַּד</span></td><td>с <span class="lat">kad</span></td><td>замена</td></tr>
+<tr><td>83</td><td>целевые придаточные с <span class="he">דִּי</span></td><td>с <span class="he">דְּ־</span></td><td>с <span class="lat">d-</span></td><td>замена</td></tr>
+<tr><td>84</td><td>условные с <span class="he">הֵן</span></td><td>с <span class="he">אִי</span></td><td>с <span class="lat">en</span></td><td>замена</td></tr>
+<tr><td>85</td><td>уступительные с <span class="he">אַף</span></td><td>с <span class="he">אַף</span></td><td>с <span class="lat">āp</span></td><td>сохр.</td></tr>
+</tbody>
+</table>
+
+<h3>I.4. Лексические изменения (№ 86–110)</h3>
+
+<table>
+<thead>
+<tr><th>№</th><th>BA</th><th>Таргум</th><th>Пешитта (сир.)</th><th>Тип изменения</th></tr>
+</thead>
+<tbody>
+<tr><td>86</td><td><span class="he">מֵימַר</span> <span class="lat">mêmar</span> «слово, приказ»</td><td><span class="he">מֵימְרָא</span> <span class="lat">mêmrāʾ</span> «Слово (Божье)»</td><td><span class="lat">mēmrā</span> «слово»</td><td>богословская амплификация</td></tr>
+<tr><td>87</td><td><span class="he">חֲזָא</span> <span class="lat">ḥăzāʾ</span> «видеть»</td><td><span class="he">חֲזָא</span></td><td><span class="lat">ḥzā</span></td><td>сохр.</td></tr>
+<tr><td>88</td><td><span class="he">עֲבַד</span> <span class="lat">ʿăḇaḏ</span> «делать»</td><td><span class="he">עֲבַד</span></td><td><span class="lat">ʿḇaḏ</span></td><td>сохр.</td></tr>
+<tr><td>89</td><td><span class="he">יְהַב</span> <span class="lat">yəhaḇ</span> «давать»</td><td><span class="he">יְהַב</span></td><td><span class="lat">ʾet(y)hab</span></td><td>инновация</td></tr>
+<tr><td>90</td><td><span class="he">אֱלָהּ</span> <span class="lat">ʾĕlāh</span> «Бог»</td><td><span class="he">אֱלָהָא</span></td><td><span class="lat">ʾalāhā</span></td><td>фонетическое</td></tr>
+<tr><td>91</td><td><span class="he">רוּחַ</span> <span class="lat">rûaḥ</span> «дух, ветер»</td><td><span class="he">רוּחָא</span></td><td><span class="lat">rūḥā</span></td><td>сохр.</td></tr>
+<tr><td>92</td><td><span class="he">נְבִיָּא</span> <span class="lat">nəḇiyyāʾ</span> «пророк»</td><td><span class="he">נְבִיָּא</span></td><td><span class="lat">nḇīyā</span></td><td>сохр.</td></tr>
+<tr><td>93</td><td><span class="he">כָּהֲנָא</span> <span class="lat">kāhănāʾ</span> «священник»</td><td><span class="he">כָּהֲנָא</span></td><td><span class="lat">kāhnā</span></td><td>сохр.</td></tr>
+<tr><td>94</td><td><span class="he">סָפְרָא</span> <span class="lat">sāfrā</span> «писец»</td><td><span class="he">סָפְרָא</span></td><td><span class="lat">sāfrā</span></td><td>сохр.</td></tr>
+<tr><td>95</td><td><span class="he">דִּין</span> <span class="lat">dîn</span> «суд»</td><td><span class="he">דִּינָא</span></td><td><span class="lat">dīnā</span></td><td>сохр.</td></tr>
+<tr><td>96</td><td><span class="he">קֳדָם</span> <span class="lat">qŏḏām</span> «перед»</td><td><span class="he">קֳדָם</span></td><td><span class="lat">qḏām</span></td><td>фонетическое</td></tr>
+<tr><td>97</td><td><span class="he">בָּתַר</span> <span class="lat">bāṯar</span> «после»</td><td><span class="he">בָּתַר</span></td><td><span class="lat">bāṯar</span></td><td>сохр.</td></tr>
+<tr><td>98</td><td><span class="he">עִם</span> <span class="lat">ʿim</span> «с»</td><td><span class="he">עִם</span></td><td><span class="lat">ʿam</span></td><td>фонетическое</td></tr>
+<tr><td>99</td><td><span class="he">לְוָת</span> <span class="lat">ləwāṯ</span> «к»</td><td><span class="he">לְוָת</span></td><td><span class="lat">lwāṯ</span></td><td>сохр.</td></tr>
+<tr><td>100</td><td><span class="he">מַלְכָּא</span> <span class="lat">malkā</span> «царь»</td><td><span class="he">מַלְכָּא</span></td><td><span class="lat">malkā</span></td><td>сохр.</td></tr>
+<tr><td>101</td><td>нет греческих заимствований</td><td>персидские заимствования</td><td>греческие заимствования (<span class="lat">εὐαγγέλιον</span>, <span class="lat">ἀπόστολος</span>)</td><td>заимствования</td></tr>
+<tr><td>102</td><td>антропоморфизмы без смягчения</td><td>смягчение антропоморфизмов</td><td>смягчение</td><td>богословская правка</td></tr>
+<tr><td>103</td><td>«Бог» без эпитетов</td><td>«Мемра Господня»</td><td>«Слово Божье»</td><td>богословская амплификация</td></tr>
+<tr><td>104</td><td>«Шехина» отсутствует</td><td>«Шехина» появляется</td><td>нет</td><td>богословская инновация</td></tr>
+<tr><td>105</td><td>«Святой Дух» — <span class="he">רוּחַ קוּדְשָׁא</span></td><td><span class="he">רוּחַ קוּדְשָׁא</span></td><td><span class="lat">rūḥā d-qudšā</span></td><td>сохр.</td></tr>
+<tr><td>106</td><td>«Сын Человеческий» — <span class="he">בַּר אֱנָשׁ</span></td><td>«Сын Человеческий» — <span class="he">בַּר אֱנָשׁ</span></td><td><span class="lat">bar nāšā</span></td><td>сохр.</td></tr>
+<tr><td>107</td><td>«Мессия» — <span class="he">מְשִׁיחָא</span></td><td><span class="he">מְשִׁיחָא</span></td><td><span class="lat">mšīḥā</span></td><td>сохр.</td></tr>
+<tr><td>108</td><td>«Закон» — <span class="he">דָּת</span></td><td><span class="he">אוֹרַיְתָא</span></td><td><span class="lat">nāmūsā</span> (греч.)</td><td>лексическая замена</td></tr>
+<tr><td>109</td><td>«Молитва» — <span class="he">צְלוֹתָא</span></td><td><span class="he">צְלוֹתָא</span></td><td><span class="lat">ṣlōṯā</span></td><td>сохр.</td></tr>
+<tr><td>110</td><td>«Храм» — <span class="he">הֵיכְלָא</span></td><td><span class="he">הֵיכְלָא</span></td><td><span class="lat">hayklā</span></td><td>сохр.</td></tr>
+</tbody>
+</table>
+
+<p><strong>Итого: 110 примеров искажений.</strong></p>
+
+<!-- ============================================================ -->
+<h2>Часть II. Алгоритм обратной реконструкции</h2>
+
+<div class="algo">
+<p><strong>Шаг 1.</strong> Зафиксировать позднюю форму (таргумическую или сирийскую) в консонантном виде и в огласовке.</p>
+<p><strong>Шаг 2.</strong> Определить диалект: таргумический иудейский литературный / сирийский восточный / сирийский западный.</p>
+<p><strong>Шаг 3.</strong> Применить свод правил обратного преобразования (см. таблицу ниже).</p>
+<p><strong>Шаг 4.</strong> Сверить полученную гипотетическую BA-форму с засвидетельствованной формой в Дан или Езд.</p>
+<p><strong>Шаг 5.</strong> Если совпадение — реконструкция подтверждена. Если нет — пересмотреть правило или признать форму уникальной.</p>
+</div>
+
+<h3>Свод правил обратного преобразования</h3>
+
+<table>
+<thead>
+<tr><th>Поздняя форма</th><th>→ BA</th><th>Правило</th></tr>
+</thead>
+<tbody>
+<tr><td>сир. <span class="lat">ʾat</span></td><td>→ *ʾant</td><td>восстановить *n перед t</td></tr>
+<tr><td>сир. <span class="lat">ʾatton</span></td><td>→ *ʾantûn</td><td>*n + *û &gt; *on</td></tr>
+<tr><td>сир. <span class="lat">ḥnan</span></td><td>→ *ʾănaḥnāʾ</td><td>восстановить *ʾă- и *-āʾ</td></tr>
+<tr><td>тарг. <span class="he">אֲנַן</span></td><td>→ *ʾănaḥnāʾ</td><td>восстановить *ḥ</td></tr>
+<tr><td>сир. <span class="lat">ʾenā</span></td><td>→ *ʾănāh</td><td>*e &lt; *ă; *-ā &lt; *-āh</td></tr>
+<tr><td>тарг. <span class="he">אַקְטֵל</span></td><td>→ *haqṭēl</td><td>*ʾ- &lt; *h-</td></tr>
+<tr><td>сир. <span class="lat">ʾaqṭel</span></td><td>→ *haqṭēl</td><td>*ʾ- &lt; *h-</td></tr>
+<tr><td>тарг. <span class="he">אִתְקְטַל</span></td><td>→ *hitqəṭal</td><td>*ʾit- &lt; *hit-</td></tr>
+<tr><td>сир. <span class="lat">ʾetqṭel</span></td><td>→ *hitqəṭal</td><td>*ʾet- &lt; *hit-; *e &lt; *i</td></tr>
+<tr><td>сир. <span class="lat">nektōḇ</span></td><td>→ *yiktuḇ</td><td>*n- &lt; *y-; *ō &lt; *u</td></tr>
+<tr><td>тарг. <span class="he">דְּ־</span></td><td>→ *dî</td><td>восстановить *-î</td></tr>
+<tr><td>сир. <span class="lat">en</span></td><td>→ *hēn</td><td>восстановить *h-</td></tr>
+<tr><td>тарг. <span class="he">אִי</span></td><td>→ *hēn</td><td>*ʾ- &lt; *h-; *î &lt; *ē</td></tr>
+<tr><td>сир. <span class="lat">malkē</span></td><td>→ *malkayyā</td><td>*ē &lt; *ayyā</td></tr>
+<tr><td>сир. <span class="lat">kṯab</span></td><td>→ *kəṯab</td><td>восстановить *ə</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2>Часть III. 100+ примеров обратной реконструкции</h2>
+
+<table>
+<thead>
+<tr><th>№</th><th>Поздняя форма</th><th>Предполагаемая BA</th><th>Подтверждение в BA</th><th>Правило</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>сир. <span class="lat">ʾat</span> (Мф 3:11)</td><td>*ʾant</td><td><span class="he">אַנְתְּ</span> (Дан 2:31)</td><td>*nt &gt; t</td></tr>
+<tr><td>2</td><td>тарг. <span class="he">אַתְּ</span> (Быт 3:19)</td><td>*ʾant</td><td><span class="he">אַנְתְּ</span></td><td>*nt &gt; tt</td></tr>
+<tr><td>3</td><td>сир. <span class="lat">ʾatton</span> (Мф 5:13)</td><td>*ʾantûn</td><td><span class="he">אַנְתּוּן</span> (Дан 2:8)</td><td>*nt &gt; tt; *û &gt; o</td></tr>
+<tr><td>4</td><td>тарг. <span class="he">אַתּוּן</span> (Быт 50:24)</td><td>*ʾantûn</td><td><span class="he">אַנְתּוּן</span></td><td>*nt &gt; tt</td></tr>
+<tr><td>5</td><td>сир. <span class="lat">ʾenā</span> (Мф 3:11)</td><td>*ʾănāh</td><td><span class="he">אֲנָה</span> (Дан 2:8)</td><td>*ă &gt; e; *-āh &gt; -ā</td></tr>
+<tr><td>6</td><td>тарг. <span class="he">אֲנָה</span> (Быт 15:2)</td><td>*ʾănāh</td><td><span class="he">אֲנָה</span></td><td>сохр.</td></tr>
+<tr><td>7</td><td>сир. <span class="lat">ḥnan</span> (Мф 6:12)</td><td>*ʾănaḥnāʾ</td><td><span class="he">אֲנַחְנָא</span> (Дан 2:36)</td><td>утрата *ʾă-</td></tr>
+<tr><td>8</td><td>тарг. <span class="he">אֲנַן</span> (Быт 42:11)</td><td>*ʾănaḥnāʾ</td><td><span class="he">אֲנַחְנָא</span></td><td>утрата *ḥ</td></tr>
+<tr><td>9</td><td>тарг. <span class="he">אַקְטֵל</span></td><td>*haqṭēl</td><td><span class="he">הַקְטֵל</span> (Дан 5:20)</td><td>*h- &gt; ʾ-</td></tr>
+<tr><td>10</td><td>сир. <span class="lat">ʾaqṭel</span></td><td>*haqṭēl</td><td><span class="he">הַקְטֵל</span></td><td>*h- &gt; ʾ-</td></tr>
+<tr><td>11</td><td>тарг. <span class="he">אִתְקְטַל</span></td><td>*hitqəṭal</td><td><span class="he">הִתְגְּזֶרֶת</span> (Дан 2:34)</td><td>*hit- &gt; ʾit-</td></tr>
+<tr><td>12</td><td>сир. <span class="lat">ʾetqṭel</span></td><td>*hitqəṭal</td><td><span class="he">הִתְגְּזֶרֶת</span></td><td>*hit- &gt; ʾet-</td></tr>
+<tr><td>13</td><td>сир. <span class="lat">nektōḇ</span></td><td>*yiktuḇ</td><td><span class="he">יִכְתֻּב</span> (реконстр.)</td><td>*y- &gt; n-; *u &gt; o</td></tr>
+<tr><td>14</td><td>тарг. <span class="he">דְּ־</span> (Быт 1:7)</td><td>*dî</td><td><span class="he">דִּי</span> (Дан 2:11)</td><td>сокращение</td></tr>
+<tr><td>15</td><td>сир. <span class="lat">d-</span> (Мф 1:16)</td><td>*dî</td><td><span class="he">דִּי</span></td><td>сокращение</td></tr>
+<tr><td>16</td><td>сир. <span class="lat">en</span> (Мф 4:3)</td><td>*hēn</td><td><span class="he">הֵן</span> (Дан 3:15)</td><td>*h- &gt; Ø</td></tr>
+<tr><td>17</td><td>тарг. <span class="he">אִי</span></td><td>*hēn</td><td><span class="he">הֵן</span></td><td>*h- &gt; ʾ-</td></tr>
+<tr><td>18</td><td>сир. <span class="lat">malkē</span> (Мф 2:1)</td><td>*malkayyā</td><td><span class="he">מַלְכַיָּא</span> (Дан 2:37)</td><td>*ayyā &gt; ē</td></tr>
+<tr><td>19</td><td>сир. <span class="lat">kṯab</span></td><td>*kəṯab</td><td><span class="he">כְּתַב</span> (Дан 5:5)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>20</td><td>сир. <span class="lat">ʾemar</span> (Мф 3:15)</td><td>*ʾămar</td><td><span class="he">אֲמַר</span> (Дан 2:5)</td><td>*ă &gt; e</td></tr>
+<tr><td>21</td><td>сир. <span class="lat">šmaʿ</span></td><td>*šəmaʿ</td><td><span class="he">שְׁמַע</span> (Дан 5:14)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>22</td><td>сир. <span class="lat">qṭal</span></td><td>*qəṭal</td><td><span class="he">קְטַל</span> (Дан 5:19)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>23</td><td>тарг. <span class="he">קְטַלְתָּא</span></td><td>*qəṭaltā</td><td><span class="he">קְטַלְתָּ</span> (реконстр.)</td><td>*-tā &gt; -tāʾ</td></tr>
+<tr><td>24</td><td>тарг. <span class="he">קְטַלְתְּ</span></td><td>*qəṭaltî</td><td><span class="he">קְטַלְתִּי</span> (реконстр.)</td><td>*-tî &gt; -t</td></tr>
+<tr><td>25</td><td>сир. <span class="lat">ʾet(y)hab</span></td><td>*yəhaḇ</td><td><span class="he">יְהַב</span> (Дан 2:21)</td><td>инновация</td></tr>
+<tr><td>26</td><td>сир. <span class="lat">rḥīm</span></td><td>*rəḥîm</td><td><span class="he">רְחִים</span> (реконстр.)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>27</td><td>сир. <span class="lat">qṭīl</span></td><td>*qəṭîl</td><td><span class="he">קְטִיל</span> (реконстр.)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>28</td><td>сир. <span class="lat">ʿḇaḏ</span></td><td>*ʿăḇaḏ</td><td><span class="he">עֲבַד</span> (Дан 3:1)</td><td>*ă &gt; Ø</td></tr>
+<tr><td>29</td><td>сир. <span class="lat">ḥzā</span></td><td>*ḥăzāʾ</td><td><span class="he">חֲזָא</span> (Дан 2:26)</td><td>*ă &gt; Ø</td></tr>
+<tr><td>30</td><td>сир. <span class="lat">ʿam</span></td><td>*ʿim</td><td><span class="he">עִם</span> (Дан 2:11)</td><td>*i &gt; a</td></tr>
+<tr><td>31</td><td>сир. <span class="lat">rūḥā</span></td><td>*rûaḥ</td><td><span class="he">רוּחַ</span> (Дан 5:12)</td><td>*û &gt; ū; *a &gt; ā</td></tr>
+<tr><td>32</td><td>сир. <span class="lat">nḇīyā</span></td><td>*nəḇiyyāʾ</td><td><span class="he">נְבִיָּא</span> (Езд 5:1)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>33</td><td>сир. <span class="lat">kāhnā</span></td><td>*kāhănāʾ</td><td><span class="he">כָּהֲנָא</span> (Езд 6:9)</td><td>*ă &gt; Ø</td></tr>
+<tr><td>34</td><td>сир. <span class="lat">sāfrā</span></td><td>*sāfrāʾ</td><td><span class="he">סָפְרָא</span> (Езд 4:8)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>35</td><td>сир. <span class="lat">dīnā</span></td><td>*dîn</td><td><span class="he">דִּין</span> (Дан 7:10)</td><td>*ā добавлен</td></tr>
+<tr><td>36</td><td>сир. <span class="lat">qḏām</span></td><td>*qŏḏām</td><td><span class="he">קֳדָם</span> (Дан 2:9)</td><td>*ŏ &gt; Ø</td></tr>
+<tr><td>37</td><td>сир. <span class="lat">bāṯar</span></td><td>*bāṯar</td><td><span class="he">בָּתַר</span> (Дан 2:29)</td><td>сохр.</td></tr>
+<tr><td>38</td><td>сир. <span class="lat">lwāṯ</span></td><td>*ləwāṯ</td><td><span class="he">לְוָת</span> (Дан 2:16)</td><td>*ə &gt; Ø</td></tr>
+<tr><td>39</td><td>сир. <span class="lat">ʾalāhā</span></td><td>*ʾĕlāh</td><td><span class="he">אֱלָהּ</span> (Дан 2:18)</td><td>*ĕ &gt; a</td></tr>
+<tr><td>40</td><td>тарг. <span class="he">מֵימְרָא</span></td><td>*mêmar</td><td><span class="he">מֵימַר</span> (Дан 4:14?)</td><td>*-ar &gt; -rāʾ</td></tr>
+<tr><td>41</td><td>тарг. <span class="he">אִתְפְּעַל</span></td><td>*hitpəʿal</td><td><span class="he">הִתְפְּעַל</span> (реконстр.)</td><td>*h- &gt; ʾ-</td></tr>
+<tr><td>42</td><td>сир. <span class="lat">ʾettapʿal</span></td><td>*hittapʿal</td><td><span class="he">הִתַּפְעַל</span> (реконстр.)</td><td>*h- &gt; ʾ-; *i &gt; e</td></tr>
+<tr><td>43</td><td>тарг. <span class="he">יִקְטֹל</span></td><td>*yiqṭul</td><td><span class="he">יִקְטֻל</span> (реконстр.)</td><td>*u &gt; o</td></tr>
+<tr><td>44</td><td>сир. <span class="lat">neqtōl</span></td><td>*yiqṭul</td><td><span class="he">יִקְטֻל</span></td><td>*y- &gt; n-; *u &gt; o</td></tr>
+<tr><td>45</td><td>тарг. <span class="he">תִּקְטֹל</span></td><td>*tiqṭul</td><td><span class="he">תִּקְטֻל</span> (реконстр.)</td><td>*u &gt; o</td></tr>
+<tr><td>46</td><td>сир. <span class="lat">teqtōl</span></td><td>*tiqṭul</td><td><span class="he">תִּקְטֻל</span></td><td>*u &gt; o</td></tr>
+<tr><td>47</td><td>тарг. <span class="he">נִקְטֹל</span></td><td>*niqṭul</td><td><span class="he">נִקְטֻל</span> (реконстр.)</td><td>*u &gt; o</td></tr>
+<tr><td>48</td><td>сир. <span class="lat">neqtōl</span></td><td>*niqṭul</td><td><span class="he">נִקְטֻל</span></td><td>*u &gt; o</td></tr>
+<tr><td>49</td><td>тарг. <span class="he">קְטַלְתּוּן</span></td><td>*qəṭaltûn</td><td><span class="he">קְטַלְתּוּן</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>50</td><td>сир. <span class="lat">qṭaltōn</span></td><td>*qəṭaltûn</td><td><span class="he">קְטַלְתּוּן</span></td><td>*ə &gt; Ø; *û &gt; ō</td></tr>
+<tr><td>51</td><td>тарг. <span class="he">קְטַלְנָא</span></td><td>*qəṭalnāʾ</td><td><span class="he">קְטַלְנָא</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>52</td><td>сир. <span class="lat">qṭaln</span></td><td>*qəṭalnāʾ</td><td><span class="he">קְטַלְנָא</span></td><td>*ə &gt; Ø; *-āʾ &gt; Ø</td></tr>
+<tr><td>53</td><td>тарг. <span class="he">יִקְטְלוּן</span></td><td>*yiqṭəlûn</td><td><span class="he">יִקְטְלוּן</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>54</td><td>сир. <span class="lat">neqtlūn</span></td><td>*yiqṭəlûn</td><td><span class="he">יִקְטְלוּן</span></td><td>*y- &gt; n-; *û &gt; ū</td></tr>
+<tr><td>55</td><td>тарг. <span class="he">תִּקְטְלוּן</span></td><td>*tiqṭəlûn</td><td><span class="he">תִּקְטְלוּן</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>56</td><td>сир. <span class="lat">teqtlūn</span></td><td>*tiqṭəlûn</td><td><span class="he">תִּקְטְלוּן</span></td><td>*ə &gt; Ø; *û &gt; ū</td></tr>
+<tr><td>57</td><td>тарг. <span class="he">נִקְטְלוּן</span></td><td>*niqṭəlûn</td><td><span class="he">נִקְטְלוּן</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>58</td><td>сир. <span class="lat">neqtlūn</span></td><td>*niqṭəlûn</td><td><span class="he">נִקְטְלוּן</span></td><td>*ə &gt; Ø; *û &gt; ū</td></tr>
+<tr><td>59</td><td>тарг. <span class="he">קְטֹל</span> (импер.)</td><td>*qəṭul</td><td><span class="he">קְטֻל</span> (реконстр.)</td><td>*u &gt; o</td></tr>
+<tr><td>60</td><td>сир. <span class="lat">qṭol</span></td><td>*qəṭul</td><td><span class="he">קְטֻל</span></td><td>*ə &gt; Ø; *u &gt; o</td></tr>
+<tr><td>61</td><td>тарг. <span class="he">קְטֻלוּ</span></td><td>*qəṭulû</td><td><span class="he">קְטֻלוּ</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>62</td><td>сир. <span class="lat">qṭolū</span></td><td>*qəṭulû</td><td><span class="he">קְטֻלוּ</span></td><td>*ə &gt; Ø; *û &gt; ū</td></tr>
+<tr><td>63</td><td>тарг. <span class="he">מְקַטֵּל</span> (Pael прич.)</td><td>*məqaṭṭēl</td><td><span class="he">מְקַטֵּל</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>64</td><td>сир. <span class="lat">mqaṭṭal</span></td><td>*məqaṭṭēl</td><td><span class="he">מְקַטֵּל</span></td><td>*ə &gt; Ø; *ē &gt; a</td></tr>
+<tr><td>65</td><td>тарг. <span class="he">מַקְטֵל</span> (Haphel прич.)</td><td>*mahqṭēl</td><td><span class="he">מַהְקְטֵל</span> (реконстр.)</td><td>*h- &gt; Ø</td></tr>
+<tr><td>66</td><td>сир. <span class="lat">maqṭel</span></td><td>*mahqṭēl</td><td><span class="he">מַהְקְטֵל</span></td><td>*h- &gt; Ø; *ē &gt; e</td></tr>
+<tr><td>67</td><td>тарг. <span class="he">מִתְקְטַל</span></td><td>*mithqəṭal</td><td><span class="he">מִתְקְטַל</span> (реконстр.)</td><td>сохр.</td></tr>
+<tr><td>68</td><td>сир. <span class="lat">mettqṭal</span></td><td>*mithqəṭal</td><td><span class="he">מִתְקְטַל</span></td><td>*ith &gt; ett; *ə &gt; Ø</td></tr>
+<tr><td>69</td><td>тарг. <span class="he">קְטִילָא</span></td><td>*qəṭîl</td><td><span class="he">קְטִיל</span> (реконстр.)</td><td>*ā добавлен</td></tr>
+<tr><td>70</td><td>сир. <span class="lat">qṭīlā</span></td><td>*qəṭîl</td><td><span class="he">קְטִיל</span></td><td>*ə &gt; Ø; *ā добавлен</td></tr>
+<tr><td>71</td><td>сир. <span class="lat">šmā</span></td><td>*šum</td><td><span class="he">שֻׁם</span> (Дан 2:20)</td><td>*u &gt; ə; *ā добавлен</td></tr>
+<tr><td>72</td><td>тарг. <span class="he">שְׁמָא</span></td><td>*šum</td><td><span class="he">שֻׁם</span></td><td>*u &gt; ə; *ā добавлен</td></tr>
+<tr><td>73</td><td>сир. <span class="lat">ʾaḇā</span></td><td>*ʾaḇ</td><td><span class="he">אַב</span> (Дан 2:23)</td><td>*ā добавлен</td></tr>
+<tr><td>74</td><td>тарг. <span class="he">אַבָּא</span></td><td>*ʾaḇ</td><td><span class="he">אַב</span></td><td>геминация; *ā добавлен</td></tr>
+<tr><td>75</td><td>сир. <span class="lat">ʾemā</span></td><td>*ʾimmāʾ</td><td><span class="he">אִמָּא</span> (Дан 5:2)</td><td>*i &gt; e; геминация сохр.</td></tr>
+<tr><td>76</td><td>тарг. <span class="he">אִמָּא</span></td><td>*ʾimmāʾ</td><td><span class="he">אִמָּא</span></td><td>сохр.</td></tr>
+<tr><td>77</td><td>сир. <span class="lat">yammā</span></td><td>*yamm</td><td><span class="he">יָם</span> (Дан 7:2)</td><td>геминация мем; *ā добавлен</td></tr>
+<tr><td>78</td><td>тарг. <span class="he">יַמָּא</span></td><td>*yamm</td><td><span class="he">יָם</span></td><td>геминация мем</td></tr>
+<tr><td>79</td><td>сир. <span class="lat">ṭūrā</span></td><td>*ṭûr</td><td><span class="he">טוּר</span> (Дан 2:35)</td><td>*û &gt; ū; *ā добавлен</td></tr>
+<tr><td>80</td><td>тарг. <span class="he">טוּרָא</span></td><td>*ṭûr</td><td><span class="he">טוּר</span></td><td>сохр.; *ā добавлен</td></tr>
+<tr><td>81</td><td>сир. <span class="lat">nahrā</span></td><td>*nahar</td><td><span class="he">נְהַר</span> (Дан 7:10)</td><td>*ə &gt; a; *ā добавлен</td></tr>
+<tr><td>82</td><td>тарг. <span class="he">נַהֲרָא</span></td><td>*nahar</td><td><span class="he">נְהַר</span></td><td>*ə &gt; a; *ā добавлен</td></tr>
+<tr><td>83</td><td>сир. <span class="lat">baytā</span></td><td>*bayit</td><td><span class="he">בַּיִת</span> (Езд 5:8)</td><td>*ay &gt; ay; *ā добавлен</td></tr>
+<tr><td>84</td><td>тарг. <span class="he">בֵּיתָא</span></td><td>*bayit</td><td><span class="he">בַּיִת</span></td><td>*ay &gt; ê; *ā добавлен</td></tr>
+<tr><td>85</td><td>сир. <span class="lat">ʾarʿā</span></td><td>*ʾarʿ</td><td><span class="he">אֲרַע</span> (Дан 2:39)</td><td>*ă &gt; a; *ā добавлен</td></tr>
+<tr><td>86</td><td>тарг. <span class="he">אַרְעָא</span></td><td>*ʾarʿ</td><td><span class="he">אֲרַע</span></td><td>*ă &gt; a; *ā добавлен</td></tr>
+<tr><td>87</td><td>сир. <span class="lat">malkā</span></td><td>*malk</td><td><span class="he">מֶלֶךְ</span> (Дан 2:37)</td><td>*ə &gt; a; *ā добавлен</td></tr>
+<tr><td>88</td><td>тарг. <span class="he">מַלְכָּא</span></td><td>*malk</td><td><span class="he">מֶלֶךְ</span></td><td>геминация; *ā добавлен</td></tr>
+<tr><td>89</td><td>сир. <span class="lat">malkūṯā</span></td><td>*malkû</td><td><span class="he">מַלְכוּ</span> (Дан 2:37)</td><td>*û &gt; ū; *ā добавлен</td></tr>
+<tr><td>90</td><td>тарг. <span class="he">מַלְכוּתָא</span></td><td>*malkû</td><td><span class="he">מַלְכוּ</span></td><td>*-ṯ- интеркалирован</td></tr>
+<tr><td>91</td><td>сир. <span class="lat">ḥayyē</span></td><td>*ḥayyîn</td><td><span class="he">חַיִּין</span> (Дан 4:31)</td><td>*în &gt; ē</td></tr>
+<tr><td>92</td><td>тарг. <span class="he">חַיֵּי</span></td><td>*ḥayyîn</td><td><span class="he">חַיִּין</span></td><td>*în &gt; ê</td></tr>
+<tr><td>93</td><td>сир. <span class="lat">ʾănāšā</span></td><td>*ʾănāš</td><td><span class="he">אֱנָשׁ</span> (Дан 2:38)</td><td>*ā добавлен</td></tr>
+<tr><td>94</td><td>тарг. <span class="he">אֱנָשָׁא</span></td><td>*ʾănāš</td><td><span class="he">אֱנָשׁ</span></td><td>*ā добавлен</td></tr>
+<tr><td>95</td><td>сир. <span class="lat">gabrā</span></td><td>*gəḇar</td><td><span class="he">גְּבַר</span> (Дан 3:21)</td><td>*ə &gt; a; *ā добавлен</td></tr>
+<tr><td>96</td><td>тарг. <span class="he">גַּבְרָא</span></td><td>*gəḇar</td><td><span class="he">גְּבַר</span></td><td>*ə &gt; a; *ā добавлен</td></tr>
+<tr><td>97</td><td>сир. <span class="lat">ʾāṯā</span></td><td>*ʾāt</td><td><span class="he">אָת</span> (Дан 4:2)</td><td>*ā добавлен</td></tr>
+<tr><td>98</td><td>тарг. <span class="he">אָתָא</span></td><td>*ʾāt</td><td><span class="he">אָת</span></td><td>*ā добавлен</td></tr>
+<tr><td>99</td><td>сир. <span class="lat">ʾîṯay</span> → <span class="lat">ʾit</span></td><td>*ʾîtay</td><td><span class="he">אִיתַי</span> (Дан 2:10)</td><td>*-ay &gt; Ø</td></tr>
+<tr><td>100</td><td>сир. <span class="lat">malkō</span> (зап.-сир.)</td><td>*malkā</td><td><span class="he">מַלְכָּא</span></td><td>*ā &gt; ō (зап.-сир.)</td></tr>
+<tr><td>101</td><td>сир. <span class="lat">ʾabā</span></td><td>*ʾaḇ</td><td><span class="he">אַב</span></td><td>*ḇ &gt; b; *ā добавлен</td></tr>
+<tr><td>102</td><td>сир. <span class="lat">ʾaḥā</span></td><td>*ʾăḥāʾ</td><td><span class="he">אֲחָא</span> (Дан 2:13)</td><td>*ă &gt; a; *-āʾ &gt; -ā</td></tr>
+<tr><td>103</td><td>сир. <span class="lat">ḥemṯā</span></td><td>*ḥĕmāʾ</td><td><span class="he">חֱמָא</span> (Дан 3:13)</td><td>*ē &gt; e; *-āʾ &gt; -ā</td></tr>
+<tr><td>104</td><td>сир. <span class="lat">nūrā</span></td><td>*nûr</td><td><span class="he">נוּר</span> (Дан 3:6)</td><td>*û &gt; ū; *ā добавлен</td></tr>
+<tr><td>105</td><td>сир. <span class="lat">mê</span></td><td>*mayyāʾ</td><td><span class="he">מַיָּא</span> (Дан 3:25?)</td><td>*ayyā &gt; ê</td></tr>
+<tr><td>106</td><td>сир. <span class="lat">ʾîlānā</span></td><td>*ʾîlān</td><td><span class="he">אִילָן</span> (Дан 4:8)</td><td>*ā добавлен</td></tr>
+<tr><td>107</td><td>сир. <span class="lat">ʿiqqārā</span></td><td>*ʿiqqar</td><td><span class="he">עִקַּר</span> (Дан 4:12)</td><td>геминация; *ā добавлен</td></tr>
+<tr><td>108</td><td>сир. <span class="lat">ṭarpā</span></td><td>*ṭərap̄</td><td><span class="he">טְרַף</span> (Дан 4:12)</td><td>*ə &gt; a; *ā добавлен</td></tr>
+<tr><td>109</td><td>сир. <span class="lat">qarnā</span></td><td>*qarn</td><td><span class="he">קֶרֶן</span> (Дан 7:8)</td><td>*e &gt; a; *ā добавлен</td></tr>
+<tr><td>110</td><td>сир. <span class="lat">ḥêwā</span></td><td>*ḥêw</td><td><span class="he">חֵיוָא</span> (Дан 7:3)</td><td>*-āʾ &gt; -ā</td></tr>
+</tbody>
+</table>
+
+<p><strong>Итого: 110 примеров обратной реконструкции.</strong></p>
+
+<!-- ============================================================ -->
+<h2>Часть IV. Ограничения метода</h2>
+
+<div class="limit">
+<p><strong>1. Семантические реконструкции невозможны.</strong> Сирийский утратил функцию эмфатического состояния как маркера определённости. Из сир. <span class="lat">malkā</span> нельзя чисто формально восстановить, было ли BA <span class="he">מַלְכָּא</span> определённым или нет. Реконструкция требует контекстуального анализа.</p>
+<p><strong>2. Парафрастические добавления в Таргумах</strong> (например, <span class="he">מֵימְרָא</span>) не восходят к BA — они представляют собой интерпретацию. Алгоритм здесь неприменим: нельзя «реконструировать» то, чего не было.</p>
+<p><strong>3. Греческие кальки в Пешитте</strong> (<span class="lat">εὐαγγέλιον</span> → <span class="he">אֶוַונְגֶּלְיוֹן</span>; <span class="lat">ἀπόστολος</span> → <span class="he">שְׁלִיחָא</span>) не имеют BA-прототипа.</p>
+<p><strong>4. Омонимия и неоднозначность.</strong> Сир. <span class="lat">ʾat</span> может быть и 2 м. р. ед. ч. «ты», и 2 ж. р. ед. ч. «ты» (в зависимости от огласовки). Без контекста реконструкция неоднозначна.</p>
+<p><strong>5. Смешение диалектов в Таргумах.</strong> Таргум Йонатан содержит как западные, так и восточные черты. Одна и та же форма может отражать разные диалектные прототипы.</p>
+<p><strong>6. Утрата фонологических противопоставлений.</strong> Сирийский утратил некоторые противопоставления, которые были в BA (например, различение <span class="lat">ś</span> и <span class="lat">š</span> в некоторых позициях). Реконструкция утраченных противопоставлений по сирийскому материалу невозможна без привлечения других семитских языков.</p>
+</div>
+
+<div class="note">
+<p><strong>Итог.</strong> Алгоритм работает для регулярных морфологических и фонологических соответствий, подтверждённых засвидетельствованными BA-формами. Он <em>не</em> работает для семантических реконструкций, парафрастических добавлений, греческих калек и случаев диалектной неоднозначности. Учащийся должен уметь различать эти случаи и не выдавать гипотезу за доказанный факт.</p>
+</div>
+
+</body>
+</html>

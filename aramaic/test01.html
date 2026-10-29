@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тест: лексика и перевод</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    max-width: 820px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #222;
+    background: #fafafa;
+  }
+  .he {
+    font-family: "Times New Roman", "David", "Noto Sans Hebrew", serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-size: 1.12em;
+  }
+  .meta {
+    color: #555;
+    font-size: .95em;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .bar {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+  }
+  .bar > div {
+    height: 100%;
+    background: #4a8;
+    width: 0;
+    transition: width .25s ease;
+  }
+  .question {
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .opt {
+    text-align: left;
+    padding: .65rem .9rem;
+    border: 1px solid #bbb;
+    background: #fff;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1.02rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+  }
+  .opt:hover:not(:disabled) { background: #f0f5ff; border-color: #88a; }
+  .opt:disabled { cursor: default; }
+  .opt.correct {
+    background: #e6f7ea;
+    border-color: #3a9a4e;
+  }
+  .opt.wrong {
+    background: #fdecea;
+    border-color: #c0392b;
+  }
+  .opt .label { flex: 1; }
+  .opt .label[dir="rtl"] { direction: rtl; text-align: right; }
+  .opt .mark {
+    font-size: 1.3em;
+    min-width: 1.2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  .opt.correct .mark { color: #1e7a3a; }
+  .opt.wrong .mark { color: #b03020; }
+  .result {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+  }
+  .result .score { font-size: 2rem; font-weight: bold; margin: .3rem 0 .6rem; }
+  .restart {
+    margin-top: 1rem;
+    padding: .6rem 1.1rem;
+    font: inherit;
+    background: #3a6ea5;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .restart:hover { background: #2f5a87; }
+  .note { color: #666; font-size: .9em; margin-top: .6rem; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="meta">
+    <span id="progress">Вопрос 1 из 20</span>
+    <span id="tally">Правильно: 0</span>
+  </div>
+  <div class="bar"><div id="barfill"></div></div>
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+</div>
+
+<div id="final" class="result" style="display:none"></div>
+
+<script>
+/* ---------- Seeded RNG (mulberry32) from system clock ---------- */
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    var t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const SEED = Date.now() >>> 0;
+const rng = mulberry32(SEED);
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------- Question bank (60) ---------- */
+const BANK = [
+
+  /* ===== A. Арамейский → русский (15) ===== */
+  { q: 'Как переводится <span class="he">עֲבַד</span>?',
+    options: ['делать', 'есть, вкушать', 'пить', 'спать'],
+    correct: 'делать' },
+  { q: 'Как переводится <span class="he">יְהַב</span>?',
+    options: ['давать', 'брать', 'посылать', 'видеть'],
+    correct: 'давать' },
+  { q: 'Как переводится <span class="he">נְפַל</span>?',
+    options: ['падать', 'вставать', 'идти', 'бежать'],
+    correct: 'падать' },
+  { q: 'Как переводится <span class="he">קוּם</span>?',
+    options: ['вставать', 'падать', 'сидеть', 'лежать'],
+    correct: 'вставать' },
+  { q: 'Как переводится <span class="he">שְׁלַח</span>?',
+    options: ['посылать', 'получать', 'брать', 'давать'],
+    correct: 'посылать' },
+  { q: 'Как переводится <span class="he">שְׁמַע</span>?',
+    options: ['слышать', 'видеть', 'говорить', 'знать'],
+    correct: 'слышать' },
+  { q: 'Как переводится <span class="he">חֲזָא</span>?',
+    options: ['видеть', 'слышать', 'знать', 'говорить'],
+    correct: 'видеть' },
+  { q: 'Как переводится <span class="he">יְדַע</span>?',
+    options: ['знать', 'видеть', 'слышать', 'думать'],
+    correct: 'знать' },
+  { q: 'Как переводится <span class="he">אֲכַל</span>?',
+    options: ['есть, вкушать', 'пить', 'спать', 'говорить'],
+    correct: 'есть, вкушать' },
+  { q: 'Как переводится <span class="he">שְׁתָה</span>?',
+    options: ['пить', 'есть', 'спать', 'видеть'],
+    correct: 'пить' },
+  { q: 'Как переводится <span class="he">רוּחַ</span>?',
+    options: ['ветер, дух', 'вода', 'огонь', 'земля'],
+    correct: 'ветер, дух' },
+  { q: 'Как переводится <span class="he">קֶרֶן</span>?',
+    options: ['рог', 'копыто', 'хвост', 'глаз'],
+    correct: 'рог' },
+  { q: 'Как переводится <span class="he">מִלָּה</span>?',
+    options: ['слово', 'дело', 'мысль', 'звук'],
+    correct: 'слово' },
+  { q: 'Как переводится <span class="he">חַיִל</span>?',
+    options: ['сила, войско', 'слабость', 'мир', 'богатство'],
+    correct: 'сила, войско' },
+  { q: 'Как переводится <span class="he">דִּין</span>?',
+    options: ['суд', 'закон', 'правда', 'наказание'],
+    correct: 'суд' },
+
+  /* ===== B. Русский → арамейский (15) ===== */
+  { q: 'Как по-арамейски «отец»?',
+    options: ['<span class="he">אַבָּא</span>', '<span class="he">אֲחָא</span>', '<span class="he">אַרְעָא</span>', '<span class="he">עַם</span>'],
+    correct: '<span class="he">אַבָּא</span>' },
+  { q: 'Как по-арамейски «брат»?',
+    options: ['<span class="he">אֲחָא</span>', '<span class="he">אַבָּא</span>', '<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>'],
+    correct: '<span class="he">אֲחָא</span>' },
+  { q: 'Как по-арамейски «рука»?',
+    options: ['<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>', '<span class="he">רֵאשָׁא</span>', '<span class="he">לִבָּא</span>'],
+    correct: '<span class="he">יְדָא</span>' },
+  { q: 'Как по-арамейски «глаз»?',
+    options: ['<span class="he">עַיְנָא</span>', '<span class="he">יְדָא</span>', '<span class="he">רֵאשָׁא</span>', '<span class="he">טוּרָא</span>'],
+    correct: '<span class="he">עַיְנָא</span>' },
+  { q: 'Как по-арамейски «голова»?',
+    options: ['<span class="he">רֵאשָׁא</span>', '<span class="he">לִבָּא</span>', '<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>'],
+    correct: '<span class="he">רֵאשָׁא</span>' },
+  { q: 'Как по-арамейски «сердце»?',
+    options: ['<span class="he">לִבָּא</span>', '<span class="he">רֵאשָׁא</span>', '<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>'],
+    correct: '<span class="he">לִבָּא</span>' },
+  { q: 'Как по-арамейски «дом»?',
+    options: ['<span class="he">בֵּיתָא</span>', '<span class="he">יַמָּא</span>', '<span class="he">טוּרָא</span>', '<span class="he">נַהֲרָא</span>'],
+    correct: '<span class="he">בֵּיתָא</span>' },
+  { q: 'Как по-арамейски «море»?',
+    options: ['<span class="he">יַמָּא</span>', '<span class="he">בֵּיתָא</span>', '<span class="he">טוּרָא</span>', '<span class="he">נַהֲרָא</span>'],
+    correct: '<span class="he">יַמָּא</span>' },
+  { q: 'Как по-арамейски «гора»?',
+    options: ['<span class="he">טוּרָא</span>', '<span class="he">יַמָּא</span>', '<span class="he">בֵּיתָא</span>', '<span class="he">נַהֲרָא</span>'],
+    correct: '<span class="he">טוּרָא</span>' },
+  { q: 'Как по-арамейски «река»?',
+    options: ['<span class="he">נַהֲרָא</span>', '<span class="he">יַמָּא</span>', '<span class="he">טוּרָא</span>', '<span class="he">בֵּיתָא</span>'],
+    correct: '<span class="he">נַהֲרָא</span>' },
+  { q: 'Как по-арамейски «царь» в эмфатическом состоянии?',
+    options: ['<span class="he">מַלְכָּא</span>', '<span class="he">מַלְכוּתָא</span>', '<span class="he">מַלְכְּתָא</span>', '<span class="he">מַלְכִין</span>'],
+    correct: '<span class="he">מַלְכָּא</span>' },
+  { q: 'Как по-арамейски «царство»?',
+    options: ['<span class="he">מַלְכוּתָא</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">מַלְכְּתָא</span>', '<span class="he">מַמְלָכָה</span>'],
+    correct: '<span class="he">מַלְכוּתָא</span>' },
+  { q: 'Как по-арамейски «земля» в эмфатическом состоянии?',
+    options: ['<span class="he">אַרְעָא</span>', '<span class="he">אֲרַע</span>', '<span class="he">עַפְרָא</span>', '<span class="he">טוּרָא</span>'],
+    correct: '<span class="he">אַרְעָא</span>' },
+  { q: 'Как по-арамейски «небо» в эмфатическом состоянии?',
+    options: ['<span class="he">שְׁמַיָּא</span>', '<span class="he">שְׁמַיִן</span>', '<span class="he">רָקִיעַ</span>', '<span class="he">עֲנָנָא</span>'],
+    correct: '<span class="he">שְׁמַיָּא</span>' },
+  { q: 'Как по-арамейски «письмо»?',
+    options: ['<span class="he">אִגְּרָה</span>', '<span class="he">סִפְרָא</span>', '<span class="he">מְגִלָּה</span>', '<span class="he">כְּתָבָא</span>'],
+    correct: '<span class="he">אִגְּרָה</span>' },
+
+  /* ===== C. Иврит → арамейский (12) ===== */
+  { q: 'Какое арамейское соответствие евр. <span class="he">יָד</span>?',
+    options: ['<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>', '<span class="he">רֵאשָׁא</span>', '<span class="he">לִבָּא</span>'],
+    correct: '<span class="he">יְדָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">עַיִן</span>?',
+    options: ['<span class="he">עַיְנָא</span>', '<span class="he">יְדָא</span>', '<span class="he">רֵאשָׁא</span>', '<span class="he">לִבָּא</span>'],
+    correct: '<span class="he">עַיְנָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">רֹאשׁ</span>?',
+    options: ['<span class="he">רֵאשָׁא</span>', '<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>', '<span class="he">לִבָּא</span>'],
+    correct: '<span class="he">רֵאשָׁא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">לֵב</span>?',
+    options: ['<span class="he">לִבָּא</span>', '<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>', '<span class="he">רֵאשָׁא</span>'],
+    correct: '<span class="he">לִבָּא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">אָב</span>?',
+    options: ['<span class="he">אַבָּא</span>', '<span class="he">אֲחָא</span>', '<span class="he">אַרְעָא</span>', '<span class="he">עַם</span>'],
+    correct: '<span class="he">אַבָּא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">אָח</span>?',
+    options: ['<span class="he">אֲחָא</span>', '<span class="he">אַבָּא</span>', '<span class="he">יְדָא</span>', '<span class="he">עַיְנָא</span>'],
+    correct: '<span class="he">אֲחָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">דָּבָר</span>?',
+    options: ['<span class="he">מִלָּה</span>', '<span class="he">דִּין</span>', '<span class="he">חַיִל</span>', '<span class="he">קֶרֶן</span>'],
+    correct: '<span class="he">מִלָּה</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">מִשְׁפָּט</span>?',
+    options: ['<span class="he">דִּין</span>', '<span class="he">מִלָּה</span>', '<span class="he">חַיִל</span>', '<span class="he">קֶרֶן</span>'],
+    correct: '<span class="he">דִּין</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">עָשָׂה</span>?',
+    options: ['<span class="he">עֲבַד</span>', '<span class="he">יְהַב</span>', '<span class="he">אֲמַר</span>', '<span class="he">כְּתַב</span>'],
+    correct: '<span class="he">עֲבַד</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">נָתַן</span>?',
+    options: ['<span class="he">יְהַב</span>', '<span class="he">עֲבַד</span>', '<span class="he">אֲמַר</span>', '<span class="he">כְּתַב</span>'],
+    correct: '<span class="he">יְהַב</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">אֶבֶן</span>?',
+    options: ['<span class="he">אַבְנָא</span>', '<span class="he">טוּרָא</span>', '<span class="he">עַפְרָא</span>', '<span class="he">בֵּיתָא</span>'],
+    correct: '<span class="he">אַבְנָא</span>' },
+  { q: 'Какое арамейское соответствие евр. <span class="he">מַלְכָּה</span>?',
+    options: ['<span class="he">מַלְכְּתָא</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">מַלְכוּתָא</span>', '<span class="he">מַלְכִין</span>'],
+    correct: '<span class="he">מַלְכְּתָא</span>' },
+
+  /* ===== D. Арамейский → иврит (10) ===== */
+  { q: 'Какое ивритское соответствие арам. <span class="he">רוּחַ</span>?',
+    options: ['<span class="he">רוּחַ</span>', '<span class="he">נֶפֶשׁ</span>', '<span class="he">אֶרֶץ</span>', '<span class="he">שָׁמַיִם</span>'],
+    correct: '<span class="he">רוּחַ</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">קֶרֶן</span>?',
+    options: ['<span class="he">קֶרֶן</span>', '<span class="he">יָד</span>', '<span class="he">עַיִן</span>', '<span class="he">רֹאשׁ</span>'],
+    correct: '<span class="he">קֶרֶן</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">חַיִל</span>?',
+    options: ['<span class="he">חַיִל</span>', '<span class="he">מֶלֶךְ</span>', '<span class="he">עֶבֶד</span>', '<span class="he">עַם</span>'],
+    correct: '<span class="he">חַיִל</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">טַל</span>?',
+    options: ['<span class="he">טַל</span>', '<span class="he">מַיִם</span>', '<span class="he">אֵשׁ</span>', '<span class="he">רוּחַ</span>'],
+    correct: '<span class="he">טַל</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">עַם</span>?',
+    options: ['<span class="he">עַם</span>', '<span class="he">מֶלֶךְ</span>', '<span class="he">אִישׁ</span>', '<span class="he">אָדָם</span>'],
+    correct: '<span class="he">עַם</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">כֹּל</span>?',
+    options: ['<span class="he">כֹּל</span>', '<span class="he">רַב</span>', '<span class="he">מְעַט</span>', '<span class="he">אֶחָד</span>'],
+    correct: '<span class="he">כֹּל</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">מָה</span>?',
+    options: ['<span class="he">מָה</span>', '<span class="he">מִי</span>', '<span class="he">אֵיךְ</span>', '<span class="he">מָתַי</span>'],
+    correct: '<span class="he">מָה</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">הוּא</span>?',
+    options: ['<span class="he">הוּא</span>', '<span class="he">הִיא</span>', '<span class="he">הֵם</span>', '<span class="he">אֲנִי</span>'],
+    correct: '<span class="he">הוּא</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">אַבְנָא</span>?',
+    options: ['<span class="he">אֶבֶן</span>', '<span class="he">עָפָר</span>', '<span class="he">חוֹל</span>', '<span class="he">מַיִם</span>'],
+    correct: '<span class="he">אֶבֶן</span>' },
+  { q: 'Какое ивритское соответствие арам. <span class="he">חַרְטֹם</span>?',
+    options: ['<span class="he">חַרְטֹם</span>', '<span class="he">מֶלֶךְ</span>', '<span class="he">נָבִיא</span>', '<span class="he">כֹּהֵן</span>'],
+    correct: '<span class="he">חַרְטֹם</span>' },
+
+  /* ===== E. Периодизация, диалекты, тексты, теория (8) ===== */
+  { q: 'К какому периоду относится библейский арамейский?',
+    options: ['Имперский (официальный) арамейский', 'Древнеарамейский', 'Среднеарамейский', 'Позднеарамейский'],
+    correct: 'Имперский (официальный) арамейский' },
+  { q: 'Какой из перечисленных диалектов относится к восточной ветви позднеарамейского?',
+    options: ['Сирийский', 'Галилейский', 'Самаритянский', 'Христианский палестинский'],
+    correct: 'Сирийский' },
+  { q: 'Что такое Пешитта?',
+    options: ['Сирийский перевод Библии', 'Арамейский таргум', 'Греческий перевод', 'Латинская Вульгата'],
+    correct: 'Сирийский перевод Библии' },
+  { q: 'Что такое таргум?',
+    options: ['Арамейский перевод/парафраз Библии', 'Сирийский перевод', 'Греческий перевод', 'Мишна'],
+    correct: 'Арамейский перевод/парафраз Библии' },
+  { q: 'Каково отношение арамейского и иврита?',
+    options: ['Сестринские языки, не диалекты', 'Диалекты одного языка', 'Арамейский — потомок иврита', 'Иврит — диалект арамейского'],
+    correct: 'Сестринские языки, не диалекты' },
+  { q: 'Где сегодня сохраняется западный новоарамейский?',
+    options: ['Маалюля (Сирия)', 'Урмия (Иран)', 'Мосул (Ирак)', 'Эдесса (Турция)'],
+    correct: 'Маалюля (Сирия)' },
+  { q: 'В какой книге Библии только одно предложение на арамейском?',
+    options: ['Иеремия (10:11)', 'Даниил', 'Ездра', 'Бытие'],
+    correct: 'Иеремия (10:11)' },
+  { q: 'Что такое мандейский?',
+    options: ['Восточноарамейский диалект гностической секты', 'Западноарамейский диалект', 'Сирийский литературный язык', 'Современный новоарамейский'],
+    correct: 'Восточноарамейский диалект гностической секты' }
+];
+
+/* ---------- Подготовка сессии ---------- */
+const TOTAL = 20;
+const indices = shuffle([...Array(BANK.length).keys()]).slice(0, TOTAL);
+const SESSION = indices.map(i => {
+  const q = BANK[i];
+  return { q: q.q, correct: q.correct, options: shuffle(q.options) };
+});
+
+/* ---------- Состояние ---------- */
+let current = 0;
+let score = 0;
+
+const $progress = document.getElementById('progress');
+const $tally = document.getElementById('tally');
+const $barfill = document.getElementById('barfill');
+const $question = document.getElementById('question');
+const $options = document.getElementById('options');
+const $stage = document.getElementById('stage');
+const $final = document.getElementById('final');
+
+function render() {
+  const item = SESSION[current];
+  $progress.textContent = `Вопрос ${current + 1} из ${TOTAL}`;
+  $tally.textContent = `Правильно: ${score}`;
+  $barfill.style.width = `${(current / TOTAL) * 100}%`;
+  $question.innerHTML = item.q;
+  $options.innerHTML = '';
+
+  item.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'opt';
+    const isHeb = /[\u0590-\u05FF]/.test(opt);
+    const labelDir = isHeb ? ' dir="rtl"' : '';
+    btn.innerHTML = `<span class="label"${labelDir}>${opt}</span><span class="mark"></span>`;
+    btn.addEventListener('click', () => choose(btn, opt, item));
+    $options.appendChild(btn);
+  });
+}
+
+function choose(btn, opt, item) {
+  const buttons = [...$options.querySelectorAll('.opt')];
+  buttons.forEach(b => b.disabled = true);
+
+  if (opt === item.correct) {
+    btn.classList.add('correct');
+    btn.querySelector('.mark').textContent = '✓';
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    btn.querySelector('.mark').textContent = '✗';
+    buttons.forEach(b => {
+      if (b.querySelector('.label').innerHTML === item.correct) {
+        b.classList.add('correct');
+        b.querySelector('.mark').textContent = '✓';
+      }
+    });
+  }
+
+  $tally.textContent = `Правильно: ${score}`;
+
+  setTimeout(() => {
+    current++;
+    if (current < TOTAL) {
+      render();
+    } else {
+      finish();
+    }
+  }, 900);
+}
+
+function finish() {
+  $barfill.style.width = '100%';
+  $stage.style.display = 'none';
+  const pct = Math.round((score / TOTAL) * 100);
+  let verdict = '';
+  if (pct >= 90) verdict = 'Отличный уровень: лексика и перевод усвоены уверенно.';
+  else if (pct >= 70) verdict = 'Хороший уровень: есть база, но нужна систематическая работа с текстами.';
+  else if (pct >= 50) verdict = 'Средний уровень: повторите лексику и базовые соответствия.';
+  else verdict = 'Начальный уровень: начните с таблицы соответствий и базовой лексики.';
+  $final.innerHTML = `
+    <div>Тест завершён. Итог:</div>
+    <div class="score">${score} / ${TOTAL}</div>
+    <div>${pct}%</div>
+    <p>${verdict}</p>
+    <button class="restart" onclick="location.reload()">Пройти ещё раз (новый набор вопросов)</button>
+    <p class="note">Порядок вопросов и вариантов определяется системным временем при загрузке страницы.</p>
+  `;
+  $final.style.display = 'block';
+}
+
+render();
+</script>
+
+</body>
+</html>
