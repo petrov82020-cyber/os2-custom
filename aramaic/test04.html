@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тест: реконструкция арамейских форм</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    max-width: 860px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #222;
+    background: #fafafa;
+  }
+  .he {
+    font-family: "Times New Roman", "David", "Noto Sans Hebrew", serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-size: 1.14em;
+  }
+  .lat { font-style: italic; }
+  .meta {
+    color: #555;
+    font-size: .95em;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .bar {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+  }
+  .bar > div {
+    height: 100%;
+    background: #4a8;
+    width: 0;
+    transition: width .25s ease;
+  }
+  .question {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+  }
+  .opt {
+    text-align: left;
+    padding: .6rem .9rem;
+    border: 1px solid #bbb;
+    background: #fff;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+  }
+  .opt:hover:not(:disabled) { background: #f0f5ff; border-color: #88a; }
+  .opt:disabled { cursor: default; }
+  .opt.correct { background: #e6f7ea; border-color: #3a9a4e; }
+  .opt.wrong { background: #fdecea; border-color: #c0392b; }
+  .opt .label { flex: 1; }
+  .opt .label[dir="rtl"] { direction: rtl; text-align: right; }
+  .opt .mark {
+    font-size: 1.35em;
+    min-width: 1.2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  .opt.correct .mark { color: #1e7a3a; }
+  .opt.wrong .mark { color: #b03020; }
+  .result {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+  }
+  .result .score { font-size: 2rem; font-weight: bold; margin: .3rem 0 .6rem; }
+  .restart {
+    margin-top: 1rem;
+    padding: .6rem 1.1rem;
+    font: inherit;
+    background: #3a6ea5;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .restart:hover { background: #2f5a87; }
+  .note { color: #666; font-size: .9em; margin-top: .6rem; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="meta">
+    <span id="progress">Вопрос 1 из 20</span>
+    <span id="tally">Правильно: 0</span>
+  </div>
+  <div class="bar"><div id="barfill"></div></div>
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+</div>
+
+<div id="final" class="result" style="display:none"></div>
+
+<script>
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    var t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const SEED = Date.now() >>> 0;
+const rng = mulberry32(SEED);
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------- Question bank (60) ---------- */
+
+const BANK = [
+
+  /* ===== A. Правила реконструкции d-конструкций (1–15) ===== */
+  { q: 'В сирийской конструкции «эмфат. X + d- + эмфат. Y», где Y обозначает <em>лицо, место или божество</em>, BA реконструируется как:',
+    options: ['Сопряж. X + эмфат. Y (без דִּי)', 'Эмфат. X + דִּי + эмфат. Y', 'Эмфат. X + эмфат. Y без частицы', 'Сопряж. X + сопряж. Y'],
+    correct: 'Сопряж. X + эмфат. Y (без דִּי)' },
+  { q: 'В сирийской конструкции «X + d- + Y», где Y обозначает <em>материал</em> (золото, железо), BA реконструируется как:',
+    options: ['Эмфат. X + דִּי + эмфат./абс. Y', 'Сопряж. X + эмфат. Y', 'Сопряж. X + сопряж. Y', 'Эмфат. X + эмфат. Y без דִּי'],
+    correct: 'Эмфат. X + דִּי + эмфат./абс. Y' },
+  { q: 'Сир. <span class="lat">alāhāʾ d-šmayyāʾ</span> реконструируется как:',
+    options: ['<span class="he">אֱלָהּ שְׁמַיָּא</span>', '<span class="he">אֱלָהָא דִּי שְׁמַיָּא</span>', '<span class="he">אֱלָהָא שְׁמַיָּא</span>', '<span class="he">אֱלָהּ שְׁמַיִן</span>'],
+    correct: '<span class="he">אֱלָהּ שְׁמַיָּא</span>' },
+  { q: 'Сир. <span class="lat">rêšāʾ d-dahbāʾ</span> реконструируется как:',
+    options: ['<span class="he">רֵאשָׁא דִּי דַהֲבָא</span>', '<span class="he">רֵשׁ דַּהֲבָא</span>', '<span class="he">רֵאשָׁא דַּהֲבָא</span>', '<span class="he">רֵאשָׁא דַּהֲבָא</span> без דִּי'],
+    correct: '<span class="he">רֵאשָׁא דִּי דַהֲבָא</span>' },
+  { q: 'Сир. <span class="lat">qarnāʾ d-parzlāʾ</span> реконструируется как:',
+    options: ['<span class="he">קַרְנָא דִּי־פַרְזְלָא</span>', '<span class="he">קֶרֶן פַּרְזֶל</span>', '<span class="he">קַרְנָא פַּרְזְלָא</span>', '<span class="he">קַרְנָא דִּי־פַּרְזֶל</span>'],
+    correct: '<span class="he">קַרְנָא דִּי־פַרְזְלָא</span>' },
+  { q: 'Сир. <span class="lat">malkāʾ d-šmayyāʾ</span> реконструируется как:',
+    options: ['<span class="he">מֶלֶךְ שְׁמַיָּא</span>', '<span class="he">מַלְכָּא שְׁמַיָּא</span>', '<span class="he">מַלְכָּא דִּי שְׁמַיָּא</span>', '<span class="he">מֶלֶךְ דִּי שְׁמַיָּא</span>'],
+    correct: '<span class="he">מֶלֶךְ שְׁמַיָּא</span>' },
+  { q: 'Сир. <span class="lat">bêtāʾ d-alāhāʾ</span> реконструируется как:',
+    options: ['<span class="he">בֵּית אֱלָהָא</span>', '<span class="he">בֵּיתָא דִּי אֱלָהָא</span>', '<span class="he">בֵּיתָא אֱלָהָא</span>', '<span class="he">בַּיִת אֱלֹהִים</span>'],
+    correct: '<span class="he">בֵּית אֱלָהָא</span>' },
+  { q: 'Сир. <span class="lat">māryāʾ d-malkê</span> реконструируется как:',
+    options: ['<span class="he">מָרֵא מַלְכַיָּא</span>', '<span class="he">מָרֵא דִּי מַלְכַיָּא</span>', '<span class="he">מָרֵא מַלְכִין</span>', '<span class="he">מָרַיָּא מַלְכַיָּא</span>'],
+    correct: '<span class="he">מָרֵא מַלְכַיָּא</span>' },
+  { q: 'Сир. <span class="lat">malkāʾ d-malkê</span> реконструируется как:',
+    options: ['<span class="he">מֶלֶךְ מַלְכַיָּא</span>', '<span class="he">מַלְכָּא דִּי מַלְכַיָּא</span>', '<span class="he">מַלְכָּא מַלְכַיָּא</span>', '<span class="he">מֶלֶךְ דִּי מַלְכַיָּא</span>'],
+    correct: '<span class="he">מֶלֶךְ מַלְכַיָּא</span>' },
+  { q: 'Сир. <span class="lat">ʾabûn d-ḇa-šmayyāʾ</span> реконструируется как:',
+    options: ['<span class="he">אֲבוּנָא דִּי בִשְׁמַיָּא</span>', '<span class="he">אָבִינוּ שֶׁבַּשָּׁמַיִם</span>', '<span class="he">אֲבוּנָא בִּשְׁמַיָּא</span>', '<span class="he">אַבָּא דִּי בִשְׁמַיָּא</span>'],
+    correct: '<span class="he">אֲבוּנָא דִּי בִשְׁמַיָּא</span>' },
+  { q: 'Сир. <span class="lat">ʿəbad malkāʾ</span> реконструируется как:',
+    options: ['<span class="he">עֲבַד מַלְכָּא</span>', '<span class="he">עָבַד הַמֶּלֶךְ</span>', '<span class="he">עֲבַד דִּי מַלְכָּא</span>', '<span class="he">עָבֵד מַלְכָּא</span>'],
+    correct: '<span class="he">עֲבַד מַלְכָּא</span>' },
+  { q: 'Сир. <span class="lat">šəlaḥ alāhāʾ</span> реконструируется как:',
+    options: ['<span class="he">שְׁלַח אֱלָהָא</span>', '<span class="he">שָׁלַח אֱלֹהִים</span>', '<span class="he">שְׁלַח דִּי אֱלָהָא</span>', '<span class="he">שַׁלֵּחַ אֱלָהָא</span>'],
+    correct: '<span class="he">שְׁלַח אֱלָהָא</span>' },
+  { q: 'Сир. <span class="lat">ḥzē(h) hwā(y)t</span> реконструируется как:',
+    options: ['<span class="he">חֲזֵה הֲוֵית</span>', '<span class="he">חֲזֵה הָיִיתִי</span>', '<span class="he">חֲזָה הֲוָה</span>', '<span class="he">חָזֵה אֲנָא</span>'],
+    correct: '<span class="he">חֲזֵה הֲוֵית</span>' },
+  { q: 'Сир. <span class="lat">ʾemar</span> в перфекте Peal 3 м. ед. ч. — BA:',
+    options: ['<span class="he">אֲמַר</span>', '<span class="he">אָמַר</span>', '<span class="he">אָמֵר</span>', '<span class="he">אֲמֵר</span>'],
+    correct: '<span class="he">אֲמַר</span>' },
+
+  /* ===== B. Особые случаи и ограничения метода (16–25) ===== */
+  { q: 'Для формулы «Царство Небесное» (<span class="lat">malkûṯāʾ d-šmayyāʾ</span>) BA-прототип:',
+    options: ['Не засвидетельствован (формула евангельская)', 'Засвидетельствован в Дан 2:37', 'Засвидетельствован в Дан 4:23', 'Засвидетельствован в Езд 5:8'],
+    correct: 'Не засвидетельствован (формула евангельская)' },
+  { q: 'Для формулы «Дух Святой» (<span class="lat">rûḥāʾ d-qûdšāʾ</span>) BA-прототип:',
+    options: ['Не засвидетельствован как устойчивая формула', 'Засвидетельствован в Дан 5:12', 'Засвидетельствован в Дан 4:5', 'Засвидетельствован в Дан 7:15'],
+    correct: 'Не засвидетельствован как устойчивая формула' },
+  { q: 'Формула «Сын Давидов» реконструируется как *<span class="he">בַּר דָּוִד</span>. Почему реконструкция гипотетична?',
+    options: ['Имя «Давид» не засвидетельствовано в Дан/Езд', 'Форма <span class="he">בַּר</span> не засвидетельствована', 'Сир. <span class="lat">brēh</span> не имеет соответствия', 'В BA нет слова «сын»'],
+    correct: 'Имя «Давид» не засвидетельствовано в Дан/Езд' },
+  { q: 'Сир. <span class="lat">ʿellāyāʾ</span> в титуле восстанавливается как:',
+    options: ['<span class="he">עֶלְיוֹנִין</span> (pluralis majestatis) или <span class="he">עִלָּאָה</span> — в зависимости от функции', 'Только <span class="he">עִלָּאָה</span>', 'Только <span class="he">עֶלְיוֹנִין</span>', 'Только <span class="he">עֶלְיוֹן</span>'],
+    correct: '<span class="he">עֶלְיוֹנִין</span> (pluralis majestatis) или <span class="he">עִלָּאָה</span> — в зависимости от функции' },
+  { q: 'В формуле Дан 7:18 «святые Вышнего» BA употребляет:',
+    options: ['<span class="he">קַדִּישֵׁי עֶלְיוֹנִין</span>', '<span class="he">קַדִּישֵׁי עִלָּאָה</span>', '<span class="he">קַדִּישֵׁי עֶלְיוֹן</span>', '<span class="he">קַדִּישֵׁי דִּי עֶלְיוֹנִין</span>'],
+    correct: '<span class="he">קַדִּישֵׁי עֶלְיוֹנִין</span>' },
+  { q: 'Сир. <span class="lat">brēh d-Dāwîd</span> реконструируется как:',
+    options: ['<span class="he">בַּר דָּוִד</span>', '<span class="he">בְּרֵהּ דִּי דָּוִד</span>', '<span class="he">בַּר דִּי דָּוִד</span>', '<span class="he">בֶּן דָּוִד</span>'],
+    correct: '<span class="he">בַּר דָּוִד</span>' },
+  { q: 'Какая фраза BA засвидетельствована <em>целиком</em> и совпадает с реконструкцией?',
+    options: ['<span class="he">עַתִּיק יוֹמִין</span>', '<span class="he">מַלְכוּת שְׁמַיָּא</span>', '<span class="he">רוּחַ קוּדְשָׁא</span>', '<span class="he">בַּר דָּוִד</span>'],
+    correct: '<span class="he">עַתִּיק יוֹמִין</span>' },
+  { q: 'Какая из формул BA засвидетельствована как <em>вся</em> и подтверждает правило «сир. d- → BA сопряж.»?',
+    options: ['<span class="he">אֱלָהּ אֲבָהָתִי</span> (Дан 2:23)', '<span class="he">רוּחַ קוּדְשָׁא</span>', '<span class="he">מַלְכוּת שְׁמַיָּא</span>', '<span class="he">בַּר דָּוִד</span>'],
+    correct: '<span class="he">אֱלָהּ אֲבָהָתִי</span> (Дан 2:23)' },
+  { q: 'Почему сир. <span class="lat">hû ydāʿ</span> = BA <span class="he">הוּא יָדַע</span> представляет собой надёжную реконструкцию?',
+    options: ['Оба компонента засвидетельствованы в Дан 2:22', 'Сирийское слово совпадает с ивритским', 'Конструкция уникальна для сирийского', 'Форма реконструирована по аналогии'],
+    correct: 'Оба компонента засвидетельствованы в Дан 2:22' },
+  { q: 'Какое из ограничений обратной реконструкции описано в серии?',
+    options: ['Семантические реконструкции и формулы без BA-прототипа', 'Все формы восстанавливаются механически', 'Грамматика BA полностью совпадает с сирийской', 'Достаточно только фонетических правил'],
+    correct: 'Семантические реконструкции и формулы без BA-прототипа' },
+
+  /* ===== C. Фонетика и вокализм (26–33) ===== */
+  { q: 'Сир. <span class="lat">ʾenā</span> реконструируется как:',
+    options: ['<span class="he">אֲנָה</span>', '<span class="he">אָנִי</span>', '<span class="he">אָנֹכִי</span>', '<span class="he">אֲנִי</span>'],
+    correct: '<span class="he">אֲנָה</span>' },
+  { q: 'Сир. <span class="lat">ʾantûn</span> реконструируется как:',
+    options: ['<span class="he">אַנְתּוּן</span>', '<span class="he">אַתֶּם</span>', '<span class="he">אַנְתֶּם</span>', '<span class="he">אָתוּן</span>'],
+    correct: '<span class="he">אַנְתּוּן</span>' },
+  { q: 'Сир. <span class="lat">malkāʾ</span> в титуле «царь царей» реконструируется как:',
+    options: ['<span class="he">מֶלֶךְ</span>', '<span class="he">מַלְכָּא</span>', '<span class="he">מָלָךְ</span>', '<span class="he">מֶלֶךְא</span>'],
+    correct: '<span class="he">מֶלֶךְ</span>' },
+  { q: 'Сир. <span class="lat">šmayyāʾ</span> реконструируется как:',
+    options: ['<span class="he">שְׁמַיָּא</span>', '<span class="he">שָׁמַיִם</span>', '<span class="he">שְׁמַיִן</span>', '<span class="he">שְׁמַיִים</span>'],
+    correct: '<span class="he">שְׁמַיָּא</span>' },
+  { q: 'Сир. <span class="lat">yammāʾ</span> реконструируется как:',
+    options: ['<span class="he">יַמָּא</span>', '<span class="he">יָם</span>', '<span class="he">יַמִּים</span>', '<span class="he">יַמִּין</span>'],
+    correct: '<span class="he">יַמָּא</span>' },
+  { q: 'Сир. <span class="lat">kṯab</span> реконструируется как:',
+    options: ['<span class="he">כְּתַב</span>', '<span class="he">כָּתַב</span>', '<span class="he">כְּתָב</span>', '<span class="he">כָּתֵב</span>'],
+    correct: '<span class="he">כְּתַב</span>' },
+  { q: 'Сир. <span class="lat">ʿəsar</span> «десять» реконструируется как:',
+    options: ['<span class="he">עֲשַׂר</span>', '<span class="he">עֶשֶׂר</span>', '<span class="he">עֲסַר</span>', '<span class="he">עֲשָׂרָה</span>'],
+    correct: '<span class="he">עֲשַׂר</span>' },
+  { q: 'Сир. <span class="lat">ʾarbəʿā</span> «четыре» реконструируется как:',
+    options: ['<span class="he">אַרְבְּעָה</span>', '<span class="he">אַרְבַּע</span>', '<span class="he">אַרְבָּעָה</span>', '<span class="he">אַרְבַּעָה</span>'],
+    correct: '<span class="he">אַרְבְּעָה</span>' },
+  { q: 'Сир. <span class="lat">šettîn</span> «шестьдесят» реконструируется как:',
+    options: ['<span class="he">שִׁתִּין</span>', '<span class="he">שִׁשִּׁים</span>', '<span class="he">שִׁתִּים</span>', '<span class="he">שְׁתִּין</span>'],
+    correct: '<span class="he">שִׁתִּין</span>' },
+  { q: 'Сир. <span class="lat">lêlyāʾ</span> реконструируется как:',
+    options: ['<span class="he">לֵילְיָא</span>', '<span class="he">לַיְלָה</span>', '<span class="he">לֵילָא</span>', '<span class="he">לֵילֵי</span>'],
+    correct: '<span class="he">לֵילְיָא</span>' },
+  { q: 'Сир. <span class="lat">nûrāʾ</span> реконструируется как:',
+    options: ['<span class="he">נוּרָא</span>', '<span class="he">אֵשׁ</span>', '<span class="he">נוּרִין</span>', '<span class="he">נֵירָא</span>'],
+    correct: '<span class="he">נוּרָא</span>' },
+  { q: 'Сир. <span class="lat">ḥešôḵāʾ</span> реконструируется как:',
+    options: ['<span class="he">חֲשׁוֹכָא</span>', '<span class="he">חֹשֶׁךְ</span>', '<span class="he">חֲשֵׁיכָא</span>', '<span class="he">חֲשׁוֹכָה</span>'],
+    correct: '<span class="he">חֲשׁוֹכָא</span>' },
+
+  /* ===== D. Лексика и перевод (34–50) ===== */
+  { q: 'Что означает <span class="he">בַּר אֱנָשׁ</span> (<span class="lat">bar ʾĕnāš</span>)?',
+    options: ['«сын человеческий, человек»', '«сын Божий»', '«сын Давидов»', '«ангел»'],
+    correct: '«сын человеческий, человек»' },
+  { q: 'Что означает <span class="he">אֱלָהּ שְׁמַיָּא</span> (<span class="lat">ʾĕlāh šəmayyāʾ</span>)?',
+    options: ['«Бог неба»', '«небо Бога»', '«Бог богов»', '«небо и земля»'],
+    correct: '«Бог неба»' },
+  { q: 'Что означает <span class="he">מָרֵא מַלְכַיָּא</span> (<span class="lat">mārēʾ malkayyāʾ</span>)?',
+    options: ['«Владыка царей»', '«царь царей»', '«царь владык»', '«Господь царства»'],
+    correct: '«Владыка царей»' },
+  { q: 'Что означает <span class="he">רֵאשָׁא דִּי דַהֲבָא</span> (<span class="lat">rêšāʾ dî dahăḇāʾ</span>)?',
+    options: ['«голова из золота»', '«золото головы»', '«золотая голова»', '«голова золотого»'],
+    correct: '«голова из золота»' },
+  { q: 'Что означает <span class="he">קַרְנָא דִּי־פַרְזְלָא</span> (<span class="lat">qarnāʾ dî-parzəlāʾ</span>)?',
+    options: ['«рог из железа»', '«железный рог»', '«рог железа»', '«рог в железе»'],
+    correct: '«рог из железа»' },
+  { q: 'Что означает <span class="he">חֲזֵה הֲוֵית</span> (<span class="lat">ḥăzēh hăwêṯ</span>)?',
+    options: ['«я видел»', '«я увидел»', '«я вижу»', '«я буду видеть»'],
+    correct: '«я видел»' },
+  { q: 'Что означает <span class="he">עִם־לֵילְיָא</span> (<span class="lat">ʿim-lêlyāʾ</span>)?',
+    options: ['«с ночью»', '«ночью»', '«в ночи»', '«до ночи»'],
+    correct: '«с ночью»' },
+  { q: 'Что означает <span class="he">מִן־קֳדָם</span> (<span class="lat">min-qŏḏām</span>)?',
+    options: ['«от лица, из присутствия»', '«перед лицом»', '«после»', '«между»'],
+    correct: '«от лица, из присутствия»' },
+  { q: 'Что означает <span class="he">בָּאתַר דְּנָה</span> (<span class="lat">bāʾṯar dənāh</span>)?',
+    options: ['«после этого»', '«прежде этого»', '«в этом»', '«из этого»'],
+    correct: '«после этого»' },
+  { q: 'Что означает <span class="he">עֲבַד</span> (<span class="lat">ʿăḇaḏ</span>)?',
+    options: ['«он сделал»', '«он сказал»', '«он послал»', '«он написал»'],
+    correct: '«он сделал»' },
+  { q: 'Что означает <span class="he">אֲמַר</span> (<span class="lat">ʾămar</span>)?',
+    options: ['«он сказал»', '«он сделал»', '«он видел»', '«он знал»'],
+    correct: '«он сказал»' },
+  { q: 'Что означает <span class="he">שְׁלַח</span> (<span class="lat">šəlaḥ</span>)?',
+    options: ['«он послал»', '«он взял»', '«он дал»', '«он оставил»'],
+    correct: '«он послал»' },
+  { q: 'Что означает <span class="he">הוּא יָדַע</span> (<span class="lat">hû yāḏaʿ</span>)?',
+    options: ['«он знает»', '«он узнал»', '«он знал»', '«он узнает»'],
+    correct: '«он знает»' },
+  { q: 'Как по-арамейски «Бог неба»?',
+    options: ['<span class="he">אֱלָהּ שְׁמַיָּא</span>', '<span class="he">אֱלָהָא דִּי שְׁמַיָּא</span>', '<span class="he">אֱלֹהֵי הַשָּׁמַיִם</span>', '<span class="he">אֱלָהּ אַרְעָא</span>'],
+    correct: '<span class="he">אֱלָהּ שְׁמַיָּא</span>' },
+  { q: 'Как по-арамейски «царь царей»?',
+    options: ['<span class="he">מֶלֶךְ מַלְכַיָּא</span>', '<span class="he">מַלְכָּא מַלְכַיָּא</span>', '<span class="he">מֶלֶךְ הַמְּלָכִים</span>', '<span class="he">מַלְכָּא דִּי מַלְכַיָּא</span>'],
+    correct: '<span class="he">מֶלֶךְ מַלְכַיָּא</span>' },
+  { q: 'Как по-арамейски «дом Бога»?',
+    options: ['<span class="he">בֵּית אֱלָהָא</span>', '<span class="he">בֵּיתָא דִּי אֱלָהָא</span>', '<span class="he">בֵּיתָא אֱלָהָא</span>', '<span class="he">בֵּית אֵל</span>'],
+    correct: '<span class="he">בֵּית אֱלָהָא</span>' },
+  { q: 'Как по-арамейски «Ветхий днями»?',
+    options: ['<span class="he">עַתִּיק יוֹמִין</span>', '<span class="he">עַתִּיק יוֹמַיָּא</span>', '<span class="he">עַתִּיקָא דְּיוֹמִין</span>', '<span class="he">קַדְמוֹן יוֹמִין</span>'],
+    correct: '<span class="he">עַתִּיק יוֹמִין</span>' },
+
+  /* ===== E. Иврит → арамейский (51–55) ===== */
+  { q: 'Евр. <span class="he">בֶּן־אָדָם</span> «сын человеческий» по-арамейски (BA):',
+    options: ['<span class="he">בַּר אֱנָשׁ</span>', '<span class="he">בַּר נָשָׁא</span>', '<span class="he">בֶּן אֱנָשׁ</span>', '<span class="he">בַּר אָדָם</span>'],
+    correct: '<span class="he">בַּר אֱנָשׁ</span>' },
+  { q: 'Евр. <span class="he">מֶלֶךְ הַמְּלָכִים</span> «царь царей» по-арамейски:',
+    options: ['<span class="he">מֶלֶךְ מַלְכַיָּא</span>', '<span class="he">מַלְכָּא דִּי מַלְכַיָּא</span>', '<span class="he">מַלְכָּא מַלְכִין</span>', '<span class="he">מַלְכָּא מֶלֶךְ</span>'],
+    correct: '<span class="he">מֶלֶךְ מַלְכַיָּא</span>' },
+  { q: 'Евр. <span class="he">אֱלֹהֵי הַשָּׁמַיִם</span> «Бог небес» по-арамейски:',
+    options: ['<span class="he">אֱלָהּ שְׁמַיָּא</span>', '<span class="he">אֱלָהָא דִּי שְׁמַיָּא</span>', '<span class="he">אֱלֹהֵי שְׁמַיָּא</span>', '<span class="he">אֱלָהָא שְׁמַיָּא</span>'],
+    correct: '<span class="he">אֱלָהּ שְׁמַיָּא</span>' },
+  { q: 'Евр. <span class="he">בֵּית־הָאֱלֹהִים</span> «дом Бога» по-арамейски:',
+    options: ['<span class="he">בֵּית אֱלָהָא</span>', '<span class="he">בֵּיתָא אֱלָהָא</span>', '<span class="he">בֵּיתָא דִּי אֱלָהָא</span>', '<span class="he">בֵּית דִּי אֱלָהָא</span>'],
+    correct: '<span class="he">בֵּית אֱלָהָא</span>' },
+  { q: 'Евр. <span class="he">הַמֶּלֶךְ</span> «царь (опр.)» по-арамейски (эмфат.):',
+    options: ['<span class="he">מַלְכָּא</span>', '<span class="he">מֶלֶךְ</span>', '<span class="he">מַלְכָּא דִּי</span>', '<span class="he">מַלְכוּתָא</span>'],
+    correct: '<span class="he">מַלְכָּא</span>' },
+
+  /* ===== F. Арамейский → иврит (56–58) ===== */
+  { q: 'Как по-ивритски соответствует арам. <span class="he">שְׁמַיָּא</span>?',
+    options: ['<span class="he">שָׁמַיִם</span>', '<span class="he">אֶרֶץ</span>', '<span class="he">יָם</span>', '<span class="he">הַר</span>'],
+    correct: '<span class="he">שָׁמַיִם</span>' },
+  { q: 'Как по-ивритски соответствует арам. <span class="he">מַלְכוּתָא</span>?',
+    options: ['<span class="he">מַלְכוּת</span>', '<span class="he">מֶלֶךְ</span>', '<span class="he">מַמְלָכָה</span>', '<span class="he">מְלוּכָה</span>'],
+    correct: '<span class="he">מַלְכוּת</span>' },
+  { q: 'Как по-ивритски соответствует арам. <span class="he">אַרְעָא</span>?',
+    options: ['<span class="he">אֶרֶץ</span>', '<span class="he">אֲדָמָה</span>', '<span class="he">שָׂדֶה</span>', '<span class="he">מִדְבָּר</span>'],
+    correct: '<span class="he">אֶרֶץ</span>' },
+
+  /* ===== G. Синтез и метод (59–60) ===== */
+  { q: 'Правило «сир. <span class="lat">d-</span> → BA сопряжение» имеет исключение, когда второй член обозначает:',
+    options: ['материал', 'лицо', 'место', 'божество'],
+    correct: 'материал' },
+  { q: 'Какой из перечисленных шагов <em>не</em> входит в методику обратной реконструкции?',
+    options: ['Механически заменять все <span class="lat">‑āʾ</span> на <span class="he">‑ָא</span>', 'Проверять семантический класс второго члена', 'Сверять с засвидетельствованной BA-формой', 'Учитывать pluralis majestatis'],
+    correct: 'Механически заменять все <span class="lat">‑āʾ</span> на <span class="he">‑ָא</span>' }
+];
+
+/* ---------- Подготовка сессии ---------- */
+const TOTAL = 20;
+const indices = shuffle([...Array(BANK.length).keys()]).slice(0, TOTAL);
+const SESSION = indices.map(i => {
+  const q = BANK[i];
+  return { q: q.q, correct: q.correct, options: shuffle(q.options) };
+});
+
+/* ---------- Состояние ---------- */
+let current = 0;
+let score = 0;
+
+const $progress = document.getElementById('progress');
+const $tally = document.getElementById('tally');
+const $barfill = document.getElementById('barfill');
+const $question = document.getElementById('question');
+const $options = document.getElementById('options');
+const $stage = document.getElementById('stage');
+const $final = document.getElementById('final');
+
+function render() {
+  const item = SESSION[current];
+  $progress.textContent = `Вопрос ${current + 1} из ${TOTAL}`;
+  $tally.textContent = `Правильно: ${score}`;
+  $barfill.style.width = `${(current / TOTAL) * 100}%`;
+  $question.innerHTML = item.q;
+  $options.innerHTML = '';
+
+  item.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'opt';
+    const isHeb = /[\u0590-\u05FF]/.test(opt);
+    const labelDir = isHeb ? ' dir="rtl"' : '';
+    btn.innerHTML = `<span class="label"${labelDir}>${opt}</span><span class="mark"></span>`;
+    btn.addEventListener('click', () => choose(btn, opt, item));
+    $options.appendChild(btn);
+  });
+}
+
+function choose(btn, opt, item) {
+  const buttons = [...$options.querySelectorAll('.opt')];
+  buttons.forEach(b => b.disabled = true);
+
+  if (opt === item.correct) {
+    btn.classList.add('correct');
+    btn.querySelector('.mark').textContent = '✓';
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    btn.querySelector('.mark').textContent = '✗';
+    buttons.forEach(b => {
+      if (b.querySelector('.label').innerHTML === item.correct) {
+        b.classList.add('correct');
+        b.querySelector('.mark').textContent = '✓';
+      }
+    });
+  }
+
+  $tally.textContent = `Правильно: ${score}`;
+
+  setTimeout(() => {
+    current++;
+    if (current < TOTAL) {
+      render();
+    } else {
+      finish();
+    }
+  }, 900);
+}
+
+function finish() {
+  $barfill.style.width = '100%';
+  $stage.style.display = 'none';
+  const pct = Math.round((score / TOTAL) * 100);
+  let verdict = '';
+  if (pct >= 90) verdict = 'Отличный уровень: правила реконструкции и ограничения метода усвоены.';
+  else if (pct >= 70) verdict = 'Хороший уровень: есть база, но нужно повторить семантические проверки.';
+  else if (pct >= 50) verdict = 'Средний уровень: повторите части 15–20 и таблицу правил.';
+  else verdict = 'Начальный уровень: вернитесь к синтезу серии (часть 20).';
+  $final.innerHTML = `
+    <div>Тест завершён. Итог:</div>
+    <div class="score">${score} / ${TOTAL}</div>
+    <div>${pct}%</div>
+    <p>${verdict}</p>
+    <button class="restart" onclick="location.reload()">Пройти ещё раз (новый набор вопросов)</button>
+    <p class="note">Порядок вопросов и вариантов определяется системным временем при загрузке страницы.</p>
+  `;
+  $final.style.display = 'block';
+}
+
+render();
+</script>
+
+</body>
+</html>
